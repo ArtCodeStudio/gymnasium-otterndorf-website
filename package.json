@@ -2,6 +2,9 @@
   "name": "riba-nest-projects",
   "private": true,
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
+  "scripts": {
+    "build": "yarn workspaces foreach run build"
+  },
   "workspaces": [
     "apps/*/*",
     "!apps/*/strapi"
@@ -48,6 +51,8 @@
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
+
   }
 }
