@@ -3,7 +3,11 @@
   "private": true,
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
   "scripts": {
-    "build": "yarn workspaces foreach run build"
+    "build": "yarn workspaces foreach run build && yarn run build:outside",
+    "build:outside": "cd apps/gymott/strapi && NODE_OPTIONS='' npm run build",
+    "start:local": "yarn workspace @manager/nest run start:local",
+    "start:prod": "yarn workspace @manager/nest run start:prod",
+    "start:dev": "yarn workspace @manager/nest run start:dev"
   },
   "workspaces": [
     "apps/*/*",
@@ -55,6 +59,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@manager/nest": "workspace:apps/manager/nest"
+    "@manager/nest": "workspace:apps/manager/nest",
+    "pug": "^3.0.0"
   }
 }

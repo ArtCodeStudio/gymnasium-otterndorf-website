@@ -17,13 +17,7 @@ export class RedbirdService {
 
   // Also possible on runtime, see https://github.com/OptimalBits/redbird#adding-and-removing-resolvers-at-runtime
   async registerApp(app: ManagerApp) {
-    let host = app.host;
-
-    if (!host && app.port) {
-      host = `http://localhost:${app.port}`;
-    }
-
-    await this.proxy.register(app.domain, host, app.redbird);
+    await this.proxy.register(app.domain, app.host, app.redbird);
   }
 
   async registerApps(apps: ManagerApp[]) {

@@ -14,13 +14,14 @@ import { loadConfig } from './helper/config';
 export class ManagerModule {
   // constructor() {}
   static forRoot(): DynamicModule {
-    const { redbird, apps } = loadConfig();
+    const { redbird, apps, manager } = loadConfig();
     return {
       imports: [
         ConfigModule.forRoot({
           load: [
             registerAs('redbird', () => redbird),
             registerAs('apps', () => apps),
+            registerAs('manager', () => manager),
           ],
         }),
         RedbirdModule.forRoot(redbird),

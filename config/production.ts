@@ -1,5 +1,8 @@
 import type { ManagerApp } from "@manager/nest/src/types/app";
+import type { ManagerOptions } from "@manager/nest/src/types/options";
 import type { RedbirdOptions } from "@manager/nest/src/redbird/types/options";
+
+export const manager: ManagerOptions = {};
 
 export const redbird: RedbirdOptions = {
   /**
@@ -7,7 +10,7 @@ export const redbird: RedbirdOptions = {
    */
   port: 80,
   letsencrypt: {
-    path: __dirname + "/certs",
+    path: __dirname + "./certs",
     /**
      *  LetsEncrypt minimal web server port for handling challenges. Routed 80->9999, no need to open 9999 in firewall. Default 3000 if not defined.
      */
@@ -35,6 +38,7 @@ export const apps: ManagerApp[] = [
         },
       },
     },
+    pm2: {},
   },
   {
     pkgName: "@gymott/nest",
@@ -48,6 +52,7 @@ export const apps: ManagerApp[] = [
         },
       },
     },
+    pm2: {},
   },
   {
     pkgName: "@gymott/strapi",
@@ -59,6 +64,12 @@ export const apps: ManagerApp[] = [
           email: "hi@artandcode.studio", // Domain owner/admin email
           production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
         },
+      },
+    },
+    pm2: {
+      env: {
+        // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
+        NODE_OPTIONS: "",
       },
     },
   },

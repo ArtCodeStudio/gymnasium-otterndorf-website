@@ -27,6 +27,7 @@ export class CustomConfigService {
         const context = {
           exports: {},
           require,
+          __dirname,
         };
         const jSource = transpileModule(tSource, { compilerOptions })
           .outputText;
