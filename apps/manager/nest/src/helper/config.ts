@@ -140,27 +140,30 @@ const setAppDefaults = (apps: ManagerApp[]) => {
   }
 };
 
-const validateAppConfigs = (apps: ManagerApp[]) => {
+const validateAppConfigs = (apps: ManagerApp[], manager: ManagerOptions) => {
   for (const app of apps) {
+    // Ignore
+    if (app.pkgName === manager.pkg.name) {
+      continue;
+    }
     if (!app?.pm2?.script) {
       throw new Error('You must set a script for pm2 apps!');
     }
   }
 };
 
-const processAppConfigs = (apps: ManagerApp[]) => {
+const processAppConfigs = (apps: ManagerApp[], manager: ManagerOptions) => {
   loadPkgData(apps);
   setAppDefaults(apps);
-  validateAppConfigs(apps);
+  validateAppConfigs(apps, manager);
 
   log.debug(`apps: ${JSON.stringify(apps, null, 2)}`);
-  return apps;
 };
 
 const processManagerConfigs = (manager: ManagerOptions) => {
-  manager.pkg = loadJsonFile(resolve('../../', 'package.json'));
-
-  return manager;
+  // TODO use find-root?
+  const path = resolve('package.json');
+  manager.pkg = loadJsonFile(path);
 };
 
 export const loadConfig = () => {
@@ -185,21 +188,16 @@ export const loadConfig = () => {
       break;
   }
 
-  const {
-    redbird,
-    apps,
-    manager,
-  } = CustomConfigService.loadConfig<ManagerConfig>([
+  const config = CustomConfigService.loadConfig<ManagerConfig>([
     configPath,
     fallbackConfigPath,
   ]);
 
-  log.debug(`Config redbird: "${JSON.stringify(redbird)}"`);
-  log.debug(`Config apps: "${JSON.stringify(apps)}"`);
+  log.debug(`Config redbird: "${JSON.stringify(config.redbird)}"`);
+  processManagerConfigs(config.manager);
+  log.debug(`Config manager: "${JSON.stringify(config.manager)}"`);
+  processAppConfigs(config.apps, config.manager);
+  log.debug(`Config apps: "${JSON.stringify(config.apps)}"`);
 
-  return {
-    manager: processManagerConfigs(manager),
-    redbird,
-    apps: processAppConfigs(apps),
-  };
+  return config;
 };
