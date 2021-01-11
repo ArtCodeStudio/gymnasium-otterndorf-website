@@ -2,7 +2,23 @@ import type { ManagerApp } from "@manager/nest/src/types/app";
 import type { ManagerOptions } from "@manager/nest/src/types/options";
 import type { RedbirdOptions } from "@manager/nest/src/redbird/types/options";
 
-export const manager: ManagerOptions = {};
+export const manager: ManagerOptions = {
+  pkgName: "@manager/nest",
+  domain: "localhost/manager",
+  target: {
+    port: 3333,
+    pathname: "/admin",
+  },
+  redbird: {
+    ssl: {
+      letsencrypt: {
+        email: "hi@artandcode.studio", // Domain owner/admin email
+        production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
+      },
+    },
+  },
+  pm2: {},
+};
 
 export const redbird: RedbirdOptions = {
   /**
@@ -26,23 +42,6 @@ export const redbird: RedbirdOptions = {
 };
 
 export const apps: ManagerApp[] = [
-  {
-    pkgName: "@manager/nest",
-    domain: "localhost/manager",
-    target: {
-      port: 3333,
-      pathname: "/admin",
-    },
-    redbird: {
-      ssl: {
-        letsencrypt: {
-          email: "hi@artandcode.studio", // Domain owner/admin email
-          production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
-        },
-      },
-    },
-    pm2: {},
-  },
   {
     pkgName: "@gymott/nest",
     domain: "localhost",

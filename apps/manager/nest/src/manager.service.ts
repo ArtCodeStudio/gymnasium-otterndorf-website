@@ -8,12 +8,15 @@ import type { ManagerOptions } from './types/options';
 @Injectable()
 export class ManagerService implements OnApplicationBootstrap {
   protected log = new Logger('ManagerService');
+  protected options: ManagerOptions;
 
   constructor(
     protected readonly config: ConfigService,
     protected readonly redbird: RedbirdService,
     protected readonly pm2: Pm2Service,
-  ) {}
+  ) {
+    this.options = this.config.get<ManagerOptions>('manager');
+  }
 
   onApplicationBootstrap() {
     this.startApps();
@@ -24,6 +27,7 @@ export class ManagerService implements OnApplicationBootstrap {
     this.log.debug('registerApps');
     const apps = this.config.get<ManagerApp[]>('apps');
     try {
+      await this.redbird.registerApp(this.options);
       await this.redbird.registerApps(apps);
     } catch (error) {
       this.log.error('Error on register app proxies ', error);
@@ -33,9 +37,8 @@ export class ManagerService implements OnApplicationBootstrap {
   async startApps() {
     this.log.debug('startApps');
     const apps = this.config.get<ManagerApp[]>('apps');
-    const manager = this.config.get<ManagerOptions>('manager');
     try {
-      await this.pm2.startApps(apps, [manager.pkg.name]);
+      await this.pm2.startApps(apps, []);
     } catch (error) {
       this.log.error('Error on start app processes : ' + error);
       throw error;

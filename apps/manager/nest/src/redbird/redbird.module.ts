@@ -9,7 +9,7 @@ import type { RedbirdOptions } from './types/options';
   exports: [RedbirdService],
 })
 export class RedbirdModule {
-  static forRoot(redbird: RedbirdOptions): DynamicModule {
+  static async forRoot(redbird: RedbirdOptions): Promise<DynamicModule> {
     return {
       imports: [
         ConfigModule.forRoot({

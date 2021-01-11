@@ -5,13 +5,13 @@ import type { URL } from 'url';
 export interface ManagerApp {
   pkgName: string;
   domain: string;
-  target: {
+  target?: {
     url?: URL;
     host?: string;
-    port?: number | 'auto';
+    port?: number;
     pathname?: string;
   };
-  redbird: RedbirdRegisterOptions;
+  redbird?: RedbirdRegisterOptions;
   dir?: string;
   pkg?: any;
   pm2?: StartOptions;

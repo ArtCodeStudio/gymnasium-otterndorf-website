@@ -1,6 +1,3 @@
-export interface ManagerOptions {
-  pkg?: {
-    name: string;
-    [key: string]: any;
-  };
-}
+import { ManagerApp } from './app';
+
+export type ManagerOptions = ManagerApp;

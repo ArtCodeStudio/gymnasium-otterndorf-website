@@ -3,11 +3,14 @@ import { resolve } from 'path';
 import type { ManagerConfig } from '../types/config';
 import type { ManagerOptions } from '../types/options';
 import type { ManagerApp } from '../types/app';
+import type { RedbirdSSL } from '../redbird/types/ssl';
 import { CustomConfigService } from '../config/config.module';
 import { sync } from 'glob';
 import { parse as dotenvParse } from 'dotenv';
 import { existsSync, readFileSync } from 'fs';
 import { URL } from 'url';
+import { isInteger } from 'lodash';
+import * as getPort from 'get-port';
 
 const log = new Logger('config helpers');
 const workspaceRoot = resolve(process.cwd(), '../../../');
@@ -94,9 +97,75 @@ const loadPkgData = (apps: ManagerApp[]) => {
   }
 };
 
+const getUsedPorts = (apps: ManagerApp[]) => {
+  const ports: number[] = [];
+  apps
+    .filter((app) => isInteger(Number(app?.target?.port)))
+    .map((app) => {
+      app.target.port;
+    });
+
+  return ports;
+};
+
+const findPort = async (
+  exclude: number[] = [],
+  options: getPort.Options = {},
+) => {
+  let port = await getPort(options);
+  while (exclude.includes(port)) {
+    port = await getPort(options);
+  }
+  return port;
+};
+
+const setPorts = async (config: ManagerConfig) => {
+  const DEBUGGER_PORT = 9229;
+  const used: number[] = [DEBUGGER_PORT];
+  // Redbird http port
+  config.redbird.port = await findPort([], {
+    port: config.redbird?.port || 80,
+  });
+  used.push(config.redbird.port);
+
+  // Redbird https port
+  if ((config.redbird?.ssl as RedbirdSSL)?.port) {
+    (config.redbird.ssl as RedbirdSSL).port = await findPort([], {
+      port: (config.redbird.ssl as RedbirdSSL).port || 443,
+    });
+    used.push((config.redbird.ssl as RedbirdSSL).port);
+  }
+
+  if (config.redbird.letsencrypt) {
+    config.redbird.letsencrypt.port = await findPort(used, {
+      port: config.redbird.letsencrypt.port,
+    });
+    used.push(config.redbird.letsencrypt.port);
+  }
+
+  // Manager port
+  config.manager.target = config.manager.target || {};
+  if (process.env.PORT) {
+    config.manager.target.port = Number(process.env.PORT);
+  }
+  if (!config.manager.target?.port) {
+    config.manager.target.port = await findPort(used);
+  }
+  used.push(config.manager.target.port);
+
+  // App ports
+  for (const app of config.apps) {
+    app.target = app.target || {};
+    if (!app.target?.port) {
+      const exclude = [...used, ...getUsedPorts(config.apps)];
+      app.target.port = await findPort(exclude);
+    }
+  }
+  return config;
+};
+
 const setAppDefaults = (apps: ManagerApp[]) => {
   let shortEnv = '';
-
   switch (process.env.NODE_ENV) {
     case 'production':
       shortEnv = 'prod';
@@ -114,15 +183,20 @@ const setAppDefaults = (apps: ManagerApp[]) => {
 
   // Set defaults for each app
   for (const app of apps) {
+    // target
+    app.target = app.target || {};
     if (!app.target.url) {
       app.target.url = new URL(app.target.host || 'http://localhost');
-      if (app.target.port && app.target.port !== 'auto') {
+      if (app.target.port) {
         app.target.url.port = app.target.port.toString();
       }
       if (app.target.pathname) {
         app.target.url.pathname = app.target.pathname;
       }
     }
+
+    // redbird
+    app.redbird = app.redbird || {};
 
     if (app.dir) {
       const env = loadEnvFile(resolve(app.dir, '.env')) || {};
@@ -138,18 +212,15 @@ const setAppDefaults = (apps: ManagerApp[]) => {
       };
       app.pm2.cwd = app.dir;
 
-      if (app.target.port && app.target.port !== 'auto') {
-        // Overwrite port if set
-        // TODO find port on auto
-        app.pm2.env.PORT = app.target.port.toString() || app.pm2.env.PORT;
-      }
+      // Environment variables
+      app.pm2.env.PORT = app.target.port.toString() || app.pm2.env.PORT;
     }
   }
 };
 
 const validateAppConfigs = (apps: ManagerApp[], manager: ManagerOptions) => {
   for (const app of apps) {
-    // Ignore
+    // Ignore app manager itself
     if (app.pkgName === manager.pkg.name) {
       continue;
     }
@@ -159,21 +230,21 @@ const validateAppConfigs = (apps: ManagerApp[], manager: ManagerOptions) => {
   }
 };
 
-const processAppConfigs = (apps: ManagerApp[], manager: ManagerOptions) => {
-  loadPkgData(apps);
-  setAppDefaults(apps);
-  validateAppConfigs(apps, manager);
+const processConfigs = async (config: ManagerConfig) => {
+  await setPorts(config);
 
-  log.debug(`apps: ${JSON.stringify(apps, null, 2)}`);
+  // The manager itself is an app
+  loadPkgData([config.manager]);
+  setAppDefaults([config.manager]);
+  // All other apps
+  loadPkgData(config.apps);
+  setAppDefaults(config.apps);
+  validateAppConfigs(config.apps, config.manager);
+
+  // log.debug(`apps: ${JSON.stringify(config.apps, null, 2)}`);
 };
 
-const processManagerConfigs = (manager: ManagerOptions) => {
-  // TODO use find-root?
-  const path = resolve('package.json');
-  manager.pkg = loadJsonFile(path);
-};
-
-export const loadConfig = () => {
+export const loadConfig = async () => {
   const basePath = resolve(workspaceRoot, 'config');
   const env = process.env.NODE_ENV || 'development';
   log.debug(`Load config for "${env}"`);
@@ -200,11 +271,10 @@ export const loadConfig = () => {
     fallbackConfigPath,
   ]);
 
-  log.debug(`Config redbird: "${JSON.stringify(config.redbird)}"`);
-  processManagerConfigs(config.manager);
-  log.debug(`Config manager: "${JSON.stringify(config.manager)}"`);
-  processAppConfigs(config.apps, config.manager);
-  log.debug(`Config apps: "${JSON.stringify(config.apps)}"`);
+  await processConfigs(config);
+  // log.debug(`Config redbird: "${JSON.stringify(config.redbird)}"`);
+  // log.debug(`Config manager: "${JSON.stringify(config.manager)}"`);
+  // log.debug(`Config apps: "${JSON.stringify(config.apps)}"`);
 
   return config;
 };

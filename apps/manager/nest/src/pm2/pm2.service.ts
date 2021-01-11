@@ -8,7 +8,9 @@ import { ManagerApp } from '../types/app';
 import * as pm2 from 'pm2';
 import type { Proc, ProcessDescription } from 'pm2';
 import { promisify } from 'util';
+import { clone } from 'lodash';
 import { exists } from '../helper/cmd';
+import { URL } from 'url';
 
 @Injectable()
 export class Pm2Service
@@ -57,14 +59,16 @@ export class Pm2Service
    * @see https://pm2.keymetrics.io/docs/usage/pm2-api/#programmatic-api
    */
   public async startApp(app: ManagerApp) {
-    this.log.debug(`Start new process "${app.pkgName}"`);
+    // this.log.debug(`Start new process "${app.pkgName}"`);
     return new Promise((resolve, reject) => {
       pm2.start(app.pm2, (err: Error, proc: Proc) => {
         if (err) {
           this.log.error(err);
           return reject(err);
         }
-        this.log.log(`Process started: ${app.pm2.name} on ${app.target.host}`);
+        const url = new URL(app.target.url.toString());
+        url.pathname = '';
+        this.log.log(`Process started: ${app.pm2.name} on ${url}`);
         resolve(proc);
       });
     });

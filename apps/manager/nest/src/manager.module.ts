@@ -4,7 +4,7 @@ import { ManagerService } from './manager.service';
 import { RedbirdModule } from './redbird/redbird.module';
 import { Pm2Module } from './pm2/pm2.module';
 import { ConfigModule, registerAs } from '@nestjs/config';
-import { loadConfig } from './helper/config';
+import { ManagerConfig } from './types/config';
 
 @Module({
   imports: [Pm2Module],
@@ -13,8 +13,11 @@ import { loadConfig } from './helper/config';
 })
 export class ManagerModule {
   // constructor() {}
-  static forRoot(): DynamicModule {
-    const { redbird, apps, manager } = loadConfig();
+  static async forRoot({
+    redbird,
+    apps,
+    manager,
+  }: ManagerConfig): Promise<DynamicModule> {
     return {
       imports: [
         ConfigModule.forRoot({
@@ -24,7 +27,7 @@ export class ManagerModule {
             registerAs('manager', () => manager),
           ],
         }),
-        RedbirdModule.forRoot(redbird),
+        await RedbirdModule.forRoot(redbird),
       ],
       module: ManagerModule,
       providers: [],
