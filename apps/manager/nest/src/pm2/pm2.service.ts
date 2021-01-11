@@ -64,7 +64,7 @@ export class Pm2Service
           this.log.error(err);
           return reject(err);
         }
-        this.log.log(`Process started: ${app.pm2.name} on ${app.host}`);
+        this.log.log(`Process started: ${app.pm2.name} on ${app.target.host}`);
         resolve(proc);
       });
     });

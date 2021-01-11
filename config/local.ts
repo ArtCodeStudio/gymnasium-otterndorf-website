@@ -13,13 +13,17 @@ export const apps: ManagerApp[] = [
   {
     pkgName: "@manager/nest",
     domain: "localhost/manager",
-    port: 3333,
+    target: {
+      port: 3333,
+    },
     redbird: {},
   },
   {
     pkgName: "@gymott/nest",
     domain: "localhost",
-    port: 3000,
+    target: {
+      port: 3000,
+    },
     redbird: {},
     pm2: {
       script: "yarn workspace @gymott/nest start",
@@ -27,14 +31,18 @@ export const apps: ManagerApp[] = [
   },
   {
     pkgName: "@gymott/strapi",
-    domain: "localhost/strapi",
-    port: 3001,
+    domain: "localhost/admin",
+    target: {
+      port: 3001,
+      pathname: "/admin",
+    },
     redbird: {},
     pm2: {
       script: "npm run start",
       env: {
         // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
         NODE_OPTIONS: "",
+        ADMIN_URL: "/admin",
       },
     },
   },

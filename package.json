@@ -7,7 +7,10 @@
     "build:outside": "cd apps/gymott/strapi && NODE_OPTIONS='' npm run build",
     "start:local": "yarn workspace @manager/nest run start:local",
     "start:prod": "yarn workspace @manager/nest run start:prod",
-    "start:dev": "yarn workspace @manager/nest run start:dev"
+    "start:dev": "yarn workspace @manager/nest run start:dev",
+    "watch:local": "yarn workspace @manager/nest run watch:local",
+    "watch:prod": "yarn workspace @manager/nest run watch:prod",
+    "watch:dev": "yarn workspace @manager/nest run watch:dev"
   },
   "workspaces": [
     "apps/*/*",

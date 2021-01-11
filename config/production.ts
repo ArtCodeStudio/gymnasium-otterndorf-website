@@ -29,7 +29,10 @@ export const apps: ManagerApp[] = [
   {
     pkgName: "@manager/nest",
     domain: "localhost/manager",
-    port: 3333,
+    target: {
+      port: 3333,
+      pathname: "/admin",
+    },
     redbird: {
       ssl: {
         letsencrypt: {
@@ -43,7 +46,9 @@ export const apps: ManagerApp[] = [
   {
     pkgName: "@gymott/nest",
     domain: "localhost",
-    port: 3000,
+    target: {
+      port: 3000,
+    },
     redbird: {
       ssl: {
         letsencrypt: {
@@ -57,7 +62,9 @@ export const apps: ManagerApp[] = [
   {
     pkgName: "@gymott/strapi",
     domain: "localhost/strapi",
-    port: 3001,
+    target: {
+      port: 3001,
+    },
     redbird: {
       ssl: {
         letsencrypt: {

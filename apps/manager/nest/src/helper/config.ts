@@ -7,6 +7,7 @@ import { CustomConfigService } from '../config/config.module';
 import { sync } from 'glob';
 import { parse as dotenvParse } from 'dotenv';
 import { existsSync, readFileSync } from 'fs';
+import { URL } from 'url';
 
 const log = new Logger('config helpers');
 const workspaceRoot = resolve(process.cwd(), '../../../');
@@ -113,8 +114,14 @@ const setAppDefaults = (apps: ManagerApp[]) => {
 
   // Set defaults for each app
   for (const app of apps) {
-    if (!app.host && app.port) {
-      app.host = `http://localhost:${app.port}`;
+    if (!app.target.url) {
+      app.target.url = new URL(app.target.host || 'http://localhost');
+      if (app.target.port && app.target.port !== 'auto') {
+        app.target.url.port = app.target.port.toString();
+      }
+      if (app.target.pathname) {
+        app.target.url.pathname = app.target.pathname;
+      }
     }
 
     if (app.dir) {
@@ -131,10 +138,10 @@ const setAppDefaults = (apps: ManagerApp[]) => {
       };
       app.pm2.cwd = app.dir;
 
-      if (app.port && app.port !== 'auto') {
+      if (app.target.port && app.target.port !== 'auto') {
         // Overwrite port if set
         // TODO find port on auto
-        app.pm2.env.PORT = app.port.toString() || app.pm2.env.PORT;
+        app.pm2.env.PORT = app.target.port.toString() || app.pm2.env.PORT;
       }
     }
   }

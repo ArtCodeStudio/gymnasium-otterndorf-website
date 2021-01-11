@@ -1,11 +1,16 @@
 import type { RedbirdRegisterOptions } from '../redbird/types/register-options';
 import type { StartOptions } from 'pm2';
+import type { URL } from 'url';
 
 export interface ManagerApp {
   pkgName: string;
   domain: string;
-  port?: number | 'auto';
-  host?: string;
+  target: {
+    url?: URL;
+    host?: string;
+    port?: number | 'auto';
+    pathname?: string;
+  };
   redbird: RedbirdRegisterOptions;
   dir?: string;
   pkg?: any;
