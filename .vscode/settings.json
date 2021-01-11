@@ -11,6 +11,7 @@
     "gymott",
     "letsencrypt",
     "nestjs",
+    "postgres",
     "strapi"
   ]
 }

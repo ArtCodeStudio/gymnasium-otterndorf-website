@@ -122,6 +122,7 @@ const findPort = async (
 const setPorts = async (config: ManagerConfig) => {
   const DEBUGGER_PORT = 9229;
   const used: number[] = [DEBUGGER_PORT];
+
   // Redbird http port
   config.redbird.port = await findPort([], {
     port: config.redbird?.port || 80,

@@ -29,7 +29,6 @@ export class Pm2Service
 
   protected onError(err: Error) {
     if (err) {
-      this.log.debug('Stop');
       this.log.error(err);
       this.disconnect();
       throw err;
@@ -39,7 +38,6 @@ export class Pm2Service
   public async connect() {
     this.log.debug('connect');
     const pm2Exists = await exists('pm2');
-    this.log.debug('exists: ' + pm2Exists);
     if (!pm2Exists) {
       throw new Error(
         'pm2 not found, do you have pm2 installed globally with npm or yarn? If not, please follow the instructions on https://pm2.keymetrics.io/docs/usage/quick-start/',
@@ -68,7 +66,7 @@ export class Pm2Service
         }
         const url = new URL(app.target.url.toString());
         url.pathname = '';
-        this.log.log(`Process started: ${app.pm2.name} on ${url}`);
+        this.log.log(`Start process ${app.pm2.name} on ${url}`);
         resolve(proc);
       });
     });

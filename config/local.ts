@@ -31,6 +31,8 @@ export const apps: ManagerApp[] = [
         // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
         NODE_OPTIONS: "",
         ADMIN_URL: "/admin",
+        DATABASE_CONNECTOR: "bookshelf",
+        DATABASE_CLIENT: "sqlite",
       },
     },
   },
