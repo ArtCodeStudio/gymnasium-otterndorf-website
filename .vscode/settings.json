@@ -8,10 +8,25 @@
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
+    "Garber",
+    "artandcode",
+    "authbind",
+    "byport",
+    "chmod",
+    "easdk",
     "gymott",
+    "iconset",
     "letsencrypt",
     "nestjs",
+    "octobercms",
+    "photoswipe",
+    "pnpify",
     "postgres",
-    "strapi"
+    "prebuild",
+    "preinstall",
+    "riba",
+    "ribajs",
+    "strapi",
+    "yarnpkg"
   ]
 }

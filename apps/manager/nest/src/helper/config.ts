@@ -4,6 +4,7 @@ import type { ManagerConfig } from '../types/config';
 import type { ManagerOptions } from '../types/options';
 import type { ManagerApp } from '../types/app';
 import type { RedbirdSSL } from '../redbird/types/ssl';
+import type { RedbirdRegisterOptions } from '../redbird/types/register-options';
 import { CustomConfigService } from '../config/config.module';
 import { sync } from 'glob';
 import { parse as dotenvParse } from 'dotenv';
@@ -165,7 +166,10 @@ const setPorts = async (config: ManagerConfig) => {
   return config;
 };
 
-const setAppDefaults = (apps: ManagerApp[]) => {
+const setAppDefaults = (
+  apps: ManagerApp[],
+  defaults: RedbirdRegisterOptions = {},
+) => {
   let shortEnv = '';
   switch (process.env.NODE_ENV) {
     case 'production':
@@ -184,6 +188,9 @@ const setAppDefaults = (apps: ManagerApp[]) => {
 
   // Set defaults for each app
   for (const app of apps) {
+    // redbird
+    app.redbird = { ...defaults, ...app.redbird };
+
     // target
     app.target = app.target || {};
     if (!app.target.url) {
@@ -195,9 +202,6 @@ const setAppDefaults = (apps: ManagerApp[]) => {
         app.target.url.pathname = app.target.pathname;
       }
     }
-
-    // redbird
-    app.redbird = app.redbird || {};
 
     if (app.dir) {
       const env = loadEnvFile(resolve(app.dir, '.env')) || {};
@@ -236,10 +240,10 @@ const processConfigs = async (config: ManagerConfig) => {
 
   // The manager itself is an app
   loadPkgData([config.manager]);
-  setAppDefaults([config.manager]);
+  setAppDefaults([config.manager], config.redbird.appDefaults);
   // All other apps
   loadPkgData(config.apps);
-  setAppDefaults(config.apps);
+  setAppDefaults(config.apps, config.redbird.appDefaults);
   validateAppConfigs(config.apps, config.manager);
 
   // log.debug(`apps: ${JSON.stringify(config.apps, null, 2)}`);
@@ -273,9 +277,9 @@ export const loadConfig = async () => {
   ]);
 
   await processConfigs(config);
-  // log.debug(`Config redbird: "${JSON.stringify(config.redbird)}"`);
-  // log.debug(`Config manager: "${JSON.stringify(config.manager)}"`);
-  // log.debug(`Config apps: "${JSON.stringify(config.apps)}"`);
+  log.debug(`Config redbird: "${JSON.stringify(config.redbird, null, 2)}"`);
+  log.debug(`Config manager: "${JSON.stringify(config.manager, null, 2)}"`);
+  log.debug(`Config apps: "${JSON.stringify(config.apps, null, 2)}"`);
 
   return config;
 };

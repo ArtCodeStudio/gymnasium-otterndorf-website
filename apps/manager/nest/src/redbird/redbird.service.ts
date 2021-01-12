@@ -14,7 +14,6 @@ export class RedbirdService {
 
   constructor(protected readonly config: ConfigService) {
     this.options = this.config.get<RedbirdOptions>('redbird');
-    this.log.debug('Redbird options: ' + JSON.stringify(this.options, null, 2));
     this.proxy = redbird(this.options);
   }
 
@@ -32,7 +31,7 @@ export class RedbirdService {
     } else {
       port = this.options.port.toString();
     }
-    if (this.options.ssl) {
+    if (app.redbird.ssl) {
       protocol += 's';
     }
     const url = new URL('http://' + app.domain);
