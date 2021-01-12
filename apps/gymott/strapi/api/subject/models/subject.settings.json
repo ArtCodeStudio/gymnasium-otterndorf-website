@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subjects",
+  "info": {
+    "name": "Subject"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "teachers": {
+      "collection": "teacher",
+      "via": "subjects",
+      "dominant": true
+    },
+    "Content": {
+      "type": "dynamiczone",
+      "components": [
+        "content.image",
+        "content.text"
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_blog_images",
+  "info": {
+    "name": "Image",
+    "icon": "file-image"
+  },
+  "options": {},
+  "attributes": {
+    "Image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "Caption": {
+      "type": "string"
+    }
+  }
+}
