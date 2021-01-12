@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import * as redbird from 'redbird';
+import * as redbird from '@artcodestudio/redbird';
 import { ConfigService } from '@nestjs/config';
 import type { ManagerApp } from '../types/app';
 import type { RedbirdSSL } from './types/ssl';
@@ -20,8 +20,8 @@ export class RedbirdService {
   protected getFullUrl(app: ManagerApp) {
     let protocol = 'http';
     let port = '';
-    if (this.options.ssl) {
-      protocol += 's';
+    if (this.options.ssl && app.redbird.ssl) {
+      protocol = 'https';
       if (
         typeof this.options.ssl === 'object' &&
         (this.options.ssl as RedbirdSSL).port
@@ -31,12 +31,12 @@ export class RedbirdService {
     } else {
       port = this.options.port.toString();
     }
-    if (app.redbird.ssl) {
-      protocol += 's';
-    }
     const url = new URL('http://' + app.domain);
     url.protocol = protocol;
-    url.port = port;
+    if (port !== '80' && port !== '443') {
+      url.port = port;
+    }
+
     return url;
   }
 
@@ -45,7 +45,7 @@ export class RedbirdService {
     await this.proxy.register(
       app.domain,
       app.target.url.toString(),
-      app.redbird,
+      app.redbird || {},
     );
     const url = this.getFullUrl(app);
     this.log.log(`Start reverse proxy from ${url} to ${app.target.url}`);

@@ -16,7 +16,7 @@ export const redbird: RedbirdOptions = {
    */
   port: 80,
   letsencrypt: {
-    path: resolve(__dirname, "certs"),
+    path: resolve(__dirname, '../..', "certs"),
     /**
      *  LetsEncrypt minimal web server port for handling challenges. Routed 80->9999, no need to open 9999 in firewall. Default 3000 if not defined.
      */
@@ -52,14 +52,6 @@ export const apps: ManagerApp[] = [
     domain: "gymott.artandcode.de/admin",
     target: {
       pathname: "/admin",
-    },
-    redbird: {
-      ssl: {
-        letsencrypt: {
-          email: "hi@artandcode.studio", // Domain owner/admin email
-          production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
-        },
-      },
     },
     pm2: {
       script: "npm run start",

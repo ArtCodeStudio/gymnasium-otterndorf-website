@@ -19,7 +19,6 @@
     "!apps/*/strapi"
   ],
   "resolutions": {
-    "greenlock": "4.0.4",
     "@ribajs/nest-theme": "portal:../riba/backend/nest-theme",
     "@ribajs/demo-router-view": "portal:../riba/examples/router-view",
     "@ribajs/eslint-config": "portal:../riba/infra/eslint-config",
@@ -50,7 +49,8 @@
     "@ribajs/shopify-tda": "portal:../riba/packages/shopify-tda",
     "@ribajs/ssr": "portal:../riba/packages/ssr",
     "@ribajs/utils": "portal:../riba/packages/utils",
-    "@ribajs/vue": "portal:../riba/packages/vue"
+    "@ribajs/vue": "portal:../riba/packages/vue",
+    "@artcodestudio/redbird": "portal:../redbird"
   },
   "devDependencies": {
     "@manager/nest": "workspace:apps/manager/nest",
@@ -67,6 +67,7 @@
   },
   "dependencies": {
     "@root/encoding": "^1.0.1",
-    "@root/keypairs": "^0.10.1"
+    "@root/keypairs": "^0.10.1",
+    "pug": "^3.0.0"
   }
 }
