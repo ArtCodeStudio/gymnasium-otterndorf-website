@@ -25,24 +25,24 @@ export const redbird: RedbirdOptions = {
      */
     port: 9999,
   },
-  ssl: {
-    http2: true,
-    redirect: true, // False to disable HTTPS autoredirect to this route.
-    /**
-     * SSL port used to serve registered https routes with LetsEncrypt certificate.
-     */
-    port: 443,
-  },
-  appDefaults: {
-    ssl: {
-      letsencrypt: {
-        email: "hi@artandcode.studio", // Domain owner/admin email
-        production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
-      },
-    },
-  },
+  ssl: false,
+  // ssl: {
+  //   http2: true,
+  //   redirect: false, // False to disable HTTPS auto redirect to this route.
+  //   /**
+  //    * SSL port used to serve registered https routes with LetsEncrypt certificate.
+  //    */
+  //   port: 443,
+  // },
+  // appDefaults: {
+  //   ssl: {
+  //     letsencrypt: {
+  //       email: "hi@artandcode.studio", // Domain owner/admin email
+  //       production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
+  //     },
+  //   },
+  // },
 };
-
 export const apps: ManagerApp[] = [
   {
     pkgName: "@gymott/nest",
@@ -51,10 +51,10 @@ export const apps: ManagerApp[] = [
       port: 3001,
     },
     pm2: {
-      script: "yarn workspace @gymott/nest start:prod",
+      script: "yarn workspace @gymott/nest watch",
       env: {
         STRAPI_INTERN_URL: "http://127.0.0.1:3002",
-        STRAPI_EXTERN_URL: "https://gym-strapi.artandcode.de",
+        STRAPI_EXTERN_URL: "http://gym-strapi.artandcode.de",
       },
     },
   },
@@ -65,7 +65,7 @@ export const apps: ManagerApp[] = [
       port: 3002,
     },
     pm2: {
-      script: "npm run start",
+      script: "npm run watch",
       env: {
         // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
         NODE_OPTIONS: "",

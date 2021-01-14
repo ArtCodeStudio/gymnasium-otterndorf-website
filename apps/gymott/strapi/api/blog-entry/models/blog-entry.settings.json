@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "blog_entries",
   "info": {
-    "name": "Blog Entry"
+    "name": "Blog Entry",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -24,8 +25,12 @@
       ]
     },
     "blog_category": {
-      "via": "blog_entries",
-      "model": "blog-category"
+      "model": "blog-category",
+      "via": "blog_entries"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title"
     }
   }
 }

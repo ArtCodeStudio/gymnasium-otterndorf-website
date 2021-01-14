@@ -33,5 +33,7 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# Greenlock / Let's Encrypt
+# Redbird / Greenlock / Let's Encrypt
 certs/
+greenlock.d/
+.greenlockrc

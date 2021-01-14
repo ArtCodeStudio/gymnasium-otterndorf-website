@@ -124,10 +124,14 @@ const setPorts = async (config: ManagerConfig) => {
   const DEBUGGER_PORT = 9229;
   const used: number[] = [DEBUGGER_PORT];
 
+  config.redbird = config.redbird || {};
+  config.redbird.port = config.redbird.port || 80;
+
   // Redbird http port
   config.redbird.port = await findPort([], {
-    port: config.redbird?.port || 80,
+    port: config.redbird.port,
   });
+
   used.push(config.redbird.port);
 
   // Redbird https port
@@ -140,7 +144,7 @@ const setPorts = async (config: ManagerConfig) => {
 
   if (config.redbird.letsencrypt) {
     config.redbird.letsencrypt.port = await findPort(used, {
-      port: config.redbird.letsencrypt.port,
+      port: config.redbird.letsencrypt.port || 9999,
     });
     used.push(config.redbird.letsencrypt.port);
   }
@@ -208,7 +212,8 @@ const setAppDefaults = (
 
       // pm2
       app.pm2 = app.pm2 || ({} as any);
-      app.pm2.name = app.pm2.name || app.pkgName + ':' + shortEnv;
+      // app.pm2.name = app.pm2.name || app.pkgName + ':' + shortEnv;
+      app.pm2.name = app.pm2.name || app.pkgName;
       app.pm2.instances = app.pm2.instances || 1;
       app.pm2.env = app.pm2.env || {};
       app.pm2.env = {
@@ -277,9 +282,9 @@ export const loadConfig = async () => {
   ]);
 
   await processConfigs(config);
-  log.debug(`Config redbird: "${JSON.stringify(config.redbird, null, 2)}"`);
-  log.debug(`Config manager: "${JSON.stringify(config.manager, null, 2)}"`);
-  log.debug(`Config apps: "${JSON.stringify(config.apps, null, 2)}"`);
+  // log.debug(`Config redbird: "${JSON.stringify(config.redbird, null, 2)}"`);
+  // log.debug(`Config manager: "${JSON.stringify(config.manager, null, 2)}"`);
+  // log.debug(`Config apps: "${JSON.stringify(config.apps, null, 2)}"`);
 
   return config;
 };

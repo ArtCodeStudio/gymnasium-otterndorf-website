@@ -1,5 +1,6 @@
 export interface RedbirdSSL {
   http2?: boolean;
+  redirect?: boolean;
   key?: string;
   cert?: string;
   /**

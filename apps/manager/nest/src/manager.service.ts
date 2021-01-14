@@ -24,7 +24,7 @@ export class ManagerService implements OnApplicationBootstrap {
   }
 
   async proxyApps() {
-    this.log.debug('registerApps');
+    // this.log.debug('registerApps');
     const apps = this.config.get<ManagerApp[]>('apps');
     try {
       await this.redbird.registerApp(this.options);
@@ -35,7 +35,7 @@ export class ManagerService implements OnApplicationBootstrap {
     }
   }
   async startApps() {
-    this.log.debug('startApps');
+    // this.log.debug('startApps');
     const apps = this.config.get<ManagerApp[]>('apps');
     try {
       await this.pm2.startApps(apps, []);

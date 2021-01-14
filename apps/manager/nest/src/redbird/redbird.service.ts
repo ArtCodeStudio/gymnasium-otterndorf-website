@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
-import * as redbird from '@artcodestudio/redbird';
+import * as redbird from 'redbird';
+import type {} from 'redbird';
 import { ConfigService } from '@nestjs/config';
 import type { ManagerApp } from '../types/app';
 import type { RedbirdSSL } from './types/ssl';
@@ -8,7 +9,7 @@ import { URL } from 'url';
 
 @Injectable()
 export class RedbirdService {
-  protected proxy: any; // TODO type redbird proxy
+  protected proxy: ReturnType<typeof redbird>;
   protected log = new Logger('RedbirdService');
   protected options: RedbirdOptions;
 
@@ -31,7 +32,7 @@ export class RedbirdService {
     } else {
       port = this.options.port.toString();
     }
-    const url = new URL('http://' + app.domain);
+    const url = new URL(`${protocol}://${app.domain}`);
     url.protocol = protocol;
     if (port !== '80' && port !== '443') {
       url.port = port;

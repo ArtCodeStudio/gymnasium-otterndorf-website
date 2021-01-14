@@ -1,15 +1,15 @@
 import { PageComponent } from "@ribajs/ssr";
 
-import pugTemplate from "./pages.component.pug";
+import pugTemplate from "./blog-entry.component.pug";
 
 export interface Scope {
   title: string;
   content: string;
-  params: PagesPageComponent["ctx"]["params"];
+  params: BlogEntryPageComponent["ctx"]["params"];
 }
 
-export class PagesPageComponent extends PageComponent {
-  public static tagName = "pages-page";
+export class BlogEntryPageComponent extends PageComponent {
+  public static tagName = "blog-entry-page";
   public _debug = true;
   protected autobind = true;
 
@@ -30,7 +30,7 @@ export class PagesPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(PagesPageComponent.observedAttributes);
+    this.init(BlogEntryPageComponent.observedAttributes);
   }
 
   protected requiredAttributes(): string[] {

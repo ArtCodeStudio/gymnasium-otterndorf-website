@@ -15,8 +15,8 @@
       "type": "string"
     },
     "blog_entries": {
-      "collection": "blog-entry",
-      "via": "blog_category"
+      "via": "blog_category",
+      "collection": "blog-entry"
     }
   }
 }

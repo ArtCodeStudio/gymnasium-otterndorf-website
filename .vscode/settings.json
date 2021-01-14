@@ -12,11 +12,13 @@
     "artandcode",
     "artcodestudio",
     "authbind",
+    "autobind",
     "byport",
     "chmod",
     "easdk",
     "gymott",
     "iconset",
+    "keypairs",
     "letsencrypt",
     "nestjs",
     "octobercms",
@@ -25,9 +27,11 @@
     "postgres",
     "prebuild",
     "preinstall",
+    "regist",
     "riba",
     "ribajs",
     "strapi",
+    "webroot",
     "yarnpkg"
   ]
 }

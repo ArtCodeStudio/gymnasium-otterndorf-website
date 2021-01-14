@@ -6,7 +6,7 @@
     "postinstall": "yarn run install:outside",
     "install:outside": "cd apps/gymott/strapi && NODE_OPTIONS='' npm install",
     "build": "yarn workspaces foreach run build && yarn run build:outside",
-    "build:outside": "cd apps/gymott/strapi && NODE_OPTIONS='' npm run build",
+    "build:outside": "cd apps/gymott/strapi NODE_OPTIONS='' npm run build",
     "start:local": "yarn workspace @manager/nest run start:local",
     "start:prod": "yarn workspace @manager/nest run start:prod",
     "start:dev": "yarn workspace @manager/nest run start:dev",
@@ -19,6 +19,8 @@
     "!apps/*/strapi"
   ],
   "resolutions": {
+    "@types/express-serve-static-core": "latest",
+    "@types/node": "latest",
     "@ribajs/nest-theme": "portal:../riba/backend/nest-theme",
     "@ribajs/demo-router-view": "portal:../riba/examples/router-view",
     "@ribajs/eslint-config": "portal:../riba/infra/eslint-config",
@@ -50,14 +52,16 @@
     "@ribajs/ssr": "portal:../riba/packages/ssr",
     "@ribajs/utils": "portal:../riba/packages/utils",
     "@ribajs/vue": "portal:../riba/packages/vue",
-    "@artcodestudio/redbird": "portal:../redbird"
+    "redbird": "portal:../redbird"
   },
   "devDependencies": {
     "@manager/nest": "workspace:apps/manager/nest",
     "@ribajs/eslint-config": "^1.9.0",
-    "@typescript-eslint/eslint-plugin": "^4.12.0",
-    "@typescript-eslint/experimental-utils": "^4.12.0",
-    "@typescript-eslint/parser": "^4.12.0",
+    "@ribajs/iconset": "^1.9.0",
+    "@types/source-map-support": "^0.5.3",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/experimental-utils": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
     "@yarnpkg/pnpify": "^2.4.0",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
