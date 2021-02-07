@@ -15,9 +15,7 @@
       "type": "string"
     },
     "pages": {
-      "collection": "page",
-      "via": "navigation_sections",
-      "dominant": true
+      "collection": "page"
     }
   }
 }

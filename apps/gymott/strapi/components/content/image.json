@@ -2,22 +2,21 @@
   "collectionName": "components_blog_images",
   "info": {
     "name": "Bild",
-    "icon": "file-image"
+    "icon": "file-image",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Image": {
+    "image": {
       "collection": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
       "required": false
     },
-    "Caption": {
+    "caption": {
       "type": "string"
     }
   }

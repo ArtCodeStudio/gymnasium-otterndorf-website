@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "pages",
   "info": {
-    "name": "Page"
+    "name": "Page",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -16,7 +17,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "content": {
       "type": "dynamiczone",
@@ -44,9 +46,8 @@
       "via": "pages",
       "dominant": true
     },
-    "navigation_sections": {
-      "via": "pages",
-      "collection": "navigation-section"
+    "blog_categories": {
+      "collection": "blog-category"
     }
   }
 }
