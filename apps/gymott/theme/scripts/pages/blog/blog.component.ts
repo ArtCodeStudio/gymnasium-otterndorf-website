@@ -29,16 +29,7 @@ export class BlogPageComponent extends PageComponent {
     super();
     this.scope.params = this.ctx.params;
     this.debug("env", this.env);
-    if (this.env.STRAPI_EXTERN_URL) {
-      this.gql = new GraphQLClient(this.env.STRAPI_EXTERN_URL + "/graphql");
-      try {
-        this.gql.auth();
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      console.warn("STRAPI_EXTERN_URL not set!", this.env);
-    }
+
   }
 
   protected connectedCallback() {

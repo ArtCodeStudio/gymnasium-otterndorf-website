@@ -2,8 +2,7 @@ import { PageComponent } from "@ribajs/ssr";
 
 import pugTemplate from "./pages.component.pug";
 
-import { request } from "graphql-request";
-import pageQuery from "../../../graphql/queries/page-by-slug.gql"; 
+import { PageService } from "../../services/page";
 
 export interface Scope {
   title: string;
@@ -15,6 +14,8 @@ export class PagesPageComponent extends PageComponent {
   public static tagName = "pages-page";
   public _debug = true;
   protected autobind = true;
+
+  protected pageService = PageService.getInstance();
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
@@ -43,10 +44,9 @@ export class PagesPageComponent extends PageComponent {
   protected async beforeBind() {
     await super.beforeBind();
     this.head.title = "You are " + this.ctx.params.slug;
-    const pageRes = await request("http://localhost:4002/graphql", pageQuery, { slug: this.ctx.params.slug });
-    console.log("page", pageRes);
-    if (Array.isArray(pageRes.pages)) {
-      const page = pageRes.pages[0];
+    const page = await this.pageService.get(this.ctx.params.slug);
+    console.log("page", page);
+    if (page) {
       if (page?.title) {
         this.head.title = page?.title;
         this.scope.title = page?.title;
@@ -62,7 +62,7 @@ export class PagesPageComponent extends PageComponent {
   }
 
   protected async afterBind() {
-    super.afterBind();
+    await super.afterBind();
   }
 
   protected template() {

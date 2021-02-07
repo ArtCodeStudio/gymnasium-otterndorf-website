@@ -27,7 +27,7 @@ export const apps: ManagerApp[] = [
       script: "yarn workspace @gymott/nest watch",
       env: {
         STRAPI_INTERN_URL: "http://127.0.0.1:4002",
-        STRAPI_EXTERN_URL: "http://127.0.0.1:40022",
+        STRAPI_EXTERN_URL: "http://127.0.0.1:4002",
       },
     },
   },
@@ -39,7 +39,7 @@ export const apps: ManagerApp[] = [
       port: 4002,
     },
     pm2: {
-      script: "npm run watch",
+      script: "npm run develop",
       env: {
         // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
         NODE_OPTIONS: "",
@@ -52,6 +52,7 @@ export const apps: ManagerApp[] = [
         DATABASE_USERNAME: "strapi-gymott",
         DATABASE_PORT: "25060",
         DATABASE_SSL: "true",
+        NODE_ENV: "development"
       },
     },
   },

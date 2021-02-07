@@ -1,18 +1,26 @@
-import { GraphQLClient as _GraphQLClient,  } from "graphql-request";
+import { GraphQLClient as _GraphQLClient } from "graphql-request";
 import type { Variables, RequestDocument } from 'graphql-request/dist/types'
 import authMutation from "../../graphql/mutations/auth.gql";
 
 export class GraphQLClient extends _GraphQLClient {
-  baseUrl = "http://localhost:4002/graphql";
-  auth() {
-    console.log("authMutation", authMutation);
-    this.request(this.baseUrl, authMutation).then((data) => {
-      console.log(data);
-      return data;
-    });
+
+  protected static instance: GraphQLClient;
+
+  // TODO get STRAPI_EXTERN_URL env over config api
+  protected constructor(url?: string, options?: RequestInit) {
+    super(url || window.ssr?.env?.STRAPI_EXTERN_URL ? window.ssr?.env?.STRAPI_INTERN_URL + "/graphql" : undefined, options);
   }
 
-  request(document: RequestDocument, variables?: Variables) {
-    return super.request(this.baseUrl, document, variables);
+  public static getInstance() {
+    if(GraphQLClient.instance) {
+      return GraphQLClient.instance;
+    }
+    GraphQLClient.instance = new GraphQLClient();
+    return GraphQLClient.instance;
   }
+
+  async auth(email: string, password: string) {
+    return this.request(authMutation, {email, password});
+  }
+
 }

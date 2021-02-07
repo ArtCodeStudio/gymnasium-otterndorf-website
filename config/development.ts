@@ -65,7 +65,7 @@ export const apps: ManagerApp[] = [
       port: 3002,
     },
     pm2: {
-      script: "npm run watch",
+      script: "npm run develop",
       env: {
         // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
         NODE_OPTIONS: "",
