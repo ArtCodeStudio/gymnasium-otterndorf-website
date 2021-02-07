@@ -12,7 +12,7 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "Bild": {
+    "image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -21,7 +21,10 @@
       "plugin": "upload",
       "required": false
     },
-    "Name": {
+    "name": {
+      "type": "string"
+    },
+    "first_name": {
       "type": "string"
     },
     "subjects": {

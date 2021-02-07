@@ -11,7 +11,7 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "teachers": {
@@ -20,7 +20,7 @@
       "collection": "teacher",
       "dominant": true
     },
-    "Content": {
+    "content": {
       "type": "dynamiczone",
       "components": [
         "content.image",

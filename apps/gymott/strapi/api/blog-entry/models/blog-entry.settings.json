@@ -12,13 +12,13 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true,
       "minLength": 2,
       "maxLength": 80
     },
-    "Content": {
+    "content": {
       "type": "dynamiczone",
       "components": [
         "content.text",
@@ -32,6 +32,10 @@
     "slug": {
       "type": "uid",
       "targetField": "Title"
+    },
+    "pages": {
+      "via": "blog_entries",
+      "collection": "page"
     }
   }
 }
