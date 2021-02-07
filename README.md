@@ -13,3 +13,9 @@ We ignore Strapi because it is currently not compatible with Yarn 2 PnP, so we h
 ```bash
 yarn run build
 ```
+
+## Environments
+
+## Local
+
+Use the local environment if you want to develop on your locale machine. Start the App Manager with `yarn run start:local` or `yarn run watch:local` in the root of this monorepo, this will use the config from from `config/local.ts`.

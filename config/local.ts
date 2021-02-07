@@ -15,6 +15,10 @@ export const apps: ManagerApp[] = [
   {
     pkgName: "@gymott/nest",
     domain: "local-gymott", // Add this host to /etc/hosts
+    target: {
+      // This port will also be the set as env.PORT in pm2
+      port: 3001,
+    },
     pm2: {
       script: "yarn workspace @gymott/nest watch",
     },
@@ -23,7 +27,8 @@ export const apps: ManagerApp[] = [
     pkgName: "@gymott/strapi",
     domain: "local-gymott-strapi", // Add this host to /etc/hosts
     target: {
-      pathname: "/admin",
+      // This port will also be the set as env.PORT in pm2
+      port: 3002,
     },
     pm2: {
       script: "npm run watch",
