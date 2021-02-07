@@ -37,6 +37,20 @@ To keep this setting even after a reboot edit the file `/etc/sysctl.conf` and ad
 sudo vim /etc/sysctl.conf
 ```
 
+### EADDRINUSE
+
+If you get an error like this `EADDRINUSE: address already in use :::80` a program on your machine is already using this port, to find out which program this is run:
+
+```sh
+sudo lsof -i :80
+```
+
+Now you can kill this process with:
+
+```sh
+sudo kill -9 {PID}
+```
+
 ## Firewall
 
 If the manager should be accessible directly without a classical webserver like nginx or apache, it is important to configure the firewall accordingly to increase the security.

@@ -4,7 +4,11 @@ import type { RedbirdOptions } from "@manager/nest/src/redbird/types/options";
 
 export const manager: ManagerOptions = {
   pkgName: "@manager/nest",
-  domain: "local-manager", // Add this host to /etc/hosts
+  domain: "localhost",
+  target: {
+    port: 4000,
+  },
+  pm2: {},
 };
 
 export const redbird: RedbirdOptions = {
@@ -14,21 +18,25 @@ export const redbird: RedbirdOptions = {
 export const apps: ManagerApp[] = [
   {
     pkgName: "@gymott/nest",
-    domain: "local-gymott", // Add this host to /etc/hosts
+    domain: "localhost",
     target: {
       // This port will also be the set as env.PORT in pm2
-      port: 3001,
+      port: 4001,
     },
     pm2: {
       script: "yarn workspace @gymott/nest watch",
+      env: {
+        STRAPI_INTERN_URL: "http://127.0.0.1:4002",
+        STRAPI_EXTERN_URL: "http://127.0.0.1:40022",
+      },
     },
   },
   {
     pkgName: "@gymott/strapi",
-    domain: "local-gymott-strapi", // Add this host to /etc/hosts
+    domain: "localhost",
     target: {
       // This port will also be the set as env.PORT in pm2
-      port: 3002,
+      port: 4002,
     },
     pm2: {
       script: "npm run watch",

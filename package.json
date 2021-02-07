@@ -52,7 +52,7 @@
     "@ribajs/ssr": "portal:../riba/packages/ssr",
     "@ribajs/utils": "portal:../riba/packages/utils",
     "@ribajs/vue": "portal:../riba/packages/vue",
-    "redbird": "portal:../redbird"
+    "redbird": "npm:redbird@artcodestudio/redbird"
   },
   "devDependencies": {
     "@manager/nest": "workspace:apps/manager/nest",

@@ -20,6 +20,7 @@
     "iconset",
     "keypairs",
     "letsencrypt",
+    "lsof",
     "nestjs",
     "octobercms",
     "photoswipe",
@@ -30,6 +31,7 @@
     "regist",
     "riba",
     "ribajs",
+    "sbin",
     "strapi",
     "webroot",
     "yarnpkg"

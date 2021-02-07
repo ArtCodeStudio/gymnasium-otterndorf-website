@@ -14,7 +14,7 @@
     "bookshelf": "^1.2.0",
     "knex": "^0.21.15",
     "mysql": "^2.18.1",
-    "sqlite3": "latest",
+    "sqlite3": "^5.0.1",
     "strapi": "^3.4.3",
     "strapi-admin": "^3.4.3",
     "strapi-connector-bookshelf": "^3.4.3",
