@@ -45,7 +45,7 @@ export const apps: ManagerApp[] = [
         NODE_OPTIONS: "",
         ADMIN_URL: "/admin",
         DATABASE_CONNECTOR: "bookshelf",
-        DATABASE_CLIENT: "mysql",
+        DATABASE_CLIENT: "sqlite",
         DATABASE_NAME: "gymott",
         DATABASE_USER: "gymott",
         DATABASE_PASSWORD: "gymott",
