@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_home_facts",
+  "info": {
+    "name": "fact",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "decimal"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    }
+  }
+}

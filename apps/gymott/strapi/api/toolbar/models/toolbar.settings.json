@@ -1,8 +1,8 @@
 {
   "kind": "singleType",
-  "collectionName": "navigation",
+  "collectionName": "toolbars",
   "info": {
-    "name": "navigation",
+    "name": "toolbar",
     "description": ""
   },
   "options": {
@@ -11,10 +11,10 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "Navigationsabschnitte": {
+    "items": {
       "type": "dynamiczone",
       "components": [
-        "navigation.navigation-section"
+        "link-item.text"
       ]
     }
   }

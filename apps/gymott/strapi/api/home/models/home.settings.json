@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "homes",
+  "info": {
+    "name": "Home",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "quick_facts": {
+      "type": "dynamiczone",
+      "components": [
+        "home.fact"
+      ]
+    },
+    "Slideshow": {
+      "type": "dynamiczone",
+      "components": [
+        "slideshow.slideshow-entry",
+        "slideshow.slideshow-entry-page",
+        "slideshow.slideshow-entry-blog"
+      ]
+    }
+  }
+}

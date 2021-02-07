@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_slideshow_slideshow_entries_page",
+  "info": {
+    "name": "slideshow_entry",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "subtitle": {
+      "type": "string"
+    }
+  }
+}

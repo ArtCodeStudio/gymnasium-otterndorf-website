@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_navigation_navigation_sections",
+  "info": {
+    "name": "navigation_section",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "pages": {
+      "collection": "page"
+    }
+  }
+}

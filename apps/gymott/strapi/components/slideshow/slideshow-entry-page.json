@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_slideshow_slideshow_entry_pages",
+  "info": {
+    "name": "slideshow_entry_page",
+    "icon": "apple-alt"
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "link": {
+      "model": "page"
+    }
+  }
+}
