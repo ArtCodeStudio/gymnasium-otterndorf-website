@@ -34,7 +34,7 @@ module.exports = ({ env }) => {
       }
     }
     if (client === 'postgres') {
-      return {
+      const config = {
         defaultConnection: 'default',
         connections: {
           default: {
@@ -53,13 +53,14 @@ module.exports = ({ env }) => {
               }
             },
             options: {
-              debug: env.boolean('DATABASE_DEBUG', false),
-              autoMigration: env.boolean('DATABASE_AUTO_MIGRATION', true),
+              debug: env.bool('DATABASE_DEBUG', false),
+              autoMigration: env.bool('DATABASE_AUTO_MIGRATION', true),
               ssl: env.bool('DATABASE_SSL', false),
             },
           },
         },
-      }
+      };
+      return config;
     }
     if (client === 'mysql') {
       return {

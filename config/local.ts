@@ -43,12 +43,15 @@ export const apps: ManagerApp[] = [
       env: {
         // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
         NODE_OPTIONS: "",
-        ADMIN_URL: "/admin",
+        // ADMIN_URL: "/admin",
+        DATABASE_HOST:
+          "db-postgresql-fra1-09437-do-user-1566969-0.a.db.ondigitalocean.com",
         DATABASE_CONNECTOR: "bookshelf",
-        DATABASE_CLIENT: "sqlite",
-        DATABASE_NAME: "gymott",
-        DATABASE_USER: "gymott",
-        DATABASE_PASSWORD: "gymott",
+        DATABASE_CLIENT: "postgres",
+        DATABASE_NAME: "strapi-gymott",
+        DATABASE_USERNAME: "strapi-gymott",
+        DATABASE_PORT: "25060",
+        DATABASE_SSL: "true",
       },
     },
   },
