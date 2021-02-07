@@ -43,6 +43,10 @@
       "collection": "blog-entry",
       "via": "pages",
       "dominant": true
+    },
+    "navigation_sections": {
+      "via": "pages",
+      "collection": "navigation-section"
     }
   }
 }

@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navigation_sections",
+  "info": {
+    "name": "Navigationsabschnitt",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "pages": {
+      "collection": "page",
+      "via": "navigation_sections",
+      "dominant": true
+    }
+  }
+}
