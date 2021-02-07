@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "section_facts",
+  "info": {
+    "name": "Section Facts"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "facts": {
+      "type": "dynamiczone",
+      "components": [
+        "home.fact"
+      ]
+    }
+  }
+}

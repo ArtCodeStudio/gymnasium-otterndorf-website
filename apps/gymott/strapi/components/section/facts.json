@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_section_facts",
+  "info": {
+    "name": "facts",
+    "icon": "adjust"
+  },
+  "options": {},
+  "attributes": {
+    "section_fact": {
+      "model": "section-facts"
+    }
+  }
+}

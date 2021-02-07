@@ -11,18 +11,13 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "quick_facts": {
+    "sections": {
       "type": "dynamiczone",
       "components": [
-        "home.fact"
-      ]
-    },
-    "Slideshow": {
-      "type": "dynamiczone",
-      "components": [
-        "slideshow.slideshow-entry",
-        "slideshow.slideshow-entry-page",
-        "slideshow.slideshow-entry-blog"
+        "section.slideshow",
+        "section.facts",
+        "content.text",
+        "content.image"
       ]
     }
   }

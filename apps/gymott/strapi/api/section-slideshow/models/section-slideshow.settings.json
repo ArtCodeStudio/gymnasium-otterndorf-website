@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "section_slideshows",
+  "info": {
+    "name": "Section Slideshow"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Images": {
+      "type": "dynamiczone",
+      "components": [
+        "slideshow.slideshow-entry-page",
+        "slideshow.slideshow-entry",
+        "slideshow.slideshow-entry-blog"
+      ]
+    }
+  }
+}
