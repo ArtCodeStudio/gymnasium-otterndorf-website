@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "blog_categories",
   "info": {
-    "name": "Blog Category",
+    "name": "Blog Kategorie",
+    "displayName": "Blog Kategorien",
     "description": ""
   },
   "options": {

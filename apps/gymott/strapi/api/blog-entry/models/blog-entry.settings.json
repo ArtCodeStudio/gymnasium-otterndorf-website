@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "blog_entries",
   "info": {
-    "name": "Blog Entry",
+    "name": "Blog Eintrag",
+    "displayName": "Blog Einträge",
     "description": ""
   },
   "options": {
