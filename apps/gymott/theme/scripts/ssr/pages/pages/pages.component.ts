@@ -1,7 +1,5 @@
 import { PageComponent } from "@ribajs/ssr";
-
 import pugTemplate from "./pages.component.pug";
-
 import { PageService } from "../../services/page";
 
 export interface Scope {
@@ -63,6 +61,9 @@ export class PagesPageComponent extends PageComponent {
       if(error.status === 404) {
         this.scope.title = "Nicht gefunden!";
         this.scope.content = "Die angeforderte Seite konnte nicht gefunden werden."
+      } else {
+        this.scope.title = "Unbekannter Fehler!";
+        this.scope.content = error.message;
       }
     }
     this.head.title = this.scope.title;
