@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "section_facts",
   "info": {
-    "name": "Section Facts"
+    "name": "Section Facts",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -15,6 +16,11 @@
       "components": [
         "home.fact"
       ]
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
