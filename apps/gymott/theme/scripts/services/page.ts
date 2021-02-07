@@ -1,6 +1,7 @@
 
 import { SSRGraphQLClient } from "./ssr-graphql";
-import pageQuery from "../../../graphql/queries/page-by-slug.gql"; 
+import { ResponseError } from '../types/response-error';
+import pageQuery from "../../graphql/queries/page-by-slug.gql"; 
 
 export class PageService {
 
@@ -21,7 +22,9 @@ export class PageService {
     async get(slug: string) {
         const pageRes = await this.graphql.request(pageQuery, { slug });
         if (!Array.isArray(pageRes.pages) || pageRes.pages.length <= 0) {
-            return pageRes.pages;
+            const error: ResponseError = new Error("Not found!");
+            error.status = 404;
+            throw error;
         }
         const page = pageRes.pages[0];
         return page;
