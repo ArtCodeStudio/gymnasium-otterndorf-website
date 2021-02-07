@@ -2,12 +2,9 @@
   "collectionName": "components_section_slideshows",
   "info": {
     "name": "slideshow",
-    "icon": "align-justify"
+    "icon": "align-justify",
+    "description": ""
   },
   "options": {},
-  "attributes": {
-    "section_slideshow": {
-      "model": "section-slideshow"
-    }
-  }
+  "attributes": {}
 }

@@ -31,8 +31,8 @@
       "type": "string"
     },
     "blog_entries": {
-      "collection": "blog-entry",
       "via": "pages",
+      "collection": "blog-entry",
       "dominant": true
     },
     "blog_categories": {

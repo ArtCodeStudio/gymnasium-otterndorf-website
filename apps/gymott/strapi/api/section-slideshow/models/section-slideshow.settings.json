@@ -11,7 +11,7 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Images": {
+    "images2": {
       "type": "dynamiczone",
       "components": [
         "slideshow.slideshow-entry-page",

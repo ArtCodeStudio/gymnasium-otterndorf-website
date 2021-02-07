@@ -31,11 +31,12 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "pages": {
-      "via": "blog_entries",
-      "collection": "page"
+      "collection": "page",
+      "via": "blog_entries"
     }
   }
 }
