@@ -5,10 +5,10 @@ const ribaWebpackConfig = require("@ribajs/webpack-config");
 const { resolve } = require("path");
 
 const source = resolve(__dirname);
-const tsSourceDir = resolve(source, "scripts");
+const tsSourceDir = resolve(source, "scripts/ssr");
 const assets = resolve(source, "assets");
 const outputPath = resolve(assets, "ssr");
-const tsIndexPath = resolve(tsSourceDir, "ssr.ts");
+const tsIndexPath = resolve(tsSourceDir, "index.ts");
 
 const config = {
   template: "ssr",

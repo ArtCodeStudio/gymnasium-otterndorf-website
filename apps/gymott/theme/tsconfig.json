@@ -1,8 +1,5 @@
 {
   "extends": "@ribajs/tsconfig",
-  "files": [
-    "./scripts/csr.ts"
-  ],
   "compilerOptions": {
     "outDir": "assets",
     "typeRoots": ["node_modules/@types", "types"],

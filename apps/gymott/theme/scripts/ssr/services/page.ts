@@ -1,7 +1,7 @@
 
-import { SSRGraphQLClient } from "./ssr-graphql";
-import { ResponseError } from '../types/response-error';
-import pageQuery from "../../graphql/queries/page-by-slug.gql"; 
+import { SSRGraphQLClient } from "./graphql";
+import { ResponseError } from '../../types/response-error';
+import pageQuery from "../../../graphql/queries/page-by-slug.gql"; 
 
 export class PageService {
 
