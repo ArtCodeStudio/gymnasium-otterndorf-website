@@ -27,17 +27,6 @@
         "content.text"
       ]
     },
-    "assets": {
-      "collection": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "calendar_key": {
       "type": "string"
     },
@@ -48,6 +37,12 @@
     },
     "blog_categories": {
       "collection": "blog-category"
+    },
+    "assets": {
+      "type": "dynamiczone",
+      "components": [
+        "sidebar.assets"
+      ]
     }
   }
 }
