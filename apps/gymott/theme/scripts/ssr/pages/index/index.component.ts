@@ -48,7 +48,9 @@ export class IndexPageComponent extends PageComponent {
   }
 
   protected async afterBind() {
-    super.afterBind();
+    setTimeout(() => {
+      super.afterBind();
+    }, 3000);
   }
 
   protected template() {

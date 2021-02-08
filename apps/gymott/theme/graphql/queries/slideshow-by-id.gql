@@ -1,0 +1,35 @@
+query slideshowById($id: ID!) {
+	sectionSlideshow(id: $id) {
+    title
+    id
+    entries {
+      ... on ComponentSlideshowSlideshowEntry {
+        id
+        image {
+          formats
+        }
+        
+      }
+      ... on ComponentSlideshowSlideshowEntryBlog {
+		id
+        image {
+          formats
+        }
+        subtitle
+        link {
+          slug
+        }
+      }
+      ... on ComponentSlideshowSlideshowEntryPage {
+        id
+        image {
+          formats
+        }
+        subtitle
+        link {
+          slug
+        }
+      }
+    }
+  }
+}

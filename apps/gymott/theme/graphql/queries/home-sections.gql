@@ -1,0 +1,35 @@
+# Write your query or mutation here
+query homeSections {
+  home {
+    sections {
+      __typename
+    	... on ComponentSectionSlideshow {
+        slideshow {          
+          id
+        }
+      	id
+      }
+      ... on ComponentSectionFacts {
+        section_fact {
+          facts {
+            __typename
+            ... on ComponentHomeFact {
+              number
+              title
+              subtitle
+            }
+          }
+        }
+      }
+      ... on ComponentContentText {
+        text
+      }
+      ... on ComponentContentImage {
+        image {
+          formats
+        }
+        caption      
+      }
+    }
+  }
+}
