@@ -20,6 +20,7 @@
     "gymott",
     "iconset",
     "keypairs",
+    "lazyload",
     "letsencrypt",
     "lsof",
     "nestjs",

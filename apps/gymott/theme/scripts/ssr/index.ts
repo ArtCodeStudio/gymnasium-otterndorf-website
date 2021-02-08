@@ -22,6 +22,7 @@ declare global {
 
 window.model = window.model || {};
 window.riba = new Riba();
+window.riba.configure({ prefix: "ssr-rv", blockUnknownCustomElements: false });
 
 // Regist custom components
 window.riba.module.regist({

@@ -1,15 +1,15 @@
 
-.section(rv-each-section='sections')
-    div(rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
-        gy-slideshow(rv-entries='section.entries | json')
-        bs4-slideshow(controls='false' lg-controls='true' indicators='false' lg-indicators='true' draggable='true' lg-draggable='false' control-prev-icon-src='//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/arrow_carrot_alt.svg?v=6480977966803164349' control-next-icon-src='//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/arrow_carrot_alt.svg?v=6480977966803164349' indicator-inactive-icon-src='//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/icon_circle-empty.svg?v=8524535666629776771' indicator-active-icon-src='//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/icon_circle-selected.svg?v=3490993639832854509' sticky='true' autoplay='true' autoplay-interval='10000')
+.section(ssr-rv-each-section='sections')
+    p(rv-ssr-text='section.__typename')
+    div(ssr-rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
+        bs4-slideshow(controls='false' lg-controls='true' indicators='false' lg-indicators='true' drag='true' lg-drag='false' control-prev-icon-src='//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/arrow_carrot_alt.svg?v=6480977966803164349' control-next-icon-src='//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/arrow_carrot_alt.svg?v=6480977966803164349' indicator-inactive-icon-src='//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/icon_circle-empty.svg?v=8524535666629776771' indicator-active-icon-src='//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/icon_circle-selected.svg?v=3490993639832854509' sticky='true' autoplay='true' autoplay-interval='10000')
             .slideshow-inner
-                .slide.col-12.p-0(rv-each-entry='section.entries')
-                    img.img-fluid.w-100(lazyload='lazy' src='https://picsum.photos/1000/400?random=1' alt='Static Random Image from https://picsum.photos/')
+                .slide.col-12.p-0(ssr-rv-each-entry='section.entries')
+                    img.img-fluid.w-100(lazyload='lazy' ssr-rv-src='entry.image.formats.small.url' ssr-rv-alt='entry.image.formats.small.name')
                     .slide-caption
-                        h1 bs4-slideshow
+                        h1(ssr-rv-text="section.title")
                         br
                         small The last bootstrap carousel you&apos;ll ever need
-    div(rv-if="section.__typename | eq 'ComponentSectionFacts'") Facts
-    div(rv-if="section.__typename | eq 'ComponentContentText'") Text
-    div(rv-if="section.__typename | eq 'ComponentContentImage'") Image
+    div(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'") Facts
+    div(ssr-rv-if="section.__typename | eq 'ComponentContentText'") Text
+    div(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") Image

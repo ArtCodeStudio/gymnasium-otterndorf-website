@@ -1,4 +1,4 @@
 bs4-sidebar#main-sidebar.bg-primary.text-light.py-5(container-selector="#main-container" position="left")
   link-list.list-group(type="toolbar")
-    .list-group-item.list-group-item-action.bg-transparent.border-0(rv-each-item="items")
-      a.nav-link.text-light(rv-href="item.link") { item.name }
+    .list-group-item.list-group-item-action.bg-transparent.border-0(ssr-rv-each-item="items")
+      a.nav-link.text-light(ssr-rv-href="item.link" ssr-rv-text="item.name")
