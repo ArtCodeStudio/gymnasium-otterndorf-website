@@ -1,0 +1,12 @@
+# Write your query or mutation here
+query toolbar {
+  toolbar {
+    items {
+      __typename,
+      ... on ComponentLinkItemText {
+        name,
+        link
+      }
+    }
+  }
+}

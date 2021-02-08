@@ -1,5 +1,5 @@
 import { PageComponent } from "@ribajs/ssr";
-import { GraphQLClient } from "../../services/graphql";
+import { GraphQLClient } from "../../../csr/services/graphql";
 import pugTemplate from "./blog.component.pug";
 
 export interface Scope {
@@ -13,7 +13,7 @@ export class BlogPageComponent extends PageComponent {
   public _debug = true;
   protected autobind = true;
 
-  protected gql: GraphQLClient;
+  protected gql = GraphQLClient.getInstance();
 
   scope: Scope = {
     title: "{params.slug | capitalize}",

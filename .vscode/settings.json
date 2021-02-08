@@ -30,6 +30,7 @@
     "prebuild",
     "preinstall",
     "regist",
+    "resave",
     "riba",
     "ribajs",
     "sbin",

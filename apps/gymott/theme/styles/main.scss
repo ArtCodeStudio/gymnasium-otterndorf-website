@@ -21,10 +21,12 @@
 @import 'templates/index';
 
 // Riba components
-@import '../scripts/components/index';
+@import '../scripts/csr/components/index';
+@import '../scripts/ssr/components/index';
+
 
 // Riba pages
-@import '../scripts/pages/index';
+@import '../scripts/ssr/pages/index';
 
 // binders
 [rv-show], [rv-hide], [rv-if], [rv-each] {

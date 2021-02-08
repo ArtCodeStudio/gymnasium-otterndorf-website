@@ -1,7 +1,5 @@
 import { PageComponent } from "@ribajs/ssr";
-
 import pugTemplate from "./pages.component.pug";
-
 import { PageService } from "../../services/page";
 
 export interface Scope {
@@ -44,21 +42,31 @@ export class PagesPageComponent extends PageComponent {
   protected async beforeBind() {
     await super.beforeBind();
     this.head.title = "You are " + this.ctx.params.slug;
-    const page = await this.pageService.get(this.ctx.params.slug);
-    console.log("page", page);
-    if (page) {
-      if (page?.title) {
-        this.head.title = page?.title;
-        this.scope.title = page?.title;
-      }
-      if (page?.content) {
-        for (const content of page?.content) {
-          if (content.__typename === 'ComponentContentText') {
-            this.scope.content = content.text;
+    try {
+      const page = await this.pageService.get(this.ctx.params.slug);
+      console.log("page", page);
+      if (page) {
+        if (page?.title) {
+          this.scope.title = page?.title;
+        }
+        if (page?.content) {
+          for (const content of page?.content) {
+            if (content.__typename === 'ComponentContentText') {
+              this.scope.content = content.text;
+            }
           }
         }
       }
+    } catch (error) {
+      if(error.status === 404) {
+        this.scope.title = "Nicht gefunden!";
+        this.scope.content = "Die angeforderte Seite konnte nicht gefunden werden."
+      } else {
+        this.scope.title = "Unbekannter Fehler!";
+        this.scope.content = error.message;
+      }
     }
+    this.head.title = this.scope.title;
   }
 
   protected async afterBind() {
