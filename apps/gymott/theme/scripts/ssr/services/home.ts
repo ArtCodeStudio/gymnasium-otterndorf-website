@@ -1,13 +1,13 @@
-import { GraphQLClient } from "../../services/graphql";
-import slideshowById from "../../graphql/queries/slideshow-by-id.gql";
-import homeSections from "../../graphql/queries/home-sections.gql";
+import { SSRGraphQLClient } from "./graphql";
+import slideshowById from "../../../graphql/queries/slideshow-by-id.gql";
+import homeSections from "../../../graphql/queries/home-sections.gql";
 
 export class GyHomeService {
-  protected graphql = GraphQLClient.getInstance();
+  protected graphql = SSRGraphQLClient.getInstance();
 
   protected static instance: GyHomeService;
 
-  protected constructor() {}
+  // protected constructor() {}
 
   public static getInstance() {
     if (GyHomeService.instance) {

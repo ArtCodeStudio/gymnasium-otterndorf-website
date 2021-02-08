@@ -7,7 +7,7 @@ export interface Link {
 }
 
 export interface Scope {
-  type: string,
+  type: string;
   items: Link[];
 }
 
@@ -19,29 +19,12 @@ export class LinkListComponent extends Component {
   protected toolbarService = ToolbarService.getInstance();
 
   scope: Scope = {
-    type: 'toolbar',
-    items: [
-      {
-        name: "Home",
-        link: "/",
-      },
-      {
-        name: "Cool",
-        link: "/pages/cool",
-      },
-      {
-        name: "Nice",
-        link: "/pages/nice",
-      },
-      {
-        name: "Different",
-        link: "/pages/different",
-      },
-    ],
+    type: "toolbar",
+    items: [],
   };
 
   static get observedAttributes() {
-    return ['type'];
+    return ["type"];
   }
 
   constructor(element?: HTMLElement) {
@@ -50,24 +33,22 @@ export class LinkListComponent extends Component {
 
   protected async beforeBind() {
     await super.beforeBind();
-    // TODO need logic to wait for this component
-    // if (this.scope.type === 'toolbar') {
-    //   try {
-    //     const toolbar = await this.toolbarService.get();
-    //     console.log("toolbar", toolbar);
-    //     if (toolbar) {
-    //       if (toolbar?.items) {
-    //         this.scope.items = toolbar.items;
-    //       }
-    //     }
-    //   } catch (error) {
-    //     console.error(error);
-    //     throw error;
-    //   }
-    // } else {
-    //   console.warn("Unknown link-list type: " + this.scope.type);
-    // }
-
+    if (this.scope.type === "toolbar") {
+      try {
+        const toolbar = await this.toolbarService.get();
+        console.log("toolbar", toolbar);
+        if (toolbar) {
+          if (toolbar?.items) {
+            this.scope.items = toolbar.items;
+          }
+        }
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    } else {
+      console.warn("Unknown link-list type: " + this.scope.type);
+    }
   }
 
   protected connectedCallback() {

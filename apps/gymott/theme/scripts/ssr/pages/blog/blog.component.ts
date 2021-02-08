@@ -29,7 +29,6 @@ export class BlogPageComponent extends PageComponent {
     super();
     this.scope.params = this.ctx.params;
     this.debug("env", this.env);
-
   }
 
   protected connectedCallback() {
@@ -42,12 +41,15 @@ export class BlogPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    super.beforeBind();
+    await super.beforeBind();
     this.head.title = "You are " + this.ctx.params.slug;
   }
 
   protected async afterBind() {
-    super.afterBind();
+    // WORKAROUND until the component watcher is done
+    setTimeout(async () => {
+      await super.afterBind();
+    }, 3000);
   }
 
   protected template() {

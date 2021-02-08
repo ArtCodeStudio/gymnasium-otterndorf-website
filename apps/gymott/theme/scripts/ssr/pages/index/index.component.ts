@@ -44,12 +44,13 @@ export class IndexPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    super.beforeBind();
+    await super.beforeBind();
   }
 
   protected async afterBind() {
-    setTimeout(() => {
-      super.afterBind();
+    // WORKAROUND until the component watcher is done
+    setTimeout(async () => {
+      await super.afterBind();
     }, 3000);
   }
 

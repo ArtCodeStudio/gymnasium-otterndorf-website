@@ -51,16 +51,17 @@ export class PagesPageComponent extends PageComponent {
         }
         if (page?.content) {
           for (const content of page?.content) {
-            if (content.__typename === 'ComponentContentText') {
+            if (content.__typename === "ComponentContentText") {
               this.scope.content = content.text;
             }
           }
         }
       }
     } catch (error) {
-      if(error.status === 404) {
+      if (error.status === 404) {
         this.scope.title = "Nicht gefunden!";
-        this.scope.content = "Die angeforderte Seite konnte nicht gefunden werden."
+        this.scope.content =
+          "Die angeforderte Seite konnte nicht gefunden werden.";
       } else {
         this.scope.title = "Unbekannter Fehler!";
         this.scope.content = error.message;
@@ -70,7 +71,10 @@ export class PagesPageComponent extends PageComponent {
   }
 
   protected async afterBind() {
-    await super.afterBind();
+    // WORKAROUND until the component watcher is done
+    setTimeout(async () => {
+      await super.afterBind();
+    }, 3000);
   }
 
   protected template() {
