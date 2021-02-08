@@ -7,8 +7,8 @@
   },
   "options": {},
   "attributes": {
-    "section_slideshows": {
-      "collection": "section-slideshow"
+    "slideshow": {
+      "model": "section-slideshow"
     }
   }
 }
