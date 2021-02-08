@@ -38,6 +38,8 @@ export class CSRApp {
     this.riba.module.regist(bs4Module);
 
     this.view = this.riba.bind(document.body, this.model);
+
+    this.view.registComponents();
   }
 }
 

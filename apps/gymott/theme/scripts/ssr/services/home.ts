@@ -34,6 +34,7 @@ export class GyHomeService {
       }
     }
     console.log(sections);
+    return sections;
   }
 
   async getSlideshow(id: number) {

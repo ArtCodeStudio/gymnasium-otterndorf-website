@@ -1,6 +1,8 @@
 import { Component } from "@ribajs/core";
 
-import template from "./gy-home.component.html";
+// import template from "./gy-home.component.html";
+import pugTemplate from "./gy-home.component.pug";
+
 import { GyHomeService } from "../../services/home";
 
 export interface Scope {
@@ -33,6 +35,7 @@ export class GyHomeComponent extends Component {
   }
 
   protected template() {
-    return template;
+    // return template;
+    return pugTemplate(this.scope);
   }
 }

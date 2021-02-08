@@ -1,1 +1,20 @@
-<p rv-html="sections | json"></p>
+<div class="section" rv-each-section="sections">
+    <div rv-if="section.__typename | eq 'ComponentSectionSlideshow'">
+        <gy-slideshow rv-entries="section.entries | json">
+
+        </gy-slideshow>
+        <bs4-slideshow controls="false" lg-controls="true" indicators="false" lg-indicators="true" draggable="true" lg-draggable="false" control-prev-icon-src="//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/arrow_carrot_alt.svg?v=6480977966803164349" control-next-icon-src="//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/arrow_carrot_alt.svg?v=6480977966803164349" indicator-inactive-icon-src="//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/icon_circle-empty.svg?v=8524535666629776771" indicator-active-icon-src="//cdn.shopify.com/s/files/1/0247/7441/0321/t/5/assets/icon_circle-selected.svg?v=3490993639832854509" sticky="true" autoplay="true" autoplay-interval="10000">
+            <div class="slideshow-inner">
+                <div class="slide col-12 p-0" rv-each-entry="section.entries">
+                    <img lazyload="lazy" class="img-fluid w-100" src="https://picsum.photos/1000/400?random=1" alt="Static Random Image from https://picsum.photos/">
+                    <div class="slide-caption">
+                      <h1>bs4-slideshow<br><small>The last bootstrap carousel you'll ever need</small></h1>
+                    </div>
+                </div>
+            </div>
+        </bs4-slideshow>
+    </div>
+    <div rv-if="section.__typename | eq 'ComponentSectionFacts'">Facts</div>
+    <div rv-if="section.__typename | eq 'ComponentContentText'">Text</div>
+    <div rv-if="section.__typename | eq 'ComponentContentImage'">Image</div>
+</div>
