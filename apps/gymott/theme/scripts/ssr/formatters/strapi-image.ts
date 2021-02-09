@@ -11,7 +11,6 @@ import type {
 export const strapiImageFormatter = {
   name: "strapi-image",
   read(image: StrapiImage, format: StrapiImageFormatType = "thumbnail") {
-    console.debug("strapiImageFormatter", image);
     let imageFormat: StrapiImageFormat = image.formats.thumbnail;
     switch (format) {
       case "large":

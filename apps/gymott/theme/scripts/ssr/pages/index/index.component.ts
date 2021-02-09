@@ -4,7 +4,7 @@ import pugTemplate from "./index.component.pug";
 
 export class IndexPageComponent extends PageComponent {
   public static tagName = "index-page";
-  public _debug = true;
+  public _debug = false;
   protected autobind = true;
 
   protected head = {
@@ -24,6 +24,11 @@ export class IndexPageComponent extends PageComponent {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(IndexPageComponent.observedAttributes);
+    this.lifecycleEvents.trigger(
+      "Component:connected",
+      this.getLifecycleEventData()
+    );
+    console.debug();
   }
 
   protected requiredAttributes(): string[] {
@@ -35,10 +40,7 @@ export class IndexPageComponent extends PageComponent {
   }
 
   protected async afterBind() {
-    // WORKAROUND until the component watcher is done
-    setTimeout(async () => {
-      await super.afterBind();
-    }, 3000);
+    await super.afterBind(); // This must be called on the end of this function
   }
 
   protected template() {

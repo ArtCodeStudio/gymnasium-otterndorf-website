@@ -10,7 +10,7 @@ export interface Scope {
 
 export class BlogPageComponent extends PageComponent {
   public static tagName = "blog-page";
-  public _debug = true;
+  public _debug = false;
   protected autobind = true;
 
   protected gql = GraphQLClient.getInstance();
@@ -46,10 +46,7 @@ export class BlogPageComponent extends PageComponent {
   }
 
   protected async afterBind() {
-    // WORKAROUND until the component watcher is done
-    setTimeout(async () => {
-      await super.afterBind();
-    }, 3000);
+    await super.afterBind(); // This must be called on the end of this function
   }
 
   protected template() {

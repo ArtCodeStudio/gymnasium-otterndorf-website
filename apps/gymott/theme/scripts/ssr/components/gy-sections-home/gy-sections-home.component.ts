@@ -22,9 +22,13 @@ export class GySectionsHomeComponent extends Component {
     super(element);
   }
 
-  protected async afterBind() {
-    await super.afterBind();
+  protected async beforeBind() {
+    await super.beforeBind();
     this.scope.sections = await this.homeService.getHomeSections();
+  }
+
+  protected async afterBind() {
+    await super.afterBind(); // This must be called on the end of this function
   }
 
   protected connectedCallback() {

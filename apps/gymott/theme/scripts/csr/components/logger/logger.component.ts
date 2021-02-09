@@ -31,12 +31,12 @@ export class LoggerComponent extends Component {
   }
 
   protected async beforeBind() {
-    super.beforeBind();
+    await super.beforeBind();
   }
 
   protected async afterBind() {
-    super.afterBind();
     console.log(this.scope.logMe);
+    await super.afterBind(); // This must be called on the end of this function
   }
 
   protected template() {

@@ -10,7 +10,7 @@ export interface Scope {
 
 export class PagesPageComponent extends PageComponent {
   public static tagName = "pages-page";
-  public _debug = true;
+  public _debug = false;
   protected autobind = true;
 
   protected pageService = PageService.getInstance();
@@ -71,10 +71,7 @@ export class PagesPageComponent extends PageComponent {
   }
 
   protected async afterBind() {
-    // WORKAROUND until the component watcher is done
-    setTimeout(async () => {
-      await super.afterBind();
-    }, 3000);
+    await super.afterBind(); // This must be called on the end of this function
   }
 
   protected template() {

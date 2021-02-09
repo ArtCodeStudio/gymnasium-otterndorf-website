@@ -10,7 +10,7 @@ export interface Scope {
 
 export class BlogEntryPageComponent extends PageComponent {
   public static tagName = "blog-entry-page";
-  public _debug = true;
+  public _debug = false;
   protected autobind = true;
 
   scope: Scope = {
@@ -38,12 +38,12 @@ export class BlogEntryPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    super.beforeBind();
+    await super.beforeBind();
     this.head.title = "You are " + this.ctx.params.slug;
   }
 
   protected async afterBind() {
-    super.afterBind();
+    await super.afterBind(); // This must be called on the end of this function
   }
 
   protected template() {

@@ -27,7 +27,7 @@ export class GySectionTextComponent extends Component {
   }
 
   protected async afterBind() {
-    await super.afterBind();
+    await super.afterBind(); // This must be called on the end of this function
   }
 
   protected connectedCallback() {

@@ -33,7 +33,7 @@ export class GyHomeService {
             ...sections[i],
             ...(await this.getSlideshow(section["slideshow"].id)),
           };
-          console.debug("ComponentSectionSlideshow", sections[i]);
+          // console.debug("ComponentSectionSlideshow", sections[i]);
           break;
       }
     }
