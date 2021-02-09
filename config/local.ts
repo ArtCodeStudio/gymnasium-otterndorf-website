@@ -26,30 +26,30 @@ export const apps: ManagerApp[] = [
     pm2: {
       script: "yarn workspace @gymott/nest watch",
       env: {
-        STRAPI_INTERN_URL: "http://127.0.0.1:4002",
-        STRAPI_EXTERN_URL: "http://127.0.0.1:4002",
+        STRAPI_INTERN_URL: "http://gym-strapi.artandcode.de",
+        STRAPI_EXTERN_URL: "http://gym-strapi.artandcode.de",
       },
     },
   },
-  {
-    pkgName: "@gymott/strapi",
-    domain: "localhost",
-    target: {
-      // This port will also be the set as env.PORT in pm2
-      port: 4002,
-    },
-    pm2: {
-      script: "npm run develop",
-      env: {
-        // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
-        NODE_OPTIONS: "",
-        ADMIN_URL: "/admin",
-        DATABASE_CONNECTOR: "bookshelf",
-        DATABASE_CLIENT: "sqlite",
-        DATABASE_NAME: "strapi",
-        DATABASE_USERNAME: "strapi",
-        NODE_ENV: "development",
-      },
-    },
-  },
+  // {
+  //   pkgName: "@gymott/strapi",
+  //   domain: "localhost",
+  //   target: {
+  //     // This port will also be the set as env.PORT in pm2
+  //     port: 4002,
+  //   },
+  //   pm2: {
+  //     script: "npm run develop",
+  //     env: {
+  //       // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
+  //       NODE_OPTIONS: "",
+  //       ADMIN_URL: "/admin",
+  //       DATABASE_CONNECTOR: "bookshelf",
+  //       DATABASE_CLIENT: "sqlite",
+  //       DATABASE_NAME: "strapi",
+  //       DATABASE_USERNAME: "strapi",
+  //       NODE_ENV: "development",
+  //     },
+  //   },
+  // },
 ];

@@ -73,6 +73,8 @@ export const apps: ManagerApp[] = [
         ADMIN_URL: "/admin",
         DATABASE_CONNECTOR: "bookshelf",
         DATABASE_CLIENT: "sqlite",
+        DATABASE_NAME: "strapi",
+        DATABASE_USERNAME: "strapi",
       },
     },
   },
