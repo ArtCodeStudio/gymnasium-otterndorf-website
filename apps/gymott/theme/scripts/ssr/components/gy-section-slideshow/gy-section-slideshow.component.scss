@@ -1,0 +1,11 @@
+gy-section-slideshow {
+    img {
+        user-select: none;
+        pointer-events: none;
+    }
+    .slideshow-controls {
+        bs4-icon {
+            color: white;
+        }
+    }
+}

@@ -8,7 +8,7 @@ import { bs4Module } from "@ribajs/bs4";
 import * as components from "./components";
 import * as binders from "./binders";
 import * as formatters from "./formatters";
-import locales from "../locales";
+import locales from "../common/locales";
 
 export class CSRApp {
   protected view?: View;

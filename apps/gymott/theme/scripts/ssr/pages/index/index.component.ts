@@ -2,29 +2,16 @@ import { PageComponent } from "@ribajs/ssr";
 
 import pugTemplate from "./index.component.pug";
 
-export interface Scope {
-  title: string;
-  content: string;
-  obj: any;
-}
-
 export class IndexPageComponent extends PageComponent {
   public static tagName = "index-page";
   public _debug = true;
   protected autobind = true;
 
   protected head = {
-    title: "You are on home",
+    title: "Startseite",
   };
 
-  scope: Scope = {
-    title: "Hello from ssr",
-    content: "When you can see this, ssr works :)",
-    obj: {
-      foo: "bar",
-      note: "This is an example to test the json formatter",
-    },
-  };
+  scope = {};
 
   static get observedAttributes() {
     return [];
