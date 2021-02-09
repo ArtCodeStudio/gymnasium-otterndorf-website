@@ -6,8 +6,7 @@ import { Riba, View, coreModule } from "@ribajs/core";
 
 // Own
 import * as pageComponents from "./pages";
-import { LinkListComponent } from "./components/link-list/link-list.component";
-import { GyHomeComponent } from "./components/gy-home/gy-home.component";
+import * as components from "./components";
 import * as binders from "./binders";
 import * as formatters from "./formatters";
 // import locales from "./locales";
@@ -26,7 +25,7 @@ window.riba.configure({ prefix: "ssr-rv", blockUnknownCustomElements: false });
 
 // Regist custom components
 window.riba.module.regist({
-  components: { ...pageComponents, LinkListComponent, GyHomeComponent },
+  components: { ...pageComponents, ...components },
   binders,
   formatters,
 });

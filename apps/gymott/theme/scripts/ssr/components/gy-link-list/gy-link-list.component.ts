@@ -11,8 +11,8 @@ export interface Scope {
   items: Link[];
 }
 
-export class LinkListComponent extends Component {
-  public static tagName = "link-list";
+export class GyLinkListComponent extends Component {
+  public static tagName = "gy-link-list";
   public _debug = false;
   protected autobind = true;
 
@@ -47,13 +47,13 @@ export class LinkListComponent extends Component {
         throw error;
       }
     } else {
-      console.warn("Unknown link-list type: " + this.scope.type);
+      console.warn("Unknown gy-link-list type: " + this.scope.type);
     }
   }
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(LinkListComponent.observedAttributes);
+    this.init(GyLinkListComponent.observedAttributes);
   }
 
   protected template() {

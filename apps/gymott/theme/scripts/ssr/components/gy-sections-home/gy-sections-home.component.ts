@@ -1,16 +1,13 @@
 import { Component } from "@ribajs/core";
-
-// import template from "./gy-home.component.html";
-import pugTemplate from "./gy-home.component.pug";
-
+import pugTemplate from "./gy-sections-home.component.pug";
 import { GyHomeService } from "../../services/home";
 
 export interface Scope {
   sections?: any;
 }
 
-export class GyHomeComponent extends Component {
-  public static tagName = "gy-home";
+export class GySectionsHomeComponent extends Component {
+  public static tagName = "gy-sections-home";
   public _debug = false;
   protected autobind = true;
   protected homeService: GyHomeService = GyHomeService.getInstance();
@@ -26,16 +23,16 @@ export class GyHomeComponent extends Component {
   }
 
   protected async afterBind() {
+    await super.afterBind();
     this.scope.sections = await this.homeService.getHomeSections();
   }
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(GyHomeComponent.observedAttributes);
+    this.init(GySectionsHomeComponent.observedAttributes);
   }
 
   protected template() {
-    // return template;
     return pugTemplate(this.scope);
   }
 }
