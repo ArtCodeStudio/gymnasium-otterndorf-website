@@ -56,8 +56,9 @@
   },
   "devDependencies": {
     "@manager/nest": "workspace:apps/manager/nest",
-    "@ribajs/eslint-config": "^1.9.0",
-    "@ribajs/iconset": "^1.9.0",
+    "@ribajs/eslint-config": "next",
+    "@ribajs/iconset": "next",
+    "@ribajs/tsconfig": "next",
     "@types/source-map-support": "^0.5.3",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/experimental-utils": "^4.15.0",

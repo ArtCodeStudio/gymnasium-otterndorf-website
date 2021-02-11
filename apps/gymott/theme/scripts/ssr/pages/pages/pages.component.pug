@@ -3,5 +3,10 @@
     .col-12
       h1(ssr-rv-template="title")
   section.row
-    .col-12
+    .col-8
       div(ssr-rv-template="content")
+  section.row
+    .col-4
+      .row(ssr-rv-each-asset="assets")
+        .col-12 
+          p [[ Download ]]

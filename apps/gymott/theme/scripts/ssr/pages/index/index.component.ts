@@ -24,11 +24,6 @@ export class IndexPageComponent extends PageComponent {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(IndexPageComponent.observedAttributes);
-    this.lifecycleEvents.trigger(
-      "Component:connected",
-      this.getLifecycleEventData()
-    );
-    console.debug();
   }
 
   protected requiredAttributes(): string[] {
