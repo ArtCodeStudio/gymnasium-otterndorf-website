@@ -1,34 +1,40 @@
 # Write your query or mutation here
 query {
   pages(start: 0, limit: 50) {
-    id,
-    created_at,
-    updated_at,
-    title,
-    slug,
+    id
+    created_at
+    updated_at
+    title
+    slug
     content {
       __typename
     }
-    calendar_key,
-    published_at,
+    calendar_key
+    published_at
     assets {
-      id,
-      created_at,
-      updated_at,
-      name,
-      alternativeText,
-      caption,
-      width,
-      height,
-      formats,
-      hash,
-      ext,
-      mime,
-      size,
-      url,
-      previewUrl,
-      provider,
-      provider_metadata,
+      ... on ComponentSidebarAssets {
+        file
+        name
+      }
+    }
+    assets {
+      id
+      created_at
+      updated_at
+      name
+      alternativeText
+      caption
+      width
+      height
+      formats
+      hash
+      ext
+      mime
+      size
+      url
+      previewUrl
+      provider
+      provider_metadata
       # related {}
     }
     # blog_entries {},

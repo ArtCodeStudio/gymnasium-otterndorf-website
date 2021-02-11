@@ -4,9 +4,20 @@
       h1(ssr-rv-template="title")
   section.row
     .col-8
-      div(ssr-rv-template="content")
-  section.row
+      .row(ssr-rv-each-content="contents")
+        .col-12
+          div(ssr-rv-template="content | call-name 'template'")
     .col-4
-      .row(ssr-rv-each-asset="assets")
-        .col-12 
-          p [[ Download ]]
+      .row
+        .col-12(style="background-color: red")
+          h3 Downloads
+          .row(ssr-rv-each-asset="assets")
+            .col-12 
+              a(ssr-rv-href="asset.file.url | strapi")
+                p(ssr-rv-text="asset.name")
+        .col-12
+          h3 Blog Einträge
+          .row(ssr-rv-each-blog="blogEntries")
+            .col-12 
+              a(ssr-rv-href="blog.slug | blog")
+                p(ssr-rv-text="blog.title")

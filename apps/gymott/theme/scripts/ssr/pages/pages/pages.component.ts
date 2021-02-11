@@ -4,8 +4,49 @@ import { PageService } from "../../services/page";
 
 export interface Scope {
   title: string;
-  content: string;
+  contents: PageContent[];
   params: PagesPageComponent["ctx"]["params"];
+  assets: any[];
+  blogEntries: any[];
+}
+
+enum PageContentType {
+  Text,
+  Image,
+}
+
+export abstract class PageContent {
+  public type: PageContentType;
+
+  constructor(type: PageContentType) {
+    this.type = type;
+  }
+
+  public abstract template(): string;
+}
+
+export class PageContentText extends PageContent {
+  private text: string;
+
+  constructor(data: any) {
+    super(PageContentType.Text);
+    this.text = data.text;
+  }
+
+  public template() {
+    return this.text;
+  }
+}
+
+export class PageContentImage extends PageContent {
+  constructor(private url: string) {
+    super(PageContentType.Image);
+  }
+
+  public template() {
+    console.log("abc", this.url);
+    return this.url;
+  }
 }
 
 export class PagesPageComponent extends PageComponent {
@@ -17,7 +58,9 @@ export class PagesPageComponent extends PageComponent {
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
-    content: "<p>We are {params.slug}!</a>",
+    contents: [new PageContentText("Hi")],
+    assets: [],
+    blogEntries: [],
     params: {},
   };
 
@@ -52,20 +95,52 @@ export class PagesPageComponent extends PageComponent {
         if (page?.content) {
           for (const content of page?.content) {
             if (content.__typename === "ComponentContentText") {
-              this.scope.content = content.text;
+              this.scope.contents.push(new PageContentText(content));
+            }
+            if (content.__typename === "ComponentContentImage") {
+              this.scope.contents.push(new PageContentImage(content));
             }
           }
         }
+        if (page?.assets) {
+          for (const asset of page?.assets) {
+            console.log(asset);
+            this.scope.assets.push(asset);
+          }
+        }
+
+        //blog entries
+        if (page?.["blog_entries"] !== undefined) {
+          for (const blogEntry of page?.["blog_entries"]) {
+            this.scope.blogEntries.push(blogEntry);
+          }
+        }
+        if (page?.["blog_categories"] !== undefined) {
+          if (page?.["blog_categories"]["blog_entries"] !== undefined) {
+            for (const blogEntry of page?.["blog_categories"]["blog_entries"]) {
+              let found = false;
+              for (const existingEntry of this.scope.blogEntries) {
+                if (existingEntry.id === blogEntry.id) {
+                  found = true;
+                }
+              }
+              if (!found) {
+                this.scope.blogEntries.push(blogEntry);
+              }
+            }
+          }
+        }
+        //TODO sort blog entries
       }
     } catch (error) {
-      if (error.status === 404) {
+      /*if (error.status === 404) {
         this.scope.title = "Nicht gefunden!";
         this.scope.content =
           "Die angeforderte Seite konnte nicht gefunden werden.";
       } else {
         this.scope.title = "Unbekannter Fehler!";
         this.scope.content = error.message;
-      }
+      }*/
     }
     this.head.title = this.scope.title;
   }

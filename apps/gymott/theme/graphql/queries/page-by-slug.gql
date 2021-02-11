@@ -1,39 +1,53 @@
 # Write your query or mutation here
 query($slug: String!) {
-  pages(where: {slug: $slug}) {
-    id,
-    created_at,
-    updated_at,
-    title,
-    slug,
+  pages(where: { slug: $slug }) {
+    id
+    created_at
+    updated_at
+    title
+    slug
+    assets {
+      ... on ComponentSidebarAssets {
+        file {
+          url
+        }
+        name
+      }
+    }
+
+    blog_entries {
+      title
+      slug
+    }
+
     content {
-      __typename,
+      __typename
       ... on ComponentContentImage {
-				id,
-        caption,
+        id
+        caption
         image {
-          id,
-          created_at,
-          updated_at,
-          name,
-          alternativeText,
-          caption,
-          width,
-          height,
-          formats,
-          hash,
-          ext,
-          mime,
-          size,
-          url,
-          previewUrl,
-          provider,
+          id
+          created_at
+          updated_at
+          name
+          alternativeText
+          caption
+          width
+          height
+          formats
+          hash
+          ext
+          mime
+          size
+          url
+          previewUrl
+          provider
           provider_metadata
         }
-      },
+      }
       ... on ComponentContentText {
-        id,
-        text,
+        id
+        text
       }
     }
   }
