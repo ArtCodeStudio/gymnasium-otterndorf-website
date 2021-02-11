@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "@happy-dom/server-rendering": "^2.5.0",
-    "@nestjs/common": "^7.6.11",
+    "@nestjs/common": "^7.6.12",
     "@nestjs/config": "^0.6.3",
-    "@nestjs/core": "^7.6.11",
-    "@nestjs/platform-express": "^7.6.11",
+    "@nestjs/core": "^7.6.12",
+    "@nestjs/platform-express": "^7.6.12",
     "@ribajs/core": "next",
     "@ribajs/events": "next",
     "@ribajs/nest-theme": "next",
@@ -53,7 +53,7 @@
   "devDependencies": {
     "@nestjs/cli": "^7.5.4",
     "@nestjs/schematics": "^7.2.7",
-    "@nestjs/testing": "^7.6.11",
+    "@nestjs/testing": "^7.6.12",
     "@types/cookie-parser": "^1.4.2",
     "@types/express-session": "^1.17.3",
     "@types/jest": "^26.0.20",
@@ -68,10 +68,10 @@
     "prettier": "2.2.1",
     "supertest": "^6.1.3",
     "ts-jest": "^26.5.1",
-    "ts-loader": "^8.0.16",
+    "ts-loader": "^8.0.17",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.5"
   },
   "jest": {
     "moduleFileExtensions": [

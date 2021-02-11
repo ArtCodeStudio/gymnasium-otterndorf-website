@@ -39,3 +39,8 @@ lerna-debug.log*
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+# Dist files
+assets/iconset
+assets/images/vendors
+assets/csr
+assets/ssr
