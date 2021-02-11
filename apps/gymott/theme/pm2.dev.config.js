@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: "cms:theme:demo:watch",
-      script: "yarn run watch:main",
+      name: "@gymott/theme",
+      script: "yarn run watch",
       watch: false,
       instances: 1,
       env: {

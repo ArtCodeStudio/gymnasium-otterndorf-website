@@ -4,11 +4,24 @@ import { routerModule } from "@ribajs/router";
 import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 import { bs4Module } from "@ribajs/bs4";
 
+// Common
+import * as commonBinders from "../common/binders";
+import * as commonComponents from "../common/components";
+import * as commonFormatters from "../common/formatters";
+
 // Own
 import * as components from "./components";
 import * as binders from "./binders";
 import * as formatters from "./formatters";
 import locales from "../common/locales";
+
+declare global {
+  interface Window {
+    env: {
+      STRAPI_EXTERN_URL: string;
+    };
+  }
+}
 
 export class CSRApp {
   protected view?: View;
@@ -26,9 +39,9 @@ export class CSRApp {
 
     // Regist custom components
     this.riba.module.regist({
-      components,
-      binders,
-      formatters,
+      components: { ...commonComponents, ...components },
+      binders: { ...commonBinders, ...binders },
+      formatters: { ...commonFormatters, ...formatters },
     });
 
     // Regist modules

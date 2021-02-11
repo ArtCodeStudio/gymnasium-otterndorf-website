@@ -1,8 +1,13 @@
 import "@ribajs/ssr/src/polyfills";
 import { SSRModule } from "@ribajs/ssr";
-import { Riba, View, coreModule } from "@ribajs/core";
+import { Riba, coreModule } from "@ribajs/core";
 // import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 // import { ready } from "@ribajs/utils/src/dom";
+
+// Common
+import * as commonBinders from "../common/binders";
+import * as commonComponents from "../common/components";
+import * as commonFormatters from "../common/formatters";
 
 // Own
 import * as pageComponents from "./pages";
@@ -14,8 +19,6 @@ import * as formatters from "./formatters";
 declare global {
   interface Window {
     model: any;
-    riba: Riba;
-    view: View;
   }
 }
 
@@ -28,9 +31,9 @@ riba.configure({ prefix: "ssr-rv", blockUnknownCustomElements: false });
 
 // Regist custom components
 riba.module.regist({
-  components: { ...pageComponents, ...components },
-  binders,
-  formatters,
+  components: { ...commonComponents, ...pageComponents, ...components },
+  binders: { ...commonBinders, ...binders },
+  formatters: { ...commonFormatters, ...formatters },
 });
 
 // const localesService = new LocalesStaticService(locales, undefined, false);
@@ -46,6 +49,11 @@ console.log("Hello from Riba");
 // as soon as this event is triggered the ssr rendering will be done returns the rendered html
 riba.lifecycle.events.on("ComponentLifecycle:allBound", () => {
   console.debug("ready!");
+  window.ssr.events.trigger("ready");
+});
+
+riba.lifecycle.events.on("ComponentLifecycle:timeout", () => {
+  console.error("timeout!");
   window.ssr.events.trigger("ready");
 });
 

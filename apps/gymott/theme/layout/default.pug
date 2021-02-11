@@ -16,6 +16,9 @@ html(lang='en')
         #layout-top
           include ../snippets/navbar.pug
         router-view#main(listen-all-links="true")
-          block content            
+          block content
+    script.
+      window.env = {};
+      window.env.STRAPI_EXTERN_URL = "#{env.STRAPI_EXTERN_URL}";
     script(src='/csr/vendors.bundle.js')
     script(src='/csr/main.bundle.js')
