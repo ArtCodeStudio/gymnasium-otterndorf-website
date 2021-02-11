@@ -110,8 +110,3 @@ dist
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-
-# Dist files
-/apps/*/theme/assets/iconset
-/apps/*/theme/assets/csr
-/apps/*/theme/assets/ssr

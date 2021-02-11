@@ -20,7 +20,10 @@ declare global {
 }
 
 window.model = window.model || window.ssr.templateVars || {};
+
 const riba = new Riba();
+
+// These Riba settings are necessary for the ssr
 riba.configure({ prefix: "ssr-rv", blockUnknownCustomElements: false });
 
 // Regist custom components
@@ -39,6 +42,8 @@ riba.module.regist(SSRModule);
 
 console.log("Hello from Riba");
 
+// After all components are bound wie trigger the ssr ready event,
+// as soon as this event is triggered the ssr rendering will be done returns the rendered html
 riba.lifecycle.events.on("ComponentLifecycle:allBound", () => {
   console.debug("ready!");
   window.ssr.events.trigger("ready");
@@ -48,5 +53,3 @@ const view = riba.bind(document.body, window.model);
 
 // WORKAROUND / FIXME view.traverse method seems not to be working in jsdom / happy-dom
 view.registComponents();
-
-document.body.setAttribute("works", ":)");
