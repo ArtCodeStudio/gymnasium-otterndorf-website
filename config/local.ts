@@ -24,7 +24,7 @@ export const apps: ManagerApp[] = [
       port: 4001,
     },
     pm2: {
-      script: "yarn workspace @gymott/nest watch",
+      script: "yarn workspace @gymott/nest watch --inspect",
       env: {
         STRAPI_INTERN_URL: "http://gym-strapi.artandcode.de",
         STRAPI_EXTERN_URL: "http://gym-strapi.artandcode.de",
