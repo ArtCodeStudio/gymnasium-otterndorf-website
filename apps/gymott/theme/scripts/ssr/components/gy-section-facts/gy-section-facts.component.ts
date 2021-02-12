@@ -22,8 +22,8 @@ export class GySectionFactsComponent extends Component {
     return ["section"];
   }
 
-  constructor(element?: HTMLElement) {
-    super(element);
+  constructor() {
+    super();
   }
 
   protected async afterBind() {

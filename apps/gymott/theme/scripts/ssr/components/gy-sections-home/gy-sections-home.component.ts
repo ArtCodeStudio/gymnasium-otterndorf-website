@@ -18,8 +18,8 @@ export class GySectionsHomeComponent extends Component {
     return [];
   }
 
-  constructor(element?: HTMLElement) {
-    super(element);
+  constructor() {
+    super();
   }
 
   protected async beforeBind() {

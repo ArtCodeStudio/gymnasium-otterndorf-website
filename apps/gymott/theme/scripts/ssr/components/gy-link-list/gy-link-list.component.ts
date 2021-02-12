@@ -27,8 +27,8 @@ export class GyLinkListComponent extends Component {
     return ["type"];
   }
 
-  constructor(element?: HTMLElement) {
-    super(element);
+  constructor() {
+    super();
   }
 
   protected async beforeBind() {

@@ -22,8 +22,8 @@ export class GySectionTextComponent extends Component {
     return ["section"];
   }
 
-  constructor(element?: HTMLElement) {
-    super(element);
+  constructor() {
+    super();
   }
 
   protected async afterBind() {

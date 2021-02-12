@@ -20,6 +20,7 @@
     "gymott",
     "iconset",
     "keypairs",
+    "keypath",
     "lazyload",
     "letsencrypt",
     "lsof",
@@ -35,6 +36,7 @@
     "riba",
     "ribajs",
     "sbin",
+    "sightglass",
     "strapi",
     "webroot",
     "yarnpkg"
