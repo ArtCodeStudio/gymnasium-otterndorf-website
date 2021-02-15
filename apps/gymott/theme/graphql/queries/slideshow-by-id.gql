@@ -1,17 +1,17 @@
 query slideshowById($id: ID!) {
-	sectionSlideshow(id: $id) {
+  sectionSlideshow(id: $id) {
     title
     id
     entries {
       ... on ComponentSlideshowSlideshowEntry {
         id
+        subtitle
         image {
           formats
         }
-        
       }
       ... on ComponentSlideshowSlideshowEntryBlog {
-		id
+        id
         image {
           formats
         }

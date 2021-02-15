@@ -16,7 +16,8 @@
     "sourceMap": true,
     "outDir": "assets",
     "incremental": true,
-    "baseUrl": "scripts"
+    "baseUrl": "scripts",
+    "typeRoots": ["node_modules/@types", "types"],
   },
   "exclude": [
     "node_modules",

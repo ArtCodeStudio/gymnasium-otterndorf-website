@@ -16,8 +16,13 @@
       "type": "string"
     },
     "blog_entries": {
-      "via": "blog_category",
-      "collection": "blog-entry"
+      "collection": "blog-entry",
+      "via": "blog_category"
+    },
+    "name": {
+      "type": "uid",
+      "targetField": "display_name",
+      "required": true
     }
   }
 }

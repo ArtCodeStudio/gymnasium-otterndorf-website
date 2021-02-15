@@ -1,31 +1,21 @@
 # Write your query or mutation here
 query($slug: String!) {
-  pages(where: { slug: $slug }) {
+  blogEntries(where: { slug: $slug }) {
     id
     created_at
-    updated_at
     title
     slug
-    calendar_key
-    assets {
-      ... on ComponentSidebarAssets {
-        file {
-          url
-        }
-        name
-      }
+    blog_category {
+      display_name
     }
-
-    blog_entries {
-      title
-      slug
-    }
+    published_at
 
     content {
       __typename
       ... on ComponentContentImage {
         id
         caption
+
         image {
           id
           created_at

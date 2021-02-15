@@ -1,3 +1,6 @@
 h2 Image Section
-pre(style="max-height: 100px;")
-    code(ssr-rv-text="section | json")
+  .facts
+    .fact(ssr-rv-each-fact="section.facts")
+      count-up(ssr-rv-target="fact.number") 0
+      span(ssr-rv-text="fact.title")  
+      span(ssr-rv-text="fact.subtitle")  

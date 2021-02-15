@@ -5,6 +5,6 @@
     .col-12(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'")
         gy-section-facts(ssr-rv-co-section="section")
     .col-12(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
-        gy-section-text.my-5(ssr-rv-co-section="section")
+        gy-section-text(ssr-rv-co-section="section")
     .col-12(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
         gy-section-image(ssr-rv-co-section="section")

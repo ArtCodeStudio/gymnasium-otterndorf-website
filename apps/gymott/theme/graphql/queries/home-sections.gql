@@ -3,22 +3,16 @@ query homeSections {
   home {
     sections {
       __typename
-    	... on ComponentSectionSlideshow {
-        slideshow {          
+      ... on ComponentSectionSlideshow {
+        slideshow {
           id
         }
-      	id
       }
       ... on ComponentSectionFacts {
-        section_fact {
-          facts {
-            __typename
-            ... on ComponentHomeFact {
-              number
-              title
-              subtitle
-            }
-          }
+        facts {
+          number
+          title
+          subtitle
         }
       }
       ... on ComponentContentText {
@@ -28,7 +22,7 @@ query homeSections {
         image {
           formats
         }
-        caption      
+        caption
       }
     }
   }

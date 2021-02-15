@@ -2,12 +2,15 @@
   "collectionName": "components_section_facts",
   "info": {
     "name": "facts",
-    "icon": "adjust"
+    "icon": "adjust",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "section_fact": {
-      "model": "section-facts"
+    "facts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "home.fact"
     }
   }
 }

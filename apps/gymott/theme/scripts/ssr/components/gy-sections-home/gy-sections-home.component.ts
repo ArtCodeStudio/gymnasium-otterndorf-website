@@ -1,6 +1,5 @@
 import { Component } from "@ribajs/core";
 import pugTemplate from "./gy-sections-home.component.pug";
-import { GyHomeService } from "../../services/home";
 
 export interface Scope {
   sections?: any;
@@ -10,12 +9,11 @@ export class GySectionsHomeComponent extends Component {
   public static tagName = "gy-sections-home";
   public _debug = false;
   protected autobind = true;
-  protected homeService: GyHomeService = GyHomeService.getInstance();
 
   scope: Scope = {};
 
   static get observedAttributes() {
-    return [];
+    return ["sections"];
   }
 
   constructor() {
@@ -24,7 +22,7 @@ export class GySectionsHomeComponent extends Component {
 
   protected async beforeBind() {
     await super.beforeBind();
-    this.scope.sections = await this.homeService.getHomeSections();
+    //this.scope.sections = await
   }
 
   protected async afterBind() {

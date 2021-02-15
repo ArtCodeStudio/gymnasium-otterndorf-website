@@ -3,4 +3,4 @@ bs4-slideshow(controls='false' lg-controls='true' indicators='false' lg-indicato
         .slide.col-12.p-0(ssr-rv-each-entry='section.entries')
             img.img-fluid.w-100(lazyload='lazy' ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt='entry.image.alternativeText')
             .slide-caption
-                h1(ssr-rv-text="section.title")
+                h1(ssr-rv-text="entry.subtitle")

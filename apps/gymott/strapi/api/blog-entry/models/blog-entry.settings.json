@@ -26,8 +26,8 @@
       ]
     },
     "blog_category": {
-      "model": "blog-category",
-      "via": "blog_entries"
+      "via": "blog_entries",
+      "model": "blog-category"
     },
     "slug": {
       "type": "uid",

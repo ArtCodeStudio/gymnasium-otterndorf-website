@@ -1,4 +1,5 @@
 import "@ribajs/ssr/src/polyfills";
+import "../common/types/ical";
 import { SSRModule } from "@ribajs/ssr";
 import { Riba, coreModule } from "@ribajs/core";
 // import { i18nModule, LocalesStaticService } from "@ribajs/i18n";

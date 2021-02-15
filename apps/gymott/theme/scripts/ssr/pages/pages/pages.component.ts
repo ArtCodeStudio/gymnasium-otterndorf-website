@@ -1,52 +1,15 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./pages.component.pug";
 import { PageService } from "../../services/page";
+import ical from "ical/ical";
 
 export interface Scope {
   title: string;
-  contents: PageContent[];
   params: PagesPageComponent["ctx"]["params"];
   assets: any[];
+  events: any[];
+  content: any;
   blogEntries: any[];
-}
-
-enum PageContentType {
-  Text,
-  Image,
-}
-
-export abstract class PageContent {
-  public type: PageContentType;
-
-  constructor(type: PageContentType) {
-    this.type = type;
-  }
-
-  public abstract template(): string;
-}
-
-export class PageContentText extends PageContent {
-  private text: string;
-
-  constructor(data: any) {
-    super(PageContentType.Text);
-    this.text = data.text;
-  }
-
-  public template() {
-    return this.text;
-  }
-}
-
-export class PageContentImage extends PageContent {
-  constructor(private url: string) {
-    super(PageContentType.Image);
-  }
-
-  public template() {
-    console.log("abc", this.url);
-    return this.url;
-  }
 }
 
 export class PagesPageComponent extends PageComponent {
@@ -58,10 +21,11 @@ export class PagesPageComponent extends PageComponent {
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
-    contents: [new PageContentText("Hi")],
     assets: [],
     blogEntries: [],
     params: {},
+    events: [],
+    content: {},
   };
 
   static get observedAttributes() {
@@ -83,7 +47,6 @@ export class PagesPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    await super.beforeBind();
     this.head.title = "You are " + this.ctx.params.slug;
     try {
       const page = await this.pageService.get(this.ctx.params.slug);
@@ -93,17 +56,10 @@ export class PagesPageComponent extends PageComponent {
           this.scope.title = page?.title;
         }
         if (page?.content) {
-          for (const content of page?.content) {
-            if (content.__typename === "ComponentContentText") {
-              this.scope.contents.push(new PageContentText(content));
-            }
-            if (content.__typename === "ComponentContentImage") {
-              this.scope.contents.push(new PageContentImage(content));
-            }
-          }
+          this.scope.content = page.content;
         }
         if (page?.assets) {
-          for (const asset of page?.assets) {
+          for (const asset of page.assets) {
             console.log(asset);
             this.scope.assets.push(asset);
           }
@@ -131,8 +87,41 @@ export class PagesPageComponent extends PageComponent {
           }
         }
         //TODO sort blog entries
+
+        const calendarKey = page?.["calendar_key"];
+        const calendarData = await window.fetch(
+          "https://gymott.net/iserv/public/calendar?key=049a7daf00db139b3c3e5df3e58ba5d3"
+        );
+        const data = await calendarData.text();
+
+        const parsedData = ical.parseICS(data);
+        const now = new Date();
+        for (const key in parsedData) {
+          const element = parsedData[key];
+          if (element.type === "VEVENT" && element.start) {
+            const date = new Date(element.start);
+            console.log(element.categories);
+            if (date.getTime() > now.getTime()) {
+              console.log(element);
+              if (
+                calendarKey &&
+                calendarKey.trim() !== "" &&
+                element.categories &&
+                element.categories?.indexOf(calendarKey) !== -1
+              ) {
+                this.scope.events.push(element);
+              } else if (!calendarKey || calendarKey.trim() === "") {
+                this.scope.events.push(element);
+              }
+            }
+          }
+        }
+        this.scope.events.sort(function (a, b) {
+          return new Date(a.start).getTime() - new Date(b.start).getTime();
+        });
       }
     } catch (error) {
+      console.log(error);
       /*if (error.status === 404) {
         this.scope.title = "Nicht gefunden!";
         this.scope.content =
@@ -143,6 +132,7 @@ export class PagesPageComponent extends PageComponent {
       }*/
     }
     this.head.title = this.scope.title;
+    await super.beforeBind();
   }
 
   protected async afterBind() {

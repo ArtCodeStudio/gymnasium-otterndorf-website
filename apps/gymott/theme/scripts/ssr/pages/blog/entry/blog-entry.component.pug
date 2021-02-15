@@ -1,7 +1,6 @@
 .container.container-md.py-5.my-5.text-center
   .row
     .col-12
-      h1(rv-template="title")
-  section.row
+      h1(ssr-rv-text="title")
     .col-12
-      div(rv-template="content")
+      gy-sections-home(ssr-rv-sections="contents")

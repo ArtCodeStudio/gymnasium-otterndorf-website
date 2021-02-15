@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_navigation_navigation_entries",
+  "info": {
+    "name": "navigation_entry",
+    "icon": "archway"
+  },
+  "options": {},
+  "attributes": {
+    "blog_eintrag": {
+      "model": "blog-entry"
+    },
+    "schulfach": {
+      "model": "subject"
+    },
+    "blog_kategorie": {
+      "model": "blog-category"
+    },
+    "page": {
+      "model": "page"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

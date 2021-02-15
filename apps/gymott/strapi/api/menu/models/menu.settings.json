@@ -11,11 +11,10 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "Navigationsabschnitte": {
-      "type": "dynamiczone",
-      "components": [
-        "navigation.navigation-section"
-      ]
+    "section": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.navigation-section"
     }
   }
 }
