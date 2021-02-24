@@ -29,6 +29,7 @@
     "@ribajs/webpack-config": "portal:../riba/infra/webpack-config",
     "@ribajs/webpack-serve": "portal:../riba/infra/webpack-serve",
     "@ribajs/bs4": "portal:../riba/packages/bs4",
+    "@ribajs/bs5": "portal:../riba/packages/bs5",
     "@ribajs/cache": "portal:../riba/packages/cache",
     "@ribajs/content-slider": "portal:../riba/packages/content-slider",
     "@ribajs/core": "portal:../riba/packages/core",
@@ -52,7 +53,10 @@
     "@ribajs/ssr": "portal:../riba/packages/ssr",
     "@ribajs/utils": "portal:../riba/packages/utils",
     "@ribajs/vue": "portal:../riba/packages/vue",
-    "redbird": "npm:redbird@artcodestudio/redbird"
+    "redbird": "npm:redbird@artcodestudio/redbird",
+    "@ribajs/node-graphql-client": "portal:../riba/backend/node-graphql-client",
+    "@ribajs/npm-package": "portal:../riba/infra/npm-package",
+    "@ribajs/postcss-config": "portal:../riba/infra/postcss-config"
   },
   "devDependencies": {
     "@manager/nest": "workspace:apps/manager/nest",
@@ -60,12 +64,12 @@
     "@ribajs/iconset": "next",
     "@ribajs/tsconfig": "next",
     "@types/source-map-support": "^0.5.3",
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/experimental-utils": "^4.15.0",
-    "@typescript-eslint/parser": "^4.15.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/experimental-utils": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
     "@yarnpkg/pnpify": "^2.4.0",
-    "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1",
     "typescript": "^4.1.5"
