@@ -1,7 +1,7 @@
 import { Component } from "@ribajs/core";
 import { CountUp } from "countup.js";
 import { isInViewport } from "@ribajs/utils/src/dom";
-import { throttle, debounce } from "@ribajs/utils/src/control";
+import { throttle } from "@ribajs/utils/src/control";
 
 export interface Scope {
   target: number;
@@ -30,7 +30,6 @@ export class CountUpComponent extends Component {
   }
 
   protected checkViewport() {
-    console.debug("checkViewport");
     if (isInViewport(this)) {
       this.countUp?.start();
     }

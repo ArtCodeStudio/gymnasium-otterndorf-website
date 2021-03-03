@@ -2,7 +2,7 @@ import { Riba, View, coreModule } from "@ribajs/core";
 import { ready } from "@ribajs/utils/src/dom";
 import { routerModule } from "@ribajs/router";
 import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
-import { bs4Module } from "@ribajs/bs4";
+import { bs5Module } from "@ribajs/bs5";
 
 // Common
 import * as commonBinders from "../common/binders";
@@ -48,7 +48,7 @@ export class CSRApp {
     this.riba.module.regist(coreModule);
     this.riba.module.regist(routerModule);
     this.riba.module.regist(i18nModule(this.localesService));
-    this.riba.module.regist(bs4Module);
+    this.riba.module.regist(bs5Module);
 
     this.view = this.riba.bind(document.body, this.model);
 
