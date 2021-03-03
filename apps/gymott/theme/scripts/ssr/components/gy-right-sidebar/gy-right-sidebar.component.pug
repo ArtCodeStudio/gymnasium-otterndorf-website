@@ -1,0 +1,4 @@
+bs5-sidebar#right-sidebar.bg-white.py-5(container-selector="#main-container" position="right")
+  gy-link-list.list-group(type="toolbar")
+    .list-group-item.list-group-item-action.bg-transparent.border-0(ssr-rv-each-item="items")
+      a.nav-link.text-dark(ssr-rv-href="item.link" ssr-rv-text="item.name")

@@ -1,0 +1,26 @@
+.navbar.navbar-main.fixed-top.navbar-light.bg-white
+  .container-fluid.d-block
+    .row.justify-content-between
+      //- Left
+      .col-auto.d-flex.align-items-center
+        .row.d-flex.align-items-center
+          bs5-toggle-button.col-auto.text-dark(target-id="left-sidebar")
+            ul.nav
+              li.nav-item.d-flex.align-items-center.py-0
+                bs5-icon(src="/iconset/svg/icon_menu.svg" size="32" rv-hide="isActive" rv-on-click="toggle")
+              li.nav-item.d-flex.align-items-center.py-0
+                bs5-icon(src="/iconset/svg/icon_close.svg" size="32" rv-show="isActive" rv-on-click="toggle")
+          .col-auto.navbar-brand.d-flex.align-items-center.p-0
+            bs5-icon(src="/images/logo.svg" size="32" rv-hide="isActive" rv-on-click="toggle")
+      //- Middle
+      .col-auto.d-flex.align-items-center
+        .row
+          .col-auto
+      //- Right
+      .col-auto.d-flex.align-items-center
+        .row
+          .col-auto(action="#")
+            .input-group
+              input.form-control.border-end-0(type="search", placeholder="Suchen")
+              button.input-group-text#search-addon.bg-gray(rv-on-click="onSearchBtn")
+                bs5-icon(src="/iconset/svg/icon_search2.svg" size="16")

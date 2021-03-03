@@ -20,12 +20,12 @@
 // Special template styles
 @import 'templates/index';
 
-// Riba components
+// Custom components
 @import '../scripts/csr/components/index';
 @import '../scripts/ssr/components/index';
+@import '../scripts/common/components/index';
 
-
-// Riba pages
+// Riba SSR Pages
 @import '../scripts/ssr/pages/index';
 
 // binders

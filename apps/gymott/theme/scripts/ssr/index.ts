@@ -2,6 +2,7 @@ import "@ribajs/ssr/src/polyfills";
 import "../common/types/ical";
 import { SSRModule } from "@ribajs/ssr";
 import { Riba, coreModule } from "@ribajs/core";
+import { Bs5IconComponent } from "@ribajs/bs5";
 // import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 // import { ready } from "@ribajs/utils/src/dom";
 
@@ -36,7 +37,12 @@ riba.configure({
 
 // Regist custom components
 riba.module.regist({
-  components: { ...commonComponents, ...pageComponents, ...components },
+  components: {
+    ...commonComponents,
+    ...pageComponents,
+    ...components,
+    Bs5IconComponent,
+  },
   binders: { ...commonBinders, ...binders },
   formatters: { ...commonFormatters, ...formatters },
 });
