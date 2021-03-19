@@ -1,4 +1,5 @@
 import { GraphQLClient as CSRGraphQLClient } from "../../csr/services/graphql";
+import type { RequestInit } from "graphql-request/dist/types.dom";
 
 export class SSRGraphQLClient extends CSRGraphQLClient {
   protected constructor(url: string, options?: RequestInit) {

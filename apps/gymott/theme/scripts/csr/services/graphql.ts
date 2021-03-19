@@ -1,5 +1,5 @@
 import { GraphQLClient as _GraphQLClient } from "graphql-request";
-// import type { Variables, RequestDocument } from 'graphql-request/dist/types'
+import type { RequestInit } from "graphql-request/dist/types.dom";
 import authMutation from "../../../graphql/mutations/auth.gql";
 
 export class GraphQLClient extends _GraphQLClient {
