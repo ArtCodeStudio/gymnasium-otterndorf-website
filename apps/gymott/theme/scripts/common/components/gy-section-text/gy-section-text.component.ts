@@ -38,11 +38,6 @@ export class GySectionTextComponent extends Component {
     if (this.scope.section?.text) {
       this.scope.text = marked(this.scope.section?.text || "");
     }
-    console.debug(
-      "GySectionTextComponent",
-      this.scope.text,
-      this.scope.section
-    );
     await super.afterBind(); // This must be called on the end of this function
   }
 
@@ -54,7 +49,6 @@ export class GySectionTextComponent extends Component {
   protected template() {
     // If this component has no content that was rendered server side
     if (!hasChildNodesTrim(this)) {
-      console.debug("Replace template");
       return pugTemplate(this.scope);
     } else {
       return null;

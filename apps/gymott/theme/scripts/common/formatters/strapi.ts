@@ -5,10 +5,11 @@ export const strapiFormatter = {
   name: "strapi",
   read(url: string) {
     if (!url.startsWith("http")) {
-      url =
-        window?.ssr?.env?.STRAPI_EXTERN_URL + url ||
-        window?.ssr?.env?.STRAPI_EXTERN_URL + url ||
-        url;
+      const strapiUrl =
+        window?.env?.STRAPI_EXTERN_URL ||
+        window?.ssr?.env?.STRAPI_EXTERN_URL ||
+        "";
+      url = strapiUrl + url;
     }
     return url;
   },

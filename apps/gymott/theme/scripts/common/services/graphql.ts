@@ -26,7 +26,6 @@ export class GraphQLClient extends _GraphQLClient {
       throw new Error("GraphQL URL is required!");
     }
     url += "/graphql";
-    console.debug("URL", url);
     GraphQLClient.instance = new GraphQLClient(url);
     return GraphQLClient.instance;
   }

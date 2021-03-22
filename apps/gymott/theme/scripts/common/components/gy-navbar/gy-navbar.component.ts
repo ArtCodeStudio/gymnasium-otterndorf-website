@@ -36,7 +36,8 @@ export class GyNavbarComponent extends Component {
     const navbarHeight = Math.max(navbar?.offsetHeight || 0, this.offsetHeight);
     const leftSidebar = document.getElementById("left-sidebar");
     const rightSidebar = document.getElementById("right-sidebar");
-    console.log("setDependentStyles navbarHeight", navbarHeight);
+
+    this.debug("setDependentStyles navbarHeight", navbarHeight);
 
     if (leftSidebar) {
       leftSidebar.style.marginTop = navbarHeight + "px";
@@ -66,7 +67,6 @@ export class GyNavbarComponent extends Component {
   }
 
   protected async afterBind() {
-    console.log("Hello from gy-navbar");
     await super.afterBind();
   }
 
