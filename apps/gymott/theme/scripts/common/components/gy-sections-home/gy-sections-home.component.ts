@@ -1,4 +1,5 @@
 import { Component } from "@ribajs/core";
+import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-sections-home.component.pug";
 
 export interface Scope {
@@ -13,6 +14,10 @@ export class GySectionsHomeComponent extends Component {
   scope: Scope = {};
 
   static get observedAttributes() {
+    return ["sections"];
+  }
+
+  protected requiredAttributes() {
     return ["sections"];
   }
 
@@ -35,6 +40,11 @@ export class GySectionsHomeComponent extends Component {
   }
 
   protected template() {
-    return pugTemplate(this.scope);
+    // If this component has no content that was rendered server side
+    if (!hasChildNodesTrim(this)) {
+      return pugTemplate(this.scope);
+    } else {
+      return null;
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { PageComponent } from "@ribajs/ssr";
-import { GraphQLClient } from "../../../csr/services/graphql";
+import { GraphQLClient } from "../../services";
 import pugTemplate from "./blog.component.pug";
 
 export interface Scope {

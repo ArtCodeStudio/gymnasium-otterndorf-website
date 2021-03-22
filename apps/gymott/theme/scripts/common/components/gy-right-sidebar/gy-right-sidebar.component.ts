@@ -1,11 +1,11 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import pugTemplate from "./gy-left-sidebar.component.pug";
+import pugTemplate from "./gy-right-sidebar.component.pug";
 
 export interface Scope {}
 
-export class GyLeftSidebarComponent extends Component {
-  public static tagName = "gy-left-sidebar";
+export class GyRightSidebarComponent extends Component {
+  public static tagName = "gy-right-sidebar";
   public _debug = false;
   protected autobind = true;
 
@@ -25,11 +25,11 @@ export class GyLeftSidebarComponent extends Component {
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(GyLeftSidebarComponent.observedAttributes);
+    this.init(GyRightSidebarComponent.observedAttributes);
   }
 
   protected template() {
-    // If this component has content this was rendered server side
+    // If this component has no content that was rendered server side
     if (!hasChildNodesTrim(this)) {
       return pugTemplate(this.scope);
     } else {

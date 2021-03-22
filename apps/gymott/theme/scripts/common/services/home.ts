@@ -1,9 +1,9 @@
-import { SSRGraphQLClient } from "./graphql";
+import { GraphQLClient } from "./graphql";
 import slideshowById from "../../../graphql/queries/slideshow-by-id.gql";
 import homeSections from "../../../graphql/queries/home-sections.gql";
 
 export class GyHomeService {
-  protected graphql = SSRGraphQLClient.getInstance();
+  protected graphql = GraphQLClient.getInstance();
 
   protected static instance: GyHomeService;
 

@@ -1,5 +1,5 @@
-import type { StrapiImage, StrapiImageFormatType } from "../../common/types";
-import { strapiImageFormatter } from "../../common/formatters/strapi-image";
+import type { StrapiImage, StrapiImageFormatType } from "../types";
+import { strapiImageFormatter } from "./strapi-image";
 import { strapiFormatter } from "./strapi";
 
 /**

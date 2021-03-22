@@ -1,9 +1,9 @@
-import { SSRGraphQLClient } from "./graphql";
+import { GraphQLClient } from "./graphql";
 import { ResponseError } from "../../common/types/response-error";
 import blogQuery from "../../../graphql/queries/blog-by-slug.gql";
 
 export class BlogService {
-  protected graphql = SSRGraphQLClient.getInstance();
+  protected graphql = GraphQLClient.getInstance();
 
   protected static instance: BlogService;
 

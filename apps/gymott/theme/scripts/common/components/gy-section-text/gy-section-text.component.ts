@@ -1,9 +1,12 @@
 import { Component } from "@ribajs/core";
+import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-text.component.pug";
 import marked from "marked";
 
 export interface Scope {
-  section?: any;
+  section?: {
+    text: string;
+  };
   text: string;
 }
 
@@ -13,7 +16,9 @@ export class GySectionTextComponent extends Component {
   protected autobind = true;
 
   scope: Scope = {
-    section: null,
+    section: {
+      text: "",
+    },
     text: "",
   };
 
@@ -30,7 +35,14 @@ export class GySectionTextComponent extends Component {
   }
 
   protected async afterBind() {
-    this.scope.text = marked(this.scope.section?.text || "");
+    if (this.scope.section?.text) {
+      this.scope.text = marked(this.scope.section?.text || "");
+    }
+    console.debug(
+      "GySectionTextComponent",
+      this.scope.text,
+      this.scope.section
+    );
     await super.afterBind(); // This must be called on the end of this function
   }
 
@@ -40,6 +52,12 @@ export class GySectionTextComponent extends Component {
   }
 
   protected template() {
-    return pugTemplate(this.scope);
+    // If this component has no content that was rendered server side
+    if (!hasChildNodesTrim(this)) {
+      console.debug("Replace template");
+      return pugTemplate(this.scope);
+    } else {
+      return null;
+    }
   }
 }

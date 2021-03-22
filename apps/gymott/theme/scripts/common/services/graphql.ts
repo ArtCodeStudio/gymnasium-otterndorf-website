@@ -13,12 +13,21 @@ export class GraphQLClient extends _GraphQLClient {
     if (GraphQLClient.instance) {
       return GraphQLClient.instance;
     }
-    // TODO get STRAPI_EXTERN_URL env over config api
-    GraphQLClient.instance = new GraphQLClient(
-      window.ssr?.env?.STRAPI_EXTERN_URL
-        ? window.ssr?.env?.STRAPI_INTERN_URL + "/graphql"
-        : ""
-    );
+    let url = "";
+    // SSR
+    if (window.ssr?.env?.STRAPI_INTERN_URL) {
+      url = window.ssr.env.STRAPI_INTERN_URL;
+    }
+    // CSR
+    if (window.env?.STRAPI_EXTERN_URL) {
+      url = window.env.STRAPI_EXTERN_URL;
+    }
+    if (!url) {
+      throw new Error("GraphQL URL is required!");
+    }
+    url += "/graphql";
+    console.debug("URL", url);
+    GraphQLClient.instance = new GraphQLClient(url);
     return GraphQLClient.instance;
   }
 

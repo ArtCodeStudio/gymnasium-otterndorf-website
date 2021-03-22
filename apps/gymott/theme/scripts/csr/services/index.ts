@@ -1,1 +1,1 @@
-export { GraphQLClient } from "./graphql";
+export * from "../../common/services";

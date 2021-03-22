@@ -1,9 +1,9 @@
-import { SSRGraphQLClient } from "./graphql";
+import { GraphQLClient } from "./graphql";
 import { ResponseError } from "../../common/types/response-error";
 import pageQuery from "../../../graphql/queries/page-by-slug.gql";
 
 export class PageService {
-  protected graphql = SSRGraphQLClient.getInstance();
+  protected graphql = GraphQLClient.getInstance();
 
   protected static instance: PageService;
 

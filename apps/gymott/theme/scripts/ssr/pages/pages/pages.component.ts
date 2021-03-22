@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./pages.component.pug";
-import { PageService } from "../../services/page";
+import { PageService } from "../../services";
 import ical from "ical/ical";
 
 export interface Scope {

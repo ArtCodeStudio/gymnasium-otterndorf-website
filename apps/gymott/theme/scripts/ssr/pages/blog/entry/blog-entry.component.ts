@@ -1,5 +1,5 @@
 import { PageComponent } from "@ribajs/ssr";
-import { BlogService } from "../../../services/blog";
+import { BlogService } from "../../../services";
 
 import pugTemplate from "./blog-entry.component.pug";
 

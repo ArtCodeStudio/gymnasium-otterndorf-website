@@ -1,9 +1,9 @@
-import { SSRGraphQLClient } from "./graphql";
-import { ResponseError } from "../../common/types/response-error";
+import { GraphQLClient } from "./graphql";
+import { ResponseError } from "../types/response-error";
 import toolbarQuery from "../../../graphql/queries/toolbar.gql";
 
 export class ToolbarService {
-  protected graphql = SSRGraphQLClient.getInstance();
+  protected graphql = GraphQLClient.getInstance();
 
   protected static instance: ToolbarService;
 

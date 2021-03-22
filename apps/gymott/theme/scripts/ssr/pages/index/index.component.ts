@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 
-import { GyHomeService } from "../../services/home";
+import { GyHomeService } from "../../services";
 import pugTemplate from "./index.component.pug";
 
 export class IndexPageComponent extends PageComponent {

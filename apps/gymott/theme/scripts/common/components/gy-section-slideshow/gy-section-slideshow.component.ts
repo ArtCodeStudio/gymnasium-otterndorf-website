@@ -1,12 +1,13 @@
 import { Component } from "@ribajs/core";
-import pugTemplate from "./gy-section-facts.component.pug";
+import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
+import pugTemplate from "./gy-section-slideshow.component.pug";
 
 export interface Scope {
   section?: any;
 }
 
-export class GySectionFactsComponent extends Component {
-  public static tagName = "gy-section-facts";
+export class GySectionSlideshowComponent extends Component {
+  public static tagName = "gy-section-slideshow";
   public _debug = false;
   protected autobind = true;
 
@@ -32,10 +33,15 @@ export class GySectionFactsComponent extends Component {
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(GySectionFactsComponent.observedAttributes);
+    this.init(GySectionSlideshowComponent.observedAttributes);
   }
 
   protected template() {
-    return pugTemplate(this.scope);
+    // If this component has no content that was rendered server side
+    if (!hasChildNodesTrim(this)) {
+      return pugTemplate(this.scope);
+    } else {
+      return null;
+    }
   }
 }
