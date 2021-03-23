@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_link_type_webs",
+  "info": {
+    "name": "Web",
+    "icon": "arrow-alt-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "URL": {
+      "type": "string",
+      "required": true,
+      "default": "https://"
+    }
+  }
+}

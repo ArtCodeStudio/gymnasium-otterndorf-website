@@ -37,6 +37,10 @@ export class CSRApp {
   constructor() {
     console.debug("init the main application");
 
+    this.riba.configure({
+      prefix: ["rv", "csr-rv"],
+    });
+
     // Regist custom components
     this.riba.module.regist({
       components: { ...commonComponents, ...components },

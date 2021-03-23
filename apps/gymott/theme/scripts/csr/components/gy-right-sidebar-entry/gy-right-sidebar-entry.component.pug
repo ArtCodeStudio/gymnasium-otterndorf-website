@@ -1,0 +1,8 @@
+h6(rv-if="entry.type | eq 'web'") Web
+h6(rv-if="entry.type | eq 'blog'") Blog
+h6(rv-if="entry.type | eq 'page'") Page
+ul.list-group(rv-if="entry.type | eq 'list'")
+  li.list-group-item(rv-each-child="entry.children")
+    div(rv-if="entry")
+      span(rv-text="child.label")
+      gy-right-sidebar-entry(rv-entry="child")

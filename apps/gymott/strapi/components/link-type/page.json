@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_link_type_pages",
+  "info": {
+    "name": "Page",
+    "icon": "arrow-alt-circle-down"
+  },
+  "options": {},
+  "attributes": {
+    "page": {
+      "model": "page"
+    }
+  }
+}

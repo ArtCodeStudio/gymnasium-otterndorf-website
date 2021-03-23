@@ -3,6 +3,8 @@ import { ConfigService, ConfigModule } from '@nestjs/config';
 
 import { appConfig, theme } from './config/config';
 import { ThemeModule } from '@ribajs/nest-theme';
+import { FlexsearchModule } from './flexsearch/flexsearch.module';
+import { SearchService } from './search/search.service';
 
 @Module({
   imports: [
@@ -10,8 +12,9 @@ import { ThemeModule } from '@ribajs/nest-theme';
       load: [appConfig],
     }),
     ThemeModule.forRoot(theme),
+    FlexsearchModule,
   ],
   controllers: [],
-  providers: [ConfigService],
+  providers: [ConfigService, SearchService],
 })
 export class AppModule {}

@@ -1,0 +1,34 @@
+query navigationQuery {
+  menu {
+    entries: navigation_level_entry {
+      parent {
+        id
+      }
+      navigation_link {
+        id
+        title: Title
+        type {
+          ... on ComponentLinkTypeWeb {
+            URL
+          }
+          ... on ComponentLinkTypePage {
+            page {
+              slug
+            }
+          }
+          ... on ComponentLinkTypeSchulfach {
+            schulfach {
+              title
+            }
+          }
+          ... on ComponentLinkTypeBlog {
+            entry: blog_eintrag {
+              slug
+            }
+          }
+          __typename
+        }
+      }
+    }
+  }
+}

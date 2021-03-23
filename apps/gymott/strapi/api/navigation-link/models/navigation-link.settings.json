@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navigation_links",
+  "info": {
+    "name": "Navigation Link",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "dynamiczone",
+      "components": [
+        "link-type.web",
+        "link-type.schulfach",
+        "link-type.page",
+        "link-type.blog"
+      ],
+      "max": 1,
+      "required": false
+    }
+  }
+}

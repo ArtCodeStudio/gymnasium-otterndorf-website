@@ -11,10 +11,10 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "section": {
+    "navigation_level_entry": {
       "type": "component",
       "repeatable": true,
-      "component": "navigation.navigation-section"
+      "component": "navigation.navigation-level-entry"
     }
   }
 }

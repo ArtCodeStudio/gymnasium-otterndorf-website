@@ -30,7 +30,7 @@ const riba = new Riba();
 
 // These Riba settings are necessary for the ssr
 riba.configure({
-  prefix: "ssr-rv",
+  prefix: ["rv", "ssr-rv"],
   blockUnknownCustomElements: false,
   templateDelimiters: ["[", "]"],
 });
