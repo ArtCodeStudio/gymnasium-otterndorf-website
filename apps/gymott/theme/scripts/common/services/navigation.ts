@@ -20,7 +20,7 @@ export class NavigationService {
   }
 
   public async get() {
-    const navigationRes = (await this.graphql.request(
+    const navigationRes = (await this.graphql.requestCached(
       navigationQuery,
       {}
     )) as GraphQLNavigationEntries;

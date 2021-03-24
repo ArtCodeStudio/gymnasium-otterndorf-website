@@ -16,7 +16,7 @@ export class BlogService {
   }
 
   async get(slug: string) {
-    const blogRes = await this.graphql.request(blogQuery, { slug });
+    const blogRes = await this.graphql.requestCached(blogQuery, { slug });
     if (
       !Array.isArray(blogRes.blogEntries) ||
       blogRes.blogEntries.length <= 0

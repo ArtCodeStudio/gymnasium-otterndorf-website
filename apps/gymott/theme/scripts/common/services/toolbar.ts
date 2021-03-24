@@ -19,7 +19,7 @@ export class ToolbarService {
   }
 
   public async get() {
-    const toolbarRes = await this.graphql.request(toolbarQuery, {});
+    const toolbarRes = await this.graphql.requestCached(toolbarQuery, {});
     if (!toolbarRes?.toolbar?.items) {
       const error: ResponseError = new Error("Not found!");
       error.status = 404;

@@ -18,7 +18,7 @@ export class GyHomeService {
   }
 
   async getHomeSections() {
-    const response = await this.graphql.request(homeSections);
+    const response = await this.graphql.requestCached(homeSections);
 
     const sections = response.home.sections;
     for (let i = 0; i < sections.length; i++) {
@@ -42,7 +42,9 @@ export class GyHomeService {
   }
 
   async getSlideshow(id: number) {
-    const slideshowResponse = await this.graphql.request(slideshowById, { id });
+    const slideshowResponse = await this.graphql.requestCached(slideshowById, {
+      id,
+    });
     // const slideshow = slideshowResponse["sectionSlideshow"];
     // slideshow["__typename"] = "ComponentSectionSlideshow";
     return slideshowResponse["sectionSlideshow"];

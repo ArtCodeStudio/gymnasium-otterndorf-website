@@ -1,5 +1,5 @@
 import "@ribajs/ssr/src/polyfills";
-import "../common/types/ical";
+import "../common/@types";
 import { SSRModule } from "@ribajs/ssr";
 import { Riba, coreModule } from "@ribajs/core";
 import { Bs5IconComponent } from "@ribajs/bs5";

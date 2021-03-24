@@ -1,6 +1,8 @@
 import { GraphQLClient as _GraphQLClient } from "graphql-request";
+import type { Variables, RequestDocument } from "graphql-request/dist/types";
 import type { RequestInit } from "graphql-request/dist/types.dom";
 import authMutation from "../../../graphql/mutations/auth.gql";
+import { defaultCache, hashCode } from "./cache";
 
 export class GraphQLClient extends _GraphQLClient {
   protected static instance: GraphQLClient;
@@ -32,5 +34,28 @@ export class GraphQLClient extends _GraphQLClient {
 
   async auth(email: string, password: string) {
     return this.request(authMutation, { email, password });
+  }
+
+  async requestCached<T = any, V = Variables>(
+    document: RequestDocument,
+    variables?: V,
+    requestHeaders?: RequestInit["headers"],
+    expiresIn: number | string = "5 mins"
+  ): Promise<T> {
+    let key = document.toString();
+    if (variables) {
+      key += Object.keys(variables).join();
+    }
+    if (requestHeaders) {
+      key += Object.keys(requestHeaders).join();
+    }
+
+    return await defaultCache.resolve<T>(
+      hashCode(key).toString(),
+      () => {
+        return super.request<T, V>(document, variables, requestHeaders);
+      },
+      expiresIn
+    );
   }
 }

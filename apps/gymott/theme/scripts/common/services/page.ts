@@ -16,7 +16,7 @@ export class PageService {
   }
 
   async get(slug: string) {
-    const pageRes = await this.graphql.request(pageQuery, { slug });
+    const pageRes = await this.graphql.requestCached(pageQuery, { slug });
     if (!Array.isArray(pageRes.pages) || pageRes.pages.length <= 0) {
       const error: ResponseError = new Error("Not found!");
       error.status = 404;
