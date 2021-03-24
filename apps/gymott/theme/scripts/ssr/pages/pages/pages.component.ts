@@ -50,7 +50,7 @@ export class PagesPageComponent extends PageComponent {
     this.head.title = "You are " + this.ctx.params.slug;
     try {
       const page = await this.pageService.get(this.ctx.params.slug);
-      console.log("page", page);
+      console.debug("page", page);
       if (page) {
         if (page?.title) {
           this.scope.title = page?.title;
@@ -60,7 +60,7 @@ export class PagesPageComponent extends PageComponent {
         }
         if (page?.assets) {
           for (const asset of page.assets) {
-            console.log(asset);
+            console.debug(asset);
             this.scope.assets.push(asset);
           }
         }
@@ -100,9 +100,9 @@ export class PagesPageComponent extends PageComponent {
           const element = parsedData[key];
           if (element.type === "VEVENT" && element.start) {
             const date = new Date(element.start);
-            console.log(element.categories);
+            console.debug(element.categories);
             if (date.getTime() > now.getTime()) {
-              console.log(element);
+              console.debug(element);
               if (
                 calendarKey &&
                 calendarKey.trim() !== "" &&
@@ -121,7 +121,7 @@ export class PagesPageComponent extends PageComponent {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.debug(error);
       /*if (error.status === 404) {
         this.scope.title = "Nicht gefunden!";
         this.scope.content =

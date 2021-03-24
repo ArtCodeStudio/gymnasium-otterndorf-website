@@ -3,7 +3,8 @@
   "collectionName": "subjects",
   "info": {
     "name": "Schulfach",
-    "displayName": "Schulfächer"
+    "displayName": "Schulfächer",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -15,9 +16,9 @@
       "type": "string"
     },
     "teachers": {
-      "via": "subjects",
       "columnName": "Lehrer",
       "collection": "teacher",
+      "via": "subjects",
       "dominant": true
     },
     "content": {
@@ -26,6 +27,11 @@
         "content.image",
         "content.text"
       ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

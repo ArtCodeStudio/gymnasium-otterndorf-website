@@ -1,4 +1,4 @@
-import { exec } from 'child_process';
+import { exec, spawn } from 'child_process';
 
 /**
  * returns a Promise which fulfills with the result of a shell command
@@ -7,7 +7,7 @@ import { exec } from 'child_process';
  * @param command
  */
 export const run = async (command: string) => {
-  return new Promise<string>((fulfill, reject) => {
+  return new Promise<string>((resolve, reject) => {
     exec(command, (err, stdout, stderr) => {
       if (err) {
         reject(err);
@@ -19,7 +19,7 @@ export const run = async (command: string) => {
         return;
       }
 
-      fulfill(stdout);
+      resolve(stdout);
     });
   });
 };
@@ -35,12 +35,16 @@ export const exists = async (cmd: string) => {
     // are we running on Windows??
     return Promise.reject(new Error('No output'));
   }
+}
 
-  const rNotFound = /^[\w\-]+ not found/g;
-
-  if (rNotFound.test(cmd)) {
-    return Promise.resolve(false);
-  }
-
-  return Promise.resolve(true);
-};
+/**
+ * returns Promise which fulfills with true if command exists
+ * @param cmd
+ */
+ export const existsAlt = async (cmd: string) => {
+  return new Promise((resolve) => {
+    spawn("type", [cmd]).on('exit', (code) => {
+      resolve(code === 0 ? true : false)
+    });
+  });
+}

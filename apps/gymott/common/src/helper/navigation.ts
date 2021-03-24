@@ -17,13 +17,33 @@ const findParent = (
   return parentEntry;
 };
 
+const getHref = (baseItem: GraphQLNavigationEntry) => {
+  const type = baseItem.navigation_link.type[0];
+  if (!type) {
+    return "";
+  }
+  switch (type.__typename) {
+    case "ComponentLinkTypeBlog":
+      return type.blog?.slug ? "/blog/article/" + type.blog.slug : "";
+    case "ComponentLinkTypePage":
+      return type.page?.slug ? "/pages/" + type.page.slug : "";
+    case "ComponentLinkTypeSchulfach":
+      return type.schulfach?.slug ? "/schulfach/" + type.schulfach.slug : "";
+    case "ComponentLinkTypeWeb":
+      return type.URL ? type.URL : "";
+    default:
+      console.warn(`Unknown navigation type: "${type.__typename}"`);
+      return "";
+  }
+};
+
 const newItem = (baseItem?: GraphQLNavigationEntry): NavigationLink => {
   if (baseItem) {
     return {
       type: "list",
       id: baseItem.navigation_link.id,
-      label: baseItem.navigation_link.title,
-      href: "", // TODO
+      label: baseItem.navigation_link.title || baseItem.title,
+      href: getHref(baseItem),
       children: [],
     };
   }

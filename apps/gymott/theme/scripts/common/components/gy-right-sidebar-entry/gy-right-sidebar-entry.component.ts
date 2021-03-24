@@ -1,5 +1,5 @@
 import { Component } from "@ribajs/core";
-// import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
+import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-right-sidebar-entry.component.pug";
 import { NavigationLink } from "@gymott/common";
 
@@ -30,11 +30,10 @@ export class GyRightSidebarEntryComponent extends Component {
 
   protected async beforeBind() {
     await super.beforeBind();
-    console.debug("beforeBind:", this.scope.entry);
   }
 
   protected async afterBind() {
-    console.debug("afterBind:", this.scope.entry);
+    // console.debug("afterBind:", this.scope.entry);
     await super.afterBind();
   }
 
@@ -45,11 +44,10 @@ export class GyRightSidebarEntryComponent extends Component {
 
   protected template() {
     // If this component has no content that was rendered server side
-    // if (!hasChildNodesTrim(this)) {
-    //   return pugTemplate(this.scope);
-    // } else {
-    //   return null;
-    // }
-    return pugTemplate(this.scope);
+    if (!hasChildNodesTrim(this)) {
+      return pugTemplate(this.scope);
+    } else {
+      return null;
+    }
   }
 }

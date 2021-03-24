@@ -50,7 +50,7 @@ export class BlogEntryPageComponent extends PageComponent {
     this.scope.content = await BlogService.getInstance().get(
       this.scope.params.slug
     );
-    console.log(this.scope.content);
+    console.debug("content", this.scope.content);
     this.scope.title = this.scope.content.title;
     this.scope.contents = this.scope.content.content;
     await super.afterBind();

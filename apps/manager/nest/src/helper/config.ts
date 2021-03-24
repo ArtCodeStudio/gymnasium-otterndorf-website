@@ -212,8 +212,7 @@ const setAppDefaults = (
 
       // pm2
       app.pm2 = app.pm2 || ({} as any);
-      // app.pm2.name = app.pm2.name || app.pkgName + ':' + shortEnv;
-      app.pm2.name = app.pm2.name || app.pkgName;
+      app.pm2.name = shortEnv + ':' + (app.pm2.name || app.pkgName);
       app.pm2.instances = app.pm2.instances || 1;
       app.pm2.env = app.pm2.env || {};
       app.pm2.env = {

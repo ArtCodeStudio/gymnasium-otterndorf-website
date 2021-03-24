@@ -28,9 +28,9 @@
       "type": "string"
     },
     "subjects": {
+      "via": "teachers",
       "columnName": "Fächer",
-      "collection": "subject",
-      "via": "teachers"
+      "collection": "subject"
     }
   }
 }

@@ -25,23 +25,22 @@ export const redbird: RedbirdOptions = {
      */
     port: 9999,
   },
-  ssl: false,
-  // ssl: {
-  //   http2: true,
-  //   redirect: false, // False to disable HTTPS auto redirect to this route.
-  //   /**
-  //    * SSL port used to serve registered https routes with LetsEncrypt certificate.
-  //    */
-  //   port: 443,
-  // },
-  // appDefaults: {
-  //   ssl: {
-  //     letsencrypt: {
-  //       email: "hi@artandcode.studio", // Domain owner/admin email
-  //       production: false, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
-  //     },
-  //   },
-  // },
+  ssl: {
+    http2: true,
+    redirect: true, // False to disable HTTPS auto redirect to this route.
+    /**
+     * SSL port used to serve registered https routes with LetsEncrypt certificate.
+     */
+    port: 443,
+  },
+  appDefaults: {
+    ssl: {
+      letsencrypt: {
+        email: "hi@artandcode.studio", // Domain owner/admin email
+        production: true, // WARNING: Only use this flag when the proxy is verified to work correctly to avoid being banned!
+      },
+    },
+  },
 };
 export const apps: ManagerApp[] = [
   {
@@ -54,7 +53,7 @@ export const apps: ManagerApp[] = [
       script: "yarn workspace @gymott/nest watch",
       env: {
         STRAPI_INTERN_URL: "http://127.0.0.1:3002",
-        STRAPI_EXTERN_URL: "http://gym-strapi.artandcode.de",
+        STRAPI_EXTERN_URL: "https://gym-strapi.artandcode.de",
       },
     },
   },

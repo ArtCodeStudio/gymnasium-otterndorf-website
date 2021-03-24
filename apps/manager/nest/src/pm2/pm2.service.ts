@@ -6,10 +6,9 @@ import {
 } from '@nestjs/common';
 import { ManagerApp } from '../types/app';
 import * as pm2 from 'pm2';
-import type { Proc, ProcessDescription } from 'pm2';
+import type { Proc } from 'pm2';
 import { promisify } from 'util';
-import { clone } from 'lodash';
-import { exists } from '../helper/cmd';
+import { exists, run } from '../helper/cmd';
 import { URL } from 'url';
 
 @Injectable()
@@ -39,9 +38,9 @@ export class Pm2Service
     this.log.debug('connect');
     const pm2Exists = await exists('pm2');
     if (!pm2Exists) {
-      throw new Error(
+      console.warn(new Error(
         'pm2 not found, do you have pm2 installed globally with npm or yarn? If not, please follow the instructions on https://pm2.keymetrics.io/docs/usage/quick-start/',
-      );
+      ));
     }
     pm2.connect(this.onError.bind(this));
   }
@@ -69,6 +68,7 @@ export class Pm2Service
         this.log.log(`Start process ${app.pm2.name} on ${url}`);
         resolve(proc);
       });
+      
     });
   }
 
@@ -83,6 +83,7 @@ export class Pm2Service
         await this.startApp(app);
       }
     }
+    await this.save();
   }
 
   public async delete(id: number | string) {
@@ -135,5 +136,25 @@ export class Pm2Service
       this.log.error(error);
       return null;
     }
+  }
+
+  public async save(force = false) {
+    const pm2Exists = await exists('pm2');
+    if (pm2Exists) {
+      let cmd = "pm2 save";
+      if (force) {
+        cmd += " --force";
+      }
+      return run(cmd)
+    }
+    return null;
+  }
+
+  public async update() {
+    const pm2Exists = await exists('pm2');
+    if (pm2Exists) {
+      return run("pm2 update")
+    }
+    return null;
   }
 }

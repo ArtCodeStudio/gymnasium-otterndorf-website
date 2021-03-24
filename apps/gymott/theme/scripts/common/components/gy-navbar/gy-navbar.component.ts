@@ -25,7 +25,7 @@ export class GyNavbarComponent extends Component {
   }
 
   public onSearchBtn() {
-    console.log("TODO onSearchBtn");
+    console.debug("TODO onSearchBtn");
   }
 
   /**

@@ -25,6 +25,8 @@ export class NavigationService {
       {}
     )) as GraphQLNavigationEntries;
 
+    console.debug("navigationRes", JSON.stringify(navigationRes, null, 2));
+
     if (!navigationRes?.menu?.entries) {
       const error: ResponseError = new Error("Not found!");
       error.status = 404;

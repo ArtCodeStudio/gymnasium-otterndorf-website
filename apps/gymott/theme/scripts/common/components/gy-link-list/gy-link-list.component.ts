@@ -36,7 +36,7 @@ export class GyLinkListComponent extends Component {
     if (this.scope.type === "toolbar") {
       try {
         const toolbar = await this.ToolbarService.get();
-        // console.log("toolbar", toolbar);
+        // console.debug("toolbar", toolbar);
         if (toolbar) {
           if (toolbar?.items) {
             this.scope.items = toolbar.items;

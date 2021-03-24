@@ -56,6 +56,22 @@ sudo kill -9 {PID}
 If the manager should be accessible directly without a classical webserver like nginx or apache, it is important to configure the firewall accordingly to increase the security.
 We recommend to follow the [following article](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04-de) with a few customizations:
 
+## TODO
+
+### Continuous Integration
+
+Add support for watching the git branch and restart the applications on new commits
+
+* https://github.com/seymen/git-last-commit
+
+Compare current commit with latest remote commit:
+
+```sh
+git fetch origin
+git rev-parse HEAD # Outputs current commit hash
+git rev-parse origin/master # Outputs latest remote commit hash
+```
+
 ## License
 
   Nest is [MIT licensed](LICENSE).
