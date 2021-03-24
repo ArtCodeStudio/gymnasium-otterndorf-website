@@ -71,6 +71,7 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
+    "@gymott/common": "workspace:apps/gymott/common",
     "@ribajs/bs5": "next",
     "@ribajs/core": "next",
     "@ribajs/i18n": "next",

@@ -1,5 +1,5 @@
 import { Component } from "@ribajs/core";
-import { NavigationService } from "../../services/navigation";
+import { ToolbarService } from "../../services/toolbar";
 
 export interface Link {
   name: string;
@@ -16,7 +16,7 @@ export class GyLinkListComponent extends Component {
   public _debug = false;
   protected autobind = true;
 
-  protected NavigationService = NavigationService.getInstance();
+  protected ToolbarService = ToolbarService.getInstance();
 
   scope: Scope = {
     type: "toolbar",
@@ -35,7 +35,7 @@ export class GyLinkListComponent extends Component {
     await super.beforeBind();
     if (this.scope.type === "toolbar") {
       try {
-        const toolbar = await this.NavigationService.get();
+        const toolbar = await this.ToolbarService.get();
         // console.log("toolbar", toolbar);
         if (toolbar) {
           if (toolbar?.items) {

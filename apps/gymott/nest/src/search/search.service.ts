@@ -1,21 +1,16 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { theme } from '../config/config';
+import { StrapiService } from '../strapi/strapi.service';
 import { FlexSearchService } from '../flexsearch/flexsearch.service';
-import { GraphQLClient } from '@ribajs/node-graphql-client';
 
 @Injectable()
 export class SearchService implements OnModuleInit {
-  graphql: GraphQLClient;
-  constructor(flexsearch: FlexSearchService) {
-    this.graphql = new GraphQLClient(
-      process.env.STRAPI_INTERN_URL,
-      {},
-      theme.themeDir,
-    );
-  }
+  constructor(
+    readonly strapi: StrapiService,
+    readonly flexsearch: FlexSearchService,
+  ) {}
 
   protected async loadNavigation() {
-    const result = await this.graphql.execute(
+    const result = await this.strapi.graphql.execute(
       'graphql/queries/navigation-entries',
     );
     console.debug('loadNavigation result', result);

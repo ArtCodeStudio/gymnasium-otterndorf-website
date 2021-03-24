@@ -1,7 +1,7 @@
 import { Component } from "@ribajs/core";
 // import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-right-sidebar-entry.component.pug";
-import { NavigationLink } from "../../../common/types";
+import { NavigationLink } from "@gymott/common";
 
 export interface Scope {
   entry?: NavigationLink;
