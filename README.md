@@ -80,3 +80,13 @@ error: unknown option '--inspect'
 
 You are using an old version of Node.js, please upgrade to >= 14.
 
+--------
+
+```sh
+Error: Module not found: Error: Can\'t resolve '../../plugins/strapi-plugin-content-type-builder/admin/src' in '/home/node/riba-nest-projects/apps/gymott/strapi/.cache/admin/src'
+# or
+Error: Module not found: Error: Can\'t resolve './components/Fonts' in '/home/node/riba-nest-projects/apps/gymott/strapi/.cache/admin/src'
+# or similar..
+```
+
+This can happen when you update Strapi, to solve this remove `package-lock.json`, `node_modules` and `.cache` in the root of the Strapi project and run `npm run build` twice, the first time the error might appear again, the second time the problem should be solved.
