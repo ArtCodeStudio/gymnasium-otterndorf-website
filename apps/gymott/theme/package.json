@@ -86,7 +86,7 @@
     "graphql-request": "^3.4.0",
     "ical": "^0.8.0",
     "idb-keyval": "^5.0.4",
-    "keshi": "^2.0.4",
+    "keshi": "^2.0.6",
     "marked": "^2.0.1"
   }
 }
