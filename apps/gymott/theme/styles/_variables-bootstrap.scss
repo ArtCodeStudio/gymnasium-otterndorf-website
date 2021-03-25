@@ -3,4 +3,33 @@
 @import '~bootstrap/scss/mixins';
 
 // Overwrite bootstrap variables here
+$input-group-addon-bg: $white;
 $input-bg: $input-group-addon-bg;
+
+$blue: #0075BD;
+$gray-100: #E0E6E4;
+$light: $gray-100;
+$body-bg: $light;
+
+$grays: (
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+);
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);

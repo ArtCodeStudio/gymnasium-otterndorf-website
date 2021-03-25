@@ -27,7 +27,7 @@ export const redbird: RedbirdOptions = {
   },
   ssl: {
     http2: true,
-    redirect: true, // False to disable HTTPS auto redirect to this route.
+    redirect: false, // False to disable HTTPS auto redirect to this route.
     /**
      * SSL port used to serve registered https routes with LetsEncrypt certificate.
      */

@@ -1,21 +1,21 @@
-.navbar.navbar-main.fixed-top.navbar-light.bg-white
+.navbar.navbar-main
   .container-fluid.d-block
     .row.justify-content-between
       //- Left
-      .col.d-flex.align-items-center
+      .col-auto.d-flex.align-items-center
         .row.d-flex.align-items-center
-          .col-auto.navbar-brand.d-flex.align-items-center.p-0
-            bs5-icon(src="/images/logo.svg" size="32" rv-hide="isActive" rv-on-click="toggle")
+          a.col-auto.navbar-brand.d-flex.align-items-center.p-0.mx-2(href="/")
+            bs5-icon(src="/images/logo.svg" size="64" rv-hide="isActive" rv-on-click="toggle")
       //- Middle
-      .col.d-flex.align-items-center
+      .col-auto.d-flex.align-items-center.d-none.d-md-flex
         .row
           .col-auto(action="#")
             .input-group
               input.form-control.border-end-0(type="search", placeholder="Suchen")
-              button.input-group-text#search-addon.bg-gray(rv-on-click="onSearchBtn")
+              button.input-group-text#search-addon.bg-gray(csr-rv-on-click="onSearchBtn")
                 bs5-icon(src="/iconset/svg/icon_search2.svg" size="16")
       //- Right
-      .col.d-flex.align-items-center
+      .col-auto.d-flex.align-items-center
         .row.d-flex.align-items-center
           bs5-toggle-button.col-auto.text-dark.mx-2(target-id="right-sidebar")
             ul.nav

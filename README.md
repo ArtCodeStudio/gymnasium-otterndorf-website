@@ -64,12 +64,19 @@ yarn run build
 
 Use the local environment if you want to develop on your locale machine. Start the App Manager with `yarn run start:local` in the root of this monorepo, this will use the config from from `config/local.ts`.
 
-## Error handling
-
-### Known error messages
+## Known error messages
 
 ```sh
 Cannot set property message of [object DOMException] which has only a getter
 ```
 
 This means that something is wrong in the DOM, for example if a custom element has a name that is not valid, e.g. `404-page` (custom elements must not start with numbers).
+
+--------
+
+```sh
+error: unknown option '--inspect'
+```
+
+You are using an old version of Node.js, please upgrade to >= 14.
+
