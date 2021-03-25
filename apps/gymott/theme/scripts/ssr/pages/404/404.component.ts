@@ -1,24 +1,23 @@
-import { PageComponent } from "@ribajs/ssr";
-import { GraphQLClient } from "../../services";
-import pugTemplate from "./blog.component.pug";
+import { PageComponent, ErrorObj } from "@ribajs/ssr";
+import pugTemplate from "./404.component.pug";
 
 export interface Scope {
   title: string;
   content: string;
-  params: BlogPageComponent["ctx"]["params"];
+  params: NotFoundPageComponent["ctx"]["params"];
+  error?: ErrorObj;
 }
 
-export class BlogPageComponent extends PageComponent {
-  public static tagName = "blog-page";
+export class NotFoundPageComponent extends PageComponent {
+  public static tagName = "not-found-page";
   public _debug = false;
   protected autobind = true;
 
-  protected gql = GraphQLClient.getInstance();
-
   scope: Scope = {
-    title: "{params.slug | capitalize}",
-    content: "<p>We are {params.slug}!</a>",
+    title: "",
+    content: "",
     params: {},
+    error: undefined,
   };
 
   static get observedAttributes() {
@@ -27,13 +26,16 @@ export class BlogPageComponent extends PageComponent {
 
   constructor() {
     super();
+    this.head.title = "404 Not found";
     this.scope.params = this.ctx.params;
-    this.debug("env", this.env);
+    this.scope.title = this.ctx.status.toString();
+    this.scope.content = this.ctx.errorObj?.message || "Not found";
+    this.scope.error = this.ctx.errorObj;
   }
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(BlogPageComponent.observedAttributes);
+    this.init(NotFoundPageComponent.observedAttributes);
   }
 
   protected requiredAttributes(): string[] {
@@ -42,7 +44,6 @@ export class BlogPageComponent extends PageComponent {
 
   protected async beforeBind() {
     await super.beforeBind();
-    this.head.title = "You are " + this.ctx.params.slug;
   }
 
   protected async afterBind() {
@@ -50,6 +51,6 @@ export class BlogPageComponent extends PageComponent {
   }
 
   protected template() {
-    return pugTemplate(/*this.scope*/ {});
+    return pugTemplate(this.scope);
   }
 }

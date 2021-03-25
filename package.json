@@ -56,8 +56,7 @@
     "redbird": "npm:redbird@artcodestudio/redbird",
     "@ribajs/node-graphql-client": "portal:../riba/backend/node-graphql-client",
     "@ribajs/npm-package": "portal:../riba/infra/npm-package",
-    "@ribajs/postcss-config": "portal:../riba/infra/postcss-config",
-    "keshi": "portal:../keshi"
+    "@ribajs/postcss-config": "portal:../riba/infra/postcss-config"
   },
   "devDependencies": {
     "@manager/nest": "workspace:apps/manager/nest",

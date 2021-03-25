@@ -1,12 +1,11 @@
 import createCache from "keshi";
-import InMemoryStorage from "keshi/src/InMemoryStorage";
 import type { Storage } from "keshi";
 import { get, set, keys, del, clear } from "idb-keyval";
 
 const idbStorage: Storage = { get, set, keys, del, clear };
 const defaultCache = createCache({
   // Use default memory storage on ssr
-  customStorage: window.ssr ? new InMemoryStorage() : idbStorage,
+  customStorage: window.ssr ? undefined : idbStorage,
 });
 
 /**

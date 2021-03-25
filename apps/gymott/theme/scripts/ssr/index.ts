@@ -24,6 +24,13 @@ declare global {
   }
 }
 
+window.onerror = (msg, url, line, col, error) => {
+  console.error(msg, url, line, col, error);
+};
+window.addEventListener("error", (event: Event) => {
+  console.error(event);
+});
+
 window.model = window.model || window.ssr.templateVars || {};
 
 const riba = new Riba();
