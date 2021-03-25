@@ -1,15 +1,14 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./pages.component.pug";
 import { PageService } from "../../services";
-import ical from "ical/ical";
 
 export interface Scope {
   title: string;
   params: PagesPageComponent["ctx"]["params"];
   assets: any[];
-  events: any[];
   content: any;
   blogEntries: any[];
+  calendarKey: string;
 }
 
 export class PagesPageComponent extends PageComponent {
@@ -24,8 +23,8 @@ export class PagesPageComponent extends PageComponent {
     assets: [],
     blogEntries: [],
     params: {},
-    events: [],
     content: {},
+    calendarKey: "",
   };
 
   static get observedAttributes() {
@@ -50,6 +49,9 @@ export class PagesPageComponent extends PageComponent {
     this.head.title = "You are " + this.ctx.params.slug;
     try {
       const page = await this.pageService.get(this.ctx.params.slug);
+      // TODO move to custom strapi model and remove from page?
+      this.scope.calendarKey = page?.["calendar_key"];
+
       console.debug("page", page);
       if (page) {
         if (page?.title) {
@@ -87,59 +89,19 @@ export class PagesPageComponent extends PageComponent {
           }
         }
         //TODO sort blog entries
-
-        const calendarKey = page?.["calendar_key"];
-        const calendarData = await window.fetch(
-          "https://gymott.net/iserv/public/calendar?key=049a7daf00db139b3c3e5df3e58ba5d3"
-        );
-        const data = await calendarData.text();
-
-        const parsedData = ical.parseICS(data);
-        const now = new Date();
-        for (const key in parsedData) {
-          const element = parsedData[key];
-          if (element.type === "VEVENT" && element.start) {
-            const date = new Date(element.start);
-            console.debug(element.categories);
-            if (date.getTime() > now.getTime()) {
-              console.debug(element);
-              if (
-                calendarKey &&
-                calendarKey.trim() !== "" &&
-                element.categories &&
-                element.categories?.indexOf(calendarKey) !== -1
-              ) {
-                this.scope.events.push(element);
-              } else if (!calendarKey || calendarKey.trim() === "") {
-                this.scope.events.push(element);
-              }
-            }
-          }
-        }
-        this.scope.events.sort(function (a, b) {
-          return new Date(a.start).getTime() - new Date(b.start).getTime();
-        });
       }
     } catch (error) {
       console.debug(error);
-      /*if (error.status === 404) {
-        this.scope.title = "Nicht gefunden!";
-        this.scope.content =
-          "Die angeforderte Seite konnte nicht gefunden werden.";
-      } else {
-        this.scope.title = "Unbekannter Fehler!";
-        this.scope.content = error.message;
-      }*/
     }
     this.head.title = this.scope.title;
     await super.beforeBind();
   }
 
   protected async afterBind() {
-    await super.afterBind(); // This must be called on the end of this function
+    await super.afterBind();
   }
 
   protected template() {
-    return pugTemplate(/*this.scope*/ {});
+    return pugTemplate(this.scope);
   }
 }

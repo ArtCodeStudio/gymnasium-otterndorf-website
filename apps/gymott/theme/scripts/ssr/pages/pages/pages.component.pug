@@ -19,7 +19,5 @@
             .col-12 
               a(ssr-rv-href="blog.slug | blog")
                 p(ssr-rv-text="blog.title")
-          h3 Termine
-          .row(ssr-rv-each-event="events")
-            .col-12 
-              p(ssr-rv-text="event.summary")
+        .col-12
+          gy-dates(rv-calendar-key="calendarKey")

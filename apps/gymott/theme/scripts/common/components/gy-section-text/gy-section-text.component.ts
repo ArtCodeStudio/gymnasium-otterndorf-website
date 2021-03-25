@@ -38,7 +38,7 @@ export class GySectionTextComponent extends Component {
     if (this.scope.section?.text) {
       this.scope.text = marked(this.scope.section?.text || "");
     }
-    await super.afterBind(); // This must be called on the end of this function
+    await super.afterBind();
   }
 
   protected connectedCallback() {

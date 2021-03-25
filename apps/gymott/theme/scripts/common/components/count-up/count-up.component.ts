@@ -69,8 +69,6 @@ export class CountUpComponent extends Component {
   protected async afterBind() {
     this.addEventListeners();
     this.checkViewport();
-
-    // This must be called on the end of this function
     await super.afterBind();
   }
 

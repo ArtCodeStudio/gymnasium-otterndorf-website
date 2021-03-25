@@ -7,6 +7,7 @@ import { FlexsearchModule } from './flexsearch/flexsearch.module';
 import { StrapiService } from './strapi/strapi.service';
 import { SearchService } from './search/search.service';
 import { NavigationService } from './navigation/navigation.service';
+import { CalendarController } from './calendar/calendar.controller';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { NavigationService } from './navigation/navigation.service';
     ThemeModule.forRoot(theme),
     FlexsearchModule,
   ],
-  controllers: [],
+  controllers: [CalendarController],
   providers: [ConfigService, StrapiService, SearchService, NavigationService],
 })
 export class AppModule {}

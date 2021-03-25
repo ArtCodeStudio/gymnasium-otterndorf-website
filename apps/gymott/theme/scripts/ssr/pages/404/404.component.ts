@@ -47,7 +47,7 @@ export class NotFoundPageComponent extends PageComponent {
   }
 
   protected async afterBind() {
-    await super.afterBind(); // This must be called on the end of this function
+    await super.afterBind();
   }
 
   protected template() {

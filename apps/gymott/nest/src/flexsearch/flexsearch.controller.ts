@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, Body } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { SearchOptions, Cursor } from './types';
 import { FlexSearchService } from './flexsearch.service';
 
@@ -21,6 +21,7 @@ export class FlexsearchController {
       limit,
       suggest,
       where,
+      field,
       bool,
       page,
     });

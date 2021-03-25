@@ -43,6 +43,7 @@
     "flexsearch": "^0.6.32",
     "glob": "^7.1.6",
     "jsdom": "^16.5.1",
+    "node-fetch": "^2.6.1",
     "pug": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

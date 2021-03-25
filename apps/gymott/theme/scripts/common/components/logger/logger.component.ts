@@ -36,7 +36,7 @@ export class LoggerComponent extends Component {
 
   protected async afterBind() {
     console.log(this.scope.logMe);
-    await super.afterBind(); // This must be called on the end of this function
+    await super.afterBind();
   }
 
   protected template() {
