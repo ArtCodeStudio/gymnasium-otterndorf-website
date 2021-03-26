@@ -1,5 +1,5 @@
 # Write your query or mutation here
-query homeSections {
+query HomeSections {
   home {
     sections {
       __typename

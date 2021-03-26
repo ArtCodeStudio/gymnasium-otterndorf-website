@@ -1,5 +1,5 @@
 # Write your query or mutation here
-query($slug: String!) {
+query blogBySlug ($slug: String!) {
   blogEntries(where: { slug: $slug }) {
     id
     created_at

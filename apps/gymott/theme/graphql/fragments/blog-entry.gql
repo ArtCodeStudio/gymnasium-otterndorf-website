@@ -1,0 +1,11 @@
+fragment BlogEntryFragment on BlogEntry {
+  id,
+  created_at,
+  updated_at,
+  title,
+  content {
+    __typename,
+  }
+  slug,
+  published_at,
+}

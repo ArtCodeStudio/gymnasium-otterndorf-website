@@ -9,6 +9,7 @@ export interface Scope {
   content: any;
   blogEntries: any[];
   calendarKey: string;
+  page: any;
 }
 
 export class PagesPageComponent extends PageComponent {
@@ -20,6 +21,7 @@ export class PagesPageComponent extends PageComponent {
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
+    page: {},
     assets: [],
     blogEntries: [],
     params: {},
@@ -49,6 +51,7 @@ export class PagesPageComponent extends PageComponent {
     this.head.title = "You are " + this.ctx.params.slug;
     try {
       const page = await this.pageService.get(this.ctx.params.slug);
+      this.scope.page = page;
       // TODO move to custom strapi model and remove from page?
       this.scope.calendarKey = page?.["calendar_key"] || "";
 

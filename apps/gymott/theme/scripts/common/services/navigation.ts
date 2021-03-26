@@ -1,6 +1,10 @@
 import { GraphQLClient } from "./graphql";
 import { ResponseError } from "../types/response-error";
-import { GraphQLNavigationEntries, helper } from "@gymott/common";
+import {
+  StrapiGqlNavigationEntriesQuery,
+  StrapiGqlNavigationEntries,
+  helper,
+} from "@gymott/common";
 import navigationQuery from "../../../graphql/queries/navigation-entries.gql";
 
 export class NavigationService {
@@ -21,10 +25,10 @@ export class NavigationService {
   }
 
   public async get() {
-    const navigationRes = (await this.graphql.requestCached(
+    const navigationRes = await this.graphql.requestCached<StrapiGqlNavigationEntriesQuery>(
       navigationQuery,
       {}
-    )) as GraphQLNavigationEntries;
+    );
 
     console.debug("navigationRes", JSON.stringify(navigationRes, null, 2));
 
@@ -34,7 +38,9 @@ export class NavigationService {
       throw error;
     }
     const baseEntries = navigationRes?.menu.entries;
-    const tree = helper.navigation.buildTree(baseEntries);
+    const tree = helper.navigation.buildTree(
+      baseEntries as StrapiGqlNavigationEntries
+    );
     return tree;
   }
 }

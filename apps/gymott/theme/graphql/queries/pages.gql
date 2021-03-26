@@ -1,7 +1,9 @@
+#import "../fragments/blog-entry.gql"
+
 # Write your query or mutation here
-query {
+query pages {
   pages(start: 0, limit: 50) {
-    id
+    id 
     created_at
     updated_at
     title
@@ -13,31 +15,15 @@ query {
     published_at
     assets {
       ... on ComponentSidebarAssets {
-        file
+        file {
+          url
+        }
         name
       }
     }
-    assets {
-      id
-      created_at
-      updated_at
-      name
-      alternativeText
-      caption
-      width
-      height
-      formats
-      hash
-      ext
-      mime
-      size
-      url
-      previewUrl
-      provider
-      provider_metadata
-      # related {}
+    blog_entries {
+      ...BlogEntryFragment
     }
-    # blog_entries {},
     # navigation_sections {},
   }
 }

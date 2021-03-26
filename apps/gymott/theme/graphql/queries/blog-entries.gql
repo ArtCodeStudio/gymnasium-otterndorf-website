@@ -1,14 +1,8 @@
+#import "../fragments/blog-entry.gql"
+
 # Write your query or mutation here
-query {
+query blogEntries {
   blogEntries(start: 0, limit: 50) {
-    id,
-    created_at,
-    updated_at,
-    Title,
-    Content {
-      __typename,
-    }
-    slug,
-    published_at,
+    ...BlogEntryFragment
   }
 }

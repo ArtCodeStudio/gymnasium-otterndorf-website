@@ -4,7 +4,7 @@ module.exports = {
     {
       name: '@manager/nest',
       script: 'yarn run _start:dev',
-      watch: ["package.json"],
+      watch: ["package.json", "../../../package.json"],
       instances: 1,
       env: {},
     },

@@ -1,4 +1,4 @@
-query navigationQuery {
+query navigationEntries {
   menu {
     entries: navigation_level_entry {
       parent {

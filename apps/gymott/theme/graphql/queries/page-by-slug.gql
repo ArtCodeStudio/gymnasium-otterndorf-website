@@ -1,5 +1,5 @@
 # Write your query or mutation here
-query($slug: String!) {
+query pageBySlug ($slug: String!) {
   pages(where: { slug: $slug }) {
     id
     created_at

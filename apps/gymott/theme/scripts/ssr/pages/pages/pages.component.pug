@@ -1,8 +1,10 @@
-.container-fluid.py-5.my-5.text-center
+.container-fluid.py-5.my-5
   .row
     .col-12
-      h1(ssr-rv-template="title")
+      h1.text-center(ssr-rv-template="title")
   section.row
+    .col-12 
+      pre: code(rv-text="page | json")
     .col-8
       gy-sections-home(ssr-rv-sections="content")
     .col-4
@@ -17,7 +19,7 @@
           h3 Blog Einträge
           .row(ssr-rv-each-blog="blogEntries")
             .col-12 
-              a(ssr-rv-href="blog.slug | blog")
+              a(ssr-rv-href="blog.slug | blog") 
                 p(ssr-rv-text="blog.title")
         .col-12
           gy-dates(rv-calendar-key="calendarKey")

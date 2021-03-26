@@ -1,4 +1,9 @@
-import { NavigationLink, GraphQLNavigationEntry } from "../types";
+import {
+  NavigationLink,
+  StrapiGqlNavigationEntry,
+  StrapiGqlNavigationEntries,
+  StrapiGqlNavigationEntriesQuery,
+} from "../types";
 
 const findParent = (
   link: NavigationLink,
@@ -17,7 +22,7 @@ const findParent = (
   return parentEntry;
 };
 
-const getHref = (baseItem: GraphQLNavigationEntry) => {
+const getHref = (baseItem: StrapiGqlNavigationEntry) => {
   const type = baseItem.navigation_link.type[0];
   if (!type) {
     return "";
@@ -31,13 +36,10 @@ const getHref = (baseItem: GraphQLNavigationEntry) => {
       return type.schulfach?.slug ? "/schulfach/" + type.schulfach.slug : "";
     case "ComponentLinkTypeWeb":
       return type.URL ? type.URL : "";
-    default:
-      console.warn(`Unknown navigation type: "${type.__typename}"`);
-      return "";
   }
 };
 
-const newItem = (baseItem?: GraphQLNavigationEntry): NavigationLink => {
+const newItem = (baseItem?: StrapiGqlNavigationEntry): NavigationLink => {
   if (baseItem) {
     return {
       type: "list",
@@ -56,10 +58,11 @@ const newItem = (baseItem?: GraphQLNavigationEntry): NavigationLink => {
   };
 };
 
-const buildTree = (baseEntries: GraphQLNavigationEntry[]) => {
+const buildTree = (baseEntries: StrapiGqlNavigationEntries = []) => {
   const result = newItem();
   let count = 0;
   let ignored = 0;
+
   const entryLength = baseEntries.length;
 
   do {
