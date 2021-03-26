@@ -1,5 +1,9 @@
 import { GraphQLClient } from "./graphql";
-import { ResponseError } from "../../common/types/response-error";
+import { ResponseError } from "../../common/types";
+import {
+  StrapiGqlPageBySlugQuery,
+  StrapiGqlPageBySlugQueryVariables,
+} from "@gymott/common";
 import pageQuery from "../../../graphql/queries/page-by-slug.gql";
 
 export class PageService {
@@ -20,7 +24,11 @@ export class PageService {
   }
 
   async get(slug: string) {
-    const pageRes = await this.graphql.requestCached(pageQuery, { slug });
+    const vars: StrapiGqlPageBySlugQueryVariables = { slug };
+    const pageRes = await this.graphql.requestCached<StrapiGqlPageBySlugQuery>(
+      pageQuery,
+      vars
+    );
     if (!Array.isArray(pageRes.pages) || pageRes.pages.length <= 0) {
       const error: ResponseError = new Error("Not found!");
       error.status = 404;

@@ -2,6 +2,7 @@ import { GraphQLClient } from "./graphql";
 import { ResponseError } from "../types/response-error";
 import {
   StrapiGqlNavigationEntriesQuery,
+  StrapiGqlNavigationEntriesQueryVariables,
   StrapiGqlNavigationEntries,
   helper,
 } from "@gymott/common";
@@ -25,9 +26,11 @@ export class NavigationService {
   }
 
   public async get() {
+    const vars: StrapiGqlNavigationEntriesQueryVariables = {};
     const navigationRes = await this.graphql.requestCached<StrapiGqlNavigationEntriesQuery>(
       navigationQuery,
-      {}
+      {},
+      vars
     );
 
     console.debug("navigationRes", JSON.stringify(navigationRes, null, 2));

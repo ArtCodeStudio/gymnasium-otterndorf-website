@@ -70,28 +70,29 @@ export class PagesPageComponent extends PageComponent {
           }
         }
 
-        //blog entries
-        if (page?.["blog_entries"] !== undefined) {
+        // blog entries
+        if (page?.["blog_entries"]) {
           for (const blogEntry of page?.["blog_entries"]) {
             this.scope.blogEntries.push(blogEntry);
           }
         }
-        if (page?.["blog_categories"] !== undefined) {
-          if (page?.["blog_categories"]["blog_entries"] !== undefined) {
-            for (const blogEntry of page?.["blog_categories"]["blog_entries"]) {
-              let found = false;
-              for (const existingEntry of this.scope.blogEntries) {
-                if (existingEntry.id === blogEntry.id) {
-                  found = true;
-                }
-              }
-              if (!found) {
-                this.scope.blogEntries.push(blogEntry);
-              }
-            }
-          }
-        }
-        //TODO sort blog entries
+        // TODO
+        // if (page?.["blog_categories"]) {
+        //   if (page?.["blog_categories"]["blog_entries"] !== undefined) {
+        //     for (const blogEntry of page?.["blog_categories"]["blog_entries"]) {
+        //       let found = false;
+        //       for (const existingEntry of this.scope.blogEntries) {
+        //         if (existingEntry.id === blogEntry.id) {
+        //           found = true;
+        //         }
+        //       }
+        //       if (!found) {
+        //         this.scope.blogEntries.push(blogEntry);
+        //       }
+        //     }
+        //   }
+        // }
+        // TODO sort blog entries
       }
     } catch (error) {
       console.debug(error);
