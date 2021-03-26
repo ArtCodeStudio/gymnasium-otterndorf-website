@@ -7,7 +7,9 @@ export class GyHomeService {
 
   protected static instance: GyHomeService;
 
-  // protected constructor() {}
+  protected constructor() {
+    /** protected */
+  }
 
   public static getInstance() {
     if (GyHomeService.instance) {

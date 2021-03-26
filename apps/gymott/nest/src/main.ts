@@ -1,3 +1,4 @@
+import './@types';
 import { NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
 import * as Express from 'express';

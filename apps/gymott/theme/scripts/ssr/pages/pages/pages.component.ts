@@ -50,7 +50,7 @@ export class PagesPageComponent extends PageComponent {
     try {
       const page = await this.pageService.get(this.ctx.params.slug);
       // TODO move to custom strapi model and remove from page?
-      this.scope.calendarKey = page?.["calendar_key"];
+      this.scope.calendarKey = page?.["calendar_key"] || "";
 
       console.debug("page", page);
       if (page) {

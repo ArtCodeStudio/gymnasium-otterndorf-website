@@ -1,6 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { StrapiService } from '../strapi/strapi.service';
-import { FlexSearchService } from '../flexsearch/flexsearch.service';
+import { StrapiService } from '../../strapi/strapi.service';
+import { FlexSearchService } from '../../flexsearch/flexsearch.service';
 
 @Injectable()
 export class SearchService implements OnModuleInit {

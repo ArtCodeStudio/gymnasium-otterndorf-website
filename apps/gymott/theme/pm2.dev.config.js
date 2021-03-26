@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "dev:@gymott/theme",
       script: "yarn run watch",
-      watch: false,
+      watch: ["package.json"],
       instances: 1,
       env: {
         NODE_ENV: "development",

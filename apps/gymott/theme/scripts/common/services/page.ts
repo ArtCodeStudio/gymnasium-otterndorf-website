@@ -7,6 +7,10 @@ export class PageService {
 
   protected static instance: PageService;
 
+  protected constructor() {
+    /** protected */
+  }
+
   public static getInstance() {
     if (PageService.instance) {
       return PageService.instance;

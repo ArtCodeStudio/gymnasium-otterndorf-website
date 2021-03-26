@@ -7,6 +7,10 @@ export class BlogService {
 
   protected static instance: BlogService;
 
+  protected constructor() {
+    /** protected */
+  }
+
   public static getInstance() {
     if (BlogService.instance) {
       return BlogService.instance;

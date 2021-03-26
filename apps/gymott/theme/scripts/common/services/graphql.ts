@@ -42,13 +42,13 @@ export class GraphQLClient extends _GraphQLClient {
     requestHeaders?: RequestInit["headers"],
     expiresIn: number | string = "5 mins"
   ): Promise<T> {
-    const key = document.toString();
-    // if (variables) {
-    //   key += JSON.stringify(variables);
-    // }
-    // if (requestHeaders) {
-    //   key += JSON.stringify(requestHeaders);
-    // }
+    let key = document.toString();
+    if (variables) {
+      key += JSON.stringify(variables);
+    }
+    if (requestHeaders) {
+      key += JSON.stringify(requestHeaders);
+    }
 
     return await defaultCache.resolve<T>(
       hashCode(key),

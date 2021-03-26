@@ -1,5 +1,5 @@
 bs5-sidebar#right-sidebar.bg-primary.py-5(container-selector="#main-container" position="right")
   gy-link-list.list-group(type="toolbar")
     .list-group-item.list-group-item-action.bg-transparent.border-0(rv-each-item="items")
-      a.nav-link.text-light(rv-href="item.link" rv-text="item.name")
+      a.nav-link.text-light(csr-rv-route rv-href="item.link" rv-text="item.name")
   gy-right-sidebar-entry(rv-entry="navEntry")

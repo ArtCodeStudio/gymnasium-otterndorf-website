@@ -1,3 +1,5 @@
+export * from "./cache";
+export { CalendarService } from "./calendar";
 export { BlogService } from "./blog";
 export { GraphQLClient } from "./graphql";
 export { GyHomeService } from "./home";

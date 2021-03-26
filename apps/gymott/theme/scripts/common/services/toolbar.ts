@@ -7,8 +7,9 @@ export class ToolbarService {
 
   protected static instance: ToolbarService;
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  protected constructor() {}
+  protected constructor() {
+    /** protected */
+  }
 
   public static getInstance() {
     if (ToolbarService.instance) {
