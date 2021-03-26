@@ -37,7 +37,7 @@ export class GyHomeService {
     }
 
     const sections = response.home?.sections || [];
-    const results: any = {};
+    const results: any[] = []; // TODO type
     for (let i = 0; i < sections.length; i++) {
       if (sections[i]) {
         const section = sections[i];
@@ -56,6 +56,9 @@ export class GyHomeService {
                 : {}),
             });
             // console.debug("ComponentSectionSlideshow", sections[i]);
+            break;
+          case "ComponentSectionFacts":
+            results.push(sections[i]);
             break;
         }
       }
