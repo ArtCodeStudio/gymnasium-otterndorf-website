@@ -51,6 +51,8 @@ export const apps: ManagerApp[] = [
     },
     pm2: {
       script: "yarn workspace @gymott/nest watch",
+      // The app restarts by itself on changes but this is not working fpr new packages, so we also watch the package.json with pm2
+      watch: ["package.json"],
       env: {
         STRAPI_INTERN_URL: "http://127.0.0.1:3002",
         STRAPI_EXTERN_URL: "https://gym-strapi.artandcode.de",
@@ -65,6 +67,7 @@ export const apps: ManagerApp[] = [
     },
     pm2: {
       script: "npm run develop",
+      watch: [".cache", "package.json"],
       env: {
         // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
         NODE_OPTIONS: "",
