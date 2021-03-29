@@ -1,0 +1,10 @@
+fragment ComponentSlideshowEntryBlogFragment on ComponentSlideshowSlideshowEntryBlog {
+  id
+  image {
+    formats
+  }
+  subtitle
+  link {
+    slug
+  }
+}

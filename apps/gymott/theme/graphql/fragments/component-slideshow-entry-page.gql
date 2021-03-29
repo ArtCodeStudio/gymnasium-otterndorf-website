@@ -1,0 +1,10 @@
+fragment ComponentSlideshowEntryPageFragment on ComponentSlideshowSlideshowEntryPage {
+  id
+  image {
+    formats
+  }
+  subtitle
+  link {
+    slug
+  }
+}

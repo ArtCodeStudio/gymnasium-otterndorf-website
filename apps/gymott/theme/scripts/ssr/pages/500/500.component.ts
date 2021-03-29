@@ -29,7 +29,12 @@ export class InternalErrorPageComponent extends PageComponent {
     this.head.title = "500 Internal server error";
     this.scope.params = this.ctx.params;
     this.scope.title = this.ctx.status.toString();
-    this.scope.content = this.ctx.errorObj?.message || "Internal server error";
+    this.scope.content =
+      `${this.ctx.errorObj?.message}` || "Internal server error";
+    if (typeof this.scope.content === "string") {
+      this.scope.content = this.scope.content.replace(/\n/g, "<br >");
+    }
+
     this.scope.error = this.ctx.errorObj;
   }
 

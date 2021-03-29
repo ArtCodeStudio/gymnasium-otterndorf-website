@@ -1,6 +1,5 @@
 #import "../fragments/blog-entry.gql"
 
-# Write your query or mutation here
 query blogEntries {
   blogEntries(start: 0, limit: 50) {
     ...BlogEntryFragment

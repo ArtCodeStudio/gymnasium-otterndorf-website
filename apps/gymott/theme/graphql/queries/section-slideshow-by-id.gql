@@ -1,0 +1,7 @@
+#import "../fragments/section-slideshow.gql"
+
+query sectionSlideshowById($id: ID!) {
+  sectionSlideshow(id: $id) {
+    ...SectionSlideshowFragment
+  }
+}

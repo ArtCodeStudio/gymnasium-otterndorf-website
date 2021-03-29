@@ -33,7 +33,7 @@ export class NavigationService {
       vars
     );
 
-    console.debug("navigationRes", JSON.stringify(navigationRes, null, 2));
+    // console.debug("navigationRes", JSON.stringify(navigationRes, null, 2));
 
     if (!navigationRes?.menu?.entries) {
       const error: ResponseError = new Error("Not found!");

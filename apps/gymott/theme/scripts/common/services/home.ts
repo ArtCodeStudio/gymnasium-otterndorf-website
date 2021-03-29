@@ -5,7 +5,7 @@ import {
   StrapiGqlHomeSectionsQuery,
   StrapiGqlHomeSectionsQueryVariables,
 } from "@gymott/common";
-import slideshowById from "../../../graphql/queries/slideshow-by-id.gql";
+import sectionSlideshowById from "../../../graphql/queries/section-slideshow-by-id.gql";
 import homeSections from "../../../graphql/queries/home-sections.gql";
 
 export class GyHomeService {
@@ -43,22 +43,23 @@ export class GyHomeService {
         const section = sections[i];
         switch (section?.__typename) {
           case "ComponentContentImage":
-            results.push(sections[i]);
+            results.push(section);
             break;
           case "ComponentContentText":
-            results.push(sections[i]);
+            results.push(section);
             break;
           case "ComponentSectionSlideshow":
+            console.debug("section slideshow", section["slideshow"]);
             results.push({
-              ...sections[i],
+              ...section,
               ...(section["slideshow"]?.id
                 ? await this.getSlideshow(section["slideshow"].id)
                 : {}),
             });
-            // console.debug("ComponentSectionSlideshow", sections[i]);
+            // console.debug("ComponentSectionSlideshow", section);
             break;
           case "ComponentSectionFacts":
-            results.push(sections[i]);
+            results.push(section);
             break;
         }
       }
@@ -70,7 +71,7 @@ export class GyHomeService {
   async getSlideshow(id: string) {
     const vars: StrapiGqlSlideshowByIdQueryVariables = { id };
     const slideshowResponse = await this.graphql.requestCached<StrapiGqlSlideshowByIdQuery>(
-      slideshowById,
+      sectionSlideshowById,
       vars
     );
     // const slideshow = slideshowResponse["sectionSlideshow"];

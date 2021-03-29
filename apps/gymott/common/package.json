@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "yarn run typegen && tsc",
+    "typegen": "yarn workspace @gymott/tools run typegen",
     "watch": "tsc --watch"
   },
   "devDependencies": {

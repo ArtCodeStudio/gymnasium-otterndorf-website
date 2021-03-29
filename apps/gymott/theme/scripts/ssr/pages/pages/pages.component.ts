@@ -95,7 +95,7 @@ export class PagesPageComponent extends PageComponent {
         // TODO sort blog entries
       }
     } catch (error) {
-      console.debug(error);
+      this.throw(error);
     }
     this.head.title = this.scope.title;
     await super.beforeBind();

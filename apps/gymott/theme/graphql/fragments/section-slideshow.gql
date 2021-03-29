@@ -1,0 +1,19 @@
+#import "./component-slideshow-entry.gql"
+#import "./component-slideshow-entry-blog.gql"
+#import "./component-slideshow-entry-page.gql"
+
+fragment SectionSlideshowFragment on SectionSlideshow {
+  title
+  id
+  entries {
+    ... on ComponentSlideshowSlideshowEntry {
+      ...ComponentSlideshowEntryFragment
+    }
+    ... on ComponentSlideshowSlideshowEntryBlog {
+      ...ComponentSlideshowEntryBlogFragment
+    }
+    ... on ComponentSlideshowSlideshowEntryPage {
+      ...ComponentSlideshowEntryPageFragment
+    }
+  }
+}

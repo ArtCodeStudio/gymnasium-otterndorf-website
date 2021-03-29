@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { StrapiService } from '../strapi/strapi.service';
-import { GraphQLNavigationEntries, helper } from '@gymott/common';
+import { StrapiGqlNavigationEntriesQuery, helper } from '@gymott/common';
 
 @Injectable()
 export class NavigationService {
@@ -10,7 +10,7 @@ export class NavigationService {
     const navigationRes = (await this.strapi.graphql.execute(
       'graphql/queries/navigation-entries',
       {},
-    )) as GraphQLNavigationEntries;
+    )) as StrapiGqlNavigationEntriesQuery;
 
     if (!navigationRes?.menu?.entries) {
       const error = new Error('Not found!');

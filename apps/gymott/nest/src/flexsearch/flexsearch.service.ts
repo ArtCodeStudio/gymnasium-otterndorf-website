@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const _FlexSearch = require('flexsearch');
 import type TypeFlexSearch from 'flexsearch';
 import type { CreateOptions, Indices } from './types';

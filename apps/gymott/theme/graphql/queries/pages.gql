@@ -1,29 +1,7 @@
-#import "../fragments/blog-entry.gql"
+#import "../fragments/page.gql"
 
-# Write your query or mutation here
 query pages {
   pages(start: 0, limit: 50) {
-    id 
-    created_at
-    updated_at
-    title
-    slug
-    content {
-      __typename
-    }
-    calendar_key
-    published_at
-    assets {
-      ... on ComponentSidebarAssets {
-        file {
-          url
-        }
-        name
-      }
-    }
-    blog_entries {
-      ...BlogEntryFragment
-    }
-    # navigation_sections {},
+    ...PageFragment
   }
 }

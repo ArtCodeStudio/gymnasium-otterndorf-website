@@ -1,4 +1,8 @@
-# Write your query or mutation here
+
+#import "../fragments/component-section-facts.gql"
+#import "../fragments/component-content-text.gql"
+#import "../fragments/component-content-image.gql"
+
 query HomeSections {
   home {
     sections {
@@ -9,20 +13,13 @@ query HomeSections {
         }
       }
       ... on ComponentSectionFacts {
-        facts {
-          number
-          title
-          subtitle
-        }
+        ...ComponentSectionFactsFragment
       }
       ... on ComponentContentText {
-        text
+        ...ComponentContentTextFragment
       }
       ... on ComponentContentImage {
-        image {
-          formats
-        }
-        caption
+        ...ComponentContentImageFragment
       }
     }
   }

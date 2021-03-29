@@ -47,9 +47,14 @@ export class BlogEntryPageComponent extends PageComponent {
   }
 
   protected async afterBind() {
-    this.scope.content = await BlogService.getInstance().get(
-      this.scope.params.slug
-    );
+    try {
+      this.scope.content = await BlogService.getInstance().get(
+        this.scope.params.slug
+      );
+    } catch (error) {
+      this.throw(error);
+    }
+
     console.debug("content", this.scope.content);
     this.scope.title = this.scope.content.title;
     this.scope.contents = this.scope.content.content;

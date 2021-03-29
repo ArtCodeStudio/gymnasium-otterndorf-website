@@ -70,9 +70,14 @@ riba.lifecycle.events.on("ComponentLifecycle:allBound", () => {
   window.ssr.events.trigger("ready");
 });
 
-riba.lifecycle.events.on("ComponentLifecycle:timeout", () => {
-  console.error("timeout!");
-  window.ssr.events.trigger("ready");
+// riba.lifecycle.events.on("ComponentLifecycle:timeout", () => {
+//   console.error("timeout!");
+//   window.ssr.events.trigger("ready");
+// });
+
+riba.lifecycle.events.on("ComponentLifecycle:error", (error: Error) => {
+  // console.error(error);
+  window.ssr.events.trigger("error", error);
 });
 
 const view = riba.bind(document.body, window.model);

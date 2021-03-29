@@ -1,0 +1,7 @@
+fragment ComponentContentImageFragment on ComponentContentImage {
+  id
+  image {
+    formats
+  }
+  caption
+}

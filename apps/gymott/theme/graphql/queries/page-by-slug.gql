@@ -1,55 +1,7 @@
-# Write your query or mutation here
+#import "../fragments/page.gql"
+
 query pageBySlug ($slug: String!) {
   pages(where: { slug: $slug }) {
-    id
-    created_at
-    updated_at
-    title
-    slug
-    calendar_key
-    assets {
-      ... on ComponentSidebarAssets {
-        file {
-          url
-        }
-        name
-      }
-    }
-
-    blog_entries {
-      title
-      slug
-    }
-
-    content {
-      __typename
-      ... on ComponentContentImage {
-        id
-        caption
-        image {
-          id
-          created_at
-          updated_at
-          name
-          alternativeText
-          caption
-          width
-          height
-          formats
-          hash
-          ext
-          mime
-          size
-          url
-          previewUrl
-          provider
-          provider_metadata
-        }
-      }
-      ... on ComponentContentText {
-        id
-        text
-      }
-    }
+    ...PageFragment
   }
 }

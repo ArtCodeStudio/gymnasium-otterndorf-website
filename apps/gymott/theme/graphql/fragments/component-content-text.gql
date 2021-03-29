@@ -1,0 +1,4 @@
+fragment ComponentContentTextFragment on ComponentContentText {
+  id
+  text
+}

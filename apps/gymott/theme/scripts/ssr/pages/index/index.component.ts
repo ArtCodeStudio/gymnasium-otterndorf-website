@@ -35,7 +35,12 @@ export class IndexPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    this.scope.content = await this.homeService.getHomeSections();
+    try {
+      this.scope.content = await this.homeService.getHomeSections();
+    } catch (error) {
+      this.throw(error);
+    }
+
     await super.beforeBind();
   }
 

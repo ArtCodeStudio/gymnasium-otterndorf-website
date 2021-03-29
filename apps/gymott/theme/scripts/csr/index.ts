@@ -57,6 +57,13 @@ export class CSRApp {
     this.view = this.riba.bind(document.body, this.model);
 
     this.view.registComponents();
+
+    this.riba.lifecycle.events.on(
+      "ComponentLifecycle:error",
+      (error: Error) => {
+        console.error(error);
+      }
+    );
   }
 }
 

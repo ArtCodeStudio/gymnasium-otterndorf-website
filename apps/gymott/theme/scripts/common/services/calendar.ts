@@ -23,10 +23,12 @@ export class CalendarService {
     return defaultCache.resolve<CalendarComponent[]>(
       cacheKey,
       async () => {
-        const events:
-          | CalendarComponent[]
-          | void = await HttpService.getJSON("/api/calendar", { calendarKey });
-        return events || [];
+        const res = await HttpService.getJSON<CalendarComponent[]>(
+          "/api/calendar",
+          { calendarKey }
+        );
+        const events = res.body || [];
+        return events;
       },
       expiresIn
     );

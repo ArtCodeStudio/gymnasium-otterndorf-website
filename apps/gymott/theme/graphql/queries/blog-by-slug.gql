@@ -1,4 +1,5 @@
-# Write your query or mutation here
+#import "../fragments/component-content-image.gql"
+
 query blogBySlug ($slug: String!) {
   blogEntries(where: { slug: $slug }) {
     id
@@ -13,28 +14,7 @@ query blogBySlug ($slug: String!) {
     content {
       __typename
       ... on ComponentContentImage {
-        id
-        caption
-
-        image {
-          id
-          created_at
-          updated_at
-          name
-          alternativeText
-          caption
-          width
-          height
-          formats
-          hash
-          ext
-          mime
-          size
-          url
-          previewUrl
-          provider
-          provider_metadata
-        }
+        ...ComponentContentImageFragment
       }
       ... on ComponentContentText {
         id

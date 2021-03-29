@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "./src/index.ts",
   "scripts": {
-    "build": "yarn run typegen && yarn workspace @gymott/common run build",
+    "build": "yarn run typegen",
     "typegen": "graphql-codegen --config codegen.yml"
   },
   "devDependencies": {

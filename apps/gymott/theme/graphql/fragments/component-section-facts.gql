@@ -1,0 +1,7 @@
+fragment ComponentSectionFactsFragment on ComponentSectionFacts {
+  facts {
+    number
+    title
+    subtitle
+  }
+}

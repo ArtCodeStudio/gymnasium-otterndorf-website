@@ -4,7 +4,7 @@
       h1.text-center(ssr-rv-text="title")
   section.row
     .col-12
-      .text-center.my-3(ssr-rv-text="content")
+      .text-center.my-3(ssr-rv-html="content")
       .alert.alert-danger.text-left(role="alert")
         span(ssr-rv-each-line="error.stack")
           | [ line ]

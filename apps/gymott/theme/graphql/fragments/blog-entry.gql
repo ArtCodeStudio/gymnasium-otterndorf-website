@@ -1,11 +1,11 @@
 fragment BlogEntryFragment on BlogEntry {
-  id,
-  created_at,
-  updated_at,
-  title,
+  id
+  created_at
+  updated_at
+  title
   content {
-    __typename,
+    __typename
   }
-  slug,
-  published_at,
+  slug
+  published_at
 }

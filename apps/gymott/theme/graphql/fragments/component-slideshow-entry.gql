@@ -1,0 +1,7 @@
+fragment ComponentSlideshowEntryFragment on ComponentSlideshowSlideshowEntry {
+  id
+  image {
+    formats
+  }
+  subtitle
+}
