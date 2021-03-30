@@ -13,7 +13,7 @@ export class GySectionsComponent extends Component {
 
   scope: Scope = {};
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["sections"];
   }
 

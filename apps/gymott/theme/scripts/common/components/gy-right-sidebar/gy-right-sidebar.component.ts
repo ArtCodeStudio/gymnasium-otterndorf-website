@@ -17,7 +17,7 @@ export class GyRightSidebarComponent extends Component {
     navEntry: null,
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["nav-entry"];
   }
 

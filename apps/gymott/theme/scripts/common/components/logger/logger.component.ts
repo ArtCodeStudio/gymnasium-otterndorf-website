@@ -13,7 +13,7 @@ export class LoggerComponent extends Component {
     logMe: "",
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["log-me"];
   }
 
@@ -39,7 +39,7 @@ export class LoggerComponent extends Component {
     await super.afterBind();
   }
 
-  protected template() {
+  protected template(): null {
     return null;
   }
 }

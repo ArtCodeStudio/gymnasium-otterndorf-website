@@ -24,7 +24,7 @@ export class BlogEntryPageComponent extends PageComponent {
     params: {},
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return [];
   }
 

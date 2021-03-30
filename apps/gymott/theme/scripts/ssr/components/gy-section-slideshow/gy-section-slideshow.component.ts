@@ -15,7 +15,7 @@ export class GySectionSlideshowComponent extends Component {
     section: null,
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["section"];
   }
 

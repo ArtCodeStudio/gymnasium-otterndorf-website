@@ -17,7 +17,7 @@ export class CountUpComponent extends Component {
     target: 0,
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["target"];
   }
 
@@ -77,7 +77,7 @@ export class CountUpComponent extends Component {
     this.init(CountUpComponent.observedAttributes);
   }
 
-  protected template() {
+  protected template(): null {
     return null;
   }
 }

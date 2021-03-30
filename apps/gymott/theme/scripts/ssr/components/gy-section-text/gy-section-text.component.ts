@@ -22,7 +22,7 @@ export class GySectionTextComponent extends Component {
     text: "",
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["section"];
   }
 

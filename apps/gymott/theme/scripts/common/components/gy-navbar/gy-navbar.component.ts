@@ -16,7 +16,7 @@ export class GyNavbarComponent extends Component {
     onSearchBtn: this.onSearchBtn,
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return [];
   }
 

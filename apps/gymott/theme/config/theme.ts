@@ -7,7 +7,6 @@ export const themeConfig: ThemeConfig = {
   viewsDir: "templates",
   pageComponentsDir: "scripts/ssr/pages",
   ssr: {
-    engine: "jsdom",
     rootTag: "ssr-root-page",
     template: "page-component.pug",
   },

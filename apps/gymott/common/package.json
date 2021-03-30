@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "scripts": {
-    "clear": "rm -rf dist",
     "build": "yarn run typegen && tsc",
     "typegen": "graphql-codegen --config codegen.yml",
+    "clear": "rm -rf dist",
     "watch": "yarn run clear && yarn run typegen && tsc --watch"
   },
   "devDependencies": {

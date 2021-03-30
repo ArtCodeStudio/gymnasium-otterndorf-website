@@ -21,7 +21,7 @@ export class GyDatesComponent extends Component {
     calendarKey: "",
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["calendar-key"];
   }
 

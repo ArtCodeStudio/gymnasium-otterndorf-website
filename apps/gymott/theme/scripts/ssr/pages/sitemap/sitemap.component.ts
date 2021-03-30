@@ -23,7 +23,7 @@ export class SitemapPageComponent extends PageComponent {
     blogPosts: [],
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return [];
   }
 

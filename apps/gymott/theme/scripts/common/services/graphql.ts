@@ -2,7 +2,8 @@ import { GraphQLClient as _GraphQLClient } from "graphql-request";
 import type { Variables, RequestDocument } from "graphql-request/dist/types";
 import type { RequestInit } from "graphql-request/dist/types.dom";
 import authMutation from "../../../graphql/mutations/auth.gql";
-import { defaultCache, hashCode } from "./cache";
+import { hashCode } from "@ribajs/utils/src/type";
+import { defaultCache } from "./cache";
 
 export class GraphQLClient extends _GraphQLClient {
   protected static instance: GraphQLClient;

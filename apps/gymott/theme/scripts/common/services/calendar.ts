@@ -1,5 +1,6 @@
 import { HttpService } from "@ribajs/core";
-import { defaultCache, hashCode } from "./cache";
+import { hashCode } from "@ribajs/utils/src/type";
+import { defaultCache } from "./cache";
 import type { CalendarComponent } from "ical";
 
 export class CalendarService {

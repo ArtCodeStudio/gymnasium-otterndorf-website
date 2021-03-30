@@ -17,7 +17,7 @@ export class IndexPageComponent extends PageComponent {
     content: {},
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return [];
   }
 

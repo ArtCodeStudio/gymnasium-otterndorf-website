@@ -1,10 +1,9 @@
 import { GraphQLClient } from "./graphql";
-import { ResponseError } from "../types/response-error";
+import { ResponseError, NavigationLink } from "../types";
 import {
   StrapiGqlNavigationEntriesQuery,
   StrapiGqlNavigationEntriesQueryVariables,
-  helper,
-} from "@gymott/common";
+} from "../types";
 import navigationQuery from "../../../graphql/queries/navigation-entries.gql";
 
 export class NavigationService {
@@ -24,6 +23,98 @@ export class NavigationService {
     return NavigationService.instance;
   }
 
+  protected findParent(
+    link: NavigationLink,
+    id: string
+  ): NavigationLink | undefined {
+    let parentEntry = link.children.find((child) => {
+      if (child.id === id) {
+        return true;
+      }
+    });
+    if (!parentEntry) {
+      for (const child of link.children) {
+        parentEntry = this.findParent(child, id);
+      }
+    }
+    return parentEntry;
+  }
+
+  protected getHref(
+    baseItem: StrapiGqlNavigationEntriesQuery["menu"]["entries"][0]
+  ) {
+    const type = baseItem.navigation_link.type[0];
+    if (!type) {
+      return "";
+    }
+    switch (type.__typename) {
+      case "ComponentLinkTypeBlog":
+        return type.blog?.slug ? "/post/" + type.blog.slug : "";
+      case "ComponentLinkTypePage":
+        return type.page?.slug ? "/page/" + type.page.slug : "";
+      case "ComponentLinkTypeSchulfach":
+        return type.schulfach?.slug ? "/schulfach/" + type.schulfach.slug : "";
+      case "ComponentLinkTypeWeb":
+        return type.URL ? type.URL : "";
+    }
+  }
+
+  protected newItem(
+    baseItem?: StrapiGqlNavigationEntriesQuery["menu"]["entries"][0]
+  ): NavigationLink {
+    if (baseItem) {
+      return {
+        type: "list",
+        id: baseItem.navigation_link.id,
+        label: baseItem.navigation_link.title || baseItem.title,
+        href: this.getHref(baseItem),
+        children: [],
+      };
+    }
+    // Empty item
+    return {
+      type: "list",
+      label: "",
+      id: "",
+      children: [],
+    };
+  }
+
+  protected buildTree(
+    baseEntries: StrapiGqlNavigationEntriesQuery["menu"]["entries"] = []
+  ) {
+    const result = this.newItem();
+    let count = 0;
+    let ignored = 0;
+
+    const entryLength = baseEntries.length;
+
+    do {
+      for (const entry of baseEntries) {
+        // Root element
+        if (!entry.parent) {
+          result.children.push(this.newItem(entry));
+          count++;
+        } else if (entry.parent.id) {
+          // Child element
+          const parentEntry = this.findParent(result, entry.parent.id);
+          if (parentEntry) {
+            parentEntry.children?.push(this.newItem(entry));
+            count++;
+          }
+        } else {
+          ignored++;
+        }
+      }
+    } while (count + ignored < entryLength);
+
+    if (ignored > 0) {
+      console.warn(`${ignored} navigation items are ignored!`);
+    }
+
+    return result;
+  }
+
   public async get() {
     const vars: StrapiGqlNavigationEntriesQueryVariables = {};
     const navigationRes = await this.graphql.requestCached<StrapiGqlNavigationEntriesQuery>(
@@ -40,7 +131,7 @@ export class NavigationService {
       throw error;
     }
     const baseEntries = navigationRes?.menu.entries;
-    const tree = helper.navigation.buildTree(
+    const tree = this.buildTree(
       baseEntries as any // TODO StrapiGqlNavigationEntriesQuery["menu"]["entries"]
     );
     return tree;

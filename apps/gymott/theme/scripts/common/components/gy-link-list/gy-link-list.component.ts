@@ -23,7 +23,7 @@ export class GyLinkListComponent extends Component {
     items: [],
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["type"];
   }
 
@@ -56,7 +56,7 @@ export class GyLinkListComponent extends Component {
     this.init(GyLinkListComponent.observedAttributes);
   }
 
-  protected template() {
+  protected template(): null {
     return null;
   }
 }

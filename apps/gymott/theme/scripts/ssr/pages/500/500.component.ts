@@ -20,7 +20,7 @@ export class InternalErrorPageComponent extends PageComponent {
     error: undefined,
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return [];
   }
 

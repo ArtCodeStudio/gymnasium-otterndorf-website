@@ -29,7 +29,7 @@ export class PagePageComponent extends PageComponent {
     calendarKey: "",
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return [];
   }
 

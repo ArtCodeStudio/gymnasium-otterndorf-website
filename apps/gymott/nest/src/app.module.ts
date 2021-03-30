@@ -6,7 +6,6 @@ import { ThemeModule } from '@ribajs/nest-theme';
 import { FlexsearchModule } from './flexsearch/flexsearch.module';
 import { StrapiService } from './strapi/strapi.service';
 import { SearchService } from './api/search/search.service';
-import { NavigationService } from './navigation/navigation.service';
 import { CalendarController } from './api/calendar/calendar.controller';
 import { CalendarService } from './api/calendar/calendar.service';
 
@@ -19,12 +18,6 @@ import { CalendarService } from './api/calendar/calendar.service';
     FlexsearchModule,
   ],
   controllers: [CalendarController],
-  providers: [
-    ConfigService,
-    StrapiService,
-    SearchService,
-    NavigationService,
-    CalendarService,
-  ],
+  providers: [ConfigService, StrapiService, SearchService, CalendarService],
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-right-sidebar-entry.component.pug";
-import { NavigationLink } from "@gymott/common";
+import { NavigationLink } from "../../../common/types";
 
 export interface Scope {
   entry?: NavigationLink;
@@ -16,7 +16,7 @@ export class GyRightSidebarEntryComponent extends Component {
     entry: undefined,
   };
 
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ["entry"];
   }
 
