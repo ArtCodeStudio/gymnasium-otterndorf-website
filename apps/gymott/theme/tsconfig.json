@@ -2,8 +2,13 @@
   "extends": "@ribajs/tsconfig",
   "compilerOptions": {
     "outDir": "assets",
-    "typeRoots": ["node_modules/@types", "types"],
-    "types": ["node"],
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ],
+    "types": [
+      "node"
+    ],
     "baseUrl": "scripts"
   },
   "exclude": [

@@ -1,5 +1,7 @@
-@import "./index/index.component";
-@import "./pages/pages.component";
-@import "./pages/pages.component";
-@import "./blog/blog.component";
+@import "./404/404.component";
+@import "./500/500.component";
 @import "./blog/entry/blog-entry.component";
+@import "./blog/blog.component";
+@import "./index/index.component";
+@import "./page/page.component";
+@import "./sitemap/sitemap.component";

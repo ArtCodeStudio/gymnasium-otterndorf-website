@@ -1,9 +1,4 @@
-import {
-  NavigationLink,
-  StrapiGqlNavigationEntry,
-  StrapiGqlNavigationEntries,
-  StrapiGqlNavigationEntriesQuery,
-} from "../types";
+import { NavigationLink, StrapiGqlNavigationEntriesQuery } from "../types";
 
 const findParent = (
   link: NavigationLink,
@@ -22,16 +17,18 @@ const findParent = (
   return parentEntry;
 };
 
-const getHref = (baseItem: StrapiGqlNavigationEntry) => {
+const getHref = (
+  baseItem: StrapiGqlNavigationEntriesQuery["menu"]["entries"][0]
+) => {
   const type = baseItem.navigation_link.type[0];
   if (!type) {
     return "";
   }
   switch (type.__typename) {
     case "ComponentLinkTypeBlog":
-      return type.blog?.slug ? "/blog/article/" + type.blog.slug : "";
+      return type.blog?.slug ? "/post/" + type.blog.slug : "";
     case "ComponentLinkTypePage":
-      return type.page?.slug ? "/pages/" + type.page.slug : "";
+      return type.page?.slug ? "/page/" + type.page.slug : "";
     case "ComponentLinkTypeSchulfach":
       return type.schulfach?.slug ? "/schulfach/" + type.schulfach.slug : "";
     case "ComponentLinkTypeWeb":
@@ -39,7 +36,9 @@ const getHref = (baseItem: StrapiGqlNavigationEntry) => {
   }
 };
 
-const newItem = (baseItem?: StrapiGqlNavigationEntry): NavigationLink => {
+const newItem = (
+  baseItem?: StrapiGqlNavigationEntriesQuery["menu"]["entries"][0]
+): NavigationLink => {
   if (baseItem) {
     return {
       type: "list",
@@ -58,7 +57,9 @@ const newItem = (baseItem?: StrapiGqlNavigationEntry): NavigationLink => {
   };
 };
 
-const buildTree = (baseEntries: StrapiGqlNavigationEntries = []) => {
+const buildTree = (
+  baseEntries: StrapiGqlNavigationEntriesQuery["menu"]["entries"] = []
+) => {
   const result = newItem();
   let count = 0;
   let ignored = 0;

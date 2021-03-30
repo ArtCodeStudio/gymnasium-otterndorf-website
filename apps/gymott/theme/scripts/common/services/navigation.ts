@@ -3,7 +3,6 @@ import { ResponseError } from "../types/response-error";
 import {
   StrapiGqlNavigationEntriesQuery,
   StrapiGqlNavigationEntriesQueryVariables,
-  StrapiGqlNavigationEntries,
   helper,
 } from "@gymott/common";
 import navigationQuery from "../../../graphql/queries/navigation-entries.gql";
@@ -42,7 +41,7 @@ export class NavigationService {
     }
     const baseEntries = navigationRes?.menu.entries;
     const tree = helper.navigation.buildTree(
-      baseEntries as StrapiGqlNavigationEntries
+      baseEntries as any // TODO StrapiGqlNavigationEntriesQuery["menu"]["entries"]
     );
     return tree;
   }

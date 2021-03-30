@@ -1,13 +1,13 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import pugTemplate from "./gy-sections-home.component.pug";
+import pugTemplate from "./gy-sections.component.pug";
 
 export interface Scope {
   sections?: any;
 }
 
-export class GySectionsHomeComponent extends Component {
-  public static tagName = "gy-sections-home";
+export class GySectionsComponent extends Component {
+  public static tagName = "gy-sections";
   public _debug = false;
   protected autobind = true;
 
@@ -36,7 +36,7 @@ export class GySectionsHomeComponent extends Component {
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(GySectionsHomeComponent.observedAttributes);
+    this.init(GySectionsComponent.observedAttributes);
   }
 
   protected template() {

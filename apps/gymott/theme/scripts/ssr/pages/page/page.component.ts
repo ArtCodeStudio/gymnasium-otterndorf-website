@@ -1,10 +1,10 @@
 import { PageComponent } from "@ribajs/ssr";
-import pugTemplate from "./pages.component.pug";
+import pugTemplate from "./page.component.pug";
 import { PageService } from "../../services";
 
 export interface Scope {
   title: string;
-  params: PagesPageComponent["ctx"]["params"];
+  params: PagePageComponent["ctx"]["params"];
   assets: any[];
   content: any;
   blogEntries: any[];
@@ -12,7 +12,7 @@ export interface Scope {
   page: any;
 }
 
-export class PagesPageComponent extends PageComponent {
+export class PagePageComponent extends PageComponent {
   public static tagName = "pages-page";
   public _debug = false;
   protected autobind = true;
@@ -40,7 +40,7 @@ export class PagesPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(PagesPageComponent.observedAttributes);
+    this.init(PagePageComponent.observedAttributes);
   }
 
   protected requiredAttributes(): string[] {

@@ -1,0 +1,12 @@
+.container-fluid.py-5.my-5
+  .row
+    .col-12
+      h1.text-center(ssr-rv-template="title")
+  section.row
+    .col-12
+      h2.text-center Seiten
+      .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-each-page="pages" rv-href="page.slug | page" rv-text="page.title")
+      h2.text-center Blog-Artikel
+      .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-each-post="blogPosts" rv-href="post.slug | post" rv-text="post.title")

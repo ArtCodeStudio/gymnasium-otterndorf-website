@@ -1,7 +1,7 @@
 #import "../fragments/blog-entry.gql"
 
 query blogEntries {
-  blogEntries(start: 0, limit: 50) {
+  blogEntries(start: 0, limit: 50, where: {}) {
     ...BlogEntryFragment
   }
 }

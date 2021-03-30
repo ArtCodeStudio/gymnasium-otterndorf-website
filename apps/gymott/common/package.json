@@ -3,11 +3,18 @@
   "version": "0.0.1",
   "main": "./dist/index.js",
   "scripts": {
+    "clear": "rm -rf dist",
     "build": "yarn run typegen && tsc",
-    "typegen": "yarn workspace @gymott/tools run typegen",
-    "watch": "tsc --watch"
+    "typegen": "graphql-codegen --config codegen.yml",
+    "watch": "yarn run clear && yarn run typegen && tsc --watch"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.21.3",
+    "@graphql-codegen/typescript": "^1.21.1",
+    "@graphql-codegen/typescript-operations": "1.17.15",
+    "@tsconfig/node14": "^1.0.0",
+    "@types/node": "^14.14.37",
+    "graphql": "^15.5.0",
     "typescript": "^4.2.3"
   }
 }

@@ -3,8 +3,11 @@ import { ResponseError } from "../../common/types";
 import {
   StrapiGqlPageBySlugQuery,
   StrapiGqlPageBySlugQueryVariables,
+  StrapiGqlPagesQuery,
+  StrapiGqlPagesQueryVariables,
 } from "@gymott/common";
 import pageQuery from "../../../graphql/queries/page-by-slug.gql";
+import pagesQuery from "../../../graphql/queries/pages.gql";
 
 export class PageService {
   protected graphql = GraphQLClient.getInstance();
@@ -36,5 +39,15 @@ export class PageService {
     }
     const page = pageRes.pages[0];
     return page;
+  }
+
+  async list() {
+    const vars: StrapiGqlPagesQueryVariables = {};
+    const pageRes = await this.graphql.requestCached<StrapiGqlPagesQuery>(
+      pagesQuery,
+      vars
+    );
+    const pages = pageRes.pages || [];
+    return pages;
   }
 }

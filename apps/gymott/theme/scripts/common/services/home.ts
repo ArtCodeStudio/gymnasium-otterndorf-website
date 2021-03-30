@@ -1,7 +1,7 @@
 import { GraphQLClient } from "./graphql";
 import {
-  StrapiGqlSlideshowByIdQuery,
-  StrapiGqlSlideshowByIdQueryVariables,
+  StrapiGqlSectionSlideshowByIdQuery,
+  StrapiGqlSectionSlideshowByIdQueryVariables,
   StrapiGqlHomeSectionsQuery,
   StrapiGqlHomeSectionsQueryVariables,
 } from "@gymott/common";
@@ -69,8 +69,8 @@ export class GyHomeService {
   }
 
   async getSlideshow(id: string) {
-    const vars: StrapiGqlSlideshowByIdQueryVariables = { id };
-    const slideshowResponse = await this.graphql.requestCached<StrapiGqlSlideshowByIdQuery>(
+    const vars: StrapiGqlSectionSlideshowByIdQueryVariables = { id };
+    const slideshowResponse = await this.graphql.requestCached<StrapiGqlSectionSlideshowByIdQuery>(
       sectionSlideshowById,
       vars
     );

@@ -3,10 +3,8 @@
     .col-12
       h1.text-center(ssr-rv-template="title")
   section.row
-    .col-12 
-      pre: code(rv-text="page | json")
     .col-8
-      gy-sections-home(ssr-rv-sections="content")
+      gy-sections(ssr-rv-sections="content")
     .col-4
       .row
         .col-12(style="background-color: red")
