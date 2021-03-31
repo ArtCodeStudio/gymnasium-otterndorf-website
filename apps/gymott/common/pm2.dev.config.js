@@ -9,6 +9,7 @@ module.exports = {
         "../strapi/exports/graphql",
         "../theme/graphql",
       ],
+      watch_delay: 0,
       instances: 1,
       env: {
         NODE_ENV: "development",

@@ -1,6 +1,7 @@
 query navigationEntries {
   menu {
     entries: navigation_level_entry {
+      id
       parent {
         id
       }

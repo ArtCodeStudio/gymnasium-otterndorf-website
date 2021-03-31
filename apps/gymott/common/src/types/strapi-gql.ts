@@ -2636,7 +2636,7 @@ export type StrapiGqlNavigationEntriesQuery = (
     { __typename?: 'Menu' }
     & { entries?: Maybe<Array<Maybe<(
       { __typename?: 'ComponentNavigationNavigationLevelEntry' }
-      & Pick<StrapiGqlComponentNavigationNavigationLevelEntry, 'title'>
+      & Pick<StrapiGqlComponentNavigationNavigationLevelEntry, 'id' | 'title'>
       & { parent?: Maybe<(
         { __typename?: 'NavigationLink' }
         & Pick<StrapiGqlNavigationLink, 'id'>

@@ -38,6 +38,7 @@
     "lsof",
     "mixins",
     "msapplication",
+    "navs",
     "nestjs",
     "octobercms",
     "photoswipe",

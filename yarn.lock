@@ -2401,6 +2401,7 @@ __metadata:
     "@types/ical": ^0.6.2
     "@types/jest": ^26.0.22
     "@types/jsdom": ^16.2.9
+    "@types/lunr": ^2.3.3
     "@types/node": ^14.14.37
     "@types/supertest": ^2.0.10
     "@typescript-eslint/eslint-plugin": ^4.20.0
@@ -2414,11 +2415,12 @@ __metadata:
     express: ^4.17.1
     express-session: ^1.17.1
     find-root: ^1.1.0
-    flexsearch: ^0.6.32
     glob: ^7.1.6
     ical: ^0.8.0
     jest: ^26.6.3
     jsdom: ^16.5.2
+    lunr: ^2.3.9
+    lunr-languages: ^1.4.0
     node-fetch: ^2.6.1
     prettier: 2.2.1
     pug: ^3.0.2
@@ -3863,6 +3865,7 @@ __metadata:
     "@graphql-tools/graphql-file-loader": ^6.2.7
     "@graphql-tools/graphql-tag-pluck": ^6.5.1
     "@graphql-tools/load": ^6.2.7
+    "@graphql-tools/utils": ^7.7.1
     "@types/find-root": ^1.1.2
     "@types/glob": ^7.1.3
     "@types/node": ^14.14.37
@@ -5212,6 +5215,13 @@ __metadata:
   version: 4.14.168
   resolution: "@types/lodash@npm:4.14.168"
   checksum: 9a4e25f89fc035b9f0388f1f7be85e5eff49f9e6db0d93432c9a89fce0916f8a89db4e8290415f7ea02de6b00d3573826378dcb655b7b2d20530a6e8d6dd6fd0
+  languageName: node
+  linkType: hard
+
+"@types/lunr@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "@types/lunr@npm:2.3.3"
+  checksum: ae9e99337eb7ba9b6673167f212f5054ff9116daf1d507224b28fa3cbacea126a1101f788160e707d834cb4f9aa285c257f30777f7795241d82660042d958a09
   languageName: node
   linkType: hard
 
@@ -11157,13 +11167,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flexsearch@npm:^0.6.32":
-  version: 0.6.32
-  resolution: "flexsearch@npm:0.6.32"
-  checksum: 8f9c852f98e15f7a4f402162b902422d267af875995e4bfe2ed422151431c36146cc40348b7411fe772a8f6ba65fa954bfd1cf437e81e36e581dd351a9e7fa38
-  languageName: node
-  linkType: hard
-
 "flush-write-stream@npm:^1.0.0, flush-write-stream@npm:^1.0.2":
   version: 1.1.1
   resolution: "flush-write-stream@npm:1.1.1"
@@ -15101,6 +15104,20 @@ fsevents@^1.2.7:
   dependencies:
     yallist: ^4.0.0
   checksum: b8b78353d2391c0f135cdc245c4744ad41c2efb1a6d98f31bc57a2cf48ebf02de96e4876657c3026673576bf1f1f61fc3fdd77ab00ad1ead737537bf17d8019d
+  languageName: node
+  linkType: hard
+
+"lunr-languages@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "lunr-languages@npm:1.4.0"
+  checksum: a3625e91f75071441e2366b73bd76e071e4bf9c5394367b23a8a1105eff1e8b162be109b8a6f6d9aaaa8bf630443369f61b5b04e300f61be0e74bdd5b6c07142
+  languageName: node
+  linkType: hard
+
+"lunr@npm:^2.3.9":
+  version: 2.3.9
+  resolution: "lunr@npm:2.3.9"
+  checksum: a2b66320c2f6632322b91c43621eed9e623c0f1b81e7c2d74c238884a02229698baa4478bd238e9b32d7abf0db5ae9233b311c28e1edbcc481774e1ce83bec6f
   languageName: node
   linkType: hard
 
