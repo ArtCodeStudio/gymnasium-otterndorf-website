@@ -4,7 +4,7 @@ import {
   StrapiGqlSectionSlideshowByIdQueryVariables,
   StrapiGqlHomeSectionsQuery,
   StrapiGqlHomeSectionsQueryVariables,
-} from "@gymott/common";
+} from "../types";
 import sectionSlideshowById from "../../../graphql/queries/section-slideshow-by-id.gql";
 import homeSections from "../../../graphql/queries/home-sections.gql";
 

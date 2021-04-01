@@ -1,11 +1,12 @@
 import { GraphQLClient } from "./graphql";
-import { ResponseError } from "../../common/types";
 import {
+  ResponseError,
   StrapiGqlPageBySlugQuery,
   StrapiGqlPageBySlugQueryVariables,
   StrapiGqlPagesQuery,
   StrapiGqlPagesQueryVariables,
-} from "@gymott/common";
+} from "../../common/types";
+
 import pageQuery from "../../../graphql/queries/page-by-slug.gql";
 import pagesQuery from "../../../graphql/queries/pages.gql";
 

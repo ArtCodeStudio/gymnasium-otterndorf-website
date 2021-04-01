@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { theme } from '../config/config';
+import { theme } from '../../config/config';
 import { GraphQLClient } from '@ribajs/node-graphql-client';
 
 @Injectable()
