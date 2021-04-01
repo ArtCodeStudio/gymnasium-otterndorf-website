@@ -129,12 +129,6 @@ export class SearchService implements OnModuleInit {
 
   protected async fortifySearchResults(results: SearchResults) {
     const searchResultNs = this.toSearchResultsNs(results);
-    for (const ns in results) {
-      searchResultNs.push(
-        ...this.toSearchResultNs(results[ns], ns as Namespace),
-      );
-    }
-
     // const data = this.getSearchResultData(searchResultNs);
     return searchResultNs;
   }

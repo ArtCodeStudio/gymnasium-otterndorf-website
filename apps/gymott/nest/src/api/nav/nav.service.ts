@@ -17,13 +17,14 @@ export class NavService {
     };
   }
 
+  // Todo change to navigation-links
   public async get() {
     const vars: StrapiGqlMenuQueryVariables = {};
     let responseNavs: StrapiGqlMenuQuery['menu']['entries'] = [];
     let navs: SearchNav[] = [];
     try {
       const response = await this.strapi.graphql.execute<StrapiGqlMenuQuery>(
-        'graphql/queries/navigation-entries',
+        'graphql/queries/menu',
         vars,
       );
       responseNavs = response.menu?.entries || [];
