@@ -3,7 +3,7 @@ import { ConfigService, ConfigModule } from '@nestjs/config';
 
 import { appConfig, theme } from './config/config';
 import { ThemeModule } from '@ribajs/nest-theme';
-import { LunrModule } from './lunr/lunr.module';
+import { LunrModule } from '@ribajs/nest-lunr';
 import { StrapiService } from './strapi/strapi.service';
 import { SearchService } from './api/search/search.service';
 import { CalendarController } from './api/calendar/calendar.controller';

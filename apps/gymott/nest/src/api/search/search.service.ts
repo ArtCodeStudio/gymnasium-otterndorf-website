@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { StrapiService } from '../../strapi/strapi.service';
-import { LunrService } from '../../lunr';
+import { LunrService } from '@ribajs/nest-lunr';
 import type { Builder } from 'lunr';
 import { SearchPage, SearchNav } from './types';
 import {
