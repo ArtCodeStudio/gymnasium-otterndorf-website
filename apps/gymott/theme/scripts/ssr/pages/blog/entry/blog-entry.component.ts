@@ -49,9 +49,10 @@ export class BlogEntryPageComponent extends PageComponent {
   protected async afterBind() {
     this.scope.params = this.ctx.params;
     try {
-      this.scope.content = await BlogService.getInstance().get(
-        this.scope.params.slug
-      );
+      const blogEntries = await BlogService.getInstance().get([
+        this.scope.params.slug,
+      ]);
+      this.scope.content = blogEntries[0];
     } catch (error) {
       this.throw(error);
     }

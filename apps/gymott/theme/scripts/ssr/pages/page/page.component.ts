@@ -50,7 +50,8 @@ export class PagePageComponent extends PageComponent {
   protected async beforeBind() {
     this.head.title = "You are " + this.ctx.params.slug;
     try {
-      const page = await this.pageService.get(this.ctx.params.slug);
+      const pages = await this.pageService.get([this.ctx.params.slug]);
+      const page = pages[0];
       this.scope.page = page;
       // TODO move to custom strapi model and remove from page?
       this.scope.calendarKey = page?.["calendar_key"] || "";

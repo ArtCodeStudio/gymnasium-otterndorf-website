@@ -1,11 +1,23 @@
+#import "../fragments/component-content-image.gql"
+
 fragment BlogEntryFragment on BlogEntry {
   id
+  title
+  slug
   created_at
   updated_at
-  title
+  published_at
+  blog_category {
+    display_name
+  }
   content {
     __typename
+    ... on ComponentContentImage {
+      ...ComponentContentImageFragment
+    }
+    ... on ComponentContentText {
+      id
+      text
+    }
   }
-  slug
-  published_at
 }

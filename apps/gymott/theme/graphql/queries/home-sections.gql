@@ -3,7 +3,7 @@
 #import "../fragments/component-content-text.gql"
 #import "../fragments/component-content-image.gql"
 
-query HomeSections {
+query homeSections {
   home {
     sections {
       __typename

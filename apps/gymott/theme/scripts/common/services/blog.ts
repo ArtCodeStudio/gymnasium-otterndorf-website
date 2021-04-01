@@ -1,12 +1,12 @@
 import { GraphQLClient } from "./graphql";
 import {
   ResponseError,
-  StrapiGqlBlogBySlugQuery,
-  StrapiGqlBlogBySlugQueryVariables,
+  StrapiGqlBlogEntriesBySlugsQuery,
+  StrapiGqlBlogEntriesBySlugsQueryVariables,
   StrapiGqlBlogEntriesQuery,
   StrapiGqlBlogEntriesQueryVariables,
 } from "../../common/types";
-import blogQuery from "../../../graphql/queries/blog-by-slug.gql";
+import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-by-slugs.gql";
 import blogEntriesQuery from "../../../graphql/queries/blog-entries.gql";
 
 export class BlogService {
@@ -26,10 +26,10 @@ export class BlogService {
     return BlogService.instance;
   }
 
-  async get(slug: string) {
-    const vars: StrapiGqlBlogBySlugQueryVariables = { slug };
-    const blogRes = await this.graphql.requestCached<StrapiGqlBlogBySlugQuery>(
-      blogQuery,
+  async get(slugs: string[]) {
+    const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = { slugs };
+    const blogRes = await this.graphql.requestCached<StrapiGqlBlogEntriesBySlugsQuery>(
+      blogEntriesBySlugsQuery,
       vars
     );
     if (
@@ -40,8 +40,8 @@ export class BlogService {
       error.status = 404;
       throw error;
     }
-    const blog = blogRes.blogEntries[0];
-    return blog;
+    const blogEntries = blogRes.blogEntries || [];
+    return blogEntries;
   }
 
   async list() {

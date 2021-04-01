@@ -1,0 +1,7 @@
+#import "../fragments/blog-entry.gql"
+
+query blogEntriesBySlugs ($slugs: [String]!) {
+  blogEntries(where: { slug: $slugs }) {
+    ...BlogEntryFragment
+  }
+}

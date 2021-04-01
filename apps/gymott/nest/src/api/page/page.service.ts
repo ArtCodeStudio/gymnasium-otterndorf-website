@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { StrapiService } from '../strapi/strapi.service';
 import { SearchPage } from './types';
 import {
-  StrapiGqlPageBySlugQuery,
-  StrapiGqlPageBySlugQueryVariables,
+  StrapiGqlPageBySlugsQuery,
+  StrapiGqlPageBySlugsQueryVariables,
   StrapiGqlPagesQuery,
   StrapiGqlPagesQueryVariables,
 } from '../strapi/types';
@@ -43,11 +43,11 @@ export class PageService {
     return null;
   }
 
-  protected async get(slug: string) {
-    const vars: StrapiGqlPageBySlugQueryVariables = { slug };
+  protected async get(slugs: string[]) {
+    const vars: StrapiGqlPageBySlugsQueryVariables = { slugs };
     let page: StrapiGqlPagesQuery['pages'][0] = null;
     try {
-      const result = await this.strapi.graphql.execute<StrapiGqlPageBySlugQuery>(
+      const result = await this.strapi.graphql.execute<StrapiGqlPageBySlugsQuery>(
         'graphql/queries/page-by-slug',
         vars,
       );

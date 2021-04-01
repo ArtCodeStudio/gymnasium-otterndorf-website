@@ -1,0 +1,7 @@
+#import "../fragments/page.gql"
+
+query pageBySlugs ($slugs: [String]!) {
+  pages(where: { slug: $slugs }) {
+    ...PageFragment
+  }
+} 

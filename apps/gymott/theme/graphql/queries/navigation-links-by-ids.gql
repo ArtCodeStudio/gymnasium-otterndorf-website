@@ -1,0 +1,7 @@
+#import "../fragments/navigation-link.gql"
+
+query navigationLinksByIds ($ids: [String]!) {
+  navigationLinks(where: { id: $ids }) {
+    ...NavigationLinkFragment
+  }
+}

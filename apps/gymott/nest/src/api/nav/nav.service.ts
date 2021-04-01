@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { StrapiService } from '../strapi/strapi.service';
 import {
-  StrapiGqlNavigationEntriesQuery,
-  StrapiGqlNavigationEntriesQueryVariables,
+  StrapiGqlMenuQuery,
+  StrapiGqlMenuQueryVariables,
 } from '../strapi/types';
 import { SearchNav } from './types';
 
@@ -10,9 +10,7 @@ import { SearchNav } from './types';
 export class NavService {
   constructor(readonly strapi: StrapiService) {}
 
-  public flatten(
-    nav: StrapiGqlNavigationEntriesQuery['menu']['entries'][0],
-  ): SearchNav {
+  public flatten(nav: StrapiGqlMenuQuery['menu']['entries'][0]): SearchNav {
     return {
       id: nav.id,
       title: nav.navigation_link?.title || nav.title,
@@ -20,11 +18,11 @@ export class NavService {
   }
 
   public async get() {
-    const vars: StrapiGqlNavigationEntriesQueryVariables = {};
-    let responseNavs: StrapiGqlNavigationEntriesQuery['menu']['entries'] = [];
+    const vars: StrapiGqlMenuQueryVariables = {};
+    let responseNavs: StrapiGqlMenuQuery['menu']['entries'] = [];
     let navs: SearchNav[] = [];
     try {
-      const response = await this.strapi.graphql.execute<StrapiGqlNavigationEntriesQuery>(
+      const response = await this.strapi.graphql.execute<StrapiGqlMenuQuery>(
         'graphql/queries/navigation-entries',
         vars,
       );

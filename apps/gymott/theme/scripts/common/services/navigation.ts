@@ -1,10 +1,7 @@
 import { GraphQLClient } from "./graphql";
 import { ResponseError, NavigationLink } from "../types";
-import {
-  StrapiGqlNavigationEntriesQuery,
-  StrapiGqlNavigationEntriesQueryVariables,
-} from "../types";
-import navigationQuery from "../../../graphql/queries/navigation-entries.gql";
+import { StrapiGqlMenuQuery, StrapiGqlMenuQueryVariables } from "../types";
+import menuQuery from "../../../graphql/queries/menu.gql";
 
 export class NavigationService {
   protected graphql = GraphQLClient.getInstance();
@@ -40,9 +37,7 @@ export class NavigationService {
     return parentEntry;
   }
 
-  protected getHref(
-    baseItem: StrapiGqlNavigationEntriesQuery["menu"]["entries"][0]
-  ) {
+  protected getHref(baseItem: StrapiGqlMenuQuery["menu"]["entries"][0]) {
     const type = baseItem.navigation_link.type[0];
     if (!type) {
       return "";
@@ -60,7 +55,7 @@ export class NavigationService {
   }
 
   protected newItem(
-    baseItem?: StrapiGqlNavigationEntriesQuery["menu"]["entries"][0]
+    baseItem?: StrapiGqlMenuQuery["menu"]["entries"][0]
   ): NavigationLink {
     if (baseItem) {
       return {
@@ -80,9 +75,7 @@ export class NavigationService {
     };
   }
 
-  protected buildTree(
-    baseEntries: StrapiGqlNavigationEntriesQuery["menu"]["entries"] = []
-  ) {
+  protected buildTree(baseEntries: StrapiGqlMenuQuery["menu"]["entries"] = []) {
     const result = this.newItem();
     let count = 0;
     let ignored = 0;
@@ -116,9 +109,9 @@ export class NavigationService {
   }
 
   public async get() {
-    const vars: StrapiGqlNavigationEntriesQueryVariables = {};
-    const navigationRes = await this.graphql.requestCached<StrapiGqlNavigationEntriesQuery>(
-      navigationQuery,
+    const vars: StrapiGqlMenuQueryVariables = {};
+    const navigationRes = await this.graphql.requestCached<StrapiGqlMenuQuery>(
+      menuQuery,
       {},
       vars
     );
@@ -132,7 +125,7 @@ export class NavigationService {
     }
     const baseEntries = navigationRes?.menu.entries;
     const tree = this.buildTree(
-      baseEntries as any // TODO StrapiGqlNavigationEntriesQuery["menu"]["entries"]
+      baseEntries as any // TODO StrapiGqlMenuQuery["menu"]["entries"]
     );
     return tree;
   }

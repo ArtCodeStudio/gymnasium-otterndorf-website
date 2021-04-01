@@ -2453,8 +2453,17 @@ export type StrapiGqlUpdateUserPayload = {
 
 export type StrapiGqlBlogEntryFragmentFragment = (
   { __typename?: 'BlogEntry' }
-  & Pick<StrapiGqlBlogEntry, 'id' | 'created_at' | 'updated_at' | 'title' | 'slug' | 'published_at'>
-  & { content?: Maybe<Array<Maybe<{ __typename: 'ComponentContentText' } | { __typename: 'ComponentContentImage' }>>> }
+  & Pick<StrapiGqlBlogEntry, 'id' | 'title' | 'slug' | 'created_at' | 'updated_at' | 'published_at'>
+  & { blog_category?: Maybe<(
+    { __typename?: 'BlogCategory' }
+    & Pick<StrapiGqlBlogCategory, 'display_name'>
+  )>, content?: Maybe<Array<Maybe<(
+    { __typename: 'ComponentContentText' }
+    & Pick<StrapiGqlComponentContentText, 'id' | 'text'>
+  ) | (
+    { __typename: 'ComponentContentImage' }
+    & StrapiGqlComponentContentImageFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlComponentContentImageFragmentFragment = (
@@ -2512,6 +2521,49 @@ export type StrapiGqlComponentSlideshowEntryFragmentFragment = (
   )> }
 );
 
+export type StrapiGqlMenuFragmentFragment = (
+  { __typename?: 'Menu' }
+  & { entries?: Maybe<Array<Maybe<(
+    { __typename?: 'ComponentNavigationNavigationLevelEntry' }
+    & Pick<StrapiGqlComponentNavigationNavigationLevelEntry, 'id' | 'title'>
+    & { parent?: Maybe<(
+      { __typename?: 'NavigationLink' }
+      & Pick<StrapiGqlNavigationLink, 'id'>
+    )>, navigation_link?: Maybe<(
+      { __typename?: 'NavigationLink' }
+      & StrapiGqlNavigationLinkFragmentFragment
+    )> }
+  )>>> }
+);
+
+export type StrapiGqlNavigationLinkFragmentFragment = (
+  { __typename?: 'NavigationLink' }
+  & Pick<StrapiGqlNavigationLink, 'id'>
+  & { title: StrapiGqlNavigationLink['Title'] }
+  & { type?: Maybe<Array<Maybe<(
+    { __typename: 'ComponentLinkTypeWeb' }
+    & Pick<StrapiGqlComponentLinkTypeWeb, 'URL'>
+  ) | (
+    { __typename: 'ComponentLinkTypeSchulfach' }
+    & { schulfach?: Maybe<(
+      { __typename?: 'Subject' }
+      & Pick<StrapiGqlSubject, 'title' | 'slug'>
+    )> }
+  ) | (
+    { __typename: 'ComponentLinkTypePage' }
+    & { page?: Maybe<(
+      { __typename?: 'Page' }
+      & Pick<StrapiGqlPage, 'title' | 'slug'>
+    )> }
+  ) | (
+    { __typename: 'ComponentLinkTypeBlog' }
+    & { blog?: Maybe<(
+      { __typename?: 'BlogEntry' }
+      & Pick<StrapiGqlBlogEntry, 'title' | 'slug'>
+    )> }
+  )>>> }
+);
+
 export type StrapiGqlPageFragmentFragment = (
   { __typename?: 'Page' }
   & Pick<StrapiGqlPage, 'id' | 'created_at' | 'updated_at' | 'title' | 'slug' | 'calendar_key'>
@@ -2567,26 +2619,16 @@ export type StrapiGqlUnnamed_1_Mutation = (
   ) }
 );
 
-export type StrapiGqlBlogBySlugQueryVariables = Exact<{
-  slug: Scalars['String'];
+export type StrapiGqlBlogEntriesBySlugsQueryVariables = Exact<{
+  slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
 }>;
 
 
-export type StrapiGqlBlogBySlugQuery = (
+export type StrapiGqlBlogEntriesBySlugsQuery = (
   { __typename?: 'Query' }
   & { blogEntries?: Maybe<Array<Maybe<(
     { __typename?: 'BlogEntry' }
-    & Pick<StrapiGqlBlogEntry, 'id' | 'created_at' | 'title' | 'slug' | 'published_at'>
-    & { blog_category?: Maybe<(
-      { __typename?: 'BlogCategory' }
-      & Pick<StrapiGqlBlogCategory, 'display_name'>
-    )>, content?: Maybe<Array<Maybe<(
-      { __typename: 'ComponentContentText' }
-      & Pick<StrapiGqlComponentContentText, 'id' | 'text'>
-    ) | (
-      { __typename: 'ComponentContentImage' }
-      & StrapiGqlComponentContentImageFragmentFragment
-    )>>> }
+    & StrapiGqlBlogEntryFragmentFragment
   )>>> }
 );
 
@@ -2627,56 +2669,47 @@ export type StrapiGqlHomeSectionsQuery = (
   )> }
 );
 
-export type StrapiGqlNavigationEntriesQueryVariables = Exact<{ [key: string]: never; }>;
+export type StrapiGqlMenuQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type StrapiGqlNavigationEntriesQuery = (
+export type StrapiGqlMenuQuery = (
   { __typename?: 'Query' }
   & { menu?: Maybe<(
     { __typename?: 'Menu' }
-    & { entries?: Maybe<Array<Maybe<(
-      { __typename?: 'ComponentNavigationNavigationLevelEntry' }
-      & Pick<StrapiGqlComponentNavigationNavigationLevelEntry, 'id' | 'title'>
-      & { parent?: Maybe<(
-        { __typename?: 'NavigationLink' }
-        & Pick<StrapiGqlNavigationLink, 'id'>
-      )>, navigation_link?: Maybe<(
-        { __typename?: 'NavigationLink' }
-        & Pick<StrapiGqlNavigationLink, 'id'>
-        & { title: StrapiGqlNavigationLink['Title'] }
-        & { type?: Maybe<Array<Maybe<(
-          { __typename: 'ComponentLinkTypeWeb' }
-          & Pick<StrapiGqlComponentLinkTypeWeb, 'URL'>
-        ) | (
-          { __typename: 'ComponentLinkTypeSchulfach' }
-          & { schulfach?: Maybe<(
-            { __typename?: 'Subject' }
-            & Pick<StrapiGqlSubject, 'title' | 'slug'>
-          )> }
-        ) | (
-          { __typename: 'ComponentLinkTypePage' }
-          & { page?: Maybe<(
-            { __typename?: 'Page' }
-            & Pick<StrapiGqlPage, 'title' | 'slug'>
-          )> }
-        ) | (
-          { __typename: 'ComponentLinkTypeBlog' }
-          & { blog?: Maybe<(
-            { __typename?: 'BlogEntry' }
-            & Pick<StrapiGqlBlogEntry, 'title' | 'slug'>
-          )> }
-        )>>> }
-      )> }
-    )>>> }
+    & StrapiGqlMenuFragmentFragment
   )> }
 );
 
-export type StrapiGqlPageBySlugQueryVariables = Exact<{
-  slug: Scalars['String'];
+export type StrapiGqlNavigationLinksByIdsQueryVariables = Exact<{
+  ids: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
 }>;
 
 
-export type StrapiGqlPageBySlugQuery = (
+export type StrapiGqlNavigationLinksByIdsQuery = (
+  { __typename?: 'Query' }
+  & { navigationLinks?: Maybe<Array<Maybe<(
+    { __typename?: 'NavigationLink' }
+    & StrapiGqlNavigationLinkFragmentFragment
+  )>>> }
+);
+
+export type StrapiGqlNavigationLinksQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type StrapiGqlNavigationLinksQuery = (
+  { __typename?: 'Query' }
+  & { navigationLinks?: Maybe<Array<Maybe<(
+    { __typename?: 'NavigationLink' }
+    & StrapiGqlNavigationLinkFragmentFragment
+  )>>> }
+);
+
+export type StrapiGqlPageBySlugsQueryVariables = Exact<{
+  slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+}>;
+
+
+export type StrapiGqlPageBySlugsQuery = (
   { __typename?: 'Query' }
   & { pages?: Maybe<Array<Maybe<(
     { __typename?: 'Page' }
@@ -2692,6 +2725,27 @@ export type StrapiGqlPagesQuery = (
   & { pages?: Maybe<Array<Maybe<(
     { __typename?: 'Page' }
     & StrapiGqlPageFragmentFragment
+  )>>> }
+);
+
+export type StrapiGqlSearchResultQueryVariables = Exact<{
+  pageSlugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  blogSlugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  navIds: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+}>;
+
+
+export type StrapiGqlSearchResultQuery = (
+  { __typename?: 'Query' }
+  & { pages?: Maybe<Array<Maybe<(
+    { __typename?: 'Page' }
+    & StrapiGqlPageFragmentFragment
+  )>>>, blogEntries?: Maybe<Array<Maybe<(
+    { __typename?: 'BlogEntry' }
+    & StrapiGqlBlogEntryFragmentFragment
+  )>>>, navigationLinks?: Maybe<Array<Maybe<(
+    { __typename?: 'NavigationLink' }
+    & StrapiGqlNavigationLinkFragmentFragment
   )>>> }
 );
 

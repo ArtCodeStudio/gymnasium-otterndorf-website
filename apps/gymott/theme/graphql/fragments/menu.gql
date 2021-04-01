@@ -1,0 +1,14 @@
+#import "./navigation-link.gql"
+
+fragment MenuFragment on Menu {
+  entries: navigation_level_entry {
+    id
+    parent {
+      id
+    }
+    title,
+    navigation_link {
+      ...NavigationLinkFragment
+    }
+  }
+}
