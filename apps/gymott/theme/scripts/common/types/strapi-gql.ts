@@ -2632,17 +2632,6 @@ export type StrapiGqlBlogEntriesBySlugsQuery = (
   )>>> }
 );
 
-export type StrapiGqlBlogEntriesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type StrapiGqlBlogEntriesQuery = (
-  { __typename?: 'Query' }
-  & { blogEntries?: Maybe<Array<Maybe<(
-    { __typename?: 'BlogEntry' }
-    & StrapiGqlBlogEntryFragmentFragment
-  )>>> }
-);
-
 export type StrapiGqlHomeSectionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2710,17 +2699,6 @@ export type StrapiGqlPageBySlugsQueryVariables = Exact<{
 
 
 export type StrapiGqlPageBySlugsQuery = (
-  { __typename?: 'Query' }
-  & { pages?: Maybe<Array<Maybe<(
-    { __typename?: 'Page' }
-    & StrapiGqlPageFragmentFragment
-  )>>> }
-);
-
-export type StrapiGqlPagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type StrapiGqlPagesQuery = (
   { __typename?: 'Query' }
   & { pages?: Maybe<Array<Maybe<(
     { __typename?: 'Page' }

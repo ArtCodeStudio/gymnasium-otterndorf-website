@@ -1,14 +1,11 @@
 import { GraphQLClient } from "./graphql";
 import {
-  ResponseError,
   StrapiGqlPageBySlugsQuery,
   StrapiGqlPageBySlugsQueryVariables,
-  StrapiGqlPagesQuery,
-  StrapiGqlPagesQueryVariables,
+  ResponseError,
 } from "../../common/types";
 
 import pagebySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
-import pagesQuery from "../../../graphql/queries/pages.gql";
 
 export class PageService {
   protected graphql = GraphQLClient.getInstance();
@@ -27,7 +24,7 @@ export class PageService {
     return PageService.instance;
   }
 
-  async get(slugs: string[]) {
+  async list(slugs: string[] = []) {
     const vars: StrapiGqlPageBySlugsQueryVariables = { slugs };
     const pageRes = await this.graphql.requestCached<StrapiGqlPageBySlugsQuery>(
       pagebySlugsQuery,
@@ -37,13 +34,13 @@ export class PageService {
     return pages;
   }
 
-  async list() {
-    const vars: StrapiGqlPagesQueryVariables = {};
-    const pageRes = await this.graphql.requestCached<StrapiGqlPagesQuery>(
-      pagesQuery,
-      vars
-    );
-    const pages = pageRes.pages || [];
-    return pages;
+  async get(slug: string) {
+    const pages = await this.list([slug]);
+    if (!Array.isArray(pages) || pages.length <= 0) {
+      const error: ResponseError = new Error("Not found!");
+      error.status = 404;
+      throw error;
+    }
+    return pages?.[0] || null;
   }
 }

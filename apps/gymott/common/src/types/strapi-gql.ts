@@ -2706,17 +2706,6 @@ export type StrapiGqlPageBySlugsQuery = (
   )>>> }
 );
 
-export type StrapiGqlPagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type StrapiGqlPagesQuery = (
-  { __typename?: 'Query' }
-  & { pages?: Maybe<Array<Maybe<(
-    { __typename?: 'Page' }
-    & StrapiGqlPageFragmentFragment
-  )>>> }
-);
-
 export type StrapiGqlSearchResultQueryVariables = Exact<{
   pageSlugs?: Maybe<Array<Scalars['String']> | Scalars['String']>;
   postSlugs?: Maybe<Array<Scalars['String']> | Scalars['String']>;
