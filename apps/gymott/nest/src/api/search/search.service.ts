@@ -98,7 +98,7 @@ export class SearchService implements OnModuleInit {
   protected async getSearchResultData(results: NsSearchResult[]) {
     const refs = this.getRefs(results);
     const vars: StrapiGqlSearchResultQueryVariables = {
-      blogSlugs: refs.blog.length ? refs.blog : null,
+      postSlugs: refs.post.length ? refs.post : null,
       navIds: refs.nav.length ? refs.nav : null,
       pageSlugs: refs.page.length ? refs.page : null,
     };
@@ -117,11 +117,12 @@ export class SearchService implements OnModuleInit {
     result = {
       nav: this.nav.flattens(data.navigationLinks),
       page: this.page.flattens(data.pages),
-      post: data.blogEntries,
+      post: this.post.flattens(data.blogEntries),
       blog: [],
     };
 
-    // console.debug('getSearchResultData', result);
+    console.debug('getSearchResultData', result);
+    console.debug('refs', refs);
     return result;
   }
 

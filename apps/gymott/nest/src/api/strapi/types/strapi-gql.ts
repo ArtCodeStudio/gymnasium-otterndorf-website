@@ -2730,7 +2730,7 @@ export type StrapiGqlPagesQuery = (
 
 export type StrapiGqlSearchResultQueryVariables = Exact<{
   pageSlugs?: Maybe<Array<Scalars['String']> | Scalars['String']>;
-  blogSlugs?: Maybe<Array<Scalars['String']> | Scalars['String']>;
+  postSlugs?: Maybe<Array<Scalars['String']> | Scalars['String']>;
   navIds?: Maybe<Array<Scalars['String']> | Scalars['String']>;
 }>;
 

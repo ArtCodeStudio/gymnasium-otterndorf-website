@@ -4,13 +4,13 @@
 
 # See https://dgraph.io/docs/graphql/api/multiples/
 
-query searchResult($pageSlugs: [String!], $blogSlugs: [String!], $navIds: [String!]) {
+query searchResult($pageSlugs: [String!], $postSlugs: [String!], $navIds: [String!]) {
 
   pages(where: { slug: $pageSlugs }) {
     ...PageFragment
   }
 
-  blogEntries(where: { slug: $blogSlugs }) {
+  blogEntries(where: { slug: $postSlugs }) {
     ...BlogEntryFragment
   }
 
