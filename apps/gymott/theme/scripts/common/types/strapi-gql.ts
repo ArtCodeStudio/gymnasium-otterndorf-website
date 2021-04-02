@@ -2729,9 +2729,9 @@ export type StrapiGqlPagesQuery = (
 );
 
 export type StrapiGqlSearchResultQueryVariables = Exact<{
-  pageSlugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
-  blogSlugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
-  navIds: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  pageSlugs?: Maybe<Array<Scalars['String']> | Scalars['String']>;
+  blogSlugs?: Maybe<Array<Scalars['String']> | Scalars['String']>;
+  navIds?: Maybe<Array<Scalars['String']> | Scalars['String']>;
 }>;
 
 

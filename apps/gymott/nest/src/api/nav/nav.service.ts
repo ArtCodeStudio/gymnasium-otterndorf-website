@@ -3,6 +3,8 @@ import { StrapiService } from '../strapi/strapi.service';
 import {
   StrapiGqlMenuQuery,
   StrapiGqlMenuQueryVariables,
+  StrapiGqlNavigationLinksByIdsQuery,
+  StrapiGqlNavigationLinksByIdsQueryVariables,
 } from '../strapi/types';
 import { SearchNav } from './types';
 
@@ -10,24 +12,75 @@ import { SearchNav } from './types';
 export class NavService {
   constructor(readonly strapi: StrapiService) {}
 
-  public flatten(nav: StrapiGqlMenuQuery['menu']['entries'][0]): SearchNav {
+  public getHref(
+    navLink:
+      | StrapiGqlMenuQuery['menu']['entries'][0]['navigation_link']
+      | StrapiGqlNavigationLinksByIdsQuery['navigationLinks'][0],
+  ) {
+    const type = navLink.type[0];
+    if (!type) {
+      return '';
+    }
+    switch (type.__typename) {
+      case 'ComponentLinkTypeBlog':
+        return type.blog?.slug ? '/post/' + type.blog.slug : '';
+      case 'ComponentLinkTypePage':
+        return type.page?.slug ? '/page/' + type.page.slug : '';
+      case 'ComponentLinkTypeSchulfach':
+        return type.schulfach?.slug ? '/schulfach/' + type.schulfach.slug : '';
+      case 'ComponentLinkTypeWeb':
+        return type.URL ? type.URL : '';
+    }
+  }
+
+  public flatten(
+    nav: StrapiGqlNavigationLinksByIdsQuery['navigationLinks'][0],
+  ): SearchNav {
     return {
       id: nav.id,
-      title: nav.navigation_link?.title || nav.title,
+      title: nav.title,
+      href: this.getHref(nav),
     };
   }
 
-  // Todo change to navigation-links
-  public async get() {
+  public flattens(
+    navs: StrapiGqlNavigationLinksByIdsQuery['navigationLinks'],
+  ): SearchNav[] {
+    return navs.map((nav) => this.flatten(nav));
+  }
+
+  public async getMenuEntries() {
     const vars: StrapiGqlMenuQueryVariables = {};
-    let responseNavs: StrapiGqlMenuQuery['menu']['entries'] = [];
+    let menuEntries: StrapiGqlMenuQuery['menu']['entries'] = [];
     let navs: SearchNav[] = [];
     try {
       const response = await this.strapi.graphql.execute<StrapiGqlMenuQuery>(
         'graphql/queries/menu',
         vars,
       );
-      responseNavs = response.menu?.entries || [];
+      menuEntries = response.menu?.entries || [];
+      navs = menuEntries.map((nav) => this.flatten(nav.navigation_link));
+    } catch (error) {
+      console.error(error);
+    }
+    return navs;
+  }
+
+  /**
+   * List navigation links
+   * @param ids Pass an empty array to get all navigation links, pass null to get no result
+   * @returns
+   */
+  public async list(ids: string[] | null = null) {
+    const vars: StrapiGqlNavigationLinksByIdsQueryVariables = { ids };
+    let responseNavs: StrapiGqlNavigationLinksByIdsQuery['navigationLinks'] = [];
+    let navs: SearchNav[] = [];
+    try {
+      const response = await this.strapi.graphql.execute<StrapiGqlNavigationLinksByIdsQuery>(
+        'graphql/queries/navigation-links-by-ids',
+        vars,
+      );
+      responseNavs = response.navigationLinks || [];
       navs = responseNavs.map((nav) => this.flatten(nav));
     } catch (error) {
       console.error(error);

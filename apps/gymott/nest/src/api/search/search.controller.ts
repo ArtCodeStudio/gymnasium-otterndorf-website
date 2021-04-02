@@ -1,7 +1,14 @@
-import { Controller, Get, Param, Res, NotFoundException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Res,
+  NotFoundException,
+  HttpException,
+} from '@nestjs/common';
 import { Response } from 'express';
 import { SearchService } from './search.service';
-import type { Namespace } from './types';
+import type { Namespace, NsSearchResult } from './types';
 
 @Controller('api/search')
 export class SearchController {
@@ -17,12 +24,19 @@ export class SearchController {
    * @memberof SearchController
    */
   @Get('/:namespace/:query')
-  async searchInNs(
+  async searchNs(
     @Res() res: Response,
     @Param('namespace') namespace: Namespace,
     @Param('query') query: string,
   ) {
-    const result = await this.search.searchInNamespace(namespace, query);
+    let result: NsSearchResult[];
+    try {
+      let result: NsSearchResult[];
+      result = await this.search.search(namespace, query);
+    } catch (error) {
+      throw error;
+    }
+
     if (!result) {
       throw new NotFoundException(
         `[Lunr] No index namespace "${namespace}" found!`,
@@ -40,9 +54,13 @@ export class SearchController {
    * @memberof SearchController
    */
   @Get('/:query')
-  async searchInAll(@Res() res: Response, @Param('query') query: string) {
-    const result = await this.search.searchInAll(query);
-
+  async searchAll(@Res() res: Response, @Param('query') query: string) {
+    let result: NsSearchResult[];
+    try {
+      result = await this.search.searchAll(query);
+    } catch (error) {
+      throw error;
+    }
     return res.json(result);
   }
 }

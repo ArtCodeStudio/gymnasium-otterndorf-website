@@ -11,6 +11,7 @@ import { CalendarService } from './api/calendar/calendar.service';
 import { SearchController } from './api/search/search.controller';
 import { NavService } from './api/nav/nav.service';
 import { PageService } from './api/page/page.service';
+import { PostService } from './api/post/post.service';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { PageService } from './api/page/page.service';
     CalendarService,
     NavService,
     PageService,
+    PostService,
   ],
 })
 export class AppModule {}

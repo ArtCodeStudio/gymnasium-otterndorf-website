@@ -1,10 +1,10 @@
+#import "../fragments/page.gql"
+#import "../fragments/blog-entry.gql"
+#import "../fragments/navigation-link.gql"
+
 # See https://dgraph.io/docs/graphql/api/multiples/
 
-#import "../page-by-slugs.gql"
-#import "../blog-entries-by-slugs.gql"
-
-
-query searchResult($pageSlugs: [String]!, $blogSlugs: [String]!, $navIds: [String]!) {
+query searchResult($pageSlugs: [String!], $blogSlugs: [String!], $navIds: [String!]) {
 
   pages(where: { slug: $pageSlugs }) {
     ...PageFragment

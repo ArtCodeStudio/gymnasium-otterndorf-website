@@ -4,15 +4,17 @@ import { SearchPage } from './types';
 import {
   StrapiGqlPageBySlugsQuery,
   StrapiGqlPageBySlugsQueryVariables,
-  StrapiGqlPagesQuery,
-  StrapiGqlPagesQueryVariables,
 } from '../strapi/types';
 
 @Injectable()
 export class PageService {
   constructor(readonly strapi: StrapiService) {}
 
-  public flatten(page: StrapiGqlPagesQuery['pages'][0]): SearchPage {
+  public flattens(pages: StrapiGqlPageBySlugsQuery['pages']): SearchPage[] {
+    return pages.map((page) => this.flatten(page));
+  }
+
+  public flatten(page: StrapiGqlPageBySlugsQuery['pages'][0]): SearchPage {
     const texts: string[] = page.content
       .filter((content: any) => content.text)
       .map((content: any) => content.text);
@@ -25,12 +27,12 @@ export class PageService {
     };
   }
 
-  public async list() {
-    const vars: StrapiGqlPagesQueryVariables = {};
-    let pages: StrapiGqlPagesQuery['pages'] = null;
+  public async list(slugs: string[] = []) {
+    const vars: StrapiGqlPageBySlugsQueryVariables = { slugs };
+    let pages: StrapiGqlPageBySlugsQuery['pages'] = null;
     try {
-      const result = await this.strapi.graphql.execute<StrapiGqlPagesQuery>(
-        'graphql/queries/pages',
+      const result = await this.strapi.graphql.execute<StrapiGqlPageBySlugsQuery>(
+        'graphql/queries/page-by-slugs',
         vars,
       );
       pages = result.pages;
@@ -43,21 +45,7 @@ export class PageService {
     return null;
   }
 
-  protected async get(slugs: string[]) {
-    const vars: StrapiGqlPageBySlugsQueryVariables = { slugs };
-    let page: StrapiGqlPagesQuery['pages'][0] = null;
-    try {
-      const result = await this.strapi.graphql.execute<StrapiGqlPageBySlugsQuery>(
-        'graphql/queries/page-by-slug',
-        vars,
-      );
-      page = result.pages?.[0] || null;
-    } catch (error) {
-      console.error(error);
-    }
-    if (page) {
-      return this.flatten(page);
-    }
-    return null;
+  protected async get(slug: string) {
+    return this.list([slug])?.[0] || null;
   }
 }
