@@ -2632,17 +2632,6 @@ export type StrapiGqlBlogEntriesBySlugsQuery = (
   )>>> }
 );
 
-export type StrapiGqlBlogEntriesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type StrapiGqlBlogEntriesQuery = (
-  { __typename?: 'Query' }
-  & { blogEntries?: Maybe<Array<Maybe<(
-    { __typename?: 'BlogEntry' }
-    & StrapiGqlBlogEntryFragmentFragment
-  )>>> }
-);
-
 export type StrapiGqlHomeSectionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 

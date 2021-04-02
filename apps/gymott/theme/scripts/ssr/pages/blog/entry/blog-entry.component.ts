@@ -49,10 +49,10 @@ export class BlogEntryPageComponent extends PageComponent {
   protected async afterBind() {
     this.scope.params = this.ctx.params;
     try {
-      const blogEntries = await BlogService.getInstance().get([
-        this.scope.params.slug,
-      ]);
-      this.scope.content = blogEntries[0];
+      const post = await BlogService.getInstance().getPost(
+        this.scope.params.slug
+      );
+      this.scope.content = post;
     } catch (error) {
       this.throw(error);
     }
@@ -64,6 +64,6 @@ export class BlogEntryPageComponent extends PageComponent {
   }
 
   protected template() {
-    return pugTemplate(/*this.scope*/ {});
+    return pugTemplate(this.scope);
   }
 }

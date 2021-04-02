@@ -50,6 +50,6 @@ export class BlogPageComponent extends PageComponent {
   }
 
   protected template() {
-    return pugTemplate(/*this.scope*/ {});
+    return pugTemplate(this.scope);
   }
 }
