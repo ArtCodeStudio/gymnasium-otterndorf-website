@@ -1,8 +1,8 @@
-import type { NsSearchResult } from './ns-search-result';
+import type { SearchResultExt } from './search-result-ext';
 import { SearchResultData } from '../types';
 // import { SearchNav } from '../../nav/types';
 
-export interface FortifySearchResult extends NsSearchResult {
+export interface FortifySearchResult extends SearchResultExt {
   data:
     | SearchResultData['blog']
     | SearchResultData['nav']

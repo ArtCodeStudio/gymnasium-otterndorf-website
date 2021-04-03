@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 import { SearchService } from './search.service';
-import type { Namespace, NsSearchResult } from './types';
+import type { Namespace, SearchResultExt } from './types';
 
 @Controller('api/search')
 export class SearchController {
@@ -29,9 +29,9 @@ export class SearchController {
     @Param('namespace') namespace: Namespace,
     @Param('query') query: string,
   ) {
-    let result: NsSearchResult[];
+    let result: SearchResultExt[];
     try {
-      let result: NsSearchResult[];
+      let result: SearchResultExt[];
       result = await this.search.search(namespace, query);
     } catch (error) {
       throw error;
@@ -55,7 +55,7 @@ export class SearchController {
    */
   @Get('/:query')
   async searchAll(@Res() res: Response, @Param('query') query: string) {
-    let result: NsSearchResult[];
+    let result: SearchResultExt[];
     try {
       result = await this.search.searchAll(query);
     } catch (error) {

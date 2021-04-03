@@ -6,9 +6,9 @@ import { NavService, SearchNav } from '../nav';
 import { PageService, SearchPage } from '../page';
 import { PostService, SearchPost } from '../post';
 import type {
-  NsSearchResult,
+  SearchResultExt,
   SearchResultData,
-  LunrExtended,
+  LunrExt,
   Namespace,
   Refs,
   FortifySearchResult,
@@ -49,9 +49,9 @@ export class SearchService implements OnModuleInit {
   protected initPage() {
     const ns: Namespace = 'page';
     this.searchPage = this.lunr.create(ns, {
-      fields: ['title', 'slug', 'text'] as Array<keyof SearchPage>,
+      fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExtended).de, args: [] }],
+      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
       metadataWhitelist: ['position'],
     });
   }
@@ -59,9 +59,9 @@ export class SearchService implements OnModuleInit {
   protected initNav() {
     const ns: Namespace = 'nav';
     this.searchNav = this.lunr.create(ns, {
-      fields: ['title'] as Array<keyof SearchNav>,
+      fields: { title: { boost: 4 } },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExtended).de, args: [] }],
+      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
       metadataWhitelist: ['position'],
     });
   }
@@ -69,9 +69,9 @@ export class SearchService implements OnModuleInit {
   protected initPost() {
     const ns: Namespace = 'post';
     this.searchPost = this.lunr.create(ns, {
-      fields: ['title', 'slug', 'text'] as Array<keyof SearchPost>,
+      fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExtended).de, args: [] }],
+      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
       metadataWhitelist: ['position'],
     });
   }
@@ -81,7 +81,7 @@ export class SearchService implements OnModuleInit {
     // TODO
   }
 
-  protected getRefs(results: NsSearchResult[]) {
+  protected getRefs(results: SearchResultExt[]) {
     const refs: Partial<Refs> = {};
 
     for (const ns of NAMESPACES) {
@@ -95,7 +95,7 @@ export class SearchService implements OnModuleInit {
     return refs as Refs;
   }
 
-  protected async getSearchResultData(results: NsSearchResult[]) {
+  protected async getSearchResultData(results: SearchResultExt[]) {
     const refs = this.getRefs(results);
     const vars: StrapiGqlSearchResultQueryVariables = {
       postSlugs: refs.post.length ? refs.post : null,
@@ -126,8 +126,72 @@ export class SearchService implements OnModuleInit {
     return result;
   }
 
+  /**
+   * Inserting string at position x of another string
+   * @see https://stackoverflow.com/a/4364902/1465919
+   * @param target Target string
+   * @param insert String to insert in the target string
+   * @param position Position to insert the string
+   * @returns The new string
+   */
+  protected insertAt(target: string, insert: string, position: number) {
+    return [target.slice(0, position), insert, target.slice(position)].join('');
+  }
+
+  /**
+   * Highlights the search results in the text
+   */
+  protected highlightResult(fortifyResult: FortifySearchResult) {
+    const metadata = fortifyResult.matchData.metadata;
+    for (const term in metadata) {
+      if (metadata[term]) {
+        for (const prop in metadata[term]) {
+          if (metadata[term][prop] && fortifyResult.data[prop]) {
+            let text = fortifyResult.data[prop] as string;
+            const positions = metadata[term][prop].position;
+            for (let p = positions.length - 1; p >= 0; p--) {
+              const pos = positions[p];
+              const start = pos[0];
+              const end = start + pos[1];
+              if (pos.length === 2 && typeof text === 'string') {
+                text = this.insertAt(text, '</span>', end);
+                text = this.insertAt(
+                  text,
+                  `<span class='search-highlight'>`,
+                  start,
+                );
+              }
+            }
+            fortifyResult.data[prop] = text;
+          }
+        }
+      }
+    }
+    return fortifyResult;
+  }
+
+  /**
+   * Highlights the search results in the text
+   */
+  protected highlightResults(fortifyResults: FortifySearchResult[]) {
+    return fortifyResults.map((fortifyResult) =>
+      this.highlightResult(fortifyResult),
+    );
+  }
+
+  /**
+   * Fortify the search result
+   * - Merges the lunr namespace search results
+   * - Sets the namespace property
+   * - Merges strapi data to the lunr search result
+   * - Highlights the substrings in the text properties
+   * - Resorts the merged results by score
+   *
+   * @param lunrResults
+   * @returns
+   */
   protected async fortifySearchResult(
-    lunrResults: NsSearchResult[],
+    lunrResults: SearchResultExt[],
   ): Promise<FortifySearchResult[]> {
     const allDates = await this.getSearchResultData(lunrResults);
     const fortifyResult: FortifySearchResult[] = [];
@@ -143,11 +207,17 @@ export class SearchService implements OnModuleInit {
       });
     }
 
+    this.highlightResults(fortifyResult);
+
+    fortifyResult.sort((a, b) => {
+      return b.score - a.score;
+    });
+
     return fortifyResult;
   }
 
   public async search(ns: Namespace, query: string) {
-    const results = this.lunr.search(ns, query) as NsSearchResult[] | null;
+    const results = this.lunr.search(ns, query) as SearchResultExt[] | null;
     if (!results) {
       return null;
     }
@@ -156,7 +226,7 @@ export class SearchService implements OnModuleInit {
   }
 
   public async searchAll(query: string) {
-    const results = this.lunr.searchAll(query) as NsSearchResult[];
+    const results = this.lunr.searchAll(query) as SearchResultExt[];
     return await this.fortifySearchResult(results);
   }
 

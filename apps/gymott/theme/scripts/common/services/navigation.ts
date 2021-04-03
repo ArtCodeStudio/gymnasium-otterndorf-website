@@ -1,7 +1,13 @@
 import { GraphQLClient } from "./graphql";
 import { ResponseError, NavigationLink } from "../types";
-import { StrapiGqlMenuQuery, StrapiGqlMenuQueryVariables } from "../types";
+import {
+  StrapiGqlMenuQuery,
+  StrapiGqlMenuQueryVariables,
+  StrapiGqlNavigationLinksByIdsQuery,
+  StrapiGqlNavigationLinksByIdsQueryVariables,
+} from "../types";
 import menuQuery from "../../../graphql/queries/menu.gql";
+import navigationLinksByIds from "../../../graphql/queries/navigation-links-by-ids.gql";
 
 export class NavigationService {
   protected graphql = GraphQLClient.getInstance();
@@ -108,7 +114,7 @@ export class NavigationService {
     return result;
   }
 
-  public async get() {
+  public async getMenu() {
     const vars: StrapiGqlMenuQueryVariables = {};
     const navigationRes = await this.graphql.requestCached<StrapiGqlMenuQuery>(
       menuQuery,
@@ -124,9 +130,37 @@ export class NavigationService {
       throw error;
     }
     const baseEntries = navigationRes?.menu.entries;
-    const tree = this.buildTree(
-      baseEntries as any // TODO StrapiGqlMenuQuery["menu"]["entries"]
-    );
+    const tree = this.buildTree(baseEntries);
     return tree;
+  }
+
+  /**
+   * List navigation links
+   * @param ids Pass an empty array to get all navigation links, pass null to get no result
+   * @returns
+   */
+  public async list(ids: string[] | null = null) {
+    const vars: StrapiGqlNavigationLinksByIdsQueryVariables = { ids };
+    let navs: StrapiGqlNavigationLinksByIdsQuery["navigationLinks"] = [];
+    try {
+      const response = await this.graphql.requestCached<StrapiGqlNavigationLinksByIdsQuery>(
+        navigationLinksByIds,
+        vars
+      );
+      navs = response.navigationLinks || [];
+    } catch (error) {
+      console.error(error);
+    }
+    return navs;
+  }
+
+  /**
+   * Get navigation link
+   * @param id Id of the navigation link
+   * @returns
+   */
+  public async get(id: string) {
+    const navs = await this.list([id]);
+    return navs?.[0] || null;
   }
 }

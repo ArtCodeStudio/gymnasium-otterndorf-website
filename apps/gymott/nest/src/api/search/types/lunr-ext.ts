@@ -1,8 +1,8 @@
 import type { Plugin } from '@ribajs/nest-lunr';
 import type lunr from 'lunr';
 
-interface ILunrExtended {
+interface ILunrExt {
   de: Plugin;
 }
 
-export type LunrExtended = typeof lunr & ILunrExtended;
+export type LunrExt = typeof lunr & ILunrExt;

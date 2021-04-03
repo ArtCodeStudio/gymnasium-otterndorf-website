@@ -87,4 +87,14 @@ export class NavService {
     }
     return navs;
   }
+
+  /**
+   * Get navigation link
+   * @param id Id of the navigation link
+   * @returns
+   */
+  public async get(id: string) {
+    const navs = await this.list([id]);
+    return navs?.[0] || null;
+  }
 }

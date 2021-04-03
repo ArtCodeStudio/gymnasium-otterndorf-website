@@ -5,7 +5,7 @@ import pugTemplate from "./gy-right-sidebar.component.pug";
 import { Awaited } from "../../types";
 
 export interface Scope {
-  navEntry: Awaited<ReturnType<NavigationService["get"]>> | null;
+  navEntry: Awaited<ReturnType<NavigationService["getMenu"]>> | null;
 }
 
 export class GyRightSidebarComponent extends Component {
@@ -28,7 +28,7 @@ export class GyRightSidebarComponent extends Component {
   protected async beforeBind() {
     await super.beforeBind();
     if (!this.scope.navEntry) {
-      this.scope.navEntry = await NavigationService.getInstance().get();
+      this.scope.navEntry = await NavigationService.getInstance().getMenu();
       this.setAttribute("nav-entry", JSON.stringify(this.scope.navEntry));
     }
 

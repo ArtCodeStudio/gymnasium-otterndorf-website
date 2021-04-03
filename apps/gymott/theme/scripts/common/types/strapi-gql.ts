@@ -2682,17 +2682,6 @@ export type StrapiGqlNavigationLinksByIdsQuery = (
   )>>> }
 );
 
-export type StrapiGqlNavigationLinksQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type StrapiGqlNavigationLinksQuery = (
-  { __typename?: 'Query' }
-  & { navigationLinks?: Maybe<Array<Maybe<(
-    { __typename?: 'NavigationLink' }
-    & StrapiGqlNavigationLinkFragmentFragment
-  )>>> }
-);
-
 export type StrapiGqlPageBySlugsQueryVariables = Exact<{
   slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
 }>;
