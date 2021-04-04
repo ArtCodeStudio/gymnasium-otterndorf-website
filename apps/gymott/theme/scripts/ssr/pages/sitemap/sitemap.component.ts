@@ -6,7 +6,7 @@ import { Awaited } from "../../../common/types";
 export interface Scope {
   title: string;
   pages: Awaited<ReturnType<PageService["list"]>>;
-  blogPosts: Awaited<ReturnType<BlogService["list"]>>;
+  blogPosts: Awaited<ReturnType<BlogService["listPosts"]>>;
 }
 
 export class SitemapPageComponent extends PageComponent {
@@ -51,7 +51,7 @@ export class SitemapPageComponent extends PageComponent {
 
   protected async getBlogPosts() {
     try {
-      this.scope.blogPosts = await this.blog.list();
+      this.scope.blogPosts = await this.blog.listPosts();
     } catch (error) {
       this.throw(error);
     }

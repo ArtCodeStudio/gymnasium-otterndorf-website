@@ -1,10 +1,9 @@
 import { Component, LifecycleService } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-navbar.component.pug";
+import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
 
-export interface Scope {
-  onSearchBtn: GyNavbarComponent["onSearchBtn"];
-}
+export interface Scope {}
 
 export class GyNavbarComponent extends Component {
   public static tagName = "gy-navbar";
@@ -12,9 +11,7 @@ export class GyNavbarComponent extends Component {
   protected autobind = true;
   protected lifecycle = LifecycleService.getInstance();
 
-  scope: Scope = {
-    onSearchBtn: this.onSearchBtn,
-  };
+  scope: Scope = {};
 
   static get observedAttributes(): string[] {
     return [];
@@ -22,10 +19,6 @@ export class GyNavbarComponent extends Component {
 
   constructor() {
     super();
-  }
-
-  public onSearchBtn() {
-    console.debug("TODO onSearchBtn");
   }
 
   /**
@@ -36,6 +29,9 @@ export class GyNavbarComponent extends Component {
     const navbarHeight = Math.max(navbar?.offsetHeight || 0, this.offsetHeight);
     const leftSidebar = document.getElementById("left-sidebar");
     const rightSidebar = document.getElementById("right-sidebar");
+    const searchResults = Array.from(
+      document.querySelectorAll<GySearchResultComponent>("gy-search-result")
+    );
 
     this.debug("setDependentStyles navbarHeight", navbarHeight);
 
@@ -45,6 +41,13 @@ export class GyNavbarComponent extends Component {
 
     if (rightSidebar) {
       rightSidebar.style.marginTop = navbarHeight + "px";
+    }
+
+    if (searchResults) {
+      for (const searchResult of searchResults) {
+        searchResult.style.top = navbarHeight + "px";
+        searchResult.style.maxHeight = `calc(100vh - ${navbarHeight}px)`;
+      }
     }
   }
 

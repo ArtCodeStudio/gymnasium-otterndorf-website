@@ -1,0 +1,14 @@
+gy-search-result {
+  display: block;
+  max-height: 100vh;
+  overflow-x: auto;
+  .search-highlight {
+    background-color: $yellow;
+  }
+  background-color: $body-bg;
+  .card {
+    .card-text {
+      // max-height: 500px;
+    }
+  }
+}

@@ -2,20 +2,17 @@
   .container-fluid.d-block
     .row.justify-content-between
       //- Left
-      .col-auto.d-flex.align-items-center
+      .col-auto.d-flex.align-items-center.d-none.d-md-flex
         .row.d-flex.align-items-center
           a.col-auto.navbar-brand.d-flex.align-items-center.p-0.mx-2(href="/")
             bs5-icon(src="/images/logo.svg" size="64" rv-hide="isActive" rv-on-click="toggle")
       //- Middle
-      .col-auto.d-flex.align-items-center.d-none.d-md-flex
+      .col-12.col-md-auto.d-flex.align-items-center.justify-content-center
         .row
-          .col-auto(action="#")
-            .input-group
-              input.form-control.border-end-0(type="search", placeholder="Suchen")
-              button.input-group-text#search-addon.bg-gray(csr-rv-on-click="onSearchBtn")
-                bs5-icon(src="/iconset/svg/icon_search2.svg" size="16")
+          .col-auto()
+            gy-search-input
       //- Right
-      .col-auto.d-flex.align-items-center
+      .col-auto.d-flex.align-items-center.d-none.d-md-flex
         .row.d-flex.align-items-center
           bs5-toggle-button.col-auto.text-dark.mx-2(target-id="right-sidebar")
             ul.nav

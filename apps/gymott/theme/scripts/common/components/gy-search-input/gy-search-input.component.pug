@@ -1,0 +1,5 @@
+.input-group
+  input.form-control.border-end-0(type="search" aria-describedby="search-help" placeholder="Suchen" csr-rv-on-input="onChange" csr-rv-value="term")
+  button.input-group-text#search-addon.bg-gray(csr-rv-on-click="onSearchBtn")
+    bs5-icon(src="/iconset/svg/icon_search2.svg" size="16")
+.form-text#search-help(ssr-rv-class="help.class" csr-rv-class="help.class" csr-rv-text="help.message")

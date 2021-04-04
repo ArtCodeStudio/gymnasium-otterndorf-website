@@ -5,4 +5,5 @@ export { GraphQLClient } from "./graphql";
 export { GyHomeService } from "./home";
 export { NavigationService } from "./navigation";
 export { PageService } from "./page";
+export { SearchService } from "./search";
 export { ToolbarService } from "./toolbar";

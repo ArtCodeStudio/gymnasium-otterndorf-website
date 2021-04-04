@@ -1,0 +1,11 @@
+.container(csr-rv-show="results | size")
+  .row
+    .col-12.col-md-6.col-lg-4(csr-rv-each-result="results")
+      .card
+        //- img(src="...").card-img-top
+        .card-body
+          h5.card-title(csr-rv-html="result.data.title")
+          h6.card-subtitle.mb-2.text-success(csr-rv-text="getType | call result.ns")
+          p.card-text(csr-rv-html="result.data.text")
+    .col-12.text-center
+      button.btn.btn-link(csr-rv-on-click="close") Schließen
