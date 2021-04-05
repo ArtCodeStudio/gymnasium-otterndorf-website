@@ -6,3 +6,4 @@ export * from './refs';
 export * from './search-result-ext';
 export * from './ref-keys';
 export * from './search-result-data';
+export * from './sorted-position-item';

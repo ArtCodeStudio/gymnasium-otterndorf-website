@@ -12,6 +12,7 @@ import type {
   Namespace,
   Refs,
   FortifySearchResult,
+  SortedPositionItem,
 } from './types';
 import {
   StrapiGqlSearchResultQuery,
@@ -139,34 +140,58 @@ export class SearchService implements OnModuleInit {
   }
 
   /**
-   * Highlights the search results in the text
+   * Sort positions by end position
+   * - Needed to adjust the text property backwards for highlighting, otherwise the text length will change and the positions would no longer be correct.
+   * @param metadata
+   * @returns
    */
-  protected highlightResult(fortifyResult: FortifySearchResult) {
-    const metadata = fortifyResult.matchData.metadata;
+  protected getSortedPositions(
+    metadata: FortifySearchResult['matchData']['metadata'],
+  ) {
+    const sortedPositions: SortedPositionItem[] = [];
     for (const term in metadata) {
-      if (metadata[term]) {
-        for (const prop in metadata[term]) {
-          if (metadata[term][prop] && fortifyResult.data[prop]) {
-            let text = fortifyResult.data[prop] as string;
-            const positions = metadata[term][prop].position;
-            for (let p = positions.length - 1; p >= 0; p--) {
-              const pos = positions[p];
-              const start = pos[0];
-              const end = start + pos[1];
-              if (pos.length === 2 && typeof text === 'string') {
-                text = this.insertAt(text, '</span>', end);
-                text = this.insertAt(
-                  text,
-                  `<span class='search-highlight'>`,
-                  start,
-                );
-              }
-            }
-            fortifyResult.data[prop] = text;
+      for (const prop in metadata[term]) {
+        const positions = metadata[term][prop].position;
+        for (let p = positions.length - 1; p >= 0; p--) {
+          const pos = positions[p];
+          if (pos.length === 2) {
+            const start = positions[p][0];
+            const end = start + positions[p][1];
+            sortedPositions.push({
+              start,
+              end,
+              prop,
+              term,
+            });
           }
         }
       }
     }
+
+    return sortedPositions.sort((a, b) => b.end - a.end);
+  }
+
+  /**
+   * Highlights the search results in the text
+   */
+  protected highlightResult(fortifyResult: FortifySearchResult) {
+    const metadata = fortifyResult.matchData.metadata;
+    const sortedPositions = this.getSortedPositions(metadata);
+
+    for (const sortPos of sortedPositions) {
+      const prop = sortPos.prop;
+      const start = sortPos.start;
+      const end = sortPos.end;
+      if (fortifyResult.data[prop]) {
+        let text = fortifyResult.data[prop] as string;
+        if (typeof text === 'string') {
+          text = this.insertAt(text, '</span>', end);
+          text = this.insertAt(text, `<span class='search-highlight'>`, start);
+        }
+        fortifyResult.data[prop] = text;
+      }
+    }
+
     return fortifyResult;
   }
 
