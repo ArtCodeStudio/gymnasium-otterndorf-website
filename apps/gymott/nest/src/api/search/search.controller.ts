@@ -2,9 +2,9 @@ import { Controller, Get, Param, Res, NotFoundException } from '@nestjs/common';
 import { Response } from 'express';
 import { SearchService } from './search.service';
 import type { Namespace } from './types';
-import type { SearchResultExt } from '@ribajs/nest-lunr';
+import { SearchResultExt } from '@ribajs/nest-lunr';
 
-@Controller('api/search')
+@Controller('api')
 export class SearchController {
   constructor(readonly search: SearchService) {}
 
@@ -17,7 +17,7 @@ export class SearchController {
    * @returns
    * @memberof SearchController
    */
-  @Get('/:namespace/:query')
+  @Get('/search/:namespace/:query')
   async searchNs(
     @Res() res: Response,
     @Param('namespace') namespace: Namespace,
@@ -46,11 +46,30 @@ export class SearchController {
    * @returns
    * @memberof SearchController
    */
-  @Get('/:query')
+  @Get('/search/:query')
   async searchAll(@Res() res: Response, @Param('query') query: string) {
     let result: SearchResultExt[];
     try {
       result = await this.search.searchAll(query);
+    } catch (error) {
+      throw error;
+    }
+    return res.json(result);
+  }
+
+  /**
+   * Search in all namespaces
+   *
+   * @param {Response} res
+   * @param {string} query
+   * @returns
+   * @memberof SearchController
+   */
+  @Get('/suggest/:term')
+  async suggestion(@Res() res: Response, @Param('term') term: string) {
+    let result: SearchResultExt[];
+    try {
+      result = await this.search.suggestion(term);
     } catch (error) {
       throw error;
     }

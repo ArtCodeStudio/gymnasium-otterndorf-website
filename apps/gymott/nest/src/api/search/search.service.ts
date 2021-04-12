@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import { LunrService, SearchResultExt } from '@ribajs/nest-lunr';
+import {
+  LunrService,
+  SuggestService,
+  SearchResultExt,
+} from '@ribajs/nest-lunr';
 import { StrapiService } from '../strapi/strapi.service';
 import { NavService } from '../nav';
 import { PageService } from '../page';
@@ -12,12 +16,14 @@ import { REF_KEYS } from './constants';
 export class SearchService implements OnModuleInit {
   constructor(
     readonly lunr: LunrService,
+    readonly suggest: SuggestService,
     readonly strapi: StrapiService,
     protected readonly nav: NavService,
     protected readonly page: PageService,
     protected readonly post: PostService,
   ) {
     this.initLunrPlugins();
+    this.initGlobalSuggestion();
     this.initPage();
     this.initNav();
     this.initPost();
@@ -27,6 +33,10 @@ export class SearchService implements OnModuleInit {
   protected initLunrPlugins() {
     require('lunr-languages/lunr.stemmer.support')(LunrService.lunr);
     require('lunr-languages/lunr.de')(LunrService.lunr);
+  }
+
+  protected initGlobalSuggestion() {
+    this.suggest.create('global');
   }
 
   protected initPage() {
@@ -69,6 +79,10 @@ export class SearchService implements OnModuleInit {
     return this.lunr.searchAll(query) as SearchResultExt[];
   }
 
+  public suggestion(term: string) {
+    return this.suggest.suggest('global', term);
+  }
+
   public async refreshPage() {
     const ns: Namespace = 'page';
     const pages = await this.page.list();
@@ -77,6 +91,8 @@ export class SearchService implements OnModuleInit {
 
     for (const page of pages) {
       this.lunr.add(ns, page);
+      this.suggest.load('global', page.title);
+      this.suggest.load('global', page.text);
     }
     this.lunr.buildIndex(ns);
   }
@@ -89,6 +105,7 @@ export class SearchService implements OnModuleInit {
 
     for (const nav of navs) {
       this.lunr.add(ns, nav);
+      this.suggest.load('global', nav.title);
     }
     this.lunr.buildIndex(ns);
   }
@@ -101,6 +118,8 @@ export class SearchService implements OnModuleInit {
 
     for (const post of posts) {
       this.lunr.add(ns, post);
+      this.suggest.load('global', post.title);
+      this.suggest.load('global', post.text);
     }
     this.lunr.buildIndex(ns);
   }
