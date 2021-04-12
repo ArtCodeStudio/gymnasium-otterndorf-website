@@ -1,5 +1,5 @@
-import type { Namespace, RefKeys } from './types';
-export const NAMESPACES: Namespace[] = ['blog', 'nav', 'page', 'post'];
+import type { RefKeys } from './types';
+
 export const REF_KEYS: RefKeys = {
   blog: 'slug',
   nav: 'id',

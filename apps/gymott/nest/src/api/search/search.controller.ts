@@ -1,14 +1,8 @@
-import {
-  Controller,
-  Get,
-  Param,
-  Res,
-  NotFoundException,
-  HttpException,
-} from '@nestjs/common';
+import { Controller, Get, Param, Res, NotFoundException } from '@nestjs/common';
 import { Response } from 'express';
 import { SearchService } from './search.service';
-import type { Namespace, SearchResultExt } from './types';
+import type { Namespace } from './types';
+import type { SearchResultExt } from '@ribajs/nest-lunr';
 
 @Controller('api/search')
 export class SearchController {
@@ -31,7 +25,6 @@ export class SearchController {
   ) {
     let result: SearchResultExt[];
     try {
-      let result: SearchResultExt[];
       result = await this.search.search(namespace, query);
     } catch (error) {
       throw error;
