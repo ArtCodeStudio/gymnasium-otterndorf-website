@@ -6,4 +6,5 @@ export { GyHomeService } from "./home";
 export { NavigationService } from "./navigation";
 export { PageService } from "./page";
 export { SearchService } from "./search";
+export { SuggestService } from "./suggest";
 export { ToolbarService } from "./toolbar";

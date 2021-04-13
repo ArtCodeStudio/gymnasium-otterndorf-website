@@ -5,6 +5,11 @@ gy-search-result {
   .search-highlight {
     background-color: $yellow;
   }
+  .suggest {
+    text-decoration: underline;
+    font-style: italic;
+    cursor: pointer;
+  }
   background-color: $body-bg;
   .card {
     .card-text {

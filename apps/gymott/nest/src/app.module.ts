@@ -15,6 +15,7 @@ import { CalendarService } from './api/calendar/calendar.service';
 import { NavService } from './api/nav/nav.service';
 import { PageService } from './api/page/page.service';
 import { PostService } from './api/post/post.service';
+import { MarkdownService } from './api/markdown/markdown.service';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { PostService } from './api/post/post.service';
     NavService,
     PageService,
     PostService,
+    MarkdownService,
   ],
 })
 export class AppModule {}

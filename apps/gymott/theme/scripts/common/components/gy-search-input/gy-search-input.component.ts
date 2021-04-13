@@ -1,19 +1,13 @@
 import { Component, LifecycleService } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-search-input.component.pug";
-import { SearchService } from "../../services/search";
 import { throttle } from "@ribajs/utils/src/control";
-import { SearchResult } from "../../types/search-result";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
 
 export interface Scope {
   onChange: GySearchInputComponent["onChange"];
-  onSearchBtn: GySearchInputComponent["onSearchBtn"];
+  onAddon: GySearchInputComponent["onAddon"];
   term: string;
-  help: {
-    class: string;
-    message: string;
-  };
 }
 
 export class GySearchInputComponent extends Component {
@@ -22,18 +16,13 @@ export class GySearchInputComponent extends Component {
   protected autobind = true;
   protected searchResultContainers: GySearchResultComponent[] = [];
   protected lifecycle = LifecycleService.getInstance();
-  protected search = SearchService.getInstance();
 
-  public onChange = throttle(this._onChange.bind(this), 1000);
+  public onChange = throttle(this._onChange.bind(this), 500);
 
   scope: Scope = {
     onChange: this.onChange,
-    onSearchBtn: this.onSearchBtn,
+    onAddon: this.onAddon,
     term: "",
-    help: {
-      class: "text-danger",
-      message: "",
-    },
   };
 
   static get observedAttributes(): string[] {
@@ -60,46 +49,58 @@ export class GySearchInputComponent extends Component {
   }
 
   protected async _onChange() {
+    this.setTermExtern(this.scope.term);
     if (this.scope.term.length < 3) {
       if (this.scope.term.length <= 0) {
         this.reset();
-      } else {
-        this.scope.help.message = "Bitte gebe mindestens 3 Zeichen ein";
-        this.resetResults();
       }
-    } else {
-      this.scope.help.message = "";
-      const query = /*"*" +*/ this.scope.term; /*+ "*"*/
-      const searchResults = await this.search.get(query);
-      this.setResults(searchResults);
-      console.debug("onChange", query, searchResults);
     }
   }
 
-  public onSearchBtn() {
-    console.debug("TODO onSearchBtn");
+  public onAddon() {
+    this.resetTerm();
   }
 
-  protected setResults(results: SearchResult[]) {
+  public setSuggest(term: string) {
+    this.scope.term = term;
+    this._onChange();
+  }
+
+  /**
+   * Set term in gy-search-result components
+   *
+   * @protected
+   * @param {SearchResult[]} results
+   * @memberof GySearchInputComponent
+   */
+  protected setTermExtern(term: string) {
     if (this.searchResultContainers) {
       for (const searchResultContainer of this.searchResultContainers) {
-        searchResultContainer.set(results);
+        searchResultContainer.setTerm(term);
       }
     }
   }
 
-  protected resetResults() {
-    if (this.searchResultContainers) {
-      for (const searchResultContainer of this.searchResultContainers) {
-        searchResultContainer.scope.results = [];
-      }
-    }
-  }
-
-  public reset() {
+  protected resetTerm() {
     this.scope.term = "";
-    this.scope.help.message = "";
-    this.resetResults();
+    this.resetTermExtern();
+  }
+
+  protected resetTermExtern() {
+    if (this.searchResultContainers) {
+      for (const searchResultContainer of this.searchResultContainers) {
+        searchResultContainer.setTerm(this.scope.term);
+      }
+    }
+  }
+
+  /**
+   * Reset all
+   * - Resets results
+   * - Resets search term
+   */
+  public reset() {
+    this.resetTerm();
   }
 
   protected async beforeBind() {

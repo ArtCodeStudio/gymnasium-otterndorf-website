@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { StrapiService } from '../strapi/strapi.service';
+import { MarkdownService } from '../markdown/markdown.service';
 import { SearchPage } from './types';
 import {
   StrapiGqlPageBySlugsQuery,
@@ -8,16 +9,26 @@ import {
 
 @Injectable()
 export class PageService {
-  constructor(readonly strapi: StrapiService) {}
+  constructor(
+    readonly strapi: StrapiService,
+    readonly markdown: MarkdownService,
+  ) {}
 
-  public flattens(pages: StrapiGqlPageBySlugsQuery['pages']): SearchPage[] {
-    return pages.map((page) => this.flatten(page));
+  public async flattens(
+    pages: StrapiGqlPageBySlugsQuery['pages'],
+  ): Promise<SearchPage[]> {
+    const pPages = pages.map((page) => this.flatten(page));
+    return await Promise.all(pPages);
   }
 
-  public flatten(page: StrapiGqlPageBySlugsQuery['pages'][0]): SearchPage {
-    const texts: string[] = page.content
+  public async flatten(
+    page: StrapiGqlPageBySlugsQuery['pages'][0],
+  ): Promise<SearchPage> {
+    const pTexts = page.content
       .filter((content: any) => content.text)
-      .map((content: any) => content.text);
+      .map((content: any) => this.markdown.strip(content.text));
+
+    const texts = await Promise.all(pTexts);
 
     return {
       id: page.id,
@@ -40,7 +51,7 @@ export class PageService {
       console.error(error);
     }
     if (Array.isArray(pages)) {
-      return pages.map((page) => this.flatten(page));
+      return await Promise.all(pages.map((page) => this.flatten(page)));
     }
     return null;
   }

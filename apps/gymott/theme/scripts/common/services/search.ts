@@ -17,7 +17,7 @@ export class SearchService {
     return SearchService.instance;
   }
 
-  async _get(term: string) {
+  protected async _get(url: string) {
     const res = await HttpService.getJSON<SearchResult[]>(url, {});
     if (res.status !== 200) {
       throw new Error(res.body.toString());
@@ -25,13 +25,12 @@ export class SearchService {
     return res.body;
   }
 
-  async get(term: string) {
+  public async get(term: string) {
     const url = "/api/search/" + encodeURIComponent(term);
     return defaultCache.resolve<SearchResult[]>(
       url,
       async () => {
-        const res = await HttpService.getJSON<SearchResult[]>(url, {});
-        return res.body;
+        return await this._get(url);
       },
       "5 mins"
     );
