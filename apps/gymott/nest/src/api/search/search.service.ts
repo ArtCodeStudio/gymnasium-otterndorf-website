@@ -23,7 +23,6 @@ export class SearchService implements OnModuleInit {
     protected readonly post: PostService,
   ) {
     this.initLunrPlugins();
-    this.initGlobalSuggestion();
     this.initPage();
     this.initNav();
     this.initPost();
@@ -35,12 +34,9 @@ export class SearchService implements OnModuleInit {
     require('lunr-languages/lunr.de')(LunrService.lunr);
   }
 
-  protected initGlobalSuggestion() {
-    this.suggest.create('global');
-  }
-
   protected initPage() {
     const ns: Namespace = 'page';
+    this.suggest.create(ns);
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
@@ -50,6 +46,7 @@ export class SearchService implements OnModuleInit {
 
   protected initNav() {
     const ns: Namespace = 'nav';
+    this.suggest.create(ns);
     this.lunr.create(ns, {
       fields: { title: { boost: 4 } },
       ref: REF_KEYS[ns],
@@ -59,6 +56,7 @@ export class SearchService implements OnModuleInit {
 
   protected initPost() {
     const ns: Namespace = 'post';
+    this.suggest.create(ns);
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
@@ -71,17 +69,21 @@ export class SearchService implements OnModuleInit {
     // TODO
   }
 
-  public async search(ns: Namespace, query: string) {
-    return this.lunr.search(ns, query) as SearchResultExt[] | null;
-  }
+  // public async search(ns: Namespace, query: string) {
+  //   return this.lunr.search(ns, query) as SearchResultExt[] | null;
+  // }
 
-  public async searchAll(query: string) {
-    return this.lunr.searchAll(query) as SearchResultExt[];
-  }
+  // public async searchAll(query: string) {
+  //   return this.lunr.searchAll(query) as SearchResultExt[];
+  // }
 
-  public suggestion(term: string) {
-    return this.suggest.suggest('global', term);
-  }
+  // public suggestion(ns: Namespace, word: string, alphabet?: string[]) {
+  //   return this.suggest.suggest(ns, word, alphabet);
+  // }
+
+  // public suggestionAll(word: string, alphabet?: string[]) {
+  //   return this.suggest.suggestAll(word, alphabet);
+  // }
 
   public async refreshPage() {
     const ns: Namespace = 'page';
@@ -91,8 +93,8 @@ export class SearchService implements OnModuleInit {
 
     for (const page of pages) {
       this.lunr.add(ns, page);
-      this.suggest.load('global', page.title);
-      this.suggest.load('global', page.text);
+      this.suggest.load(ns, page.title);
+      this.suggest.load(ns, page.text);
     }
     this.lunr.buildIndex(ns);
   }
@@ -105,7 +107,7 @@ export class SearchService implements OnModuleInit {
 
     for (const nav of navs) {
       this.lunr.add(ns, nav);
-      this.suggest.load('global', nav.title);
+      this.suggest.load(ns, nav.title);
     }
     this.lunr.buildIndex(ns);
   }
@@ -118,8 +120,8 @@ export class SearchService implements OnModuleInit {
 
     for (const post of posts) {
       this.lunr.add(ns, post);
-      this.suggest.load('global', post.title);
-      this.suggest.load('global', post.text);
+      this.suggest.load(ns, post.title);
+      this.suggest.load(ns, post.text);
     }
     this.lunr.buildIndex(ns);
   }

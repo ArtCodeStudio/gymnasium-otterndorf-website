@@ -3,12 +3,15 @@ import { ConfigService, ConfigModule } from '@nestjs/config';
 
 import { appConfig, theme } from './config/config';
 import { ThemeModule } from '@ribajs/nest-theme';
-import { LunrModule } from '@ribajs/nest-lunr';
+import {
+  LunrModule,
+  SearchController,
+  SuggestController,
+} from '@ribajs/nest-lunr';
 import { StrapiService } from './api/strapi/strapi.service';
 import { SearchService } from './api/search/search.service';
 import { CalendarController } from './api/calendar/calendar.controller';
 import { CalendarService } from './api/calendar/calendar.service';
-import { SearchController } from './api/search/search.controller';
 import { NavService } from './api/nav/nav.service';
 import { PageService } from './api/page/page.service';
 import { PostService } from './api/post/post.service';
@@ -21,7 +24,7 @@ import { PostService } from './api/post/post.service';
     LunrModule,
     ThemeModule.forRoot(theme),
   ],
-  controllers: [CalendarController, SearchController],
+  controllers: [CalendarController, SearchController, SuggestController],
   providers: [
     ConfigService,
     StrapiService,
