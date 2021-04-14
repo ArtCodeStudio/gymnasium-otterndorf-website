@@ -12,6 +12,23 @@ import { SearchNav } from './types';
 export class NavService {
   constructor(readonly strapi: StrapiService) {}
 
+  static buildHref(type: string, slug?: string) {
+    if (!slug) {
+      return '';
+    }
+    switch (type) {
+      case 'ComponentLinkTypeBlog':
+      case 'post':
+        return '/post/' + slug;
+      case 'ComponentLinkTypePage':
+      case 'page':
+        return '/page/' + slug;
+      case 'ComponentLinkTypeSchulfach':
+      case 'schulfach':
+        return '/schulfach/' + slug;
+    }
+  }
+
   public getHref(
     navLink:
       | StrapiGqlMenuQuery['menu']['entries'][0]['navigation_link']
@@ -23,11 +40,11 @@ export class NavService {
     }
     switch (type.__typename) {
       case 'ComponentLinkTypeBlog':
-        return type.blog?.slug ? '/post/' + type.blog.slug : '';
+        return NavService.buildHref(type.__typename, type.blog?.slug);
       case 'ComponentLinkTypePage':
-        return type.page?.slug ? '/page/' + type.page.slug : '';
+        return NavService.buildHref(type.__typename, type.page?.slug);
       case 'ComponentLinkTypeSchulfach':
-        return type.schulfach?.slug ? '/schulfach/' + type.schulfach.slug : '';
+        return NavService.buildHref(type.__typename, type.schulfach?.slug);
       case 'ComponentLinkTypeWeb':
         return type.URL ? type.URL : '';
     }

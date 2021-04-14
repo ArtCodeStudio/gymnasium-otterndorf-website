@@ -3,4 +3,5 @@ export interface SearchPage {
   title: string;
   slug: string;
   text: string;
+  href: string;
 }

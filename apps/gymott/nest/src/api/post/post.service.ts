@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { StrapiService } from '../strapi/strapi.service';
 import { MarkdownService } from '../markdown/markdown.service';
+import { NavService } from '../nav';
 import { SearchPost } from './types';
 import {
   StrapiGqlBlogEntriesBySlugsQuery,
@@ -36,6 +37,7 @@ export class PostService {
       title: post.title,
       slug: post.slug,
       text: texts.join('\n'),
+      href: NavService.buildHref('post', post.slug),
     };
   }
 

@@ -1,19 +1,25 @@
 import { Component, LifecycleService } from "@ribajs/core";
+import { Pjax } from "@ribajs/router";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-search-result.component.pug";
 import { SearchService, SuggestService } from "../../services";
-import { SearchResult, SuggestResult } from "../../types";
+import { SearchItem, SearchResult, SuggestResult } from "../../types";
 import { GySearchInputComponent } from "../gy-search-input/gy-search-input.component";
+
+const MAX_TEXT_LENGTH = 200;
+const MAX_TEXT_LENGTH_OFFSET = 100;
 
 export interface Scope {
   close: GySearchResultComponent["close"];
   getType: GySearchResultComponent["getType"];
   onSuggest: GySearchResultComponent["onSuggest"];
+  onOpen: GySearchResultComponent["onOpen"];
+  onToggleItem: GySearchResultComponent["onToggleItem"];
   term: string;
-  results: SearchResult[];
+  items: SearchItem[];
   show: boolean;
   suggestions: {
-    results: SuggestResult[];
+    items: SuggestResult[];
     message: string;
     show: boolean;
   };
@@ -32,16 +38,19 @@ export class GySearchResultComponent extends Component {
   protected searchInputs: GySearchInputComponent[] = [];
   protected search = SearchService.getInstance();
   protected suggest = SuggestService.getInstance();
+  protected pjax?: Pjax;
 
   scope: Scope = {
     close: this.close,
     getType: this.getType,
     onSuggest: this.onSuggest,
+    onOpen: this.onOpen,
+    onToggleItem: this.onToggleItem,
     term: "",
-    results: [],
+    items: [],
     show: false,
     suggestions: {
-      results: [],
+      items: [],
       message: "",
       show: false,
     },
@@ -65,6 +74,28 @@ export class GySearchResultComponent extends Component {
     console.debug("onSuggest", event, el);
     for (const searchInput of this.searchInputs) {
       searchInput.setSuggest(el.innerText);
+    }
+  }
+
+  public onOpen(item: SearchResult, event: Event) {
+    console.debug("onOpen", item, event.target);
+
+    this.reset();
+    if (item.data.href) {
+      this.pjax?.goTo(item.data.href);
+    }
+  }
+
+  public onToggleItem(item: SearchItem, event: Event) {
+    console.debug("onToggleItem", item);
+    event.stopPropagation();
+    // event.preventDefault();
+    if (item.opts.expanded) {
+      item.opts.cutAt = MAX_TEXT_LENGTH;
+      item.opts.expanded = false;
+    } else {
+      item.opts.cutAt = -1;
+      item.opts.expanded = true;
     }
   }
 
@@ -117,6 +148,26 @@ export class GySearchResultComponent extends Component {
     await this.calibrateAlert();
   }
 
+  protected transformResult(result: SearchResult) {
+    const item: SearchItem = {
+      ...result,
+      opts: { cutAt: -1, expandable: false, expanded: false },
+    };
+
+    if (!item.data?.text?.length) {
+      return item;
+    }
+
+    if (item.data.text.length > MAX_TEXT_LENGTH + MAX_TEXT_LENGTH_OFFSET) {
+      item.opts.cutAt = MAX_TEXT_LENGTH;
+      item.opts.expandable = true;
+    } else {
+      item.opts.cutAt = item.data.text.length;
+      item.opts.expandable = false;
+    }
+    return item;
+  }
+
   protected async calibrateResult() {
     if (this.scope.term.length > 3) {
       let results = await this.search.get(this.scope.term);
@@ -124,9 +175,9 @@ export class GySearchResultComponent extends Component {
       if (results?.length === 0) {
         results = await this.search.get(`*${this.scope.term}*`);
       }
-      this.scope.results = results;
+      this.scope.items = results.map(this.transformResult);
     } else {
-      this.scope.results = [];
+      this.scope.items = [];
     }
   }
 
@@ -134,10 +185,11 @@ export class GySearchResultComponent extends Component {
     if (this.scope.term.length < 4) {
       this.scope.alert.show = true;
       this.scope.alert.message = "Bitte gebe mindestens 4 Zeichen ein.";
-    } else if (this.scope.results.length === 0) {
+    } else if (this.scope.items.length === 0) {
       this.scope.alert.message = `Leider keine Ergebnisse für "${this.scope.term}" gefunden.`;
       this.scope.alert.show = true;
     } else {
+      this.scope.alert.message = "";
       this.scope.alert.show = false;
     }
   }
@@ -145,19 +197,19 @@ export class GySearchResultComponent extends Component {
   protected async calibrateSuggestions() {
     const term = this.scope.term.toLowerCase();
     if (this.scope.term.length > 3) {
-      this.scope.suggestions.results = await this.suggest.get(term);
-      this.scope.suggestions.results = this.scope.suggestions.results.filter(
+      this.scope.suggestions.items = await this.suggest.get(term);
+      this.scope.suggestions.items = this.scope.suggestions.items.filter(
         (result) => result.word !== term && result.word.length >= 4
       );
     } else {
-      this.scope.suggestions.results = [];
+      this.scope.suggestions.items = [];
     }
 
-    if (this.scope.suggestions.results.length) {
+    if (this.scope.suggestions.items.length) {
       this.scope.suggestions.show = true;
       this.scope.suggestions.message =
         "Meintest du " +
-        this.scope.suggestions.results
+        this.scope.suggestions.items
           .map(
             (result) =>
               `<span rv-on-click="onSuggest" class="suggest">${result.word}</span>`
@@ -172,6 +224,11 @@ export class GySearchResultComponent extends Component {
 
   protected async beforeBind() {
     await super.beforeBind();
+  }
+
+  protected async afterBind() {
+    this.pjax = Pjax.getInstance();
+    await super.afterBind();
   }
 
   protected connectedCallback() {

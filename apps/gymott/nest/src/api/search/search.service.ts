@@ -46,6 +46,11 @@ export class SearchService implements OnModuleInit {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
       plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      data: {
+        include: true,
+        highlight: true,
+        shorten: true,
+      },
     });
   }
 
@@ -59,6 +64,11 @@ export class SearchService implements OnModuleInit {
       fields: { title: { boost: 4 } },
       ref: REF_KEYS[ns],
       plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      data: {
+        include: true,
+        highlight: true,
+        shorten: true,
+      },
     });
   }
 
@@ -72,6 +82,11 @@ export class SearchService implements OnModuleInit {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
       plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      data: {
+        include: true,
+        highlight: true,
+        shorten: true,
+      },
     });
   }
 
@@ -82,6 +97,16 @@ export class SearchService implements OnModuleInit {
     this.suggest.ignore(ns, IGNORE_SUGGESTION_WORDS);
 
     // TODO
+    this.lunr.create(ns, {
+      fields: { title: { boost: 2 }, text: {} },
+      ref: REF_KEYS[ns],
+      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      data: {
+        include: true,
+        highlight: true,
+        shorten: true,
+      },
+    });
   }
 
   public async refreshPage() {

@@ -1,6 +1,7 @@
 export * from "./awaited";
 export * from "./navigation-link";
 export * from "./response-error";
+export * from "./search-item";
 export * from "./strapi-gql";
 export * from "./search-result";
 export * from "./strapi-image";

@@ -1,4 +1,4 @@
-import { Component, LifecycleService } from "@ribajs/core";
+import { Component, LifecycleService, EventDispatcher } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-search-input.component.pug";
 import { throttle } from "@ribajs/utils/src/control";
@@ -16,6 +16,7 @@ export class GySearchInputComponent extends Component {
   protected autobind = true;
   protected searchResultContainers: GySearchResultComponent[] = [];
   protected lifecycle = LifecycleService.getInstance();
+  protected route = EventDispatcher.getInstance("main");
 
   public onChange = throttle(this._onChange.bind(this), 500);
 
@@ -45,6 +46,13 @@ export class GySearchInputComponent extends Component {
       "ComponentLifecycle:allBound",
       this.onAllComponentsBound,
       this
+    );
+
+    this.route.on(
+      "initStateChange",
+      (/*viewId: string, currentStatus: State, prevStatus: State*/) => {
+        this.resetTerm();
+      }
     );
   }
 
