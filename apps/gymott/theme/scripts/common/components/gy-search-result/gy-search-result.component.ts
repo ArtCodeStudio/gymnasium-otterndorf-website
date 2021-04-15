@@ -1,5 +1,5 @@
 import { Component, LifecycleService } from "@ribajs/core";
-import { Pjax } from "@ribajs/router";
+import { Pjax, Prefetch } from "@ribajs/router";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-search-result.component.pug";
 import { SearchService, SuggestService } from "../../services";
@@ -39,6 +39,7 @@ export class GySearchResultComponent extends Component {
   protected search = SearchService.getInstance();
   protected suggest = SuggestService.getInstance();
   protected pjax?: Pjax;
+  protected prefetch?: Prefetch;
 
   scope: Scope = {
     close: this.close,
@@ -148,6 +149,18 @@ export class GySearchResultComponent extends Component {
     await this.calibrateAlert();
   }
 
+  protected prefetchItem(url?: string) {
+    if (url) {
+      this.prefetch?.url(url);
+    }
+  }
+
+  protected prefetchItems(items: SearchItem[]) {
+    for (const item of items) {
+      this.prefetchItem(item.data?.href);
+    }
+  }
+
   protected transformResult(result: SearchResult) {
     const item: SearchItem = {
       ...result,
@@ -179,6 +192,7 @@ export class GySearchResultComponent extends Component {
     } else {
       this.scope.items = [];
     }
+    this.prefetchItems(this.scope.items);
   }
 
   protected async calibrateAlert() {
@@ -228,6 +242,7 @@ export class GySearchResultComponent extends Component {
 
   protected async afterBind() {
     this.pjax = Pjax.getInstance();
+    this.prefetch = Prefetch.getInstance();
     await super.afterBind();
   }
 
