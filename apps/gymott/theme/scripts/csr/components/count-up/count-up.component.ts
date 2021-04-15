@@ -49,17 +49,11 @@ export class CountUpComponent extends Component {
     window.removeEventListener("resize", this.onResize.bind(this));
   }
 
-  protected onResize() {
-    throttle(() => {
-      this.checkViewport();
-    }, 500)();
-  }
+  protected onResize = throttle(() => {
+    this.checkViewport();
+  }, 500);
 
-  protected onScroll() {
-    throttle(() => {
-      this.checkViewport();
-    }, 500)();
-  }
+  protected onScroll = throttle(this.checkViewport.bind(this), 500);
 
   protected async beforeBind() {
     await super.beforeBind();

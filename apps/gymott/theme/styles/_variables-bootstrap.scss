@@ -6,8 +6,18 @@
 $input-group-addon-bg: $white;
 $input-bg: $input-group-addon-bg;
 
+// Site colors
 $blue: #0075BD;
-$gray-100: #E0E6E4;
+$green: #006825;
+$cyan: #5DCED1;
+$green-light: #3EB701;
+$gray: #E0E6E4;
+
+$primary: $blue;
+$info: $cyan;
+$success: $green;
+$gray-100: $gray;
+
 $light: $gray-100;
 $body-bg: $light;
 
@@ -23,13 +33,14 @@ $grays: (
   "900": $gray-900
 );
 
+// https://getbootstrap.com/docs/5.0/customize/sass/#add-to-map
 $theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
+  "blue":         $primary,
+  "green":        $green,
+  "cyan":         $cyan,
+  "green-light":  $green-light,
+  "yellow":       $yellow,
+  "red":          $red,
+  "light":        $light,
+  "dark":         $dark,
 );

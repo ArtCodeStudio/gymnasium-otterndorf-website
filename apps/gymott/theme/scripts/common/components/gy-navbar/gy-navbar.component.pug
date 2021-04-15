@@ -1,22 +1,28 @@
 .navbar.navbar-main
   .container-fluid.d-block
-    .row.justify-content-between
+    .row
       //- Left
-      .col-auto.d-flex.align-items-center.d-none.d-md-flex
-        .row.d-flex.align-items-center
+      .col-6.col-md.order-1.d-flex.align-items-center
+        .row.d-flex.align-items-center.me-auto
           a.col-auto.navbar-brand.d-flex.align-items-center.p-0.mx-2(href="/")
             bs5-icon(src="/images/logo.svg" size="64" rv-hide="isActive" rv-on-click="toggle")
-      //- Middle
-      .col-12.col-md-auto.d-flex.align-items-center.justify-content-center
-        .row
-          .col-auto()
+            .brand-text.ms-1.d-flex.flex-column.justify-content-center.fw-bold
+              .text-blue Gymnasium
+              .text-green-light Otterndorf
+              .text-green Offene
+              .text-cyan Ganztagsschule
+      //- Middle on desktop / full on smartphone
+      .col-12.col-md-auto.order-3.order-md-2.d-flex.align-items-center.justify-content-center
+        .row.my-3
+          .col-auto.mx-auto
             gy-search-input
       //- Right
-      .col-auto.d-flex.align-items-center.d-none.d-md-flex
-        .row.d-flex.align-items-center
+      .col-6.col-md.order-2.order-md-3.d-flex.align-items-center
+        .row.d-flex.align-items-center.ms-auto
           bs5-toggle-button.col-auto.text-dark.mx-2(target-id="right-sidebar")
             ul.nav
+              bs5-icon.text-blue.position-absolute(src="/images/menu-bg-icon.svg" size="32")
               li.nav-item.d-flex.align-items-center.py-0
-                bs5-icon(src="/iconset/svg/icon_menu.svg" size="32" csr-rv-hide="isActive" csr-rv-on-click="toggle")
+                bs5-icon.text-white.p-1(src="/iconset/svg/icon_menu.svg" size="32" csr-rv-hide="isActive" csr-rv-on-click="toggle")
               li.nav-item.d-flex.align-items-center.py-0
-                bs5-icon(src="/iconset/svg/icon_close.svg" size="32" csr-rv-show="isActive" csr-rv-on-click="toggle")
+                bs5-icon.text-white.p-1(src="/iconset/svg/icon_close.svg" size="32" csr-rv-show="isActive" csr-rv-on-click="toggle")

@@ -2,6 +2,7 @@ import { Component, LifecycleService } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-navbar.component.pug";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
+import { throttle } from "@ribajs/utils/src/control";
 
 export interface Scope {}
 
@@ -32,24 +33,33 @@ export class GyNavbarComponent extends Component {
     const searchResults = Array.from(
       document.querySelectorAll<GySearchResultComponent>("gy-search-result")
     );
+    const body = document.body;
 
     this.debug("setDependentStyles navbarHeight", navbarHeight);
 
     if (leftSidebar) {
-      leftSidebar.style.marginTop = navbarHeight + "px";
+      leftSidebar.style.marginTop = navbarHeight - 1 + "px";
     }
 
     if (rightSidebar) {
-      rightSidebar.style.marginTop = navbarHeight + "px";
+      rightSidebar.style.marginTop = navbarHeight - 1 + "px";
     }
 
     if (searchResults) {
       for (const searchResult of searchResults) {
-        searchResult.style.top = navbarHeight + "px";
-        searchResult.style.maxHeight = `calc(100vh - ${navbarHeight}px)`;
+        searchResult.style.top = navbarHeight - 1 + "px";
+        searchResult.style.maxHeight = `calc(100vh - ${navbarHeight - 1}px)`;
       }
     }
+
+    body.style.marginTop = navbarHeight + "px";
   }
+
+  protected _onResize() {
+    this.setDependentStyles();
+  }
+
+  protected onResize = throttle(this._onResize.bind(this));
 
   // On all Components are ready
   protected onAllComponentsBound() {
@@ -62,6 +72,16 @@ export class GyNavbarComponent extends Component {
       this.onAllComponentsBound,
       this
     );
+    window.addEventListener("resize", this.onResize, { passive: true });
+  }
+
+  protected removeEventListeners() {
+    this.lifecycle.events.off(
+      "ComponentLifecycle:allBound",
+      this.onAllComponentsBound,
+      this
+    );
+    window.removeEventListener("resize", this.onResize);
   }
 
   protected async beforeBind() {
@@ -76,6 +96,15 @@ export class GyNavbarComponent extends Component {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(GyNavbarComponent.observedAttributes);
+  }
+
+  protected disconnectedCallback() {
+    if (this.tabs) {
+      this.tabs.forEach((tab) => {
+        tab.removeEventListener("shown.bs.tab", this.onTabShownEventHandler);
+      });
+    }
+    window.removeEventListener("resize", this.onResizeEventHandler);
   }
 
   protected template() {
