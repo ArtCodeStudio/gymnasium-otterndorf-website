@@ -1,4 +1,4 @@
-bs5-sidebar#right-sidebar.bg-blue.py-5(container-selector="#main-container" position="right")
+bs5-sidebar#right-sidebar.bg-blue.py-5(container-selector="#main-container, gy-navbar" position="right" mode="move")
   gy-link-list.list-group(type="toolbar")
     .list-group-item.list-group-item-action.bg-transparent.border-0(rv-each-item="items")
       a.nav-link.text-light(csr-rv-route rv-href="item.link" rv-text="item.name")

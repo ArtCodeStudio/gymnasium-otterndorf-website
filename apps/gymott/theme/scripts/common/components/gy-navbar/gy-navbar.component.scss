@@ -1,5 +1,6 @@
 gy-navbar {
     display: block;
+    transition: $bs5-sidebar-transition;
     .brand-text {
         line-height: 1;
         font-size: 16px;

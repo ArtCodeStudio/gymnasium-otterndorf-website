@@ -1,9 +1,11 @@
 import { Component, LifecycleService } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
+import { justDigits } from "@ribajs/utils/src/type";
 import pugTemplate from "./gy-navbar.component.pug";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
 import { throttle } from "@ribajs/utils/src/control";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface Scope {}
 
 export class GyNavbarComponent extends Component {
@@ -23,11 +25,26 @@ export class GyNavbarComponent extends Component {
   }
 
   /**
+   * Used to partially hide the navigation on user scrolling
+   *
+   * @readonly
+   * @type {number}
+   * @memberof GyNavbarComponent
+   */
+  get marginTop(): number {
+    return justDigits(this.style.marginTop || 0);
+  }
+
+  get visibleHeight(): number {
+    const navbar = this.firstChild as HTMLElement | null;
+    const height = Math.max(navbar?.offsetHeight || 0, this.offsetHeight);
+    return height + this.marginTop;
+  }
+
+  /**
    * Set style of other elements which are depending on the navbar style
    */
   protected setDependentStyles() {
-    const navbar = this.firstChild as HTMLElement | null;
-    const navbarHeight = Math.max(navbar?.offsetHeight || 0, this.offsetHeight);
     const leftSidebar = document.getElementById("left-sidebar");
     const rightSidebar = document.getElementById("right-sidebar");
     const searchResults = Array.from(
@@ -35,26 +52,32 @@ export class GyNavbarComponent extends Component {
     );
     const body = document.body;
 
-    this.debug("setDependentStyles navbarHeight", navbarHeight);
+    // -1 to prevent flashing on hight dpi screens
+    const height = this.visibleHeight - 1;
+
+    this.debug("setDependentStyles navbarHeight", height);
 
     if (leftSidebar) {
-      leftSidebar.style.marginTop = navbarHeight - 1 + "px";
+      leftSidebar.style.marginTop = height + "px";
     }
 
     if (rightSidebar) {
-      rightSidebar.style.marginTop = navbarHeight - 1 + "px";
+      rightSidebar.style.marginTop = height + "px";
     }
 
     if (searchResults) {
       for (const searchResult of searchResults) {
-        searchResult.style.top = navbarHeight - 1 + "px";
-        searchResult.style.maxHeight = `calc(100vh - ${navbarHeight - 1}px)`;
+        searchResult.style.top = height + "px";
+        searchResult.style.maxHeight = `calc(100vh - ${height}px)`;
       }
     }
 
-    body.style.marginTop = navbarHeight + "px";
+    body.style.marginTop = height + "px";
   }
 
+  /**
+   * Internal "unthrottled" version of `onResize`.
+   */
   protected _onResize() {
     this.setDependentStyles();
   }
@@ -99,12 +122,7 @@ export class GyNavbarComponent extends Component {
   }
 
   protected disconnectedCallback() {
-    if (this.tabs) {
-      this.tabs.forEach((tab) => {
-        tab.removeEventListener("shown.bs.tab", this.onTabShownEventHandler);
-      });
-    }
-    window.removeEventListener("resize", this.onResizeEventHandler);
+    this.removeEventListeners();
   }
 
   protected template() {

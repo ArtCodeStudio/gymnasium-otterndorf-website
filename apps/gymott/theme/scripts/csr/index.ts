@@ -51,8 +51,10 @@ export class CSRApp {
     // Regist modules
     this.riba.module.regist(coreModule);
     this.riba.module.regist(routerModule);
-    this.riba.module.regist(i18nModule(this.localesService));
-    this.riba.module.regist(bs5Module);
+    this.riba.module.regist(
+      i18nModule({ localesService: this.localesService })
+    );
+    this.riba.module.regist(bs5Module({}));
 
     this.view = this.riba.bind(document.body, this.model);
 
