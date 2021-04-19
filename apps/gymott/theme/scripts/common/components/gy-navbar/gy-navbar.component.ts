@@ -62,6 +62,7 @@ export class GyNavbarComponent extends Component {
    */
   public show() {
     this.style.top = "0";
+    this._onResize();
   }
 
   /**
@@ -70,6 +71,7 @@ export class GyNavbarComponent extends Component {
   public hide() {
     const moveUp = this.height - this.searchHeight;
     this.style.top = `-${moveUp}px`;
+    this._onResize();
   }
 
   /**
@@ -82,16 +84,17 @@ export class GyNavbarComponent extends Component {
     const body = document.body;
 
     // -1 to prevent flashing on hight dpi screens
-    const height = this.height - 1; // this.visibleHeight - 1;
 
     if (searchResults) {
       for (const searchResult of searchResults) {
-        searchResult.style.top = height + "px";
-        searchResult.style.maxHeight = `calc(100vh - ${height}px)`;
+        searchResult.style.top = this.visibleHeight - 1 + "px";
+        searchResult.style.maxHeight = `calc(100vh - ${
+          this.visibleHeight - 1
+        }px)`;
       }
     }
 
-    body.style.marginTop = height + "px";
+    body.style.marginTop = this.height + "px";
   }
 
   /**

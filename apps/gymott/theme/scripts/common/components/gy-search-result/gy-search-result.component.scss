@@ -2,6 +2,7 @@ gy-search-result {
   display: block;
   max-height: 100vh;
   overflow-x: auto;
+  transition: $bs5-sidebar-transition;
   .search-highlight {
     background-color: $yellow;
   }
