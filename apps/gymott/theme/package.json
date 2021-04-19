@@ -74,6 +74,7 @@
     "@gymott/common": "workspace:apps/gymott/common",
     "@ribajs/bs5": "next",
     "@ribajs/core": "next",
+    "@ribajs/extras": "^1.9.0",
     "@ribajs/i18n": "next",
     "@ribajs/iconset": "next",
     "@ribajs/router": "next",

@@ -12,14 +12,14 @@
               .text-green Offene
               .text-cyan Ganztagsschule
       //- Middle on desktop / full on smartphone
-      .col-12.col-md-auto.order-3.order-md-2.d-flex.align-items-center.justify-content-center
-        .row.my-3
+      .col-search.col-12.col-md-auto.order-3.order-md-2.d-flex.align-items-center.justify-content-center
+        .row.mt-3.mx-2.my-md-3
           .col-auto.mx-auto
             gy-search-input
       //- Right
       .col-6.col-md.order-2.order-md-3.d-flex.align-items-center
         .row.d-flex.align-items-center.ms-auto
-          bs5-toggle-button.col-auto.text-dark.mx-2(target-id="right-sidebar")
+          bs5-toggle-button.col-auto.text-dark.mx-2.d-xl-none(target-id="right-sidebar")
             ul.nav
               bs5-icon.text-blue.position-absolute(src="/images/menu-bg-icon.svg" size="32")
               li.nav-item.d-flex.align-items-center.py-0

@@ -13,14 +13,7 @@ $cyan: #5DCED1;
 $green-light: #3EB701;
 $gray: #E0E6E4;
 
-$primary: $blue;
-$info: $cyan;
-$success: $green;
 $gray-100: $gray;
-
-$light: $gray-100;
-$body-bg: $light;
-
 $grays: (
   "100": $gray-100,
   "200": $gray-200,
@@ -33,9 +26,13 @@ $grays: (
   "900": $gray-900
 );
 
+$light: $gray-100;
+$body-bg: $light;
+$border-color: $gray-900;
+
 // https://getbootstrap.com/docs/5.0/customize/sass/#add-to-map
 $theme-colors: (
-  "blue":         $primary,
+  "blue":         $blue,
   "green":        $green,
   "cyan":         $cyan,
   "green-light":  $green-light,
@@ -44,3 +41,4 @@ $theme-colors: (
   "light":        $light,
   "dark":         $dark,
 );
+

@@ -4,17 +4,24 @@ import { justDigits } from "@ribajs/utils/src/type";
 import pugTemplate from "./gy-navbar.component.pug";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
 import { throttle } from "@ribajs/utils/src/control";
+import { ScrollEventsService } from "@ribajs/extras";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface Scope {}
+export interface Scope {
+  show: GyNavbarComponent["show"];
+  hide: GyNavbarComponent["hide"];
+}
 
 export class GyNavbarComponent extends Component {
   public static tagName = "gy-navbar";
   public _debug = false;
   protected autobind = true;
   protected lifecycle = LifecycleService.getInstance();
+  protected contentScroll = new ScrollEventsService(window);
 
-  scope: Scope = {};
+  scope: Scope = {
+    show: this.show,
+    hide: this.hide,
+  };
 
   static get observedAttributes(): string[] {
     return [];
@@ -31,39 +38,51 @@ export class GyNavbarComponent extends Component {
    * @type {number}
    * @memberof GyNavbarComponent
    */
-  get marginTop(): number {
-    return justDigits(this.style.marginTop || 0);
+  get top(): number {
+    return justDigits(this.style.top || 0);
+  }
+
+  get height(): number {
+    const height = Math.max(this.offsetHeight || 0, this.offsetHeight);
+    return height;
   }
 
   get visibleHeight(): number {
-    const navbar = this.firstChild as HTMLElement | null;
-    const height = Math.max(navbar?.offsetHeight || 0, this.offsetHeight);
-    return height + this.marginTop;
+    return this.height + this.top;
+  }
+
+  get searchHeight(): number {
+    const searchCol = this.querySelector<HTMLDivElement>(".col-search");
+    const height = searchCol?.offsetHeight || 0;
+    return height;
+  }
+
+  /**
+   * Show navbar
+   */
+  public show() {
+    this.style.top = "0";
+  }
+
+  /**
+   * Hide navbar
+   */
+  public hide() {
+    const moveUp = this.height - this.searchHeight;
+    this.style.top = `-${moveUp}px`;
   }
 
   /**
    * Set style of other elements which are depending on the navbar style
    */
   protected setDependentStyles() {
-    const leftSidebar = document.getElementById("left-sidebar");
-    const rightSidebar = document.getElementById("right-sidebar");
     const searchResults = Array.from(
       document.querySelectorAll<GySearchResultComponent>("gy-search-result")
     );
     const body = document.body;
 
     // -1 to prevent flashing on hight dpi screens
-    const height = this.visibleHeight - 1;
-
-    this.debug("setDependentStyles navbarHeight", height);
-
-    if (leftSidebar) {
-      leftSidebar.style.marginTop = height + "px";
-    }
-
-    if (rightSidebar) {
-      rightSidebar.style.marginTop = height + "px";
-    }
+    const height = this.height - 1; // this.visibleHeight - 1;
 
     if (searchResults) {
       for (const searchResult of searchResults) {
@@ -84,6 +103,18 @@ export class GyNavbarComponent extends Component {
 
   protected onResize = throttle(this._onResize.bind(this));
 
+  protected _onScrollUp(event: CustomEvent) {
+    console.debug("on scrollup", event.detail);
+    this.show();
+  }
+  protected onScrollUp = this._onScrollUp.bind(this);
+
+  protected _onScrollDown(event: CustomEvent) {
+    console.debug("on scrolldown", event.detail);
+    this.hide();
+  }
+  protected onScrollDown = this._onScrollDown.bind(this);
+
   // On all Components are ready
   protected onAllComponentsBound() {
     this.setDependentStyles();
@@ -96,6 +127,8 @@ export class GyNavbarComponent extends Component {
       this
     );
     window.addEventListener("resize", this.onResize, { passive: true });
+    window.addEventListener("scrollup", this.onScrollUp);
+    window.addEventListener("scrolldown", this.onScrollDown);
   }
 
   protected removeEventListeners() {
@@ -105,6 +138,8 @@ export class GyNavbarComponent extends Component {
       this
     );
     window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("scrollup", this.onScrollUp);
+    window.removeEventListener("scrolldown", this.onScrollDown);
   }
 
   protected async beforeBind() {

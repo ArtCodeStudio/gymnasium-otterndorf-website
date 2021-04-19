@@ -3,6 +3,7 @@ export { CalendarService } from "./calendar";
 export { BlogService } from "./blog";
 export { GraphQLClient } from "./graphql";
 export { GyHomeService } from "./home";
+export { MarkdownService } from "./markdown";
 export { NavigationService } from "./navigation";
 export { PageService } from "./page";
 export { SearchService } from "./search";

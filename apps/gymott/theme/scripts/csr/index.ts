@@ -1,5 +1,7 @@
-import { Riba, View, coreModule } from "@ribajs/core";
 import { ready } from "@ribajs/utils/src/dom";
+import { Riba, View, coreModule } from "@ribajs/core";
+import { extrasModule } from "@ribajs/extras";
+
 import { routerModule } from "@ribajs/router";
 import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 import { bs5Module } from "@ribajs/bs5";
@@ -50,6 +52,7 @@ export class CSRApp {
 
     // Regist modules
     this.riba.module.regist(coreModule);
+    this.riba.module.regist(extrasModule);
     this.riba.module.regist(routerModule);
     this.riba.module.regist(
       i18nModule({ localesService: this.localesService })

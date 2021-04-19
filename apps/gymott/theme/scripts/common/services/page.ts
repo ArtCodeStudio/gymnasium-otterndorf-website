@@ -5,7 +5,7 @@ import {
   ResponseError,
 } from "../../common/types";
 
-import pagebySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
+import pageBySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
 
 export class PageService {
   protected graphql = GraphQLClient.getInstance();
@@ -27,7 +27,7 @@ export class PageService {
   async list(slugs: string[] = []) {
     const vars: StrapiGqlPageBySlugsQueryVariables = { slugs };
     const pageRes = await this.graphql.requestCached<StrapiGqlPageBySlugsQuery>(
-      pagebySlugsQuery,
+      pageBySlugsQuery,
       vars
     );
     const pages = pageRes.pages || [];

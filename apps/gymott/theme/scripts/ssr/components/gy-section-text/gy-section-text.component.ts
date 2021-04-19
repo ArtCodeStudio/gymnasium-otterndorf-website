@@ -1,7 +1,7 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-text.component.pug";
-import marked from "marked";
+import { MarkdownService } from "../../services";
 
 export interface Scope {
   section?: {
@@ -14,6 +14,7 @@ export class GySectionTextComponent extends Component {
   public static tagName = "gy-section-text";
   public _debug = false;
   protected autobind = true;
+  protected markdown = MarkdownService.getInstance();
 
   scope: Scope = {
     section: {
@@ -34,11 +35,9 @@ export class GySectionTextComponent extends Component {
     super();
   }
 
-  protected async afterBind() {
-    if (this.scope.section?.text) {
-      this.scope.text = marked(this.scope.section?.text || "");
-    }
-    await super.afterBind();
+  protected async beforeBind() {
+    await super.beforeBind();
+    this.scope.text = this.markdown.render(this.scope.section?.text || "");
   }
 
   protected connectedCallback() {
