@@ -44,20 +44,18 @@ export class CSRApp {
     });
 
     // Regist custom components
-    this.riba.module.regist({
-      components: { ...commonComponents, ...components },
-      binders: { ...commonBinders, ...binders },
-      formatters: { ...commonFormatters, ...formatters },
-    });
+    this.riba.module.component.regists({ ...commonComponents, ...components });
+    this.riba.module.binder.regists({ ...commonBinders, ...binders });
+    this.riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 
     // Regist modules
-    this.riba.module.regist(coreModule);
-    this.riba.module.regist(extrasModule);
-    this.riba.module.regist(routerModule);
+    this.riba.module.regist(coreModule.init());
+    this.riba.module.regist(extrasModule.init());
+    this.riba.module.regist(routerModule.init());
     this.riba.module.regist(
-      i18nModule({ localesService: this.localesService })
+      i18nModule.init({ localesService: this.localesService })
     );
-    this.riba.module.regist(bs5Module({}));
+    this.riba.module.regist(bs5Module.init());
 
     this.view = this.riba.bind(document.body, this.model);
 

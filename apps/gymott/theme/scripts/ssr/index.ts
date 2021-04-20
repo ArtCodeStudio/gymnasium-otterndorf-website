@@ -2,7 +2,7 @@ import "@ribajs/ssr/src/polyfills";
 import "../common/@types";
 import { SSRModule } from "@ribajs/ssr";
 import { Riba, coreModule } from "@ribajs/core";
-import { Bs5IconComponent } from "@ribajs/bs5";
+import { Bs5IconComponent, bs5Module } from "@ribajs/bs5";
 // import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 // import { ready } from "@ribajs/utils/src/dom";
 
@@ -42,24 +42,24 @@ riba.configure({
   templateDelimiters: ["[", "]"],
 });
 
+bs5Module.init();
+
 // Regist custom components
-riba.module.regist({
-  components: {
-    ...commonComponents,
-    ...pageComponents,
-    ...components,
-    Bs5IconComponent,
-  },
-  binders: { ...commonBinders, ...binders },
-  formatters: { ...commonFormatters, ...formatters },
+riba.module.component.regists({
+  ...commonComponents,
+  ...pageComponents,
+  ...components,
+  Bs5IconComponent,
 });
+riba.module.binder.regists({ ...commonBinders, ...binders });
+riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 
 // const localesService = new LocalesStaticService(locales, undefined, false);
-// window.riba.module.regist(i18nModule(localesService));
+// window.riba.module.regist(i18nModule.init({ localesService }));
 
 // Regist modules
-riba.module.regist(coreModule);
-riba.module.regist(SSRModule);
+riba.module.regist(coreModule.init({}));
+riba.module.regist(SSRModule.init({}));
 
 console.log("Hello from Riba");
 

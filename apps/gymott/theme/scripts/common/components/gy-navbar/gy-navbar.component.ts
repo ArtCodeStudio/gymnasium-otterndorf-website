@@ -5,6 +5,7 @@ import pugTemplate from "./gy-navbar.component.pug";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
 import { throttle } from "@ribajs/utils/src/control";
 import { ScrollEventsService } from "@ribajs/extras";
+import { Bs5Service, Breakpoint } from "@ribajs/bs5";
 
 export interface Scope {
   show: GyNavbarComponent["show"];
@@ -17,6 +18,7 @@ export class GyNavbarComponent extends Component {
   protected autobind = true;
   protected lifecycle = LifecycleService.getInstance();
   protected contentScroll = new ScrollEventsService(window);
+  protected bs5: Bs5Service;
 
   scope: Scope = {
     show: this.show,
@@ -29,6 +31,7 @@ export class GyNavbarComponent extends Component {
 
   constructor() {
     super();
+    this.bs5 = Bs5Service.getSingleton();
   }
 
   /**
@@ -106,21 +109,25 @@ export class GyNavbarComponent extends Component {
 
   protected onResize = throttle(this._onResize.bind(this));
 
-  protected _onScrollUp(event: CustomEvent) {
-    console.debug("on scrollup", event.detail);
-    this.show();
+  protected _onScrollUp(/*event: CustomEvent*/) {
+    if (this.bs5?.isActiveBreakpointSmallerThan("md")) {
+      this.hide();
+    }
   }
   protected onScrollUp = this._onScrollUp.bind(this);
 
-  protected _onScrollDown(event: CustomEvent) {
-    console.debug("on scrolldown", event.detail);
-    this.hide();
+  protected _onScrollDown(/*event: CustomEvent*/) {
+    this.show();
   }
   protected onScrollDown = this._onScrollDown.bind(this);
 
   // On all Components are ready
   protected onAllComponentsBound() {
     this.setDependentStyles();
+  }
+
+  protected onBreakpointChanges(breakpoint: Breakpoint) {
+    this.debug("onBreakpointChanges", breakpoint);
   }
 
   protected addEventListeners() {
@@ -132,6 +139,7 @@ export class GyNavbarComponent extends Component {
     window.addEventListener("resize", this.onResize, { passive: true });
     window.addEventListener("scrollup", this.onScrollUp);
     window.addEventListener("scrolldown", this.onScrollDown);
+    this.bs5.events.on("breakpoint:changed", this.onBreakpointChanges, this);
   }
 
   protected removeEventListeners() {
@@ -143,6 +151,7 @@ export class GyNavbarComponent extends Component {
     window.removeEventListener("resize", this.onResize);
     window.removeEventListener("scrollup", this.onScrollUp);
     window.removeEventListener("scrolldown", this.onScrollDown);
+    this.bs5.events.off("breakpoint:changed", this.onBreakpointChanges, this);
   }
 
   protected async beforeBind() {
