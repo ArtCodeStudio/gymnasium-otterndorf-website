@@ -1,28 +1,34 @@
-import { Component, LifecycleService } from "@ribajs/core";
+import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import { justDigits } from "@ribajs/utils/src/type";
 import pugTemplate from "./gy-navbar.component.pug";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
 import { throttle } from "@ribajs/utils/src/control";
 import { ScrollEventsService } from "@ribajs/extras";
-import { Bs5Service, Breakpoint } from "@ribajs/bs5";
+import { Bs5Service, Breakpoint, Bs5SidebarComponent } from "@ribajs/bs5";
 
 export interface Scope {
   show: GyNavbarComponent["show"];
   hide: GyNavbarComponent["hide"];
+  showSidebar: GyNavbarComponent["showSidebar"];
+  hideSidebar: GyNavbarComponent["hideSidebar"];
+  toggleSidebar: GyNavbarComponent["toggleSidebar"];
 }
 
 export class GyNavbarComponent extends Component {
   public static tagName = "gy-navbar";
   public _debug = false;
   protected autobind = true;
-  protected lifecycle = LifecycleService.getInstance();
   protected contentScroll = new ScrollEventsService(window);
+  protected sidebar: Bs5SidebarComponent | null = null;
   protected bs5: Bs5Service;
 
   scope: Scope = {
     show: this.show,
     hide: this.hide,
+    showSidebar: this.showSidebar,
+    hideSidebar: this.hideSidebar,
+    toggleSidebar: this.toggleSidebar,
   };
 
   static get observedAttributes(): string[] {
@@ -77,6 +83,18 @@ export class GyNavbarComponent extends Component {
     this._onResize();
   }
 
+  public showSidebar() {
+    this.sidebar?.show();
+  }
+
+  public hideSidebar() {
+    this.sidebar?.hide();
+  }
+
+  public toggleSidebar() {
+    this.sidebar?.toggle();
+  }
+
   /**
    * Set style of other elements which are depending on the navbar style
    */
@@ -122,8 +140,9 @@ export class GyNavbarComponent extends Component {
   protected onScrollDown = this._onScrollDown.bind(this);
 
   // On all Components are ready
-  protected onAllComponentsBound() {
+  protected async afterAllBind() {
     this.setDependentStyles();
+    this.sidebar = document.querySelector(Bs5SidebarComponent.tagName);
   }
 
   protected onBreakpointChanges(breakpoint: Breakpoint) {
@@ -131,11 +150,6 @@ export class GyNavbarComponent extends Component {
   }
 
   protected addEventListeners() {
-    this.lifecycle.events.on(
-      "ComponentLifecycle:allBound",
-      this.onAllComponentsBound,
-      this
-    );
     window.addEventListener("resize", this.onResize, { passive: true });
     window.addEventListener("scrollup", this.onScrollUp);
     window.addEventListener("scrolldown", this.onScrollDown);
@@ -143,11 +157,6 @@ export class GyNavbarComponent extends Component {
   }
 
   protected removeEventListeners() {
-    this.lifecycle.events.off(
-      "ComponentLifecycle:allBound",
-      this.onAllComponentsBound,
-      this
-    );
     window.removeEventListener("resize", this.onResize);
     window.removeEventListener("scrollup", this.onScrollUp);
     window.removeEventListener("scrolldown", this.onScrollDown);

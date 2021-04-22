@@ -1,0 +1,21 @@
+gy-nav-slide {
+  display: block;
+  bs5-slideshow {
+    > .row {
+      .slide {
+        min-height: 50px;
+        .list-group-item {
+          &.disabled {
+            opacity: 0.8;
+          }
+          &.list-group-item-link {
+            padding-left: 40px;
+          }
+          &.list-group-item-parent {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

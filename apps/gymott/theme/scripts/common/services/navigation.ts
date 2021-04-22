@@ -5,6 +5,8 @@ import {
   StrapiGqlMenuQueryVariables,
   StrapiGqlNavigationLinksByIdsQuery,
   StrapiGqlNavigationLinksByIdsQueryVariables,
+  StrapiGqlMenuFragmentFragment,
+  StrapiGqlComponentNavigationNavigationLevelEntry,
 } from "../types";
 import menuQuery from "../../../graphql/queries/menu.gql";
 import navigationLinksByIds from "../../../graphql/queries/navigation-links-by-ids.gql";
@@ -43,14 +45,16 @@ export class NavigationService {
     return parentEntry;
   }
 
-  protected getHref(baseItem: StrapiGqlMenuQuery["menu"]["entries"][0]) {
-    const type = baseItem.navigation_link.type[0];
+  protected getHref(
+    baseItem: StrapiGqlComponentNavigationNavigationLevelEntry
+  ) {
+    const type = baseItem?.navigation_link?.type?.[0];
     if (!type) {
       return "";
     }
     switch (type.__typename) {
-      case "ComponentLinkTypeBlog":
-        return type.blog?.slug ? "/post/" + type.blog.slug : "";
+      // case "ComponentLinkTypeBlog":
+      //   return type.blog?.slug ? "/post/" + type.blog.slug : "";
       case "ComponentLinkTypePage":
         return type.page?.slug ? "/page/" + type.page.slug : "";
       case "ComponentLinkTypeSchulfach":
@@ -61,14 +65,15 @@ export class NavigationService {
   }
 
   protected newItem(
-    baseItem?: StrapiGqlMenuQuery["menu"]["entries"][0]
+    baseItem?: StrapiGqlComponentNavigationNavigationLevelEntry
   ): NavigationLink {
     if (baseItem) {
+      const href = this.getHref(baseItem);
       return {
         type: "list",
-        id: baseItem.navigation_link.id,
-        label: baseItem.navigation_link.title || baseItem.title,
-        href: this.getHref(baseItem),
+        id: baseItem?.navigation_link?.id || "",
+        label: baseItem?.navigation_link?.title || baseItem.title || "",
+        href,
         children: [],
       };
     }
@@ -81,24 +86,40 @@ export class NavigationService {
     };
   }
 
-  protected buildTree(baseEntries: StrapiGqlMenuQuery["menu"]["entries"] = []) {
+  protected buildTree(
+    baseEntries: StrapiGqlMenuFragmentFragment["entries"] = []
+  ) {
     const result = this.newItem();
     let count = 0;
     let ignored = 0;
 
-    const entryLength = baseEntries.length;
+    if (!baseEntries) {
+      return result;
+    }
 
+    const entryLength = baseEntries.length;
     do {
       for (const entry of baseEntries) {
+        if (!entry) {
+          continue;
+        }
         // Root element
         if (!entry.parent) {
-          result.children.push(this.newItem(entry));
+          result.children.push(
+            this.newItem(
+              entry as StrapiGqlComponentNavigationNavigationLevelEntry
+            )
+          );
           count++;
         } else if (entry.parent.id) {
           // Child element
           const parentEntry = this.findParent(result, entry.parent.id);
           if (parentEntry) {
-            parentEntry.children?.push(this.newItem(entry));
+            parentEntry.children?.push(
+              this.newItem(
+                entry as StrapiGqlComponentNavigationNavigationLevelEntry
+              )
+            );
             count++;
           }
         } else {
@@ -112,6 +133,16 @@ export class NavigationService {
     }
 
     return result;
+  }
+
+  public static getMaxDepth(tree: NavigationLink, depth = 0) {
+    if (tree.children.length) {
+      depth++;
+    }
+    for (const children of tree.children) {
+      depth = Math.max(depth, this.getMaxDepth(children, depth));
+    }
+    return depth;
   }
 
   public async getMenu() {

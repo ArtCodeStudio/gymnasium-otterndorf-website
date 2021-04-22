@@ -11,7 +11,7 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "type": {

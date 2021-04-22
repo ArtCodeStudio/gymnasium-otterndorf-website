@@ -1,6 +1,0 @@
-ul.list-group(rv-if="entry.type | eq 'list'")
-  li.list-group-item.bg-transparent(rv-each-child="entry.children")
-    div(rv-if="entry")
-      a.text-light(rv-if="child.href" rv-route="child.href" rv-href="child.href" rv-text="child.label")
-      span.text-light(rv-unless="child.href" rv-text="child.label")
-      gy-right-sidebar-entry(rv-entry="child")

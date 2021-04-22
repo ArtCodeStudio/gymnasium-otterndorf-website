@@ -4,6 +4,7 @@ gy-navbar {
     .brand-text {
         line-height: 1;
         font-size: 16px;
+        user-select: none;
     }
     // border-bottom: $border-width solid $border-color;
 }

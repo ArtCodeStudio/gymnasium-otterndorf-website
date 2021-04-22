@@ -1,6 +1,6 @@
 fragment NavigationLinkFragment on NavigationLink {
   id
-  title: Title
+  title
   type {
     ... on ComponentLinkTypeWeb {
       URL

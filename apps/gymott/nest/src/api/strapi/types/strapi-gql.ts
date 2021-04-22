@@ -762,7 +762,7 @@ export type StrapiGqlNavigationLink = {
   id: Scalars['ID'];
   created_at: Scalars['DateTime'];
   updated_at: Scalars['DateTime'];
-  Title?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
   type?: Maybe<Array<Maybe<StrapiGqlNavigationLinkTypeDynamicZone>>>;
 };
 
@@ -808,11 +808,11 @@ export type StrapiGqlNavigationLinkGroupBy = {
   id?: Maybe<Array<Maybe<StrapiGqlNavigationLinkConnectionId>>>;
   created_at?: Maybe<Array<Maybe<StrapiGqlNavigationLinkConnectionCreated_At>>>;
   updated_at?: Maybe<Array<Maybe<StrapiGqlNavigationLinkConnectionUpdated_At>>>;
-  Title?: Maybe<Array<Maybe<StrapiGqlNavigationLinkConnectionTitle>>>;
+  title?: Maybe<Array<Maybe<StrapiGqlNavigationLinkConnectionTitle>>>;
 };
 
 export type StrapiGqlNavigationLinkInput = {
-  Title?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
   type?: Maybe<Array<Scalars['NavigationLinkTypeDynamicZoneInput']>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -2259,7 +2259,7 @@ export type StrapiGqlEditMenuInput = {
 };
 
 export type StrapiGqlEditNavigationLinkInput = {
-  Title?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
   type?: Maybe<Array<Scalars['NavigationLinkTypeDynamicZoneInput']>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -2538,8 +2538,7 @@ export type StrapiGqlMenuFragmentFragment = (
 
 export type StrapiGqlNavigationLinkFragmentFragment = (
   { __typename?: 'NavigationLink' }
-  & Pick<StrapiGqlNavigationLink, 'id'>
-  & { title: StrapiGqlNavigationLink['Title'] }
+  & Pick<StrapiGqlNavigationLink, 'id' | 'title'>
   & { type?: Maybe<Array<Maybe<(
     { __typename: 'ComponentLinkTypeWeb' }
     & Pick<StrapiGqlComponentLinkTypeWeb, 'URL'>

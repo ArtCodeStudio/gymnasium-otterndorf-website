@@ -35,19 +35,7 @@ export class GySearchInputComponent extends Component {
     this.addEventListeners();
   }
 
-  protected onAllComponentsBound() {
-    this.searchResultContainers = Array.from(
-      document.querySelectorAll<GySearchResultComponent>("gy-search-result")
-    );
-  }
-
   protected addEventListeners() {
-    this.lifecycle.events.on(
-      "ComponentLifecycle:allBound",
-      this.onAllComponentsBound,
-      this
-    );
-
     this.route.on(
       "initStateChange",
       (/*viewId: string, currentStatus: State, prevStatus: State*/) => {
@@ -113,6 +101,12 @@ export class GySearchInputComponent extends Component {
 
   protected async beforeBind() {
     await super.beforeBind();
+  }
+
+  protected async afterAllBind() {
+    this.searchResultContainers = Array.from(
+      document.querySelectorAll<GySearchResultComponent>("gy-search-result")
+    );
   }
 
   protected connectedCallback() {

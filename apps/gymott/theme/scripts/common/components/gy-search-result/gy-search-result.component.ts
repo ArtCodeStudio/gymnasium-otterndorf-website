@@ -68,7 +68,6 @@ export class GySearchResultComponent extends Component {
 
   constructor() {
     super();
-    this.addEventListeners();
   }
 
   public onSuggest(event: Event, context: any, el: HTMLSpanElement) {
@@ -111,20 +110,6 @@ export class GySearchResultComponent extends Component {
       case "blog":
         return "Blog";
     }
-  }
-
-  protected onAllComponentsBound() {
-    this.searchInputs = Array.from(
-      document.querySelectorAll<GySearchInputComponent>("gy-search-input")
-    );
-  }
-
-  protected addEventListeners() {
-    this.lifecycle.events.on(
-      "ComponentLifecycle:allBound",
-      this.onAllComponentsBound,
-      this
-    );
   }
 
   public reset() {
@@ -244,6 +229,12 @@ export class GySearchResultComponent extends Component {
     this.pjax = Pjax.getInstance();
     this.prefetch = Prefetch.getInstance();
     await super.afterBind();
+  }
+
+  protected async afterAllBind() {
+    this.searchInputs = Array.from(
+      document.querySelectorAll<GySearchInputComponent>("gy-search-input")
+    );
   }
 
   protected connectedCallback() {
