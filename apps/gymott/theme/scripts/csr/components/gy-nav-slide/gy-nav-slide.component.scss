@@ -14,6 +14,14 @@ gy-nav-slide {
           &.list-group-item-parent {
             cursor: pointer;
           }
+          &.list-group-item-back {
+            padding-left: 40px;
+          }
+        }
+        .slide-caption {
+          left: 0;
+          right: 0;
+          top: -55px;
         }
       }
     }

@@ -12,6 +12,7 @@ import { NavigationService } from "../../services";
 
 export interface Slide extends Partial<SlideshowSlide> {
   entry?: NavigationLink;
+  caption: string;
 }
 
 export interface Scope {
@@ -19,6 +20,8 @@ export interface Scope {
   slides: Slide[];
   onNavTapstart: GyNavSlideComponent["onNavTapstart"];
   onNavTap: GyNavSlideComponent["onNavTap"];
+  onBackTap: GyNavSlideComponent["onBackTap"];
+  onCloseTap: GyNavSlideComponent["onCloseTap"];
 }
 
 export class GyNavSlideComponent extends Component {
@@ -34,6 +37,8 @@ export class GyNavSlideComponent extends Component {
     slides: [],
     onNavTapstart: this.onNavTapstart.bind(this),
     onNavTap: this.onNavTap.bind(this),
+    onBackTap: this.onBackTap.bind(this),
+    onCloseTap: this.onCloseTap.bind(this),
   };
 
   static get observedAttributes(): string[] {
@@ -75,13 +80,26 @@ export class GyNavSlideComponent extends Component {
     this.slideshow?.goTo(index + 1);
   }
 
-  protected newSlide(index: number, active = false) {
-    const slide: Partial<SlideshowSlide> = {
+  public onBackTap(currentSlide: Slide) {
+    const index = currentSlide.index;
+    if (typeof index === "undefined") {
+      throw new Error("index not set!");
+    }
+    this.slideshow?.goTo(index - 1);
+  }
+
+  public onCloseTap() {
+    console.debug("onCloseTap", this.sidebar);
+    this.sidebar?.hide();
+  }
+
+  protected newSlide(index: number) {
+    const slide: Slide = {
       content: "Slide " + (index + 1),
+      caption: "",
       index,
       handle: index.toString(),
-      active,
-      class: "slide col-12 p-0",
+      active: false,
     };
     return slide;
   }
@@ -96,12 +114,14 @@ export class GyNavSlideComponent extends Component {
     }
     const slidesSize = NavigationService.getMaxDepth(this.scope.entry);
     console.debug("slidesSize", slidesSize);
-    this.scope.slides = new Array(slidesSize);
+    this.scope.slides = new Array(slidesSize - 1);
     for (let i = 0; i < this.scope.slides.length; i++) {
       this.scope.slides[i] = this.newSlide(i);
-    }
-    if (slidesSize > 0) {
-      this.scope.slides[0].entry = this.scope.entry;
+      if (i === 0) {
+        this.scope.slides[i].entry = this.scope.entry;
+      } else {
+        this.scope.slides[i].caption = "Zurück";
+      }
     }
   }
 
@@ -118,7 +138,25 @@ export class GyNavSlideComponent extends Component {
 
   protected async afterAllBind() {
     this.slideshow = this.querySelector(Bs5SlideshowComponent.tagName);
-    this.sidebar = this.querySelector(Bs5SidebarComponent.tagName);
+
+    if (
+      this.parentElement?.tagName.toUpperCase() ===
+      Bs5SidebarComponent.tagName.toUpperCase()
+    ) {
+      this.sidebar = this.parentElement as Bs5SidebarComponent;
+    } else {
+      this.sidebar =
+        this.parentElement?.parentElement?.querySelector(
+          Bs5SidebarComponent.tagName
+        ) || null;
+    }
+
+    if (!this.slideshow) {
+      console.warn("Slideshow not found!");
+    }
+    if (!this.sidebar) {
+      console.warn("Sidebar not found!");
+    }
   }
 
   protected connectedCallback() {
