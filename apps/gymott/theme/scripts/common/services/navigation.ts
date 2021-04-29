@@ -115,6 +115,7 @@ export class NavigationService {
           // Child element
           const parentEntry = this.findParent(result, entry.parent.id);
           if (parentEntry) {
+
             parentEntry.children?.push(
               this.newItem(
                 entry as StrapiGqlComponentNavigationNavigationLevelEntry

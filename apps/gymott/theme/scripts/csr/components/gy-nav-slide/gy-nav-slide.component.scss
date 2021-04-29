@@ -1,5 +1,6 @@
 gy-nav-slide {
   display: block;
+  max-height: 100%;
   bs5-slideshow {
     > .row {
       .slide {
@@ -8,14 +9,11 @@ gy-nav-slide {
           &.disabled {
             opacity: 0.8;
           }
-          &.list-group-item-link {
-            padding-left: 40px;
-          }
+          // &.list-group-item-link, &.list-group-item-back  {
+          //   padding-right: 40px;
+          // }
           &.list-group-item-parent {
             cursor: pointer;
-          }
-          &.list-group-item-back {
-            padding-left: 40px;
           }
         }
         .slide-caption {

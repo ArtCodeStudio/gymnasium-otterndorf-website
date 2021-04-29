@@ -1,6 +1,3 @@
-/* eslint-disable no-case-declarations */
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable no-undef */
 const ribaWebpackConfig = require("@ribajs/webpack-config");
 const { resolve } = require("path");
 

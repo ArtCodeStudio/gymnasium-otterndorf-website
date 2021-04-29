@@ -1,9 +1,5 @@
-bs5-sidebar#right-sidebar.bg-blue.pb-5.scrollbar-x-auto.scrollbar-cyan(container-selector="#main-container, gy-navbar, gy-search-result" position="right" mode="move" close-on-swipe="false")
+bs5-sidebar#right-sidebar.bg-blue.pb-5(container-selector="#main-container, gy-navbar, gy-search-result" position="right" mode="move" close-on-swipe="false")
   //- gy-link-list.list-group(type="toolbar")
   //-   .list-group-item.list-group-item-action.bg-transparent.border-0(ssr-rv-each-item="items")
   //-     a.nav-link.text-light(csr-rv-route ssr-rv-href="item.link" ssr-rv-text="item.name")
-  gy-nav-slide(ssr-rv-entry="navEntry")
-  //- .list-group.w-100
-  //-   .list-group-item.list-group-item-parent.border-0.bg-transparent.text-white.d-flex.align-items-center.justify-content-center.cursor-pointer(csr-rv-touch-events csr-rv-on-tap="onCloseTap | args slide")
-  //-       bs5-icon(size="24" src="/iconset/svg/icon_close.svg")
-  //-       span.text-truncate Schließen
+  gy-nav-slide.scrollbar-x-auto.scrollbar-cyan(ssr-rv-entry="navEntry")

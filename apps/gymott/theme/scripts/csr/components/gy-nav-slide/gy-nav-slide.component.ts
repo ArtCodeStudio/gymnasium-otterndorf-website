@@ -54,14 +54,19 @@ export class GyNavSlideComponent extends Component {
   }
 
   public onNavTapstart(child: NavigationLink, currentSlide: Slide) {
-    console.debug("onNavTapstart", child);
+    console.debug("onNavTapstart", child, currentSlide);
     const index = currentSlide.index;
     if (typeof index === "undefined") {
       throw new Error("index not set!");
     }
     if (!child.children.length) {
-      console.warn("No children");
+      this.debug("No children");
     }
+    if (!this.scope.slides[index + 1]) {
+      console.warn("No next slide!");
+      return;
+    }
+    this.scope.slides[index + 1].caption = child?.label || "";
     this.scope.slides[index + 1].entry = child;
   }
 

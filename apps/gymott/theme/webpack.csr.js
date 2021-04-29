@@ -1,6 +1,3 @@
-/* eslint-disable no-case-declarations */
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable no-undef */
 const ribaWebpackConfig = require("@ribajs/webpack-config");
 const { resolve } = require("path");
 
@@ -29,6 +26,10 @@ const config = {
     path: outputPath,
     filename: "[name].bundle.js",
   },
+  // TODO fixme
+  // styles: {
+  //   resolveUrl: "onlyImports"
+  // }
 };
 
 const webpackConfig = ribaWebpackConfig(config);

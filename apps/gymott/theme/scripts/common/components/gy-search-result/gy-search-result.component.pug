@@ -6,7 +6,7 @@
       span.search-suggestions(csr-rv-show="suggestions.show" csr-rv-template="suggestions.message")
   .row.mb-3(csr-rv-if="items | size")
     .col-12.col-md-6.offset-md-3.col-xxl-4.offset-xxl-4.g-4(csr-rv-each-item="items")
-      .card
+      .card.shadow-sm
         .card-body
           h6.card-subtitle.mb-2.text-success(csr-rv-text="getType | call item.ns" csr-rv-class-cursor-pointer="item.data.href" csr-rv-on-click="onOpen | args item")
           h5.card-title(csr-rv-html="item.data.title" csr-rv-class-cursor-pointer="item.data.href" csr-rv-on-click="onOpen | args item")
