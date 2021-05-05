@@ -4,7 +4,7 @@
         gy-section-slideshow(ssr-rv-co-section="section")
     .col-12(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'")
         gy-section-facts(ssr-rv-co-section="section")
-    .col-12(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
+    .col-12.col-md-8.mx-auto.my-5(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
         gy-section-text(ssr-rv-co-section="section")
     .col-12(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
         gy-section-image(ssr-rv-co-section="section")
