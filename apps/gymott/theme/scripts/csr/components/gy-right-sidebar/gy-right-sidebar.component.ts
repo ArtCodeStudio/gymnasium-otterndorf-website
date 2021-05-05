@@ -1,8 +1,8 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { NavigationService } from "../../services/navigation";
+import { NavigationService } from "../../services";
 import pugTemplate from "./gy-right-sidebar.component.pug";
-import { Awaited } from "../../types";
+import { Awaited } from "../../../common/types";
 
 export interface Scope {
   navEntry: Awaited<ReturnType<NavigationService["getMenu"]>> | null;
@@ -29,7 +29,7 @@ export class GyRightSidebarComponent extends Component {
     await super.beforeBind();
     if (!this.scope.navEntry) {
       this.scope.navEntry = await NavigationService.getInstance().getMenu();
-      this.setAttribute("nav-entry", JSON.stringify(this.scope.navEntry));
+      // this.setAttribute("nav-entry", JSON.stringify(this.scope.navEntry));
     }
 
     this.debug("navEntry", this.scope.navEntry);
