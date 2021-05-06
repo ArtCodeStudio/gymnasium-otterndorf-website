@@ -1,22 +1,22 @@
-bs5-slideshow(rv-parent xs-controls="false" xs-indicators="false" xs-drag="true" xs-sticky="true" xs-autoplay="false")
+bs5-slideshow(rv-parent rv-co-items="slides" xs-controls="false" xs-indicators="false" xs-drag="true" xs-sticky="true" xs-autoplay="false")
   .row.slideshow-row.m-0
-    .slide.col-12.p-0.my-5.d-flex.align-items-center(csr-rv-each-slide="$parent.slides")
+    .slide.col-12.p-0.my-5.d-flex.align-items-center(rv-each-slide="items")
       //- E.g. Back
       .slide-caption(rv-show="slide.caption")
         .list-group.w-100
-          .list-group-item.list-group-item-back.border-0.bg-transparent.text-white.d-flex.align-items-center.justify-content-start(csr-rv-touch-events csr-rv-on-tap="onBackTap | args slide")
+          .list-group-item.list-group-item-back.border-0.bg-transparent.text-white.d-flex.align-items-center.justify-content-start(rv-touch-events rv-on-tap="onBackTap | args slide")
             bs5-icon(size="24" src="/iconset/svg/arrow_carrot.svg" direction="left")
-            span.text-truncate(csr-rv-text="slide.caption")
+            span.text-truncate(rv-text="slide.caption")
       //- Nav children
-      .list-group.w-100(csr-rv-if="slide.entry.type | eq 'list'")
-        div(csr-rv-each-child="slide.entry.children")
-          a.list-group-item.list-group-item-link.border-0.bg-transparent.text-white.d-flex.align-items-center(csr-rv-if="child.href" csr-rv-route="child.href" csr-rv-href="child.href" csr-rv-class-disabled="child.href | not" csr-rv-touch-events csr-rv-on-tap="onNavTap | args child slide")
-            span.text-truncate(csr-rv-text="child.label")
-          .list-group-item.list-group-item-parent.border-0.bg-transparent.text-white.d-flex.align-items-center(csr-rv-unless="child.href" csr-rv-class-disabled="child.children | size | not" csr-rv-touch-events csr-rv-on-mouseover="onNavTapstart | args child slide" csr-rv-on-tapstart="onNavTapstart | args child slide" csr-rv-on-tap="onNavTap | args child slide")
-            span.text-truncate(csr-rv-text="child.label")
+      .list-group.w-100(rv-if="slide.entry.type | eq 'list'")
+        div(rv-each-child="slide.entry.children")
+          a.list-group-item.list-group-item-link.border-0.bg-transparent.text-white.d-flex.align-items-center(rv-if="child.href" rv-route="child.href" rv-href="child.href" rv-class-disabled="child.href | not" rv-touch-events rv-on-tap="onNavTap | args child slide")
+            span.text-truncate(rv-text="child.label")
+          .list-group-item.list-group-item-parent.border-0.bg-transparent.text-white.d-flex.align-items-center(rv-unless="child.href" rv-class-disabled="child.children | size | not" rv-touch-events rv-on-mouseover="onNavTapstart | args child slide" rv-on-tapstart="onNavTapstart | args child slide" rv-on-tap="onNavTap | args child slide")
+            span.text-truncate(rv-text="child.label")
             bs5-icon.ms-auto(size="24" src="/iconset/svg/arrow_carrot.svg" direction="right")
 //- Close
 .list-group.w-100.fixed-bottom
-  .list-group-item.list-group-item-parent.border-0.bg-transparent.text-white.d-flex.d-xl-none.align-items-center.justify-content-center.cursor-pointer(csr-rv-touch-events csr-rv-on-tap="onCloseTap | args slide")
+  .list-group-item.list-group-item-parent.border-0.bg-transparent.text-white.d-flex.d-xl-none.align-items-center.justify-content-center.cursor-pointer(rv-touch-events rv-on-tap="onCloseTap | args slide")
       bs5-icon(size="24" src="/iconset/svg/icon_close.svg")
       span.text-truncate Schließen
