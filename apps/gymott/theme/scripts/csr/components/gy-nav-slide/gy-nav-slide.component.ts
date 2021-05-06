@@ -26,7 +26,7 @@ export interface Scope {
 
 export class GyNavSlideComponent extends Component {
   public static tagName = "gy-nav-slide";
-  public _debug = false;
+  public _debug = true;
   protected autobind = true;
   protected slideshow: Bs5SlideshowComponent | null = null;
   protected sidebar: Bs5SidebarComponent | null = null;

@@ -1,6 +1,17 @@
-bs5-slideshow(xs-controls="false" lg-controls="true" xs-indicators="false" lg-indicators="true" xs-drag="false" xs-control-prev-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-control-next-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="true" xs-autoplay-interval="10000")
+bs5-slideshow(xs-controls="false" xs-indicators="true" xs-drag="true" xs-control-prev-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-control-next-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="true" xs-autoplay-interval="10000")
     .row.slideshow-row
         .slide.col-12.p-0(ssr-rv-each-entry="section.entries")
-            img.img-fluid.w-100(lazyload="lazy" ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt="entry.image.alternativeText")
-            .slide-caption
-                h1(ssr-rv-text="entry.subtitle")
+            .row.mx-0.h-100
+                .px-0.col-12.col-md-8
+                    .ratio.ratio-4x3
+                        img.img-fluid.w-100(lazyload="lazy" ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt="entry.image.alternativeText")
+                .p-4.col-12.col-md-4.bg-green.text-white.slide-caption-custom
+                    .h5(ssr-rv-text="entry.subtitle")
+
+    template(type="indicators")
+        .row.slideshow-indicators(csr-rv-if="activeBreakpoint.indicators" csr-rv-add-class="indicatorsPositionClass")
+            .col-12.col-md-4.pe-md-0
+                .row
+                    .col.py-2.indicators.cursor-pointer(csr-rv-each-slide="items" csr-rv-class-active="slide.active" csr-rv-on-click="goTo | args slide.index")
+                        .progress
+                            .progress-bar.bg-white(role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100")

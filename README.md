@@ -58,6 +58,16 @@ npm install pm2@latest -g
 yarn run build
 ```
 
+## Style
+
+Bootstrap theme variables:
+
+* blue - Used for Dates
+* green - Used for News
+* cyan -
+* green-light -
+* gray - Used for background: Navbar
+
 ## Environments
 
 ### Local

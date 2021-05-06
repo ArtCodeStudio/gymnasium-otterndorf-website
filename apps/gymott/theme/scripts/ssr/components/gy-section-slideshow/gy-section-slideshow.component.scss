@@ -1,11 +1,38 @@
 gy-section-slideshow {
-    img {
-        user-select: none;
-        pointer-events: none;
-    }
-    .slideshow-controls, .slideshow-indicators {
-        bs5-icon {
-            color: white;
+    bs5-slideshow {
+        img {
+            user-select: none;
+            pointer-events: none;
+            object-fit: cover;
+        }
+        .slideshow-controls, .slideshow-indicators {
+            bs5-icon {
+                color: white;
+            }
+        }
+        .slideshow-row {
+            white-space: unset;
+        }
+        .slideshow-indicators {
+            margin-left: 0;
+            margin-right: 0;
+            justify-content: end;
+            &.indicators-bottom, &.indicators-sm-bottom, &.indicators-md-bottom, &.indicators-lg-bottom, &.indicators-xl-bottom, &.indicators-xxl-bottom {
+                bottom: 0;
+            }
+            
+            .progress {
+                height: 8px;
+                background-color: rgba($gray, .5);
+            }
+            .active {
+                .progress {
+                    .progress-bar {
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
+
 }
