@@ -54,7 +54,11 @@ npm install pm2@latest -g
 
 ## Build
 
-```bash
+```sh
+git clone https://github.com/ArtCodeStudio/riba-nest-projects.git
+cd riba-nest-projects
+git submodule update --init --recursive
+yarn install
 yarn run build
 ```
 

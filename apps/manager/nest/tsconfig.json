@@ -13,6 +13,10 @@
     "baseUrl": "./",
     "incremental": true
   },
-  "exclude": ["../../../config"],
-  "include": ["./src/**/*.ts"]
+  "exclude": [
+    "../../../config"
+  ],
+  "include": [
+    "./src/**/*.ts"
+  ]
 }

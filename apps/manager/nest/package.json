@@ -26,6 +26,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@artcodestudio/redbird": "^0.10.0",
     "@nestjs/common": "^7.6.15",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.6.15",
@@ -39,7 +40,6 @@
     "glob": "^7.1.6",
     "lodash": "^4.17.21",
     "pm2": "^4.5.6",
-    "redbird": "^0.10.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.0.0",

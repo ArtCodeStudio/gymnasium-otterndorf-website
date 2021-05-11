@@ -1,0 +1,6 @@
+[submodule "packages/riba"]
+	path = packages/riba
+	url = https://github.com/ribajs/riba.git
+[submodule "packages/redbird"]
+	path = packages/redbird
+	url = https://github.com/ArtCodeStudio/redbird.git

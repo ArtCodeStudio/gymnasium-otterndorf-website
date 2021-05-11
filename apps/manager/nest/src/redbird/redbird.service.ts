@@ -1,6 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import * as redbird from 'redbird';
-import type {} from 'redbird';
+import * as redbird from '@artcodestudio/redbird';
 import { ConfigService } from '@nestjs/config';
 import type { ManagerApp } from '../types/app';
 import type { RedbirdSSL } from './types/ssl';
