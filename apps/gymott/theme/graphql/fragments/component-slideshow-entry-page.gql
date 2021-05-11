@@ -5,6 +5,7 @@ fragment ComponentSlideshowEntryPageFragment on ComponentSlideshowSlideshowEntry
   }
   subtitle
   link {
+    __typename
     slug
   }
 }

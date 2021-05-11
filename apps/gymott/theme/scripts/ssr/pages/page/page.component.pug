@@ -4,18 +4,18 @@
       h1.text-center(rv-template="title")
   section.row
     .col-8
-      gy-sections(rv-sections="content")
+      gy-sections(rv-co-sections="content")
     .col-4
       .row
-        .col-12(style="background-color: red")
+        .col-12(rv-if="assets | empty | not")
           h3 Downloads
           .row(rv-each-asset="assets")
             .col-12 
               a(rv-href="asset.file.url | strapi" download rv-text="asset.name")
-        .col-12
+        .col-12(rv-if="blogEntries | empty | not")
           h3 Blog Einträge
           .row(rv-each-blog="blogEntries")
             .col-12 
               a(rv-href="blog.slug | blog" rv-text="blog.title") 
-        .col-12
+        .col-12(rv-if="calendarKey")
           gy-dates(rv-calendar-key="calendarKey")

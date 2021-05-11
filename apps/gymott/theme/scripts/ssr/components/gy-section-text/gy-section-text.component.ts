@@ -2,11 +2,10 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-text.component.pug";
 import { MarkdownService } from "../../services";
+import { SectionContentText } from "../../../common/types";
 
 export interface Scope {
-  section?: {
-    text: string;
-  };
+  section: SectionContentText;
   text: string;
 }
 
@@ -18,7 +17,9 @@ export class GySectionTextComponent extends Component {
 
   scope: Scope = {
     section: {
+      __typename: "ComponentContentText",
       text: "",
+      id: "",
     },
     text: "",
   };

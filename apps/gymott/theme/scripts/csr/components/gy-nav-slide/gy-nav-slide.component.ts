@@ -26,7 +26,7 @@ export interface Scope {
 
 export class GyNavSlideComponent extends Component {
   public static tagName = "gy-nav-slide";
-  public _debug = true;
+  public _debug = false;
   protected autobind = true;
   protected slideshow: Bs5SlideshowComponent | null = null;
   protected sidebar: Bs5SidebarComponent | null = null;
@@ -54,7 +54,6 @@ export class GyNavSlideComponent extends Component {
   }
 
   public onNavTapstart(child: NavigationLink, currentSlide: Slide) {
-    console.debug("onNavTapstart", child, currentSlide);
     const index = currentSlide.index;
     if (typeof index === "undefined") {
       throw new Error("index not set!");
@@ -94,7 +93,6 @@ export class GyNavSlideComponent extends Component {
   }
 
   public onCloseTap() {
-    console.debug("onCloseTap", this.sidebar);
     this.sidebar?.hide();
   }
 
@@ -109,16 +107,11 @@ export class GyNavSlideComponent extends Component {
     return slide;
   }
 
-  // protected setSlideContent(depth: number, entry: NavigationLink) {
-
-  // }
-
   protected initSlides() {
     if (!this.scope.entry) {
       throw new Error("entry not set!");
     }
     const slidesSize = NavigationService.getMaxDepth(this.scope.entry);
-    console.debug("slidesSize", slidesSize);
     this.scope.slides = new Array(slidesSize - 1);
     for (let i = 0; i < this.scope.slides.length; i++) {
       this.scope.slides[i] = this.newSlide(i);
@@ -136,7 +129,6 @@ export class GyNavSlideComponent extends Component {
   }
 
   protected async afterBind() {
-    // console.debug("afterBind:", this.scope.entry);
     this.pjax = Pjax.getInstance();
     await super.afterBind();
   }

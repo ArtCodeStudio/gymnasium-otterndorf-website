@@ -1,9 +1,10 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-slideshow.component.pug";
+import { SectionSlideshow } from "../../../common/types";
 
 export interface Scope {
-  section?: any;
+  section?: SectionSlideshow | null;
 }
 
 export class GySectionSlideshowComponent extends Component {

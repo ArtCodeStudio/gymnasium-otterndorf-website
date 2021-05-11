@@ -1,9 +1,10 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-image.component.pug";
+import { SectionContentImage } from "../../../common/types";
 
 export interface Scope {
-  section?: any;
+  section?: SectionContentImage | null;
 }
 
 export class GySectionImageComponent extends Component {

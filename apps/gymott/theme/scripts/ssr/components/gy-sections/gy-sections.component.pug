@@ -2,7 +2,7 @@
 .row.section(ssr-rv-each-section='sections')
     .col-12(ssr-rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
         gy-section-slideshow(ssr-rv-co-section="section")
-    .col-12(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'")
+    div(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'" ssr-rv-add-class="section.size | prepend 'col-'")
         gy-section-facts(ssr-rv-co-section="section")
     .col-12.col-md-8.mx-auto.my-5(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
         gy-section-text(ssr-rv-co-section="section")

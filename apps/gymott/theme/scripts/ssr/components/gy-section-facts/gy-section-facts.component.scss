@@ -1,0 +1,8 @@
+.fact {
+  font-size: 60px;
+  line-height: 64px;
+  &:not(:last-child) {
+    border-bottom: 3px solid black;
+  }
+
+}
