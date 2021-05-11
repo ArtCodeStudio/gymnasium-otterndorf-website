@@ -47,3 +47,8 @@ $theme-colors: (
 $font-family-sans-serif: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 $font-weight-bold:            600;
+
+// PROGRESS
+$progress-height: 10px;
+$progress-bg: rgba($gray, .5);
+$progress-bar-transition: width .1s linear, margin-left .1s linear;

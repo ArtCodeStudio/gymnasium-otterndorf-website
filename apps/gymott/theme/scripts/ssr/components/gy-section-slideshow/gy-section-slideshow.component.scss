@@ -20,16 +20,28 @@ gy-section-slideshow {
             &.indicators-bottom, &.indicators-sm-bottom, &.indicators-md-bottom, &.indicators-lg-bottom, &.indicators-xl-bottom, &.indicators-xxl-bottom {
                 bottom: 0;
             }
-            
-            .progress {
-                height: 8px;
-                background-color: rgba($gray, .5);
-            }
+
             .active {
                 .progress {
                     .progress-bar {
-                        width: 100%;
+                        width: 100% !important;
                     }
+                }
+            }
+            .inactive {
+                .progress {
+                    .progress-bar {
+                        width: 0 !important;
+                        transition: none !important;
+                    }
+                }
+            }
+        }
+        .slide-caption-custom {
+            .title {
+                @extend .h4;
+                @include media-breakpoint-up(xxl) { 
+                    @include font-size($h1-font-size);
                 }
             }
         }

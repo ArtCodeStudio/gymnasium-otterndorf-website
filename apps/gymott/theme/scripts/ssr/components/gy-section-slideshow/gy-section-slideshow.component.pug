@@ -5,13 +5,15 @@ bs5-slideshow(xs-controls="false" xs-indicators="true" xs-drag="true" xs-control
                 .px-0.col-12.col-md-8
                     .ratio.ratio-4x3
                         img.img-fluid.w-100(lazyload="lazy" ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt="entry.image.alternativeText")
-                .p-4.col-12.col-md-4.bg-green.text-white.slide-caption-custom
-                    .h5(ssr-rv-text="entry.subtitle")
+                .p-4.pb-5.col-12.col-md-4.bg-green.text-white.slide-caption-custom
+                    .title(ssr-rv-text="entry.subtitle")
 
     template(type="indicators")
         .row.slideshow-indicators(csr-rv-if="activeBreakpoint.indicators" csr-rv-add-class="indicatorsPositionClass")
             .col-12.col-md-4.pe-md-0
                 .row
-                    .col.py-2.indicators.cursor-pointer(csr-rv-each-slide="items" csr-rv-class-active="slide.active" csr-rv-on-click="goTo | args slide.index")
-                        .progress
-                            .progress-bar.bg-white(role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100")
+                    .col.py-3.indicators.cursor-pointer(csr-rv-each-slide="items" csr-rv-class-active="slide.active" csr-rv-class-next="%slide% | eq nextIndex" csr-rv-class-inactive="%slide% | eq nextIndex | or slide.active | not" csr-rv-on-click="goTo | args slide.index")
+                        .progress(csr-rv-if="slide.active")
+                            .progress-bar.bg-white(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="100" csr-rv-style-margin-left="intervalProgress | append '%'")
+                        .progress(csr-rv-unless="slide.active")
+                            .progress-bar.bg-white(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="intervalProgress" csr-rv-style-width="intervalProgress | append '%'")
