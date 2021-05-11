@@ -68,6 +68,7 @@
     "swipeleft",
     "swiperight",
     "tapstart",
+    "toastui",
     "typegen",
     "unthrottled",
     "webroot",

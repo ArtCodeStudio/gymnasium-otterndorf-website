@@ -75,19 +75,19 @@ Checkout the [upgrade guide](https://strapi.io/documentation/developer-docs/late
 In short:
 
 ```sh
-pm2 stop <id>
 npm install -g npm-check
 cd apps/gymott/strapi
 pm2 list
 # see which id the strapi process has here
+pm2 stop <id>
 npm-check -u
 # Select latest strapi versions here
+# Please note: Maybe there are new plugins for the new strapi version, check the source for new plugins and install theme
 rm -rf package-lock.json node_modules .cache
 npm install
 # Maybe you need to run `npm run build` several times if an error occurs.
 # You can also try running `npm run build -- --clean`
 npm run build
-npm run build -- --clean
 pm2 start <id>
 pm2 logs <id>
 # Check here if Strapi starts properly
@@ -108,7 +108,6 @@ Bootstrap theme variables:
 ### Local
 
 Use the local environment if you want to develop on your locale machine. Start the App Manager with `yarn run start:local` in the root of this monorepo, this will use the config from from `config/local.ts`.
-
 
 ## Known error messages
 
