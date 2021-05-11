@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_home_news",
+  "info": {
+    "name": "news",
+    "icon": "tasks"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "integer"
+    }
+  }
+}

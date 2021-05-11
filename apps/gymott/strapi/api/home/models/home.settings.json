@@ -17,7 +17,8 @@
         "section.slideshow",
         "section.facts",
         "content.text",
-        "content.image"
+        "content.image",
+        "home.news"
       ]
     }
   }

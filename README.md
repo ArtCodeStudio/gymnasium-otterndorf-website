@@ -59,7 +59,38 @@ git clone https://github.com/ArtCodeStudio/riba-nest-projects.git
 cd riba-nest-projects
 git submodule update --init --recursive
 yarn install
+# Build the apps, e.g.
+cd apps/gymott/theme
 yarn run build
+```
+
+## Strapi
+
+Please note, this sub-project is not part of the yarn 2 workspace because it is not working with yarn 2 at the moment, so please use `npm` here.
+
+### Upgrade
+
+Checkout the [upgrade guide](https://strapi.io/documentation/developer-docs/latest/update-migration-guides/update-version.html).
+
+In short:
+
+```sh
+pm2 stop <id>
+npm install -g npm-check
+cd apps/gymott/strapi
+pm2 list
+# see which id the strapi process has here
+npm-check -u
+# Select latest strapi versions here
+rm -rf package-lock.json node_modules .cache
+npm install
+# Maybe you need to run `npm run build` several times if an error occurs.
+# You can also try running `npm run build -- --clean`
+npm run build
+npm run build -- --clean
+pm2 start <id>
+pm2 logs <id>
+# Check here if Strapi starts properly
 ```
 
 ## Style
@@ -77,6 +108,7 @@ Bootstrap theme variables:
 ### Local
 
 Use the local environment if you want to develop on your locale machine. Start the App Manager with `yarn run start:local` in the root of this monorepo, this will use the config from from `config/local.ts`.
+
 
 ## Known error messages
 
