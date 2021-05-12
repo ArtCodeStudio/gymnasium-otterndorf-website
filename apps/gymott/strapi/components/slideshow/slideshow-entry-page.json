@@ -2,23 +2,27 @@
   "collectionName": "components_slideshow_slideshow_entry_pages",
   "info": {
     "name": "slideshow_entry_page",
-    "icon": "apple-alt"
+    "icon": "bookmark",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "subtitle": {
-      "type": "string"
-    },
     "image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images"
+        "images",
+        "files",
+        "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
-    "link": {
+    "subtitle": {
+      "type": "string"
+    },
+    "page": {
       "model": "page"
     }
   }

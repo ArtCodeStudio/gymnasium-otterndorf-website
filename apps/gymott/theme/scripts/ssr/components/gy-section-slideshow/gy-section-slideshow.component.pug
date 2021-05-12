@@ -7,7 +7,7 @@ bs5-slideshow(xs-controls="false" xs-indicators="true" xs-drag="true" xs-control
                         img.img-fluid.w-100(lazyload="lazy" ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt="entry.image.alternativeText")
                 .p-4.pb-5.col-12.col-md-4.slide-caption-custom
                     .title(ssr-rv-text="entry.subtitle")
-                    a.mt-3.btn.btn-outline-white.fw-bold(ssr-rv-if="entry.link" ssr-rv-href="entry.link | slideshow-link" ssr-rv-debug="entry.link | json") TODO Label
+                    a.mt-3.btn.btn-outline-white.fw-bold(ssr-rv-if="entry.link" ssr-rv-href="entry.link" ssr-rv-debug="entry | json") TODO Label
 
     template(type="indicators")
         .row.slideshow-indicators(csr-rv-if="activeBreakpoint.indicators" csr-rv-add-class="indicatorsPositionClass")

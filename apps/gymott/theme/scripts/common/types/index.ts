@@ -7,7 +7,7 @@ export * from "./search-result";
 export * from "./section-content-image";
 export * from "./section-content-text";
 export * from "./section-facts";
-export * from "./section-slideshow-link";
+export * from "./section-slideshow-entry";
 export * from "./section-slideshow";
 export * from "./section";
 export * from "./strapi-image";

@@ -414,13 +414,13 @@ export type StrapiGqlComponentSlideshowSlideshowEntryBlog = {
   id: Scalars['ID'];
   subtitle?: Maybe<Scalars['String']>;
   image?: Maybe<StrapiGqlUploadFile>;
-  link?: Maybe<StrapiGqlBlogEntry>;
+  post?: Maybe<StrapiGqlBlogEntry>;
 };
 
 export type StrapiGqlComponentSlideshowSlideshowEntryBlogInput = {
   subtitle?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['ID']>;
-  link?: Maybe<Scalars['ID']>;
+  post?: Maybe<Scalars['ID']>;
 };
 
 export type StrapiGqlComponentSlideshowSlideshowEntryInput = {
@@ -431,15 +431,15 @@ export type StrapiGqlComponentSlideshowSlideshowEntryInput = {
 export type StrapiGqlComponentSlideshowSlideshowEntryPage = {
   __typename?: 'ComponentSlideshowSlideshowEntryPage';
   id: Scalars['ID'];
-  subtitle?: Maybe<Scalars['String']>;
   image?: Maybe<StrapiGqlUploadFile>;
-  link?: Maybe<StrapiGqlPage>;
+  subtitle?: Maybe<Scalars['String']>;
+  page?: Maybe<StrapiGqlPage>;
 };
 
 export type StrapiGqlComponentSlideshowSlideshowEntryPageInput = {
-  subtitle?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['ID']>;
-  link?: Maybe<Scalars['ID']>;
+  subtitle?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['ID']>;
 };
 
 
@@ -887,12 +887,12 @@ export type StrapiGqlPage = {
   calendar_key?: Maybe<Scalars['String']>;
   assets?: Maybe<Array<Maybe<StrapiGqlPageAssetsDynamicZone>>>;
   published_at?: Maybe<Scalars['DateTime']>;
-  blog_entries?: Maybe<Array<Maybe<StrapiGqlBlogEntry>>>;
   blog_categories?: Maybe<Array<Maybe<StrapiGqlBlogCategory>>>;
+  blog_entries?: Maybe<Array<Maybe<StrapiGqlBlogEntry>>>;
 };
 
 
-export type StrapiGqlPageBlog_EntriesArgs = {
+export type StrapiGqlPageBlog_CategoriesArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -900,7 +900,7 @@ export type StrapiGqlPageBlog_EntriesArgs = {
 };
 
 
-export type StrapiGqlPageBlog_CategoriesArgs = {
+export type StrapiGqlPageBlog_EntriesArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
@@ -984,9 +984,9 @@ export type StrapiGqlPageInput = {
   slug: Scalars['String'];
   content?: Maybe<Array<Scalars['PageContentDynamicZoneInput']>>;
   calendar_key?: Maybe<Scalars['String']>;
-  blog_entries?: Maybe<Array<Maybe<Scalars['ID']>>>;
   blog_categories?: Maybe<Array<Maybe<Scalars['ID']>>>;
   assets?: Maybe<Array<Scalars['PageAssetsDynamicZoneInput']>>;
+  blog_entries?: Maybe<Array<Maybe<Scalars['ID']>>>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -1336,7 +1336,7 @@ export type StrapiGqlSectionSlideshowConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlSectionSlideshowConnection>;
 };
 
-export type StrapiGqlSectionSlideshowEntriesDynamicZone = StrapiGqlComponentSlideshowSlideshowEntryPage | StrapiGqlComponentSlideshowSlideshowEntry | StrapiGqlComponentSlideshowSlideshowEntryBlog;
+export type StrapiGqlSectionSlideshowEntriesDynamicZone = StrapiGqlComponentSlideshowSlideshowEntry | StrapiGqlComponentSlideshowSlideshowEntryBlog | StrapiGqlComponentSlideshowSlideshowEntryPage;
 
 
 export type StrapiGqlSectionSlideshowGroupBy = {
@@ -2282,7 +2282,7 @@ export type StrapiGqlEditComponentSlideshowSlideshowEntryBlogInput = {
   id?: Maybe<Scalars['ID']>;
   subtitle?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['ID']>;
-  link?: Maybe<Scalars['ID']>;
+  post?: Maybe<Scalars['ID']>;
 };
 
 export type StrapiGqlEditComponentSlideshowSlideshowEntryInput = {
@@ -2293,9 +2293,9 @@ export type StrapiGqlEditComponentSlideshowSlideshowEntryInput = {
 
 export type StrapiGqlEditComponentSlideshowSlideshowEntryPageInput = {
   id?: Maybe<Scalars['ID']>;
-  subtitle?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['ID']>;
-  link?: Maybe<Scalars['ID']>;
+  subtitle?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['ID']>;
 };
 
 export type StrapiGqlEditFileInput = {
@@ -2358,9 +2358,9 @@ export type StrapiGqlEditPageInput = {
   slug?: Maybe<Scalars['String']>;
   content?: Maybe<Array<Scalars['PageContentDynamicZoneInput']>>;
   calendar_key?: Maybe<Scalars['String']>;
-  blog_entries?: Maybe<Array<Maybe<Scalars['ID']>>>;
   blog_categories?: Maybe<Array<Maybe<Scalars['ID']>>>;
   assets?: Maybe<Array<Scalars['PageAssetsDynamicZoneInput']>>;
+  blog_entries?: Maybe<Array<Maybe<Scalars['ID']>>>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -2591,8 +2591,8 @@ export type StrapiGqlComponentSlideshowEntryBlogFragmentFragment = (
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
     & Pick<StrapiGqlUploadFile, 'formats'>
-  )>, link?: Maybe<(
-    { __typename?: 'BlogEntry' }
+  )>, post?: Maybe<(
+    { __typename: 'BlogEntry' }
     & Pick<StrapiGqlBlogEntry, 'slug'>
   )> }
 );
@@ -2603,8 +2603,8 @@ export type StrapiGqlComponentSlideshowEntryPageFragmentFragment = (
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
     & Pick<StrapiGqlUploadFile, 'formats'>
-  )>, link?: Maybe<(
-    { __typename?: 'Page' }
+  )>, page?: Maybe<(
+    { __typename: 'Page' }
     & Pick<StrapiGqlPage, 'slug'>
   )> }
 );
@@ -2690,14 +2690,14 @@ export type StrapiGqlSectionSlideshowFragmentFragment = (
   { __typename?: 'SectionSlideshow' }
   & Pick<StrapiGqlSectionSlideshow, 'title' | 'id'>
   & { entries?: Maybe<Array<Maybe<(
-    { __typename?: 'ComponentSlideshowSlideshowEntryPage' }
-    & StrapiGqlComponentSlideshowEntryPageFragmentFragment
-  ) | (
     { __typename?: 'ComponentSlideshowSlideshowEntry' }
     & StrapiGqlComponentSlideshowEntryFragmentFragment
   ) | (
     { __typename?: 'ComponentSlideshowSlideshowEntryBlog' }
     & StrapiGqlComponentSlideshowEntryBlogFragmentFragment
+  ) | (
+    { __typename?: 'ComponentSlideshowSlideshowEntryPage' }
+    & StrapiGqlComponentSlideshowEntryPageFragmentFragment
   )>>> }
 );
 

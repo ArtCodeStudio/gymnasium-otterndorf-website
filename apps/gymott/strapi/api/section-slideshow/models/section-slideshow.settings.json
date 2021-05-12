@@ -14,9 +14,9 @@
     "entries": {
       "type": "dynamiczone",
       "components": [
-        "slideshow.slideshow-entry-page",
         "slideshow.slideshow-entry",
-        "slideshow.slideshow-entry-blog"
+        "slideshow.slideshow-entry-blog",
+        "slideshow.slideshow-entry-page"
       ]
     },
     "title": {

@@ -4,7 +4,7 @@ fragment ComponentSlideshowEntryBlogFragment on ComponentSlideshowSlideshowEntry
     formats
   }
   subtitle
-  link {
+  post {
     __typename
     slug
   }

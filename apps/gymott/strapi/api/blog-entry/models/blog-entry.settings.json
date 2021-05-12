@@ -35,8 +35,8 @@
       "required": true
     },
     "pages": {
-      "collection": "page",
-      "via": "blog_entries"
+      "via": "blog_entries",
+      "collection": "page"
     }
   }
 }

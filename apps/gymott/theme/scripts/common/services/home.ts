@@ -4,10 +4,16 @@ import {
   StrapiGqlSectionSlideshowByIdQueryVariables,
   StrapiGqlHomeSectionsQuery,
   StrapiGqlHomeSectionsQueryVariables,
+  StrapiGqlComponentSlideshowEntryPageFragmentFragment,
+  Section,
+  SectionSlideshow,
+  SectionSlideshowEntry,
+  StrapiGqlComponentSlideshowEntryFragmentFragment,
+  StrapiGqlComponentSlideshowEntryBlogFragmentFragment,
 } from "../types";
 import sectionSlideshowById from "../../../graphql/queries/section-slideshow-by-id.gql";
 import homeSections from "../../../graphql/queries/home-sections.gql";
-import { Section, SectionSlideshow } from "../types";
+import { postFormatter, pageFormatter } from "../formatters";
 
 export class GyHomeService {
   protected graphql = GraphQLClient.getInstance();
@@ -60,17 +66,20 @@ export class GyHomeService {
             });
             break;
           case "ComponentSectionSlideshow":
-            const slideshow = section.slideshow?.id
-              ? await this.getSlideshow(section["slideshow"].id)
-              : null;
-            if (slideshow) {
-              results.push({
-                __typename: section.__typename,
-                entries: (slideshow.entries ||
-                  []) as unknown as SectionSlideshow["entries"],
-                id: slideshow.id,
-                title: slideshow.title,
-              });
+            if (section.slideshow?.id) {
+              const slideshow = await this.getSlideshow(
+                section["slideshow"].id
+              );
+              if (slideshow) {
+                results.push({
+                  __typename: section.__typename,
+                  entries: this.transformSlideshowEntries(
+                    (slideshow.entries as any) || []
+                  ),
+                  id: slideshow.id,
+                  title: slideshow.title,
+                });
+              }
             }
 
             break;
@@ -93,8 +102,35 @@ export class GyHomeService {
         sectionSlideshowById,
         vars
       );
-    // const slideshow = slideshowResponse["sectionSlideshow"];
-    // slideshow["__typename"] = "ComponentSectionSlideshow";
     return slideshowResponse["sectionSlideshow"];
+  }
+
+  transformSlideshowEntries(
+    entries: (StrapiGqlComponentSlideshowEntryPageFragmentFragment &
+      StrapiGqlComponentSlideshowEntryFragmentFragment &
+      StrapiGqlComponentSlideshowEntryBlogFragmentFragment)[]
+  ) {
+    const result: SectionSlideshowEntry[] = entries.map((entry) => {
+      const type = entry.page?.__typename || entry.post?.__typename;
+      let link: string | undefined;
+      switch (type) {
+        case "BlogEntry":
+          if (entry.post?.slug) {
+            link = postFormatter.read(entry.post.slug);
+          }
+        case "Page":
+          if (entry.page?.slug) {
+            link = pageFormatter.read(entry.page.slug);
+          }
+      }
+
+      return {
+        id: entry.id,
+        subtitle: entry.subtitle || "",
+        image: entry.image || null,
+        link,
+      };
+    });
+    return result;
   }
 }

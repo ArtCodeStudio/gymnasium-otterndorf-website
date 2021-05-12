@@ -17,9 +17,10 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
-    "link": {
+    "post": {
       "model": "blog-entry"
     }
   }

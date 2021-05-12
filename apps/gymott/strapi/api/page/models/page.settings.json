@@ -30,11 +30,6 @@
     "calendar_key": {
       "type": "string"
     },
-    "blog_entries": {
-      "via": "pages",
-      "collection": "blog-entry",
-      "dominant": true
-    },
     "blog_categories": {
       "collection": "blog-category"
     },
@@ -43,6 +38,11 @@
       "components": [
         "sidebar.assets"
       ]
+    },
+    "blog_entries": {
+      "collection": "blog-entry",
+      "via": "pages",
+      "dominant": true
     }
   }
 }

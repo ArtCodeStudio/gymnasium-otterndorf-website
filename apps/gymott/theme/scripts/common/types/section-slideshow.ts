@@ -1,15 +1,9 @@
-import { StrapiGqlUploadFile } from "./strapi-gql";
-import { SectionSlideshowLink } from "./section-slideshow-link";
+import { SectionSlideshowEntry } from "./section-slideshow-entry";
 
 export interface SectionSlideshow {
   __typename: "ComponentSectionSlideshow";
   title: string;
   id: string;
   /** Slideshow entries */
-  entries?: {
-    id: string;
-    image: Pick<StrapiGqlUploadFile, "formats">;
-    subtitle: string;
-    link?: SectionSlideshowLink;
-  };
+  entries: SectionSlideshowEntry[];
 }
