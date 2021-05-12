@@ -2,4 +2,39 @@ gy-right-sidebar {
   a {
     text-decoration: none;
   }
+  bs5-sidebar {
+    background-color: $blue;
+    .list-group-item {
+      color: $white;
+      background-color: transparent;
+      border: none;
+      &.disabled {
+        color: transparentize($white, 0.5);
+        background-color: transparent;
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      background-color: $gray;
+      .list-group-item {
+        color: $black;
+        &.disabled {
+          color: transparentize($black, 0.5);
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  .hide-navbar-shadow {
+    $hide-navbar-shadow-width: 20px; 
+    position: fixed;
+    top: 0;
+    right: $bs5-sidebar-width - ($hide-navbar-shadow-width / 2);
+    background-color: $gray;
+    width: $hide-navbar-shadow-width;
+    height: 86px;
+    z-index: $bs5-sidebar-zindex + 1;
+    @include media-breakpoint-down(xl) {
+      display: none;
+    }
+  }
 }

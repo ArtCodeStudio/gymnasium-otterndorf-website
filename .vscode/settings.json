@@ -73,7 +73,8 @@
     "typegen",
     "unthrottled",
     "webroot",
-    "yarnpkg"
+    "yarnpkg",
+    "zindex"
   ],
   "editor.formatOnSave": true,
   "editor.tabSize": 2,

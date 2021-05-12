@@ -12,6 +12,7 @@ export class GyRightSidebarComponent extends Component {
   public static tagName = "gy-right-sidebar";
   public _debug = false;
   protected autobind = true;
+  protected sidebar: HTMLElement | null = null;
 
   scope: Scope = {
     navEntry: null,
@@ -30,6 +31,7 @@ export class GyRightSidebarComponent extends Component {
     if (!this.scope.navEntry) {
       this.scope.navEntry = await NavigationService.getInstance().getMenu();
       // this.setAttribute("nav-entry", JSON.stringify(this.scope.navEntry));
+      this.sidebar = this.querySelector("bs5-sidebar");
     }
 
     this.debug("navEntry", this.scope.navEntry);
