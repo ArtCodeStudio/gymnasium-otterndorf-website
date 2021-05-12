@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "subjects",
   "info": {
-    "name": "Schulfach",
+    "name": "School subject",
     "displayName": "Schulfächer",
     "description": ""
   },
@@ -11,12 +11,14 @@
     "timestamps": true,
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "title": {
       "type": "string"
     },
     "teachers": {
       "columnName": "Lehrer",
+      "targetColumnName": "Fächer",
       "collection": "teacher",
       "via": "subjects",
       "dominant": true

@@ -6,7 +6,6 @@ import {
   StrapiGqlHomeSectionsQueryVariables,
   StrapiGqlComponentSlideshowEntryPageFragmentFragment,
   Section,
-  SectionSlideshow,
   SectionSlideshowEntry,
   StrapiGqlComponentSlideshowEntryFragmentFragment,
   StrapiGqlComponentSlideshowEntryBlogFragmentFragment,

@@ -9,6 +9,7 @@ import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-nav-slide.component.pug";
 import { NavigationLink } from "../../../common/types";
 import { NavigationService } from "../../services";
+import { EventDispatcher } from "@ribajs/events";
 
 export interface Slide extends Partial<SlideshowSlide> {
   entry?: NavigationLink;
@@ -31,6 +32,7 @@ export class GyNavSlideComponent extends Component {
   protected slideshow: Bs5SlideshowComponent | null = null;
   protected sidebar: Bs5SidebarComponent | null = null;
   protected pjax?: Pjax;
+  protected routerEvents = new EventDispatcher("main");
 
   scope: Scope = {
     entry: undefined,
@@ -76,8 +78,6 @@ export class GyNavSlideComponent extends Component {
     }
     if (child.href) {
       this.pjax?.goTo(child.href);
-      this.slideshow?.goTo(0);
-      this.sidebar?.hide();
       return;
     }
     this.onNavTapstart(child, currentSlide);
@@ -123,9 +123,23 @@ export class GyNavSlideComponent extends Component {
     }
   }
 
+  protected onPageChanges() {
+    console.debug("onPageChanges");
+    setTimeout(() => {
+      this.slideshow?.goTo(0);
+    }, 100);
+
+    // this.sidebar?.hide();
+  }
+
+  protected initRouterEventDispatcher() {
+    this.routerEvents.on("newPageReady", this.onPageChanges, this);
+  }
+
   protected async beforeBind() {
     await super.beforeBind();
     this.initSlides();
+    this.initRouterEventDispatcher();
   }
 
   protected async afterBind() {
