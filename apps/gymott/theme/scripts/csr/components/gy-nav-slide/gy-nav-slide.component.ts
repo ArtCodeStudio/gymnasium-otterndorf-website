@@ -124,12 +124,9 @@ export class GyNavSlideComponent extends Component {
   }
 
   protected onPageChanges() {
-    console.debug("onPageChanges");
     setTimeout(() => {
       this.slideshow?.goTo(0);
     }, 100);
-
-    // this.sidebar?.hide();
   }
 
   protected initRouterEventDispatcher() {

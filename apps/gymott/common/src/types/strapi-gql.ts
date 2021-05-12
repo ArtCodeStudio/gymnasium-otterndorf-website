@@ -2621,6 +2621,7 @@ export type StrapiGqlComponentContentTextFragmentFragment = (
 
 export type StrapiGqlComponentSectionFactsFragmentFragment = (
   { __typename?: 'ComponentSectionFacts' }
+  & Pick<StrapiGqlComponentSectionFacts, 'size'>
   & { facts?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentHomeFact' }
     & Pick<StrapiGqlComponentHomeFact, 'number' | 'title' | 'subtitle'>

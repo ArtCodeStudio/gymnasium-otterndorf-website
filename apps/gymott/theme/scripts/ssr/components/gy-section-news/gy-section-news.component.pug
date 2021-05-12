@@ -1,0 +1,14 @@
+h2 News
+.row.news(ssr-rv-each-news-item="news")
+  .col-3
+    .card.shadow-sm
+      .card-body
+        h6.card-subtitle.mb-2.text-success Subtitle
+        h5.card-title Title
+        p.card-text 
+          span Text
+        .card-toolbar
+        .d-flex.justify-content-between.flex-row-reverse
+          a(csr-rv-href="item.data.href" csr-rv-on-click="onOpen | args item") Öffnen
+          a(href="#" csr-rv-if="item.opts.expanded | not | and item.opts.expandable" csr-rv-on-click='onToggleItem | args item') Zeige mehr
+          a(href="#" csr-rv-if="item.opts.expandable | and item.opts.expanded" csr-rv-on-click='onToggleItem | args item') Zeige weniger

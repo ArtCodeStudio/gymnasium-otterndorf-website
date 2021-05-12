@@ -1,7 +1,11 @@
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -56,7 +60,6 @@ export type StrapiGqlBlogCategory = {
   name: Scalars['String'];
   blog_entries?: Maybe<Array<Maybe<StrapiGqlBlogEntry>>>;
 };
-
 
 export type StrapiGqlBlogCategoryBlog_EntriesArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -113,7 +116,9 @@ export type StrapiGqlBlogCategoryGroupBy = {
   id?: Maybe<Array<Maybe<StrapiGqlBlogCategoryConnectionId>>>;
   created_at?: Maybe<Array<Maybe<StrapiGqlBlogCategoryConnectionCreated_At>>>;
   updated_at?: Maybe<Array<Maybe<StrapiGqlBlogCategoryConnectionUpdated_At>>>;
-  display_name?: Maybe<Array<Maybe<StrapiGqlBlogCategoryConnectionDisplay_Name>>>;
+  display_name?: Maybe<
+    Array<Maybe<StrapiGqlBlogCategoryConnectionDisplay_Name>>
+  >;
   name?: Maybe<Array<Maybe<StrapiGqlBlogCategoryConnectionName>>>;
 };
 
@@ -137,7 +142,6 @@ export type StrapiGqlBlogEntry = {
   published_at?: Maybe<Scalars['DateTime']>;
   pages?: Maybe<Array<Maybe<StrapiGqlPage>>>;
 };
-
 
 export type StrapiGqlBlogEntryPagesArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -201,8 +205,9 @@ export type StrapiGqlBlogEntryConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlBlogEntryConnection>;
 };
 
-export type StrapiGqlBlogEntryContentDynamicZone = StrapiGqlComponentContentText | StrapiGqlComponentContentImage;
-
+export type StrapiGqlBlogEntryContentDynamicZone =
+  | StrapiGqlComponentContentText
+  | StrapiGqlComponentContentImage;
 
 export type StrapiGqlBlogEntryGroupBy = {
   __typename?: 'BlogEntryGroupBy';
@@ -210,7 +215,9 @@ export type StrapiGqlBlogEntryGroupBy = {
   created_at?: Maybe<Array<Maybe<StrapiGqlBlogEntryConnectionCreated_At>>>;
   updated_at?: Maybe<Array<Maybe<StrapiGqlBlogEntryConnectionUpdated_At>>>;
   title?: Maybe<Array<Maybe<StrapiGqlBlogEntryConnectionTitle>>>;
-  blog_category?: Maybe<Array<Maybe<StrapiGqlBlogEntryConnectionBlog_Category>>>;
+  blog_category?: Maybe<
+    Array<Maybe<StrapiGqlBlogEntryConnectionBlog_Category>>
+  >;
   slug?: Maybe<Array<Maybe<StrapiGqlBlogEntryConnectionSlug>>>;
   published_at?: Maybe<Array<Maybe<StrapiGqlBlogEntryConnectionPublished_At>>>;
 };
@@ -360,12 +367,16 @@ export type StrapiGqlComponentNavigationNavigationSection = {
   __typename?: 'ComponentNavigationNavigationSection';
   id: Scalars['ID'];
   title?: Maybe<Scalars['String']>;
-  navigation_entry?: Maybe<Array<Maybe<StrapiGqlComponentNavigationNavigationEntry>>>;
+  navigation_entry?: Maybe<
+    Array<Maybe<StrapiGqlComponentNavigationNavigationEntry>>
+  >;
 };
 
 export type StrapiGqlComponentNavigationNavigationSectionInput = {
   title?: Maybe<Scalars['String']>;
-  navigation_entry?: Maybe<Array<Maybe<StrapiGqlComponentNavigationNavigationEntryInput>>>;
+  navigation_entry?: Maybe<
+    Array<Maybe<StrapiGqlComponentNavigationNavigationEntryInput>>
+  >;
 };
 
 export type StrapiGqlComponentSectionFactInput = {
@@ -462,8 +473,6 @@ export type StrapiGqlComponentTypesColorInput = {
   color?: Maybe<StrapiGqlEnum_Componenttypescolor_Color>;
 };
 
-
-
 export enum StrapiGqlEnum_Componenttypescolor_Color {
   Blue = 'blue',
   Green = 'green',
@@ -473,7 +482,7 @@ export enum StrapiGqlEnum_Componenttypescolor_Color {
   Red = 'red',
   Light = 'light',
   Dark = 'dark',
-  White = 'white'
+  White = 'white',
 }
 
 export type StrapiGqlFileInfoInput = {
@@ -536,8 +545,12 @@ export type StrapiGqlHomeInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type StrapiGqlHomeSectionsDynamicZone = StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionFacts | StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentHomeNews;
-
+export type StrapiGqlHomeSectionsDynamicZone =
+  | StrapiGqlComponentSectionSlideshow
+  | StrapiGqlComponentSectionFacts
+  | StrapiGqlComponentContentText
+  | StrapiGqlComponentContentImage
+  | StrapiGqlComponentHomeNews;
 
 export type StrapiGqlI18NLocale = {
   __typename?: 'I18NLocale';
@@ -552,7 +565,6 @@ export type StrapiGqlInputId = {
   id: Scalars['ID'];
 };
 
-
 export type StrapiGqlLocaleInput = {
   name?: Maybe<Scalars['String']>;
   code?: Maybe<Scalars['String']>;
@@ -560,22 +572,203 @@ export type StrapiGqlLocaleInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-
 export type StrapiGqlMenu = {
   __typename?: 'Menu';
   id: Scalars['ID'];
   created_at: Scalars['DateTime'];
   updated_at: Scalars['DateTime'];
-  navigation_level_entry?: Maybe<Array<Maybe<StrapiGqlComponentNavigationNavigationLevelEntry>>>;
+  navigation_level_entry?: Maybe<
+    Array<Maybe<StrapiGqlComponentNavigationNavigationLevelEntry>>
+  >;
 };
 
 export type StrapiGqlMenuInput = {
-  navigation_level_entry?: Maybe<Array<Maybe<StrapiGqlComponentNavigationNavigationLevelEntryInput>>>;
+  navigation_level_entry?: Maybe<
+    Array<Maybe<StrapiGqlComponentNavigationNavigationLevelEntryInput>>
+  >;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type StrapiGqlMorph = StrapiGqlUsersPermissionsMe | StrapiGqlUsersPermissionsMeRole | StrapiGqlUsersPermissionsLoginPayload | StrapiGqlUserPermissionsPasswordPayload | StrapiGqlBlogCategory | StrapiGqlBlogCategoryConnection | StrapiGqlBlogCategoryAggregator | StrapiGqlBlogCategoryGroupBy | StrapiGqlBlogCategoryConnectionId | StrapiGqlBlogCategoryConnectionCreated_At | StrapiGqlBlogCategoryConnectionUpdated_At | StrapiGqlBlogCategoryConnectionDisplay_Name | StrapiGqlBlogCategoryConnectionName | StrapiGqlCreateBlogCategoryPayload | StrapiGqlUpdateBlogCategoryPayload | StrapiGqlDeleteBlogCategoryPayload | StrapiGqlBlogEntry | StrapiGqlBlogEntryConnection | StrapiGqlBlogEntryAggregator | StrapiGqlBlogEntryGroupBy | StrapiGqlBlogEntryConnectionId | StrapiGqlBlogEntryConnectionCreated_At | StrapiGqlBlogEntryConnectionUpdated_At | StrapiGqlBlogEntryConnectionTitle | StrapiGqlBlogEntryConnectionBlog_Category | StrapiGqlBlogEntryConnectionSlug | StrapiGqlBlogEntryConnectionPublished_At | StrapiGqlCreateBlogEntryPayload | StrapiGqlUpdateBlogEntryPayload | StrapiGqlDeleteBlogEntryPayload | StrapiGqlFooter | StrapiGqlUpdateFooterPayload | StrapiGqlDeleteFooterPayload | StrapiGqlHome | StrapiGqlUpdateHomePayload | StrapiGqlDeleteHomePayload | StrapiGqlMenu | StrapiGqlUpdateMenuPayload | StrapiGqlDeleteMenuPayload | StrapiGqlNavigationLink | StrapiGqlNavigationLinkConnection | StrapiGqlNavigationLinkAggregator | StrapiGqlNavigationLinkGroupBy | StrapiGqlNavigationLinkConnectionId | StrapiGqlNavigationLinkConnectionCreated_At | StrapiGqlNavigationLinkConnectionUpdated_At | StrapiGqlNavigationLinkConnectionTitle | StrapiGqlCreateNavigationLinkPayload | StrapiGqlUpdateNavigationLinkPayload | StrapiGqlDeleteNavigationLinkPayload | StrapiGqlPage | StrapiGqlPageConnection | StrapiGqlPageAggregator | StrapiGqlPageGroupBy | StrapiGqlPageConnectionId | StrapiGqlPageConnectionCreated_At | StrapiGqlPageConnectionUpdated_At | StrapiGqlPageConnectionTitle | StrapiGqlPageConnectionSlug | StrapiGqlPageConnectionCalendar_Key | StrapiGqlPageConnectionPublished_At | StrapiGqlCreatePagePayload | StrapiGqlUpdatePagePayload | StrapiGqlDeletePagePayload | StrapiGqlSectionSlideshow | StrapiGqlSectionSlideshowConnection | StrapiGqlSectionSlideshowAggregator | StrapiGqlSectionSlideshowGroupBy | StrapiGqlSectionSlideshowConnectionId | StrapiGqlSectionSlideshowConnectionCreated_At | StrapiGqlSectionSlideshowConnectionUpdated_At | StrapiGqlSectionSlideshowConnectionTitle | StrapiGqlCreateSectionSlideshowPayload | StrapiGqlUpdateSectionSlideshowPayload | StrapiGqlDeleteSectionSlideshowPayload | StrapiGqlSubject | StrapiGqlSubjectConnection | StrapiGqlSubjectAggregator | StrapiGqlSubjectGroupBy | StrapiGqlSubjectConnectionId | StrapiGqlSubjectConnectionCreated_At | StrapiGqlSubjectConnectionUpdated_At | StrapiGqlSubjectConnectionTitle | StrapiGqlSubjectConnectionSlug | StrapiGqlSubjectConnectionPublished_At | StrapiGqlCreateSubjectPayload | StrapiGqlUpdateSubjectPayload | StrapiGqlDeleteSubjectPayload | StrapiGqlTeacher | StrapiGqlTeacherConnection | StrapiGqlTeacherAggregator | StrapiGqlTeacherGroupBy | StrapiGqlTeacherConnectionId | StrapiGqlTeacherConnectionCreated_At | StrapiGqlTeacherConnectionUpdated_At | StrapiGqlTeacherConnectionImage | StrapiGqlTeacherConnectionName | StrapiGqlTeacherConnectionFirst_Name | StrapiGqlCreateTeacherPayload | StrapiGqlUpdateTeacherPayload | StrapiGqlDeleteTeacherPayload | StrapiGqlToolbar | StrapiGqlUpdateToolbarPayload | StrapiGqlDeleteToolbarPayload | StrapiGqlI18NLocale | StrapiGqlUploadFile | StrapiGqlUploadFileConnection | StrapiGqlUploadFileAggregator | StrapiGqlUploadFileAggregatorSum | StrapiGqlUploadFileAggregatorAvg | StrapiGqlUploadFileAggregatorMin | StrapiGqlUploadFileAggregatorMax | StrapiGqlUploadFileGroupBy | StrapiGqlUploadFileConnectionId | StrapiGqlUploadFileConnectionCreated_At | StrapiGqlUploadFileConnectionUpdated_At | StrapiGqlUploadFileConnectionName | StrapiGqlUploadFileConnectionAlternativeText | StrapiGqlUploadFileConnectionCaption | StrapiGqlUploadFileConnectionWidth | StrapiGqlUploadFileConnectionHeight | StrapiGqlUploadFileConnectionFormats | StrapiGqlUploadFileConnectionHash | StrapiGqlUploadFileConnectionExt | StrapiGqlUploadFileConnectionMime | StrapiGqlUploadFileConnectionSize | StrapiGqlUploadFileConnectionUrl | StrapiGqlUploadFileConnectionPreviewUrl | StrapiGqlUploadFileConnectionProvider | StrapiGqlUploadFileConnectionProvider_Metadata | StrapiGqlDeleteFilePayload | StrapiGqlUsersPermissionsPermission | StrapiGqlUsersPermissionsRole | StrapiGqlUsersPermissionsRoleConnection | StrapiGqlUsersPermissionsRoleAggregator | StrapiGqlUsersPermissionsRoleGroupBy | StrapiGqlUsersPermissionsRoleConnectionId | StrapiGqlUsersPermissionsRoleConnectionName | StrapiGqlUsersPermissionsRoleConnectionDescription | StrapiGqlUsersPermissionsRoleConnectionType | StrapiGqlCreateRolePayload | StrapiGqlUpdateRolePayload | StrapiGqlDeleteRolePayload | StrapiGqlUsersPermissionsUser | StrapiGqlUsersPermissionsUserConnection | StrapiGqlUsersPermissionsUserAggregator | StrapiGqlUsersPermissionsUserGroupBy | StrapiGqlUsersPermissionsUserConnectionId | StrapiGqlUsersPermissionsUserConnectionCreated_At | StrapiGqlUsersPermissionsUserConnectionUpdated_At | StrapiGqlUsersPermissionsUserConnectionUsername | StrapiGqlUsersPermissionsUserConnectionEmail | StrapiGqlUsersPermissionsUserConnectionProvider | StrapiGqlUsersPermissionsUserConnectionConfirmed | StrapiGqlUsersPermissionsUserConnectionBlocked | StrapiGqlUsersPermissionsUserConnectionRole | StrapiGqlCreateUserPayload | StrapiGqlUpdateUserPayload | StrapiGqlDeleteUserPayload | StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentHomeFact | StrapiGqlComponentHomeNews | StrapiGqlComponentLinkItemText | StrapiGqlComponentLinkTypeBlog | StrapiGqlComponentLinkTypePage | StrapiGqlComponentLinkTypeSchulfach | StrapiGqlComponentLinkTypeWeb | StrapiGqlComponentNavigationNavigationEntry | StrapiGqlComponentNavigationNavigationLevelEntry | StrapiGqlComponentNavigationNavigationSection | StrapiGqlComponentSectionFacts | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSidebarAssets | StrapiGqlComponentSlideshowSlideshowEntryBlog | StrapiGqlComponentSlideshowSlideshowEntryPage | StrapiGqlComponentSlideshowSlideshowEntry | StrapiGqlComponentTypesColor;
+export type StrapiGqlMorph =
+  | StrapiGqlUsersPermissionsMe
+  | StrapiGqlUsersPermissionsMeRole
+  | StrapiGqlUsersPermissionsLoginPayload
+  | StrapiGqlUserPermissionsPasswordPayload
+  | StrapiGqlBlogCategory
+  | StrapiGqlBlogCategoryConnection
+  | StrapiGqlBlogCategoryAggregator
+  | StrapiGqlBlogCategoryGroupBy
+  | StrapiGqlBlogCategoryConnectionId
+  | StrapiGqlBlogCategoryConnectionCreated_At
+  | StrapiGqlBlogCategoryConnectionUpdated_At
+  | StrapiGqlBlogCategoryConnectionDisplay_Name
+  | StrapiGqlBlogCategoryConnectionName
+  | StrapiGqlCreateBlogCategoryPayload
+  | StrapiGqlUpdateBlogCategoryPayload
+  | StrapiGqlDeleteBlogCategoryPayload
+  | StrapiGqlBlogEntry
+  | StrapiGqlBlogEntryConnection
+  | StrapiGqlBlogEntryAggregator
+  | StrapiGqlBlogEntryGroupBy
+  | StrapiGqlBlogEntryConnectionId
+  | StrapiGqlBlogEntryConnectionCreated_At
+  | StrapiGqlBlogEntryConnectionUpdated_At
+  | StrapiGqlBlogEntryConnectionTitle
+  | StrapiGqlBlogEntryConnectionBlog_Category
+  | StrapiGqlBlogEntryConnectionSlug
+  | StrapiGqlBlogEntryConnectionPublished_At
+  | StrapiGqlCreateBlogEntryPayload
+  | StrapiGqlUpdateBlogEntryPayload
+  | StrapiGqlDeleteBlogEntryPayload
+  | StrapiGqlFooter
+  | StrapiGqlUpdateFooterPayload
+  | StrapiGqlDeleteFooterPayload
+  | StrapiGqlHome
+  | StrapiGqlUpdateHomePayload
+  | StrapiGqlDeleteHomePayload
+  | StrapiGqlMenu
+  | StrapiGqlUpdateMenuPayload
+  | StrapiGqlDeleteMenuPayload
+  | StrapiGqlNavigationLink
+  | StrapiGqlNavigationLinkConnection
+  | StrapiGqlNavigationLinkAggregator
+  | StrapiGqlNavigationLinkGroupBy
+  | StrapiGqlNavigationLinkConnectionId
+  | StrapiGqlNavigationLinkConnectionCreated_At
+  | StrapiGqlNavigationLinkConnectionUpdated_At
+  | StrapiGqlNavigationLinkConnectionTitle
+  | StrapiGqlCreateNavigationLinkPayload
+  | StrapiGqlUpdateNavigationLinkPayload
+  | StrapiGqlDeleteNavigationLinkPayload
+  | StrapiGqlPage
+  | StrapiGqlPageConnection
+  | StrapiGqlPageAggregator
+  | StrapiGqlPageGroupBy
+  | StrapiGqlPageConnectionId
+  | StrapiGqlPageConnectionCreated_At
+  | StrapiGqlPageConnectionUpdated_At
+  | StrapiGqlPageConnectionTitle
+  | StrapiGqlPageConnectionSlug
+  | StrapiGqlPageConnectionCalendar_Key
+  | StrapiGqlPageConnectionPublished_At
+  | StrapiGqlCreatePagePayload
+  | StrapiGqlUpdatePagePayload
+  | StrapiGqlDeletePagePayload
+  | StrapiGqlSectionSlideshow
+  | StrapiGqlSectionSlideshowConnection
+  | StrapiGqlSectionSlideshowAggregator
+  | StrapiGqlSectionSlideshowGroupBy
+  | StrapiGqlSectionSlideshowConnectionId
+  | StrapiGqlSectionSlideshowConnectionCreated_At
+  | StrapiGqlSectionSlideshowConnectionUpdated_At
+  | StrapiGqlSectionSlideshowConnectionTitle
+  | StrapiGqlCreateSectionSlideshowPayload
+  | StrapiGqlUpdateSectionSlideshowPayload
+  | StrapiGqlDeleteSectionSlideshowPayload
+  | StrapiGqlSubject
+  | StrapiGqlSubjectConnection
+  | StrapiGqlSubjectAggregator
+  | StrapiGqlSubjectGroupBy
+  | StrapiGqlSubjectConnectionId
+  | StrapiGqlSubjectConnectionCreated_At
+  | StrapiGqlSubjectConnectionUpdated_At
+  | StrapiGqlSubjectConnectionTitle
+  | StrapiGqlSubjectConnectionSlug
+  | StrapiGqlSubjectConnectionPublished_At
+  | StrapiGqlCreateSubjectPayload
+  | StrapiGqlUpdateSubjectPayload
+  | StrapiGqlDeleteSubjectPayload
+  | StrapiGqlTeacher
+  | StrapiGqlTeacherConnection
+  | StrapiGqlTeacherAggregator
+  | StrapiGqlTeacherGroupBy
+  | StrapiGqlTeacherConnectionId
+  | StrapiGqlTeacherConnectionCreated_At
+  | StrapiGqlTeacherConnectionUpdated_At
+  | StrapiGqlTeacherConnectionImage
+  | StrapiGqlTeacherConnectionName
+  | StrapiGqlTeacherConnectionFirst_Name
+  | StrapiGqlCreateTeacherPayload
+  | StrapiGqlUpdateTeacherPayload
+  | StrapiGqlDeleteTeacherPayload
+  | StrapiGqlToolbar
+  | StrapiGqlUpdateToolbarPayload
+  | StrapiGqlDeleteToolbarPayload
+  | StrapiGqlI18NLocale
+  | StrapiGqlUploadFile
+  | StrapiGqlUploadFileConnection
+  | StrapiGqlUploadFileAggregator
+  | StrapiGqlUploadFileAggregatorSum
+  | StrapiGqlUploadFileAggregatorAvg
+  | StrapiGqlUploadFileAggregatorMin
+  | StrapiGqlUploadFileAggregatorMax
+  | StrapiGqlUploadFileGroupBy
+  | StrapiGqlUploadFileConnectionId
+  | StrapiGqlUploadFileConnectionCreated_At
+  | StrapiGqlUploadFileConnectionUpdated_At
+  | StrapiGqlUploadFileConnectionName
+  | StrapiGqlUploadFileConnectionAlternativeText
+  | StrapiGqlUploadFileConnectionCaption
+  | StrapiGqlUploadFileConnectionWidth
+  | StrapiGqlUploadFileConnectionHeight
+  | StrapiGqlUploadFileConnectionFormats
+  | StrapiGqlUploadFileConnectionHash
+  | StrapiGqlUploadFileConnectionExt
+  | StrapiGqlUploadFileConnectionMime
+  | StrapiGqlUploadFileConnectionSize
+  | StrapiGqlUploadFileConnectionUrl
+  | StrapiGqlUploadFileConnectionPreviewUrl
+  | StrapiGqlUploadFileConnectionProvider
+  | StrapiGqlUploadFileConnectionProvider_Metadata
+  | StrapiGqlDeleteFilePayload
+  | StrapiGqlUsersPermissionsPermission
+  | StrapiGqlUsersPermissionsRole
+  | StrapiGqlUsersPermissionsRoleConnection
+  | StrapiGqlUsersPermissionsRoleAggregator
+  | StrapiGqlUsersPermissionsRoleGroupBy
+  | StrapiGqlUsersPermissionsRoleConnectionId
+  | StrapiGqlUsersPermissionsRoleConnectionName
+  | StrapiGqlUsersPermissionsRoleConnectionDescription
+  | StrapiGqlUsersPermissionsRoleConnectionType
+  | StrapiGqlCreateRolePayload
+  | StrapiGqlUpdateRolePayload
+  | StrapiGqlDeleteRolePayload
+  | StrapiGqlUsersPermissionsUser
+  | StrapiGqlUsersPermissionsUserConnection
+  | StrapiGqlUsersPermissionsUserAggregator
+  | StrapiGqlUsersPermissionsUserGroupBy
+  | StrapiGqlUsersPermissionsUserConnectionId
+  | StrapiGqlUsersPermissionsUserConnectionCreated_At
+  | StrapiGqlUsersPermissionsUserConnectionUpdated_At
+  | StrapiGqlUsersPermissionsUserConnectionUsername
+  | StrapiGqlUsersPermissionsUserConnectionEmail
+  | StrapiGqlUsersPermissionsUserConnectionProvider
+  | StrapiGqlUsersPermissionsUserConnectionConfirmed
+  | StrapiGqlUsersPermissionsUserConnectionBlocked
+  | StrapiGqlUsersPermissionsUserConnectionRole
+  | StrapiGqlCreateUserPayload
+  | StrapiGqlUpdateUserPayload
+  | StrapiGqlDeleteUserPayload
+  | StrapiGqlComponentContentImage
+  | StrapiGqlComponentContentText
+  | StrapiGqlComponentHomeFact
+  | StrapiGqlComponentHomeNews
+  | StrapiGqlComponentLinkItemText
+  | StrapiGqlComponentLinkTypeBlog
+  | StrapiGqlComponentLinkTypePage
+  | StrapiGqlComponentLinkTypeSchulfach
+  | StrapiGqlComponentLinkTypeWeb
+  | StrapiGqlComponentNavigationNavigationEntry
+  | StrapiGqlComponentNavigationNavigationLevelEntry
+  | StrapiGqlComponentNavigationNavigationSection
+  | StrapiGqlComponentSectionFacts
+  | StrapiGqlComponentSectionSlideshow
+  | StrapiGqlComponentSidebarAssets
+  | StrapiGqlComponentSlideshowSlideshowEntryBlog
+  | StrapiGqlComponentSlideshowSlideshowEntryPage
+  | StrapiGqlComponentSlideshowSlideshowEntry
+  | StrapiGqlComponentTypesColor;
 
 export type StrapiGqlMutation = {
   __typename?: 'Mutation';
@@ -632,166 +825,133 @@ export type StrapiGqlMutation = {
   emailConfirmation?: Maybe<StrapiGqlUsersPermissionsLoginPayload>;
 };
 
-
 export type StrapiGqlMutationCreateBlogCategoryArgs = {
   input?: Maybe<StrapiGqlCreateBlogCategoryInput>;
 };
-
 
 export type StrapiGqlMutationUpdateBlogCategoryArgs = {
   input?: Maybe<StrapiGqlUpdateBlogCategoryInput>;
 };
 
-
 export type StrapiGqlMutationDeleteBlogCategoryArgs = {
   input?: Maybe<StrapiGqlDeleteBlogCategoryInput>;
 };
-
 
 export type StrapiGqlMutationCreateBlogEntryArgs = {
   input?: Maybe<StrapiGqlCreateBlogEntryInput>;
 };
 
-
 export type StrapiGqlMutationUpdateBlogEntryArgs = {
   input?: Maybe<StrapiGqlUpdateBlogEntryInput>;
 };
-
 
 export type StrapiGqlMutationDeleteBlogEntryArgs = {
   input?: Maybe<StrapiGqlDeleteBlogEntryInput>;
 };
 
-
 export type StrapiGqlMutationUpdateFooterArgs = {
   input?: Maybe<StrapiGqlUpdateFooterInput>;
 };
-
 
 export type StrapiGqlMutationUpdateHomeArgs = {
   input?: Maybe<StrapiGqlUpdateHomeInput>;
 };
 
-
 export type StrapiGqlMutationUpdateMenuArgs = {
   input?: Maybe<StrapiGqlUpdateMenuInput>;
 };
-
 
 export type StrapiGqlMutationCreateNavigationLinkArgs = {
   input?: Maybe<StrapiGqlCreateNavigationLinkInput>;
 };
 
-
 export type StrapiGqlMutationUpdateNavigationLinkArgs = {
   input?: Maybe<StrapiGqlUpdateNavigationLinkInput>;
 };
-
 
 export type StrapiGqlMutationDeleteNavigationLinkArgs = {
   input?: Maybe<StrapiGqlDeleteNavigationLinkInput>;
 };
 
-
 export type StrapiGqlMutationCreatePageArgs = {
   input?: Maybe<StrapiGqlCreatePageInput>;
 };
-
 
 export type StrapiGqlMutationUpdatePageArgs = {
   input?: Maybe<StrapiGqlUpdatePageInput>;
 };
 
-
 export type StrapiGqlMutationDeletePageArgs = {
   input?: Maybe<StrapiGqlDeletePageInput>;
 };
-
 
 export type StrapiGqlMutationCreateSectionSlideshowArgs = {
   input?: Maybe<StrapiGqlCreateSectionSlideshowInput>;
 };
 
-
 export type StrapiGqlMutationUpdateSectionSlideshowArgs = {
   input?: Maybe<StrapiGqlUpdateSectionSlideshowInput>;
 };
-
 
 export type StrapiGqlMutationDeleteSectionSlideshowArgs = {
   input?: Maybe<StrapiGqlDeleteSectionSlideshowInput>;
 };
 
-
 export type StrapiGqlMutationCreateSubjectArgs = {
   input?: Maybe<StrapiGqlCreateSubjectInput>;
 };
-
 
 export type StrapiGqlMutationUpdateSubjectArgs = {
   input?: Maybe<StrapiGqlUpdateSubjectInput>;
 };
 
-
 export type StrapiGqlMutationDeleteSubjectArgs = {
   input?: Maybe<StrapiGqlDeleteSubjectInput>;
 };
-
 
 export type StrapiGqlMutationCreateTeacherArgs = {
   input?: Maybe<StrapiGqlCreateTeacherInput>;
 };
 
-
 export type StrapiGqlMutationUpdateTeacherArgs = {
   input?: Maybe<StrapiGqlUpdateTeacherInput>;
 };
-
 
 export type StrapiGqlMutationDeleteTeacherArgs = {
   input?: Maybe<StrapiGqlDeleteTeacherInput>;
 };
 
-
 export type StrapiGqlMutationUpdateToolbarArgs = {
   input?: Maybe<StrapiGqlUpdateToolbarInput>;
 };
-
 
 export type StrapiGqlMutationDeleteFileArgs = {
   input?: Maybe<StrapiGqlDeleteFileInput>;
 };
 
-
 export type StrapiGqlMutationCreateRoleArgs = {
   input?: Maybe<StrapiGqlCreateRoleInput>;
 };
-
 
 export type StrapiGqlMutationUpdateRoleArgs = {
   input?: Maybe<StrapiGqlUpdateRoleInput>;
 };
 
-
 export type StrapiGqlMutationDeleteRoleArgs = {
   input?: Maybe<StrapiGqlDeleteRoleInput>;
 };
-
 
 export type StrapiGqlMutationCreateUserArgs = {
   input?: Maybe<StrapiGqlCreateUserInput>;
 };
 
-
 export type StrapiGqlMutationUpdateUserArgs = {
   input?: Maybe<StrapiGqlUpdateUserInput>;
 };
 
-
 export type StrapiGqlMutationDeleteUserArgs = {
   input?: Maybe<StrapiGqlDeleteUserInput>;
 };
-
 
 export type StrapiGqlMutationUploadArgs = {
   refId?: Maybe<Scalars['ID']>;
@@ -802,7 +962,6 @@ export type StrapiGqlMutationUploadArgs = {
   file: Scalars['Upload'];
 };
 
-
 export type StrapiGqlMutationMultipleUploadArgs = {
   refId?: Maybe<Scalars['ID']>;
   ref?: Maybe<Scalars['String']>;
@@ -811,34 +970,28 @@ export type StrapiGqlMutationMultipleUploadArgs = {
   files: Array<Maybe<Scalars['Upload']>>;
 };
 
-
 export type StrapiGqlMutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info: StrapiGqlFileInfoInput;
 };
 
-
 export type StrapiGqlMutationLoginArgs = {
   input: StrapiGqlUsersPermissionsLoginInput;
 };
-
 
 export type StrapiGqlMutationRegisterArgs = {
   input: StrapiGqlUsersPermissionsRegisterInput;
 };
 
-
 export type StrapiGqlMutationForgotPasswordArgs = {
   email: Scalars['String'];
 };
-
 
 export type StrapiGqlMutationResetPasswordArgs = {
   password: Scalars['String'];
   passwordConfirmation: Scalars['String'];
   code: Scalars['String'];
 };
-
 
 export type StrapiGqlMutationEmailConfirmationArgs = {
   confirmation: Scalars['String'];
@@ -905,8 +1058,11 @@ export type StrapiGqlNavigationLinkInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type StrapiGqlNavigationLinkTypeDynamicZone = StrapiGqlComponentLinkTypeWeb | StrapiGqlComponentLinkTypeSchulfach | StrapiGqlComponentLinkTypePage | StrapiGqlComponentLinkTypeBlog;
-
+export type StrapiGqlNavigationLinkTypeDynamicZone =
+  | StrapiGqlComponentLinkTypeWeb
+  | StrapiGqlComponentLinkTypeSchulfach
+  | StrapiGqlComponentLinkTypePage
+  | StrapiGqlComponentLinkTypeBlog;
 
 export type StrapiGqlPage = {
   __typename?: 'Page';
@@ -923,14 +1079,12 @@ export type StrapiGqlPage = {
   blog_entries?: Maybe<Array<Maybe<StrapiGqlBlogEntry>>>;
 };
 
-
 export type StrapiGqlPageBlog_CategoriesArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
   where?: Maybe<Scalars['JSON']>;
 };
-
 
 export type StrapiGqlPageBlog_EntriesArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -946,7 +1100,6 @@ export type StrapiGqlPageAggregator = {
 };
 
 export type StrapiGqlPageAssetsDynamicZone = StrapiGqlComponentSidebarAssets;
-
 
 export type StrapiGqlPageConnection = {
   __typename?: 'PageConnection';
@@ -997,8 +1150,9 @@ export type StrapiGqlPageConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlPageConnection>;
 };
 
-export type StrapiGqlPageContentDynamicZone = StrapiGqlComponentContentImage | StrapiGqlComponentContentText;
-
+export type StrapiGqlPageContentDynamicZone =
+  | StrapiGqlComponentContentImage
+  | StrapiGqlComponentContentText;
 
 export type StrapiGqlPageGroupBy = {
   __typename?: 'PageGroupBy';
@@ -1026,7 +1180,7 @@ export type StrapiGqlPageInput = {
 
 export enum StrapiGqlPublicationState {
   Live = 'LIVE',
-  Preview = 'PREVIEW'
+  Preview = 'PREVIEW',
 }
 
 export type StrapiGqlQuery = {
@@ -1068,12 +1222,10 @@ export type StrapiGqlQuery = {
   me?: Maybe<StrapiGqlUsersPermissionsMe>;
 };
 
-
 export type StrapiGqlQueryBlogCategoryArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryBlogCategoriesArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1083,7 +1235,6 @@ export type StrapiGqlQueryBlogCategoriesArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQueryBlogCategoriesConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1091,12 +1242,10 @@ export type StrapiGqlQueryBlogCategoriesConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQueryBlogEntryArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryBlogEntriesArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1106,7 +1255,6 @@ export type StrapiGqlQueryBlogEntriesArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQueryBlogEntriesConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1114,27 +1262,22 @@ export type StrapiGqlQueryBlogEntriesConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQueryFooterArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryHomeArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQueryMenuArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryNavigationLinkArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryNavigationLinksArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1144,7 +1287,6 @@ export type StrapiGqlQueryNavigationLinksArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQueryNavigationLinksConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1152,12 +1294,10 @@ export type StrapiGqlQueryNavigationLinksConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQueryPageArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryPagesArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1167,7 +1307,6 @@ export type StrapiGqlQueryPagesArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQueryPagesConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1175,12 +1314,10 @@ export type StrapiGqlQueryPagesConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQuerySectionSlideshowArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQuerySectionSlideshowsArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1190,7 +1327,6 @@ export type StrapiGqlQuerySectionSlideshowsArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQuerySectionSlideshowsConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1198,12 +1334,10 @@ export type StrapiGqlQuerySectionSlideshowsConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQuerySubjectArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQuerySubjectsArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1213,7 +1347,6 @@ export type StrapiGqlQuerySubjectsArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQuerySubjectsConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1221,12 +1354,10 @@ export type StrapiGqlQuerySubjectsConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQueryTeacherArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryTeachersArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1236,7 +1367,6 @@ export type StrapiGqlQueryTeachersArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQueryTeachersConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1244,11 +1374,9 @@ export type StrapiGqlQueryTeachersConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQueryToolbarArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryFilesArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1258,7 +1386,6 @@ export type StrapiGqlQueryFilesArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQueryFilesConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1266,12 +1393,10 @@ export type StrapiGqlQueryFilesConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQueryRoleArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryRolesArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1281,7 +1406,6 @@ export type StrapiGqlQueryRolesArgs = {
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
 
-
 export type StrapiGqlQueryRolesConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
@@ -1289,12 +1413,10 @@ export type StrapiGqlQueryRolesConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-
 export type StrapiGqlQueryUserArgs = {
   id: Scalars['ID'];
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryUsersArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1303,7 +1425,6 @@ export type StrapiGqlQueryUsersArgs = {
   where?: Maybe<Scalars['JSON']>;
   publicationState?: Maybe<StrapiGqlPublicationState>;
 };
-
 
 export type StrapiGqlQueryUsersConnectionArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1368,14 +1489,20 @@ export type StrapiGqlSectionSlideshowConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlSectionSlideshowConnection>;
 };
 
-export type StrapiGqlSectionSlideshowEntriesDynamicZone = StrapiGqlComponentSlideshowSlideshowEntry | StrapiGqlComponentSlideshowSlideshowEntryBlog | StrapiGqlComponentSlideshowSlideshowEntryPage;
-
+export type StrapiGqlSectionSlideshowEntriesDynamicZone =
+  | StrapiGqlComponentSlideshowSlideshowEntry
+  | StrapiGqlComponentSlideshowSlideshowEntryBlog
+  | StrapiGqlComponentSlideshowSlideshowEntryPage;
 
 export type StrapiGqlSectionSlideshowGroupBy = {
   __typename?: 'SectionSlideshowGroupBy';
   id?: Maybe<Array<Maybe<StrapiGqlSectionSlideshowConnectionId>>>;
-  created_at?: Maybe<Array<Maybe<StrapiGqlSectionSlideshowConnectionCreated_At>>>;
-  updated_at?: Maybe<Array<Maybe<StrapiGqlSectionSlideshowConnectionUpdated_At>>>;
+  created_at?: Maybe<
+    Array<Maybe<StrapiGqlSectionSlideshowConnectionCreated_At>>
+  >;
+  updated_at?: Maybe<
+    Array<Maybe<StrapiGqlSectionSlideshowConnectionUpdated_At>>
+  >;
   title?: Maybe<Array<Maybe<StrapiGqlSectionSlideshowConnectionTitle>>>;
 };
 
@@ -1397,7 +1524,6 @@ export type StrapiGqlSubject = {
   published_at?: Maybe<Scalars['DateTime']>;
   teachers?: Maybe<Array<Maybe<StrapiGqlTeacher>>>;
 };
-
 
 export type StrapiGqlSubjectTeachersArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1455,8 +1581,9 @@ export type StrapiGqlSubjectConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlSubjectConnection>;
 };
 
-export type StrapiGqlSubjectContentDynamicZone = StrapiGqlComponentContentImage | StrapiGqlComponentContentText;
-
+export type StrapiGqlSubjectContentDynamicZone =
+  | StrapiGqlComponentContentImage
+  | StrapiGqlComponentContentText;
 
 export type StrapiGqlSubjectGroupBy = {
   __typename?: 'SubjectGroupBy';
@@ -1488,7 +1615,6 @@ export type StrapiGqlTeacher = {
   first_name?: Maybe<Scalars['String']>;
   subjects?: Maybe<Array<Maybe<StrapiGqlSubject>>>;
 };
-
 
 export type StrapiGqlTeacherSubjectsArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1565,7 +1691,6 @@ export type StrapiGqlTeacherInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-
 export type StrapiGqlToolbar = {
   __typename?: 'Toolbar';
   id: Scalars['ID'];
@@ -1581,8 +1706,6 @@ export type StrapiGqlToolbarInput = {
 };
 
 export type StrapiGqlToolbarItemsDynamicZone = StrapiGqlComponentLinkItemText;
-
-
 
 export type StrapiGqlUploadFile = {
   __typename?: 'UploadFile';
@@ -1605,7 +1728,6 @@ export type StrapiGqlUploadFile = {
   provider_metadata?: Maybe<Scalars['JSON']>;
   related?: Maybe<Array<Maybe<StrapiGqlMorph>>>;
 };
-
 
 export type StrapiGqlUploadFileRelatedArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1767,7 +1889,9 @@ export type StrapiGqlUploadFileGroupBy = {
   created_at?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionCreated_At>>>;
   updated_at?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionUpdated_At>>>;
   name?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionName>>>;
-  alternativeText?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionAlternativeText>>>;
+  alternativeText?: Maybe<
+    Array<Maybe<StrapiGqlUploadFileConnectionAlternativeText>>
+  >;
   caption?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionCaption>>>;
   width?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionWidth>>>;
   height?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionHeight>>>;
@@ -1779,7 +1903,9 @@ export type StrapiGqlUploadFileGroupBy = {
   url?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionUrl>>>;
   previewUrl?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionPreviewUrl>>>;
   provider?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionProvider>>>;
-  provider_metadata?: Maybe<Array<Maybe<StrapiGqlUploadFileConnectionProvider_Metadata>>>;
+  provider_metadata?: Maybe<
+    Array<Maybe<StrapiGqlUploadFileConnectionProvider_Metadata>>
+  >;
 };
 
 export type StrapiGqlUserInput = {
@@ -1858,14 +1984,12 @@ export type StrapiGqlUsersPermissionsRole = {
   users?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUser>>>;
 };
 
-
 export type StrapiGqlUsersPermissionsRolePermissionsArgs = {
   sort?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   start?: Maybe<Scalars['Int']>;
   where?: Maybe<Scalars['JSON']>;
 };
-
 
 export type StrapiGqlUsersPermissionsRoleUsersArgs = {
   sort?: Maybe<Scalars['String']>;
@@ -1915,7 +2039,9 @@ export type StrapiGqlUsersPermissionsRoleGroupBy = {
   __typename?: 'UsersPermissionsRoleGroupBy';
   id?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsRoleConnectionId>>>;
   name?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsRoleConnectionName>>>;
-  description?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsRoleConnectionDescription>>>;
+  description?: Maybe<
+    Array<Maybe<StrapiGqlUsersPermissionsRoleConnectionDescription>>
+  >;
   type?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsRoleConnectionType>>>;
 };
 
@@ -2002,12 +2128,22 @@ export type StrapiGqlUsersPermissionsUserConnectionUsername = {
 export type StrapiGqlUsersPermissionsUserGroupBy = {
   __typename?: 'UsersPermissionsUserGroupBy';
   id?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionId>>>;
-  created_at?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionCreated_At>>>;
-  updated_at?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionUpdated_At>>>;
-  username?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionUsername>>>;
+  created_at?: Maybe<
+    Array<Maybe<StrapiGqlUsersPermissionsUserConnectionCreated_At>>
+  >;
+  updated_at?: Maybe<
+    Array<Maybe<StrapiGqlUsersPermissionsUserConnectionUpdated_At>>
+  >;
+  username?: Maybe<
+    Array<Maybe<StrapiGqlUsersPermissionsUserConnectionUsername>>
+  >;
   email?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionEmail>>>;
-  provider?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionProvider>>>;
-  confirmed?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionConfirmed>>>;
+  provider?: Maybe<
+    Array<Maybe<StrapiGqlUsersPermissionsUserConnectionProvider>>
+  >;
+  confirmed?: Maybe<
+    Array<Maybe<StrapiGqlUsersPermissionsUserConnectionConfirmed>>
+  >;
   blocked?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionBlocked>>>;
   role?: Maybe<Array<Maybe<StrapiGqlUsersPermissionsUserConnectionRole>>>;
 };
@@ -2290,7 +2426,9 @@ export type StrapiGqlEditComponentNavigationNavigationLevelEntryInput = {
 export type StrapiGqlEditComponentNavigationNavigationSectionInput = {
   id?: Maybe<Scalars['ID']>;
   title?: Maybe<Scalars['String']>;
-  navigation_entry?: Maybe<Array<Maybe<StrapiGqlEditComponentNavigationNavigationEntryInput>>>;
+  navigation_entry?: Maybe<
+    Array<Maybe<StrapiGqlEditComponentNavigationNavigationEntryInput>>
+  >;
 };
 
 export type StrapiGqlEditComponentSectionFactInput = {
@@ -2383,7 +2521,9 @@ export type StrapiGqlEditLocaleInput = {
 };
 
 export type StrapiGqlEditMenuInput = {
-  navigation_level_entry?: Maybe<Array<Maybe<StrapiGqlEditComponentNavigationNavigationLevelEntryInput>>>;
+  navigation_level_entry?: Maybe<
+    Array<Maybe<StrapiGqlEditComponentNavigationNavigationLevelEntryInput>>
+  >;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -2590,257 +2730,345 @@ export type StrapiGqlUpdateUserPayload = {
   user?: Maybe<StrapiGqlUsersPermissionsUser>;
 };
 
-export type StrapiGqlBlogEntryFragmentFragment = (
-  { __typename?: 'BlogEntry' }
-  & Pick<StrapiGqlBlogEntry, 'id' | 'title' | 'slug' | 'created_at' | 'updated_at' | 'published_at'>
-  & { blog_category?: Maybe<(
-    { __typename?: 'BlogCategory' }
-    & Pick<StrapiGqlBlogCategory, 'display_name'>
-  )>, content?: Maybe<Array<Maybe<(
-    { __typename: 'ComponentContentText' }
-    & Pick<StrapiGqlComponentContentText, 'id' | 'text'>
-  ) | (
-    { __typename: 'ComponentContentImage' }
-    & StrapiGqlComponentContentImageFragmentFragment
-  )>>> }
-);
+export type StrapiGqlBlogEntryFragmentFragment = {
+  __typename?: 'BlogEntry';
+} & Pick<
+  StrapiGqlBlogEntry,
+  'id' | 'title' | 'slug' | 'created_at' | 'updated_at' | 'published_at'
+> & {
+    blog_category?: Maybe<
+      { __typename?: 'BlogCategory' } & Pick<
+        StrapiGqlBlogCategory,
+        'display_name'
+      >
+    >;
+    content?: Maybe<
+      Array<
+        Maybe<
+          | ({ __typename: 'ComponentContentText' } & Pick<
+              StrapiGqlComponentContentText,
+              'id' | 'text'
+            >)
+          | ({
+              __typename: 'ComponentContentImage';
+            } & StrapiGqlComponentContentImageFragmentFragment)
+        >
+      >
+    >;
+  };
 
-export type StrapiGqlComponentContentImageFragmentFragment = (
-  { __typename?: 'ComponentContentImage' }
-  & Pick<StrapiGqlComponentContentImage, 'id' | 'caption'>
-  & { image?: Maybe<(
-    { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
-  )> }
-);
+export type StrapiGqlComponentContentImageFragmentFragment = {
+  __typename?: 'ComponentContentImage';
+} & Pick<StrapiGqlComponentContentImage, 'id' | 'caption'> & {
+    image?: Maybe<
+      { __typename?: 'UploadFile' } & Pick<StrapiGqlUploadFile, 'formats'>
+    >;
+  };
 
-export type StrapiGqlComponentContentTextFragmentFragment = (
-  { __typename?: 'ComponentContentText' }
-  & Pick<StrapiGqlComponentContentText, 'id' | 'text'>
-);
+export type StrapiGqlComponentContentTextFragmentFragment = {
+  __typename?: 'ComponentContentText';
+} & Pick<StrapiGqlComponentContentText, 'id' | 'text'>;
 
-export type StrapiGqlComponentSectionFactsFragmentFragment = (
-  { __typename?: 'ComponentSectionFacts' }
-  & { facts?: Maybe<Array<Maybe<(
-    { __typename?: 'ComponentHomeFact' }
-    & Pick<StrapiGqlComponentHomeFact, 'number' | 'title' | 'subtitle'>
-  )>>> }
-);
+export type StrapiGqlComponentSectionFactsFragmentFragment = {
+  __typename?: 'ComponentSectionFacts';
+} & Pick<StrapiGqlComponentSectionFacts, 'size'> & {
+    facts?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'ComponentHomeFact' } & Pick<
+            StrapiGqlComponentHomeFact,
+            'number' | 'title' | 'subtitle'
+          >
+        >
+      >
+    >;
+  };
 
-export type StrapiGqlComponentSlideshowEntryBlogFragmentFragment = (
-  { __typename?: 'ComponentSlideshowSlideshowEntryBlog' }
-  & Pick<StrapiGqlComponentSlideshowSlideshowEntryBlog, 'id' | 'subtitle' | 'label'>
-  & { image?: Maybe<(
-    { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
-  )>, color?: Maybe<(
-    { __typename?: 'ComponentTypesColor' }
-    & Pick<StrapiGqlComponentTypesColor, 'color'>
-  )>, post?: Maybe<(
-    { __typename: 'BlogEntry' }
-    & Pick<StrapiGqlBlogEntry, 'slug'>
-  )> }
-);
+export type StrapiGqlComponentSlideshowEntryBlogFragmentFragment = {
+  __typename?: 'ComponentSlideshowSlideshowEntryBlog';
+} & Pick<
+  StrapiGqlComponentSlideshowSlideshowEntryBlog,
+  'id' | 'subtitle' | 'label'
+> & {
+    image?: Maybe<
+      { __typename?: 'UploadFile' } & Pick<StrapiGqlUploadFile, 'formats'>
+    >;
+    color?: Maybe<
+      { __typename?: 'ComponentTypesColor' } & Pick<
+        StrapiGqlComponentTypesColor,
+        'color'
+      >
+    >;
+    post?: Maybe<
+      { __typename: 'BlogEntry' } & Pick<StrapiGqlBlogEntry, 'slug'>
+    >;
+  };
 
-export type StrapiGqlComponentSlideshowEntryPageFragmentFragment = (
-  { __typename?: 'ComponentSlideshowSlideshowEntryPage' }
-  & Pick<StrapiGqlComponentSlideshowSlideshowEntryPage, 'id' | 'subtitle' | 'label'>
-  & { image?: Maybe<(
-    { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
-  )>, color?: Maybe<(
-    { __typename?: 'ComponentTypesColor' }
-    & Pick<StrapiGqlComponentTypesColor, 'color'>
-  )>, page?: Maybe<(
-    { __typename: 'Page' }
-    & Pick<StrapiGqlPage, 'slug'>
-  )> }
-);
+export type StrapiGqlComponentSlideshowEntryPageFragmentFragment = {
+  __typename?: 'ComponentSlideshowSlideshowEntryPage';
+} & Pick<
+  StrapiGqlComponentSlideshowSlideshowEntryPage,
+  'id' | 'subtitle' | 'label'
+> & {
+    image?: Maybe<
+      { __typename?: 'UploadFile' } & Pick<StrapiGqlUploadFile, 'formats'>
+    >;
+    color?: Maybe<
+      { __typename?: 'ComponentTypesColor' } & Pick<
+        StrapiGqlComponentTypesColor,
+        'color'
+      >
+    >;
+    page?: Maybe<{ __typename: 'Page' } & Pick<StrapiGqlPage, 'slug'>>;
+  };
 
-export type StrapiGqlComponentSlideshowEntryFragmentFragment = (
-  { __typename?: 'ComponentSlideshowSlideshowEntry' }
-  & Pick<StrapiGqlComponentSlideshowSlideshowEntry, 'id' | 'subtitle'>
-  & { image?: Maybe<(
-    { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
-  )>, color?: Maybe<(
-    { __typename?: 'ComponentTypesColor' }
-    & Pick<StrapiGqlComponentTypesColor, 'color'>
-  )> }
-);
+export type StrapiGqlComponentSlideshowEntryFragmentFragment = {
+  __typename?: 'ComponentSlideshowSlideshowEntry';
+} & Pick<StrapiGqlComponentSlideshowSlideshowEntry, 'id' | 'subtitle'> & {
+    image?: Maybe<
+      { __typename?: 'UploadFile' } & Pick<StrapiGqlUploadFile, 'formats'>
+    >;
+    color?: Maybe<
+      { __typename?: 'ComponentTypesColor' } & Pick<
+        StrapiGqlComponentTypesColor,
+        'color'
+      >
+    >;
+  };
 
-export type StrapiGqlMenuFragmentFragment = (
-  { __typename?: 'Menu' }
-  & { entries?: Maybe<Array<Maybe<(
-    { __typename?: 'ComponentNavigationNavigationLevelEntry' }
-    & Pick<StrapiGqlComponentNavigationNavigationLevelEntry, 'id' | 'title'>
-    & { parent?: Maybe<(
-      { __typename?: 'NavigationLink' }
-      & Pick<StrapiGqlNavigationLink, 'id'>
-    )>, navigation_link?: Maybe<(
-      { __typename?: 'NavigationLink' }
-      & StrapiGqlNavigationLinkFragmentFragment
-    )> }
-  )>>> }
-);
+export type StrapiGqlMenuFragmentFragment = { __typename?: 'Menu' } & {
+  entries?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'ComponentNavigationNavigationLevelEntry' } & Pick<
+          StrapiGqlComponentNavigationNavigationLevelEntry,
+          'id' | 'title'
+        > & {
+            parent?: Maybe<
+              { __typename?: 'NavigationLink' } & Pick<
+                StrapiGqlNavigationLink,
+                'id'
+              >
+            >;
+            navigation_link?: Maybe<
+              {
+                __typename?: 'NavigationLink';
+              } & StrapiGqlNavigationLinkFragmentFragment
+            >;
+          }
+      >
+    >
+  >;
+};
 
-export type StrapiGqlNavigationLinkFragmentFragment = (
-  { __typename?: 'NavigationLink' }
-  & Pick<StrapiGqlNavigationLink, 'id' | 'title'>
-  & { type?: Maybe<Array<Maybe<(
-    { __typename: 'ComponentLinkTypeWeb' }
-    & Pick<StrapiGqlComponentLinkTypeWeb, 'URL'>
-  ) | (
-    { __typename: 'ComponentLinkTypeSchulfach' }
-    & { schulfach?: Maybe<(
-      { __typename?: 'Subject' }
-      & Pick<StrapiGqlSubject, 'title' | 'slug'>
-    )> }
-  ) | (
-    { __typename: 'ComponentLinkTypePage' }
-    & { page?: Maybe<(
-      { __typename?: 'Page' }
-      & Pick<StrapiGqlPage, 'title' | 'slug'>
-    )> }
-  ) | (
-    { __typename: 'ComponentLinkTypeBlog' }
-    & { blog?: Maybe<(
-      { __typename?: 'BlogEntry' }
-      & Pick<StrapiGqlBlogEntry, 'title' | 'slug'>
-    )> }
-  )>>> }
-);
+export type StrapiGqlNavigationLinkFragmentFragment = {
+  __typename?: 'NavigationLink';
+} & Pick<StrapiGqlNavigationLink, 'id' | 'title'> & {
+    type?: Maybe<
+      Array<
+        Maybe<
+          | ({ __typename: 'ComponentLinkTypeWeb' } & Pick<
+              StrapiGqlComponentLinkTypeWeb,
+              'URL'
+            >)
+          | ({ __typename: 'ComponentLinkTypeSchulfach' } & {
+              schulfach?: Maybe<
+                { __typename?: 'Subject' } & Pick<
+                  StrapiGqlSubject,
+                  'title' | 'slug'
+                >
+              >;
+            })
+          | ({ __typename: 'ComponentLinkTypePage' } & {
+              page?: Maybe<
+                { __typename?: 'Page' } & Pick<StrapiGqlPage, 'title' | 'slug'>
+              >;
+            })
+          | ({ __typename: 'ComponentLinkTypeBlog' } & {
+              blog?: Maybe<
+                { __typename?: 'BlogEntry' } & Pick<
+                  StrapiGqlBlogEntry,
+                  'title' | 'slug'
+                >
+              >;
+            })
+        >
+      >
+    >;
+  };
 
-export type StrapiGqlPageFragmentFragment = (
-  { __typename?: 'Page' }
-  & Pick<StrapiGqlPage, 'id' | 'created_at' | 'updated_at' | 'title' | 'slug' | 'calendar_key'>
-  & { assets?: Maybe<Array<Maybe<(
-    { __typename?: 'ComponentSidebarAssets' }
-    & Pick<StrapiGqlComponentSidebarAssets, 'name'>
-    & { file?: Maybe<(
-      { __typename?: 'UploadFile' }
-      & Pick<StrapiGqlUploadFile, 'url'>
-    )> }
-  )>>>, blog_entries?: Maybe<Array<Maybe<(
-    { __typename?: 'BlogEntry' }
-    & StrapiGqlBlogEntryFragmentFragment
-  )>>>, content?: Maybe<Array<Maybe<(
-    { __typename: 'ComponentContentImage' }
-    & Pick<StrapiGqlComponentContentImage, 'id' | 'caption'>
-    & { image?: Maybe<(
-      { __typename?: 'UploadFile' }
-      & Pick<StrapiGqlUploadFile, 'id' | 'created_at' | 'updated_at' | 'name' | 'alternativeText' | 'caption' | 'width' | 'height' | 'formats' | 'hash' | 'ext' | 'mime' | 'size' | 'url' | 'previewUrl' | 'provider' | 'provider_metadata'>
-    )> }
-  ) | (
-    { __typename: 'ComponentContentText' }
-    & Pick<StrapiGqlComponentContentText, 'id' | 'text'>
-  )>>> }
-);
+export type StrapiGqlPageFragmentFragment = { __typename?: 'Page' } & Pick<
+  StrapiGqlPage,
+  'id' | 'created_at' | 'updated_at' | 'title' | 'slug' | 'calendar_key'
+> & {
+    assets?: Maybe<
+      Array<
+        Maybe<
+          { __typename?: 'ComponentSidebarAssets' } & Pick<
+            StrapiGqlComponentSidebarAssets,
+            'name'
+          > & {
+              file?: Maybe<
+                { __typename?: 'UploadFile' } & Pick<StrapiGqlUploadFile, 'url'>
+              >;
+            }
+        >
+      >
+    >;
+    blog_entries?: Maybe<
+      Array<
+        Maybe<{ __typename?: 'BlogEntry' } & StrapiGqlBlogEntryFragmentFragment>
+      >
+    >;
+    content?: Maybe<
+      Array<
+        Maybe<
+          | ({ __typename: 'ComponentContentImage' } & Pick<
+              StrapiGqlComponentContentImage,
+              'id' | 'caption'
+            > & {
+                image?: Maybe<
+                  { __typename?: 'UploadFile' } & Pick<
+                    StrapiGqlUploadFile,
+                    | 'id'
+                    | 'created_at'
+                    | 'updated_at'
+                    | 'name'
+                    | 'alternativeText'
+                    | 'caption'
+                    | 'width'
+                    | 'height'
+                    | 'formats'
+                    | 'hash'
+                    | 'ext'
+                    | 'mime'
+                    | 'size'
+                    | 'url'
+                    | 'previewUrl'
+                    | 'provider'
+                    | 'provider_metadata'
+                  >
+                >;
+              })
+          | ({ __typename: 'ComponentContentText' } & Pick<
+              StrapiGqlComponentContentText,
+              'id' | 'text'
+            >)
+        >
+      >
+    >;
+  };
 
-export type StrapiGqlSectionSlideshowFragmentFragment = (
-  { __typename?: 'SectionSlideshow' }
-  & Pick<StrapiGqlSectionSlideshow, 'title' | 'id'>
-  & { entries?: Maybe<Array<Maybe<(
-    { __typename?: 'ComponentSlideshowSlideshowEntry' }
-    & StrapiGqlComponentSlideshowEntryFragmentFragment
-  ) | (
-    { __typename?: 'ComponentSlideshowSlideshowEntryBlog' }
-    & StrapiGqlComponentSlideshowEntryBlogFragmentFragment
-  ) | (
-    { __typename?: 'ComponentSlideshowSlideshowEntryPage' }
-    & StrapiGqlComponentSlideshowEntryPageFragmentFragment
-  )>>> }
-);
+export type StrapiGqlSectionSlideshowFragmentFragment = {
+  __typename?: 'SectionSlideshow';
+} & Pick<StrapiGqlSectionSlideshow, 'title' | 'id'> & {
+    entries?: Maybe<
+      Array<
+        Maybe<
+          | ({
+              __typename?: 'ComponentSlideshowSlideshowEntry';
+            } & StrapiGqlComponentSlideshowEntryFragmentFragment)
+          | ({
+              __typename?: 'ComponentSlideshowSlideshowEntryBlog';
+            } & StrapiGqlComponentSlideshowEntryBlogFragmentFragment)
+          | ({
+              __typename?: 'ComponentSlideshowSlideshowEntryPage';
+            } & StrapiGqlComponentSlideshowEntryPageFragmentFragment)
+        >
+      >
+    >;
+  };
 
 export type StrapiGqlUnnamed_1_MutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
 }>;
 
-
-export type StrapiGqlUnnamed_1_Mutation = (
-  { __typename?: 'Mutation' }
-  & { login: (
-    { __typename?: 'UsersPermissionsLoginPayload' }
-    & Pick<StrapiGqlUsersPermissionsLoginPayload, 'jwt'>
-  ) }
-);
+export type StrapiGqlUnnamed_1_Mutation = { __typename?: 'Mutation' } & {
+  login: { __typename?: 'UsersPermissionsLoginPayload' } & Pick<
+    StrapiGqlUsersPermissionsLoginPayload,
+    'jwt'
+  >;
+};
 
 export type StrapiGqlBlogEntriesBySlugsQueryVariables = Exact<{
   slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
 }>;
 
+export type StrapiGqlBlogEntriesBySlugsQuery = { __typename?: 'Query' } & {
+  blogEntries?: Maybe<
+    Array<
+      Maybe<{ __typename?: 'BlogEntry' } & StrapiGqlBlogEntryFragmentFragment>
+    >
+  >;
+};
 
-export type StrapiGqlBlogEntriesBySlugsQuery = (
-  { __typename?: 'Query' }
-  & { blogEntries?: Maybe<Array<Maybe<(
-    { __typename?: 'BlogEntry' }
-    & StrapiGqlBlogEntryFragmentFragment
-  )>>> }
-);
+export type StrapiGqlHomeSectionsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type StrapiGqlHomeSectionsQueryVariables = Exact<{ [key: string]: never; }>;
+export type StrapiGqlHomeSectionsQuery = { __typename?: 'Query' } & {
+  home?: Maybe<
+    { __typename?: 'Home' } & {
+      sections?: Maybe<
+        Array<
+          Maybe<
+            | ({ __typename: 'ComponentSectionSlideshow' } & {
+                slideshow?: Maybe<
+                  { __typename?: 'SectionSlideshow' } & Pick<
+                    StrapiGqlSectionSlideshow,
+                    'id'
+                  >
+                >;
+              })
+            | ({
+                __typename: 'ComponentSectionFacts';
+              } & StrapiGqlComponentSectionFactsFragmentFragment)
+            | ({
+                __typename: 'ComponentContentText';
+              } & StrapiGqlComponentContentTextFragmentFragment)
+            | ({
+                __typename: 'ComponentContentImage';
+              } & StrapiGqlComponentContentImageFragmentFragment)
+            | { __typename: 'ComponentHomeNews' }
+          >
+        >
+      >;
+    }
+  >;
+};
 
+export type StrapiGqlMenuQueryVariables = Exact<{ [key: string]: never }>;
 
-export type StrapiGqlHomeSectionsQuery = (
-  { __typename?: 'Query' }
-  & { home?: Maybe<(
-    { __typename?: 'Home' }
-    & { sections?: Maybe<Array<Maybe<(
-      { __typename: 'ComponentSectionSlideshow' }
-      & { slideshow?: Maybe<(
-        { __typename?: 'SectionSlideshow' }
-        & Pick<StrapiGqlSectionSlideshow, 'id'>
-      )> }
-    ) | (
-      { __typename: 'ComponentSectionFacts' }
-      & StrapiGqlComponentSectionFactsFragmentFragment
-    ) | (
-      { __typename: 'ComponentContentText' }
-      & StrapiGqlComponentContentTextFragmentFragment
-    ) | (
-      { __typename: 'ComponentContentImage' }
-      & StrapiGqlComponentContentImageFragmentFragment
-    ) | { __typename: 'ComponentHomeNews' }>>> }
-  )> }
-);
-
-export type StrapiGqlMenuQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type StrapiGqlMenuQuery = (
-  { __typename?: 'Query' }
-  & { menu?: Maybe<(
-    { __typename?: 'Menu' }
-    & StrapiGqlMenuFragmentFragment
-  )> }
-);
+export type StrapiGqlMenuQuery = { __typename?: 'Query' } & {
+  menu?: Maybe<{ __typename?: 'Menu' } & StrapiGqlMenuFragmentFragment>;
+};
 
 export type StrapiGqlNavigationLinksByIdsQueryVariables = Exact<{
   ids: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
 }>;
 
-
-export type StrapiGqlNavigationLinksByIdsQuery = (
-  { __typename?: 'Query' }
-  & { navigationLinks?: Maybe<Array<Maybe<(
-    { __typename?: 'NavigationLink' }
-    & StrapiGqlNavigationLinkFragmentFragment
-  )>>> }
-);
+export type StrapiGqlNavigationLinksByIdsQuery = { __typename?: 'Query' } & {
+  navigationLinks?: Maybe<
+    Array<
+      Maybe<
+        {
+          __typename?: 'NavigationLink';
+        } & StrapiGqlNavigationLinkFragmentFragment
+      >
+    >
+  >;
+};
 
 export type StrapiGqlPageBySlugsQueryVariables = Exact<{
   slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
 }>;
 
-
-export type StrapiGqlPageBySlugsQuery = (
-  { __typename?: 'Query' }
-  & { pages?: Maybe<Array<Maybe<(
-    { __typename?: 'Page' }
-    & StrapiGqlPageFragmentFragment
-  )>>> }
-);
+export type StrapiGqlPageBySlugsQuery = { __typename?: 'Query' } & {
+  pages?: Maybe<
+    Array<Maybe<{ __typename?: 'Page' } & StrapiGqlPageFragmentFragment>>
+  >;
+};
 
 export type StrapiGqlSearchResultQueryVariables = Exact<{
   pageSlugs?: Maybe<Array<Scalars['String']> | Scalars['String']>;
@@ -2848,44 +3076,53 @@ export type StrapiGqlSearchResultQueryVariables = Exact<{
   navIds?: Maybe<Array<Scalars['String']> | Scalars['String']>;
 }>;
 
-
-export type StrapiGqlSearchResultQuery = (
-  { __typename?: 'Query' }
-  & { pages?: Maybe<Array<Maybe<(
-    { __typename?: 'Page' }
-    & StrapiGqlPageFragmentFragment
-  )>>>, blogEntries?: Maybe<Array<Maybe<(
-    { __typename?: 'BlogEntry' }
-    & StrapiGqlBlogEntryFragmentFragment
-  )>>>, navigationLinks?: Maybe<Array<Maybe<(
-    { __typename?: 'NavigationLink' }
-    & StrapiGqlNavigationLinkFragmentFragment
-  )>>> }
-);
+export type StrapiGqlSearchResultQuery = { __typename?: 'Query' } & {
+  pages?: Maybe<
+    Array<Maybe<{ __typename?: 'Page' } & StrapiGqlPageFragmentFragment>>
+  >;
+  blogEntries?: Maybe<
+    Array<
+      Maybe<{ __typename?: 'BlogEntry' } & StrapiGqlBlogEntryFragmentFragment>
+    >
+  >;
+  navigationLinks?: Maybe<
+    Array<
+      Maybe<
+        {
+          __typename?: 'NavigationLink';
+        } & StrapiGqlNavigationLinkFragmentFragment
+      >
+    >
+  >;
+};
 
 export type StrapiGqlSectionSlideshowByIdQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
+export type StrapiGqlSectionSlideshowByIdQuery = { __typename?: 'Query' } & {
+  sectionSlideshow?: Maybe<
+    {
+      __typename?: 'SectionSlideshow';
+    } & StrapiGqlSectionSlideshowFragmentFragment
+  >;
+};
 
-export type StrapiGqlSectionSlideshowByIdQuery = (
-  { __typename?: 'Query' }
-  & { sectionSlideshow?: Maybe<(
-    { __typename?: 'SectionSlideshow' }
-    & StrapiGqlSectionSlideshowFragmentFragment
-  )> }
-);
+export type StrapiGqlToolbarQueryVariables = Exact<{ [key: string]: never }>;
 
-export type StrapiGqlToolbarQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type StrapiGqlToolbarQuery = (
-  { __typename?: 'Query' }
-  & { toolbar?: Maybe<(
-    { __typename?: 'Toolbar' }
-    & { items?: Maybe<Array<Maybe<(
-      { __typename: 'ComponentLinkItemText' }
-      & Pick<StrapiGqlComponentLinkItemText, 'name' | 'link'>
-    )>>> }
-  )> }
-);
+export type StrapiGqlToolbarQuery = { __typename?: 'Query' } & {
+  toolbar?: Maybe<
+    { __typename?: 'Toolbar' } & {
+      items?: Maybe<
+        Array<
+          Maybe<
+            { __typename: 'ComponentLinkItemText' } & Pick<
+              StrapiGqlComponentLinkItemText,
+              'name' | 'link'
+            >
+          >
+        >
+      >;
+    }
+  >;
+};

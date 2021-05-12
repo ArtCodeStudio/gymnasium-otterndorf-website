@@ -1,7 +1,6 @@
 h2 In Zahlen
-  .facts
-    .fact.py-2(rv-each-fact="section.facts")
-      count-up(rv-target="fact.number") 0
-      span &nbsp;
-      span(rv-text="fact.title")  
-      span(rv-text="fact.subtitle")
+.facts
+  .fact.py-2(rv-each-fact="section.facts")
+    count-up(rv-target="fact.number") 0
+    div(rv-text="fact.title")  
+    div(rv-if="fact.subtitle" rv-text="fact.subtitle")

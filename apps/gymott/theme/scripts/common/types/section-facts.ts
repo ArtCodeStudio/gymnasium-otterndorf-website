@@ -5,4 +5,5 @@ export interface SectionFacts {
   facts: Maybe<
     Pick<StrapiGqlComponentHomeFact, "number" | "title" | "subtitle">
   >[];
+  size: number;
 }

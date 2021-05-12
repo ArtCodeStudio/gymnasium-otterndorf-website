@@ -1,10 +1,11 @@
 .fact {
   @extend .h2;
+  
   @include media-breakpoint-up(xxl) { 
     @include font-size($h1-font-size);
   }
+
   &:not(:last-child) {
     border-bottom: 3px solid $black;
   }
-
 }

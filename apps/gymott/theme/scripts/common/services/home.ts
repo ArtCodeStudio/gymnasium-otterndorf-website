@@ -86,6 +86,14 @@ export class GyHomeService {
             results.push({
               __typename: section.__typename,
               facts: section.facts || [],
+              size: section.size || 12,
+            });
+            break;
+          case "ComponentHomeNews":
+            results.push({
+              __typename: section.__typename,
+              facts: section.facts || [],
+              size: section.size || 12,
             });
             break;
         }
