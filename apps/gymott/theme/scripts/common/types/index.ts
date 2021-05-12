@@ -13,3 +13,4 @@ export * from "./section";
 export * from "./strapi-image";
 export * from "./strapi-image-format";
 export * from "./suggest-result";
+export * from "./theme-color";

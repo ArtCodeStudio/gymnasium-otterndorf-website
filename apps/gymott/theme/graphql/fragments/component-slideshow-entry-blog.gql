@@ -4,6 +4,10 @@ fragment ComponentSlideshowEntryBlogFragment on ComponentSlideshowSlideshowEntry
     formats
   }
   subtitle
+  label
+  color {
+    color
+  }
   post {
     __typename
     slug

@@ -4,4 +4,7 @@ fragment ComponentSlideshowEntryFragment on ComponentSlideshowSlideshowEntry {
     formats
   }
   subtitle
+  color {
+    color
+  }
 }

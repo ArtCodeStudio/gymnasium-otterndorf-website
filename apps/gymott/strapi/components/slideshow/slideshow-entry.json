@@ -14,10 +14,16 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "subtitle": {
       "type": "string"
+    },
+    "color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.color"
     }
   }
 }

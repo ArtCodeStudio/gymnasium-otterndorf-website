@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/12/2021 7:57:20 AM"
+    "x-generation-date": "05/12/2021 9:38:34 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9414,6 +9414,32 @@
                     },
                     "subtitle": {
                       "type": "string"
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -9539,6 +9565,36 @@
                         },
                         "updated_by": {
                           "type": "string"
+                        }
+                      }
+                    },
+                    "label": {
+                      "type": "string",
+                      "default": "Entdecken"
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
                         }
                       }
                     }
@@ -9675,6 +9731,36 @@
                         },
                         "updated_by": {
                           "type": "string"
+                        }
+                      }
+                    },
+                    "label": {
+                      "type": "string",
+                      "default": "Entdecken"
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
                         }
                       }
                     }
@@ -9782,6 +9868,32 @@
                     },
                     "subtitle": {
                       "type": "string"
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -9907,6 +10019,36 @@
                         },
                         "updated_by": {
                           "type": "string"
+                        }
+                      }
+                    },
+                    "label": {
+                      "type": "string",
+                      "default": "Entdecken"
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
                         }
                       }
                     }
@@ -10043,6 +10185,36 @@
                         },
                         "updated_by": {
                           "type": "string"
+                        }
+                      }
+                    },
+                    "label": {
+                      "type": "string",
+                      "default": "Entdecken"
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
                         }
                       }
                     }

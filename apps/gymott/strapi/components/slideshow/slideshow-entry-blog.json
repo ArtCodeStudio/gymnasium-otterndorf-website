@@ -22,6 +22,15 @@
     },
     "post": {
       "model": "blog-entry"
+    },
+    "label": {
+      "type": "string",
+      "default": "Entdecken"
+    },
+    "color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.color"
     }
   }
 }

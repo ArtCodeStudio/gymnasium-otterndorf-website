@@ -124,12 +124,17 @@ export class GyHomeService {
           }
       }
 
+      console.debug("entry");
+      console.dir(entry);
+
       return {
         id: entry.id,
         subtitle: entry.subtitle || "",
         image: entry.image || null,
+        color: entry.color?.color || "",
+        label: entry.label || "",
         link,
-      };
+      } as SectionSlideshowEntry;
     });
     return result;
   }

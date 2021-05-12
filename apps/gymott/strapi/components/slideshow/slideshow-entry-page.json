@@ -24,6 +24,15 @@
     },
     "page": {
       "model": "page"
+    },
+    "label": {
+      "type": "string",
+      "default": "Entdecken"
+    },
+    "color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.color"
     }
   }
 }

@@ -4,3 +4,7 @@ export * from "./post";
 export * from "./strapi-image-url";
 export * from "./strapi-image";
 export * from "./strapi";
+export * from "./theme-bg-btn-outline-class";
+export * from "./theme-bg-class";
+export * from "./theme-bg-text-class";
+export * from "./theme-fg-color";

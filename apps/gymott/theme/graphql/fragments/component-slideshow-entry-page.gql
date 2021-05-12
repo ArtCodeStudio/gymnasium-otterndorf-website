@@ -4,6 +4,10 @@ fragment ComponentSlideshowEntryPageFragment on ComponentSlideshowSlideshowEntry
     formats
   }
   subtitle
+  label
+  color {
+    color
+  }
   page {
     __typename
     slug

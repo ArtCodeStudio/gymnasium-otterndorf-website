@@ -1,13 +1,13 @@
 bs5-slideshow(xs-controls="false" xs-indicators="true" xs-drag="true" xs-control-prev-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-control-next-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="true" xs-autoplay-interval="10000")
     .row.slideshow-row
         .slide.col-12.p-0(ssr-rv-each-entry="section.entries")
-            .row.mx-0.h-100.bg-green.text-white 
+            .row.mx-0.h-100(ssr-rv-add-class="entry.color | theme-bg-class")
                 .px-0.col-12.col-md-8
                     .ratio.ratio-4x3
                         img.img-fluid.w-100(lazyload="lazy" ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt="entry.image.alternativeText")
-                .p-4.pb-5.col-12.col-md-4.slide-caption-custom
+                .p-4.pb-5.col-12.col-md-4.slide-caption-custom(ssr-rv-add-class="entry.color | theme-bg-text-class")
                     .title(ssr-rv-text="entry.subtitle")
-                    a.mt-3.btn.btn-outline-white.fw-bold(ssr-rv-if="entry.link" ssr-rv-href="entry.link" ssr-rv-debug="entry | json") TODO Label
+                    a.mt-3.btn.fw-bold(ssr-rv-if="entry.link" ssr-rv-href="entry.link" ssr-rv-text="entry.label" ssr-rv-add-class="entry.color | theme-bg-btn-outline-class")
 
     template(type="indicators")
         .row.slideshow-indicators(csr-rv-if="activeBreakpoint.indicators" csr-rv-add-class="indicatorsPositionClass")
