@@ -97,11 +97,12 @@ pm2 logs <id>
 
 Bootstrap theme variables:
 
-* blue - Used for Dates
-* green - Used for News
-* cyan -
-* green-light -
+* blue - Used for dates
+* green - Used for news / posts
+* cyan - Used for pages
+* greenLight - 
 * gray - Used for background: Navbar
+* ... For all theme colors see [_variables-bootstrap.scss](apps/gymott/theme/styles/_variables-bootstrap.scss)
 
 ## Environments
 
