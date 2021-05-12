@@ -1,4 +1,9 @@
 bs5-sidebar#right-sidebar.pb-5.shadow-sm(csr-rv-parent container-selector="#main-container, gy-navbar, gy-search-result" position="right" mode="move" close-on-swipe="false")
+  .row.toolbar-row
+    .col-12.h-100.d-flex.align-items-center.justify-content-end
+      bs5-share(text="Schau' dir das vom Gymnasium Otterndorf mal an 🙂" label-clipboard="In die Zwischenablage" label-email="E-Mail" label-download="Herunterladen")
+        .share-label.px-4.pt-3.mb-3(csr-rv-on-click="share")
+          bs5-icon.share-label(size="20" src="/iconset/svg/social_share.svg")
   gy-nav-slide.scrollbar-x-auto.scrollbar-cyan(csr-rv-co-entry="$parent.navEntry")
 //- Hide shadow for navbar
 .hide-navbar-shadow

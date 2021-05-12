@@ -1,1 +1,1 @@
-export * from "./download.binder";
+export * from "./blob-download.binder";

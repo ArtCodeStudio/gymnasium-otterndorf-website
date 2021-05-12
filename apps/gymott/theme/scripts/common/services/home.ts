@@ -124,9 +124,6 @@ export class GyHomeService {
           }
       }
 
-      console.debug("entry");
-      console.dir(entry);
-
       return {
         id: entry.id,
         subtitle: entry.subtitle || "",

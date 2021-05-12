@@ -48,6 +48,7 @@
     "nestjs",
     "octobercms",
     "photoswipe",
+    "pinterest",
     "pnpify",
     "postgres",
     "prebuild",
@@ -73,6 +74,7 @@
     "typegen",
     "unthrottled",
     "webroot",
+    "whatsapp",
     "yarnpkg",
     "zindex"
   ],

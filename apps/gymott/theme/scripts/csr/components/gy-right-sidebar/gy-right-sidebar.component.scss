@@ -37,4 +37,15 @@ gy-right-sidebar {
       display: none;
     }
   }
+  bs5-share {
+    .dropdown-toggle::after {
+      content: none;
+    }
+    bs5-icon {
+      color: $white;
+      @include media-breakpoint-up(xl) {
+        color: $black;
+      }
+    }
+  }
 }

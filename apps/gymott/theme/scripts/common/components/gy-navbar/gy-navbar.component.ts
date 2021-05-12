@@ -103,11 +103,16 @@ export class GyNavbarComponent extends Component {
       document.querySelectorAll<GySearchResultComponent>("gy-search-result")
     );
     const body = document.body;
-
-    // -1 to prevent flashing on hight dpi screens
+    const hideNavbarShadowEl = document.querySelector<HTMLElement>(
+      ".hide-navbar-shadow"
+    );
+    const sidebarToolbar = document.querySelector<HTMLElement>(
+      "bs5-sidebar .toolbar-row"
+    );
 
     if (searchResults) {
       for (const searchResult of searchResults) {
+        // -1 to prevent flashing on hight dpi screens
         searchResult.style.top = this.visibleHeight - 1 + "px";
         searchResult.style.maxHeight = `calc(100vh - ${
           this.visibleHeight - 1
@@ -116,6 +121,18 @@ export class GyNavbarComponent extends Component {
     }
 
     body.style.marginTop = this.height + "px";
+
+    if (hideNavbarShadowEl) {
+      hideNavbarShadowEl.style.height = this.visibleHeight + "px";
+    }
+
+    if (sidebarToolbar) {
+      if (this.bs5.isActiveBreakpointGreaterThan("lg")) {
+        sidebarToolbar.style.height = this.visibleHeight + "px";
+      } else {
+        sidebarToolbar.style.height = "auto";
+      }
+    }
   }
 
   /**
