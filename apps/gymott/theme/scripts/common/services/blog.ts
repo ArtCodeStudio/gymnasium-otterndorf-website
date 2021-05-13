@@ -25,10 +25,11 @@ export class BlogService {
 
   async listPosts(slugs: string[] = []) {
     const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = { slugs };
-    const blogRes = await this.graphql.requestCached<StrapiGqlBlogEntriesBySlugsQuery>(
-      blogEntriesBySlugsQuery,
-      vars
-    );
+    const blogRes =
+      await this.graphql.requestCached<StrapiGqlBlogEntriesBySlugsQuery>(
+        blogEntriesBySlugsQuery,
+        vars
+      );
     const blogEntries = blogRes.blogEntries || [];
     return blogEntries;
   }

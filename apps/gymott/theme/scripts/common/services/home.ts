@@ -92,8 +92,7 @@ export class GyHomeService {
           case "ComponentHomeNews":
             results.push({
               __typename: section.__typename,
-              facts: section.facts || [],
-              size: section.size || 12,
+              amount: section.amount || 3,
             });
             break;
         }

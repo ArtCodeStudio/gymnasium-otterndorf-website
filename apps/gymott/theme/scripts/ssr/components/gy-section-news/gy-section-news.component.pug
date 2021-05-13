@@ -1,10 +1,10 @@
 h2 News
-.row.news(ssr-rv-each-news-item="news")
-  .col-3
+.row.news
+  .col-12.col-md-6.my-2(ssr-rv-each-item="news")
     .card.shadow-sm
       .card-body
         h6.card-subtitle.mb-2.text-success Subtitle
-        h5.card-title Title
+        h5.card-title(ssr-rv-text="item.title")
         p.card-text 
           span Text
         .card-toolbar

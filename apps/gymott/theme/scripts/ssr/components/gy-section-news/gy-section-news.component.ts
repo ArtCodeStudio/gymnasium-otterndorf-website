@@ -1,11 +1,22 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { HomeNews } from "common/types/home-news";
+import { NewsService } from "../../../common/services";
+import { HomeNews } from "../../../common/types/home-news";
 import pugTemplate from "./gy-section-news.component.pug";
+
+enum NewsType {
+  Calendar,
+  Blog,
+}
 
 export interface Scope {
   section?: HomeNews;
-  news: any[];
+  news: {
+    author: string | undefined;
+    title: string;
+    date: Date;
+    type: NewsType;
+  }[];
 }
 
 export class GySectionNewsComponent extends Component {
@@ -30,10 +41,25 @@ export class GySectionNewsComponent extends Component {
     super();
   }
 
+  protected async beforeBind() {
+    console.log("section", this.scope.section);
+    const queryResult = await NewsService.getInstance().getNews();
+    if (!queryResult) return;
+    for (const result of queryResult) {
+      if (!result?.title) continue;
+
+      this.scope.news.push({
+        type: NewsType.Blog,
+        title: result?.title,
+        author: result?.author,
+        date: new Date(result?.created_at),
+      });
+    }
+    console.log(this.scope.news);
+  }
+
   protected async afterBind() {
     await super.afterBind();
-    console.log("section", this.scope.section);
-    for (let i = 0; i < (this.scope.section?.amount || 0); i++) {}
   }
 
   protected connectedCallback() {

@@ -705,7 +705,8 @@
                       "required": [
                         "id",
                         "title",
-                        "slug"
+                        "slug",
+                        "author"
                       ],
                       "properties": {
                         "id": {
@@ -728,6 +729,9 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "author": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -923,7 +927,8 @@
                       "required": [
                         "id",
                         "title",
-                        "slug"
+                        "slug",
+                        "author"
                       ],
                       "properties": {
                         "id": {
@@ -946,6 +951,9 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "author": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"

@@ -531,7 +531,8 @@
         "required": [
           "id",
           "title",
-          "slug"
+          "slug",
+          "author"
         ],
         "properties": {
           "id": {
@@ -739,6 +740,10 @@
               }
             }
           },
+          "author": {
+            "type": "string",
+            "default": "Admin"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -748,7 +753,8 @@
       "NewBlog-entry": {
         "required": [
           "title",
-          "slug"
+          "slug",
+          "author"
         ],
         "properties": {
           "title": {
@@ -881,6 +887,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "author": {
+            "type": "string",
+            "default": "Admin"
           },
           "published_at": {
             "type": "string",

@@ -1,0 +1,12 @@
+query News($amount: Int!) {
+  blogEntries(sort:"created_at:desc", limit: $amount) {
+    created_at
+    title
+    slug
+    author
+  }
+  # maybe also add pages with specific attribute later
+  # pages(sort:"created_at:desc", limit: 2, where:"") {
+  #  created_at
+  # }
+}

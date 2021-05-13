@@ -40,8 +40,8 @@
       ]
     },
     "blog_entries": {
-      "collection": "blog-entry",
       "via": "pages",
+      "collection": "blog-entry",
       "dominant": true
     }
   }

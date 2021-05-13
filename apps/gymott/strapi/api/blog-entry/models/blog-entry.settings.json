@@ -37,6 +37,11 @@
     "pages": {
       "via": "blog_entries",
       "collection": "page"
+    },
+    "author": {
+      "type": "string",
+      "required": true,
+      "default": "Admin"
     }
   }
 }

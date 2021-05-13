@@ -9,3 +9,4 @@ export { PageService } from "./page";
 export { SearchService } from "./search";
 export { SuggestService } from "./suggest";
 export { ToolbarService } from "./toolbar";
+export { NewsService } from "./news";

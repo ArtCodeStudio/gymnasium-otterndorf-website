@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/12/2021 9:38:34 AM"
+    "x-generation-date": "05/13/2021 8:10:58 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7149,7 +7149,8 @@
               "required": [
                 "id",
                 "title",
-                "slug"
+                "slug",
+                "author"
               ],
               "properties": {
                 "id": {
@@ -7172,6 +7173,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "author": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
@@ -7219,7 +7223,8 @@
         "required": [
           "id",
           "title",
-          "slug"
+          "slug",
+          "author"
         ],
         "properties": {
           "id": {
@@ -7427,6 +7432,10 @@
               }
             }
           },
+          "author": {
+            "type": "string",
+            "default": "Admin"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -7436,7 +7445,8 @@
       "NewBlog-entry": {
         "required": [
           "title",
-          "slug"
+          "slug",
+          "author"
         ],
         "properties": {
           "title": {
@@ -7569,6 +7579,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "author": {
+            "type": "string",
+            "default": "Admin"
           },
           "published_at": {
             "type": "string",
@@ -8497,7 +8511,8 @@
                       "required": [
                         "id",
                         "title",
-                        "slug"
+                        "slug",
+                        "author"
                       ],
                       "properties": {
                         "id": {
@@ -8520,6 +8535,9 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "author": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -8715,7 +8733,8 @@
                       "required": [
                         "id",
                         "title",
-                        "slug"
+                        "slug",
+                        "author"
                       ],
                       "properties": {
                         "id": {
@@ -8738,6 +8757,9 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "author": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -9031,7 +9053,8 @@
               "required": [
                 "id",
                 "title",
-                "slug"
+                "slug",
+                "author"
               ],
               "properties": {
                 "id": {
@@ -9054,6 +9077,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "author": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
@@ -9533,7 +9559,8 @@
                       "required": [
                         "id",
                         "title",
-                        "slug"
+                        "slug",
+                        "author"
                       ],
                       "properties": {
                         "id": {
@@ -9556,6 +9583,9 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "author": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -9987,7 +10017,8 @@
                       "required": [
                         "id",
                         "title",
-                        "slug"
+                        "slug",
+                        "author"
                       ],
                       "properties": {
                         "id": {
@@ -10010,6 +10041,9 @@
                           "items": {
                             "type": "string"
                           }
+                        },
+                        "author": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"

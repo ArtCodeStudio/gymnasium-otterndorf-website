@@ -1,5 +1,5 @@
 
-.section(ssr-rv-each-section='sections') <!-- ssr-rv-class-row="section.size | eq 12 | or section.size" -->
+.row.section(ssr-rv-each-section='sections') <!-- ssr-rv-class-row="section.size | eq 12 | or section.size" -->
     .col-12(ssr-rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
         gy-section-slideshow(ssr-rv-co-section="section")
     div(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'" ssr-rv-add-class="section.size | prepend 'col-'")
