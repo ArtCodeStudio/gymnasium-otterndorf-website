@@ -45,7 +45,7 @@
     "@types/debug": "^4.1.5",
     "@types/ical": "^0.6.2",
     "@types/marked": "^2.0.2",
-    "@types/node": "^15.0.2",
+    "@types/node": "^15.0.3",
     "@types/socket.io-client": "^1.4.36",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/experimental-utils": "^4.23.0",

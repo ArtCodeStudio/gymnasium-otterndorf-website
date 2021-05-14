@@ -3,7 +3,10 @@
  */
 export const pageFormatter = {
   name: "page",
-  read(slug: string) {
+  read(slug?: string) {
+    if (!slug) {
+      return "";
+    }
     return `/page/${slug}`;
   },
 };

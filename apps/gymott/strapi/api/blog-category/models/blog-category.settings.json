@@ -12,16 +12,15 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "display_name": {
+    "name": {
       "type": "string"
     },
     "blog_entries": {
       "via": "blog_category",
       "collection": "blog-entry"
     },
-    "name": {
+    "slug": {
       "type": "uid",
-      "targetField": "display_name",
       "required": true
     }
   }

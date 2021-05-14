@@ -1,6 +1,13 @@
 import { GraphQLClient } from "./graphql";
 import { ResponseError, NavigationLink } from "../types";
 import {
+  strapiFormatter,
+  pageFormatter,
+  postFormatter,
+  blogFormatter,
+  schoolSubjectFormatter,
+} from "../formatters";
+import {
   StrapiGqlMenuQuery,
   StrapiGqlMenuQueryVariables,
   StrapiGqlNavigationLinksByIdsQuery,
@@ -52,15 +59,20 @@ export class NavigationService {
     if (!type) {
       return "";
     }
+    console.debug("getHref type:", type);
     switch (type.__typename) {
-      // case "ComponentLinkTypeBlog":
-      //   return type.blog?.slug ? "/post/" + type.blog.slug : "";
+      case "ComponentLinkTypePost":
+        return postFormatter.read(type.post?.slug);
+      case "ComponentLinkTypeBlog":
+        return blogFormatter.read(type.blog?.slug);
       case "ComponentLinkTypePage":
-        return type.page?.slug ? "/page/" + type.page.slug : "";
+        return pageFormatter.read(type.page?.slug);
       case "ComponentLinkTypeSchulfach":
-        return type.schulfach?.slug ? "/schulfach/" + type.schulfach.slug : "";
+        return schoolSubjectFormatter.read(type.schulfach?.slug);
       case "ComponentLinkTypeWeb":
-        return type.URL ? type.URL : "";
+        return type.URL || "";
+      case "ComponentLinkTypeStrapi":
+        return strapiFormatter.read(type.URL);
     }
   }
 
@@ -115,7 +127,6 @@ export class NavigationService {
           // Child element
           const parentEntry = this.findParent(result, entry.parent.id);
           if (parentEntry) {
-
             parentEntry.children?.push(
               this.newItem(
                 entry as StrapiGqlComponentNavigationNavigationLevelEntry
@@ -175,10 +186,11 @@ export class NavigationService {
     const vars: StrapiGqlNavigationLinksByIdsQueryVariables = { ids };
     let navs: StrapiGqlNavigationLinksByIdsQuery["navigationLinks"] = [];
     try {
-      const response = await this.graphql.requestCached<StrapiGqlNavigationLinksByIdsQuery>(
-        navigationLinksByIds,
-        vars
-      );
+      const response =
+        await this.graphql.requestCached<StrapiGqlNavigationLinksByIdsQuery>(
+          navigationLinksByIds,
+          vars
+        );
       navs = response.navigationLinks || [];
     } catch (error) {
       console.error(error);

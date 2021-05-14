@@ -3,7 +3,10 @@
  */
 export const postFormatter = {
   name: "post",
-  read(slug: string) {
+  read(slug?: string) {
+    if (!slug) {
+      return "";
+    }
     return `/post/${slug}`;
   },
 };

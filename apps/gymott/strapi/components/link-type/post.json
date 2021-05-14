@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_link_type_posts",
+  "info": {
+    "name": "Post",
+    "icon": "newspaper"
+  },
+  "options": {},
+  "attributes": {
+    "post": {
+      "model": "blog-entry"
+    }
+  }
+}

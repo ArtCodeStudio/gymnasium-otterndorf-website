@@ -2,7 +2,11 @@ fragment NavigationLinkFragment on NavigationLink {
   id
   title
   type {
+      __typename
     ... on ComponentLinkTypeWeb {
+      URL
+    }
+    ... on ComponentLinkTypeStrapi {
       URL
     }
     ... on ComponentLinkTypePage {
@@ -17,12 +21,17 @@ fragment NavigationLinkFragment on NavigationLink {
         slug
       }
     }
-    ... on ComponentLinkTypeBlog {
-      blog: blog_eintrag {
+    ... on ComponentLinkTypePost {
+      post {
         title
         slug
       }
     }
-    __typename
+    ... on ComponentLinkTypeBlog {
+      blog {
+        name
+        slug
+      }
+    }
   }
 }

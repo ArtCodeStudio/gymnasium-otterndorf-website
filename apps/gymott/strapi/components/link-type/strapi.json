@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_link_type_strapis",
+  "info": {
+    "name": "Strapi",
+    "icon": "chart-bar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "URL": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

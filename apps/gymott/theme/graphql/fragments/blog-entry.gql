@@ -8,7 +8,7 @@ fragment BlogEntryFragment on BlogEntry {
   updated_at
   published_at
   blog_category {
-    display_name
+    name
   }
   content {
     __typename

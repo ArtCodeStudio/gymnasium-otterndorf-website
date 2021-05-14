@@ -2,12 +2,12 @@
   "collectionName": "components_link_type_blogs",
   "info": {
     "name": "Blog",
-    "icon": "arrow-circle-left"
+    "icon": "address-card"
   },
   "options": {},
   "attributes": {
-    "blog_eintrag": {
-      "model": "blog-entry"
+    "blog": {
+      "model": "blog-category"
     }
   }
 }

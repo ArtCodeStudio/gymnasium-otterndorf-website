@@ -660,13 +660,13 @@
           "blog_category": {
             "required": [
               "id",
-              "name"
+              "slug"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "display_name": {
+              "name": {
                 "type": "string"
               },
               "blog_entries": {
@@ -675,7 +675,7 @@
                   "type": "string"
                 }
               },
-              "name": {
+              "slug": {
                 "type": "uid"
               },
               "created_by": {

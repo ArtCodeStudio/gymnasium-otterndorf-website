@@ -1,12 +1,12 @@
 /**
  * Prepends the extern strapi url to a url
  */
-export const blogFormatter = {
-  name: "blog",
+export const schoolSubjectFormatter = {
+  name: "schoolsubject",
   read(slug?: string) {
     if (!slug) {
       return "";
     }
-    return `/blog/${slug}`;
+    return `/schulfach/${slug}`;
   },
 };

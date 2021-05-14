@@ -3,7 +3,10 @@
  */
 export const strapiFormatter = {
   name: "strapi",
-  read(url: string) {
+  read(url?: string) {
+    if (!url) {
+      return "";
+    }
     if (typeof url !== "string") {
       console.warn(
         `Strapi formatter works only with strings, but got "${typeof url}"`
