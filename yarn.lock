@@ -2708,12 +2708,14 @@ __metadata:
     "@gymott/common": "workspace:apps/gymott/common"
     "@ribajs/babel-config": next
     "@ribajs/bs5": next
+    "@ribajs/bs5-photoswipe": "workspace:packages/riba/packages/bs5-photoswipe"
     "@ribajs/core": next
     "@ribajs/eslint-config": next
     "@ribajs/events": "workspace:packages/riba/packages/events"
     "@ribajs/extras": ^1.9.0
     "@ribajs/i18n": next
     "@ribajs/iconset": next
+    "@ribajs/masonry": "workspace:packages/riba/packages/masonry"
     "@ribajs/router": next
     "@ribajs/ssr": next
     "@ribajs/tsconfig": next

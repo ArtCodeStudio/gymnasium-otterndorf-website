@@ -5,6 +5,8 @@ import { extrasModule } from "@ribajs/extras";
 import { routerModule } from "@ribajs/router";
 import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 import { bs5Module } from "@ribajs/bs5";
+import { bs5PhotoswipeModule } from "@ribajs/bs5-photoswipe";
+import { masonryModule } from "@ribajs/masonry";
 
 // Common
 import * as commonBinders from "../common/binders";
@@ -56,6 +58,8 @@ export class CSRApp {
       i18nModule.init({ localesService: this.localesService })
     );
     this.riba.module.regist(bs5Module.init());
+    this.riba.module.regist(bs5PhotoswipeModule);
+    this.riba.module.regist(masonryModule);
 
     this.view = this.riba.bind(document.body, this.model);
 

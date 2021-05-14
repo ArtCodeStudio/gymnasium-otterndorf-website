@@ -1,12 +1,20 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./gallery.component.pug";
 import { GalleryService } from "../../services";
-import { StrapiGqlGalleryFragmentFragment } from "../../../common/types";
+import {
+  StrapiGqlGalleryFragmentFragment,
+  StrapiImageFormatType,
+} from "../../../common/types";
 
 export interface Scope {
   title: string;
   params: GalleryPageComponent["ctx"]["params"];
   images: StrapiGqlGalleryFragmentFragment["images"] | null;
+  thumbFormat: StrapiImageFormatType;
+  fullFormat: StrapiImageFormatType;
+  defaultColumnClasses: string;
+  leadColumnClasses: string;
+  getColumnClass: GalleryPageComponent["getColumnClass"];
 }
 
 export class GalleryPageComponent extends PageComponent {
@@ -20,6 +28,11 @@ export class GalleryPageComponent extends PageComponent {
     title: "{params.slug | capitalize}",
     params: {},
     images: null,
+    thumbFormat: "small",
+    fullFormat: "large",
+    defaultColumnClasses: "col-12 col-md-6 col-lg-3 col-xxl-2",
+    leadColumnClasses: "col-12 col-lg-6 col-xxl-4",
+    getColumnClass: this.getColumnClass,
   };
 
   static get observedAttributes(): string[] {
@@ -29,6 +42,13 @@ export class GalleryPageComponent extends PageComponent {
   constructor() {
     super();
     this.scope.params = this.ctx.params;
+  }
+
+  public getColumnClass(index: number) {
+    if (index <= 1) {
+      return this.scope.leadColumnClasses;
+    }
+    return this.scope.defaultColumnClasses;
   }
 
   protected connectedCallback() {
@@ -52,6 +72,9 @@ export class GalleryPageComponent extends PageComponent {
         }
         if (gallery.images) {
           this.scope.images = gallery.images;
+          // while (this.scope.images.length < 16) {
+          //   this.scope.images.push(null);
+          // }
         }
       }
     } catch (error) {
