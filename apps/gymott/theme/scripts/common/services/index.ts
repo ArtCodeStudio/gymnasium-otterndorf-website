@@ -6,6 +6,7 @@ export { GyHomeService } from "./home";
 export { MarkdownService } from "./markdown";
 export { NavigationService } from "./navigation";
 export { PageService } from "./page";
+export { SchoolSubjectService } from "./school-subject";
 export { SearchService } from "./search";
 export { SuggestService } from "./suggest";
 export { ToolbarService } from "./toolbar";

@@ -1,27 +1,12 @@
-#import "./blog-entry.gql"
 #import "./component-content-image.gql"
 #import "./component-content-text.gql"
 
-fragment PageFragment on Page {
+fragment SchoolSubjectFragment on Subject {
   id
   created_at
   updated_at
   title
   slug
-  calendar_key
-  assets {
-    ... on ComponentSidebarAssets {
-      file {
-        url
-      }
-      name
-    }
-  }
-
-  blog_entries {
-    ...BlogEntryFragment
-  }
-
   content {
     __typename
     ... on ComponentContentImage {

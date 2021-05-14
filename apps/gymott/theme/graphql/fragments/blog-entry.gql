@@ -1,4 +1,6 @@
 #import "../fragments/component-content-image.gql"
+#import "./component-content-image.gql"
+#import "./component-content-text.gql"
 
 fragment BlogEntryFragment on BlogEntry {
   id
@@ -16,8 +18,7 @@ fragment BlogEntryFragment on BlogEntry {
       ...ComponentContentImageFragment
     }
     ... on ComponentContentText {
-      id
-      text
+      ...ComponentContentTextFragment
     }
   }
 }

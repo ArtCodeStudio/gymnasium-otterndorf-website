@@ -15,8 +15,3 @@ bs5-slideshow(rv-parent rv-co-items="slides" xs-controls="false" xs-indicators="
           .list-group-item.list-group-item-parent.d-flex.align-items-center(rv-unless="child.href" rv-class-disabled="child.children | size | not" rv-touch-events rv-on-mouseover="$parent.$parent.$parent.onNavTapstart | args child slide" rv-on-tapstart="$parent.$parent.$parent.onNavTapstart | args child slide" rv-on-tap="$parent.$parent.$parent.onNavTap | args child slide")
             span.text-truncate(rv-text="child.label")
             bs5-icon.ms-auto(size="24" src="/iconset/svg/arrow_carrot.svg" direction="right")
-//- Close
-.list-group.w-100.fixed-bottom
-  .list-group-item.list-group-item-parent.d-flex.d-xl-none.align-items-center.justify-content-center.cursor-pointer(rv-touch-events rv-on-tap="onCloseTap | args slide")
-      bs5-icon(size="24" src="/iconset/svg/icon_close.svg")
-      span.text-truncate Schließen

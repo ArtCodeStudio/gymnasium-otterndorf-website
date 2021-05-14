@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_gallery_images",
+  "info": {
+    "name": "Image",
+    "icon": "image",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "Image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "created": {
+      "type": "date"
+    },
+    "author": {
+      "type": "string"
+    }
+  }
+}
