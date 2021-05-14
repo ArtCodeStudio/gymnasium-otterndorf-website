@@ -660,6 +660,7 @@
           "blog_category": {
             "required": [
               "id",
+              "name",
               "slug"
             ],
             "properties": {

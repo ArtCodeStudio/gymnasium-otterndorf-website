@@ -1,4 +1,4 @@
-.container-fluid
+.container.py-4
   .row
     .col-12
       h1.text-center(ssr-rv-template="title")
@@ -10,3 +10,9 @@
       h2.text-center Blog-Artikel
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-each-post="blogPosts" rv-href="post.slug | post" rv-text="post.title")
+      h2.text-center Schulfächer
+      .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-each-subject="subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
+      h2.text-center Galerien
+      .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-each-gallery="galleries" rv-href="gallery.slug | gallery" rv-text="gallery.title")

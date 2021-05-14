@@ -801,6 +801,7 @@
                     "blog": {
                       "required": [
                         "id",
+                        "name",
                         "slug"
                       ],
                       "properties": {
@@ -1106,6 +1107,7 @@
                     "blog": {
                       "required": [
                         "id",
+                        "name",
                         "slug"
                       ],
                       "properties": {

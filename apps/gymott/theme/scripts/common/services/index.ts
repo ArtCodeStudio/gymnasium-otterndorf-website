@@ -1,13 +1,14 @@
+export { BlogService } from "./blog";
 export * from "./cache";
 export { CalendarService } from "./calendar";
-export { BlogService } from "./blog";
+export { GalleryService } from "./gallery";
 export { GraphQLClient } from "./graphql";
 export { GyHomeService } from "./home";
 export { MarkdownService } from "./markdown";
 export { NavigationService } from "./navigation";
+export { NewsService } from "./news";
 export { PageService } from "./page";
 export { SchoolSubjectService } from "./school-subject";
 export { SearchService } from "./search";
 export { SuggestService } from "./suggest";
 export { ToolbarService } from "./toolbar";
-export { NewsService } from "./news";

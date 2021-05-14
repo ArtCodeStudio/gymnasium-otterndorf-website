@@ -12,14 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "name"
+      "targetField": "title"
     },
-    "image": {
+    "images": {
       "type": "component",
       "repeatable": true,
       "component": "gallery.image"

@@ -530,6 +530,7 @@
       "Blog-category": {
         "required": [
           "id",
+          "name",
           "slug"
         ],
         "properties": {
@@ -592,6 +593,7 @@
       },
       "NewBlog-category": {
         "required": [
+          "name",
           "slug"
         ],
         "properties": {

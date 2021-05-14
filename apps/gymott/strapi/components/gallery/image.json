@@ -7,13 +7,13 @@
   },
   "options": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Description": {
+    "description": {
       "type": "richtext"
     },
-    "Image": {
+    "image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [

@@ -1,0 +1,12 @@
+#import "./component-gallery-image.gql"
+
+fragment GalleryFragment on Gallery {
+  id
+  slug
+  title
+  images {
+    ... on ComponentGalleryImage {
+      ...ComponentGalleryImageFragment
+    }
+  }
+}

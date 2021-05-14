@@ -1,5 +1,5 @@
 /**
- * Prepends the extern strapi url to a url
+ * Prepends the page url to page slug
  */
 export const pageFormatter = {
   name: "page",

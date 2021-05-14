@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/14/2021 11:21:14 AM"
+    "x-generation-date": "05/14/2021 1:22:32 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7645,6 +7645,7 @@
       "Blog-category": {
         "required": [
           "id",
+          "name",
           "slug"
         ],
         "properties": {
@@ -7707,6 +7708,7 @@
       },
       "NewBlog-category": {
         "required": [
+          "name",
           "slug"
         ],
         "properties": {
@@ -7863,6 +7865,7 @@
           "blog_category": {
             "required": [
               "id",
+              "name",
               "slug"
             ],
             "properties": {
@@ -8222,13 +8225,13 @@
           "id": {
             "type": "string"
           },
-          "name": {
+          "title": {
             "type": "string"
           },
           "slug": {
             "type": "uid"
           },
-          "image": {
+          "images": {
             "type": "array",
             "items": {
               "type": "object",
@@ -8239,13 +8242,13 @@
                 "id": {
                   "type": "string"
                 },
-                "Name": {
+                "name": {
                   "type": "string"
                 },
-                "Description": {
+                "description": {
                   "type": "string"
                 },
-                "Image": {
+                "image": {
                   "required": [
                     "id",
                     "name",
@@ -8330,13 +8333,13 @@
       },
       "NewGallery": {
         "properties": {
-          "name": {
+          "title": {
             "type": "string"
           },
           "slug": {
             "type": "uid"
           },
-          "image": {
+          "images": {
             "type": "array",
             "items": {
               "type": "object",
@@ -8347,13 +8350,13 @@
                 "id": {
                   "type": "string"
                 },
-                "Name": {
+                "name": {
                   "type": "string"
                 },
-                "Description": {
+                "description": {
                   "type": "string"
                 },
-                "Image": {
+                "image": {
                   "required": [
                     "id",
                     "name",
@@ -9346,6 +9349,7 @@
                     "blog": {
                       "required": [
                         "id",
+                        "name",
                         "slug"
                       ],
                       "properties": {
@@ -9651,6 +9655,7 @@
                     "blog": {
                       "required": [
                         "id",
+                        "name",
                         "slug"
                       ],
                       "properties": {
@@ -9832,6 +9837,7 @@
             "items": {
               "required": [
                 "id",
+                "name",
                 "slug"
               ],
               "properties": {

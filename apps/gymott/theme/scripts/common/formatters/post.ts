@@ -1,5 +1,5 @@
 /**
- * Prepends the extern strapi url to a url
+ * Prepends the post / blog entry url to post / blog entry slug
  */
 export const postFormatter = {
   name: "post",

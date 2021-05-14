@@ -1,12 +1,19 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./sitemap.component.pug";
-import { PageService, BlogService } from "../../services";
+import {
+  PageService,
+  BlogService,
+  SchoolSubjectService,
+  GalleryService,
+} from "../../services";
 import { Awaited } from "../../../common/types";
 
 export interface Scope {
   title: string;
   pages: Awaited<ReturnType<PageService["list"]>>;
   blogPosts: Awaited<ReturnType<BlogService["listPosts"]>>;
+  subjects: Awaited<ReturnType<SchoolSubjectService["list"]>>;
+  galleries: Awaited<ReturnType<GalleryService["list"]>>;
 }
 
 export class SitemapPageComponent extends PageComponent {
@@ -16,11 +23,15 @@ export class SitemapPageComponent extends PageComponent {
 
   protected page = PageService.getInstance();
   protected blog = BlogService.getInstance();
+  protected subjects = SchoolSubjectService.getInstance();
+  protected gallery = GalleryService.getInstance();
 
   scope: Scope = {
     title: "Sitemap",
     pages: [],
     blogPosts: [],
+    subjects: [],
+    galleries: [],
   };
 
   static get observedAttributes(): string[] {
@@ -58,11 +69,31 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.blogPosts;
   }
 
+  protected async getSchoolSubjects() {
+    try {
+      this.scope.subjects = await this.subjects.list();
+    } catch (error) {
+      this.throw(error);
+    }
+    return this.scope.subjects;
+  }
+
+  protected async getGalleries() {
+    try {
+      this.scope.galleries = await this.gallery.list();
+    } catch (error) {
+      this.throw(error);
+    }
+    return this.scope.subjects;
+  }
+
   protected async beforeBind() {
     this.head.title = this.scope.title;
 
     await this.getPages();
     await this.getBlogPosts();
+    await this.getSchoolSubjects();
+    await this.getGalleries();
 
     await super.beforeBind();
   }

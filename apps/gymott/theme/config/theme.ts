@@ -32,6 +32,10 @@ export const themeConfig: ThemeConfig = {
       component: "school-subject-page",
     },
     {
+      path: ["/gallery/:slug", "/bilder/:slug"],
+      component: "gallery-page",
+    },
+    {
       path: ["/sitemap"],
       component: "sitemap-page",
     },

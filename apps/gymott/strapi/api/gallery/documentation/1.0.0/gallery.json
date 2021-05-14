@@ -522,13 +522,13 @@
           "id": {
             "type": "string"
           },
-          "name": {
+          "title": {
             "type": "string"
           },
           "slug": {
             "type": "uid"
           },
-          "image": {
+          "images": {
             "type": "array",
             "items": {
               "type": "object",
@@ -539,13 +539,13 @@
                 "id": {
                   "type": "string"
                 },
-                "Name": {
+                "name": {
                   "type": "string"
                 },
-                "Description": {
+                "description": {
                   "type": "string"
                 },
-                "Image": {
+                "image": {
                   "required": [
                     "id",
                     "name",
@@ -630,13 +630,13 @@
       },
       "NewGallery": {
         "properties": {
-          "name": {
+          "title": {
             "type": "string"
           },
           "slug": {
             "type": "uid"
           },
-          "image": {
+          "images": {
             "type": "array",
             "items": {
               "type": "object",
@@ -647,13 +647,13 @@
                 "id": {
                   "type": "string"
                 },
-                "Name": {
+                "name": {
                   "type": "string"
                 },
-                "Description": {
+                "description": {
                   "type": "string"
                 },
-                "Image": {
+                "image": {
                   "required": [
                     "id",
                     "name",

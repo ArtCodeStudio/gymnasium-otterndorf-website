@@ -20,6 +20,9 @@ import * as formatters from "./formatters";
 
 declare global {
   interface Window {
+    env: {
+      STRAPI_EXTERN_URL: string;
+    };
     model: any;
   }
 }

@@ -1,0 +1,10 @@
+fragment ComponentGalleryImageFragment on ComponentGalleryImage {
+  id
+  name
+  description
+  image {
+    formats
+  }
+  created
+  author
+}
