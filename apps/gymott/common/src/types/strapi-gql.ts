@@ -3123,6 +3123,13 @@ export type StrapiGqlNewsQuery = (
   & { blogEntries?: Maybe<Array<Maybe<(
     { __typename?: 'BlogEntry' }
     & Pick<StrapiGqlBlogEntry, 'created_at' | 'title' | 'slug' | 'author'>
+    & { content?: Maybe<Array<Maybe<{ __typename?: 'ComponentContentText' } | (
+      { __typename?: 'ComponentContentImage' }
+      & { image?: Maybe<(
+        { __typename?: 'UploadFile' }
+        & Pick<StrapiGqlUploadFile, 'alternativeText' | 'url' | 'formats'>
+      )> }
+    )>>> }
   )>>> }
 );
 

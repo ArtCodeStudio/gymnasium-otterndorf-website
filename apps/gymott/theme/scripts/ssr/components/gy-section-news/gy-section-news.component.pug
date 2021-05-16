@@ -1,14 +1,10 @@
-h2 News
+h2.section-heading Aktuelles
 .row.news
   .col-12.col-md-6.my-2(ssr-rv-each-item="news")
     .card.shadow-sm
-      .card-body
-        h6.card-subtitle.mb-2.text-success Subtitle
+      img(ssr-rv-if="item.image.url" ssr-rv-src="item.image.url | strapi" class="card-img-top" ssr-rv-alt="item.image.altText")
+      .card-body  
+        h6.card-subtitle.mb-2.text-success(ssr-rv-text="item.typeName")
         h5.card-title(ssr-rv-text="item.title")
-        p.card-text 
-          span Text
-        .card-toolbar
-        .d-flex.justify-content-between.flex-row-reverse
-          a(csr-rv-href="item.data.href" csr-rv-on-click="onOpen | args item") Öffnen
-          a(href="#" csr-rv-if="item.opts.expanded | not | and item.opts.expandable" csr-rv-on-click='onToggleItem | args item') Zeige mehr
-          a(href="#" csr-rv-if="item.opts.expandable | and item.opts.expanded" csr-rv-on-click='onToggleItem | args item') Zeige weniger
+        span.card-text 
+          | [ item.date ] von [ item.author ]
