@@ -1,12 +1,8 @@
 .container-fluid.py-5.px-md-5
-  //- .row
-  //-   .col-12
-  //-     h1.text-center(rv-html="title")
   section.row
     bs5-photoswipe.col-12(open-image-on-click="true" control-next-icon-src="/iconset/svg/arrow_carrot_thin.svg" control-prev-icon-src="/iconset/svg/arrow_carrot_thin.svg" control-close-icon-src="/iconset/svg/icon_close.svg" control-zoom-in-icon-src="/iconset/svg/icon_plus.svg" control-zoom-out-icon-src="/iconset/svg/icon_minus.svg" control-fullscreen-on-icon-src="/iconset/svg/icon_toggle-fullscreen-on.svg" control-fullscreen-off-icon-src="/iconset/svg/icon_toggle-fullscreen-off.svg" control-share-icon-src="/iconset/svg/social_share.svg" control-share-icon-show="true")
-      //- .row-cols-1.row-cols-md-2.row-cols-lg-3.row-cols-xl-4.row-cols-xxl-5
-      .row.g-5(csr-rv-masonry='{"percentPosition": true, "itemSelector": ".grid-item", "columnWidth": ".grid-sizer" }')
+      .row.mx-0.g-5(csr-rv-masonry='{"percentPosition": true, "itemSelector": ".grid-item", "columnWidth": ".grid-sizer" }')
         .grid-item(ssr-rv-each-image="images" ssr-rv-add-class="getColumnClass | call %image%")
-          .card.p-3.shadow.cursor-pointer(ssr-rv-if="image.image")
+          .card.hover-card.p-3.cursor-pointer(ssr-rv-if="image.image")
             img.img-fluid.w-100(lazyload="lazy" ssr-rv-data-fs-width="image.image | strapi-image fullFormat | get 'width'" ssr-rv-data-fs-height="image.image | strapi-image fullFormat | get 'height'" ssr-rv-data-fs-src="image.image | strapi-image-url fullFormat" ssr-rv-src="image.image | strapi-image-url thumbFormat" ssr-rv-alt="image.name")
         .grid-sizer(ssr-rv-add-class="defaultColumnClasses")

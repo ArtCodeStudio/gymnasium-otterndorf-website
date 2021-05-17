@@ -3,6 +3,9 @@ gy-search-result {
   max-height: 100vh;
   overflow-x: auto;
   transition: $bs5-sidebar-transition;
+  z-index: $zindex-search-result !important;
+  margin-right: -2px;
+  border-bottom: $navbar-border-width $navbar-border-style $navbar-border-color;
   .search-highlight {
     background-color: $yellow;
   }
@@ -12,9 +15,4 @@ gy-search-result {
     cursor: pointer;
   }
   background-color: $body-bg;
-  .card {
-    .card-text {
-      // max-height: 500px;
-    }
-  }
 }

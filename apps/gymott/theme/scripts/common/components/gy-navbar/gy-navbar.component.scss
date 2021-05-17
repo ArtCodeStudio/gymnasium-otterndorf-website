@@ -1,6 +1,8 @@
+
 gy-navbar {
     display: block;
     transition: $bs5-sidebar-transition;
+    border-bottom: $navbar-border-width $navbar-border-style $navbar-border-color;
     .brand-text {
         line-height: 1;
         font-size: 16px;
@@ -10,5 +12,4 @@ gy-navbar {
         width: 32px;
         height: 32px;
     }
-    // border-bottom: $border-width solid $border-color;
 }

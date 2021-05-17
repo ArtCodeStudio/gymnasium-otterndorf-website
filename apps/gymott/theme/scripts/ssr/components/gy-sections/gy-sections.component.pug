@@ -1,12 +1,13 @@
 
-.row.section(ssr-rv-each-section='sections') <!-- ssr-rv-class-row="section.size | eq 12 | or section.size" -->
-    .col-12(ssr-rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
-        gy-section-slideshow(ssr-rv-co-section="section")
-    div(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'" ssr-rv-add-class="section.size | prepend 'col-'")
-        gy-section-facts(ssr-rv-co-section="section")
-    .col-12.col-md-8.mx-auto.my-5(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
-        gy-section-text(ssr-rv-co-section="section")
-    .col-12(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
-        gy-section-image(ssr-rv-co-section="section")
-    .col-12(ssr-rv-if="section.__typename | eq 'ComponentHomeNews'") 
-        gy-section-news(ssr-rv-co-section="section")
+.row
+    section(ssr-rv-each-section='sections' ssr-rv-class="getSectionClass | call section") <!-- ssr-rv-class-row="section.size | eq 12 | or section.size" -->
+        .row(ssr-rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
+            gy-section-slideshow.col-12(ssr-rv-co-section="section")
+        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'")
+            gy-section-facts.col-12(ssr-rv-co-section="section")
+        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
+            gy-section-text.col-12(ssr-rv-co-section="section")
+        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
+            gy-section-image.col-12(ssr-rv-co-section="section")
+        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentHomeNews'") 
+            gy-section-news.col-12(ssr-rv-co-section="section")

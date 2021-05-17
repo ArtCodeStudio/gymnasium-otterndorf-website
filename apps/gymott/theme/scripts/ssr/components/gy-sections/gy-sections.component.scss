@@ -4,14 +4,20 @@ gy-sections {
     display: block;
   }
 
+  section {
+    @extend .col-auto;
+  }
 
-  //todo move to some global stylesheet
-  h2.section-heading {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: 0.03em;
-    text-decoration-line: underline;
-    text-underline-offset: 4px;
+
+  // Use the bootstrap variables here and adjust them (in ./styles/_variables-bootstrap.scss) if they are not right
+  // The bootstrap fonts are responsive, so you cannot take the values directly from the design without loosing this nice feature.
+  .section-heading {
+    @extend %heading;
+    @include font-size($h2-font-size);
+    margin-top: $section-heading-margin-top;
+    margin-bottom: $section-heading-margin-bottom;
+    text-decoration-line: $section-heading-decoration;
+    text-underline-offset: $section-heading-underline-offset;
   }
 }
 

@@ -1,0 +1,17 @@
+.card.hover-card-sm {
+  transition: $transition-base;
+  @extend .shadow-sm;
+  &:hover {
+    transform: $modal-scale-transform;
+    @extend .shadow;
+  }
+}
+
+.card.hover-card {
+  transition: $transition-base;
+  @extend .shadow;
+  &:hover {
+    transform: $modal-scale-transform;
+    @extend .shadow-lg;
+  }
+}

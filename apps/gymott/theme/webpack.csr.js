@@ -26,10 +26,11 @@ const config = {
     path: outputPath,
     filename: "[name].bundle.js",
   },
-  // TODO fixme
-  // styles: {
-  //   resolveUrl: "onlyImports"
-  // }
+  styles: {
+    build: true,
+    extract: true,
+    resolveUrl: "onlyImports",
+  },
 };
 
 const webpackConfig = ribaWebpackConfig(config);

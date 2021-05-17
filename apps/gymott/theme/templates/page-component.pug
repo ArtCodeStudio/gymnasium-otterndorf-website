@@ -19,13 +19,16 @@ html(lang='en')
     meta(name="msapplication-TileColor" content="#ffffff")
     meta(name="msapplication-config" content="/favicons/browserconfig.xml")
     meta(name="theme-color" content="#ffffff")
+
+    //- Preload
+    link(rel="prefetch" href="/images/bg-gallery.webp")
     
   body
     div
       gy-right-sidebar
       #main-container
         #layout-top
-          gy-navbar.fixed-top.navbar-light.bg-light.shadow-sm
+          gy-navbar.fixed-top.navbar-light.bg-light.shadow
           gy-search-result.fixed-top
         router-view#main(listen-all-links="true")
           ssr-root-page

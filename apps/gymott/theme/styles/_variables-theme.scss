@@ -1,1 +1,17 @@
 // Add custom variables here
+$navbar-border-width: 1px;
+$navbar-border-style: solid;
+$navbar-border-color: shade-color($light, 10%);
+
+$right-sidebar-bg-color: $blue;
+$right-sidebar-border-color: shade-color($right-sidebar-bg-color, 10%);
+
+$hide-navbar-shadow-width: 30px;
+
+$zindex-hide-navbar-shadow: $zindex-fixed + 1;
+$zindex-search-result: $zindex-fixed + 1;
+
+$section-heading-margin-bottom: $spacer * 2;
+$section-heading-margin-top: $section-heading-margin-bottom;
+$section-heading-decoration: underline;
+$section-heading-underline-offset: 4px;
