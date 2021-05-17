@@ -6,9 +6,11 @@ import {
 } from "../types";
 
 import galleryBySlugs from "../../../graphql/queries/gallery-by-slugs.gql";
+import { MarkdownService } from "../services";
 
 export class GalleryService {
   protected graphql = GraphQLClient.getInstance();
+  protected md = MarkdownService.getInstance();
 
   protected static instance: GalleryService;
 
@@ -22,6 +24,30 @@ export class GalleryService {
     }
     GalleryService.instance = new GalleryService();
     return GalleryService.instance;
+  }
+
+  renderMarkdown(galleries: StrapiGqlGalleryBySlugsQuery["galleries"]) {
+    if (!galleries) {
+      return;
+    }
+    for (const gallery of galleries) {
+      if (gallery?.images) {
+        for (const image of gallery.images) {
+          if (image?.title) {
+            image.title = "<strong>" + image.title + "</strong>";
+          }
+          if (image?.caption) {
+            image.caption = this.md.render(image.caption);
+          }
+          if (image?.title && image.caption) {
+            image.caption = image?.title + "<br />" + image.caption;
+          }
+          if (image?.title && !image.caption) {
+            image.caption = image?.title;
+          }
+        }
+      }
+    }
   }
 
   async list(slugs: string[] = []) {
@@ -42,6 +68,7 @@ export class GalleryService {
       error.status = 404;
       throw error;
     }
+    this.renderMarkdown(galleries);
     return galleries?.[0] || null;
   }
 }

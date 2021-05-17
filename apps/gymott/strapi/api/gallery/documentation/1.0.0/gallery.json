@@ -539,12 +539,6 @@
                 "id": {
                   "type": "string"
                 },
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
                 "image": {
                   "required": [
                     "id",
@@ -612,11 +606,10 @@
                     }
                   }
                 },
-                "created": {
-                  "type": "string",
-                  "format": "date"
+                "caption": {
+                  "type": "string"
                 },
-                "author": {
+                "title": {
                   "type": "string"
                 }
               }
@@ -647,12 +640,6 @@
                 "id": {
                   "type": "string"
                 },
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
                 "image": {
                   "required": [
                     "id",
@@ -720,11 +707,10 @@
                     }
                   }
                 },
-                "created": {
-                  "type": "string",
-                  "format": "date"
+                "caption": {
+                  "type": "string"
                 },
-                "author": {
+                "title": {
                   "type": "string"
                 }
               }

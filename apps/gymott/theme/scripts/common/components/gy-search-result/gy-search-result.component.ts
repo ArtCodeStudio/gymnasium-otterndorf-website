@@ -123,7 +123,6 @@ export class GySearchResultComponent extends Component {
   }
 
   public setTerm(term: string) {
-    console.debug("setTerm", term);
     this.scope.term = term;
     this.onChange();
   }

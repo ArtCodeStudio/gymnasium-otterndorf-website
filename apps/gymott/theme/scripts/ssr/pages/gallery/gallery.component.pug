@@ -4,5 +4,5 @@
       .row.mx-0.g-5(csr-rv-masonry='{"percentPosition": true, "itemSelector": ".grid-item", "columnWidth": ".grid-sizer" }')
         .grid-item(ssr-rv-each-image="images" ssr-rv-add-class="getColumnClass | call %image%")
           .card.hover-card.p-3.cursor-pointer(ssr-rv-if="image.image")
-            img.img-fluid.w-100(lazyload="lazy" ssr-rv-data-fs-width="image.image | strapi-image fullFormat | get 'width'" ssr-rv-data-fs-height="image.image | strapi-image fullFormat | get 'height'" ssr-rv-data-fs-src="image.image | strapi-image-url fullFormat" ssr-rv-src="image.image | strapi-image-url thumbFormat" ssr-rv-alt="image.name")
+            img.img-fluid.w-100(lazyload="lazy" ssr-rv-data-fs-width="image.image | strapi-image fullFormat | get 'width'" ssr-rv-data-fs-height="image.image | strapi-image fullFormat | get 'height'" ssr-rv-data-fs-src="image.image | strapi-image-url fullFormat" ssr-rv-src="image.image | strapi-image-url thumbFormat" ssr-rv-alt="image.name" ssr-rv-data-title="image.caption")
         .grid-sizer(ssr-rv-add-class="defaultColumnClasses")

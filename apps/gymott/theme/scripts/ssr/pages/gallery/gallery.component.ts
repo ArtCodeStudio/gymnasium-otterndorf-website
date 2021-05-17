@@ -72,9 +72,6 @@ export class GalleryPageComponent extends PageComponent {
         }
         if (gallery.images) {
           this.scope.images = gallery.images;
-          // while (this.scope.images.length < 16) {
-          //   this.scope.images.push(null);
-          // }
         }
       }
     } catch (error) {

@@ -59,7 +59,6 @@ export class NavigationService {
     if (!type) {
       return "";
     }
-    console.debug("getHref type:", type);
     switch (type.__typename) {
       case "ComponentLinkTypePost":
         return postFormatter.read(type.post?.slug);

@@ -260,19 +260,15 @@ export type StrapiGqlComponentContentTextInput = {
 export type StrapiGqlComponentGalleryImage = {
   __typename?: 'ComponentGalleryImage';
   id: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   image?: Maybe<StrapiGqlUploadFile>;
-  created?: Maybe<Scalars['Date']>;
-  author?: Maybe<Scalars['String']>;
+  caption?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type StrapiGqlComponentGalleryImageInput = {
-  name?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['ID']>;
-  created?: Maybe<Scalars['Date']>;
-  author?: Maybe<Scalars['String']>;
+  caption?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type StrapiGqlComponentHomeFact = {
@@ -2424,11 +2420,9 @@ export type StrapiGqlEditComponentContentTextInput = {
 
 export type StrapiGqlEditComponentGalleryImageInput = {
   id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['ID']>;
-  created?: Maybe<Scalars['Date']>;
-  author?: Maybe<Scalars['String']>;
+  caption?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type StrapiGqlEditComponentHomeFactInput = {
@@ -2848,7 +2842,7 @@ export type StrapiGqlComponentContentTextFragmentFragment = (
 
 export type StrapiGqlComponentGalleryImageFragmentFragment = (
   { __typename?: 'ComponentGalleryImage' }
-  & Pick<StrapiGqlComponentGalleryImage, 'id' | 'name' | 'description' | 'created' | 'author'>
+  & Pick<StrapiGqlComponentGalleryImage, 'id' | 'title' | 'caption'>
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
     & Pick<StrapiGqlUploadFile, 'formats'>
@@ -3121,10 +3115,10 @@ export type StrapiGqlNewsQueryVariables = Exact<{
 export type StrapiGqlNewsQuery = (
   { __typename?: 'Query' }
   & { blogEntries?: Maybe<Array<Maybe<(
-    { __typename?: 'BlogEntry' }
+    { __typename: 'BlogEntry' }
     & Pick<StrapiGqlBlogEntry, 'created_at' | 'title' | 'slug' | 'author'>
-    & { content?: Maybe<Array<Maybe<{ __typename?: 'ComponentContentText' } | (
-      { __typename?: 'ComponentContentImage' }
+    & { content?: Maybe<Array<Maybe<{ __typename: 'ComponentContentText' } | (
+      { __typename: 'ComponentContentImage' }
       & { image?: Maybe<(
         { __typename?: 'UploadFile' }
         & Pick<StrapiGqlUploadFile, 'alternativeText' | 'url' | 'formats'>
