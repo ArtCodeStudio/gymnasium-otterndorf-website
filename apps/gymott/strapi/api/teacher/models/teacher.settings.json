@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "teachers",
   "info": {
-    "name": "Lehrer",
+    "name": "Teacher",
     "displayName": "Lehrer",
     "description": ""
   },
@@ -11,6 +11,7 @@
     "timestamps": true,
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "image": {
       "model": "file",
@@ -19,7 +20,8 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "name": {
       "type": "string"
@@ -28,8 +30,9 @@
       "type": "string"
     },
     "subjects": {
-      "via": "teachers",
       "columnName": "Fächer",
+      "targetColumnName": "Lehrer",
+      "via": "teachers",
       "collection": "subject"
     }
   }

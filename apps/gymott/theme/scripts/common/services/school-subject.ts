@@ -5,9 +5,11 @@ import {
   ResponseError,
   DynamicZoneSection,
   StrapiGqlSchoolSubjectFragmentFragment,
+  PageHeader,
+  TeacherBasic,
 } from "../../common/types";
 import { SectionsService } from "./sections";
-
+import { schoolSubjectFormatter } from "../formatters";
 import schoolSubjectBySlugs from "../../../graphql/queries/school-subject-by-slugs.gql";
 
 export class SchoolSubjectService {
@@ -50,10 +52,53 @@ export class SchoolSubjectService {
 
   async getSections(schoolSubject: StrapiGqlSchoolSubjectFragmentFragment) {
     if (schoolSubject?.content) {
-      const DynamicZoneSections = (schoolSubject?.content ||
+      const dynamicZoneSections = (schoolSubject?.content ||
         []) as DynamicZoneSection[];
-      return SchoolSubjectService.sections.transform(DynamicZoneSections);
+      return SchoolSubjectService.sections.transform(dynamicZoneSections);
     }
     return [];
+  }
+
+  getTeachers(
+    schoolSubject: StrapiGqlSchoolSubjectFragmentFragment
+  ): TeacherBasic[] {
+    if (schoolSubject?.teachers) {
+      const teachers: TeacherBasic[] = [];
+      for (const teacher of schoolSubject?.teachers) {
+        if (teacher) {
+          teachers.push({
+            first_name: teacher.first_name || "",
+            id: teacher.id || "",
+            name: teacher.name || "",
+          });
+        }
+      }
+      return teachers;
+    }
+    return [];
+  }
+
+  getHeader(schoolSubject: StrapiGqlSchoolSubjectFragmentFragment): PageHeader {
+    const header: PageHeader = {
+      title: schoolSubject.title || "",
+      breadcrumbs: [
+        {
+          label: "Startseite",
+          url: "/",
+          active: false,
+        },
+        {
+          label: "Schulfach",
+          active: false,
+        },
+        {
+          label: schoolSubject.title,
+          active: true,
+          url: schoolSubjectFormatter.read(schoolSubject.slug),
+        },
+      ],
+      teachers: this.getTeachers(schoolSubject),
+    };
+    return header;
   }
 }

@@ -600,6 +600,7 @@
             "items": {
               "required": [
                 "id",
+                "title",
                 "slug"
               ],
               "properties": {

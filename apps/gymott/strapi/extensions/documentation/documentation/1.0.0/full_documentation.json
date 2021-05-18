@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/18/2021 12:43:20 PM"
+    "x-generation-date": "05/18/2021 7:06:17 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9497,6 +9497,7 @@
                     "schulfach": {
                       "required": [
                         "id",
+                        "title",
                         "slug"
                       ],
                       "properties": {
@@ -9803,6 +9804,7 @@
                     "schulfach": {
                       "required": [
                         "id",
+                        "title",
                         "slug"
                       ],
                       "properties": {
@@ -11743,6 +11745,7 @@
       "Subject": {
         "required": [
           "id",
+          "title",
           "slug"
         ],
         "properties": {
@@ -12009,6 +12012,7 @@
       },
       "NewSubject": {
         "required": [
+          "title",
           "slug"
         ],
         "properties": {
@@ -12334,6 +12338,7 @@
             "items": {
               "required": [
                 "id",
+                "title",
                 "slug"
               ],
               "properties": {

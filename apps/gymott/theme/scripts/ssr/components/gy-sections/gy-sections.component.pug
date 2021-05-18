@@ -2,6 +2,8 @@
 .row
     //- ssr-rv-class-row="section.size | eq 12 | or section.size"
     section(ssr-rv-each-section='sections' ssr-rv-class="getSectionColumnClass | call section")
+        .row(ssr-rv-if="getIndexForPageHeader | call | eq %section%")
+            gy-page-header.col-12.my-4(ssr-rv-co-header="header")
         .row(ssr-rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
             gy-section-slideshow.col-12.px-0(ssr-rv-co-section="section")
         .row(ssr-rv-if="section.__typename | eq 'ComponentSectionGallerySlideshow'") 

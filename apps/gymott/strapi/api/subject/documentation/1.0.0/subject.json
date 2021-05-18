@@ -517,6 +517,7 @@
       "Subject": {
         "required": [
           "id",
+          "title",
           "slug"
         ],
         "properties": {
@@ -783,6 +784,7 @@
       },
       "NewSubject": {
         "required": [
+          "title",
           "slug"
         ],
         "properties": {

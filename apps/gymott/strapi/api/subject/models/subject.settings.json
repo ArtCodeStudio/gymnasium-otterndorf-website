@@ -14,13 +14,13 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "teachers": {
-      "columnName": "Lehrer",
-      "targetColumnName": "Fächer",
-      "collection": "teacher",
       "via": "subjects",
+      "columnName": "Lehrer",
+      "collection": "teacher",
       "dominant": true
     },
     "content": {

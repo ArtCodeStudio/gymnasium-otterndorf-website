@@ -1579,7 +1579,7 @@ export type StrapiGqlSubject = {
   id: Scalars['ID'];
   created_at: Scalars['DateTime'];
   updated_at: Scalars['DateTime'];
-  title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
   content?: Maybe<Array<Maybe<StrapiGqlSubjectContentDynamicZone>>>;
   slug: Scalars['String'];
   published_at?: Maybe<Scalars['DateTime']>;
@@ -1657,7 +1657,7 @@ export type StrapiGqlSubjectGroupBy = {
 };
 
 export type StrapiGqlSubjectInput = {
-  title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
   teachers?: Maybe<Array<Maybe<Scalars['ID']>>>;
   content?: Maybe<Array<Scalars['SubjectContentDynamicZoneInput']>>;
   slug: Scalars['String'];
@@ -3074,8 +3074,11 @@ export type StrapiGqlPageFragmentFragment = (
 
 export type StrapiGqlSchoolSubjectFragmentFragment = (
   { __typename?: 'Subject' }
-  & Pick<StrapiGqlSubject, 'id' | 'created_at' | 'updated_at' | 'title' | 'slug'>
-  & { content?: Maybe<Array<Maybe<(
+  & Pick<StrapiGqlSubject, 'id' | 'slug' | 'title' | 'created_at' | 'updated_at'>
+  & { teachers?: Maybe<Array<Maybe<(
+    { __typename?: 'Teacher' }
+    & StrapiGqlTeacherBasicFragmentFragment
+  )>>>, content?: Maybe<Array<Maybe<(
     { __typename: 'ComponentContentImage' }
     & StrapiGqlComponentContentImageFragmentFragment
   ) | (
@@ -3103,6 +3106,11 @@ export type StrapiGqlSectionSlideshowFragmentFragment = (
     { __typename?: 'ComponentSlideshowSlideshowEntryPage' }
     & StrapiGqlComponentSlideshowEntryPageFragmentFragment
   )>>> }
+);
+
+export type StrapiGqlTeacherBasicFragmentFragment = (
+  { __typename?: 'Teacher' }
+  & Pick<StrapiGqlTeacher, 'id' | 'name' | 'first_name'>
 );
 
 export type StrapiGqlUnnamed_1_MutationVariables = Exact<{

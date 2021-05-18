@@ -46,9 +46,14 @@ $theme-colors: (
 // FONTS
 
 $font-family-sans-serif: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$font-weight-bold:            600;
+$font-weight-bold: 600;
+$display-font-weight: $headings-font-weight;
 
 // PROGRESS
 $progress-height: 10px;
 $progress-bg: rgba($gray, .5);
 $progress-bar-transition: width .1s linear, margin-left .1s linear;
+
+// BREADCRUMBS
+$breadcrumb-active-color: $body-color;
+$breadcrumb-margin-bottom: $headings-margin-bottom;

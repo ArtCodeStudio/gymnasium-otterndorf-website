@@ -587,6 +587,7 @@
                     "schulfach": {
                       "required": [
                         "id",
+                        "title",
                         "slug"
                       ],
                       "properties": {
@@ -893,6 +894,7 @@
                     "schulfach": {
                       "required": [
                         "id",
+                        "title",
                         "slug"
                       ],
                       "properties": {

@@ -1,0 +1,5 @@
+fragment TeacherBasicFragment on Teacher {
+  id
+  name
+  first_name
+}

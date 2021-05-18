@@ -1,0 +1,19 @@
+nav(rv-if="header.breadcrumbs | size" aria-label="breadcrumb")
+  ol.breadcrumb
+    li.breadcrumb-item(rv-each-breadcrumb="header.breadcrumbs" rv-class-active="breadcrumb.active")
+      small(rv-if="breadcrumb.active" aria-current="page" rv-text="breadcrumb.label")
+      small(rv-unless="breadcrumb.active")
+        a(rv-if="breadcrumb.url" rv-href="breadcrumb.url" rv-text="breadcrumb.label")
+        span(rv-unless="breadcrumb.url" rv-text="breadcrumb.label")
+
+h1(rv-text="header.title")
+
+small(rv-if="header.teachers | size")
+  | Unterrichtet von 
+  span(rv-each-teacher="header.teachers")
+    span(rv-text="teacher.first_name")
+    span(rv-if="teacher.first_name")
+      | 
+    span(rv-text="teacher.name")
+    span(rv-if="teacher.first_name")
+    span(rv-if="header.teachers | size | minus 1 | gt %teacher%") , 

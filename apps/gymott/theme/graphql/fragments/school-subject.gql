@@ -2,13 +2,19 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
 #import "./component-section-gallery-slideshow.gql"
+#import "./teacher-basic.gql"
 
 fragment SchoolSubjectFragment on Subject {
   id
+  slug
+  title
   created_at
   updated_at
-  title
-  slug
+  teachers {
+    ... on Teacher {
+      ...TeacherBasicFragment
+    }
+  }
   content {
     __typename
     ... on ComponentSectionSlideshow {
