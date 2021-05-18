@@ -26,6 +26,7 @@ declare global {
   interface Window {
     env: {
       STRAPI_EXTERN_URL: string;
+      NEST_INTERN_URL: string;
     };
   }
 }

@@ -35,5 +35,6 @@ html(lang='en')
     script.
       window.env = {};
       window.env.STRAPI_EXTERN_URL = "#{env.STRAPI_EXTERN_URL}";
+      window.env.NEST_INTERN_URL = window.location.protocol +"//" +window.location.hostname;
     script(src='/csr/vendors.bundle.js')
     script(src='/csr/main.bundle.js')
