@@ -4,6 +4,8 @@ import { SearchResult } from "../types/search-result";
 
 export class SearchService {
   protected static instance: SearchService;
+  protected host =
+    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_INTERN_URL || "";
 
   protected constructor() {
     /** protected */
@@ -26,7 +28,7 @@ export class SearchService {
   }
 
   public async get(term: string) {
-    const url = "/api/search/" + encodeURIComponent(term);
+    const url = this.host + "/api/search/" + encodeURIComponent(term);
     return defaultCache.resolve<SearchResult[]>(
       url,
       async () => {
