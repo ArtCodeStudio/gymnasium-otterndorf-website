@@ -1,0 +1,10 @@
+query footer {
+  footer {
+    map_image {
+      url
+      alternativeText
+    }
+  	map_link
+    contact_info
+  }
+}

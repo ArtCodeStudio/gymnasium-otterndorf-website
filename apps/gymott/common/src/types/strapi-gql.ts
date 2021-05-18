@@ -3132,6 +3132,21 @@ export type StrapiGqlBlogEntriesBySlugsQuery = (
   )>>> }
 );
 
+export type StrapiGqlFooterQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type StrapiGqlFooterQuery = (
+  { __typename?: 'Query' }
+  & { footer?: Maybe<(
+    { __typename?: 'Footer' }
+    & Pick<StrapiGqlFooter, 'map_link' | 'contact_info'>
+    & { map_image?: Maybe<(
+      { __typename?: 'UploadFile' }
+      & Pick<StrapiGqlUploadFile, 'url' | 'alternativeText'>
+    )> }
+  )> }
+);
+
 export type StrapiGqlGalleryBySlugsQueryVariables = Exact<{
   slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
   limit: Scalars['Int'];
