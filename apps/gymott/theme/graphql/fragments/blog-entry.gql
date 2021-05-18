@@ -1,6 +1,7 @@
-#import "../fragments/component-content-image.gql"
-#import "./component-content-image.gql"
+#import "./component-section-slideshow.gql"
 #import "./component-content-text.gql"
+#import "./component-content-image.gql"
+#import "./component-section-gallery-slideshow.gql"
 
 fragment BlogEntryFragment on BlogEntry {
   id
@@ -14,6 +15,12 @@ fragment BlogEntryFragment on BlogEntry {
   }
   content {
     __typename
+    ... on ComponentSectionSlideshow {
+      ...ComponentSectionSlideshowFragment
+    }
+    ... on ComponentSectionGallerySlideshow {
+      ...ComponentSectionGallerySlideshowFragment
+    }
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }

@@ -1,13 +1,16 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import pugTemplate from "./gy-section-facts.component.pug";
+import pugTemplate from "./gy-section-gallery-slideshow.component.pug";
+import { SectionGallerySlideshow } from "../../../common/types";
+import { GalleryService } from "../../services";
 
 export interface Scope {
-  section?: any;
+  section?: SectionGallerySlideshow | null;
 }
 
-export class GySectionFactsComponent extends Component {
-  public static tagName = "gy-section-facts";
+export class GySectionGallerySlideshowComponent extends Component {
+  public static tagName = "gy-section-gallery-slideshow";
+  public static gallery = GalleryService.getInstance();
   public _debug = false;
   protected autobind = true;
 
@@ -28,12 +31,16 @@ export class GySectionFactsComponent extends Component {
   }
 
   protected async afterBind() {
+    console.debug(
+      "[gy-section-gallery-slideshow] this.scope.section",
+      this.scope.section
+    );
     await super.afterBind();
   }
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(GySectionFactsComponent.observedAttributes);
+    this.init(GySectionGallerySlideshowComponent.observedAttributes);
   }
 
   protected template() {

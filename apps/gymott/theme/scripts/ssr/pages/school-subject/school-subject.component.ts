@@ -1,12 +1,15 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./school-subject.component.pug";
 import { SchoolSubjectService } from "../../services";
-import { StrapiGqlSchoolSubjectFragmentFragment } from "../../../common/types";
+import {
+  StrapiGqlSchoolSubjectFragmentFragment,
+  Section,
+} from "../../../common/types";
 
 export interface Scope {
   title: string;
   params: SchoolSubjectPageComponent["ctx"]["params"];
-  content: any;
+  sections: Section[];
   schoolSubject: StrapiGqlSchoolSubjectFragmentFragment | null;
 }
 
@@ -15,13 +18,13 @@ export class SchoolSubjectPageComponent extends PageComponent {
   public _debug = false;
   protected autobind = true;
 
-  protected schoolSubjectService = SchoolSubjectService.getInstance();
+  protected schoolSubject = SchoolSubjectService.getInstance();
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
     schoolSubject: null,
     params: {},
-    content: {},
+    sections: [],
   };
 
   static get observedAttributes(): string[] {
@@ -45,19 +48,16 @@ export class SchoolSubjectPageComponent extends PageComponent {
   protected async beforeBind() {
     this.head.title = "You are " + this.ctx.params.slug;
     try {
-      const schoolSubject = await this.schoolSubjectService.get(
-        this.ctx.params.slug
-      );
+      const schoolSubject = await this.schoolSubject.get(this.ctx.params.slug);
       this.scope.schoolSubject = schoolSubject || null;
 
-      console.debug("schoolSubject", schoolSubject);
       if (schoolSubject) {
         if (schoolSubject?.title) {
           this.scope.title = schoolSubject?.title;
         }
-        if (schoolSubject?.content) {
-          this.scope.content = schoolSubject.content;
-        }
+        this.scope.sections = await this.schoolSubject.getSections(
+          schoolSubject
+        );
       }
     } catch (error) {
       this.throw(error);

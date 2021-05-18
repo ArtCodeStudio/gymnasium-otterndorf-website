@@ -1,0 +1,46 @@
+gy-section-gallery-slideshow {
+    background: $gallery-background-image;
+    background-size: $gallery-background-image-size;
+    display: block;
+    bs5-slideshow {
+        background: $gallery-background-gradient;
+        img {
+            user-select: none;
+            pointer-events: none;
+            object-fit: cover;
+        }
+        .slideshow-controls, .slideshow-indicators {
+            bs5-icon {
+                color: white;
+            }
+        }
+        .slideshow-row {
+            white-space: unset;
+        }
+        .slideshow-indicators {
+            margin-left: 0;
+            margin-right: 0;
+            justify-content: end;
+            &.indicators-bottom, &.indicators-sm-bottom, &.indicators-md-bottom, &.indicators-lg-bottom, &.indicators-xl-bottom, &.indicators-xxl-bottom {
+                bottom: 0;
+            }
+
+            .active {
+                .progress {
+                    .progress-bar {
+                        width: 100% !important;
+                    }
+                }
+            }
+            .inactive {
+                .progress {
+                    .progress-bar {
+                        width: 0 !important;
+                        transition: none !important;
+                    }
+                }
+            }
+        }
+    }
+
+}

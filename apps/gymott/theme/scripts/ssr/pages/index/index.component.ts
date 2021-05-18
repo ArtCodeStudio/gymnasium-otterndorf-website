@@ -1,7 +1,11 @@
 import { PageComponent } from "@ribajs/ssr";
-
 import { GyHomeService } from "../../services";
+import { Section } from "../../../common/types";
 import pugTemplate from "./index.component.pug";
+
+export interface Scope {
+  sections: Section[];
+}
 
 export class IndexPageComponent extends PageComponent {
   public static tagName = "index-page";
@@ -13,8 +17,8 @@ export class IndexPageComponent extends PageComponent {
     title: "Startseite",
   };
 
-  scope = {
-    content: {},
+  scope: Scope = {
+    sections: [],
   };
 
   static get observedAttributes(): string[] {
@@ -36,7 +40,7 @@ export class IndexPageComponent extends PageComponent {
 
   protected async beforeBind() {
     try {
-      this.scope.content = await this.homeService.getHomeSections();
+      this.scope.sections = await this.homeService.getSections();
     } catch (error) {
       this.throw(error);
     }

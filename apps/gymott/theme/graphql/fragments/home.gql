@@ -1,0 +1,29 @@
+#import "./component-section-slideshow.gql"
+#import "./component-section-facts.gql"
+#import "./component-content-text.gql"
+#import "./component-content-image.gql"
+#import "./component-section-gallery-slideshow.gql"
+
+fragment HomeFragment on Home {
+  sections {
+    __typename
+    ... on ComponentSectionSlideshow {
+      ...ComponentSectionSlideshowFragment
+    }
+    ... on ComponentSectionFacts {
+      ...ComponentSectionFactsFragment
+    }
+    ... on ComponentHomeNews {
+      amount
+    }
+    ... on ComponentContentText {
+      ...ComponentContentTextFragment
+    }
+    ... on ComponentContentImage {
+      ...ComponentContentImageFragment
+    }
+    ... on ComponentSectionGallerySlideshow {
+      ...ComponentSectionGallerySlideshowFragment
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_section_gallery_slideshows",
+  "info": {
+    "name": "Gallery Slideshow",
+    "icon": "images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "gallery": {
+      "model": "gallery"
+    },
+    "limit": {
+      "type": "integer",
+      "required": true,
+      "default": 3,
+      "min": 1,
+      "max": 10
+    }
+  }
+}

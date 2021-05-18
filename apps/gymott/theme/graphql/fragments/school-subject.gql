@@ -1,5 +1,7 @@
-#import "./component-content-image.gql"
+#import "./component-section-slideshow.gql"
 #import "./component-content-text.gql"
+#import "./component-content-image.gql"
+#import "./component-section-gallery-slideshow.gql"
 
 fragment SchoolSubjectFragment on Subject {
   id
@@ -9,6 +11,12 @@ fragment SchoolSubjectFragment on Subject {
   slug
   content {
     __typename
+    ... on ComponentSectionSlideshow {
+      ...ComponentSectionSlideshowFragment
+    }
+    ... on ComponentSectionGallerySlideshow {
+      ...ComponentSectionGallerySlideshowFragment
+    }
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }

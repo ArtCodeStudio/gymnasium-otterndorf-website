@@ -1,23 +1,18 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { NewsResult } from "common/services/news";
-import { NewsService } from "../../../common/services";
-import { HomeNews } from "../../../common/types/home-news";
-import pugTemplate from "./gy-section-news.component.pug";
+import pugTemplate from "./gy-section-calendar.component.pug";
 
 export interface Scope {
-  section?: HomeNews;
-  news: NewsResult;
+  section?: any;
 }
 
-export class GySectionNewsComponent extends Component {
-  public static tagName = "gy-section-news";
+export class GySectionCalendarComponent extends Component {
+  public static tagName = "gy-section-calendar";
   public _debug = false;
   protected autobind = true;
 
   scope: Scope = {
-    section: undefined,
-    news: [],
+    section: null,
   };
 
   static get observedAttributes(): string[] {
@@ -32,19 +27,13 @@ export class GySectionNewsComponent extends Component {
     super();
   }
 
-  protected async beforeBind() {
-    console.debug("[gy-section-news] this.scope.section", this.scope.section);
-    this.scope.news = await NewsService.getInstance().getNews();
-    console.debug("[gy-section-news] this.scope.news", this.scope.news);
-  }
-
   protected async afterBind() {
     await super.afterBind();
   }
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(GySectionNewsComponent.observedAttributes);
+    this.init(GySectionCalendarComponent.observedAttributes);
   }
 
   protected template() {

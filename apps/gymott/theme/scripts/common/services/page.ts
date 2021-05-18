@@ -3,13 +3,15 @@ import {
   StrapiGqlPageBySlugsQuery,
   StrapiGqlPageBySlugsQueryVariables,
   ResponseError,
+  StrapiGqlPageFragmentFragment,
+  DynamicZoneSection,
 } from "../../common/types";
-
+import { SectionsService } from "./sections";
 import pageBySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
 
 export class PageService {
   protected graphql = GraphQLClient.getInstance();
-
+  protected static sections = SectionsService.getInstance();
   protected static instance: PageService;
 
   protected constructor() {
@@ -41,6 +43,15 @@ export class PageService {
       error.status = 404;
       throw error;
     }
-    return pages?.[0] || null;
+    const page = pages?.[0] || null;
+    return page;
+  }
+
+  async getSections(page: StrapiGqlPageFragmentFragment) {
+    if (page?.content) {
+      const DynamicZoneSections = (page?.content || []) as DynamicZoneSection[];
+      return PageService.sections.transform(DynamicZoneSections);
+    }
+    return [];
   }
 }

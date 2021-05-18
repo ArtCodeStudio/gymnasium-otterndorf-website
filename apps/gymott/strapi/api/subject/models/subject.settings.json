@@ -27,7 +27,9 @@
       "type": "dynamiczone",
       "components": [
         "content.image",
-        "content.text"
+        "content.text",
+        "section.gallery-slideshow",
+        "section.slideshow"
       ]
     },
     "slug": {

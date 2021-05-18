@@ -1,7 +1,7 @@
 #import "../fragments/gallery.gql"
 
-query galleryBySlugs ($slugs: [String]!) {
-  galleries(start: 0, limit: 50, where: { slug: $slugs }) {
+query galleryBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  galleries(start: $start, limit: $limit, where: { slug: $slugs }) {
     ...GalleryFragment
   }
 } 

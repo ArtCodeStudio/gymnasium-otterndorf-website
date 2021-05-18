@@ -1,11 +1,10 @@
 gallery-page {
   display: block;
-  background-image: url('/images/bg-gallery.webp');
-  background-repeat: repeat;
-  background-size: 100%;
+  background: $gallery-background-image;
+  background-size: $gallery-background-image-size;
   > .container-fluid {
     min-height: 100vh;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
+    background: $gallery-background-gradient;
     bs5-photoswipe {
       max-width: 100vw;
     }

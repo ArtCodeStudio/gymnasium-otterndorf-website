@@ -50,8 +50,8 @@ export class GalleryService {
     }
   }
 
-  async list(slugs: string[] = []) {
-    const vars: StrapiGqlGalleryBySlugsQueryVariables = { slugs };
+  async list(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlGalleryBySlugsQueryVariables = { slugs, limit, start };
     const subjectRes =
       await this.graphql.requestCached<StrapiGqlGalleryBySlugsQuery>(
         galleryBySlugs,
@@ -62,7 +62,7 @@ export class GalleryService {
   }
 
   async get(slug: string) {
-    const galleries = await this.list([slug]);
+    const galleries = await this.list([slug], 1);
     if (!Array.isArray(galleries) || galleries.length <= 0) {
       const error: ResponseError = new Error("Not found!");
       error.status = 404;

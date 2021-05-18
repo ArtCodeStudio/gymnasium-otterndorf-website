@@ -1,12 +1,12 @@
 import { PageComponent } from "@ribajs/ssr";
 import { BlogService } from "../../../services";
-
+import { Section } from "../../../../common/types";
 import pugTemplate from "./blog-entry.component.pug";
 
 export interface Scope {
   title: string;
   content: any;
-  contents: any[];
+  sections: Section[];
   params: BlogEntryPageComponent["ctx"]["params"];
 }
 
@@ -15,12 +15,12 @@ export class BlogEntryPageComponent extends PageComponent {
   public _debug = false;
   protected autobind = true;
 
-  protected blogService = BlogService.getInstance();
+  protected blog = BlogService.getInstance();
 
   scope: Scope = {
     title: "",
     content: {},
-    contents: [],
+    sections: [],
     params: {},
   };
 
@@ -52,14 +52,17 @@ export class BlogEntryPageComponent extends PageComponent {
       const post = await BlogService.getInstance().getPost(
         this.scope.params.slug
       );
-      this.scope.content = post;
+      if (post) {
+        this.scope.sections = await this.blog.getSections(post);
+        this.scope.content = post;
+      }
     } catch (error) {
       this.throw(error);
     }
 
     console.debug("content", this.scope.content);
     this.scope.title = this.scope.content.title;
-    this.scope.contents = this.scope.content.content;
+
     await super.afterBind();
   }
 

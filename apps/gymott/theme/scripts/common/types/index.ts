@@ -1,4 +1,6 @@
 export * from "./awaited";
+export * from "./home-news";
+export * from "./dynamic-zone-section";
 export * from "./navigation-link";
 export * from "./response-error";
 export * from "./search-item";
@@ -7,6 +9,7 @@ export * from "./search-result";
 export * from "./section-content-image";
 export * from "./section-content-text";
 export * from "./section-facts";
+export * from "./section-gallery-slideshow";
 export * from "./section-slideshow-entry";
 export * from "./section-slideshow";
 export * from "./section";

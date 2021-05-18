@@ -10,5 +10,6 @@ export { NewsService } from "./news";
 export { PageService } from "./page";
 export { SchoolSubjectService } from "./school-subject";
 export { SearchService } from "./search";
+export { SectionsService } from "./sections";
 export { SuggestService } from "./suggest";
 export { ToolbarService } from "./toolbar";

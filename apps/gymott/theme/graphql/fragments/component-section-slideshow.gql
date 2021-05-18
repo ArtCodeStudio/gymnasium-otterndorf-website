@@ -1,0 +1,5 @@
+fragment ComponentSectionSlideshowFragment on ComponentSectionSlideshow {
+  slideshow {
+    id
+  }
+}

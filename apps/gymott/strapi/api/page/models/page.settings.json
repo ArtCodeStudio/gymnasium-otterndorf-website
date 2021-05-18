@@ -24,7 +24,9 @@
       "type": "dynamiczone",
       "components": [
         "content.image",
-        "content.text"
+        "content.text",
+        "section.slideshow",
+        "section.gallery-slideshow"
       ]
     },
     "calendar_key": {

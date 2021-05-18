@@ -1,0 +1,11 @@
+#import "./gallery.gql"
+
+fragment ComponentSectionGallerySlideshowFragment on ComponentSectionGallerySlideshow {
+  id
+  limit
+  gallery {
+    ... on Gallery {
+      ...GalleryFragment
+    }
+  }
+}

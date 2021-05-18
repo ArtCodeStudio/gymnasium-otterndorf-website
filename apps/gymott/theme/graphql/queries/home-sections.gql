@@ -1,29 +1,9 @@
-
-#import "../fragments/component-section-facts.gql"
-#import "../fragments/component-content-text.gql"
-#import "../fragments/component-content-image.gql"
+#import "../fragments/home.gql"
 
 query homeSections {
   home {
-    sections {
-      __typename
-      ... on ComponentSectionSlideshow {
-        slideshow {
-          id
-        }
-      }
-      ... on ComponentSectionFacts {
-        ...ComponentSectionFactsFragment
-      }
-      ... on ComponentHomeNews {
-        amount
-      }
-      ... on ComponentContentText {
-        ...ComponentContentTextFragment
-      }
-      ... on ComponentContentImage {
-        ...ComponentContentImageFragment
-      }
+    ... on Home {
+      ...HomeFragment
     }
   }
 }

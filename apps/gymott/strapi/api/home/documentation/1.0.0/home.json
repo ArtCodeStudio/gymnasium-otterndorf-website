@@ -331,7 +331,9 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
@@ -374,7 +376,9 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
@@ -422,7 +426,9 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
@@ -445,7 +451,9 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
@@ -535,13 +543,95 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
                       "type": "string"
                     },
                     "amount": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "gallery": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "images": {
+                          "type": "component"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "dates": {
                       "type": "integer"
                     }
                   },
@@ -569,7 +659,9 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
@@ -612,7 +704,9 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
@@ -660,7 +754,9 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
@@ -683,7 +779,9 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
@@ -773,13 +871,95 @@
                         "section.facts",
                         "content.text",
                         "content.image",
-                        "home.news"
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
                       ]
                     },
                     "id": {
                       "type": "string"
                     },
                     "amount": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "gallery": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "images": {
+                          "type": "component"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "dates": {
                       "type": "integer"
                     }
                   },

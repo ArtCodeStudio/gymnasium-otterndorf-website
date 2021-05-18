@@ -1,12 +1,13 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./page.component.pug";
 import { PageService } from "../../services";
+import { Section } from "../../../common/types";
 
 export interface Scope {
   title: string;
   params: PagePageComponent["ctx"]["params"];
   assets: any[];
-  content: any;
+  sections: Section[];
   blogEntries: any[];
   calendarKey: string;
   page: any;
@@ -17,7 +18,7 @@ export class PagePageComponent extends PageComponent {
   public _debug = false;
   protected autobind = true;
 
-  protected pageService = PageService.getInstance();
+  protected page = PageService.getInstance();
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
@@ -25,7 +26,7 @@ export class PagePageComponent extends PageComponent {
     assets: [],
     blogEntries: [],
     params: {},
-    content: {},
+    sections: [],
     calendarKey: "",
   };
 
@@ -50,8 +51,9 @@ export class PagePageComponent extends PageComponent {
   protected async beforeBind() {
     this.head.title = "You are " + this.ctx.params.slug;
     try {
-      const page = await this.pageService.get(this.ctx.params.slug);
+      const page = await this.page.get(this.ctx.params.slug);
       this.scope.page = page;
+
       // TODO move to custom strapi model and remove from page?
       this.scope.calendarKey = page?.["calendar_key"] || "";
 
@@ -60,9 +62,9 @@ export class PagePageComponent extends PageComponent {
         if (page?.title) {
           this.scope.title = page?.title;
         }
-        if (page?.content) {
-          this.scope.content = page.content;
-        }
+
+        this.scope.sections = await this.page.getSections(page);
+
         if (page?.assets) {
           for (const asset of page.assets) {
             console.debug(asset);

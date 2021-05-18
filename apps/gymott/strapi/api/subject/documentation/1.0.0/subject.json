@@ -570,7 +570,9 @@
                       "type": "string",
                       "enum": [
                         "content.image",
-                        "content.text"
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow"
                       ]
                     },
                     "id": {
@@ -657,7 +659,9 @@
                       "type": "string",
                       "enum": [
                         "content.image",
-                        "content.text"
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow"
                       ]
                     },
                     "id": {
@@ -665,6 +669,100 @@
                     },
                     "text": {
                       "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "gallery": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "images": {
+                          "type": "component"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slideshow": {
+                      "required": [
+                        "id",
+                        "title"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "entries": {
+                          "type": "dynamiczone"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -707,7 +805,9 @@
                       "type": "string",
                       "enum": [
                         "content.image",
-                        "content.text"
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow"
                       ]
                     },
                     "id": {
@@ -794,7 +894,9 @@
                       "type": "string",
                       "enum": [
                         "content.image",
-                        "content.text"
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow"
                       ]
                     },
                     "id": {
@@ -802,6 +904,100 @@
                     },
                     "text": {
                       "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "gallery": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "images": {
+                          "type": "component"
+                        },
+                        "published_at": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slideshow": {
+                      "required": [
+                        "id",
+                        "title"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "entries": {
+                          "type": "dynamiczone"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
                     }
                   },
                   "required": [

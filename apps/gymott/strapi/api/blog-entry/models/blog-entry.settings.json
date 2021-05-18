@@ -22,7 +22,9 @@
       "type": "dynamiczone",
       "components": [
         "content.text",
-        "content.image"
+        "content.image",
+        "section.gallery-slideshow",
+        "section.slideshow"
       ]
     },
     "blog_category": {

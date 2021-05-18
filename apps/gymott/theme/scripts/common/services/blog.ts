@@ -3,12 +3,15 @@ import {
   ResponseError,
   StrapiGqlBlogEntriesBySlugsQuery,
   StrapiGqlBlogEntriesBySlugsQueryVariables,
+  StrapiGqlBlogEntryFragmentFragment,
+  DynamicZoneSection,
 } from "../../common/types";
+import { SectionsService } from "./sections";
 import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-by-slugs.gql";
 
 export class BlogService {
   protected graphql = GraphQLClient.getInstance();
-
+  protected static sections = SectionsService.getInstance();
   protected static instance: BlogService;
 
   protected constructor() {
@@ -42,5 +45,14 @@ export class BlogService {
       throw error;
     }
     return posts[0];
+  }
+
+  async getSections(schoolSubject: StrapiGqlBlogEntryFragmentFragment) {
+    if (schoolSubject?.content) {
+      const DynamicZoneSections = (schoolSubject?.content ||
+        []) as DynamicZoneSection[];
+      return BlogService.sections.transform(DynamicZoneSections);
+    }
+    return [];
   }
 }
