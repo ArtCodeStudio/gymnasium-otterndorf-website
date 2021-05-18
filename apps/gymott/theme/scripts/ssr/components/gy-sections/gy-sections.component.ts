@@ -5,7 +5,7 @@ import { Section } from "../../../common/types";
 
 export interface Scope {
   sections?: Section[];
-  getSectionClass: GySectionsComponent["getSectionClass"];
+  getSectionColumnClass: GySectionsComponent["getSectionColumnClass"];
 }
 
 export class GySectionsComponent extends Component {
@@ -14,7 +14,7 @@ export class GySectionsComponent extends Component {
   protected autobind = true;
 
   scope: Scope = {
-    getSectionClass: this.getSectionClass,
+    getSectionColumnClass: this.getSectionColumnClass,
   };
 
   static get observedAttributes(): string[] {
@@ -29,12 +29,12 @@ export class GySectionsComponent extends Component {
     super();
   }
 
-  public getSectionClass(section: Section) {
+  public getSectionColumnClass(section: Section) {
     switch (section.__typename) {
       case "ComponentHomeNews":
         return "col-12 col-md-8";
       case "ComponentSectionFacts":
-        return "col-12 col-md-4";
+        return "col-12 col-md-4 mx-auto";
       case "ComponentHomeCalendar":
         return "col-12 col-md-4";
       default:

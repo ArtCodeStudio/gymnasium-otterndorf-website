@@ -4,14 +4,20 @@ gy-section-gallery-slideshow {
     display: block;
     bs5-slideshow {
         background: $gallery-background-gradient;
-        img {
+        img, .card {
             user-select: none;
+            -webkit-user-drag: none;
+        }
+        img {
             pointer-events: none;
             object-fit: cover;
         }
         .slideshow-controls, .slideshow-indicators {
             bs5-icon {
                 color: white;
+            }
+            &:focus {
+                box-shadow: none;
             }
         }
         .slideshow-row {

@@ -1,8 +1,8 @@
 bs5-slideshow(xs-controls="false" xs-indicators="true" xs-drag="true" xs-control-prev-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-control-next-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="true" xs-autoplay-interval="10000")
-    .row.slideshow-row
-        .slide.col-12.p-0(ssr-rv-each-entry="section.entries")
-            .row.mx-0.h-100(ssr-rv-add-class="entry.color | theme-bg-class")
-                .px-0.col-12.col-md-8
+    .row.slideshow-row.gx-0
+        .slide.col-12(ssr-rv-each-entry="section.entries")
+            .row.gx-0.h-100(ssr-rv-add-class="entry.color | theme-bg-class")
+                .col-12.col-md-8
                     .ratio.ratio-4x3
                         img.img-fluid.w-100(lazyload="lazy" ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt="entry.image.alternativeText")
                 .p-4.pb-5.col-12.col-md-4.slide-caption-custom(ssr-rv-add-class="entry.color | theme-bg-text-class")
@@ -11,7 +11,7 @@ bs5-slideshow(xs-controls="false" xs-indicators="true" xs-drag="true" xs-control
 
     template(type="indicators")
         .row.slideshow-indicators(csr-rv-if="activeBreakpoint.indicators" csr-rv-add-class="indicatorsPositionClass")
-            .col-12.col-md-4.pe-md-0.ms-md-auto
+            .col-12.col-md-4.ms-md-auto
                 .row
                     .col.py-3.indicators.cursor-pointer(csr-rv-each-slide="items" csr-rv-class-active="slide.active" csr-rv-class-next="%slide% | eq nextIndex" csr-rv-class-inactive="%slide% | eq nextIndex | or slide.active | not" csr-rv-on-click="goTo | args slide.index")
                         .progress(csr-rv-if="slide.active")

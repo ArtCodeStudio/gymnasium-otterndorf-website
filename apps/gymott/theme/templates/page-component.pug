@@ -32,7 +32,8 @@ html(lang='en')
           gy-search-result.fixed-top
         router-view#main(listen-all-links="true")
           ssr-root-page
-    gy-footer
+        #layout-bottom
+          gy-footer
     script.
       window.env = {};
       window.env.STRAPI_EXTERN_URL = "#{env.STRAPI_EXTERN_URL}";

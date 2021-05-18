@@ -1,5 +1,7 @@
-.row.px-0 
-  .col-6
-    a(ssr-rv-href="mapLink")
-      img.img-fluid(ssr-rv-src="mapImageUrl | strapi" ssr-rv-alt="mapImageAlt")
-  .col-6.contact-info(ssr-rv-text="contactInfo")
+.container-fluid.container-xxl
+  .row
+    .col-12.col-md-6.px-0
+      a(ssr-rv-href="mapLink")
+        img.img-fluid(ssr-rv-src="mapImageUrl | strapi" ssr-rv-alt="mapImageAlt")
+    .col-12.col-md-6.px-md-0
+      .py-3.p-md-3.contact-info(ssr-rv-text="contactInfo")
