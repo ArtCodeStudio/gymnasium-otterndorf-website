@@ -1,14 +1,8 @@
 h2.section-heading Kalender
 ul 
-  li 
+  li(ssr-rv-each-entry="calendarEntries")
     .event
-      p.event-name Zeugnisse
-      p.event-date 28.06.2021 
-  li
-    .event
-      p.event-name Sommerferien
-      p.event-date 27.06.2021 bis 04.08.2021
-  li 
-    .event
-      p.event-name Winterferien
-      p.event-date 22.12.2021 bis 06.01.2022
+      p.event-name [ entry.summary]
+      .event-date
+        span [ entry.start | dateFormat "DD.MM.YYYY" ]
+        span.event-date(ssr-rv-if="entry.sameDay | not") &nbsp;bis [ entry.end | dateFormat "DD.MM.YYYY" ]
