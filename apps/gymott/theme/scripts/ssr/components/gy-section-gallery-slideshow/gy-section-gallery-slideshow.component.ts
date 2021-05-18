@@ -31,10 +31,10 @@ export class GySectionGallerySlideshowComponent extends Component {
   }
 
   protected async afterBind() {
-    console.debug(
-      "[gy-section-gallery-slideshow] this.scope.section",
-      this.scope.section
-    );
+    // console.debug(
+    //   "[gy-section-gallery-slideshow] this.scope.section",
+    //   this.scope.section
+    // );
     await super.afterBind();
   }
 
