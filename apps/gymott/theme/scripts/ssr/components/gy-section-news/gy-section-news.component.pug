@@ -1,10 +1,26 @@
 .row
-  h2.col-12.section-heading Aktuelles
-  .col-12.col-lg-6(ssr-rv-each-item="news")
-    .card.hover-card-sm.mb-3
-      img(ssr-rv-if="item.image.url" ssr-rv-src="item.image.url | strapi" class="card-img-top" ssr-rv-alt="item.image.altText")
-      .card-body  
-        h6.card-subtitle.mb-2.text-success(ssr-rv-text="item.typeName")
-        h5.card-title(ssr-rv-text="item.title")
-        span.card-text 
-          | [ item.date ] von [ item.author ]
+  .col-8.row 
+    h2.col-12.section-heading Aktuelles
+    .col-12.col-lg-6(ssr-rv-each-item="news")
+      a.card.hover-card-sm.mb-3(ssr-rv-href="item.slug | prepend '/post/'")
+        img(ssr-rv-if="item.image.url" ssr-rv-src="item.image.url | strapi" class="card-img-top" ssr-rv-alt="item.image.altText")
+        .card-body  
+          h6.card-subtitle.mb-2.text-success(ssr-rv-text="item.typeName")
+          h5.card-title(ssr-rv-text="item.title")
+          span.card-text 
+            | [ item.createdAt | dateFormat "DD.MM.YYYY" ] von <u>[ item.author ]</u>
+  .col-4
+    h2.section-heading Kalender
+    ul 
+      li 
+        div
+          span Zeugnisse
+          span 28.06.2021 
+      li
+        div
+          span Sommerferien
+          span 27.06.2021 bis 04.08.2021
+      li 
+        div
+          span Winterferien
+          span 22.12.2021 bis 06.01.2022

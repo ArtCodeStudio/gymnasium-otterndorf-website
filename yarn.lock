@@ -2845,6 +2845,7 @@ __metadata:
     "@ribajs/i18n": next
     "@ribajs/iconset": next
     "@ribajs/masonry": "workspace:packages/riba/packages/masonry"
+    "@ribajs/moment": "workspace:packages/riba/packages/moment"
     "@ribajs/router": next
     "@ribajs/ssr": next
     "@ribajs/tsconfig": next

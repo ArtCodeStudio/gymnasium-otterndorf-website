@@ -11,6 +11,9 @@ import * as commonBinders from "../common/binders";
 import * as commonComponents from "../common/components";
 import * as commonFormatters from "../common/formatters";
 
+// Moment
+import { DateFormatFormatter } from "@ribajs/moment";
+
 // Own
 import * as pageComponents from "./pages";
 import * as components from "./components";
@@ -56,6 +59,7 @@ riba.module.component.regists({
 });
 riba.module.binder.regists({ ...commonBinders, ...binders });
 riba.module.formatter.regists({ ...commonFormatters, ...formatters });
+riba.module.formatter.regists({ DateFormatFormatter });
 
 // const localesService = new LocalesStaticService(locales, undefined, false);
 // window.riba.module.regist(i18nModule.init({ localesService }));

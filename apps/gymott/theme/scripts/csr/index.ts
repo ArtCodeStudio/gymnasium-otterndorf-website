@@ -13,6 +13,9 @@ import * as commonBinders from "../common/binders";
 import * as commonComponents from "../common/components";
 import * as commonFormatters from "../common/formatters";
 
+// Moment
+import { DateFormatFormatter } from "@ribajs/moment";
+
 // Own
 import * as components from "./components";
 import * as binders from "./binders";
@@ -49,6 +52,8 @@ export class CSRApp {
     this.riba.module.component.regists({ ...commonComponents, ...components });
     this.riba.module.binder.regists({ ...commonBinders, ...binders });
     this.riba.module.formatter.regists({ ...commonFormatters, ...formatters });
+
+    this.riba.module.formatter.regists({ DateFormatFormatter });
 
     // Regist modules
     this.riba.module.regist(coreModule.init());

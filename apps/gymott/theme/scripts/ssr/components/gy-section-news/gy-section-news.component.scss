@@ -3,4 +3,13 @@ gy-section-news {
     max-height: 180px;
     object-fit: cover;
   }
+
+  .card-text {
+    color: $gray-600 !important;
+    text-underline-offset: 3px;
+  } 
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
