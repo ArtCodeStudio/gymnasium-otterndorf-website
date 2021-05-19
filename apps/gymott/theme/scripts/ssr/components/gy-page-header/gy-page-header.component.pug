@@ -9,7 +9,7 @@ nav(rv-if="header.breadcrumbs | size" aria-label="breadcrumb")
 h1(rv-text="header.title")
 
 small(rv-if="header.teachers | size")
-  | Unterrichtet von 
+  | Unterrichtet von  
   span(rv-each-teacher="header.teachers")
     a(rv-href="teacher.slug | teacher")
       span(rv-text="teacher.first_name")
@@ -20,3 +20,7 @@ small(rv-if="header.teachers | size")
 
 small(rv-if="header.updatedAt")
   span(rv-text="header.updatedAt | moment-locale 'de' | calendar")
+  span(rv-if="header.author")
+    |  
+small(rv-if="header.author")
+  | von [header.author]

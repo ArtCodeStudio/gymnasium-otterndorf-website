@@ -532,6 +532,7 @@
             "items": {
               "required": [
                 "id",
+                "name",
                 "slug"
               ],
               "properties": {

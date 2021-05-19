@@ -1672,7 +1672,7 @@ export type StrapiGqlTeacher = {
   created_at: Scalars['DateTime'];
   updated_at: Scalars['DateTime'];
   image?: Maybe<StrapiGqlUploadFile>;
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
   first_name?: Maybe<Scalars['String']>;
   slug: Scalars['String'];
   subjects?: Maybe<Array<Maybe<StrapiGqlSubject>>>;
@@ -1754,7 +1754,7 @@ export type StrapiGqlTeacherGroupBy = {
 
 export type StrapiGqlTeacherInput = {
   image?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
   first_name?: Maybe<Scalars['String']>;
   subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
   slug: Scalars['String'];
@@ -2856,10 +2856,10 @@ export type StrapiGqlUpdateUserPayload = {
 
 export type StrapiGqlBlogEntryFragmentFragment = (
   { __typename?: 'BlogEntry' }
-  & Pick<StrapiGqlBlogEntry, 'id' | 'title' | 'slug' | 'created_at' | 'updated_at' | 'published_at'>
+  & Pick<StrapiGqlBlogEntry, 'id' | 'title' | 'slug' | 'created_at' | 'updated_at' | 'published_at' | 'author'>
   & { blog_category?: Maybe<(
     { __typename?: 'BlogCategory' }
-    & Pick<StrapiGqlBlogCategory, 'name'>
+    & Pick<StrapiGqlBlogCategory, 'slug' | 'name'>
   )>, content?: Maybe<Array<Maybe<(
     { __typename: 'ComponentContentText' }
     & StrapiGqlComponentContentTextFragmentFragment

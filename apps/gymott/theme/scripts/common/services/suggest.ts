@@ -4,6 +4,8 @@ import { SuggestResult } from "../types/suggest-result";
 
 export class SuggestService {
   protected static instance: SuggestService;
+  protected host =
+    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_INTERN_URL || "";
 
   protected constructor() {
     /** protected */
@@ -26,7 +28,7 @@ export class SuggestService {
   }
 
   public async get(word: string) {
-    const url = "/api/suggest/" + encodeURIComponent(word);
+    const url = this.host + "/api/suggest/" + encodeURIComponent(word);
     return defaultCache.resolve<SuggestResult[]>(
       url,
       async () => {

@@ -517,6 +517,7 @@
       "Teacher": {
         "required": [
           "id",
+          "name",
           "slug"
         ],
         "properties": {
@@ -642,6 +643,7 @@
       },
       "NewTeacher": {
         "required": [
+          "name",
           "slug"
         ],
         "properties": {

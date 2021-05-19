@@ -1,12 +1,12 @@
 import { PageComponent } from "@ribajs/ssr";
 import { BlogService } from "../../../services";
-import { Section } from "../../../../common/types";
+import { Section, PageHeader } from "../../../../common/types";
 import pugTemplate from "./blog-entry.component.pug";
 
 export interface Scope {
   title: string;
-  content: any;
   sections: Section[];
+  header: PageHeader | Record<string, never>;
   params: BlogEntryPageComponent["ctx"]["params"];
 }
 
@@ -19,8 +19,8 @@ export class BlogEntryPageComponent extends PageComponent {
 
   scope: Scope = {
     title: "",
-    content: {},
     sections: [],
+    header: {},
     params: {},
   };
 
@@ -44,9 +44,6 @@ export class BlogEntryPageComponent extends PageComponent {
 
   protected async beforeBind() {
     await super.beforeBind();
-  }
-
-  protected async afterBind() {
     this.scope.params = this.ctx.params;
     try {
       const post = await BlogService.getInstance().getPost(
@@ -54,15 +51,15 @@ export class BlogEntryPageComponent extends PageComponent {
       );
       if (post) {
         this.scope.sections = await this.blog.getSections(post);
-        this.scope.content = post;
+        this.scope.title = post.title;
+        this.scope.header = this.blog.getPostHeader(post);
       }
     } catch (error) {
       this.throw(error);
     }
+  }
 
-    console.debug("content", this.scope.content);
-    this.scope.title = this.scope.content.title;
-
+  protected async afterBind() {
     await super.afterBind();
   }
 

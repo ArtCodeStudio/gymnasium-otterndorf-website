@@ -6,4 +6,5 @@ export interface PageHeader {
   breadcrumbs: Breadcrumb[];
   teachers?: TeacherBasic[];
   updatedAt?: string;
+  author?: string;
 }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/19/2021 9:38:32 AM"
+    "x-generation-date": "05/19/2021 1:00:46 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -11760,6 +11760,7 @@
             "items": {
               "required": [
                 "id",
+                "name",
                 "slug"
               ],
               "properties": {
@@ -12259,6 +12260,7 @@
       "Teacher": {
         "required": [
           "id",
+          "name",
           "slug"
         ],
         "properties": {
@@ -12384,6 +12386,7 @@
       },
       "NewTeacher": {
         "required": [
+          "name",
           "slug"
         ],
         "properties": {

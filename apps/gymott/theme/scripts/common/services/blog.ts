@@ -5,8 +5,10 @@ import {
   StrapiGqlBlogEntriesBySlugsQueryVariables,
   StrapiGqlBlogEntryFragmentFragment,
   DynamicZoneSection,
-} from "../../common/types";
+  PageHeader,
+} from "../types";
 import { SectionsService } from "./sections";
+import { postFormatter, blogFormatter } from "../formatters";
 import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-by-slugs.gql";
 
 export class BlogService {
@@ -47,12 +49,45 @@ export class BlogService {
     return posts[0];
   }
 
-  async getSections(schoolSubject: StrapiGqlBlogEntryFragmentFragment) {
-    if (schoolSubject?.content) {
-      const DynamicZoneSections = (schoolSubject?.content ||
-        []) as DynamicZoneSection[];
+  async getSections(post: StrapiGqlBlogEntryFragmentFragment) {
+    if (post?.content) {
+      const DynamicZoneSections = (post?.content || []) as DynamicZoneSection[];
       return BlogService.sections.transform(DynamicZoneSections);
     }
     return [];
+  }
+
+  getPostHeader(post: StrapiGqlBlogEntryFragmentFragment): PageHeader {
+    const header: PageHeader = {
+      title: post.title || "",
+      breadcrumbs: [
+        {
+          label: "Startseite",
+          url: "/",
+          active: false,
+        },
+        {
+          label: "Blog",
+          active: false,
+        },
+      ],
+      updatedAt: post.updated_at || post.created_at,
+      author: post.author || undefined,
+    };
+
+    if (post.blog_category?.name) {
+      header.breadcrumbs.push({
+        label: post.blog_category.name,
+        url: blogFormatter.read(post.blog_category.slug),
+      });
+    }
+
+    header.breadcrumbs.push({
+      label: post.title,
+      active: true,
+      url: postFormatter.read(post.slug),
+    });
+
+    return header;
   }
 }

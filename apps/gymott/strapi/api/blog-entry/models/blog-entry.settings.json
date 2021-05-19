@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "blog_entries",
   "info": {
-    "name": "Blog Eintrag",
+    "name": "Blog Post",
     "displayName": "Blog Einträge",
     "description": ""
   },
@@ -11,6 +11,7 @@
     "timestamps": true,
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "title": {
       "type": "string",

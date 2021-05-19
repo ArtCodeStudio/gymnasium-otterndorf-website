@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "blog_categories",
   "info": {
-    "name": "Blog Kategorie",
+    "name": "Blog",
     "displayName": "Blog Kategorien",
     "description": ""
   },
@@ -11,6 +11,7 @@
     "timestamps": true,
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string",
@@ -22,7 +23,8 @@
     },
     "slug": {
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "name"
     }
   }
 }

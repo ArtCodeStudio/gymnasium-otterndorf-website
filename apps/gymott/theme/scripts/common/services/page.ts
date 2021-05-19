@@ -58,7 +58,6 @@ export class PageService {
   }
 
   getHeader(page: StrapiGqlPageFragmentFragment): PageHeader {
-    console.debug("[PageService] getHeader updated_at", page.updated_at);
     const header: PageHeader = {
       title: page.title || "",
       breadcrumbs: [

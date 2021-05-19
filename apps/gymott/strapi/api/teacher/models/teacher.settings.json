@@ -24,7 +24,8 @@
       "pluginOptions": {}
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "first_name": {
       "type": "string"
