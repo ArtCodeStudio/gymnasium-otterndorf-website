@@ -624,9 +624,6 @@
                 "slug": {
                   "type": "uid"
                 },
-                "published_at": {
-                  "type": "string"
-                },
                 "created_by": {
                   "type": "string"
                 },
@@ -638,6 +635,10 @@
           },
           "slug": {
             "type": "uid"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -661,6 +662,10 @@
           },
           "slug": {
             "type": "uid"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/19/2021 1:00:46 PM"
+    "x-generation-date": "05/19/2021 5:47:32 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7894,9 +7894,6 @@
                         "images": {
                           "type": "component"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -8031,9 +8028,6 @@
                   "items": {
                     "type": "string"
                   }
-                },
-                "published_at": {
-                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -8211,9 +8205,6 @@
                         },
                         "images": {
                           "type": "component"
-                        },
-                        "published_at": {
-                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"
@@ -8513,10 +8504,6 @@
                 }
               }
             }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -8614,10 +8601,6 @@
                 }
               }
             }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -8909,9 +8892,6 @@
                         },
                         "images": {
                           "type": "component"
-                        },
-                        "published_at": {
-                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"
@@ -9238,9 +9218,6 @@
                         "images": {
                           "type": "component"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -9519,9 +9496,6 @@
                         "slug": {
                           "type": "uid"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -9587,9 +9561,6 @@
                           "items": {
                             "type": "string"
                           }
-                        },
-                        "published_at": {
-                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"
@@ -9826,9 +9797,6 @@
                         "slug": {
                           "type": "uid"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -9894,9 +9862,6 @@
                           "items": {
                             "type": "string"
                           }
-                        },
-                        "published_at": {
-                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"
@@ -10267,9 +10232,6 @@
                         "images": {
                           "type": "component"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -10465,10 +10427,6 @@
                 }
               }
             }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -10672,9 +10630,6 @@
                         "images": {
                           "type": "component"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -10803,10 +10758,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -11223,9 +11174,6 @@
                           "items": {
                             "type": "string"
                           }
-                        },
-                        "published_at": {
-                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"
@@ -11682,9 +11630,6 @@
                             "type": "string"
                           }
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -11784,6 +11729,9 @@
                 },
                 "slug": {
                   "type": "uid"
+                },
+                "published_at": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -11940,9 +11888,6 @@
                         "images": {
                           "type": "component"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -12008,10 +11953,6 @@
           },
           "slug": {
             "type": "uid"
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -12176,9 +12117,6 @@
                         "images": {
                           "type": "component"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -12244,10 +12182,6 @@
           },
           "slug": {
             "type": "uid"
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -12367,9 +12301,6 @@
                 "slug": {
                   "type": "uid"
                 },
-                "published_at": {
-                  "type": "string"
-                },
                 "created_by": {
                   "type": "string"
                 },
@@ -12381,6 +12312,10 @@
           },
           "slug": {
             "type": "uid"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -12404,6 +12339,10 @@
           },
           "slug": {
             "type": "uid"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"

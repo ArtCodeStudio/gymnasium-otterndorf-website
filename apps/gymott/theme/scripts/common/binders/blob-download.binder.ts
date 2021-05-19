@@ -15,6 +15,7 @@ export const blobDownloadBinder: Binder<string> = {
       const data = await fetch(url);
       const blob = await data.blob();
       const objectUrl = URL.createObjectURL(blob);
+      el.setAttribute("href", objectUrl);
       console.debug("objectUrl", objectUrl);
     });
   },
