@@ -1,6 +1,6 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { PageService } from "../../../common/services";
+import { FooterService } from "../../../common/services";
 import pugTemplate from "./gy-footer.component.pug";
 
 export interface Scope {
@@ -31,7 +31,7 @@ export class GyFooterComponent extends Component {
   }
 
   protected async beforeBind() {
-    const footerObject = await PageService.getInstance().getFooter();
+    const footerObject = await FooterService.getInstance().get();
     if (footerObject.footer?.contact_info) {
       this.scope.contactInfo = footerObject.footer?.contact_info;
     }

@@ -1,6 +1,7 @@
 export { BlogService } from "./blog";
 export * from "./cache";
 export { CalendarService } from "./calendar";
+export { FooterService } from "./footer";
 export { GalleryService } from "./gallery";
 export { GraphQLClient } from "./graphql";
 export { GyHomeService } from "./home";

@@ -4,14 +4,12 @@ import {
   StrapiGqlPageBySlugsQueryVariables,
   ResponseError,
   StrapiGqlPageFragmentFragment,
-  StrapiGqlFooterQuery,
   DynamicZoneSection,
   PageHeader,
-} from "../../common/types";
+} from "../types";
 import { SectionsService } from "./sections";
 import { pageFormatter } from "../formatters";
 import pageBySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
-import footerQuery from "../../../graphql/queries/footer.gql";
 
 export class PageService {
   protected graphql = GraphQLClient.getInstance();
@@ -82,9 +80,5 @@ export class PageService {
       updatedAt: page.updated_at || page.created_at,
     };
     return header;
-  }
-
-  getFooter(): Promise<StrapiGqlFooterQuery> {
-    return this.graphql.requestCached<StrapiGqlFooterQuery>(footerQuery);
   }
 }
