@@ -1,0 +1,7 @@
+#import "../fragments/media-center.gql"
+
+query mediaCenterBySlugs ($slugs: [String]!) {
+  mediaCenters(start: 0, limit: 50, where: { slug: $slugs }) {
+    ...MediaCenterFragment
+  }
+} 

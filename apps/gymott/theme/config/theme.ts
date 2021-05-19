@@ -36,6 +36,10 @@ export const themeConfig: ThemeConfig = {
       component: "gallery-page",
     },
     {
+      path: ["/media-center/:slug", "/mediathek/:slug"],
+      component: "media-center-page",
+    },
+    {
       path: ["/sitemap"],
       component: "sitemap-page",
     },

@@ -75,6 +75,7 @@
     "@gymott/common": "workspace:apps/gymott/common",
     "@ribajs/bs5": "next",
     "@ribajs/bs5-photoswipe": "workspace:packages/riba/packages/bs5-photoswipe",
+    "@ribajs/content-slider": "workspace:packages/riba/packages/content-slider",
     "@ribajs/core": "next",
     "@ribajs/events": "workspace:packages/riba/packages/events",
     "@ribajs/extras": "^1.9.0",

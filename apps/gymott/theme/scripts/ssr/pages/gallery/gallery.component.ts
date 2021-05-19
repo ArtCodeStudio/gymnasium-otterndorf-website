@@ -9,7 +9,7 @@ import {
 export interface Scope {
   title: string;
   params: GalleryPageComponent["ctx"]["params"];
-  images: StrapiGqlGalleryFragmentFragment["images"] | null;
+  images: StrapiGqlGalleryFragmentFragment["images"];
   thumbFormat: StrapiImageFormatType;
   fullFormat: StrapiImageFormatType;
   defaultColumnClasses: string;
@@ -22,12 +22,12 @@ export class GalleryPageComponent extends PageComponent {
   public _debug = false;
   protected autobind = true;
 
-  protected galleryService = GalleryService.getInstance();
+  protected gallery = GalleryService.getInstance();
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
     params: {},
-    images: null,
+    images: [],
     thumbFormat: "small",
     fullFormat: "large",
     defaultColumnClasses: "col-12 col-md-6 col-lg-3 col-xxl-2",
@@ -63,7 +63,7 @@ export class GalleryPageComponent extends PageComponent {
   protected async beforeBind() {
     this.head.title = this.ctx.params.slug + " Gallery";
     try {
-      const gallery = await this.galleryService.get(this.ctx.params.slug);
+      const gallery = await this.gallery.get(this.ctx.params.slug);
       console.debug("gallery", gallery);
 
       if (gallery) {

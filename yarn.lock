@@ -2858,6 +2858,7 @@ __metadata:
     "@ribajs/babel-config": next
     "@ribajs/bs5": next
     "@ribajs/bs5-photoswipe": "workspace:packages/riba/packages/bs5-photoswipe"
+    "@ribajs/content-slider": "workspace:packages/riba/packages/content-slider"
     "@ribajs/core": next
     "@ribajs/eslint-config": next
     "@ribajs/events": "workspace:packages/riba/packages/events"

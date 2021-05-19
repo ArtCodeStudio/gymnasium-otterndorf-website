@@ -69,6 +69,7 @@ riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 // Regist modules
 riba.module.regist(coreModule.init({}));
 riba.module.regist(SSRModule.init({}));
+
 riba.module.formatter.regists({
   CalendarFormatter,
   LocaleFormatter,

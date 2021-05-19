@@ -40,6 +40,9 @@
       "type": "uid",
       "targetField": "name",
       "required": true
+    },
+    "biography": {
+      "type": "richtext"
     }
   }
 }

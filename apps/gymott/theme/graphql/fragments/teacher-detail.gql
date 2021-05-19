@@ -5,6 +5,7 @@ fragment TeacherDetailFragment on Teacher {
   slug
   name
   first_name
+  biography
   image {
     formats
   }

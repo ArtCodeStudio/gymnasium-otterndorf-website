@@ -4,6 +4,7 @@ export { BlogEntryPageComponent } from "./blog/entry/blog-entry.component";
 export { BlogPageComponent } from "./blog/blog.component";
 export { GalleryPageComponent } from "./gallery/gallery.component";
 export { IndexPageComponent } from "./index/index.component";
+export { MediaCenterPageComponent } from "./media-center/media-center.component";
 export { PagePageComponent } from "./page/page.component";
 export { SchoolSubjectPageComponent } from "./school-subject/school-subject.component";
 export { SitemapPageComponent } from "./sitemap/sitemap.component";

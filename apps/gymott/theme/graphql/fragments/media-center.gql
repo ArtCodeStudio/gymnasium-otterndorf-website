@@ -1,0 +1,12 @@
+#import "./component-media-center-movie.gql"
+
+fragment MediaCenterFragment on MediaCenter {
+  id
+  slug
+  title
+  movies {
+    ... on ComponentMediaCenterMovie {
+      ...ComponentMediaCenterMovieFragment
+    }
+  }
+}

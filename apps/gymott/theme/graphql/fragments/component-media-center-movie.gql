@@ -1,0 +1,11 @@
+fragment ComponentMediaCenterMovieFragment on ComponentMediaCenterMovie {
+  id
+  title
+  caption
+  movie {
+    formats
+  }
+  poster {
+    formats
+  }
+}

@@ -5,7 +5,7 @@
         img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
         .card-body
           h2.card-title(rv-text="fullName")
-          p.card-text Cupcake ipsum dolor. Sit amet sugar plum jelly beans candy. Marzipan pastry fruitcake cupcake toffee. Soufflé liquorice pudding muffin.
+          p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
         strong.card-header
           | Fächer
         .list-group.list-group-flush

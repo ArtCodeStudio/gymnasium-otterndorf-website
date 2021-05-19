@@ -4,15 +4,18 @@
       h1.text-center(ssr-rv-template="title")
   section.row
     .col-12
-      h2.text-center Seiten
+      h2.text-center(rv-show="pages | size") Seiten
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-each-page="pages" rv-href="page.slug | page" rv-text="page.title")
-      h2.text-center Blog-Artikel
+      h2.text-center(rv-show="blogPosts | size") Blog-Artikel
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-each-post="blogPosts" rv-href="post.slug | post" rv-text="post.title")
-      h2.text-center Schulfächer
+      h2.text-center(rv-show="subjects | size") Schulfächer
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-each-subject="subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
-      h2.text-center Galerien
+      h2.text-center(rv-show="galleries | size") Galerien
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-each-gallery="galleries" rv-href="gallery.slug | gallery" rv-text="gallery.title")
+      h2.text-center(rv-show="mediaCenters | size") Mediatheken
+      .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-each-media-center="mediaCenters" rv-href="media-center.slug | media-center" rv-text="media-center.title" rv-debug="media-center | json")

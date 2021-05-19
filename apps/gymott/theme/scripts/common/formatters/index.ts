@@ -1,6 +1,7 @@
 export * from "./blog";
 export * from "./gallery";
 export * from "./markdown";
+export * from "./media-center";
 export * from "./nest";
 export * from "./page";
 export * from "./post";

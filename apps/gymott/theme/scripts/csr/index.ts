@@ -1,7 +1,7 @@
 import { ready } from "@ribajs/utils/src/dom";
 import { Riba, View, coreModule } from "@ribajs/core";
 import { extrasModule } from "@ribajs/extras";
-
+import { contentSliderModule } from "@ribajs/content-slider";
 import { routerModule } from "@ribajs/router";
 import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 import { bs5Module } from "@ribajs/bs5";
@@ -71,6 +71,7 @@ export class CSRApp {
       LocaleFormatter,
       DateFormatFormatter,
     });
+    this.riba.module.regist(contentSliderModule.init({}));
 
     this.view = this.riba.bind(document.body, this.model);
 

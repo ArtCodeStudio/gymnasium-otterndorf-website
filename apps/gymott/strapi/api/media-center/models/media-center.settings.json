@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_centers",
+  "info": {
+    "name": "Media Center"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "movies": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media-center.movie",
+      "max": 1
+    }
+  }
+}

@@ -6,6 +6,7 @@ export { GalleryService } from "./gallery";
 export { GraphQLClient } from "./graphql";
 export { GyHomeService } from "./home";
 export { MarkdownService } from "./markdown";
+export { MediaCenterService } from "./media-center";
 export { NavigationService } from "./navigation";
 export { NewsService } from "./news";
 export { PageService } from "./page";
