@@ -109,6 +109,8 @@ export class GySearchResultComponent extends Component {
         return "Artikel";
       case "blog":
         return "Blog";
+      case "schoolSubject":
+        return "Schulfach";
     }
   }
 

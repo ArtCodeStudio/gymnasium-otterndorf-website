@@ -1,1 +1,1 @@
-export type Namespace = 'nav' | 'page' | 'post' | 'blog';
+export type Namespace = 'nav' | 'page' | 'post' | 'blog' | 'schoolSubject';

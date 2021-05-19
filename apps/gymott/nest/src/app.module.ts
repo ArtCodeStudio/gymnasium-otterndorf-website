@@ -15,6 +15,7 @@ import { CalendarService } from './api/calendar/calendar.service';
 import { NavService } from './api/nav/nav.service';
 import { PageService } from './api/page/page.service';
 import { PostService } from './api/post/post.service';
+import { SchoolSubjectService } from './api/school-subject/school-subject.service';
 import { MarkdownService } from './api/markdown/markdown.service';
 
 @Module({
@@ -34,7 +35,10 @@ import { MarkdownService } from './api/markdown/markdown.service';
     NavService,
     PageService,
     PostService,
+    SchoolSubjectService,
     MarkdownService,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  /**/
+}

@@ -5,4 +5,5 @@ export const REF_KEYS: RefKeys = {
   nav: 'id',
   page: 'slug',
   post: 'slug',
+  schoolSubject: 'slug',
 };

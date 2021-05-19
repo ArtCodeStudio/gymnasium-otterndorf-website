@@ -5,6 +5,7 @@ import { StrapiService } from '../strapi/strapi.service';
 import { NavService } from '../nav';
 import { PageService } from '../page';
 import { PostService } from '../post';
+import { SchoolSubjectService } from '../school-subject';
 import type { LunrExt, Namespace } from './types';
 import { REF_KEYS } from './constants';
 
@@ -23,12 +24,14 @@ export class SearchService implements OnModuleInit {
     protected readonly nav: NavService,
     protected readonly page: PageService,
     protected readonly post: PostService,
+    protected readonly subject: SchoolSubjectService,
   ) {
     this.initLunrPlugins();
     this.initPage();
     this.initNav();
     this.initPost();
     this.initBlog();
+    this.initSchoolSubject();
   }
 
   protected initLunrPlugins() {
@@ -109,6 +112,24 @@ export class SearchService implements OnModuleInit {
     });
   }
 
+  protected initSchoolSubject() {
+    const ns: Namespace = 'schoolSubject';
+
+    this.suggest.create(ns);
+    this.suggest.ignore(ns, IGNORE_SUGGESTION_WORDS);
+
+    this.lunr.create(ns, {
+      fields: { title: { boost: 2 }, text: {} },
+      ref: REF_KEYS[ns],
+      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      data: {
+        include: true,
+        highlight: true,
+        shorten: true,
+      },
+    });
+  }
+
   public async refreshPage() {
     const ns: Namespace = 'page';
     const pages = await this.page.list();
@@ -154,11 +175,26 @@ export class SearchService implements OnModuleInit {
     // TODO
   }
 
+  public async refreshSchoolSubject() {
+    const ns: Namespace = 'schoolSubject';
+    const subjects = await this.subject.list();
+
+    // console.debug(ns, JSON.stringify(subjects, null, 2));
+
+    for (const subject of subjects) {
+      this.lunr.add(ns, subject);
+      this.suggest.load(ns, subject.title, { reset: false });
+      this.suggest.load(ns, subject.text, { reset: false });
+    }
+    this.lunr.buildIndex(ns);
+  }
+
   public async refresh() {
     this.refreshPage();
     this.refreshNav();
     this.refreshPost();
     this.refreshBlog();
+    this.refreshSchoolSubject();
   }
 
   onModuleInit() {

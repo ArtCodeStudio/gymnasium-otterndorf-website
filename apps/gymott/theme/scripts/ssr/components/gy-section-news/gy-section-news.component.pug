@@ -7,4 +7,4 @@
         h6.card-subtitle.mb-2.text-success(ssr-rv-text="item.typeName")
         h5.card-title(ssr-rv-text="item.title")
         span.card-text.text-muted
-          | [ item.createdAt | moment-locale 'de' | calendar ] von <u>[ item.author ]</u>
+          | [ item.createdAt | moment-locale 'de' | calendar | capitalize ] von <u>[ item.author ]</u>
