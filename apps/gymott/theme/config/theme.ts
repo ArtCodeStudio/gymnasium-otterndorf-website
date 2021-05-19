@@ -39,6 +39,10 @@ export const themeConfig: ThemeConfig = {
       path: ["/sitemap"],
       component: "sitemap-page",
     },
+    {
+      path: ["/teacher/:slug", "/lehrer/:slug"],
+      component: "teacher-page",
+    },
   ],
   errorRoutes: {
     404: {

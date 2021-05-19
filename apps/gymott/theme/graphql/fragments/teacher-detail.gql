@@ -1,0 +1,16 @@
+#import "./school-subject-basic.gql"
+
+fragment TeacherDetailFragment on Teacher {
+  id
+  slug
+  name
+  first_name
+  image {
+    formats
+  }
+  subjects {
+    ... on Subject {
+      ...SchoolSubjectBasicFragment
+    }
+  }
+}

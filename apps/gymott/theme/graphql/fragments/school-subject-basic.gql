@@ -1,0 +1,5 @@
+fragment SchoolSubjectBasicFragment on Subject {
+  id
+  slug
+  title
+}

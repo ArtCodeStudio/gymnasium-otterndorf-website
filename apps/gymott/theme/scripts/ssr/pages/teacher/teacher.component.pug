@@ -1,0 +1,12 @@
+.container.py-4
+  .row.my-5
+    .col-12.col-md-4.mx-auto
+      .card.hover-card
+        img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
+        .card-body
+          h2.card-title(rv-text="fullName")
+          p.card-text Cupcake ipsum dolor. Sit amet sugar plum jelly beans candy. Marzipan pastry fruitcake cupcake toffee. Soufflé liquorice pudding muffin.
+        strong.card-header
+          | Fächer
+        .list-group.list-group-flush
+          a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")

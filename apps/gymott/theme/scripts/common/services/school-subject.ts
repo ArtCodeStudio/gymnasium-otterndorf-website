@@ -70,6 +70,7 @@ export class SchoolSubjectService {
             first_name: teacher.first_name || "",
             id: teacher.id || "",
             name: teacher.name || "",
+            slug: teacher.slug || "",
           });
         }
       }

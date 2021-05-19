@@ -7,3 +7,4 @@ export { IndexPageComponent } from "./index/index.component";
 export { PagePageComponent } from "./page/page.component";
 export { SchoolSubjectPageComponent } from "./school-subject/school-subject.component";
 export { SitemapPageComponent } from "./sitemap/sitemap.component";
+export { TeacherPageComponent } from "./teacher/teacher.component";

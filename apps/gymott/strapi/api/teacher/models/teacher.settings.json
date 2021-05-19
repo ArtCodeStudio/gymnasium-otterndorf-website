@@ -34,6 +34,11 @@
       "targetColumnName": "Lehrer",
       "via": "teachers",
       "collection": "subject"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     }
   }
 }

@@ -12,4 +12,5 @@ export { SchoolSubjectService } from "./school-subject";
 export { SearchService } from "./search";
 export { SectionsService } from "./sections";
 export { SuggestService } from "./suggest";
+export { TeacherService } from "./teacher";
 export { ToolbarService } from "./toolbar";

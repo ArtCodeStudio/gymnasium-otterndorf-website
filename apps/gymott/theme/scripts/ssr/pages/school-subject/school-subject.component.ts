@@ -5,14 +5,14 @@ import {
   StrapiGqlSchoolSubjectFragmentFragment,
   Section,
   PageHeader,
-  StrapiGqlTeacherBasicFragmentFragment,
+  TeacherBasic,
 } from "../../../common/types";
 
 export interface Scope {
   title: string;
   params: SchoolSubjectPageComponent["ctx"]["params"];
   sections: Section[];
-  teachers: StrapiGqlTeacherBasicFragmentFragment[];
+  teachers: TeacherBasic[];
   header: PageHeader | Record<string, never>;
   schoolSubject: StrapiGqlSchoolSubjectFragmentFragment | null;
 }

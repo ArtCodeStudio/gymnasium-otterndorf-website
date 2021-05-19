@@ -516,7 +516,8 @@
     "schemas": {
       "Teacher": {
         "required": [
-          "id"
+          "id",
+          "slug"
         ],
         "properties": {
           "id": {
@@ -633,10 +634,16 @@
                 }
               }
             }
+          },
+          "slug": {
+            "type": "uid"
           }
         }
       },
       "NewTeacher": {
+        "required": [
+          "slug"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -649,6 +656,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "slug": {
+            "type": "uid"
           },
           "created_by": {
             "type": "string"

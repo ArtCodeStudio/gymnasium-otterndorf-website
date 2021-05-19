@@ -8,6 +8,7 @@ export * from "./school-subject";
 export * from "./strapi-image-url";
 export * from "./strapi-image";
 export * from "./strapi";
+export * from "./teacher";
 export * from "./theme-bg-btn-outline-class";
 export * from "./theme-bg-class";
 export * from "./theme-bg-text-class";

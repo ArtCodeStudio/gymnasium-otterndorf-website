@@ -11,9 +11,9 @@ h1(rv-text="header.title")
 small(rv-if="header.teachers | size")
   | Unterrichtet von 
   span(rv-each-teacher="header.teachers")
-    span(rv-text="teacher.first_name")
-    span(rv-if="teacher.first_name")
-      | 
-    span(rv-text="teacher.name")
-    span(rv-if="teacher.first_name")
+    a(rv-href="teacher.slug | teacher")
+      span(rv-text="teacher.first_name")
+      span(rv-if="teacher.first_name")
+        | 
+      span(rv-text="teacher.name")
     span(rv-if="header.teachers | size | minus 1 | gt %teacher%") , 
