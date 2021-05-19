@@ -17,3 +17,6 @@ small(rv-if="header.teachers | size")
         | 
       span(rv-text="teacher.name")
     span(rv-if="header.teachers | size | minus 1 | gt %teacher%") , 
+
+small(rv-if="header.updatedAt")
+  span(rv-text="header.updatedAt | moment-locale 'de' | calendar")

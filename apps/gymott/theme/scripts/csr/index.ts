@@ -7,14 +7,16 @@ import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 import { bs5Module } from "@ribajs/bs5";
 import { bs5PhotoswipeModule } from "@ribajs/bs5-photoswipe";
 import { masonryModule } from "@ribajs/masonry";
+import {
+  CalendarFormatter,
+  LocaleFormatter,
+  DateFormatFormatter,
+} from "@ribajs/moment";
 
 // Common
 import * as commonBinders from "../common/binders";
 import * as commonComponents from "../common/components";
 import * as commonFormatters from "../common/formatters";
-
-// Moment
-import { DateFormatFormatter } from "@ribajs/moment";
 
 // Own
 import * as components from "./components";
@@ -54,8 +56,6 @@ export class CSRApp {
     this.riba.module.binder.regists({ ...commonBinders, ...binders });
     this.riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 
-    this.riba.module.formatter.regists({ DateFormatFormatter });
-
     // Regist modules
     this.riba.module.regist(coreModule.init());
     this.riba.module.regist(extrasModule.init());
@@ -66,6 +66,11 @@ export class CSRApp {
     this.riba.module.regist(bs5Module.init());
     this.riba.module.regist(bs5PhotoswipeModule);
     this.riba.module.regist(masonryModule);
+    this.riba.module.formatter.regists({
+      CalendarFormatter,
+      LocaleFormatter,
+      DateFormatFormatter,
+    });
 
     this.view = this.riba.bind(document.body, this.model);
 

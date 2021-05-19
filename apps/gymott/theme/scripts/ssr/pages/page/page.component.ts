@@ -1,16 +1,21 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./page.component.pug";
 import { PageService } from "../../services";
-import { Section } from "../../../common/types";
+import {
+  Section,
+  StrapiGqlPageFragmentFragment,
+  PageHeader,
+} from "../../../common/types";
 
 export interface Scope {
   title: string;
   params: PagePageComponent["ctx"]["params"];
   assets: any[];
   sections: Section[];
+  header: PageHeader | Record<string, never>;
   blogEntries: any[];
   calendarKey: string;
-  page: any;
+  page: StrapiGqlPageFragmentFragment | Record<string, never>;
 }
 
 export class PagePageComponent extends PageComponent {
@@ -27,6 +32,7 @@ export class PagePageComponent extends PageComponent {
     blogEntries: [],
     params: {},
     sections: [],
+    header: {},
     calendarKey: "",
   };
 
@@ -51,9 +57,11 @@ export class PagePageComponent extends PageComponent {
   protected async beforeBind() {
     try {
       const page = await this.page.get(this.ctx.params.slug);
-      this.scope.page = page;
+      if (page) {
+        this.scope.page = page;
+      }
 
-      // TODO move to custom strapi model and remove from page?
+      // TODO @Daniel?
       this.scope.calendarKey = page?.["calendar_key"] || "";
 
       console.debug("page", page);
@@ -63,6 +71,8 @@ export class PagePageComponent extends PageComponent {
         }
 
         this.scope.sections = await this.page.getSections(page);
+
+        this.scope.header = this.page.getHeader(page);
 
         if (page?.assets) {
           for (const asset of page.assets) {
@@ -77,6 +87,7 @@ export class PagePageComponent extends PageComponent {
             this.scope.blogEntries.push(blogEntry);
           }
         }
+
         // TODO
         // if (page?.["blog_categories"]) {
         //   if (page?.["blog_categories"]["blog_entries"] !== undefined) {

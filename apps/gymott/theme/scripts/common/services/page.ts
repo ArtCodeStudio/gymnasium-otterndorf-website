@@ -6,8 +6,10 @@ import {
   StrapiGqlPageFragmentFragment,
   StrapiGqlFooterQuery,
   DynamicZoneSection,
+  PageHeader,
 } from "../../common/types";
 import { SectionsService } from "./sections";
+import { pageFormatter } from "../formatters";
 import pageBySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
 import footerQuery from "../../../graphql/queries/footer.gql";
 
@@ -55,6 +57,31 @@ export class PageService {
       return PageService.sections.transform(DynamicZoneSections);
     }
     return [];
+  }
+
+  getHeader(page: StrapiGqlPageFragmentFragment): PageHeader {
+    console.debug("[PageService] getHeader updated_at", page.updated_at);
+    const header: PageHeader = {
+      title: page.title || "",
+      breadcrumbs: [
+        {
+          label: "Startseite",
+          url: "/",
+          active: false,
+        },
+        {
+          label: "Unterseite",
+          active: false,
+        },
+        {
+          label: page.title,
+          active: true,
+          url: pageFormatter.read(page.slug),
+        },
+      ],
+      updatedAt: page.updated_at || page.created_at,
+    };
+    return header;
   }
 
   getFooter(): Promise<StrapiGqlFooterQuery> {

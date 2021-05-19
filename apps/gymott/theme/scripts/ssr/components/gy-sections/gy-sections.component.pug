@@ -1,6 +1,5 @@
 
 .row
-    //- ssr-rv-class-row="section.size | eq 12 | or section.size"
     section(ssr-rv-each-section='sections' ssr-rv-class="getSectionColumnClass | call section")
         .row(ssr-rv-if="getIndexForPageHeader | call | eq %section%")
             gy-page-header.col-12.my-4(ssr-rv-co-header="header")
@@ -17,4 +16,4 @@
         .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentHomeNews'") 
             gy-section-news.col-12(ssr-rv-co-section="section")
         .row.my-3.justify-content-center(ssr-rv-if="section.__typename | eq 'ComponentHomeCalendar'") 
-            gy-section-calendar.col-auto(ssr-rv-co-section="section")
+            gy-section-calendar.col-12.col-md-auto(ssr-rv-co-section="section")

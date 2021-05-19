@@ -3,6 +3,11 @@ import "../common/@types";
 import { SSRModule } from "@ribajs/ssr";
 import { Riba, coreModule } from "@ribajs/core";
 import { Bs5IconComponent, bs5Module } from "@ribajs/bs5";
+import {
+  CalendarFormatter,
+  LocaleFormatter,
+  DateFormatFormatter,
+} from "@ribajs/moment";
 // import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 // import { ready } from "@ribajs/utils/src/dom";
 
@@ -10,9 +15,6 @@ import { Bs5IconComponent, bs5Module } from "@ribajs/bs5";
 import * as commonBinders from "../common/binders";
 import * as commonComponents from "../common/components";
 import * as commonFormatters from "../common/formatters";
-
-// Moment
-import { DateFormatFormatter } from "@ribajs/moment";
 
 // Own
 import * as pageComponents from "./pages";
@@ -60,7 +62,6 @@ riba.module.component.regists({
 });
 riba.module.binder.regists({ ...commonBinders, ...binders });
 riba.module.formatter.regists({ ...commonFormatters, ...formatters });
-riba.module.formatter.regists({ DateFormatFormatter });
 
 // const localesService = new LocalesStaticService(locales, undefined, false);
 // window.riba.module.regist(i18nModule.init({ localesService }));
@@ -68,6 +69,11 @@ riba.module.formatter.regists({ DateFormatFormatter });
 // Regist modules
 riba.module.regist(coreModule.init({}));
 riba.module.regist(SSRModule.init({}));
+riba.module.formatter.regists({
+  CalendarFormatter,
+  LocaleFormatter,
+  DateFormatFormatter,
+});
 
 console.log("Hello from Riba");
 
