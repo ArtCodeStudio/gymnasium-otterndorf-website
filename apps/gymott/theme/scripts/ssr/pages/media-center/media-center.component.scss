@@ -27,9 +27,7 @@ media-center-page {
     background: $media-center-background-gradient;
     min-height: 100vh;
   }
-
-  .container-fluid, .row, [class^='col'] {
-    overflow: visible;
+  rv-video {
+    color: $media-center-color;
   }
-
 }

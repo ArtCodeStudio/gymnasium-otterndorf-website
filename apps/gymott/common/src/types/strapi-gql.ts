@@ -3072,7 +3072,7 @@ export type StrapiGqlComponentMediaCenterMovieFragmentFragment = (
   & Pick<StrapiGqlComponentMediaCenterMovie, 'id' | 'title' | 'caption'>
   & { movie?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
+    & Pick<StrapiGqlUploadFile, 'url'>
   )>, poster?: Maybe<(
     { __typename?: 'UploadFile' }
     & Pick<StrapiGqlUploadFile, 'formats'>

@@ -1,12 +1,13 @@
-.container-fluid.py-5.px-md-5
+//- See apps/gymott/theme/scripts/csr/components/media-center-page/media-center-page.component.ts
+//- For Client side logic
+.container-fluid
   .row
     .col-12
-      content-slider
+      content-slider(csr-rv-parent)
         //- Items
-        .template(rv-each-movie="movies" rv-image-src="movie.poster | strapi-image-url fullFormat")
+        .template(rv-each-movie="movies" rv-image-src="movie.poster | strapi-image-url fullFormat" rv-data="movie.movie | json")
           h2.display-3(rv-html="movie.title")
           p(rv-html="movie.caption | markdown")
-          button.btn.btn-outline-white Play
         //- Custom content-slide template
         .row
           .wrapper.py-5.col-12(csr-rv-touch-events csr-rv-on-swipeleft='next' csr-rv-on-swiperight='prev')
@@ -19,4 +20,14 @@
                   bs5-icon(src='/iconset/svg/arrow_carrot_alt.svg' direction='left' size='32')
                 button.next.btn.btn-link.p-1.d-flex.align-items-center(csr-rv-show='controls' role='button' csr-rv-on-click='next' csr-rv-disabled='index | plus 1 | eq items.length')
                   bs5-icon(src='/iconset/svg/arrow_carrot_alt.svg' direction='right' size='32')
-              .capture.my-5.my-md-0.col.scrollbar-dark(csr-rv-html='activeItem.content')
+              .capture.my-5.my-md-0.col.scrollbar-dark
+                div(csr-rv-html='activeItem.content')
+                button.btn.btn-outline-white(csr-rv-on-click="$parent.play | args activeItem" csr-rv-debug="$parent | json") Play
+    .col-12
+      rv-video(csr-rv-co-video-src="currentVideoSrc")
+        video(playsinline webkit-playsinline autoplay muted loop)
+          span Your browser does not support the video tag.
+        .video-custom-controls(csr-rv-hide='controls')
+          bs5-icon.video-volume-high(csr-rv-hide='muted' csr-rv-on-click='toggleMute' size='50' src='/iconset/svg/icon_volume-high_alt.svg')
+          bs5-icon.video-volume-mute(csr-rv-show='muted' csr-rv-on-click='toggleMute' size='50' src='/iconset/svg/icon_vol-mute_alt.svg')
+        bs5-icon.video-default-controls-show(csr-rv-class-default-controls-visible='controls' csr-rv-on-click='toggleControls' direction='right' size='50' src='/iconset/svg/icon_adjust.svg')

@@ -3,7 +3,7 @@ fragment ComponentMediaCenterMovieFragment on ComponentMediaCenterMovie {
   title
   caption
   movie {
-    formats
+    url
   }
   poster {
     formats
