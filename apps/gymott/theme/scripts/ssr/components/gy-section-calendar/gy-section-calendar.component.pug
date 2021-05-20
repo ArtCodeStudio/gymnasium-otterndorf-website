@@ -4,5 +4,5 @@ ul
     .event
       p.event-name [ entry.summary]
       .event-date
-        span [ entry.start | moment-locale 'de' | calendar | capitalize ]
-        span.event-date(ssr-rv-if="entry.sameDay | not") &nbsp;bis [ entry.end | moment-locale 'de' | calendar ]
+        span [ entry.start | moment-locale 'de' | calendar | capitalize | remove-empty-clock ]
+        span.event-date(ssr-rv-if="entry.sameDay | not") &nbsp;bis [ entry.end | moment-locale 'de' | calendar | remove-empty-clock ]

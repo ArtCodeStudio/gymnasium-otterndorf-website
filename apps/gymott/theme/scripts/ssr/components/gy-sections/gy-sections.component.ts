@@ -62,7 +62,7 @@ export class GySectionsComponent extends Component {
       case "ComponentHomeNews":
         return "col-12 col-md-8 mx-auto";
       case "ComponentSectionFacts":
-        return "col-12 col-md-4 mx-auto";
+        return "col-12";
       case "ComponentHomeCalendar":
         return "col-12 col-md-4 mx-auto";
       default:

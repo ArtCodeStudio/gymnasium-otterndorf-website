@@ -33,12 +33,14 @@ export class GySectionCalendarComponent extends Component {
 
   protected async beforeBind() {
     this.scope.calendarEntries = await CalendarService.getInstance().get();
+
     if (this.scope.section?.dates) {
       this.scope.calendarEntries = this.scope.calendarEntries.slice(
         0,
         this.scope.section.dates
       );
     }
+
     this.scope.calendarEntries.forEach((e: any) => {
       if (!e.end || !e.start) return;
       const start = new Date(e.start);
