@@ -1,5 +1,12 @@
 import { Component } from "@ribajs/core";
-import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
+import { hasChildNodesTrim } from "@ribajs/utils";
+import {
+  Bs5SidebarComponent,
+  Bs5SlideshowComponent,
+  TOGGLE_BUTTON,
+  SlideshowState,
+} from "@ribajs/bs5";
+import { GyNavSlideComponent } from "../gy-nav-slide/gy-nav-slide.component";
 import { NavigationService } from "../../services";
 import pugTemplate from "./gy-right-sidebar.component.pug";
 import { Awaited } from "../../../common/types";
@@ -12,7 +19,9 @@ export class GyRightSidebarComponent extends Component {
   public static tagName = "gy-right-sidebar";
   public _debug = false;
   protected autobind = true;
-  protected sidebar: HTMLElement | null = null;
+  protected sidebar: Bs5SidebarComponent | null = null;
+  protected navSlide: GyNavSlideComponent | null = null;
+  protected slideshow: Bs5SlideshowComponent | null = null;
 
   scope: Scope = {
     navEntry: null,
@@ -26,19 +35,52 @@ export class GyRightSidebarComponent extends Component {
     super();
   }
 
+  protected setSidebarStateClassToBody(state: SlideshowState) {
+    const body = document.body;
+    body.classList.remove("gy-right-sidebar-hidden");
+    body.classList.remove("gy-right-sidebar-overlay-right");
+    body.classList.remove("gy-right-sidebar-side-right");
+    body.classList.remove("gy-right-sidebar-move-right");
+    body.classList.add("gy-right-sidebar-" + state);
+  }
+
+  protected _onSidebarToggle(state: SlideshowState) {
+    this.slideshow?.scrollToNearestSlide();
+    this.setSidebarStateClassToBody(state);
+  }
+
+  protected onSidebarToggle = this._onSidebarToggle.bind(this);
+
   protected async beforeBind() {
     await super.beforeBind();
     if (!this.scope.navEntry) {
       this.scope.navEntry = await NavigationService.getInstance().getMenu();
-      // this.setAttribute("nav-entry", JSON.stringify(this.scope.navEntry));
-      this.sidebar = this.querySelector("bs5-sidebar");
     }
 
+    // this.setAttribute("nav-entry", JSON.stringify(this.scope.navEntry));
     this.debug("navEntry", this.scope.navEntry);
   }
 
   protected async afterBind() {
     await super.afterBind();
+  }
+
+  protected async afterAllBind() {
+    this.sidebar = this.querySelector<Bs5SidebarComponent>(
+      Bs5SidebarComponent.tagName
+    );
+    this.navSlide = this.querySelector<GyNavSlideComponent>(
+      GyNavSlideComponent.tagName
+    );
+    this.slideshow =
+      this.navSlide?.querySelector<Bs5SlideshowComponent>(
+        Bs5SlideshowComponent.tagName
+      ) || null;
+    console.debug("sidebar", this.sidebar);
+    this.sidebar?.events?.on(
+      TOGGLE_BUTTON.eventNames.toggled,
+      this.onSidebarToggle
+    );
   }
 
   protected connectedCallback() {

@@ -18,6 +18,8 @@
 // Special template styles
 @import 'templates/index';
 
+@import 'body';
+
 // Custom components
 @import '../scripts/csr/components/index';
 @import '../scripts/ssr/components/index';
