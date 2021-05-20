@@ -33,12 +33,6 @@ export class MediaCenterService {
     for (const gallery of mediaCenters) {
       if (gallery?.movies) {
         for (const movie of gallery.movies) {
-          if (movie?.title) {
-            movie.title = "<strong>" + movie.title + "</strong>";
-          }
-          if (movie?.title && movie.caption) {
-            movie.caption = movie?.title + "<br />" + movie.caption;
-          }
           if (movie?.title && !movie.caption) {
             movie.caption = movie?.title;
           }

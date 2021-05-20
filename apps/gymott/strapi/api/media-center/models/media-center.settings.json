@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "media_centers",
   "info": {
-    "name": "Media Center"
+    "name": "Media Center",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -24,7 +25,7 @@
       "type": "component",
       "repeatable": true,
       "component": "media-center.movie",
-      "max": 1
+      "min": 1
     }
   }
 }

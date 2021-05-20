@@ -5,6 +5,7 @@ export * from "./media-center";
 export * from "./nest";
 export * from "./page";
 export * from "./post";
+export * from "./remove-empty-clock";
 export * from "./school-subject";
 export * from "./strapi-image-url";
 export * from "./strapi-image";

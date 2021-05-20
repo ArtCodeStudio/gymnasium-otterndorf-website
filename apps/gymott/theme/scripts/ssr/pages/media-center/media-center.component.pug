@@ -2,7 +2,7 @@
   .row
     .col-12
       content-slider
-        template(rv-each-movie="movies" rv-image-src="movie.poster | strapi-image-url fullFormat")
+        .template(rv-each-movie="movies" rv-image-src="movie.poster | strapi-image-url fullFormat")
           //- p.lead 29. June 2020 19.00h - 22.00h
-          h2.display-3(rv-text="movie.title")
-          p.lead(rv-text="movie.caption")
+          h2.display-3(rv-html="movie.title")
+          p.lead(rv-html="movie.caption | markdown")
