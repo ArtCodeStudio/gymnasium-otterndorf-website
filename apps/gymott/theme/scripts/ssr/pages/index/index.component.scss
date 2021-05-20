@@ -1,3 +1,6 @@
 index-page {
   display: block;
+  > .container-fluid {
+    background-color: $light;
+  }
 }

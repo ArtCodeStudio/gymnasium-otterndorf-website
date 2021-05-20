@@ -1,11 +1,22 @@
 gy-footer {
   display: block;
-  .footer {
-    background-color: $body-bg;
+  
+  .row {
+    background-color: $light;
   }
   
+  .footer-bottom {
+    bottom: 0;
+  }
+
   .contact-info {
     white-space: pre-line;
+  }
+
+  .brand-text {
+    line-height: 1;
+    font-size: 24px;
+    user-select: none;
   }
 }
 
