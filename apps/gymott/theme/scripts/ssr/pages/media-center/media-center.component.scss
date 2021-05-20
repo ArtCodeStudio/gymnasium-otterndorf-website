@@ -1,8 +1,35 @@
 media-center-page {
   display: block;
-  background: $white;
+  background: $media-center-background-color;
   min-height: 60vh;
   .template {
     display: none;
   }
+  .controls, .capture {
+    color: $media-center-color;
+  }
+  .capture .btn {
+    pointer-events: all;
+  }
+  .capture {
+    z-index: 1;
+    .btn {
+      pointer-events: all;
+    }
+  }
+  .controls .btn.btn-link {
+    color: $media-center-color;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  > .container-fluid {
+    background: $media-center-background-gradient;
+    min-height: 100vh;
+  }
+
+  .container-fluid, .row, [class^='col'] {
+    overflow: visible;
+  }
+
 }

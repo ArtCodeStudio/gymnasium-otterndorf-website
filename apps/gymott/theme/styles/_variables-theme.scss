@@ -19,3 +19,7 @@ $section-heading-underline-offset: 4px;
 $gallery-background-gradient: radial-gradient(circle, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
 $gallery-background-image: #c2c2c2 url('/images/bg-gallery.webp') repeat center center;
 $gallery-background-image-size: 100%;
+
+$media-center-background-color: $dark;
+$media-center-background-gradient: none; // radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(255, 255, 255, 0.4) 100%);
+$media-center-color: $white;
