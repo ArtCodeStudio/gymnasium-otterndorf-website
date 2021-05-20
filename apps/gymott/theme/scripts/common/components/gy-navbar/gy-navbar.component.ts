@@ -83,6 +83,12 @@ export class GyNavbarComponent extends Component {
     this._onResize();
   }
 
+  public hideIfViewport() {
+    if (this.bs5?.isActiveBreakpointSmallerThan("md")) {
+      this.hide();
+    }
+  }
+
   public showSidebar() {
     this.sidebar?.show();
   }
@@ -114,9 +120,8 @@ export class GyNavbarComponent extends Component {
       for (const searchResult of searchResults) {
         // -1 to prevent flashing on hight dpi screens
         searchResult.style.top = this.visibleHeight - 1 + "px";
-        searchResult.style.maxHeight = `calc(100vh - ${
-          this.visibleHeight - 1
-        }px)`;
+        searchResult.style.maxHeight = `calc(100vh - ${this.visibleHeight - 1
+          }px)`;
       }
     }
 
@@ -144,10 +149,22 @@ export class GyNavbarComponent extends Component {
 
   protected onResize = throttle(this._onResize.bind(this));
 
-  protected _onScrollUp(/*event: CustomEvent*/) {
-    if (this.bs5?.isActiveBreakpointSmallerThan("md")) {
-      this.hide();
+  protected _onScroll(event: Event | CustomEvent) {
+    const scrollPosition = (event as CustomEvent).detail.currentPosition;
+    // If position is top
+    if (scrollPosition.y <= this.height) {
+      this.show();
     }
+
+    // If position is bottom
+    if (scrollPosition.y + this.visibleHeight >= scrollPosition.maxY) {
+      this.hideIfViewport();
+    }
+  }
+  protected onScroll = this._onScroll.bind(this);
+
+  protected _onScrollUp(/*event: CustomEvent*/) {
+    this.hideIfViewport();
   }
   protected onScrollUp = this._onScrollUp.bind(this);
 
@@ -168,6 +185,7 @@ export class GyNavbarComponent extends Component {
 
   protected addEventListeners() {
     window.addEventListener("resize", this.onResize, { passive: true });
+    window.addEventListener("scrolling", this.onScroll);
     window.addEventListener("scrollup", this.onScrollUp);
     window.addEventListener("scrolldown", this.onScrollDown);
     this.bs5.events.on("breakpoint:changed", this.onBreakpointChanges, this);
@@ -175,6 +193,7 @@ export class GyNavbarComponent extends Component {
 
   protected removeEventListeners() {
     window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("scrolling", this.onScroll);
     window.removeEventListener("scrollup", this.onScrollUp);
     window.removeEventListener("scrolldown", this.onScrollDown);
     this.bs5.events.off("breakpoint:changed", this.onBreakpointChanges, this);

@@ -2,6 +2,7 @@
 $navbar-border-width: 1px;
 $navbar-border-style: solid;
 $navbar-border-color: shade-color($light, 10%);
+$navbar-transition: top .2s cubic-bezier(.7,0,.3,1) !default;
 
 $right-sidebar-bg-color: $blue;
 $right-sidebar-border-color: shade-color($right-sidebar-bg-color, 10%);
