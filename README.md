@@ -10,24 +10,19 @@ We are using yarn 2 because we make use of the workspace feature of yarn 2 for t
 
 We ignore Strapi in the workspace because it is currently not compatible with Yarn 2 PnP, so we use `npm` for this and excluded it from yarn's workspace (there is no other way to use npm instead of yarn 2 for this package).
 
-### Riba
+### Clone
 
-as long as we are working on riba in parallel, you need to clone riba to `../riba` (see `resolutions` in `./package.json` for the relative path):
+This repository has submodules, so you need to pulling the latest submodules, too:
 
 ```sh
-cd ..
-git clone git@github.com:ribajs/riba.git
+git clone https://github.com/ArtCodeStudio/riba-nest-projects.git
+git submodule update --init --recursive
 ```
 
-and keep the repo in sync by making a `git pull` regularly:
+If you have already pulled the repository with his submodules, you can just run:
 
 ```sh
-cd ../riba
-git pull
-yarn install
-cd ../riba-nest-projects
-yarn install
-yarn run build
+git pull --recurse-submodules
 ```
 
 ## Install dependencies
