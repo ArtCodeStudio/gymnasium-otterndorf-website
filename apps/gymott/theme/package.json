@@ -16,10 +16,6 @@
     "lint:ssr": "tsc -p tsconfig.ssr.json --noEmit",
     "lint:csr": "tsc -p tsconfig.json --noEmit"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ArtCodeStudio/shopify-app-developer-app"
-  },
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
   "license": "MIT",
   "devDependencies": {

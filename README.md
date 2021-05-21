@@ -16,6 +16,7 @@ This repository has submodules, so you need to pulling the latest submodules, to
 
 ```sh
 git clone https://github.com/ArtCodeStudio/riba-nest-projects.git
+cd riba-nest-projects
 git submodule update --init --recursive
 ```
 
