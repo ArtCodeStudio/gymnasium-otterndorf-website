@@ -44,7 +44,7 @@ export class IndexPageComponent extends PageComponent {
     } catch (error) {
       this.throw(error);
     }
-
+    document.body.classList.add(IndexPageComponent.tagName.toLowerCase());
     await super.beforeBind();
   }
 

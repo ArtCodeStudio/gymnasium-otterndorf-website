@@ -61,6 +61,7 @@ export class BlogEntryPageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
+    document.body.classList.add(BlogEntryPageComponent.tagName.toLowerCase());
   }
 
   protected template() {

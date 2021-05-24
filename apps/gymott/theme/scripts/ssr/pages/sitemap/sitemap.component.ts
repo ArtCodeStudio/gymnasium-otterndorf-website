@@ -102,6 +102,7 @@ export class SitemapPageComponent extends PageComponent {
 
   protected async beforeBind() {
     this.head.title = this.scope.title;
+    document.body.classList.add(SitemapPageComponent.tagName.toLowerCase());
 
     await this.getPages();
     await this.getBlogPosts();

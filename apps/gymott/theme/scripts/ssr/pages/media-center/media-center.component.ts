@@ -65,6 +65,7 @@ export class MediaCenterPageComponent extends PageComponent {
       this.throw(error);
     }
     this.head.title = this.scope.title;
+    document.body.classList.add(MediaCenterPageComponent.tagName.toLowerCase());
     await super.beforeBind();
   }
 

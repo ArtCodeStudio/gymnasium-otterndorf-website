@@ -78,6 +78,7 @@ export class GalleryPageComponent extends PageComponent {
       this.throw(error);
     }
     this.head.title = this.scope.title;
+    document.body.classList.add(GalleryPageComponent.tagName.toLowerCase());
     await super.beforeBind();
   }
 

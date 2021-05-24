@@ -76,7 +76,6 @@ export class GyRightSidebarComponent extends Component {
       this.navSlide?.querySelector<Bs5SlideshowComponent>(
         Bs5SlideshowComponent.tagName
       ) || null;
-    console.debug("sidebar", this.sidebar);
     this.sidebar?.events?.on(
       TOGGLE_BUTTON.eventNames.toggled,
       this.onSidebarToggle

@@ -115,6 +115,7 @@ export class PagePageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
+    document.body.classList.add(PagePageComponent.tagName.toLowerCase());
   }
 
   protected template() {

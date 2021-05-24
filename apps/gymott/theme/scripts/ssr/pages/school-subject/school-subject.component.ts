@@ -82,6 +82,9 @@ export class SchoolSubjectPageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
+    document.body.classList.add(
+      SchoolSubjectPageComponent.tagName.toLowerCase()
+    );
   }
 
   protected template() {

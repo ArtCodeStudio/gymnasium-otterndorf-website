@@ -48,6 +48,7 @@ export class NotFoundPageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
+    document.body.classList.add(NotFoundPageComponent.tagName.toLowerCase());
   }
 
   protected template() {

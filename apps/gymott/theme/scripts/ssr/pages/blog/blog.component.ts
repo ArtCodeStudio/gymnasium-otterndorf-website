@@ -42,6 +42,7 @@ export class BlogPageComponent extends PageComponent {
 
   protected async beforeBind() {
     await super.beforeBind();
+    document.body.classList.add(BlogPageComponent.tagName.toLowerCase());
     this.head.title = "You are " + this.ctx.params.slug;
   }
 

@@ -53,6 +53,9 @@ export class InternalErrorPageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
+    document.body.classList.add(
+      InternalErrorPageComponent.tagName.toLowerCase()
+    );
   }
 
   protected template() {

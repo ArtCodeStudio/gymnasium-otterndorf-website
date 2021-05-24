@@ -47,6 +47,7 @@ export class TeacherPageComponent extends PageComponent {
     }
     this.scope.fullName += this.scope.teacher?.name;
     this.head.title = this.scope.fullName;
+    document.body.classList.add(TeacherPageComponent.tagName.toLowerCase());
     await super.beforeBind();
   }
 
