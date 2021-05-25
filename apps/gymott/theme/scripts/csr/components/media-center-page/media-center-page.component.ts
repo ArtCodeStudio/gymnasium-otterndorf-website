@@ -1,4 +1,4 @@
-import { Component, VideoComponent, VideoComponentScope } from "@ribajs/core";
+import { Component, VideoComponent } from "@ribajs/core";
 import { FullscreenService } from "@ribajs/extras";
 import { SlideItem, ContentSliderComponent } from "@ribajs/content-slider";
 import { StrapiGqlComponentMediaCenterMovieFragmentFragment } from "../../../common/types";
@@ -10,10 +10,9 @@ export interface MediaCenterSlideItem extends SlideItem {
 export interface Scope {
   currentItem?: MediaCenterSlideItem;
   currentVideoSrc: string;
-  watch: boolean;
-  play: MediaCenterPageComponent["play"];
-  pause: MediaCenterPageComponent["pause"];
-  video: VideoComponentScope | Record<string, never>;
+  watching: boolean;
+  watch: MediaCenterPageComponent["watch"];
+  backToOverview: MediaCenterPageComponent["backToOverview"];
 }
 
 export class MediaCenterPageComponent extends Component {
@@ -27,10 +26,9 @@ export class MediaCenterPageComponent extends Component {
   scope: Scope = {
     currentItem: undefined,
     currentVideoSrc: "",
-    watch: false,
-    play: this.play.bind(this),
-    pause: this.pause.bind(this),
-    video: {},
+    watching: false,
+    watch: this.watch.bind(this),
+    backToOverview: this.backToOverview.bind(this),
   };
 
   static get observedAttributes(): string[] {
@@ -41,9 +39,9 @@ export class MediaCenterPageComponent extends Component {
     super();
   }
 
-  public play(item: MediaCenterSlideItem) {
-    console.debug("play", item.data?.url, this.scope.currentItem);
-    this.scope.watch = true;
+  public watch(item: MediaCenterSlideItem) {
+    console.debug("watch", item.data?.url, this.scope.currentItem);
+    this.scope.watching = true;
     if (!this.video) {
       this.throw(new Error("Video element not found!"));
       return;
@@ -51,18 +49,20 @@ export class MediaCenterPageComponent extends Component {
 
     this.video.reset();
     this.video.muted = false;
+    // this.video.controls = true;
     this.video.volume = 1;
     this.video.play();
-    this.fullscreen.enter();
+    this.fullscreen.enter(this);
   }
 
-  public pause() {
-    this.scope.watch = false;
+  public backToOverview() {
+    this.scope.watching = false;
     if (!this.video) {
       this.throw(new Error("Video element not found!"));
       return;
     }
     this.video.muted = true;
+    this.video.controls = false;
     this.fullscreen.exit();
   }
 
@@ -105,14 +105,12 @@ export class MediaCenterPageComponent extends Component {
     }
 
     this.video = this.querySelector<VideoComponent>(VideoComponent.tagName);
-    if (this.video) {
-      this.scope.video = this.video?.scope;
-    }
 
     await super.afterBind();
   }
 
   protected template() {
+    // See apps/gymott/theme/scripts/ssr/pages/media-center/media-center.component.pug
     return null;
   }
 }
