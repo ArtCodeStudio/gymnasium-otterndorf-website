@@ -1,0 +1,15 @@
+#import "./school-subject-basic.gql"
+
+fragment ComponentBlackboardSlideFragment on ComponentBlackboardSlide {
+  id
+  school_subject {
+    ... on Subject {
+      ...SchoolSubjectBasicFragment
+    }
+  }
+  image {
+    formats
+    alternativeText
+    url
+  }
+}

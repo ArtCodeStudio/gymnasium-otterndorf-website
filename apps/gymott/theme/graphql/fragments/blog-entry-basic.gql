@@ -1,0 +1,26 @@
+#import "./component-content-text.gql"
+#import "./component-content-image.gql"
+
+fragment BlogEntryBasicFragment on BlogEntry {
+  __typename
+  id
+  title
+  slug
+  created_at
+  updated_at
+  published_at
+  author
+  blog_category {
+    slug
+    name
+  }
+  content {
+    __typename
+    ... on ComponentContentImage {
+      ...ComponentContentImageFragment
+    }
+    ... on ComponentContentText {
+      ...ComponentContentTextFragment
+    }
+  }
+}

@@ -3,6 +3,7 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
 #import "./component-section-gallery-slideshow.gql"
+#import "./component-section-blackboard-slideshow.gql"
 
 fragment HomeFragment on Home {
   sections {
@@ -24,6 +25,9 @@ fragment HomeFragment on Home {
     }
     ... on ComponentSectionGallerySlideshow {
       ...ComponentSectionGallerySlideshowFragment
+    }
+    ... on ComponentSectionBlackboardSlideshow {
+      ...ComponentSectionBlackboardSlideshowFragment
     }
   }
 }

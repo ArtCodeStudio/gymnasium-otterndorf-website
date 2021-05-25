@@ -1,24 +1,23 @@
 import { PageComponent } from "@ribajs/ssr";
 import { GraphQLClient } from "../../services";
 import pugTemplate from "./blog.component.pug";
-import { replaceBodyPageClass } from "../../../common";
+import { Awaited, replaceBodyPageClass, BlogService } from "../../../common";
 
 export interface Scope {
-  title: string;
-  content: string;
   params: BlogPageComponent["ctx"]["params"];
+  posts: Awaited<ReturnType<BlogService["listPostsBasic"]>>;
 }
 
 export class BlogPageComponent extends PageComponent {
   public static tagName = "blog-page";
   public _debug = false;
   protected autobind = true;
+  protected blog = BlogService.getInstance();
 
   protected gql = GraphQLClient.getInstance();
 
   scope: Scope = {
-    title: "{params.slug | capitalize}",
-    content: "<p>We are {params.slug}!</a>",
+    posts: [],
     params: {},
   };
 
@@ -45,7 +44,9 @@ export class BlogPageComponent extends PageComponent {
   protected async beforeBind() {
     await super.beforeBind();
 
-    this.head.title = "You are " + this.ctx.params.slug;
+    this.scope.posts = await this.blog.listPostsBasic();
+
+    this.head.title = "Blog";
   }
 
   protected async afterBind() {

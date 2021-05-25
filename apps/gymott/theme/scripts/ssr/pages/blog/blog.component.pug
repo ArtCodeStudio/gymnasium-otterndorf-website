@@ -3,5 +3,5 @@
     .col-12
       h1(rv-template="title")
   section.row
-    .col-12
-      div(rv-template="content")
+    .col-12.col-sm-6.col-md-4(rv-each-item="posts")
+      blog-entry-item(rv-post="item")

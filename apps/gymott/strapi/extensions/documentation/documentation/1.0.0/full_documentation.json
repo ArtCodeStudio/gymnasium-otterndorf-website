@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/20/2021 9:36:25 AM"
+    "x-generation-date": "05/25/2021 3:31:35 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9157,7 +9157,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9202,7 +9203,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9252,7 +9254,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9277,7 +9280,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9369,7 +9373,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9394,7 +9399,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9446,7 +9452,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9454,6 +9461,144 @@
                     },
                     "dates": {
                       "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slides": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "image"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "school_subject": {
+                            "required": [
+                              "id",
+                              "title",
+                              "slug"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "teachers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "content": {
+                                "type": "dynamiczone"
+                              },
+                              "slug": {
+                                "type": "uid"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "image": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -9482,7 +9627,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9527,7 +9673,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9577,7 +9724,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9602,7 +9750,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9694,7 +9843,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9719,7 +9869,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9771,7 +9922,8 @@
                         "content.image",
                         "home.news",
                         "section.gallery-slideshow",
-                        "home.calendar"
+                        "home.calendar",
+                        "section.blackboard-slideshow"
                       ]
                     },
                     "id": {
@@ -9779,6 +9931,144 @@
                     },
                     "dates": {
                       "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slides": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "image"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "school_subject": {
+                            "required": [
+                              "id",
+                              "title",
+                              "slug"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "teachers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "content": {
+                                "type": "dynamiczone"
+                              },
+                              "slug": {
+                                "type": "uid"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "image": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -10317,7 +10607,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10343,7 +10634,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10397,7 +10689,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10463,7 +10756,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10488,7 +10782,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10552,7 +10847,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10579,6 +10875,70 @@
                         },
                         "slug": {
                           "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "link-type.web",
+                        "link-type.schulfach",
+                        "link-type.page",
+                        "link-type.strapi",
+                        "link-type.post",
+                        "link-type.blog",
+                        "link-type.teacher"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "teacher": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "image": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "first_name": {
+                          "type": "string"
+                        },
+                        "subjects": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "biography": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"
@@ -10618,7 +10978,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10644,7 +11005,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10698,7 +11060,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10764,7 +11127,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10789,7 +11153,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10853,7 +11218,8 @@
                         "link-type.page",
                         "link-type.strapi",
                         "link-type.post",
-                        "link-type.blog"
+                        "link-type.blog",
+                        "link-type.teacher"
                       ]
                     },
                     "id": {
@@ -10880,6 +11246,70 @@
                         },
                         "slug": {
                           "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "link-type.web",
+                        "link-type.schulfach",
+                        "link-type.page",
+                        "link-type.strapi",
+                        "link-type.post",
+                        "link-type.blog",
+                        "link-type.teacher"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "teacher": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "image": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "first_name": {
+                          "type": "string"
+                        },
+                        "subjects": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "biography": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"

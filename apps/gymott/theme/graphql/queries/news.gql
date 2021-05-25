@@ -1,20 +1,8 @@
+#import "../fragments/blog-entry-basic.gql"
+
 query News($amount: Int!) {
   blogEntries(sort:"created_at:desc", limit: $amount) {
-    __typename
-    created_at
-    title
-    slug
-    author
-    content {
-      __typename
-      ... on ComponentContentImage {
-        image {
-          alternativeText
-          url
-          formats
-        }
-      }
-    }
+    ...BlogEntryBasicFragment
   }
   # maybe also add pages with specific attribute later
   # pages(sort:"created_at:desc", limit: 2, where:"") {

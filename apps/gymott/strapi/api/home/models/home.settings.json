@@ -20,7 +20,8 @@
         "content.image",
         "home.news",
         "section.gallery-slideshow",
-        "home.calendar"
+        "home.calendar",
+        "section.blackboard-slideshow"
       ]
     }
   }

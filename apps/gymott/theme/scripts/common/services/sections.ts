@@ -86,7 +86,7 @@ export class SectionsService {
             if (
               sectionGallerySlideshow.gallery?.images?.length &&
               sectionGallerySlideshow.gallery.images.length >
-                sectionGallerySlideshow.limit
+              sectionGallerySlideshow.limit
             ) {
               sectionGallerySlideshow.gallery.images =
                 sectionGallerySlideshow.gallery.images.slice(
@@ -96,6 +96,9 @@ export class SectionsService {
             }
 
             sections.push(sectionGallerySlideshow);
+            break;
+          case "ComponentSectionBlackboardSlideshow":
+            console.debug("TODO @ Moritz");
             break;
           default:
             console.warn(

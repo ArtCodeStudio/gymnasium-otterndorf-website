@@ -4,6 +4,9 @@ import {
   StrapiGqlBlogEntriesBySlugsQuery,
   StrapiGqlBlogEntriesBySlugsQueryVariables,
   StrapiGqlBlogEntryFragmentFragment,
+  StrapiGqlBlogEntriesBasicBySlugsQuery,
+  StrapiGqlBlogEntriesBasicBySlugsQueryVariables,
+  StrapiGqlBlogEntryBasicFragmentFragment,
   DynamicZoneSection,
   PageHeader,
 } from "../types";
@@ -28,6 +31,47 @@ export class BlogService {
     return BlogService.instance;
   }
 
+  /**
+   * Shorter dataset for posts / news overview
+   */
+  public async listPostsBasic(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlBlogEntriesBasicBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    const blogRes =
+      await this.graphql.requestCached<StrapiGqlBlogEntriesBasicBySlugsQuery>(
+        blogEntriesBySlugsQuery,
+        vars
+      );
+    const blogEntries = blogRes.blogEntries || [];
+    return blogEntries;
+  }
+
+  protected getContent(
+    blogEntry:
+      | StrapiGqlBlogEntryFragmentFragment
+      | StrapiGqlBlogEntryBasicFragmentFragment,
+    typename:
+      | "ComponentContentText"
+      | "ComponentContentImage"
+      | "ComponentSectionGallerySlideshow"
+      | "ComponentSectionSlideshow"
+  ) {
+    if (!blogEntry.content) {
+      return null;
+    }
+    for (const entry of blogEntry.content) {
+      if (entry?.__typename === typename) {
+        return entry;
+      }
+    }
+  }
+
+  /**
+   * Full dataset for detail pages
+   */
   async listPosts(slugs: string[] = []) {
     const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = { slugs };
     const blogRes =
@@ -39,6 +83,9 @@ export class BlogService {
     return blogEntries;
   }
 
+  /**
+   * Full dataset for detail pages
+   */
   async getPost(slug: string) {
     const posts = await this.listPosts([slug]);
     if (!Array.isArray(posts) || posts.length <= 0) {
@@ -57,7 +104,7 @@ export class BlogService {
     return [];
   }
 
-  getPostHeader(post: StrapiGqlBlogEntryFragmentFragment): PageHeader {
+  public getPostHeader(post: StrapiGqlBlogEntryFragmentFragment): PageHeader {
     const header: PageHeader = {
       title: post.title || "",
       breadcrumbs: [

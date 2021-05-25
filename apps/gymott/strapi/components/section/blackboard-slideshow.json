@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_section_blackboard_slideshows",
+  "info": {
+    "name": "blackboardSlideshow",
+    "icon": "chalkboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blackboard.slide"
+    }
+  }
+}

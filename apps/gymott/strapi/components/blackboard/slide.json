@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blackboard_slides",
+  "info": {
+    "name": "slide",
+    "icon": "chalkboard-teacher",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "school_subject": {
+      "unique": true,
+      "model": "subject"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    }
+  }
+}

@@ -22,7 +22,8 @@
         "link-type.page",
         "link-type.strapi",
         "link-type.post",
-        "link-type.blog"
+        "link-type.blog",
+        "link-type.teacher"
       ],
       "max": 1,
       "required": false

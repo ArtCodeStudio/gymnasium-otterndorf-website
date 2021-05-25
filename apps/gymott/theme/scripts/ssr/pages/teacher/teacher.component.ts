@@ -1,12 +1,7 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./teacher.component.pug";
 import { TeacherService } from "../../services";
-import {
-  Section,
-  PageHeader,
-  Teacher,
-  replaceBodyPageClass,
-} from "../../../common";
+import { PageHeader, Teacher, replaceBodyPageClass } from "../../../common";
 
 export interface Scope {
   params: TeacherPageComponent["ctx"]["params"];

@@ -44,11 +44,7 @@ export const themeConfig: ThemeConfig = {
       component: "sitemap-page",
     },
     {
-      path: ["/teacher", "/lehrer"],
-      component: "teacher-page",
-    },
-    {
-      path: ["/teacher/:slug", "/lehrer/:slug"],
+      path: ["/teacher", "/lehrer", "/teacher/:slug", "/lehrer/:slug"],
       component: "teacher-page",
     },
   ],

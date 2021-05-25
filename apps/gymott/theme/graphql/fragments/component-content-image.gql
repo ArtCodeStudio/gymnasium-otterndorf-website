@@ -2,6 +2,8 @@ fragment ComponentContentImageFragment on ComponentContentImage {
   id
   image {
     formats
+    alternativeText
+    url
   }
   caption
 }

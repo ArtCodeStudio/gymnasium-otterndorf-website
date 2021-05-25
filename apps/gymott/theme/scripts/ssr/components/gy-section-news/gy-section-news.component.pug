@@ -1,7 +1,7 @@
 .row
   h2.col-12.section-heading Aktuelles
   .col-12.col-lg-6(ssr-rv-each-item="news")
-    a.card.hover-card-sm.mb-3(ssr-rv-href="item.slug | prepend '/post/'")
+    a.card.hover-card-sm.mb-3(ssr-rv-href="item.slug | post")
       img(ssr-rv-if="item.image.url" ssr-rv-src="item.image.url | strapi" class="card-img-top" ssr-rv-alt="item.image.altText")
       .card-body  
         h6.card-subtitle.mb-2.text-success(ssr-rv-text="item.typeName")

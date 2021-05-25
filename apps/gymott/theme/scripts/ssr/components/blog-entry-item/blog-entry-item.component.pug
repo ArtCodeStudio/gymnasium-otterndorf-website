@@ -1,0 +1,7 @@
+a.card.hover-card-sm.mb-3(rv-href="post.slug | post")
+  img(rv-if="post.image.url" rv-src="post.image.url | strapi" class="card-img-top" rv-alt="post.image.altText")
+  .card-body  
+    h6.card-subtitle.mb-2.text-success(rv-text="post.typeName")
+    h5.card-title(rv-text="post.title")
+    span.card-text.text-muted
+      | [ post.createdAt | moment-locale 'de' | calendar | capitalize ] von <u>[ post.author ]</u>

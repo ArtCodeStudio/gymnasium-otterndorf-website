@@ -13,7 +13,7 @@ import { Awaited, replaceBodyPageClass } from "../../../common";
 export interface Scope {
   title: string;
   pages: Awaited<ReturnType<PageService["list"]>>;
-  blogPosts: Awaited<ReturnType<BlogService["listPosts"]>>;
+  blogPosts: Awaited<ReturnType<BlogService["listPostsBasic"]>>;
   subjects: Awaited<ReturnType<SchoolSubjectService["list"]>>;
   galleries: Awaited<ReturnType<GalleryService["list"]>>;
   mediaCenters: Awaited<ReturnType<MediaCenterService["list"]>>;
@@ -71,7 +71,7 @@ export class SitemapPageComponent extends PageComponent {
 
   protected async getBlogPosts() {
     try {
-      this.scope.blogPosts = await this.blog.listPosts();
+      this.scope.blogPosts = await this.blog.listPostsBasic();
     } catch (error) {
       this.throw(error);
     }

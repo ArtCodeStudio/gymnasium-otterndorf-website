@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
-import { BlogService } from "../../../services";
-import { Section, PageHeader, replaceBodyPageClass } from "../../../../common";
+import { BlogService } from "../../services";
+import { Section, PageHeader, replaceBodyPageClass } from "../../../common";
 import pugTemplate from "./blog-entry.component.pug";
 
 export interface Scope {

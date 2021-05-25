@@ -1,6 +1,7 @@
 import { GraphQLClient } from "./graphql";
 import { StrapiGqlNewsQuery, StrapiGqlNewsQueryVariables } from "../types";
 import newsQuery from "../../../graphql/queries/news.gql";
+// import { BlogService } from "./blog";
 
 export enum NewsType {
   Pinned,
@@ -14,17 +15,16 @@ export type NewsResult = {
   createdAt: Date;
   slug: string;
   type: NewsType;
-  image:
-    | {
-        url: string;
-        altText: string;
-      }
-    | undefined;
+  image?: {
+    url: string;
+    altText: string;
+  };
   typeName: string;
 }[];
 
 export class NewsService {
   protected graphql = GraphQLClient.getInstance();
+  // protected blog = BlogService.getInstance()
 
   protected static instance: NewsService;
 
@@ -40,7 +40,7 @@ export class NewsService {
     return NewsService.instance;
   }
 
-  async getNews(amount = 2): Promise<any[]> {
+  async list(amount = 2): Promise<NewsResult> {
     const vars: StrapiGqlNewsQueryVariables = { amount };
     const newsRes = await this.graphql.requestCached<StrapiGqlNewsQuery>(
       newsQuery,
@@ -48,26 +48,31 @@ export class NewsService {
     );
     const news: NewsResult = [];
 
+    if (!newsRes.blogEntries) {
+      return news;
+    }
+
     //todo add pinned posts to news array
-    newsRes.blogEntries?.forEach((e) => {
-      if (news.length == amount) return;
-      if (e?.__typename != "BlogEntry" || !e?.content) return;
+    for (const blogEntry of newsRes.blogEntries) {
+      if (news.length == amount) return news;
+      if (blogEntry?.__typename != "BlogEntry" || !blogEntry?.content)
+        return news;
 
       news.push({
-        author: e.author,
-        createdAt: e.created_at,
-        slug: e.slug,
-        title: e.title,
-        image: this.getImageFromBlogEntryContent(e.content),
+        author: blogEntry.author,
+        createdAt: blogEntry.created_at,
+        slug: blogEntry.slug,
+        title: blogEntry.title,
+        image: this.getImageFromBlogEntryContent(blogEntry.content),
         type: NewsType.Blog,
         typeName: NewsType[NewsType.Blog],
       });
-    });
+    }
 
     return news;
   }
 
-  public getImageFromBlogEntryContent(
+  protected getImageFromBlogEntryContent(
     blogEntryContent: any
   ): NewsResult[number]["image"] {
     let titleImage;

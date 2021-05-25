@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_link_type_teachers",
+  "info": {
+    "name": "teacher",
+    "icon": "user-tie"
+  },
+  "options": {},
+  "attributes": {
+    "teacher": {
+      "model": "teacher"
+    }
+  }
+}

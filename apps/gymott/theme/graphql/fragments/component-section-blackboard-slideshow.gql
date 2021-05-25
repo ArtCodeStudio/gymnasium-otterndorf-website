@@ -1,0 +1,10 @@
+#import "./component-blackboard-slide.gql"
+
+fragment ComponentSectionBlackboardSlideshowFragment on ComponentSectionBlackboardSlideshow {
+  id
+  slides {
+    ... on ComponentBlackboardSlide {
+      ...ComponentBlackboardSlideFragment
+    }
+  }
+}
