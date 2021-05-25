@@ -18,4 +18,8 @@
         a.list-group-item.list-group-item-action(rv-each-gallery="galleries" rv-href="gallery.slug | gallery" rv-text="gallery.title")
       h2.text-center(rv-show="mediaCenters | size") Mediatheken
       .list-group.my-5
-        a.list-group-item.list-group-item-action(rv-each-media-center="mediaCenters" rv-href="media-center.slug | media-center" rv-text="media-center.title" rv-debug="media-center | json")
+        a.list-group-item.list-group-item-action(rv-each-media-center="mediaCenters" rv-href="media-center.slug | media-center" rv-text="media-center.title")
+      h2.text-center(rv-show="teachers | size") Lehrer
+      .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-href=" | teacher") Übersicht
+        a.list-group-item.list-group-item-action(rv-each-teacher="teachers" rv-href="teacher.slug | teacher" rv-text="teacher.fullName")

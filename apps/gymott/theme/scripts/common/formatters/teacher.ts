@@ -5,7 +5,7 @@ export const teacherFormatter = {
   name: "teacher",
   read(slug?: string) {
     if (!slug) {
-      return "";
+      return `/teacher`;
     }
     return `/teacher/${slug}`;
   },

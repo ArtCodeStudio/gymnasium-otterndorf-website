@@ -19,4 +19,5 @@ export * from "./strapi-image";
 export * from "./strapi-image-format";
 export * from "./suggest-result";
 export * from "./teacher-basic";
+export * from "./teacher";
 export * from "./theme-color";

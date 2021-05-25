@@ -2,14 +2,16 @@ import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./teacher.component.pug";
 import { TeacherService } from "../../services";
 import {
-  StrapiGqlTeacherDetailFragmentFragment,
+  Section,
+  PageHeader,
+  Teacher,
   replaceBodyPageClass,
 } from "../../../common";
 
 export interface Scope {
   params: TeacherPageComponent["ctx"]["params"];
-  fullName: string;
-  teacher: StrapiGqlTeacherDetailFragmentFragment | null;
+  header: PageHeader | Record<string, never>;
+  teachers: Teacher[];
 }
 
 export class TeacherPageComponent extends PageComponent {
@@ -21,8 +23,8 @@ export class TeacherPageComponent extends PageComponent {
 
   scope: Scope = {
     params: {},
-    fullName: "",
-    teacher: null,
+    header: {},
+    teachers: [],
   };
 
   static get observedAttributes(): string[] {
@@ -44,13 +46,35 @@ export class TeacherPageComponent extends PageComponent {
     return [];
   }
 
-  protected async beforeBind() {
-    this.scope.teacher = await this.teacher.get(this.ctx.params.slug);
-    if (this.scope.teacher?.first_name) {
-      this.scope.fullName = this.scope.teacher?.first_name + " ";
+  protected async getTeacher(slug: string) {
+    const teacher: Teacher | null = await this.teacher.get(slug);
+    if (!teacher) {
+      this.throw(new Error(`Teacher with slug "${slug}" not found!`));
+      return;
     }
-    this.scope.fullName += this.scope.teacher?.name;
-    this.head.title = this.scope.fullName;
+    this.scope.teachers = [teacher];
+    this.head.title = teacher.fullName;
+  }
+
+  protected async getTeachers() {
+    const teachers = ((await this.teacher.list()) || []) as Teacher[];
+    if (!teachers || !teachers.length) {
+      this.throw(new Error(`No teachers found!`));
+      return;
+    }
+    this.scope.teachers = teachers;
+    this.head.title = "Lehrer";
+  }
+
+  protected async beforeBind() {
+    if (this.ctx.params.slug) {
+      await this.getTeacher(this.ctx.params.slug);
+    } else {
+      await this.getTeachers();
+    }
+
+    this.scope.header = this.teacher.getHeader(this.scope.teachers);
+
     await super.beforeBind();
   }
 

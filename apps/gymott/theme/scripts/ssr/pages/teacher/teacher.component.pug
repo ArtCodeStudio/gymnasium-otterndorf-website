@@ -1,10 +1,13 @@
-.container.py-4
-  .row.my-5
-    .col-12.col-md-4.mx-auto
-      .card.hover-card
+.container-fluid.container-xxl
+  .row
+    .col-12
+      gy-page-header.col-12.my-4(ssr-rv-co-header="header")
+  .row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-4.mb-4
+    .col.mx-auto(rv-each-teacher="teachers")
+      .card.hover-card.h-100
         img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
         .card-body
-          h2.card-title(rv-text="fullName")
+          h2.card-title(rv-text="teacher.fullName")
           p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
         strong.card-header
           | Fächer

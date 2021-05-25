@@ -5,7 +5,7 @@ import { Section, PageHeader } from "../../../common/types";
 
 export interface Scope {
   sections?: Section[];
-  context?: "index" | "page" | "school-subject" | "blog" | "post";
+  context?: "index" | "page" | "school-subject" | "blog" | "post" | "teacher";
   header: PageHeader | Record<string, never>;
   getSectionColumnClass: GySectionsComponent["getSectionColumnClass"];
   getIndexForPageHeader: GySectionsComponent["getIndexForPageHeader"];
