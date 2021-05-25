@@ -1,7 +1,10 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./teacher.component.pug";
 import { TeacherService } from "../../services";
-import { StrapiGqlTeacherDetailFragmentFragment } from "../../../common/types";
+import {
+  StrapiGqlTeacherDetailFragmentFragment,
+  replaceBodyPageClass,
+} from "../../../common";
 
 export interface Scope {
   params: TeacherPageComponent["ctx"]["params"];
@@ -33,6 +36,7 @@ export class TeacherPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(TeacherPageComponent.observedAttributes);
   }
 
@@ -47,7 +51,6 @@ export class TeacherPageComponent extends PageComponent {
     }
     this.scope.fullName += this.scope.teacher?.name;
     this.head.title = this.scope.fullName;
-    document.body.classList.add(TeacherPageComponent.tagName.toLowerCase());
     await super.beforeBind();
   }
 

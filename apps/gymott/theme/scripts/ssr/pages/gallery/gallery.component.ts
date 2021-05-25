@@ -4,7 +4,8 @@ import { GalleryService } from "../../services";
 import {
   StrapiGqlGalleryFragmentFragment,
   StrapiImageFormatType,
-} from "../../../common/types";
+  replaceBodyPageClass,
+} from "../../../common";
 
 export interface Scope {
   title: string;
@@ -53,6 +54,7 @@ export class GalleryPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(GalleryPageComponent.observedAttributes);
   }
 
@@ -78,7 +80,6 @@ export class GalleryPageComponent extends PageComponent {
       this.throw(error);
     }
     this.head.title = this.scope.title;
-    document.body.classList.add(GalleryPageComponent.tagName.toLowerCase());
     await super.beforeBind();
   }
 

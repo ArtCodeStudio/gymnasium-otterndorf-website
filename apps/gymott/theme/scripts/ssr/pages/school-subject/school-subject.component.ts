@@ -6,7 +6,8 @@ import {
   Section,
   PageHeader,
   TeacherBasic,
-} from "../../../common/types";
+  replaceBodyPageClass,
+} from "../../../common";
 
 export interface Scope {
   title: string;
@@ -44,6 +45,7 @@ export class SchoolSubjectPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(SchoolSubjectPageComponent.observedAttributes);
   }
 
@@ -82,9 +84,6 @@ export class SchoolSubjectPageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
-    document.body.classList.add(
-      SchoolSubjectPageComponent.tagName.toLowerCase()
-    );
   }
 
   protected template() {

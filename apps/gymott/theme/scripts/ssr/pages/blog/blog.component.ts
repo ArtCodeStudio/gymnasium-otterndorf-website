@@ -1,6 +1,7 @@
 import { PageComponent } from "@ribajs/ssr";
 import { GraphQLClient } from "../../services";
 import pugTemplate from "./blog.component.pug";
+import { replaceBodyPageClass } from "../../../common";
 
 export interface Scope {
   title: string;
@@ -33,6 +34,7 @@ export class BlogPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(BlogPageComponent.observedAttributes);
   }
 
@@ -42,7 +44,7 @@ export class BlogPageComponent extends PageComponent {
 
   protected async beforeBind() {
     await super.beforeBind();
-    document.body.classList.add(BlogPageComponent.tagName.toLowerCase());
+
     this.head.title = "You are " + this.ctx.params.slug;
   }
 

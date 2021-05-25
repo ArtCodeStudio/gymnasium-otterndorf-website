@@ -7,7 +7,7 @@ import {
   GalleryService,
   MediaCenterService,
 } from "../../services";
-import { Awaited } from "../../../common/types";
+import { Awaited, replaceBodyPageClass } from "../../../common";
 
 export interface Scope {
   title: string;
@@ -48,6 +48,7 @@ export class SitemapPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(SitemapPageComponent.observedAttributes);
   }
 
@@ -102,7 +103,6 @@ export class SitemapPageComponent extends PageComponent {
 
   protected async beforeBind() {
     this.head.title = this.scope.title;
-    document.body.classList.add(SitemapPageComponent.tagName.toLowerCase());
 
     await this.getPages();
     await this.getBlogPosts();

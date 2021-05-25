@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import { GyHomeService } from "../../services";
-import { Section } from "../../../common/types";
+import { Section, replaceBodyPageClass } from "../../../common";
 import pugTemplate from "./index.component.pug";
 
 export interface Scope {
@@ -31,6 +31,7 @@ export class IndexPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(IndexPageComponent.observedAttributes);
   }
 
@@ -44,7 +45,6 @@ export class IndexPageComponent extends PageComponent {
     } catch (error) {
       this.throw(error);
     }
-    document.body.classList.add(IndexPageComponent.tagName.toLowerCase());
     await super.beforeBind();
   }
 

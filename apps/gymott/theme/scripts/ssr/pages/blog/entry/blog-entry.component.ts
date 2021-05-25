@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import { BlogService } from "../../../services";
-import { Section, PageHeader } from "../../../../common/types";
+import { Section, PageHeader, replaceBodyPageClass } from "../../../../common";
 import pugTemplate from "./blog-entry.component.pug";
 
 export interface Scope {
@@ -35,6 +35,7 @@ export class BlogEntryPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(BlogEntryPageComponent.observedAttributes);
   }
 
@@ -57,11 +58,6 @@ export class BlogEntryPageComponent extends PageComponent {
     } catch (error) {
       this.throw(error);
     }
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
-    document.body.classList.add(BlogEntryPageComponent.tagName.toLowerCase());
   }
 
   protected template() {

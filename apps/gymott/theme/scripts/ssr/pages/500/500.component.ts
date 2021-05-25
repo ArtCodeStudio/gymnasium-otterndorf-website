@@ -1,5 +1,6 @@
 import { PageComponent, ErrorObj } from "@ribajs/ssr";
 import pugTemplate from "./500.component.pug";
+import { replaceBodyPageClass } from "../../../common";
 
 export interface Scope {
   title: string;
@@ -40,6 +41,7 @@ export class InternalErrorPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(InternalErrorPageComponent.observedAttributes);
   }
 
@@ -53,9 +55,6 @@ export class InternalErrorPageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
-    document.body.classList.add(
-      InternalErrorPageComponent.tagName.toLowerCase()
-    );
   }
 
   protected template() {

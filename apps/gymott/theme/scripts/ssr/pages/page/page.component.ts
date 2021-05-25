@@ -5,7 +5,8 @@ import {
   Section,
   StrapiGqlPageFragmentFragment,
   PageHeader,
-} from "../../../common/types";
+  replaceBodyPageClass,
+} from "../../../common";
 
 export interface Scope {
   title: string;
@@ -47,6 +48,7 @@ export class PagePageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(PagePageComponent.observedAttributes);
   }
 
@@ -115,7 +117,6 @@ export class PagePageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
-    document.body.classList.add(PagePageComponent.tagName.toLowerCase());
   }
 
   protected template() {

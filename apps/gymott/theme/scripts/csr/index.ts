@@ -20,6 +20,7 @@ import * as commonFormatters from "../common/formatters";
 
 // Own
 import * as components from "./components";
+import * as pages from "./pages";
 import * as binders from "./binders";
 import * as formatters from "./formatters";
 import locales from "../common/locales";
@@ -52,7 +53,11 @@ export class CSRApp {
     });
 
     // Regist custom components
-    this.riba.module.component.regists({ ...commonComponents, ...components });
+    this.riba.module.component.regists({
+      ...commonComponents,
+      ...components,
+      ...pages,
+    });
     this.riba.module.binder.regists({ ...commonBinders, ...binders });
     this.riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 

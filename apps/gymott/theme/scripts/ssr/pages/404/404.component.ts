@@ -1,5 +1,6 @@
 import { PageComponent, ErrorObj } from "@ribajs/ssr";
 import pugTemplate from "./404.component.pug";
+import { replaceBodyPageClass } from "../../../common";
 
 export interface Scope {
   title: string;
@@ -35,6 +36,7 @@ export class NotFoundPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(NotFoundPageComponent.observedAttributes);
   }
 
@@ -48,7 +50,6 @@ export class NotFoundPageComponent extends PageComponent {
 
   protected async afterBind() {
     await super.afterBind();
-    document.body.classList.add(NotFoundPageComponent.tagName.toLowerCase());
   }
 
   protected template() {

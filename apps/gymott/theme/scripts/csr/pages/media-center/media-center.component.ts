@@ -1,7 +1,10 @@
 import { Component, VideoComponent } from "@ribajs/core";
 import { FullscreenService } from "@ribajs/extras";
 import { SlideItem, ContentSliderComponent } from "@ribajs/content-slider";
-import { StrapiGqlComponentMediaCenterMovieFragmentFragment } from "../../../common/types";
+import {
+  StrapiGqlComponentMediaCenterMovieFragmentFragment,
+  replaceBodyPageClass,
+} from "../../../common";
 
 export interface MediaCenterSlideItem extends SlideItem {
   data: StrapiGqlComponentMediaCenterMovieFragmentFragment["movie"];
@@ -78,19 +81,12 @@ export class MediaCenterPageComponent extends Component {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(MediaCenterPageComponent.observedAttributes);
   }
 
   protected requiredAttributes(): string[] {
     return [];
-  }
-
-  protected async beforeBind() {
-    await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
   }
 
   protected async afterAllBind() {

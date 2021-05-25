@@ -4,7 +4,8 @@ import { MediaCenterService } from "../../services";
 import {
   StrapiGqlMediaCenterFragmentFragment,
   StrapiImageFormatType,
-} from "../../../common/types";
+  replaceBodyPageClass,
+} from "../../../common";
 
 export interface Scope {
   title: string;
@@ -40,6 +41,7 @@ export class MediaCenterPageComponent extends PageComponent {
 
   protected connectedCallback() {
     super.connectedCallback();
+    replaceBodyPageClass(this);
     this.init(MediaCenterPageComponent.observedAttributes);
   }
 
@@ -65,7 +67,6 @@ export class MediaCenterPageComponent extends PageComponent {
       this.throw(error);
     }
     this.head.title = this.scope.title;
-    document.body.classList.add(MediaCenterPageComponent.tagName.toLowerCase());
     await super.beforeBind();
   }
 
