@@ -2,16 +2,19 @@ import { Component, LifecycleService } from "@ribajs/core";
 import { Pjax, Prefetch } from "@ribajs/router";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-search-result.component.pug";
-import { SearchService, SuggestService } from "../../services";
-import { SearchItem, SearchResult, SuggestResult } from "../../types";
+import {
+  SearchService,
+  SuggestService,
+  SearchItem,
+  SearchResult,
+  SuggestResult,
+  getTextExpandOptions,
+  MAX_EXPAND_TEXT_LENGTH,
+} from "../../../common";
 import { GySearchInputComponent } from "../gy-search-input/gy-search-input.component";
-
-const MAX_TEXT_LENGTH = 200;
-const MAX_TEXT_LENGTH_OFFSET = 100;
 
 export interface Scope {
   close: GySearchResultComponent["close"];
-  getType: GySearchResultComponent["getType"];
   onSuggest: GySearchResultComponent["onSuggest"];
   onOpen: GySearchResultComponent["onOpen"];
   onToggleItem: GySearchResultComponent["onToggleItem"];
@@ -43,7 +46,6 @@ export class GySearchResultComponent extends Component {
 
   scope: Scope = {
     close: this.close,
-    getType: this.getType,
     onSuggest: this.onSuggest,
     onOpen: this.onOpen,
     onToggleItem: this.onToggleItem,
@@ -91,26 +93,11 @@ export class GySearchResultComponent extends Component {
     event.stopPropagation();
     // event.preventDefault();
     if (item.opts.expanded) {
-      item.opts.cutAt = MAX_TEXT_LENGTH;
+      item.opts.cutAt = MAX_EXPAND_TEXT_LENGTH;
       item.opts.expanded = false;
     } else {
       item.opts.cutAt = -1;
       item.opts.expanded = true;
-    }
-  }
-
-  public getType(namespace: string) {
-    switch (namespace) {
-      case "nav":
-        return "Navigation";
-      case "page":
-        return "Seite";
-      case "post":
-        return "Artikel";
-      case "blog":
-        return "Blog";
-      case "schoolSubject":
-        return "Schulfach";
     }
   }
 
@@ -150,20 +137,8 @@ export class GySearchResultComponent extends Component {
   protected transformResult(result: SearchResult) {
     const item: SearchItem = {
       ...result,
-      opts: { cutAt: -1, expandable: false, expanded: false },
+      opts: getTextExpandOptions(result.data?.text),
     };
-
-    if (!item.data?.text?.length) {
-      return item;
-    }
-
-    if (item.data.text.length > MAX_TEXT_LENGTH + MAX_TEXT_LENGTH_OFFSET) {
-      item.opts.cutAt = MAX_TEXT_LENGTH;
-      item.opts.expandable = true;
-    } else {
-      item.opts.cutAt = item.data.text.length;
-      item.opts.expandable = false;
-    }
     return item;
   }
 

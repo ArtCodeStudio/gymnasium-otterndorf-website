@@ -1,5 +1,5 @@
 #import "../fragments/page.gql"
-#import "../fragments/blog-entry.gql"
+#import "../fragments/blog-entry-basic.gql"
 #import "../fragments/navigation-link.gql"
 
 # See https://dgraph.io/docs/graphql/api/multiples/
@@ -11,7 +11,7 @@ query searchResult($pageSlugs: [String!], $postSlugs: [String!], $navIds: [Strin
   }
 
   blogEntries(where: { slug: $postSlugs }) {
-    ...BlogEntryFragment
+    ...BlogEntryBasicFragment
   }
 
   navigationLinks(where: { id: $navIds }) {

@@ -1,11 +1,11 @@
 import { PageComponent } from "@ribajs/ssr";
 import { GraphQLClient } from "../../services";
 import pugTemplate from "./blog.component.pug";
-import { Awaited, replaceBodyPageClass, BlogService } from "../../../common";
+import { replaceBodyPageClass, BlogService, Post } from "../../../common";
 
 export interface Scope {
   params: BlogPageComponent["ctx"]["params"];
-  posts: Awaited<ReturnType<BlogService["listPostsBasic"]>>;
+  posts: Post[];
 }
 
 export class BlogPageComponent extends PageComponent {
@@ -44,7 +44,7 @@ export class BlogPageComponent extends PageComponent {
   protected async beforeBind() {
     await super.beforeBind();
 
-    this.scope.posts = await this.blog.listPostsBasic();
+    this.scope.posts = (await this.blog.listPostsBasic()) as Post[];
 
     this.head.title = "Blog";
   }

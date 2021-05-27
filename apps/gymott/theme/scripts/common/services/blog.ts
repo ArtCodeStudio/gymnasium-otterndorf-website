@@ -3,17 +3,17 @@ import {
   ResponseError,
   StrapiGqlBlogEntriesBySlugsQuery,
   StrapiGqlBlogEntriesBySlugsQueryVariables,
-  StrapiGqlBlogEntryFragmentFragment,
   StrapiGqlBlogEntriesBasicBySlugsQuery,
   StrapiGqlBlogEntriesBasicBySlugsQueryVariables,
-  StrapiGqlBlogEntryBasicFragmentFragment,
   DynamicZoneSection,
   PageHeader,
   SectionObject,
+  Post,
 } from "../types";
 import { SectionsService } from "./sections";
 import { postFormatter, blogFormatter } from "../formatters";
 import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-by-slugs.gql";
+import blogEntriesBasicBySlugsQuery from "../../../graphql/queries/blog-entries-basic-by-slugs.gql";
 
 export class BlogService {
   protected graphql = GraphQLClient.getInstance();
@@ -43,11 +43,11 @@ export class BlogService {
     };
     const blogRes =
       await this.graphql.requestCached<StrapiGqlBlogEntriesBasicBySlugsQuery>(
-        blogEntriesBySlugsQuery,
+        blogEntriesBasicBySlugsQuery,
         vars
       );
     const blogEntries = blogRes.blogEntries || [];
-    return blogEntries;
+    return blogEntries.filter((blogEntry) => !!blogEntry);
   }
 
   /**
@@ -77,7 +77,7 @@ export class BlogService {
     return posts[0];
   }
 
-  public async getSections(post: StrapiGqlBlogEntryFragmentFragment | StrapiGqlBlogEntryBasicFragmentFragment) {
+  public async getSections(post: Post) {
     if (post?.content) {
       const DynamicZoneSections = (post?.content || []) as DynamicZoneSection[];
       return BlogService.sections.transform(DynamicZoneSections);
@@ -85,10 +85,7 @@ export class BlogService {
     return [];
   }
 
-  public async getSectionsObject(
-    post:
-      StrapiGqlBlogEntryFragmentFragment | StrapiGqlBlogEntryBasicFragmentFragment
-  ): Promise<SectionObject> {
+  public async getSectionsObject(post: Post): Promise<SectionObject> {
     if (!post.content) {
       return {};
     }
@@ -97,7 +94,7 @@ export class BlogService {
     return sectionsObj;
   }
 
-  public getPostHeader(post: StrapiGqlBlogEntryFragmentFragment): PageHeader {
+  public getPostHeader(post: Post): PageHeader {
     const header: PageHeader = {
       title: post.title || "",
       breadcrumbs: [

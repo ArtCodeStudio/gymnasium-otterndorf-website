@@ -1,13 +1,11 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { NewsResult } from "common/services/news";
-import { NewsService } from "../../../common/services";
-import { HomeNews } from "../../../common/types/home-news";
+import { NewsService, HomeNews, News } from "../../../common";
 import pugTemplate from "./gy-section-news.component.pug";
 
 export interface Scope {
   section?: HomeNews;
-  news: NewsResult;
+  news: News;
 }
 
 export class GySectionNewsComponent extends Component {

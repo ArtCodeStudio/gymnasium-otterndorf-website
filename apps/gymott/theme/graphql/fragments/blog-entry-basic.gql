@@ -1,6 +1,7 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
 
+# Shorter version if BlogEntryFragment, e.g. for news, search results and blog post overview
 fragment BlogEntryBasicFragment on BlogEntry {
   __typename
   id

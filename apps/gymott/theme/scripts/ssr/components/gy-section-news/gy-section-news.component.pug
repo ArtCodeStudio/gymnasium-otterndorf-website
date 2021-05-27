@@ -1,10 +1,6 @@
 .row
   h2.col-12.section-heading Aktuelles
+.row(csr-rv-masonry='{"percentPosition": true }')
   .col-12.col-lg-6(ssr-rv-each-item="news")
-    a.card.hover-card-sm.mb-3(ssr-rv-href="item.slug | post")
-      img(ssr-rv-if="item.image.url" ssr-rv-src="item.image.url | strapi" class="card-img-top" ssr-rv-alt="item.image.altText")
-      .card-body  
-        h6.card-subtitle.mb-2.text-success(ssr-rv-text="item.typeName")
-        h5.card-title(ssr-rv-text="item.title")
-        span.card-text.text-muted
-          | [ item.createdAt | moment-locale 'de' | calendar | capitalize ] von <u>[ item.author ]</u>
+    div(rv-if="item.__typename | eq 'BlogEntry'")
+      gy-blog-entry-item(rv-co-post="item", cat-text-at="150")

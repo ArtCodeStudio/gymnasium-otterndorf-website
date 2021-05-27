@@ -2,6 +2,6 @@
   .row
     .col-12
       h1(rv-template="title")
-  section.row
-    .col-12.col-sm-6.col-md-4(rv-each-item="posts")
+  section.row(csr-rv-masonry='{"percentPosition": true }')
+    .col-12.col-md-6.col-lg-4(rv-each-item="posts")
       gy-blog-entry-item(rv-post="item")
