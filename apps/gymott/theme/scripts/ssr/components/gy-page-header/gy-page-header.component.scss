@@ -3,6 +3,14 @@ gy-page-header {
   .breadcrumb-item {
     a {
       color: $body-color;
+      &.active {
+        color: $component-active-color;
+        text-decoration: none;
+        cursor: default;
+      }
+    }
+    &.active {
+      color: $component-active-color;
     }
   }
 

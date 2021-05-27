@@ -5,6 +5,7 @@ import { PageHeader } from "../../../common/types";
 
 export interface Scope {
   header: PageHeader | Record<string, never>;
+  showDate: boolean;
 }
 
 export class GyPageHeaderComponent extends Component {
@@ -14,10 +15,11 @@ export class GyPageHeaderComponent extends Component {
 
   scope: Scope = {
     header: {},
+    showDate: true,
   };
 
   static get observedAttributes(): string[] {
-    return ["header"];
+    return ["header", "show-date"];
   }
 
   protected requiredAttributes() {

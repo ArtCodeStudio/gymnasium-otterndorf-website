@@ -30,6 +30,8 @@ $light: $gray-100;
 $body-bg: $white;
 $border-color: $gray-900;
 
+$primary: $blue;
+
 // https://getbootstrap.com/docs/5.0/customize/sass/#add-to-map
 $theme-colors: (
   "blue":         $blue,
@@ -65,3 +67,6 @@ $breadcrumb-margin-bottom: $headings-margin-bottom;
 // CARDS
 $card-cap-bg: $white;
 
+// COMPONENTS
+$component-active-color: $blue;
+$component-active-bg: $white;
