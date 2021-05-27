@@ -18,5 +18,5 @@
             a(href="#" csr-rv-if="item.opts.expanded | not | and item.opts.expandable" csr-rv-on-click='onToggleItem | args item') Zeige mehr
             a(href="#" csr-rv-if="item.opts.expandable | and item.opts.expanded" csr-rv-on-click='onToggleItem | args item') Zeige weniger
   .row.my-2
-    .col-12.text-center.bg-body
+    .col-12.text-center
       button.btn.btn-link(csr-rv-on-click="close") Schließen

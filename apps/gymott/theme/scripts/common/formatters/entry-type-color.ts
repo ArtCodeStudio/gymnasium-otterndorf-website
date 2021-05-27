@@ -7,19 +7,24 @@ import { ENTRY_TYPE } from "../constants";
  */
 export const entryTypeColorFormatter = {
   name: "entry-type-color",
-  read(typename?: EntryType) {
-    const type = getEntryType(typename);
+  read(type?: EntryType | ENTRY_TYPE) {
+    if (typeof type === "string") {
+      type = getEntryType(type);
+    }
+
     switch (type) {
       case ENTRY_TYPE.News:
       case ENTRY_TYPE.Post:
       case ENTRY_TYPE.Blog:
         return "green";
       case ENTRY_TYPE.Page:
+      case ENTRY_TYPE.Home:
         return "cyan";
       case ENTRY_TYPE.SchoolSubject:
         return "greenlight";
       case ENTRY_TYPE.Navigation:
       case ENTRY_TYPE.Calendar:
+      case ENTRY_TYPE.Teacher:
         return "blue";
       // TODO
       case ENTRY_TYPE.Image:

@@ -10,6 +10,7 @@ import {
   SectionObject,
   Post,
 } from "../types";
+import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { postFormatter, blogFormatter } from "../formatters";
 import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-by-slugs.gql";
@@ -99,12 +100,13 @@ export class BlogService {
       title: post.title || "",
       breadcrumbs: [
         {
-          label: "Startseite",
+          type: ENTRY_TYPE.Home,
           url: "/",
           active: false,
         },
         {
           label: "Blog",
+          type: ENTRY_TYPE.Blog,
           active: false,
         },
       ],
@@ -115,12 +117,14 @@ export class BlogService {
     if (post.blog_category?.name) {
       header.breadcrumbs.push({
         label: post.blog_category.name,
+        type: ENTRY_TYPE.Blog,
         url: blogFormatter.read(post.blog_category.slug),
       });
     }
 
     header.breadcrumbs.push({
       label: post.title,
+      type: ENTRY_TYPE.Post,
       active: true,
       url: postFormatter.read(post.slug),
     });

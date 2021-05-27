@@ -1,10 +1,7 @@
 import { EntryType } from "../types";
 import { ENTRY_TYPE } from "../constants";
 
-export const getEntryType = (typename?: EntryType) => {
-  if (!typename) {
-    return "";
-  }
+export const getEntryType = (typename?: EntryType | ENTRY_TYPE) => {
   switch (typename) {
     case "post":
     case "BlogEntry":
@@ -36,6 +33,7 @@ export const getEntryType = (typename?: EntryType) => {
     case "nav":
       return ENTRY_TYPE.Navigation;
     default:
+      console.error(new Error("Unknown type: " + typename));
       return ENTRY_TYPE.Unknown;
   }
 };

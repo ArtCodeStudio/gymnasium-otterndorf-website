@@ -66,7 +66,6 @@ export class PagePageComponent extends PageComponent {
       // TODO @Daniel?
       this.scope.calendarKey = page?.["calendar_key"] || "";
 
-      console.debug("page", page);
       if (page) {
         if (page?.title) {
           this.scope.title = page?.title;
@@ -78,7 +77,6 @@ export class PagePageComponent extends PageComponent {
 
         if (page?.assets) {
           for (const asset of page.assets) {
-            console.debug(asset);
             this.scope.assets.push(asset);
           }
         }

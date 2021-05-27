@@ -7,6 +7,7 @@ import {
   DynamicZoneSection,
   PageHeader,
 } from "../types";
+import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { pageFormatter } from "../formatters";
 import pageBySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
@@ -63,15 +64,17 @@ export class PageService {
       breadcrumbs: [
         {
           label: "Startseite",
+          type: ENTRY_TYPE.Home,
           url: "/",
           active: false,
         },
         {
-          label: "Unterseite",
+          type: ENTRY_TYPE.Page,
           active: false,
         },
         {
           label: page.title,
+          type: ENTRY_TYPE.Page,
           active: true,
           url: pageFormatter.read(page.slug),
         },

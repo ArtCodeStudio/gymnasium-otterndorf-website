@@ -14,5 +14,7 @@ export enum ENTRY_TYPE {
   SchoolSubject,
   Blog,
   Navigation,
+  Home,
+  Teacher,
   Unknown,
 }

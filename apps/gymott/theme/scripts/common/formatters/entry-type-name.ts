@@ -7,8 +7,11 @@ import { ENTRY_TYPE } from "../constants";
  */
 export const entryTypeNameFormatter = {
   name: "entry-type-name",
-  read(typename?: EntryType) {
-    const type = getEntryType(typename);
+  read(type?: EntryType | ENTRY_TYPE) {
+    if (typeof type === "string") {
+      type = getEntryType(type);
+    }
+
     switch (type) {
       case ENTRY_TYPE.Post:
         return "Artikel";
@@ -36,10 +39,13 @@ export const entryTypeNameFormatter = {
         return "Blog";
       case ENTRY_TYPE.Navigation:
         return "Navigation";
+      case ENTRY_TYPE.Home:
+        return "Startseite";
+      case ENTRY_TYPE.Teacher:
+        return "Lehrer";
       case ENTRY_TYPE.Unknown:
-        return "Unbekannter Type: " + typename;
       default:
-        return "Unbekannter Type: " + typename;
+        return "Unbekannter Type";
     }
   },
 };
