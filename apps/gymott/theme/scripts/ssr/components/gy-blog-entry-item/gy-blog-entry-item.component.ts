@@ -34,8 +34,6 @@ export class GyBlogEntryItemComponent extends Component {
     if (this.scope.post) {
       this.scope.sections = await this.blog.getSectionsObject(this.scope.post);
     }
-    console.debug("[GyBlogEntryItemComponent] post", this.scope.post);
-    console.debug("[GyBlogEntryItemComponent] sections", this.scope.sections);
   }
 
   protected connectedCallback() {

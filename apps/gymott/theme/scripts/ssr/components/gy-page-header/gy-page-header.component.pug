@@ -1,10 +1,10 @@
 nav(rv-if="header.breadcrumbs | size" aria-label="breadcrumb")
   ol.breadcrumb
     li.breadcrumb-item(rv-each-breadcrumb="header.breadcrumbs" rv-class-active="breadcrumb.active")
-      small(rv-if="breadcrumb.active" aria-current="page" rv-text="breadcrumb.label")
+      small(rv-if="breadcrumb.active" aria-current="page" rv-text="breadcrumb.type | entry-type-name | prefer breadcrumb.label")
       small(rv-unless="breadcrumb.active")
-        a(rv-if="breadcrumb.url" rv-href="breadcrumb.url" rv-text="breadcrumb.label")
-        span(rv-unless="breadcrumb.url" rv-text="breadcrumb.label")
+        a(rv-if="breadcrumb.url" rv-href="breadcrumb.url" rv-text="breadcrumb.type | entry-type-name | prefer breadcrumb.label")
+        span(rv-unless="breadcrumb.url" rv-text="breadcrumb.type | entry-type-name | prefer breadcrumb.label")
 
 h1(rv-text="header.title")
 

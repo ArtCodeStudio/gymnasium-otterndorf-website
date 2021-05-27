@@ -8,6 +8,7 @@ import {
   PageHeader,
   TeacherBasic,
 } from "../../common/types";
+import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { schoolSubjectFormatter } from "../formatters";
 import schoolSubjectBySlugs from "../../../graphql/queries/school-subject-by-slugs.gql";
@@ -84,16 +85,18 @@ export class SchoolSubjectService {
       title: schoolSubject.title || "",
       breadcrumbs: [
         {
-          label: "Startseite",
+          type: ENTRY_TYPE.Home,
           url: "/",
           active: false,
         },
         {
           label: "Schulfach",
+          type: ENTRY_TYPE.SchoolSubject,
           active: false,
         },
         {
           label: schoolSubject.title,
+          type: ENTRY_TYPE.SchoolSubject,
           active: true,
           url: schoolSubjectFormatter.read(schoolSubject.slug),
         },

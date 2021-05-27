@@ -66,7 +66,7 @@ export class GalleryPageComponent extends PageComponent {
     this.head.title = this.ctx.params.slug + " Gallery";
     try {
       const gallery = await this.gallery.get(this.ctx.params.slug);
-      console.debug("gallery", gallery);
+      this.debug("gallery", gallery);
 
       if (gallery) {
         if (gallery.title) {

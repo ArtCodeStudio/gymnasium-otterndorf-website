@@ -43,7 +43,7 @@ export class MediaCenterPageComponent extends Component {
   }
 
   public watch(item: MediaCenterSlideItem) {
-    console.debug("watch", item.data?.url, this.scope.currentItem);
+    this.debug("watch", item.data?.url, this.scope.currentItem);
     this.scope.watching = true;
     if (!this.video) {
       this.throw(new Error("Video element not found!"));
@@ -74,7 +74,7 @@ export class MediaCenterPageComponent extends Component {
     newActiveItemEl: HTMLElement;
     item: MediaCenterSlideItem;
   }) {
-    console.debug("onGoTo", data);
+    this.debug("onGoTo", data);
     this.scope.currentItem = data.item;
     this.scope.currentVideoSrc = this.scope.currentItem.data?.url || "";
   }

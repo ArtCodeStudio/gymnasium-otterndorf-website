@@ -46,8 +46,6 @@ export class CSRApp {
   );
 
   constructor() {
-    console.debug("init the main application");
-
     this.riba.configure({
       prefix: ["rv", "csr-rv"],
     });

@@ -7,6 +7,7 @@ import {
   Teacher,
   PageHeader,
 } from "../types";
+import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { teacherFormatter } from "../formatters";
 import teacherBySlugsQuery from "../../../graphql/queries/teacher-by-slugs.gql";
@@ -83,17 +84,18 @@ export class TeacherService {
         title: teacher.fullName || "",
         breadcrumbs: [
           {
-            label: "Startseite",
+            type: ENTRY_TYPE.Home,
             url: "/",
             active: false,
           },
           {
-            label: "Lehrer",
+            type: ENTRY_TYPE.Teacher,
             active: false,
             url: teacherFormatter.read(),
           },
           {
             label: teacher.fullName || "Ohne Name",
+            type: ENTRY_TYPE.Teacher,
             active: true,
             url: teacherFormatter.read(teacher.slug),
           },
@@ -108,11 +110,13 @@ export class TeacherService {
         breadcrumbs: [
           {
             label: "Startseite",
+            type: ENTRY_TYPE.Home,
             url: "/",
             active: false,
           },
           {
             label: "Lehrer",
+            type: ENTRY_TYPE.SchoolSubject,
             active: true,
             url: teacherFormatter.read(),
           },
