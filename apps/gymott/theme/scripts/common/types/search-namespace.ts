@@ -3,4 +3,5 @@ export type SearchNamespace =
   | "page"
   | "post"
   | "blog"
-  | "schoolSubject";
+  | "schoolSubject"
+  | "teacher";

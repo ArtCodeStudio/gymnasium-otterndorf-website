@@ -94,7 +94,7 @@ export class TeacherService {
             url: teacherFormatter.read(),
           },
           {
-            label: teacher.fullName || "Ohne Name",
+            label: teacher.fullName,
             type: ENTRY_TYPE.Teacher,
             active: true,
             url: teacherFormatter.read(teacher.slug),
@@ -109,14 +109,12 @@ export class TeacherService {
         title: "Übersicht",
         breadcrumbs: [
           {
-            label: "Startseite",
             type: ENTRY_TYPE.Home,
             url: "/",
             active: false,
           },
           {
-            label: "Lehrer",
-            type: ENTRY_TYPE.SchoolSubject,
+            type: ENTRY_TYPE.Teacher,
             active: true,
             url: teacherFormatter.read(),
           },

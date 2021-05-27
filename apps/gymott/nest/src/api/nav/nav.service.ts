@@ -10,7 +10,9 @@ import { SearchNav } from './types';
 
 @Injectable()
 export class NavService {
-  constructor(readonly strapi: StrapiService) {}
+  constructor(readonly strapi: StrapiService) {
+    //
+  }
 
   static buildHref(type: string, slug?: string) {
     if (!slug) {
@@ -26,6 +28,10 @@ export class NavService {
       case 'ComponentLinkTypeSchulfach':
       case 'schulfach':
         return '/schulfach/' + slug;
+      case 'teacher':
+        return '/teacher/' + slug;
+      case 'blog':
+        return '/blog/' + slug;
     }
   }
 
@@ -90,13 +96,15 @@ export class NavService {
    */
   public async list(ids: string[] | null = null) {
     const vars: StrapiGqlNavigationLinksByIdsQueryVariables = { ids };
-    let responseNavs: StrapiGqlNavigationLinksByIdsQuery['navigationLinks'] = [];
+    let responseNavs: StrapiGqlNavigationLinksByIdsQuery['navigationLinks'] =
+      [];
     let navs: SearchNav[] = [];
     try {
-      const response = await this.strapi.graphql.execute<StrapiGqlNavigationLinksByIdsQuery>(
-        'graphql/queries/navigation-links-by-ids',
-        vars,
-      );
+      const response =
+        await this.strapi.graphql.execute<StrapiGqlNavigationLinksByIdsQuery>(
+          'graphql/queries/navigation-links-by-ids',
+          vars,
+        );
       responseNavs = response.navigationLinks || [];
       navs = responseNavs.map((nav) => this.flatten(nav));
     } catch (error) {

@@ -4,6 +4,8 @@ import { SearchNamespace } from "./search-namespace";
 import {
   StrapiGqlPage,
   StrapiGqlSchoolSubjectFragmentFragment,
+  StrapiGqlHome,
+  StrapiGqlTeacherDetailFragmentFragment,
 } from "./strapi-gql";
 
 export type EntryType =
@@ -11,4 +13,6 @@ export type EntryType =
   | SectionType
   | Post["__typename"]
   | StrapiGqlPage["__typename"]
-  | StrapiGqlSchoolSubjectFragmentFragment["__typename"];
+  | StrapiGqlHome["__typename"]
+  | StrapiGqlSchoolSubjectFragmentFragment["__typename"]
+  | StrapiGqlTeacherDetailFragmentFragment["__typename"];

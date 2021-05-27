@@ -6,6 +6,7 @@ import { NavService } from '../nav';
 import { PageService } from '../page';
 import { PostService } from '../post';
 import { SchoolSubjectService } from '../school-subject';
+import { TeacherService } from '../teacher';
 import type { LunrExt, Namespace } from './types';
 import { REF_KEYS } from './constants';
 
@@ -25,6 +26,7 @@ export class SearchService implements OnModuleInit {
     protected readonly page: PageService,
     protected readonly post: PostService,
     protected readonly subject: SchoolSubjectService,
+    protected readonly teacher: TeacherService,
   ) {
     this.initLunrPlugins();
     this.initPage();
@@ -32,6 +34,7 @@ export class SearchService implements OnModuleInit {
     this.initPost();
     this.initBlog();
     this.initSchoolSubject();
+    this.initTeacher();
   }
 
   protected initLunrPlugins() {
@@ -130,6 +133,24 @@ export class SearchService implements OnModuleInit {
     });
   }
 
+  protected initTeacher() {
+    const ns: Namespace = 'teacher';
+
+    this.suggest.create(ns);
+    this.suggest.ignore(ns, IGNORE_SUGGESTION_WORDS);
+
+    this.lunr.create(ns, {
+      fields: { title: { boost: 2 }, text: {} },
+      ref: REF_KEYS[ns],
+      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      data: {
+        include: true,
+        highlight: true,
+        shorten: true,
+      },
+    });
+  }
+
   public async refreshPage() {
     const ns: Namespace = 'page';
     const pages = await this.page.list();
@@ -178,13 +199,21 @@ export class SearchService implements OnModuleInit {
   public async refreshSchoolSubject() {
     const ns: Namespace = 'schoolSubject';
     const subjects = await this.subject.list();
-
-    // console.debug(ns, JSON.stringify(subjects, null, 2));
-
     for (const subject of subjects) {
       this.lunr.add(ns, subject);
       this.suggest.load(ns, subject.title, { reset: false });
       this.suggest.load(ns, subject.text, { reset: false });
+    }
+    this.lunr.buildIndex(ns);
+  }
+
+  public async refreshTeacher() {
+    const ns: Namespace = 'teacher';
+    const teachers = await this.teacher.list();
+    for (const teacher of teachers) {
+      this.lunr.add(ns, teacher);
+      this.suggest.load(ns, teacher.title, { reset: false });
+      this.suggest.load(ns, teacher.text, { reset: false });
     }
     this.lunr.buildIndex(ns);
   }
@@ -195,6 +224,7 @@ export class SearchService implements OnModuleInit {
     this.refreshPost();
     this.refreshBlog();
     this.refreshSchoolSubject();
+    this.refreshTeacher();
   }
 
   onModuleInit() {

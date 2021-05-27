@@ -6,4 +6,5 @@ export const REF_KEYS: RefKeys = {
   page: 'slug',
   post: 'slug',
   schoolSubject: 'slug',
+  teacher: 'slug',
 };
