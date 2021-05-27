@@ -1,3 +1,7 @@
-import { StrapiGqlPageFragmentFragment } from "./strapi-gql";
+import {
+  StrapiGqlPageFragmentFragment,
+  StrapiGqlPageBasicFragmentFragment,
+} from "./strapi-gql";
 
-export type Page = StrapiGqlPageFragmentFragment;
+export type Page = StrapiGqlPageBasicFragmentFragment &
+  Partial<StrapiGqlPageFragmentFragment>;

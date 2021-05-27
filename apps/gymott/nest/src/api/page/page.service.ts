@@ -4,8 +4,8 @@ import { MarkdownService } from '../markdown/markdown.service';
 import { NavService } from '../nav';
 import { SearchPage } from './types';
 import {
-  StrapiGqlPageBySlugsQuery,
-  StrapiGqlPageBySlugsQueryVariables,
+  StrapiGqlPageBasicBySlugsQuery,
+  StrapiGqlPageBasicBySlugsQueryVariables,
 } from '../strapi/types';
 
 @Injectable()
@@ -13,17 +13,19 @@ export class PageService {
   constructor(
     readonly strapi: StrapiService,
     readonly markdown: MarkdownService,
-  ) {}
+  ) {
+    //
+  }
 
   public async flattens(
-    pages: StrapiGqlPageBySlugsQuery['pages'],
+    pages: StrapiGqlPageBasicBySlugsQuery['pages'],
   ): Promise<SearchPage[]> {
     const pPages = pages.map((page) => this.flatten(page));
     return await Promise.all(pPages);
   }
 
   public async flatten(
-    page: StrapiGqlPageBySlugsQuery['pages'][0],
+    page: StrapiGqlPageBasicBySlugsQuery['pages'][0],
   ): Promise<SearchPage> {
     const pTexts = page.content
       .filter((content: any) => content.text)
@@ -40,14 +42,19 @@ export class PageService {
     };
   }
 
-  public async list(slugs: string[] = []) {
-    const vars: StrapiGqlPageBySlugsQueryVariables = { slugs };
-    let pages: StrapiGqlPageBySlugsQuery['pages'] = null;
+  public async list(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlPageBasicBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    let pages: StrapiGqlPageBasicBySlugsQuery['pages'] = null;
     try {
-      const result = await this.strapi.graphql.execute<StrapiGqlPageBySlugsQuery>(
-        'graphql/queries/page-by-slugs',
-        vars,
-      );
+      const result =
+        await this.strapi.graphql.execute<StrapiGqlPageBasicBySlugsQuery>(
+          'graphql/queries/page-basic-by-slugs',
+          vars,
+        );
       pages = result.pages;
     } catch (error) {
       console.error(error);

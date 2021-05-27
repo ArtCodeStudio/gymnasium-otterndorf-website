@@ -5,8 +5,6 @@ export * from "./home-news";
 export * from "./dynamic-zone-section";
 export * from "./entry-type";
 export * from "./navigation-link";
-export * from "./news-item";
-export * from "./news";
 export * from "./page-header";
 export * from "./page";
 export * from "./post";

@@ -1,4 +1,3 @@
-export interface HomeNews {
-  __typename: "ComponentHomeNews";
-  amount: number;
-}
+import { StrapiGqlComponentHomeNewsFragmentFragment } from "./strapi-gql";
+
+export type HomeNews = StrapiGqlComponentHomeNewsFragmentFragment;

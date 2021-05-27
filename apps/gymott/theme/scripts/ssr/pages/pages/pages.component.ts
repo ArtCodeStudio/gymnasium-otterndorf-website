@@ -40,7 +40,7 @@ export class PagesPageComponent extends PageComponent {
 
   protected async beforeBind() {
     try {
-      const pages = await this.page.list();
+      const pages = await this.page.listBasic();
 
       if (this.scope.pages && pages) {
         this.scope.pages = pages;

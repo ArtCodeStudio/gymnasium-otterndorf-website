@@ -4,6 +4,7 @@
 #import "./component-content-image.gql"
 #import "./component-section-gallery-slideshow.gql"
 #import "./component-section-blackboard-slideshow.gql"
+#import "./component-home-news.gql"
 
 fragment HomeFragment on Home {
   sections {
@@ -15,7 +16,7 @@ fragment HomeFragment on Home {
       ...ComponentSectionFactsFragment
     }
     ... on ComponentHomeNews {
-      amount
+      ...ComponentHomeNewsFragment
     }
     ... on ComponentContentText {
       ...ComponentContentTextFragment

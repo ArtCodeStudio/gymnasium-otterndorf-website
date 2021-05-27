@@ -309,12 +309,22 @@ export type StrapiGqlComponentHomeFactInput = {
 
 export type StrapiGqlComponentHomeNewInput = {
   amount?: Maybe<Scalars['Int']>;
+  pages?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
 export type StrapiGqlComponentHomeNews = {
   __typename?: 'ComponentHomeNews';
   id: Scalars['ID'];
   amount?: Maybe<Scalars['Int']>;
+  pages?: Maybe<Array<Maybe<StrapiGqlPage>>>;
+};
+
+
+export type StrapiGqlComponentHomeNewsPagesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type StrapiGqlComponentLinkItemText = {
@@ -2648,6 +2658,7 @@ export type StrapiGqlEditComponentHomeFactInput = {
 export type StrapiGqlEditComponentHomeNewInput = {
   id?: Maybe<Scalars['ID']>;
   amount?: Maybe<Scalars['Int']>;
+  pages?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
 export type StrapiGqlEditComponentLinkItemTextInput = {
@@ -3154,6 +3165,10 @@ export type StrapiGqlComponentGalleryImageFragmentFragment = (
 export type StrapiGqlComponentHomeNewsFragmentFragment = (
   { __typename?: 'ComponentHomeNews' }
   & Pick<StrapiGqlComponentHomeNews, 'amount'>
+  & { pages?: Maybe<Array<Maybe<(
+    { __typename?: 'Page' }
+    & StrapiGqlPageBasicFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlComponentMediaCenterMovieFragmentFragment = (
@@ -3270,7 +3285,7 @@ export type StrapiGqlHomeFragmentFragment = (
     & StrapiGqlComponentContentImageFragmentFragment
   ) | (
     { __typename: 'ComponentHomeNews' }
-    & Pick<StrapiGqlComponentHomeNews, 'amount'>
+    & StrapiGqlComponentHomeNewsFragmentFragment
   ) | (
     { __typename: 'ComponentSectionGallerySlideshow' }
     & StrapiGqlComponentSectionGallerySlideshowFragmentFragment
@@ -3340,8 +3355,20 @@ export type StrapiGqlNavigationLinkFragmentFragment = (
   ) | { __typename: 'ComponentLinkTypeTeacher' }>>> }
 );
 
+export type StrapiGqlPageBasicFragmentFragment = (
+  { __typename: 'Page' }
+  & Pick<StrapiGqlPage, 'id' | 'created_at' | 'updated_at' | 'title' | 'slug'>
+  & { content?: Maybe<Array<Maybe<(
+    { __typename: 'ComponentContentImage' }
+    & StrapiGqlComponentContentImageFragmentFragment
+  ) | (
+    { __typename: 'ComponentContentText' }
+    & StrapiGqlComponentContentTextFragmentFragment
+  ) | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionGallerySlideshow' }>>> }
+);
+
 export type StrapiGqlPageFragmentFragment = (
-  { __typename?: 'Page' }
+  { __typename: 'Page' }
   & Pick<StrapiGqlPage, 'id' | 'created_at' | 'updated_at' | 'title' | 'slug' | 'calendar_key'>
   & { assets?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentSidebarAssets' }
@@ -3487,6 +3514,8 @@ export type StrapiGqlBlogEntriesBasicBySlugsQuery = (
 
 export type StrapiGqlBlogEntriesBySlugsQueryVariables = Exact<{
   slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  limit: Scalars['Int'];
+  start: Scalars['Int'];
 }>;
 
 
@@ -3576,21 +3605,25 @@ export type StrapiGqlNavigationLinksByIdsQuery = (
   )>>> }
 );
 
-export type StrapiGqlNewsQueryVariables = Exact<{
-  amount: Scalars['Int'];
+export type StrapiGqlPageBasicBySlugsQueryVariables = Exact<{
+  slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  limit: Scalars['Int'];
+  start: Scalars['Int'];
 }>;
 
 
-export type StrapiGqlNewsQuery = (
+export type StrapiGqlPageBasicBySlugsQuery = (
   { __typename?: 'Query' }
-  & { blogEntries?: Maybe<Array<Maybe<(
-    { __typename?: 'BlogEntry' }
-    & StrapiGqlBlogEntryBasicFragmentFragment
+  & { pages?: Maybe<Array<Maybe<(
+    { __typename?: 'Page' }
+    & StrapiGqlPageBasicFragmentFragment
   )>>> }
 );
 
 export type StrapiGqlPageBySlugsQueryVariables = Exact<{
   slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  limit: Scalars['Int'];
+  start: Scalars['Int'];
 }>;
 
 
