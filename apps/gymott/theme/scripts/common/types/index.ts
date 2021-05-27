@@ -8,6 +8,7 @@ export * from "./navigation-link";
 export * from "./news-item";
 export * from "./news";
 export * from "./page-header";
+export * from "./page";
 export * from "./post";
 export * from "./response-error";
 export * from "./search-item";

@@ -16,8 +16,12 @@ export const themeConfig: ThemeConfig = {
       component: "index-page",
     },
     {
-      path: ["/page/:slug", "/seite/:slug"],
+      path: ["/page", "/seite"],
       component: "pages-page",
+    },
+    {
+      path: ["/page/:slug", "/seite/:slug"],
+      component: "page-page",
     },
     {
       path: ["/post/:slug"],

@@ -76,8 +76,6 @@ riba.module.formatter.regists({
   DateFormatFormatter,
 });
 
-console.log("Hello from Riba");
-
 // After all components are bound wie trigger the ssr ready event,
 // as soon as this event is triggered the ssr rendering will be done returns the rendered html
 riba.lifecycle.events.on("ComponentLifecycle:allBound", () => {

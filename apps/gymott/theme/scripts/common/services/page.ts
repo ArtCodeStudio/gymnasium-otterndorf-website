@@ -3,9 +3,10 @@ import {
   StrapiGqlPageBySlugsQuery,
   StrapiGqlPageBySlugsQueryVariables,
   ResponseError,
-  StrapiGqlPageFragmentFragment,
+  Page,
   DynamicZoneSection,
   PageHeader,
+  SectionObject,
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
@@ -29,17 +30,17 @@ export class PageService {
     return PageService.instance;
   }
 
-  async list(slugs: string[] = []) {
+  public async list(slugs: string[] = []) {
     const vars: StrapiGqlPageBySlugsQueryVariables = { slugs };
     const pageRes = await this.graphql.requestCached<StrapiGqlPageBySlugsQuery>(
       pageBySlugsQuery,
       vars
     );
     const pages = pageRes.pages || [];
-    return pages;
+    return pages.filter((page) => !!page) as Page[];
   }
 
-  async get(slug: string) {
+  public async get(slug: string) {
     const pages = await this.list([slug]);
     if (!Array.isArray(pages) || pages.length <= 0) {
       const error: ResponseError = new Error("Not found!");
@@ -50,7 +51,7 @@ export class PageService {
     return page;
   }
 
-  async getSections(page: StrapiGqlPageFragmentFragment) {
+  public async getSections(page: Page) {
     if (page?.content) {
       const DynamicZoneSections = (page?.content || []) as DynamicZoneSection[];
       return PageService.sections.transform(DynamicZoneSections);
@@ -58,9 +59,18 @@ export class PageService {
     return [];
   }
 
-  getHeader(page: StrapiGqlPageFragmentFragment): PageHeader {
+  public async getSectionsObject(page: Page): Promise<SectionObject> {
+    if (!page.content) {
+      return {};
+    }
+    const sectionsArr = await this.getSections(page);
+    const sectionsObj = PageService.sections.toObject(sectionsArr);
+    return sectionsObj;
+  }
+
+  public getHeader(page?: Page): PageHeader {
     const header: PageHeader = {
-      title: page.title || "",
+      title: page?.title || "Seiten",
       breadcrumbs: [
         {
           label: "Startseite",
@@ -70,17 +80,22 @@ export class PageService {
         },
         {
           type: ENTRY_TYPE.Page,
-          active: false,
-        },
-        {
-          label: page.title,
-          type: ENTRY_TYPE.Page,
-          active: true,
-          url: pageFormatter.read(page.slug),
+          active: page ? false : true,
+          url: pageFormatter.read(),
         },
       ],
-      updatedAt: page.updated_at || page.created_at,
+      updatedAt: page?.updated_at || page?.created_at,
     };
+
+    if (page) {
+      header.breadcrumbs.push({
+        label: page.title,
+        type: ENTRY_TYPE.Page,
+        active: true,
+        url: pageFormatter.read(page.slug),
+      });
+    }
+
     return header;
   }
 }
