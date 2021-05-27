@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "bookshelf": "^1.2.0",
-    "knex": "^0.95.4",
+    "knex": "^0.95.6",
     "koa": "^2.13.1",
     "mysql": "^2.18.1",
     "object-assign": "^4.1.1",

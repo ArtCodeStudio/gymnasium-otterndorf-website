@@ -1,0 +1,7 @@
+#import "../fragments/page-basic.gql"
+
+query pageBasicBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  pages(start:  $start, limit: $limit, where: { slug: $slugs }) {
+    ...PageBasicFragment
+  }
+} 

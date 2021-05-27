@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/25/2021 3:31:35 PM"
+    "x-generation-date": "05/27/2021 8:27:28 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9382,6 +9382,54 @@
                     },
                     "amount": {
                       "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "calendar_key": {
+                            "type": "string"
+                          },
+                          "blog_categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "assets": {
+                            "type": "dynamiczone"
+                          },
+                          "blog_entries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
                   },
                   "required": [
@@ -9852,6 +9900,54 @@
                     },
                     "amount": {
                       "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "calendar_key": {
+                            "type": "string"
+                          },
+                          "blog_categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "assets": {
+                            "type": "dynamiczone"
+                          },
+                          "blog_entries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
                   },
                   "required": [

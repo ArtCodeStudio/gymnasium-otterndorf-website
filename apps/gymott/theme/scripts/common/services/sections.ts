@@ -9,6 +9,7 @@ import {
   SectionSlideshowEntry,
   StrapiGqlComponentSlideshowEntryFragmentFragment,
   StrapiGqlComponentSlideshowEntryBlogFragmentFragment,
+  HomeNews,
 } from "../types";
 import sectionSlideshowById from "../../../graphql/queries/section-slideshow-by-id.gql";
 import { postFormatter, pageFormatter } from "../formatters";
@@ -115,10 +116,7 @@ export class SectionsService {
             });
             break;
           case "ComponentHomeNews":
-            sections.push({
-              __typename: dynamicZoneSection.__typename,
-              amount: dynamicZoneSection.amount || 3,
-            });
+            sections.push(dynamicZoneSection as HomeNews);
             break;
           case "ComponentSectionGallerySlideshow":
             const sectionGallerySlideshow = clone(true, dynamicZoneSection);

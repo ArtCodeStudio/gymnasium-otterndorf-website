@@ -2,6 +2,8 @@ import { GraphQLClient } from "./graphql";
 import {
   StrapiGqlPageBySlugsQuery,
   StrapiGqlPageBySlugsQueryVariables,
+  StrapiGqlPageBasicBySlugsQuery,
+  StrapiGqlPageBasicBySlugsQueryVariables,
   ResponseError,
   Page,
   DynamicZoneSection,
@@ -12,6 +14,7 @@ import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { pageFormatter } from "../formatters";
 import pageBySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
+import pageBasicBySlugsQuery from "../../../graphql/queries/page-basic-by-slugs.gql";
 
 export class PageService {
   protected graphql = GraphQLClient.getInstance();
@@ -30,8 +33,23 @@ export class PageService {
     return PageService.instance;
   }
 
-  public async list(slugs: string[] = []) {
-    const vars: StrapiGqlPageBySlugsQueryVariables = { slugs };
+  public async listBasic(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlPageBasicBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    const pageRes =
+      await this.graphql.requestCached<StrapiGqlPageBasicBySlugsQuery>(
+        pageBasicBySlugsQuery,
+        vars
+      );
+    const pages = pageRes.pages || [];
+    return pages.filter((page) => !!page) as Page[];
+  }
+
+  public async list(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlPageBySlugsQueryVariables = { slugs, limit, start };
     const pageRes = await this.graphql.requestCached<StrapiGqlPageBySlugsQuery>(
       pageBySlugsQuery,
       vars

@@ -1,11 +1,11 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { NewsService, HomeNews, News } from "../../../common";
+import { BlogService, HomeNews, Post } from "../../../common";
 import pugTemplate from "./gy-section-news.component.pug";
 
 export interface Scope {
   section?: HomeNews;
-  news: News;
+  posts: Post[];
 }
 
 export class GySectionNewsComponent extends Component {
@@ -15,7 +15,7 @@ export class GySectionNewsComponent extends Component {
 
   scope: Scope = {
     section: undefined,
-    news: [],
+    posts: [],
   };
 
   static get observedAttributes(): string[] {
@@ -27,11 +27,13 @@ export class GySectionNewsComponent extends Component {
   }
 
   protected async beforeBind() {
-    // console.debug("[gy-section-news] this.scope.section", this.scope.section);
-    this.scope.news = await NewsService.getInstance().list(
-      this.scope.section?.amount
+    console.debug("[gy-section-news] this.scope.section", this.scope.section);
+    this.scope.section?.pages;
+    this.scope.posts = await BlogService.getInstance().listPostsBasic(
+      [],
+      this.scope.section?.amount || 2
     );
-    // console.debug("[gy-section-news] this.scope.news", this.scope.news);
+    console.debug("[gy-section-news] this.scope.news", this.scope.posts);
   }
 
   protected connectedCallback() {

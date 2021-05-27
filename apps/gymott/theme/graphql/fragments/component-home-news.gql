@@ -1,3 +1,11 @@
+#import "./page-basic.gql"
+
 fragment ComponentHomeNewsFragment on ComponentHomeNews {
   amount
+  pages {
+    ... on Page {
+      ...PageBasicFragment
+    }
+   
+  }
 }

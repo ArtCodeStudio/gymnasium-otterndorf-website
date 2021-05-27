@@ -1,0 +1,20 @@
+#import "./component-content-text.gql"
+#import "./component-content-image.gql"
+
+fragment PageBasicFragment on Page {
+  __typename
+  id
+  created_at
+  updated_at
+  title
+  slug
+  content {
+    __typename
+    ... on ComponentContentImage {
+      ...ComponentContentImageFragment
+    }
+    ... on ComponentContentText {
+      ...ComponentContentTextFragment
+    }
+  }
+}

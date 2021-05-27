@@ -55,21 +55,25 @@ export class BlogService {
         vars
       );
     const blogEntries = blogRes.blogEntries || [];
-    return blogEntries.filter((blogEntry) => !!blogEntry);
+    return blogEntries.filter((blogEntry) => !!blogEntry) as Post[];
   }
 
   /**
    * Full dataset for detail pages
    */
-  public async listPosts(slugs: string[] = []) {
-    const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = { slugs };
+  public async listPosts(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
     const blogRes =
       await this.graphql.requestCached<StrapiGqlBlogEntriesBySlugsQuery>(
         blogEntriesBySlugsQuery,
         vars
       );
     const blogEntries = blogRes.blogEntries || [];
-    return blogEntries;
+    return blogEntries as Post[];
   }
 
   public async listBasic(slugs: string[] = [], limit = 50, start = 0) {
