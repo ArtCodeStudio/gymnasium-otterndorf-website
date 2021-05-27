@@ -1,4 +1,3 @@
-
 .row
     section(ssr-rv-each-section='sections' ssr-rv-class="getSectionColumnClass | call section")
         .row(ssr-rv-if="getIndexForPageHeader | call | eq %section%")
@@ -7,6 +6,8 @@
             gy-section-slideshow.col-12.px-0(ssr-rv-co-section="section")
         .row(ssr-rv-if="section.__typename | eq 'ComponentSectionGallerySlideshow'") 
             gy-section-gallery-slideshow.col-12(ssr-rv-co-section="section")
+        .row(ssr-rv-if="section.__typename | eq 'ComponentSectionBlackboardSlideshow'")
+            gy-section-blackboard-slideshow.col-12(ssr-rv-co-section="section")
         .row.mt-3(ssr-rv-if="section.__typename | eq 'ComponentSectionFacts'")
             gy-section-facts.col-12.pt-3(ssr-rv-co-section="section")
         .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentText'")

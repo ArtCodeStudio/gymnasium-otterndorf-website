@@ -11,6 +11,7 @@ export * from "./search-result";
 export * from "./section-content-image";
 export * from "./section-content-text";
 export * from "./section-facts";
+export * from "./section-blackboard-slideshow";
 export * from "./section-gallery-slideshow";
 export * from "./section-slideshow-entry";
 export * from "./section-slideshow";
