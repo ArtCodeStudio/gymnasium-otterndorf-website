@@ -5,16 +5,23 @@ import {
   StrapiGqlBlogEntriesBySlugsQueryVariables,
   StrapiGqlBlogEntriesBasicBySlugsQuery,
   StrapiGqlBlogEntriesBasicBySlugsQueryVariables,
+  StrapiGqlBlogCategoriesBasicBySlugsQuery,
+  StrapiGqlBlogCategoriesBasicBySlugsQueryVariables,
+  StrapiGqlBlogCategoriesDetailBySlugsQuery,
+  StrapiGqlBlogCategoriesDetailBySlugsQueryVariables,
   DynamicZoneSection,
   PageHeader,
   SectionObject,
   Post,
+  Blog,
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { postFormatter, blogFormatter } from "../formatters";
 import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-by-slugs.gql";
 import blogEntriesBasicBySlugsQuery from "../../../graphql/queries/blog-entries-basic-by-slugs.gql";
+import blogCategoriesBasicBySlugs from "../../../graphql/queries/blog-categories-basic-by-slugs.gql";
+import blogCategoriesDetailBySlugs from "../../../graphql/queries/blog-categories-detail-by-slugs.gql";
 
 export class BlogService {
   protected graphql = GraphQLClient.getInstance();
@@ -65,6 +72,36 @@ export class BlogService {
     return blogEntries;
   }
 
+  public async listBasic(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlBlogCategoriesBasicBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    const blogRes =
+      await this.graphql.requestCached<StrapiGqlBlogCategoriesBasicBySlugsQuery>(
+        blogCategoriesBasicBySlugs,
+        vars
+      );
+    const blogCategories = blogRes.blogCategories || [];
+    return blogCategories;
+  }
+
+  public async list(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlBlogCategoriesDetailBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    const blogRes =
+      await this.graphql.requestCached<StrapiGqlBlogCategoriesDetailBySlugsQuery>(
+        blogCategoriesDetailBySlugs,
+        vars
+      );
+    const blogCategories = blogRes.blogCategories || [];
+    return blogCategories;
+  }
+
   /**
    * Full dataset for detail pages
    */
@@ -76,6 +113,16 @@ export class BlogService {
       throw error;
     }
     return posts[0];
+  }
+
+  public async get(slug: string) {
+    const blogs = await this.list([slug]);
+    if (!Array.isArray(blogs) || blogs.length <= 0) {
+      const error: ResponseError = new Error("Not found!");
+      error.status = 404;
+      throw error;
+    }
+    return blogs[0];
   }
 
   public async getSections(post: Post) {
@@ -105,9 +152,9 @@ export class BlogService {
           active: false,
         },
         {
-          label: "Blog",
           type: ENTRY_TYPE.Blog,
           active: false,
+          url: blogFormatter.read(),
         },
       ],
       updatedAt: post.updated_at || post.created_at,
@@ -128,6 +175,36 @@ export class BlogService {
       active: true,
       url: postFormatter.read(post.slug),
     });
+
+    return header;
+  }
+
+  public getHeader(blog?: Blog): PageHeader {
+    const header: PageHeader = {
+      title: blog?.name || "Alle Artikel",
+      breadcrumbs: [
+        {
+          type: ENTRY_TYPE.Home,
+          url: "/",
+          active: false,
+        },
+        {
+          type: ENTRY_TYPE.Blog,
+          active: blog ? false : true,
+          url: blogFormatter.read(),
+        },
+      ],
+      updatedAt: blog?.updated_at || blog?.created_at,
+    };
+
+    if (blog) {
+      header.breadcrumbs.push({
+        label: blog.name,
+        type: ENTRY_TYPE.Blog,
+        active: true,
+        url: blogFormatter.read(blog.slug),
+      });
+    }
 
     return header;
   }

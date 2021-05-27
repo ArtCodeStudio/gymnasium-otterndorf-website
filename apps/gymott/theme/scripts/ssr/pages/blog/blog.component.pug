@@ -1,7 +1,12 @@
-.container.container-md.py-4
+.container-fluid.container-xxl
   .row
     .col-12
-      h1(rv-template="title")
+      gy-page-header.col-12.my-4(rv-co-header="header" show-date="false")
+  .row.mb-4(rv-if="categories | size | gt 0")
+    .col-12
+      | Filter:  
+      a.mx-1(rv-href=" | blog") Alle
+      a.mx-1(rv-each-category="categories" rv-text="category.name" rv-href="category.slug | blog")
   section.row(csr-rv-masonry='{"percentPosition": true }')
     .col-12.col-md-6.col-lg-4(rv-each-item="posts")
       gy-blog-entry-item(rv-post="item")

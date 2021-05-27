@@ -1,0 +1,13 @@
+fragment BlogCategoryBasicFragment on BlogCategory {
+  __typename
+  id
+  created_at
+  updated_at
+  name
+  slug
+  # blog_entries {
+  #   ...on BlogEntry {
+  #     slug
+  #   }
+  # }
+}

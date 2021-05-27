@@ -1,0 +1,7 @@
+#import "../fragments/blog-category-basic.gql"
+
+query blogCategoriesBasicBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  blogCategories(sort:"created_at:desc", start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...BlogCategoryBasicFragment
+  }
+}

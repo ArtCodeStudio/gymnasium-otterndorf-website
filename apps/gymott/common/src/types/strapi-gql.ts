@@ -3066,6 +3066,20 @@ export type StrapiGqlUpdateUserPayload = {
   user?: Maybe<StrapiGqlUsersPermissionsUser>;
 };
 
+export type StrapiGqlBlogCategoryBasicFragmentFragment = (
+  { __typename: 'BlogCategory' }
+  & Pick<StrapiGqlBlogCategory, 'id' | 'created_at' | 'updated_at' | 'name' | 'slug'>
+);
+
+export type StrapiGqlBlogCategoryDetailFragmentFragment = (
+  { __typename: 'BlogCategory' }
+  & Pick<StrapiGqlBlogCategory, 'id' | 'created_at' | 'updated_at' | 'name' | 'slug'>
+  & { blog_entries?: Maybe<Array<Maybe<(
+    { __typename?: 'BlogEntry' }
+    & StrapiGqlBlogEntryFragmentFragment
+  )>>> }
+);
+
 export type StrapiGqlBlogEntryBasicFragmentFragment = (
   { __typename: 'BlogEntry' }
   & Pick<StrapiGqlBlogEntry, 'id' | 'title' | 'slug' | 'created_at' | 'updated_at' | 'published_at' | 'author'>
@@ -3082,7 +3096,7 @@ export type StrapiGqlBlogEntryBasicFragmentFragment = (
 );
 
 export type StrapiGqlBlogEntryFragmentFragment = (
-  { __typename?: 'BlogEntry' }
+  { __typename: 'BlogEntry' }
   & Pick<StrapiGqlBlogEntry, 'id' | 'title' | 'slug' | 'created_at' | 'updated_at' | 'published_at' | 'author'>
   & { blog_category?: Maybe<(
     { __typename?: 'BlogCategory' }
@@ -3338,7 +3352,7 @@ export type StrapiGqlPageFragmentFragment = (
     )> }
   )>>>, blog_entries?: Maybe<Array<Maybe<(
     { __typename?: 'BlogEntry' }
-    & StrapiGqlBlogEntryFragmentFragment
+    & StrapiGqlBlogEntryBasicFragmentFragment
   )>>>, content?: Maybe<Array<Maybe<(
     { __typename: 'ComponentContentImage' }
     & StrapiGqlComponentContentImageFragmentFragment
@@ -3424,6 +3438,36 @@ export type StrapiGqlUnnamed_1_Mutation = (
     { __typename?: 'UsersPermissionsLoginPayload' }
     & Pick<StrapiGqlUsersPermissionsLoginPayload, 'jwt'>
   ) }
+);
+
+export type StrapiGqlBlogCategoriesBasicBySlugsQueryVariables = Exact<{
+  slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  limit: Scalars['Int'];
+  start: Scalars['Int'];
+}>;
+
+
+export type StrapiGqlBlogCategoriesBasicBySlugsQuery = (
+  { __typename?: 'Query' }
+  & { blogCategories?: Maybe<Array<Maybe<(
+    { __typename?: 'BlogCategory' }
+    & StrapiGqlBlogCategoryBasicFragmentFragment
+  )>>> }
+);
+
+export type StrapiGqlBlogCategoriesDetailBySlugsQueryVariables = Exact<{
+  slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  limit: Scalars['Int'];
+  start: Scalars['Int'];
+}>;
+
+
+export type StrapiGqlBlogCategoriesDetailBySlugsQuery = (
+  { __typename?: 'Query' }
+  & { blogCategories?: Maybe<Array<Maybe<(
+    { __typename?: 'BlogCategory' }
+    & StrapiGqlBlogCategoryDetailFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlBlogEntriesBasicBySlugsQueryVariables = Exact<{
@@ -3585,7 +3629,7 @@ export type StrapiGqlSearchResultQuery = (
     & StrapiGqlPageFragmentFragment
   )>>>, blogEntries?: Maybe<Array<Maybe<(
     { __typename?: 'BlogEntry' }
-    & StrapiGqlBlogEntryFragmentFragment
+    & StrapiGqlBlogEntryBasicFragmentFragment
   )>>>, navigationLinks?: Maybe<Array<Maybe<(
     { __typename?: 'NavigationLink' }
     & StrapiGqlNavigationLinkFragmentFragment

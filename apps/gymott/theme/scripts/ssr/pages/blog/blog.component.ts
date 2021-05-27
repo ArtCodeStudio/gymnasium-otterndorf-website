@@ -1,10 +1,19 @@
 import { PageComponent } from "@ribajs/ssr";
 import { GraphQLClient } from "../../services";
 import pugTemplate from "./blog.component.pug";
-import { replaceBodyPageClass, BlogService, Post } from "../../../common";
+import {
+  replaceBodyPageClass,
+  BlogService,
+  Post,
+  Blog,
+  PageHeader,
+} from "../../../common";
 
 export interface Scope {
   params: BlogPageComponent["ctx"]["params"];
+  category?: Blog;
+  categories: Blog[];
+  header: PageHeader | Record<string, never>;
   posts: Post[];
 }
 
@@ -18,6 +27,9 @@ export class BlogPageComponent extends PageComponent {
 
   scope: Scope = {
     posts: [],
+    category: undefined,
+    categories: [],
+    header: {},
     params: {},
   };
 
@@ -41,10 +53,32 @@ export class BlogPageComponent extends PageComponent {
     return [];
   }
 
+  protected async getPosts(slug?: string) {
+    if (slug) {
+      // Get posts by category
+      this.scope.category = (await this.blog.get(slug)) || undefined;
+      if (this.scope.category?.blog_entries) {
+        this.scope.posts = this.scope.category?.blog_entries as Post[];
+      }
+    } else {
+      // Get all posts
+      this.scope.posts = (await this.blog.listPostsBasic()) as Post[];
+    }
+  }
+
+  protected async getCategories() {
+    this.scope.categories = ((await this.blog.listBasic()) as Blog[]) || [];
+  }
+
+  protected async getHeader() {
+    this.scope.header = this.blog.getHeader(this.scope.category);
+  }
+
   protected async beforeBind() {
     await super.beforeBind();
-
-    this.scope.posts = (await this.blog.listPostsBasic()) as Post[];
+    await this.getPosts(this.ctx.params.slug);
+    await this.getHeader();
+    await this.getCategories();
 
     this.head.title = "Blog";
   }
