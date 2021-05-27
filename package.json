@@ -42,6 +42,7 @@
     "@ribajs/core": "workspace:*",
     "@ribajs/events": "workspace:*",
     "@ribajs/extras": "workspace:*",
+    "@ribajs/fabrics": "workspace:*",
     "@ribajs/history": "workspace:*",
     "@ribajs/i18n": "workspace:*",
     "@ribajs/iconset": "workspace:*",
