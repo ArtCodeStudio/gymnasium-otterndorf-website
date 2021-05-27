@@ -4,6 +4,7 @@
 #import "./component-section-gallery-slideshow.gql"
 
 fragment BlogEntryFragment on BlogEntry {
+  __typename
   id
   title
   slug

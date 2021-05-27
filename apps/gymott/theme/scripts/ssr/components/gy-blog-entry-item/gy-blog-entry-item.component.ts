@@ -1,12 +1,11 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { BlogService, Awaited, SectionObject } from "../../../common";
+import { BlogService, SectionObject, Post } from "../../../common";
 import pugTemplate from "./gy-blog-entry-item.component.pug";
-
-type Post = Awaited<ReturnType<BlogService["listPostsBasic"]>>[0];
 
 export interface Scope {
   post?: Post;
+  catTextAt: number;
   sections: SectionObject;
 }
 
@@ -18,11 +17,12 @@ export class GyBlogEntryItemComponent extends Component {
 
   scope: Scope = {
     post: undefined,
+    catTextAt: 300,
     sections: {},
   };
 
   static get observedAttributes(): string[] {
-    return ["post"];
+    return ["post", "cat-text-at"];
   }
 
   protected requiredAttributes() {

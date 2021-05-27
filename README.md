@@ -96,9 +96,9 @@ Bootstrap theme variables:
 * blue - Used for dates
 * green - Used for news / posts
 * cyan - Used for pages
-* greenLight - 
+* greenLight - ...
 * gray - Used for background: Navbar
-* ... For all theme colors see [_variables-bootstrap.scss](apps/gymott/theme/styles/_variables-bootstrap.scss)
+* ... For all theme colors see [_variables-bootstrap.scss](apps/gymott/theme/styles/_variables-bootstrap.scss) and [entry-type-color.ts](apps/gymott/theme/scripts/common/formatters/entry-type-color.ts)
 
 ## Environments
 

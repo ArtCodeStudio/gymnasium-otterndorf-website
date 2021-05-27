@@ -1,7 +1,9 @@
+import { SearchNamespace } from "./search-namespace";
+
 export interface SearchResult {
   ref: string;
   score: number;
-  ns: string;
+  ns: SearchNamespace;
   matchData: {
     metadata: {
       [term: string]: {

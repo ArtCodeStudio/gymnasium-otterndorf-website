@@ -1,4 +1,4 @@
-#import "./blog-entry.gql"
+#import "./blog-entry-basic.gql"
 #import "./component-section-slideshow.gql"
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
@@ -21,7 +21,7 @@ fragment PageFragment on Page {
   }
 
   blog_entries {
-    ...BlogEntryFragment
+    ...BlogEntryBasicFragment
   }
 
   content {

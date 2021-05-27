@@ -1,4 +1,6 @@
 export * from "./blog";
+export * from "./entry-type-color";
+export * from "./entry-type-name";
 export * from "./gallery";
 export * from "./markdown";
 export * from "./media-center";
