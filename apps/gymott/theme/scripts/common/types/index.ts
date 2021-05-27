@@ -1,4 +1,5 @@
 export * from "./awaited";
+export * from "./blog";
 export * from "./breadcrumb";
 export * from "./home-news";
 export * from "./dynamic-zone-section";

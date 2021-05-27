@@ -13,6 +13,7 @@ import { Awaited, replaceBodyPageClass } from "../../../common";
 export interface Scope {
   title: string;
   pages: Awaited<ReturnType<PageService["list"]>>;
+  blogs: Awaited<ReturnType<BlogService["list"]>>;
   blogPosts: Awaited<ReturnType<BlogService["listPostsBasic"]>>;
   subjects: Awaited<ReturnType<SchoolSubjectService["list"]>>;
   galleries: Awaited<ReturnType<GalleryService["list"]>>;
@@ -35,6 +36,7 @@ export class SitemapPageComponent extends PageComponent {
   scope: Scope = {
     title: "Sitemap",
     pages: [],
+    blogs: [],
     blogPosts: [],
     subjects: [],
     galleries: [],
@@ -67,6 +69,15 @@ export class SitemapPageComponent extends PageComponent {
       this.throw(error);
     }
     return this.scope.pages;
+  }
+
+  protected async getBlogs() {
+    try {
+      this.scope.blogs = await this.blog.list();
+    } catch (error) {
+      this.throw(error);
+    }
+    return this.scope.blogs;
   }
 
   protected async getBlogPosts() {
@@ -118,6 +129,7 @@ export class SitemapPageComponent extends PageComponent {
     this.head.title = this.scope.title;
 
     await this.getPages();
+    await this.getBlogs();
     await this.getBlogPosts();
     await this.getSchoolSubjects();
     await this.getGalleries();

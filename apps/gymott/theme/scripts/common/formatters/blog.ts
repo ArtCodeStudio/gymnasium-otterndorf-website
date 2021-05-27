@@ -5,7 +5,7 @@ export const blogFormatter = {
   name: "blog",
   read(slug?: string) {
     if (!slug) {
-      return "";
+      return `/blog`;
     }
     return `/blog/${slug}`;
   },

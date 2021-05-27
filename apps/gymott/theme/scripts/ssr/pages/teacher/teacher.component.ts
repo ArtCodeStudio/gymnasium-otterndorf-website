@@ -41,6 +41,9 @@ export class TeacherPageComponent extends PageComponent {
     return [];
   }
 
+  /**
+   * Used if a slug is defined
+   */
   protected async getTeacher(slug: string) {
     const teacher: Teacher | null = await this.teacher.get(slug);
     if (!teacher) {
@@ -51,6 +54,9 @@ export class TeacherPageComponent extends PageComponent {
     this.head.title = teacher.fullName;
   }
 
+  /**
+   * Used if no slug is defined
+   */
   protected async getTeachers() {
     const teachers = ((await this.teacher.list()) || []) as Teacher[];
     if (!teachers || !teachers.length) {

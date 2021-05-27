@@ -59,8 +59,6 @@ export class SchoolSubjectPageComponent extends PageComponent {
       const schoolSubject = await this.schoolSubject.get(this.ctx.params.slug);
       this.scope.schoolSubject = schoolSubject || null;
 
-      console.debug("this.scope.schoolSubject", this.scope.schoolSubject);
-
       if (schoolSubject) {
         if (schoolSubject?.title) {
           this.scope.title = schoolSubject?.title;
