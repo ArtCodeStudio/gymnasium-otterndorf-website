@@ -1,4 +1,4 @@
-export { BlogEntryItemComponent } from "./blog-entry-item/blog-entry-item.component";
+export { GyBlogEntryItemComponent } from "./gy-blog-entry-item/gy-blog-entry-item.component";
 export { GyFooterComponent } from "./gy-footer/gy-footer.component";
 export { GyPageHeaderComponent } from "./gy-page-header/gy-page-header.component";
 export { GySectionCalendarComponent } from "./gy-section-calendar/gy-section-calendar.component";

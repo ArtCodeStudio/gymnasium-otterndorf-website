@@ -9,6 +9,7 @@ import {
   StrapiGqlBlogEntryBasicFragmentFragment,
   DynamicZoneSection,
   PageHeader,
+  SectionObject,
 } from "../types";
 import { SectionsService } from "./sections";
 import { postFormatter, blogFormatter } from "../formatters";
@@ -49,30 +50,10 @@ export class BlogService {
     return blogEntries;
   }
 
-  protected getContent(
-    blogEntry:
-      | StrapiGqlBlogEntryFragmentFragment
-      | StrapiGqlBlogEntryBasicFragmentFragment,
-    typename:
-      | "ComponentContentText"
-      | "ComponentContentImage"
-      | "ComponentSectionGallerySlideshow"
-      | "ComponentSectionSlideshow"
-  ) {
-    if (!blogEntry.content) {
-      return null;
-    }
-    for (const entry of blogEntry.content) {
-      if (entry?.__typename === typename) {
-        return entry;
-      }
-    }
-  }
-
   /**
    * Full dataset for detail pages
    */
-  async listPosts(slugs: string[] = []) {
+  public async listPosts(slugs: string[] = []) {
     const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = { slugs };
     const blogRes =
       await this.graphql.requestCached<StrapiGqlBlogEntriesBySlugsQuery>(
@@ -86,7 +67,7 @@ export class BlogService {
   /**
    * Full dataset for detail pages
    */
-  async getPost(slug: string) {
+  public async getPost(slug: string) {
     const posts = await this.listPosts([slug]);
     if (!Array.isArray(posts) || posts.length <= 0) {
       const error: ResponseError = new Error("Not found!");
@@ -96,12 +77,24 @@ export class BlogService {
     return posts[0];
   }
 
-  async getSections(post: StrapiGqlBlogEntryFragmentFragment) {
+  public async getSections(post: StrapiGqlBlogEntryFragmentFragment | StrapiGqlBlogEntryBasicFragmentFragment) {
     if (post?.content) {
       const DynamicZoneSections = (post?.content || []) as DynamicZoneSection[];
       return BlogService.sections.transform(DynamicZoneSections);
     }
     return [];
+  }
+
+  public async getSectionsObject(
+    post:
+      StrapiGqlBlogEntryFragmentFragment | StrapiGqlBlogEntryBasicFragmentFragment
+  ): Promise<SectionObject> {
+    if (!post.content) {
+      return {};
+    }
+    const sectionsArr = await this.getSections(post);
+    const sectionsObj = BlogService.sections.toObject(sectionsArr);
+    return sectionsObj;
   }
 
   public getPostHeader(post: StrapiGqlBlogEntryFragmentFragment): PageHeader {
