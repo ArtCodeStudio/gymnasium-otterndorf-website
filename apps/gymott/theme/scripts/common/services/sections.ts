@@ -144,7 +144,7 @@ export class SectionsService {
             break;
           default:
             console.warn(
-              `[SectionsService] Unknown section type "${dynamicZoneSection.__typename}" detected!`
+              `[SectionsService] Unknown section type "${(dynamicZoneSection as any).__typename}" detected!`
             );
             sections.push(dynamicZoneSection as any);
         }
