@@ -32,6 +32,11 @@ export const getEntryType = (typename?: EntryType | ENTRY_TYPE) => {
       return ENTRY_TYPE.Blog;
     case "nav":
       return ENTRY_TYPE.Navigation;
+    case "Teacher":
+    case "teacher":
+      return ENTRY_TYPE.Teacher;
+    case "Home":
+      return ENTRY_TYPE.Home;
     default:
       console.error(new Error("Unknown type: " + typename));
       return ENTRY_TYPE.Unknown;
