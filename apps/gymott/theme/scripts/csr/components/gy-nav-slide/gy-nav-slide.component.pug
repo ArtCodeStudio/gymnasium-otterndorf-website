@@ -10,7 +10,7 @@ bs5-slideshow(rv-parent rv-co-items="slides" xs-controls="false" xs-indicators="
       //- Nav children
       .list-group.w-100.h-100.d-flex.justify-content-start(rv-if="slide.entry.type | eq 'list'")
         div(rv-each-child="slide.entry.children")
-          a.list-group-item.list-group-item-link.d-flex.align-items-center(rv-if="child.href" rv-href="child.href" rv-class-disabled="child.href | not" rv-touch-events rv-on-tap="$parent.$parent.$parent.onNavTap | args child slide")
+          a.list-group-item.list-group-item-link.d-flex.align-items-center(rv-if="child.href" rv-href="child.href" rv-class-disabled="child.href | not" rv-route-class-active rv-touch-events rv-on-tap="$parent.$parent.$parent.onNavTap | args child slide")
             span.text-truncate(rv-text="child.label")
           .list-group-item.list-group-item-parent.d-flex.align-items-center(rv-unless="child.href" rv-class-disabled="child.children | size | not" rv-touch-events rv-on-mouseover="$parent.$parent.$parent.onNavTapstart | args child slide" rv-on-tapstart="$parent.$parent.$parent.onNavTapstart | args child slide" rv-on-tap="$parent.$parent.$parent.onNavTap | args child slide")
             span.text-truncate(rv-text="child.label")
