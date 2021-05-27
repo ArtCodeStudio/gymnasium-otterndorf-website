@@ -5,6 +5,7 @@
 #import "./component-section-gallery-slideshow.gql"
 
 fragment PageFragment on Page {
+  __typename
   id
   created_at
   updated_at

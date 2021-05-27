@@ -2,7 +2,7 @@
   .row
     .col-12
       gy-page-header.col-12.my-4(ssr-rv-co-header="header")
-  .row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-4.mb-4
+  section.row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-4.mb-4
     .col.mx-auto(rv-each-teacher="teachers")
       .card.hover-card.h-100
         img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")

@@ -6,6 +6,7 @@
     .col-12
       h2.text-center(rv-show="pages | size") Seiten
       .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-href=" | page") Übersicht
         a.list-group-item.list-group-item-action(rv-each-page="pages" rv-href="page.slug | page" rv-text="page.title")
       h2.text-center(rv-show="blogs | size") Blogs
       .list-group.my-5
@@ -13,6 +14,7 @@
         a.list-group-item.list-group-item-action(rv-each-blog="blogs" rv-href="blog.slug | blog" rv-text="blog.name")
       h2.text-center(rv-show="blogPosts | size") Blog-Artikel
       .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-href=" | blog") Übersicht
         a.list-group-item.list-group-item-action(rv-each-post="blogPosts" rv-href="post.slug | post" rv-text="post.title")
       h2.text-center(rv-show="subjects | size") Schulfächer
       .list-group.my-5

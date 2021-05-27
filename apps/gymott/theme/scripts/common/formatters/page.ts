@@ -5,7 +5,7 @@ export const pageFormatter = {
   name: "page",
   read(slug?: string) {
     if (!slug) {
-      return "";
+      return "/page";
     }
     return `/page/${slug}`;
   },

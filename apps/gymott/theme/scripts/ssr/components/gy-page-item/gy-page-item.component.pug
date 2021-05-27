@@ -1,0 +1,10 @@
+a.card.hover-card-sm.mb-3(rv-href="page.slug | page")
+  img(rv-if="sections.image.image" rv-src="sections.image.image | strapi-image-url 'small'" class="card-img-top" rv-alt="sections.image.image.alternativeText")
+  .card-body(rv-debug="sections")
+    p(rv-debug="page")
+    h6.card-subtitle.mb-2(rv-text="page.__typename | entry-type-name" rv-add-class="page.__typename | entry-type-color | prepend 'text-'")
+    h5.card-title(rv-text="page.title")
+    p.card-text(rv-if="sections.text.text")
+      span(rv-html="sections.text.text | markdown | strip-html | cut catTextAt ' ...'")
+    span.card-text.text-muted
+      | [ page.updated_at | or page.published_at | or page.created_at | moment-locale 'de' | calendar | capitalize ] von [ page.author ]

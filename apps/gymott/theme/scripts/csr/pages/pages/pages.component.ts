@@ -4,7 +4,7 @@ import { replaceBodyPageClass } from "../../../common";
 export type Scope = Record<string, never>;
 
 export class PagesPageComponent extends Component {
-  public static tagName = "pages-page";
+  public static tagName = "page-page";
   public _debug = false;
 
   scope: Scope = {};
