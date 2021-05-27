@@ -29,9 +29,9 @@ export class GySectionNewsComponent extends Component {
   }
 
   protected async beforeBind() {
-    console.debug("[blog-entry-item] this.scope.section", this.scope.section);
+    console.debug("[gy-section-news] this.scope.section", this.scope.section);
     this.scope.news = await NewsService.getInstance().list();
-    console.debug("[blog-entry-item] this.scope.news", this.scope.news);
+    console.debug("[gy-section-news] this.scope.news", this.scope.news);
   }
 
   protected connectedCallback() {

@@ -1,4 +1,3 @@
-export interface HomeCalendar {
-  __typename: "ComponentHomeCalendar";
-  dates: number;
-}
+import { StrapiGqlComponentHomeCalendar } from "./strapi-gql";
+
+export type HomeCalendar = StrapiGqlComponentHomeCalendar;

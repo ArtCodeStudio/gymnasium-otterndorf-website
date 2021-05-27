@@ -1,22 +1,24 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { BlogService } from "common/services";
-import { Awaited } from "common/types";
-import pugTemplate from "./blog-entry-item.component.pug";
+import { BlogService, Awaited, SectionObject } from "../../../common";
+import pugTemplate from "./gy-blog-entry-item.component.pug";
 
 type Post = Awaited<ReturnType<BlogService["listPostsBasic"]>>[0];
 
 export interface Scope {
   post?: Post;
+  sections: SectionObject;
 }
 
-export class BlogEntryItemComponent extends Component {
-  public static tagName = "blog-entry-item";
+export class GyBlogEntryItemComponent extends Component {
+  public static tagName = "gy-blog-entry-item";
   public _debug = false;
   protected autobind = true;
+  protected blog = BlogService.getInstance();
 
   scope: Scope = {
     post: undefined,
+    sections: {},
   };
 
   static get observedAttributes(): string[] {
@@ -27,14 +29,18 @@ export class BlogEntryItemComponent extends Component {
     return ["post"];
   }
 
-  protected async afterBind() {
+  protected async beforeBind() {
     await super.afterBind();
-    console.debug("[BlogEntryItemComponent] post", this.scope.post);
+    if (this.scope.post) {
+      this.scope.sections = await this.blog.getSectionsObject(this.scope.post);
+    }
+    console.debug("[GyBlogEntryItemComponent] post", this.scope.post);
+    console.debug("[GyBlogEntryItemComponent] sections", this.scope.sections);
   }
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(BlogEntryItemComponent.observedAttributes);
+    this.init(GyBlogEntryItemComponent.observedAttributes);
   }
 
   protected template() {

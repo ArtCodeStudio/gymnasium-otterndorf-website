@@ -5,6 +5,7 @@ import {
   DynamicZoneSection,
   StrapiGqlComponentSlideshowEntryPageFragmentFragment,
   Section,
+  SectionObject,
   SectionSlideshowEntry,
   StrapiGqlComponentSlideshowEntryFragmentFragment,
   StrapiGqlComponentSlideshowEntryBlogFragmentFragment,
@@ -27,6 +28,45 @@ export class SectionsService {
     }
     this.instance = new this();
     return this.instance;
+  }
+
+  toObject(sectionsArr: Section[]) {
+    const sectionsObj: SectionObject = {};
+    for (const section of sectionsArr) {
+      switch (section.__typename) {
+        case "ComponentContentImage":
+          sectionsObj.image = section;
+          break;
+        case "ComponentContentText":
+          sectionsObj.text = section;
+          break;
+        case "ComponentHomeCalendar":
+          sectionsObj.calendar = section;
+          break;
+        case "ComponentHomeNews":
+          sectionsObj.news = section;
+          break;
+        case "ComponentSectionBlackboardSlideshow":
+          sectionsObj.blackboardSlideshow = section;
+          break;
+        case "ComponentSectionFacts":
+          sectionsObj.facts = section;
+          break;
+        case "ComponentSectionGallerySlideshow":
+          sectionsObj.gallerySlideshow = section;
+          break;
+        case "ComponentSectionSlideshow":
+          sectionsObj.slideshow = section;
+          break;
+        default:
+          console.warn(
+            `[SectionsService] Unknown section type "${(section as any)?.__typename
+            }" detected!`
+          );
+          break;
+      }
+    }
+    return sectionsObj;
   }
 
   async transform(dynamicZoneSections: DynamicZoneSection[]) {
@@ -66,7 +106,6 @@ export class SectionsService {
                 });
               }
             }
-
             break;
           case "ComponentSectionFacts":
             sections.push({
@@ -94,16 +133,19 @@ export class SectionsService {
                   sectionGallerySlideshow.limit
                 );
             }
-
             sections.push(sectionGallerySlideshow);
             break;
-          case "ComponentSectionBlackboardSlideshow":
-            console.log("TODO @ Moritz");
+          case "ComponentHomeCalendar":
             sections.push(dynamicZoneSection as any);
+            break;
+          case "ComponentSectionBlackboardSlideshow":
+            console.debug("TODO @ Moritz");
+            sections.push(dynamicZoneSection);
             break;
           default:
             console.warn(
-              `[SectionsService] Unknown section type "${dynamicZoneSection?.__typename}" detected!`
+              `[SectionsService] Unknown section type "${(dynamicZoneSection as any)?.__typename
+              }" detected!`
             );
             sections.push(dynamicZoneSection as any);
         }

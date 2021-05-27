@@ -10,12 +10,13 @@ import { SectionBlackboardSlideshow } from "./section-blackboard-slideshow";
 /**
  * Type for transformed sections
  */
-export type Section =
-  | SectionContentImage
-  | SectionContentText
-  | SectionFacts
-  | HomeNews
-  | HomeCalendar
-  | SectionSlideshow
-  | SectionGallerySlideshow
-  | SectionBlackboardSlideshow;
+export interface SectionObject {
+  image?: SectionContentImage;
+  text?: SectionContentText;
+  facts?: SectionFacts;
+  news?: HomeNews;
+  calendar?: HomeCalendar;
+  slideshow?: SectionSlideshow;
+  gallerySlideshow?: SectionGallerySlideshow;
+  blackboardSlideshow?: SectionBlackboardSlideshow;
+}
