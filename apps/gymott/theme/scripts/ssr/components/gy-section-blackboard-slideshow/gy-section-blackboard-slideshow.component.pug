@@ -1,7 +1,19 @@
 h1 Schulfächer
 
-bs5-slideshow.row.py-5(xs-controls="false" md-controls="true" xs-indicators="false" xs-drag="false" xs-control-prev-icon-src="/iconset/svg/arrow_chalk_prev.svg" xs-control-next-icon-src="/iconset/svg/arrow_chalk_next.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="false")
-  .col-12
-    .row.slideshow-row.py-3
-      .slide.col-12(ssr-rv-each-slide="section.slides")
-        gy-blackboard(rv-background-image="slide.image | strapi-image-url 'large'")
+bs5-slideshow(xs-controls="false" md-controls="true" xs-indicators="false" xs-drag="false" xs-control-prev-icon-src="/iconset/svg/arrow_chalk_prev.svg" xs-control-next-icon-src="/iconset/svg/arrow_chalk_next.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="false")
+  .row.py-5
+    .col-12
+      .row.slideshow-row.py-3
+        .slide.col-12(ssr-rv-each-slide="section.slides")
+          gy-blackboard(rv-background-image="slide.image | strapi-image-url 'large'")
+  template(type="controls")
+    .slideshow-controls.slideshow-control-prev(rv-show='activeBreakpoint.controls' rv-add-class='controlsPositionClass' data-slide='prev')
+      button(role="button").btn.btn-link
+        bs5-icon(rv-on-click="prev" rv-if='activeBreakpoint.controlPrevIconSrc' rv-src='activeBreakpoint.controlPrevIconSrc' role='button' size='80')
+        span.slideshow-control-fallback-prev-icon(rv-hide='activeBreakpoint.controlPrevIconSrc' aria-hidden='true')
+        span.visually-hidden Previous
+    .slideshow-controls.slideshow-control-next(rv-show='activeBreakpoint.controls' rv-add-class='controlsPositionClass' data-slide='next')
+      button(role="button").btn.btn-link
+        bs5-icon(rv-on-click="next" rv-if='activeBreakpoint.controlNextIconSrc' rv-src='activeBreakpoint.controlNextIconSrc' role='button' size='80')
+        span.slideshow-control-fallback-next-icon(rv-hide='activeBreakpoint.controlNextIconSrc' aria-hidden='true')
+        span.visually-hidden Next
