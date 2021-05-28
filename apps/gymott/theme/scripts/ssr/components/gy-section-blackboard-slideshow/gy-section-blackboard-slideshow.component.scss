@@ -1,3 +1,8 @@
 gy-section-blackboard-slideshow {
-  color: #fff;    
+  .slideshow-controls {
+    pointer-events: none;
+    > * {
+      pointer-events: all;
+    }
+  }
 }

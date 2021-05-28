@@ -7,9 +7,24 @@ gy-blackboard {
   .gy-blackboard-icons {
     position: absolute;
     right: 0;
-    bs5-icon {
+    button {
+      z-index: 2;
       display: block;
       transform: translateX(-50%) !important;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+  }
+  &.chalk-selected {
+    cursor: crosshair;
+    .button-chalk {
+      opacity: 1;
+    }
+  }
+  &.sponge-selected {
+    cursor: grab;
+    .button-sponge {
+      opacity: 1;
     }
   }
 }
