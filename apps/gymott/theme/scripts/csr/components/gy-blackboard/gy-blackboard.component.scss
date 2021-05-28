@@ -1,0 +1,15 @@
+gy-blackboard {
+  display: block;
+  canvas {
+    width: 100%;
+    max-width: 100%;
+  }
+  .gy-blackboard-icons {
+    position: absolute;
+    right: 0;
+    bs5-icon {
+      display: block;
+      transform: translateX(-50%) !important;
+    }
+  }
+}
