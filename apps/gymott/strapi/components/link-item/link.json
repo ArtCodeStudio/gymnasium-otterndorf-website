@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_link_item_links",
+  "info": {
+    "name": "Link",
+    "icon": "angle-right"
+  },
+  "options": {},
+  "attributes": {
+    "navigation_link": {
+      "model": "navigation-link"
+    }
+  }
+}

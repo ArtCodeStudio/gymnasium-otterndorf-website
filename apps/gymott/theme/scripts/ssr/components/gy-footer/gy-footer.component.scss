@@ -1,8 +1,15 @@
 gy-footer {
   display: block;
   
-  .row {
+  footer {
     background-color: $light;
+    border-top: solid $cyan 2px;
+  }
+
+  @include media-breakpoint-up(md) { 
+    .footer-right {
+      border-left: solid $cyan 2px;
+    }  
   }
   
   .footer-bottom {
@@ -11,12 +18,6 @@ gy-footer {
 
   .contact-info {
     white-space: pre-line;
-  }
-
-  .brand-text {
-    line-height: 1;
-    font-size: 24px;
-    user-select: none;
   }
 }
 
