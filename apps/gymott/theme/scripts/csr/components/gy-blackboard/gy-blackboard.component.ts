@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Component } from "@ribajs/core";
 import pugTemplate from "./gy-blackboard.component.pug";
-
 interface Scope {
   backgroundImage?: string | undefined;
   selectChalk: GyBlackboardComponent["selectChalk"];
@@ -45,7 +44,6 @@ export class GyBlackboardComponent extends Component {
     getCoordinates: (e: MouseEvent) => {
       if (this._canvas) {
         const rect = this._canvas.getBoundingClientRect();
-        console.log({ client: { x: e.clientX, y: e.clientY }, rect });
         return {
           x: ((e.clientX - rect.left) * this._canvas.width) / rect.width,
           y: ((e.clientY - rect.top) * this._canvas.height) / rect.height,
@@ -60,7 +58,7 @@ export class GyBlackboardComponent extends Component {
 
   private _chalk = {
     size: 20,
-    color: "rgba(210, 210, 210, 0.7)",
+    color: "rgba(254, 254, 254, 0.6)",
     inkAmount: 5,
     sep: 5,
     latestStrokeLength: 0,
@@ -99,35 +97,102 @@ export class GyBlackboardComponent extends Component {
       const v = this.math.diff(this.cur!, this.prev!);
       const vlen = this.math.length(v);
       const s = Math.ceil(this.size / 2);
-      const stepNum = Math.floor(vlen / s) + 1;
+      const stepNum = this.math.clamp(Math.floor(vlen / s), 37, 1);
       v.x *= s / vlen;
       v.y *= s / vlen;
 
       const dotSize =
         this.sep *
-        this.math.clamp((this.inkAmount / this.latestStrokeLength) * 3, 1, 0.5);
+        this.math.clamp(
+          (this.inkAmount / this.latestStrokeLength) * 2.25,
+          0.72,
+          0.5
+        );
       const dotNum = Math.ceil(this.size * this.sep);
 
       const range = this.size / 2;
 
       ctx.save();
       ctx.fillStyle = this.color;
+      // ctx.globalCompositeOperation = "lighter";
+      ctx.strokeStyle = "rgba(230, 230, 230, 0.25)";
       ctx.beginPath();
-
       for (let i = 0; i < dotNum; i++) {
-        for (let j = 0; j < stepNum; j++) {
+        let r = Math.random() * range;
+        let c = Math.random() * Math.PI * 2;
+        let w = (Math.random() * dotSize + dotSize) / 2;
+        let h = (Math.random() * dotSize + dotSize) / 2;
+        for (let j = 1; j <= stepNum; j++) {
+          if (j % 3 === 0) {
+            r = Math.random() * range;
+            c = Math.random() * Math.PI * 2;
+            w = (Math.random() * dotSize + dotSize) / 2;
+            h = (Math.random() * dotSize + dotSize) / 2;
+          }
           const p = { x: this.prev!.x + v.x * j, y: this.prev!.y + v.y * j };
-          const r = Math.random() * range;
-          const c = Math.random() * Math.PI * 2;
-          const w = (Math.random() * dotSize + dotSize) / 2;
-          const h = (Math.random() * dotSize + dotSize) / 2;
           const x = p.x + r * Math.sin(c) - w / 2;
           const y = p.y + r * Math.cos(c) - h / 2;
-          ctx.rect(x, y, w, h);
+          if (Math.random() > 0.0705) {
+            // ctx.fillStyle = this.color;
+            //
+            if (Math.random() > 0.1) {
+              ctx.lineWidth = Math.min(w, h) / 2;
+              const arr = [
+                [
+                  [
+                    this.prev!.x +
+                      v.x * (j - 1) +
+                      2 * r * (Math.random() - 0.5),
+                    this.prev!.y +
+                      2 * r * (Math.random() - 0.5) +
+                      v.y * (j - 1),
+                  ],
+                  [
+                    this.prev!.x + w * Math.sin(c) + v.x * j,
+                    this.prev!.y + h * Math.cos(c) + v.y * j,
+                  ],
+                ],
+                [
+                  [this.prev!.x + v.x * (j - 1), this.prev!.y + v.y * (j - 1)],
+                  [
+                    this.prev!.x +
+                      w * Math.sin(c) +
+                      v.x * j +
+                      2 * r * (Math.random() - 0.5),
+                    this.prev!.y +
+                      h * Math.cos(c) +
+                      v.y * j +
+                      2 * r * (Math.random() - 0.5),
+                  ],
+                ],
+              ];
+              if (Math.random() > 0.25) {
+                (ctx.moveTo as any)(...arr[0][0]);
+                (ctx.lineTo as any)(...arr[0][1]);
+              } else {
+                (ctx.moveTo as any)(...arr[1][1]);
+                (ctx.lineTo as any)(...arr[1][0]);
+              }
+            }
+            if (Math.random() > 0.205) {
+              ctx.rect(x, y, w, h);
+            }
+          }
+          if (Math.random() > 0.44) {
+            ctx.lineWidth = Math.min(w, h);
+            ctx.lineCap = ctx.lineJoin = "round";
+            if (Math.random() > 0.5) {
+              ctx.moveTo(this.prev!.x, this.prev!.y);
+              ctx.lineTo(x + w, y + h);
+            } else {
+              ctx.moveTo(this.prev!.x + w, this.prev!.y + h);
+              ctx.lineTo(x, y);
+            }
+          }
         }
       }
-
       ctx.fill();
+      ctx.stroke();
       ctx.restore();
     },
   };
@@ -139,10 +204,19 @@ export class GyBlackboardComponent extends Component {
     size: 80,
     inkAmount: 15,
     sep: 15,
+    strokeCount: 0 as number,
+    dripCount: 0 as number,
+    draww() {
+      // const canvas = this.getCanvas();
+      this.strokeCount++;
+      this.dripCount++;
+    },
+    onMouseDown(event: MouseEvent) {
+      this.start = this.prev = this.cur = this.math.getCoordinates(event);
+    },
   };
 
   private _selectChalk() {
-    console.log("chalk");
     this._selectedTool = this._chalk;
     this.classList.add("chalk-selected");
     this.classList.remove("sponge-selected");
@@ -151,7 +225,6 @@ export class GyBlackboardComponent extends Component {
   public selectChalk = this._selectChalk.bind(this);
 
   private _selectSponge() {
-    console.log("sponge");
     // TODO
     this._selectedTool = this._sponge;
     this.classList.remove("chalk-selected");
@@ -161,7 +234,7 @@ export class GyBlackboardComponent extends Component {
   public selectSponge = this._selectSponge.bind(this);
 
   private _selectNone() {
-    console.log("none");
+    this._selectedTool = null;
     this.classList.remove("chalk-selected");
     this.classList.remove("sponge-selected");
   }
@@ -187,13 +260,11 @@ export class GyBlackboardComponent extends Component {
   }
 
   protected async beforeBind() {
-    console.log("Before bind", JSON.stringify(this.scope, null, 2));
     await super.beforeBind();
   }
 
   protected async afterBind() {
     await super.afterBind();
-    console.log(this._math);
   }
 
   protected initCanvas() {
