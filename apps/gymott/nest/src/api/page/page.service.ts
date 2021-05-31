@@ -60,7 +60,8 @@ export class PageService {
       console.error(error);
     }
     if (Array.isArray(pages)) {
-      return await Promise.all(pages.map((page) => this.flatten(page)));
+      const result = await Promise.all(pages.map((page) => this.flatten(page)));
+      return result.filter((page) => !!page.href);
     }
     return null;
   }

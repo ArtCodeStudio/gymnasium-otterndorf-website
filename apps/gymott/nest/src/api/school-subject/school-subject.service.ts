@@ -56,9 +56,10 @@ export class SchoolSubjectService {
       console.error(error);
     }
     if (Array.isArray(subjects)) {
-      return await Promise.all(
+      const result = await Promise.all(
         subjects.map((subject) => this.flatten(subject)),
       );
+      return result.filter((subject) => !!subject.href);
     }
     return null;
   }

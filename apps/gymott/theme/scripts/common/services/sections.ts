@@ -137,7 +137,6 @@ export class SectionsService {
             sections.push(dynamicZoneSection);
             break;
           case "ComponentSectionBlackboardSlideshow":
-            console.debug("TODO @ Moritz");
             sections.push(dynamicZoneSection);
             break;
           default:

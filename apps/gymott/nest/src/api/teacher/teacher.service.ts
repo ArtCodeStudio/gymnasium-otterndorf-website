@@ -63,9 +63,10 @@ export class TeacherService {
       console.error(error);
     }
     if (Array.isArray(teachers)) {
-      return await Promise.all(
+      const result = await Promise.all(
         teachers.map((teacher) => this.flatten(teacher)),
       );
+      return result.filter((teacher) => !!teacher.href);
     }
     return null;
   }

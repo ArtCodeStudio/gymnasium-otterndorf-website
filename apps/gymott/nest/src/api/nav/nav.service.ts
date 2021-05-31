@@ -26,7 +26,7 @@ export class NavService {
       case 'page':
         return '/page/' + slug;
       case 'ComponentLinkTypeSchulfach':
-      case 'schulfach':
+      case 'subject':
         return '/schulfach/' + slug;
       case 'teacher':
         return '/teacher/' + slug;
@@ -107,6 +107,7 @@ export class NavService {
         );
       responseNavs = response.navigationLinks || [];
       navs = responseNavs.map((nav) => this.flatten(nav));
+      navs = navs.filter((nav) => !!nav.href);
     } catch (error) {
       console.error(error);
     }

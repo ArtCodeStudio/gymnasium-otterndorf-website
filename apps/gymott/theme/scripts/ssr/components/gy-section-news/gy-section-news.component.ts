@@ -27,13 +27,13 @@ export class GySectionNewsComponent extends Component {
   }
 
   protected async beforeBind() {
-    console.debug("[gy-section-news] this.scope.section", this.scope.section);
+    this.debug("[gy-section-news] this.scope.section", this.scope.section);
     this.scope.section?.pages;
     this.scope.posts = await BlogService.getInstance().listPostsBasic(
       [],
       this.scope.section?.amount || 2
     );
-    console.debug("[gy-section-news] this.scope.news", this.scope.posts);
+    this.debug("[gy-section-news] this.scope.news", this.scope.posts);
   }
 
   protected connectedCallback() {

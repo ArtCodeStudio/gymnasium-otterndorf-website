@@ -61,7 +61,8 @@ export class PostService {
       console.error(error);
     }
     if (Array.isArray(posts)) {
-      return Promise.all(posts.map((post) => this.flatten(post)));
+      const result = await Promise.all(posts.map((post) => this.flatten(post)));
+      return result.filter((post) => !!post.href);
     }
     return null;
   }
