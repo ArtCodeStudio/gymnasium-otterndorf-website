@@ -35,6 +35,9 @@ export class GyFooterComponent extends Component {
     if (footerObject.footer?.contact_info) {
       this.scope.contactInfo = footerObject.footer?.contact_info;
     }
+    if (footerObject.footer?.map_link) {
+      this.scope.mapLink = footerObject.footer?.map_link;
+    }
     if (footerObject.footer?.map_image?.alternativeText) {
       this.scope.mapImageAlt = footerObject.footer?.map_image.alternativeText;
     }

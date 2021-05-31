@@ -1,15 +1,13 @@
-.container-fluid.container-xxl
+footer.container-fluid.container-xxl
   .row
     .col-12.col-md-6.px-0
-      a(ssr-rv-href="mapLink")
-        img.img-fluid(ssr-rv-src="mapImageUrl | strapi" ssr-rv-alt="mapImageAlt")
-    .col-12.col-md-6.px-md-0
-      .logo.navbar-brand.d-flex.align-items-center.pt-3.p-md-4
-        bs5-icon(src="/images/logo.svg" size="96")
-        .brand-text.ms-1.d-flex.flex-column.justify-content-center.fw-bold
-          .text-blue Gymnasium
-          .text-greenlight Otterndorf
-          .text-green Offene
-          .text-cyan Ganztagsschule
-      h5.py-3.p-md-4.contact-info(ssr-rv-text="contactInfo")
-      h5.py-3.mx-4.footer-bottom (c) gymnasium-otterndorf.de
+      a(ssr-rv-href="mapLink" rel="noopener noreferrer" target="_blank")
+        img.img-fluid.h-100(ssr-rv-src="mapImageUrl | strapi" ssr-rv-alt="mapImageAlt")
+    .footer-right.col-12.col-md-6
+      .row.h-100
+        gy-logo.col-12
+        h5.col-12.contact-info(ssr-rv-text="contactInfo")
+        .col-12.footer-bottom.align-self-end 
+          h6 Impressum 
+          h6 Datenschutzerklärung
+          h6 (c) gymnasium-otterndorf.de

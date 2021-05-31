@@ -1,18 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Component } from "@ribajs/core";
+import { Vector2d } from "../../../common";
 import pugTemplate from "./gy-blackboard.component.pug";
-interface Scope {
+
+export interface GyBlackboardComponentScope {
   backgroundImage?: string | undefined;
   selectChalk: GyBlackboardComponent["selectChalk"];
   selectSponge: GyBlackboardComponent["selectSponge"];
   selectNone: GyBlackboardComponent["selectNone"];
-}
-
-export type GyBlackboardComponentScope = Scope;
-
-interface Vector2d {
-  x: number;
-  y: number;
 }
 
 type GyBlackboardDrawingTool =
@@ -21,7 +16,7 @@ type GyBlackboardDrawingTool =
 
 export class GyBlackboardComponent extends Component {
   public static tagName = "gy-blackboard";
-  public _debug = true;
+  public _debug = false;
   protected autobind = true;
 
   private _canvas: HTMLCanvasElement | null = null;
@@ -41,16 +36,21 @@ export class GyBlackboardComponent extends Component {
     length(v: Vector2d) {
       return Math.sqrt(v.x * v.x + v.y * v.y);
     },
-    getCoordinates: (e: MouseEvent) => {
-      if (this._canvas) {
-        const rect = this._canvas.getBoundingClientRect();
-        return {
-          x: ((e.clientX - rect.left) * this._canvas.width) / rect.width,
-          y: ((e.clientY - rect.top) * this._canvas.height) / rect.height,
-        };
-      } else {
+    getCoordinates: (e: MouseEvent | TouchEvent) => {
+      if (!this._canvas) {
         return null;
       }
+      const rect = this._canvas.getBoundingClientRect();
+      const clientX =
+        (e as MouseEvent).clientX || (e as TouchEvent).touches[0].clientX;
+      const clientY =
+        (e as MouseEvent).clientY || (e as TouchEvent).touches[0].clientY;
+
+      // this.debug({ client: { x: clientX, y: clientY }, rect });
+      return {
+        x: ((clientX - rect.left) * this._canvas.width) / rect.width,
+        y: ((clientY - rect.top) * this._canvas.height) / rect.height,
+      };
     },
   };
 
@@ -67,34 +67,61 @@ export class GyBlackboardComponent extends Component {
     cur: null as Vector2d | null,
     prev: null as Vector2d | null,
     math: this._math,
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent | TouchEvent) {
       this.start = this.prev = this.cur = this.math.getCoordinates(event);
     },
-    onMouseUp(event: MouseEvent) {
+    onMouseUp(event: MouseEvent | TouchEvent) {
       this.end = this.math.getCoordinates(event);
       this.start = this.prev = this.cur = null;
     },
-    onMouseMove(event: MouseEvent) {
+    onMouseMove(event: MouseEvent | TouchEvent) {
       if (!this.start) {
         return;
       }
       this.prev = this.cur;
       this.cur = this.math.getCoordinates(event);
+
+      if (!this.cur) {
+        console.error(new Error("cur vector is falsy!"));
+        return;
+      }
+
       if (!this.prev) {
         this.prev = this.cur;
       }
       this.latestStrokeLength = this.math.length({
-        x: this.cur!.x - this.prev!.x,
-        y: this.cur!.y - this.prev!.y,
+        x: this.cur.x - this.prev.x,
+        y: this.cur.y - this.prev.y,
       });
       this.draw();
     },
     getCanvas: () => this._canvas,
     draw() {
-      const canvas = this.getCanvas()!;
-      const ctx = canvas.getContext("2d")!;
+      const canvas = this.getCanvas();
 
-      const v = this.math.diff(this.cur!, this.prev!);
+      if (!canvas) {
+        console.error(new Error("canvas is falsy!"));
+        return;
+      }
+
+      if (!this.cur) {
+        console.error(new Error("cur vector is falsy!"));
+        return;
+      }
+
+      if (!this.prev) {
+        console.error(new Error("prev vector is falsy!"));
+        return;
+      }
+
+      const ctx = canvas.getContext("2d");
+
+      if (!ctx) {
+        console.error(new Error("ctx is falsy!"));
+        return;
+      }
+
+      const v = this.math.diff(this.cur, this.prev);
       const vlen = this.math.length(v);
       const s = Math.ceil(this.size / 2);
       const stepNum = this.math.clamp(Math.floor(vlen / s), 37, 1);
@@ -211,7 +238,7 @@ export class GyBlackboardComponent extends Component {
       this.strokeCount++;
       this.dripCount++;
     },
-    onMouseDown(event: MouseEvent) {
+    onMouseDown(event: MouseEvent | TouchEvent) {
       this.start = this.prev = this.cur = this.math.getCoordinates(event);
     },
   };
@@ -225,6 +252,7 @@ export class GyBlackboardComponent extends Component {
   public selectChalk = this._selectChalk.bind(this);
 
   private _selectSponge() {
+    this.debug("sponge");
     // TODO
     this._selectedTool = this._sponge;
     this.classList.remove("chalk-selected");
@@ -241,7 +269,7 @@ export class GyBlackboardComponent extends Component {
 
   public selectNone = this._selectNone.bind(this);
 
-  scope: Scope = {
+  scope: GyBlackboardComponentScope = {
     selectChalk: this.selectChalk,
     selectSponge: this.selectSponge,
     selectNone: this.selectNone,
@@ -269,40 +297,79 @@ export class GyBlackboardComponent extends Component {
 
   protected initCanvas() {
     this._canvas = this.querySelector("canvas");
-    this._ctx = this._canvas!.getContext("2d");
-    if (this._ctx) {
-      this._ctx.fillStyle = "#4e4e4e";
-      this._ctx.fillRect(0, 0, this._canvas!.width, this._canvas!.height);
+
+    if (!this._canvas) {
+      console.error(new Error("canvas is falsy!"));
+      return;
     }
+
+    this._ctx = this._canvas.getContext("2d");
+
+    if (!this._ctx) {
+      console.error(new Error("ctx is falsy!"));
+      return;
+    }
+
+    this._ctx.fillStyle = "#4e4e4e";
+    this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
     if (this.scope.backgroundImage) {
       const image = new Image();
       image.src = this.scope.backgroundImage;
       image.addEventListener("load", () => {
+        if (!this._canvas) {
+          console.error(new Error("canvas is falsy!"));
+          return;
+        }
         this._ctx?.drawImage(
           image,
-          (this._canvas!.width - image.width) / 2,
-          (this._canvas!.height - image.height) / 2
+          (this._canvas.width - image.width) / 2,
+          (this._canvas.height - image.height) / 2
         );
       });
     }
   }
 
+  protected _onMouseDown(event: MouseEvent | TouchEvent) {
+    if (this._selectedTool) {
+      this._selectedTool.onMouseDown(event);
+    }
+  }
+  protected onMouseDown = this._onMouseDown.bind(this);
+
+  protected _onMouseUp(event: MouseEvent | TouchEvent) {
+    if (this._selectedTool) {
+      this._selectedTool.onMouseUp(event);
+    }
+  }
+  protected onMouseUp = this._onMouseUp.bind(this);
+
+  protected _onMouseMove(event: MouseEvent | TouchEvent) {
+    if (this._selectedTool) {
+      this._selectedTool.onMouseMove(event);
+    }
+  }
+  protected onMouseMove = this._onMouseMove.bind(this);
+
   protected addEventListeners() {
-    this.addEventListener("mousedown", (event: MouseEvent) => {
-      if (this._selectedTool) {
-        this._selectedTool.onMouseDown(event);
-      }
-    });
-    this.addEventListener("mouseup", (event: MouseEvent) => {
-      if (this._selectedTool) {
-        this._selectedTool.onMouseUp(event);
-      }
-    });
-    this.addEventListener("mousemove", (event: MouseEvent) => {
-      if (this._selectedTool) {
-        this._selectedTool.onMouseMove(event);
-      }
-    });
+    this.addEventListener("mousedown", this.onMouseDown);
+    this.addEventListener("touchstart", this.onMouseDown);
+
+    this.addEventListener("mouseup", this.onMouseUp);
+    this.addEventListener("touchend", this.onMouseUp);
+
+    this.addEventListener("mousemove", this.onMouseMove);
+    this.addEventListener("touchmove", this.onMouseMove);
+  }
+
+  protected removeEventListeners() {
+    this.removeEventListener("mousedown", this.onMouseDown);
+    this.removeEventListener("touchstart", this.onMouseDown);
+
+    this.removeEventListener("mouseup", this.onMouseUp);
+    this.removeEventListener("touchend", this.onMouseUp);
+
+    this.removeEventListener("mousemove", this.onMouseMove);
+    this.removeEventListener("touchmove", this.onMouseMove);
   }
 
   protected async connectedCallback() {
@@ -310,6 +377,11 @@ export class GyBlackboardComponent extends Component {
     await this.init(GyBlackboardComponent.observedAttributes);
     this.initCanvas();
     this.addEventListeners();
+  }
+
+  protected disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListeners();
   }
 
   protected template() {
