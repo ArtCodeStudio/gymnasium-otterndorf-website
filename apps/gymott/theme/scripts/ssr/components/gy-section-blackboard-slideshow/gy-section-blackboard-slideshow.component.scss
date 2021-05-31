@@ -5,4 +5,14 @@ gy-section-blackboard-slideshow {
       pointer-events: all;
     }
   }
+  .btn-link {
+    color: $white;
+    &:hover, &:active {
+      opacity: 1;
+      color: $white;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }
