@@ -3,7 +3,7 @@
 #import "./component-content-image.gql"
 #import "./component-section-gallery-slideshow.gql"
 
-fragment BlogEntryFragment on BlogEntry {
+fragment BlogEntryDetailFragment on BlogEntry {
   __typename
   id
   title

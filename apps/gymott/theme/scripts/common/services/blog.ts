@@ -1,8 +1,8 @@
 import { GraphQLClient } from "./graphql";
 import {
   ResponseError,
-  StrapiGqlBlogEntriesBySlugsQuery,
-  StrapiGqlBlogEntriesBySlugsQueryVariables,
+  StrapiGqlBlogEntriesDetailBySlugsQuery,
+  StrapiGqlBlogEntriesDetailBySlugsQueryVariables,
   StrapiGqlBlogEntriesBasicBySlugsQuery,
   StrapiGqlBlogEntriesBasicBySlugsQueryVariables,
   StrapiGqlBlogCategoriesBasicBySlugsQuery,
@@ -18,7 +18,7 @@ import {
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { postFormatter, blogFormatter } from "../formatters";
-import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-by-slugs.gql";
+import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-detail-by-slugs.gql";
 import blogEntriesBasicBySlugsQuery from "../../../graphql/queries/blog-entries-basic-by-slugs.gql";
 import blogCategoriesBasicBySlugs from "../../../graphql/queries/blog-categories-basic-by-slugs.gql";
 import blogCategoriesDetailBySlugs from "../../../graphql/queries/blog-categories-detail-by-slugs.gql";
@@ -62,13 +62,13 @@ export class BlogService {
    * Full dataset for detail pages
    */
   public async listPosts(slugs: string[] = [], limit = 50, start = 0) {
-    const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = {
+    const vars: StrapiGqlBlogEntriesDetailBySlugsQueryVariables = {
       slugs,
       limit,
       start,
     };
     const blogRes =
-      await this.graphql.requestCached<StrapiGqlBlogEntriesBySlugsQuery>(
+      await this.graphql.requestCached<StrapiGqlBlogEntriesDetailBySlugsQuery>(
         blogEntriesBySlugsQuery,
         vars
       );
@@ -91,7 +91,7 @@ export class BlogService {
     return blogCategories;
   }
 
-  public async list(slugs: string[] = [], limit = 50, start = 0) {
+  public async listDetail(slugs: string[] = [], limit = 50, start = 0) {
     const vars: StrapiGqlBlogCategoriesDetailBySlugsQueryVariables = {
       slugs,
       limit,
@@ -119,8 +119,18 @@ export class BlogService {
     return posts[0];
   }
 
-  public async get(slug: string) {
-    const blogs = await this.list([slug]);
+  public async getDetail(slug: string) {
+    const blogs = await this.listDetail([slug]);
+    if (!Array.isArray(blogs) || blogs.length <= 0) {
+      const error: ResponseError = new Error("Not found!");
+      error.status = 404;
+      throw error;
+    }
+    return blogs[0];
+  }
+
+  public async getBasic(slug: string) {
+    const blogs = await this.listBasic([slug]);
     if (!Array.isArray(blogs) || blogs.length <= 0) {
       const error: ResponseError = new Error("Not found!");
       error.status = 404;

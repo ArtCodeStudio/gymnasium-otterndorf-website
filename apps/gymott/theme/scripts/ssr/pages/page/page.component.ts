@@ -70,7 +70,7 @@ export class PagePageComponent extends PageComponent {
     if (page?.["blog_entries"]) {
       for (const blogEntry of page?.["blog_entries"]) {
         if (blogEntry) {
-          this.scope.blogEntries.push(blogEntry);
+          this.scope.blogEntries.push(blogEntry as Post);
         }
       }
     }

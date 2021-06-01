@@ -4,8 +4,8 @@ import { MarkdownService } from '../markdown/markdown.service';
 import { NavService } from '../nav';
 import { SearchPost } from './types';
 import {
-  StrapiGqlBlogEntriesBySlugsQuery,
-  StrapiGqlBlogEntriesBySlugsQueryVariables,
+  StrapiGqlBlogEntriesDetailBySlugsQuery,
+  StrapiGqlBlogEntriesDetailBySlugsQueryVariables,
 } from '../strapi/types';
 
 @Injectable()
@@ -18,13 +18,13 @@ export class PostService {
   }
 
   public async flattens(
-    posts: StrapiGqlBlogEntriesBySlugsQuery['blogEntries'],
+    posts: StrapiGqlBlogEntriesDetailBySlugsQuery['blogEntries'],
   ): Promise<SearchPost[]> {
     return Promise.all(posts.map((post) => this.flatten(post)));
   }
 
   public async flatten(
-    post: StrapiGqlBlogEntriesBySlugsQuery['blogEntries'][0],
+    post: StrapiGqlBlogEntriesDetailBySlugsQuery['blogEntries'][0],
   ): Promise<SearchPost> {
     const pTexts = post.content
       .filter((content) => (content as any as SearchPost).text)
@@ -44,16 +44,16 @@ export class PostService {
   }
 
   public async list(slugs: string[] | null = [], limit = 500, start = 0) {
-    const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = {
+    const vars: StrapiGqlBlogEntriesDetailBySlugsQueryVariables = {
       slugs,
       limit,
       start,
     };
-    let posts: StrapiGqlBlogEntriesBySlugsQuery['blogEntries'] = null;
+    let posts: StrapiGqlBlogEntriesDetailBySlugsQuery['blogEntries'] = null;
     try {
       const result =
-        await this.strapi.graphql.execute<StrapiGqlBlogEntriesBySlugsQuery>(
-          'graphql/queries/blog-entries-by-slugs',
+        await this.strapi.graphql.execute<StrapiGqlBlogEntriesDetailBySlugsQuery>(
+          'graphql/queries/blog-entries-detail-by-slugs',
           vars,
         );
       posts = result.blogEntries;
