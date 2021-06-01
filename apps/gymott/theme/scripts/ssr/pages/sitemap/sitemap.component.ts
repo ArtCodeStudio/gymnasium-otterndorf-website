@@ -18,7 +18,7 @@ export interface Scope {
   subjects: Awaited<ReturnType<SchoolSubjectService["listBasic"]>>;
   galleries: Awaited<ReturnType<GalleryService["list"]>>;
   mediaCenters: Awaited<ReturnType<MediaCenterService["list"]>>;
-  teachers: Awaited<ReturnType<TeacherService["list"]>>;
+  teachers: Awaited<ReturnType<TeacherService["listBasic"]>>;
 }
 
 export class SitemapPageComponent extends PageComponent {
@@ -118,7 +118,7 @@ export class SitemapPageComponent extends PageComponent {
 
   protected async getTeachers() {
     try {
-      this.scope.teachers = await this.teacher.list();
+      this.scope.teachers = await this.teacher.listBasic();
     } catch (error) {
       this.throw(error);
     }

@@ -1,0 +1,7 @@
+#import "../fragments/teacher-basic.gql"
+
+query teacherBasicBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  teachers(start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...TeacherBasicFragment
+  }
+} 

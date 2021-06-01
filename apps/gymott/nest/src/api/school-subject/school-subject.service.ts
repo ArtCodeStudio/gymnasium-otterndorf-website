@@ -69,6 +69,6 @@ export class SchoolSubjectService {
   }
 
   protected async get(slug: string) {
-    return this.list([slug])?.[0] || null;
+    return this.list([slug], 1)?.[0] || null;
   }
 }

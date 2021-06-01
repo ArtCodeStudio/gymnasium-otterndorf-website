@@ -1,7 +1,0 @@
-#import "../fragments/teacher-detail.gql"
-
-query teacherBySlugs ($slugs: [String]!) {
-  teachers(start: 0, limit: 50, where: { slug: $slugs }) {
-    ...TeacherDetailFragment
-  }
-} 

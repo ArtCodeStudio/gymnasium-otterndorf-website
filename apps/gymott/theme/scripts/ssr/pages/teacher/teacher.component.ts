@@ -45,7 +45,7 @@ export class TeacherPageComponent extends PageComponent {
    * Used if a slug is defined
    */
   protected async getTeacher(slug: string) {
-    const teacher: Teacher | null = await this.teacher.get(slug);
+    const teacher: Teacher | null = await this.teacher.getDetail(slug);
     if (!teacher) {
       this.throw(new Error(`Teacher with slug "${slug}" not found!`));
       return;
@@ -58,7 +58,7 @@ export class TeacherPageComponent extends PageComponent {
    * Used if no slug is defined
    */
   protected async getTeachers() {
-    const teachers = ((await this.teacher.list()) || []) as Teacher[];
+    const teachers = ((await this.teacher.listDetail()) || []) as Teacher[];
     if (!teachers || !teachers.length) {
       this.throw(new Error(`No teachers found!`));
       return;

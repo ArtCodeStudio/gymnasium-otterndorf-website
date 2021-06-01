@@ -3711,12 +3711,29 @@ export type StrapiGqlSectionSlideshowByIdQuery = (
   )> }
 );
 
-export type StrapiGqlTeacherBySlugsQueryVariables = Exact<{
+export type StrapiGqlTeacherBasicBySlugsQueryVariables = Exact<{
   slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  limit: Scalars['Int'];
+  start: Scalars['Int'];
 }>;
 
 
-export type StrapiGqlTeacherBySlugsQuery = (
+export type StrapiGqlTeacherBasicBySlugsQuery = (
+  { __typename?: 'Query' }
+  & { teachers?: Maybe<Array<Maybe<(
+    { __typename?: 'Teacher' }
+    & StrapiGqlTeacherBasicFragmentFragment
+  )>>> }
+);
+
+export type StrapiGqlTeacherDetailBySlugsQueryVariables = Exact<{
+  slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
+  limit: Scalars['Int'];
+  start: Scalars['Int'];
+}>;
+
+
+export type StrapiGqlTeacherDetailBySlugsQuery = (
   { __typename?: 'Query' }
   & { teachers?: Maybe<Array<Maybe<(
     { __typename?: 'Teacher' }
