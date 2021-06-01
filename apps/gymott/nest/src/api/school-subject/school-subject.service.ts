@@ -4,8 +4,8 @@ import { MarkdownService } from '../markdown/markdown.service';
 import { NavService } from '../nav';
 import { SearchSchoolSubject } from './types';
 import {
-  StrapiGqlSchoolSubjectBySlugsQuery,
-  StrapiGqlSchoolSubjectBySlugsQueryVariables,
+  StrapiGqlSchoolSubjectDetailBySlugsQuery,
+  StrapiGqlSchoolSubjectDetailBySlugsQueryVariables,
 } from '../strapi/types';
 
 @Injectable()
@@ -18,14 +18,14 @@ export class SchoolSubjectService {
   }
 
   public async flattens(
-    subjects: StrapiGqlSchoolSubjectBySlugsQuery['subjects'],
+    subjects: StrapiGqlSchoolSubjectDetailBySlugsQuery['subjects'],
   ): Promise<SearchSchoolSubject[]> {
     const pSchoolSubjects = subjects.map((subject) => this.flatten(subject));
     return await Promise.all(pSchoolSubjects);
   }
 
   public async flatten(
-    subject: StrapiGqlSchoolSubjectBySlugsQuery['subjects'][0],
+    subject: StrapiGqlSchoolSubjectDetailBySlugsQuery['subjects'][0],
   ): Promise<SearchSchoolSubject> {
     const pTexts = subject.content
       .filter((content: any) => content.text)
@@ -42,13 +42,17 @@ export class SchoolSubjectService {
     };
   }
 
-  public async list(slugs: string[] = []) {
-    const vars: StrapiGqlSchoolSubjectBySlugsQueryVariables = { slugs };
-    let subjects: StrapiGqlSchoolSubjectBySlugsQuery['subjects'] = null;
+  public async list(slugs: string[] = [], limit = 500, start = 0) {
+    const vars: StrapiGqlSchoolSubjectDetailBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    let subjects: StrapiGqlSchoolSubjectDetailBySlugsQuery['subjects'] = null;
     try {
       const result =
-        await this.strapi.graphql.execute<StrapiGqlSchoolSubjectBySlugsQuery>(
-          'graphql/queries/school-subject-by-slugs',
+        await this.strapi.graphql.execute<StrapiGqlSchoolSubjectDetailBySlugsQuery>(
+          'graphql/queries/school-subject-basic-by-slugs',
           vars,
         );
       subjects = result.subjects;

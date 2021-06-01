@@ -12,10 +12,10 @@ import { Awaited, replaceBodyPageClass } from "../../../common";
 
 export interface Scope {
   title: string;
-  pages: Awaited<ReturnType<PageService["list"]>>;
-  blogs: Awaited<ReturnType<BlogService["list"]>>;
+  pages: Awaited<ReturnType<PageService["listBasic"]>>;
+  blogs: Awaited<ReturnType<BlogService["listBasic"]>>;
   blogPosts: Awaited<ReturnType<BlogService["listPostsBasic"]>>;
-  subjects: Awaited<ReturnType<SchoolSubjectService["list"]>>;
+  subjects: Awaited<ReturnType<SchoolSubjectService["listBasic"]>>;
   galleries: Awaited<ReturnType<GalleryService["list"]>>;
   mediaCenters: Awaited<ReturnType<MediaCenterService["list"]>>;
   teachers: Awaited<ReturnType<TeacherService["list"]>>;
@@ -64,7 +64,7 @@ export class SitemapPageComponent extends PageComponent {
 
   protected async getPages() {
     try {
-      this.scope.pages = await this.page.list();
+      this.scope.pages = await this.page.listBasic();
     } catch (error) {
       this.throw(error);
     }
@@ -73,7 +73,7 @@ export class SitemapPageComponent extends PageComponent {
 
   protected async getBlogs() {
     try {
-      this.scope.blogs = await this.blog.list();
+      this.scope.blogs = await this.blog.listBasic();
     } catch (error) {
       this.throw(error);
     }
@@ -91,7 +91,7 @@ export class SitemapPageComponent extends PageComponent {
 
   protected async getSchoolSubjects() {
     try {
-      this.scope.subjects = await this.subjects.list();
+      this.scope.subjects = await this.subjects.listBasic();
     } catch (error) {
       this.throw(error);
     }

@@ -89,6 +89,7 @@ export class TeacherService {
             active: false,
           },
           {
+            label: "Lehrer",
             type: ENTRY_TYPE.Teacher,
             active: false,
             url: teacherFormatter.read(),
@@ -106,9 +107,10 @@ export class TeacherService {
 
     if (teachers.length > 1) {
       const header: PageHeader = {
-        title: "Übersicht",
+        title: "Lehrer",
         breadcrumbs: [
           {
+            label: "Lehrer",
             type: ENTRY_TYPE.Home,
             url: "/",
             active: false,

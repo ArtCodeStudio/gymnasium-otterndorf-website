@@ -91,12 +91,12 @@ export class PageService {
       title: page?.title || "Seiten",
       breadcrumbs: [
         {
-          label: "Startseite",
           type: ENTRY_TYPE.Home,
           url: "/",
           active: false,
         },
         {
+          label: "Unterseiten",
           type: ENTRY_TYPE.Page,
           active: page ? false : true,
           url: pageFormatter.read(),

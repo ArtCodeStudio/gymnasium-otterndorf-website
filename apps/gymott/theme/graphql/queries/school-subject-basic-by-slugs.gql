@@ -1,0 +1,7 @@
+#import "../fragments/school-subject-basic.gql"
+
+query schoolSubjectBasicBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  subjects(start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...SchoolSubjectBasicFragment
+  }
+} 

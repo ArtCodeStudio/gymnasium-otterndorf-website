@@ -5,6 +5,7 @@ import pugTemplate from "./gy-teacher-item.component.pug";
 
 export interface Scope {
   teacher?: Teacher;
+  showDate: boolean;
   catTextAt: number;
   sections: SectionObject;
 }
@@ -17,12 +18,13 @@ export class GyTeacherItemComponent extends Component {
 
   scope: Scope = {
     teacher: undefined,
+    showDate: false,
     catTextAt: -1,
     sections: {},
   };
 
   static get observedAttributes(): string[] {
-    return ["teacher", "cat-text-at"];
+    return ["teacher", "cat-text-at", "show-date"];
   }
 
   protected requiredAttributes() {

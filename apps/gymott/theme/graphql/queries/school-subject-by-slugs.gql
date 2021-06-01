@@ -1,7 +1,0 @@
-#import "../fragments/school-subject.gql"
-
-query schoolSubjectBySlugs ($slugs: [String]!) {
-  subjects(start: 0, limit: 50, where: { slug: $slugs }) {
-    ...SchoolSubjectFragment
-  }
-} 

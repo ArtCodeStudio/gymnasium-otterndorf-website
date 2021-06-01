@@ -9,6 +9,7 @@ export * from "./page-header";
 export * from "./page";
 export * from "./post";
 export * from "./response-error";
+export * from "./school-subject";
 export * from "./search-item";
 export * from "./search-namespace";
 export * from "./search-result";

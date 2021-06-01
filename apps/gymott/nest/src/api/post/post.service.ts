@@ -43,7 +43,7 @@ export class PostService {
     };
   }
 
-  public async list(slugs: string[] | null = [], limit = 50, start = 0) {
+  public async list(slugs: string[] | null = [], limit = 500, start = 0) {
     const vars: StrapiGqlBlogEntriesBySlugsQueryVariables = {
       slugs,
       limit,

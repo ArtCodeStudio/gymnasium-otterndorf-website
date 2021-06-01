@@ -4,7 +4,8 @@
 #import "./component-section-gallery-slideshow.gql"
 #import "./teacher-basic.gql"
 
-fragment SchoolSubjectFragment on Subject {
+fragment SchoolSubjectDetailFragment on Subject {
+  __typename
   id
   slug
   title

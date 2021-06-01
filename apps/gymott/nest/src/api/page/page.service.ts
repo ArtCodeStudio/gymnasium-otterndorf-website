@@ -42,7 +42,7 @@ export class PageService {
     };
   }
 
-  public async list(slugs: string[] = [], limit = 50, start = 0) {
+  public async list(slugs: string[] = [], limit = 500, start = 0) {
     const vars: StrapiGqlPageBasicBySlugsQueryVariables = {
       slugs,
       limit,

@@ -2,6 +2,7 @@ export { GyBlogEntryItemComponent } from "./gy-blog-entry-item/gy-blog-entry-ite
 export { GyFooterComponent } from "./gy-footer/gy-footer.component";
 export { GyPageHeaderComponent } from "./gy-page-header/gy-page-header.component";
 export { GyPageItemComponent } from "./gy-page-item/gy-page-item.component";
+export { GySchoolSubjectItemComponent } from "./gy-school-subject-item/gy-school-subject-item.component";
 export { GySectionCalendarComponent } from "./gy-section-calendar/gy-section-calendar.component";
 export { GySectionFactsComponent } from "./gy-section-facts/gy-section-facts.component";
 export { GySectionGallerySlideshowComponent } from "./gy-section-gallery-slideshow/gy-section-gallery-slideshow.component";
