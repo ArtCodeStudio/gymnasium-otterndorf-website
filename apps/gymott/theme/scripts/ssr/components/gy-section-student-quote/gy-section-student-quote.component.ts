@@ -1,19 +1,26 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import pugTemplate from "./gy-section-text.component.pug";
-import { SectionContentText } from "../../../common/types";
+import pugTemplate from "./gy-section-student-quote.component.pug";
+import {
+  SectionStudentQuote,
+  StudentQuoteService,
+  Awaited,
+} from "../../../common";
 
 export interface Scope {
-  section?: SectionContentText;
+  section?: SectionStudentQuote;
+  quote?: Awaited<ReturnType<StudentQuoteService["get"]>>;
 }
 
-export class GySectionTextComponent extends Component {
-  public static tagName = "gy-section-text";
+export class GySectionStudentQuoteComponent extends Component {
+  public static tagName = "gy-section-student-quote";
   public _debug = false;
   protected autobind = true;
+  protected studentQuote = StudentQuoteService.getInstance();
 
   scope: Scope = {
     section: undefined,
+    quote: undefined,
   };
 
   static get observedAttributes(): string[] {
@@ -30,11 +37,12 @@ export class GySectionTextComponent extends Component {
 
   protected async beforeBind() {
     await super.beforeBind();
+    this.scope.quote = await this.studentQuote.get();
   }
 
   protected connectedCallback() {
     super.connectedCallback();
-    this.init(GySectionTextComponent.observedAttributes);
+    this.init(GySectionStudentQuoteComponent.observedAttributes);
   }
 
   protected template() {

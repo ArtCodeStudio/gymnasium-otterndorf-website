@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/31/2021 11:34:53 AM"
+    "x-generation-date": "06/01/2021 10:44:40 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9158,7 +9158,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9204,7 +9205,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9255,7 +9257,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9281,7 +9284,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9374,7 +9378,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9448,7 +9453,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9501,7 +9507,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9527,7 +9534,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9647,6 +9655,30 @@
                           }
                         }
                       }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -9676,7 +9708,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9722,7 +9755,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9773,7 +9807,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9799,7 +9834,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9892,7 +9928,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9966,7 +10003,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -10019,7 +10057,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -10045,7 +10084,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -10165,6 +10205,30 @@
                           }
                         }
                       }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
                     }
                   },
                   "required": [

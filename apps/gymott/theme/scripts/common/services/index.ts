@@ -12,6 +12,7 @@ export { PageService } from "./page";
 export { SchoolSubjectService } from "./school-subject";
 export { SearchService } from "./search";
 export { SectionsService } from "./sections";
+export { StudentQuoteService } from "./student-quote";
 export { SuggestService } from "./suggest";
 export { TeacherService } from "./teacher";
 export { ToolbarService } from "./toolbar";

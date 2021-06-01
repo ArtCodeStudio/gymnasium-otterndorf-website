@@ -334,7 +334,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -380,7 +381,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -431,7 +433,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -457,7 +460,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -550,7 +554,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -624,7 +629,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -677,7 +683,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -703,7 +710,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -823,6 +831,30 @@
                           }
                         }
                       }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -852,7 +884,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -898,7 +931,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -949,7 +983,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -975,7 +1010,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -1068,7 +1104,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -1142,7 +1179,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -1195,7 +1233,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -1221,7 +1260,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -1341,6 +1381,30 @@
                           }
                         }
                       }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
                     }
                   },
                   "required": [

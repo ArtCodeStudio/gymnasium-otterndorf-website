@@ -1,6 +1,6 @@
 #import "../fragments/quotes.gql"
 
-query quote ($limit: Int!, $start: Int!) {
+query quote {
   quote {
     ...QuotesFragment
   }

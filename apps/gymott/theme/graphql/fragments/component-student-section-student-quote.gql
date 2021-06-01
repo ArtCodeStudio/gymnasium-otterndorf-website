@@ -1,0 +1,3 @@
+fragment ComponentStudentSectionStudentQuoteFragment on ComponentStudentSectionStudentQuote {
+  id
+}

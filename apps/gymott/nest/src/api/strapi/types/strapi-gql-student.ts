@@ -303,7 +303,6 @@ export type QueryUsersConnectionArgs = {
 
 export type QuoteInput = {
   quotes?: Maybe<Array<Maybe<ComponentSectionsQuoteInput>>>;
-  published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -314,7 +313,6 @@ export type Quotes = {
   created_at: Scalars['DateTime'];
   updated_at: Scalars['DateTime'];
   quotes?: Maybe<Array<Maybe<ComponentSectionsQuotes>>>;
-  published_at?: Maybe<Scalars['DateTime']>;
 };
 
 export type RoleInput = {
@@ -841,7 +839,6 @@ export type EditLocaleInput = {
 
 export type EditQuoteInput = {
   quotes?: Maybe<Array<Maybe<EditComponentSectionsQuoteInput>>>;
-  published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -908,10 +905,7 @@ export type QuotesFragmentFragment = (
   )>>> }
 );
 
-export type QuoteQueryVariables = Exact<{
-  limit: Scalars['Int'];
-  start: Scalars['Int'];
-}>;
+export type QuoteQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type QuoteQuery = (
