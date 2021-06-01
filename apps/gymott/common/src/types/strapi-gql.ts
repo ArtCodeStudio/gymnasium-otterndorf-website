@@ -3372,7 +3372,7 @@ export type StrapiGqlPageBasicFragmentFragment = (
   ) | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionGallerySlideshow' }>>> }
 );
 
-export type StrapiGqlPageFragmentFragment = (
+export type StrapiGqlPageDetailFragmentFragment = (
   { __typename: 'Page' }
   & Pick<StrapiGqlPage, 'id' | 'created_at' | 'updated_at' | 'title' | 'slug' | 'calendar_key'>
   & { assets?: Maybe<Array<Maybe<(
@@ -3632,18 +3632,18 @@ export type StrapiGqlPageBasicBySlugsQuery = (
   )>>> }
 );
 
-export type StrapiGqlPageBySlugsQueryVariables = Exact<{
+export type StrapiGqlPageDetailBySlugsQueryVariables = Exact<{
   slugs: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>;
   limit: Scalars['Int'];
   start: Scalars['Int'];
 }>;
 
 
-export type StrapiGqlPageBySlugsQuery = (
+export type StrapiGqlPageDetailBySlugsQuery = (
   { __typename?: 'Query' }
   & { pages?: Maybe<Array<Maybe<(
     { __typename?: 'Page' }
-    & StrapiGqlPageFragmentFragment
+    & StrapiGqlPageDetailFragmentFragment
   )>>> }
 );
 
@@ -3688,7 +3688,7 @@ export type StrapiGqlSearchResultQuery = (
   { __typename?: 'Query' }
   & { pages?: Maybe<Array<Maybe<(
     { __typename?: 'Page' }
-    & StrapiGqlPageFragmentFragment
+    & StrapiGqlPageBasicFragmentFragment
   )>>>, blogEntries?: Maybe<Array<Maybe<(
     { __typename?: 'BlogEntry' }
     & StrapiGqlBlogEntryBasicFragmentFragment

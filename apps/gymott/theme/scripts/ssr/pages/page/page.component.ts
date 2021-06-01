@@ -89,7 +89,7 @@ export class PagePageComponent extends PageComponent {
 
   protected async beforeBind() {
     try {
-      const page = await this.page.get(this.ctx.params.slug);
+      const page = await this.page.getDetail(this.ctx.params.slug);
 
       if (page) {
         this.scope.page = page;

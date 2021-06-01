@@ -4,7 +4,7 @@
 #import "./component-content-image.gql"
 #import "./component-section-gallery-slideshow.gql"
 
-fragment PageFragment on Page {
+fragment PageDetailFragment on Page {
   __typename
   id
   created_at

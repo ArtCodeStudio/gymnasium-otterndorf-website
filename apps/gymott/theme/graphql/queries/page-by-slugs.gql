@@ -1,7 +1,0 @@
-#import "../fragments/page.gql"
-
-query pageBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
-  pages(start: $start, limit: $limit, where: { slug: $slugs }) {
-    ...PageFragment
-  }
-} 

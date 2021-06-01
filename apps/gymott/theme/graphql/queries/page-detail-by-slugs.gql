@@ -1,0 +1,7 @@
+#import "../fragments/page-detail.gql"
+
+query pageDetailBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  pages(start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...PageDetailFragment
+  }
+} 
