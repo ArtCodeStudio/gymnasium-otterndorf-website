@@ -23,6 +23,7 @@ export * from "./section-slideshow-entry";
 export * from "./section-slideshow";
 export * from "./section-type";
 export * from "./section";
+export * as StrapiGqlStudent from "./strapi-gql-student";
 export * from "./strapi-gql";
 export * from "./strapi-image";
 export * from "./strapi-image-format";

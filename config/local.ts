@@ -30,6 +30,8 @@ export const apps: ManagerApp[] = [
       env: {
         STRAPI_INTERN_URL: "https://gym-strapi.artandcode.de",
         STRAPI_EXTERN_URL: "https://gym-strapi.artandcode.de",
+        STRAPI_STUDENT_INTERN_URL: "https://gym-strapi-student.artandcode.de",
+        STRAPI_STUDENT_EXTERN_URL: "https://gym-strapi-student.artandcode.de",
         NEST_INTERN_URL: "http://127.0.0.1:4001",
         NEST_EXTERN_URL: "http://127.0.0.1:4001",
       },

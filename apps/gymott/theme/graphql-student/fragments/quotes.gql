@@ -1,0 +1,12 @@
+fragment QuotesFragment on Quotes {
+  __typename
+  id
+  created_at
+  updated_at
+  quotes {
+    ...on ComponentSectionsQuotes {
+      quote
+    }
+    
+  }
+}

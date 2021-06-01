@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "quotes",
+  "info": {
+    "name": "Quotes",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quotes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.quotes"
+    }
+  }
+}

@@ -78,4 +78,22 @@ export const apps: ManagerApp[] = [
       },
     },
   },
+  {
+    pkgName: "@gymott/strapi-student",
+    domain: "gym-strapi-student.artandcode.de",
+    target: {
+      port: 3003,
+    },
+    pm2: {
+      script: "npm run start",
+      env: {
+        // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
+        NODE_OPTIONS: "",
+        HOST: "127.0.0.1",
+        ADMIN_URL: "/admin",
+        DATABASE_CONNECTOR: "bookshelf",
+        DATABASE_CLIENT: "sqlite",
+      },
+    },
+  },
 ];

@@ -62,7 +62,9 @@ yarn run build
 
 ## Strapi
 
-Please note, this sub-project is not part of the yarn 2 workspace because it is not working with yarn 2 at the moment, so please use `npm` here.
+We have two strapi instances for this project. One for teachers and school administration and one fpr students.
+
+Please note, the strapi sub-projects are not part of the yarn 2 workspace because they are not working with yarn 2 at the moment, so please use `npm` here.
 
 ### Upgrade
 
@@ -72,11 +74,11 @@ In short:
 
 ```sh
 npm install -g npm-check
-cd apps/gymott/strapi
+cd apps/gymott/strapi # or strapi-student
 pm2 list
 # see which id the strapi process has here
 pm2 stop <id>
-npm-check -u
+npm-check -u # Can be installed with `npm install -g npm-check`
 # Select latest strapi versions here
 # Please note: Maybe there are new plugins for the new strapi version, check the source for new plugins and install theme
 rm -rf package-lock.json node_modules .cache

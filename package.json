@@ -23,7 +23,8 @@
     "!packages/riba/infra/doc",
     "!packages/riba/infra/schematics",
     "apps/*/*",
-    "!apps/*/strapi"
+    "!apps/*/strapi",
+    "!apps/*/strapi-student"
   ],
   "resolutions": {
     "@types/express-serve-static-core": "latest",
