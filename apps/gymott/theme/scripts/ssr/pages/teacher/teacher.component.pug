@@ -3,13 +3,4 @@
     .col-12
       gy-page-header.col-12.my-4(ssr-rv-co-header="header")
   section.row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-4.mb-4
-    .col.mx-auto(rv-each-teacher="teachers")
-      .card.hover-card.h-100
-        img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
-        .card-body
-          h2.card-title(rv-text="teacher.fullName")
-          p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
-        strong.card-header
-          | Fächer
-        .list-group.list-group-flush
-          a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
+    gy-teacher-item.col.mx-auto(rv-each-teacher="teachers" rv-co-teacher="teacher")

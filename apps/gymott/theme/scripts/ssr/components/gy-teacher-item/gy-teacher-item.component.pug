@@ -1,0 +1,13 @@
+.card.hover-card.h-100
+  a(rv-href="teacher.slug | teacher")
+    img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
+  .card-body
+    a.h2.card-title(rv-href="teacher.slug | teacher" rv-text="teacher.fullName")
+    span(rv-if="catTextAt | gt 0")
+      p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown | strip-html | cut catTextAt ' ...'")
+    span(rv-unless="catTextAt | gt 0")
+      p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
+  strong.card-header
+    | Fächer
+  span.list-group.list-group-flush
+    a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")

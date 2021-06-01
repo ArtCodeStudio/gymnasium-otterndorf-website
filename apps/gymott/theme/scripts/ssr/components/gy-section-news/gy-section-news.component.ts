@@ -27,6 +27,7 @@ export class GySectionNewsComponent extends Component {
   }
 
   protected async beforeBind() {
+    await super.beforeBind();
     this.debug("[gy-section-news] this.scope.section", this.scope.section);
     this.scope.section?.pages;
     this.scope.posts = await BlogService.getInstance().listPostsBasic(
