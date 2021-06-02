@@ -588,10 +588,11 @@ export type StrapiGqlComponentSlideshowSlideshowEntryPageInput = {
 export type StrapiGqlComponentStudentSectionStudentQuote = {
   __typename?: 'ComponentStudentSectionStudentQuote';
   id: Scalars['ID'];
+  title?: Maybe<Scalars['String']>;
 };
 
 export type StrapiGqlComponentStudentSectionStudentQuoteInput = {
-  _?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type StrapiGqlComponentTypesColor = {
@@ -2804,6 +2805,7 @@ export type StrapiGqlEditComponentSlideshowSlideshowEntryPageInput = {
 
 export type StrapiGqlEditComponentStudentSectionStudentQuoteInput = {
   id?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type StrapiGqlEditComponentTypesColorInput = {
@@ -3283,7 +3285,7 @@ export type StrapiGqlComponentSlideshowEntryFragmentFragment = (
 
 export type StrapiGqlComponentStudentSectionStudentQuoteFragmentFragment = (
   { __typename?: 'ComponentStudentSectionStudentQuote' }
-  & Pick<StrapiGqlComponentStudentSectionStudentQuote, 'id'>
+  & Pick<StrapiGqlComponentStudentSectionStudentQuote, 'id' | 'title'>
 );
 
 export type StrapiGqlGalleryFragmentFragment = (

@@ -6,8 +6,9 @@ export const themeConfig: ThemeConfig = {
   assetsDir: "assets",
   viewsDir: "templates",
   pageComponentsDir: "scripts/ssr/pages",
+  timeout: 5000,
   cache: {
-    ttl: 20000,
+    ttl: 2000,
   },
   ssr: {
     rootTag: "ssr-root-page",
