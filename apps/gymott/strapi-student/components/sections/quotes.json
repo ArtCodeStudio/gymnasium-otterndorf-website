@@ -2,13 +2,20 @@
   "collectionName": "components_sections_quotes",
   "info": {
     "name": "quotes",
-    "icon": "quote-left"
+    "icon": "quote-left",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "quote": {
+    "text": {
       "type": "text",
       "required": true
+    },
+    "source": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

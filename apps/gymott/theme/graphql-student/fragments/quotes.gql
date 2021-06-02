@@ -5,7 +5,9 @@ fragment QuotesFragment on Quotes {
   updated_at
   quotes {
     ...on ComponentSectionsQuotes {
-      quote
+      title
+      text
+      source
     }
     
   }

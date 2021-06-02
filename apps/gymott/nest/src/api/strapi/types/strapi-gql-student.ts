@@ -32,13 +32,17 @@ export type AdminUser = {
 };
 
 export type ComponentSectionsQuoteInput = {
-  quote: Scalars['String'];
+  text: Scalars['String'];
+  source?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type ComponentSectionsQuotes = {
   __typename?: 'ComponentSectionsQuotes';
   id: Scalars['ID'];
-  quote: Scalars['String'];
+  text: Scalars['String'];
+  source?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 
@@ -807,7 +811,9 @@ export type DeleteUserPayload = {
 
 export type EditComponentSectionsQuoteInput = {
   id?: Maybe<Scalars['ID']>;
-  quote?: Maybe<Scalars['String']>;
+  text?: Maybe<Scalars['String']>;
+  source?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type EditFileInput = {
@@ -901,7 +907,7 @@ export type QuotesFragmentFragment = (
   & Pick<Quotes, 'id' | 'created_at' | 'updated_at'>
   & { quotes?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentSectionsQuotes' }
-    & Pick<ComponentSectionsQuotes, 'quote'>
+    & Pick<ComponentSectionsQuotes, 'title' | 'text' | 'source'>
   )>>> }
 );
 

@@ -4,14 +4,6 @@ gy-section-gallery-slideshow {
     display: block;
     bs5-slideshow {
         background: $gallery-background-gradient;
-        img, .card {
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-        img {
-            pointer-events: none;
-            object-fit: cover;
-        }
         .slideshow-controls, .slideshow-indicators {
             bs5-icon {
                 color: white;
@@ -20,31 +12,12 @@ gy-section-gallery-slideshow {
                 box-shadow: none;
             }
         }
-        .slideshow-row {
-            white-space: unset;
-        }
         .slideshow-indicators {
             margin-left: 0;
             margin-right: 0;
             justify-content: end;
             &.indicators-bottom, &.indicators-sm-bottom, &.indicators-md-bottom, &.indicators-lg-bottom, &.indicators-xl-bottom, &.indicators-xxl-bottom {
                 bottom: 0;
-            }
-
-            .active {
-                .progress {
-                    .progress-bar {
-                        width: 100% !important;
-                    }
-                }
-            }
-            .inactive {
-                .progress {
-                    .progress-bar {
-                        width: 0 !important;
-                        transition: none !important;
-                    }
-                }
             }
         }
     }

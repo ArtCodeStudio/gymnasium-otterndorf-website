@@ -4,3 +4,14 @@ a.card {
     color: inherit;
   }
 }
+
+.card {
+  &.bg-yellow, &.bg-green, &.bg-blue {
+    &.text-white {
+      .text-muted {
+        color: rgba($white, .5) !important;
+      }
+    }
+
+  }
+}

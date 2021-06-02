@@ -1,0 +1,33 @@
+bs5-slideshow {
+  img, .card {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  img {
+    pointer-events: none;
+    object-fit: cover;
+  }
+  .slideshow-row {
+    white-space: unset;
+  }
+  .slideshow-indicators {
+    margin-left: 0;
+    margin-right: 0;
+
+    .active {
+      .progress {
+        .progress-bar {
+          width: 100% !important;
+        }
+      }
+    }
+    .inactive {
+      .progress {
+        .progress-bar {
+          width: 0 !important;
+          transition: none !important;
+        }
+      }
+    }
+  }
+}
