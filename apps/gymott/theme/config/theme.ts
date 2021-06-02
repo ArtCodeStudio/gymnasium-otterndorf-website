@@ -6,6 +6,9 @@ export const themeConfig: ThemeConfig = {
   assetsDir: "assets",
   viewsDir: "templates",
   pageComponentsDir: "scripts/ssr/pages",
+  cache: {
+    ttl: 20000,
+  },
   ssr: {
     rootTag: "ssr-root-page",
     template: "page-component.pug",
