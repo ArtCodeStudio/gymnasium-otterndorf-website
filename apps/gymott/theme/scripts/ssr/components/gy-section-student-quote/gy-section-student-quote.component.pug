@@ -1,5 +1,5 @@
-//- div(ssr-rv-text="section | json" csr-rv-block)
-//- div(ssr-rv-text="quote | json" csr-rv-block)
+.row(ssr-rv-if="section.title")
+  h2.col-12.section-heading.text-center(ssr-rv-text="section.title")
 bs5-slideshow(xs-controls="false" xs-indicators="true" xs-drag="true" xs-control-prev-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-control-next-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="true" xs-autoplay-interval="10000")
   .row.slideshow-row.align-items-center
     .slide.col-12(ssr-rv-each-quote="quote.quotes")
