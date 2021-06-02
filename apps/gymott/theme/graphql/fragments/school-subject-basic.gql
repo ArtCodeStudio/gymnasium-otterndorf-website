@@ -1,5 +1,20 @@
+#import "./component-content-text.gql"
+#import "./component-content-image.gql"
+
 fragment SchoolSubjectBasicFragment on Subject {
+  __typename
   id
   slug
   title
+  created_at
+  updated_at
+  content {
+    __typename
+    ... on ComponentContentImage {
+      ...ComponentContentImageFragment
+    }
+    ... on ComponentContentText {
+      ...ComponentContentTextFragment
+    }
+  }
 }

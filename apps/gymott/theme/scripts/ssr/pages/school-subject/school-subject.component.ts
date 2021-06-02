@@ -2,7 +2,7 @@ import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./school-subject.component.pug";
 import { SchoolSubjectService } from "../../services";
 import {
-  StrapiGqlSchoolSubjectFragmentFragment,
+  SchoolSubject,
   Section,
   PageHeader,
   TeacherBasic,
@@ -10,12 +10,10 @@ import {
 } from "../../../common";
 
 export interface Scope {
-  title: string;
-  params: SchoolSubjectPageComponent["ctx"]["params"];
   sections: Section[];
   teachers: TeacherBasic[];
   header: PageHeader | Record<string, never>;
-  schoolSubject: StrapiGqlSchoolSubjectFragmentFragment | null;
+  schoolSubject: SchoolSubject | null;
 }
 
 export class SchoolSubjectPageComponent extends PageComponent {
@@ -26,9 +24,7 @@ export class SchoolSubjectPageComponent extends PageComponent {
   protected schoolSubject = SchoolSubjectService.getInstance();
 
   scope: Scope = {
-    title: "{params.slug | capitalize}",
     schoolSubject: null,
-    params: {},
     sections: [],
     teachers: [],
     header: {},
@@ -36,11 +32,6 @@ export class SchoolSubjectPageComponent extends PageComponent {
 
   static get observedAttributes(): string[] {
     return [];
-  }
-
-  constructor() {
-    super();
-    this.scope.params = this.ctx.params;
   }
 
   protected connectedCallback() {
@@ -54,14 +45,15 @@ export class SchoolSubjectPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    this.head.title = this.ctx.params.slug;
     try {
-      const schoolSubject = await this.schoolSubject.get(this.ctx.params.slug);
+      const schoolSubject = await this.schoolSubject.getDetail(
+        this.ctx.params.slug
+      );
       this.scope.schoolSubject = schoolSubject || null;
 
       if (schoolSubject) {
         if (schoolSubject?.title) {
-          this.scope.title = schoolSubject?.title;
+          this.head.title = this.ctx.params.slug;
         }
         this.scope.sections = await this.schoolSubject.getSections(
           schoolSubject
@@ -72,16 +64,14 @@ export class SchoolSubjectPageComponent extends PageComponent {
         }
 
         this.scope.header = this.schoolSubject.getHeader(schoolSubject);
+        if (this.scope.header) {
+          this.head.title = this.scope.header.title;
+        }
       }
     } catch (error) {
       this.throw(error);
     }
-    this.head.title = this.scope.title;
     await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
   }
 
   protected template() {

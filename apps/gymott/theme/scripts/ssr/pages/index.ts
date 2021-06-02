@@ -8,5 +8,6 @@ export { MediaCenterPageComponent } from "./media-center/media-center.component"
 export { PagePageComponent } from "./page/page.component";
 export { PagesPageComponent } from "./pages/pages.component";
 export { SchoolSubjectPageComponent } from "./school-subject/school-subject.component";
+export { SchoolSubjectsPageComponent } from "./school-subjects/school-subjects.component";
 export { SitemapPageComponent } from "./sitemap/sitemap.component";
 export { TeacherPageComponent } from "./teacher/teacher.component";

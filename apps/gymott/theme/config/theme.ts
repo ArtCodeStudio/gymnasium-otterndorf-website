@@ -32,6 +32,10 @@ export const themeConfig: ThemeConfig = {
       component: "blog-page",
     },
     {
+      path: ["/school-subject", "/schulfach"],
+      component: "school-subjects-page",
+    },
+    {
       path: ["/school-subject/:slug", "/schulfach/:slug"],
       component: "school-subject-page",
     },

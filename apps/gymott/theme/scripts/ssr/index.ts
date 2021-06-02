@@ -26,6 +26,7 @@ import * as formatters from "./formatters";
 declare global {
   interface Window {
     env: {
+      STRAPI_STUDENT_EXTERN_URL: string;
       STRAPI_EXTERN_URL: string;
       NEST_INTERN_URL: string;
     };

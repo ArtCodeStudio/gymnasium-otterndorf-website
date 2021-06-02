@@ -1,4 +1,4 @@
-#import "../fragments/page.gql"
+#import "../fragments/page-basic.gql"
 #import "../fragments/blog-entry-basic.gql"
 #import "../fragments/navigation-link.gql"
 
@@ -7,7 +7,7 @@
 query searchResult($pageSlugs: [String!], $postSlugs: [String!], $navIds: [String!]) {
 
   pages(where: { slug: $pageSlugs }) {
-    ...PageFragment
+    ...PageBasicFragment
   }
 
   blogEntries(where: { slug: $postSlugs }) {

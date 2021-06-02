@@ -7,30 +7,52 @@ import { defaultCache } from "./cache";
 
 export class GraphQLClient extends _GraphQLClient {
   protected static instance: GraphQLClient;
+  protected static studentInstance: GraphQLClient;
 
   protected constructor(url: string, options?: RequestInit) {
     super(url, options);
   }
 
-  public static getInstance() {
-    if (GraphQLClient.instance) {
+  public static getInstance(student = false) {
+    if (student) {
+      if (GraphQLClient.studentInstance) {
+        return GraphQLClient.studentInstance;
+      }
+    } else if (GraphQLClient.instance) {
       return GraphQLClient.instance;
     }
+
     let url = "";
-    // SSR
-    if (window.ssr?.env?.STRAPI_INTERN_URL) {
-      url = window.ssr.env.STRAPI_INTERN_URL;
-    }
-    // CSR
-    if (window.env?.STRAPI_EXTERN_URL) {
-      url = window.env.STRAPI_EXTERN_URL;
+    if (student) {
+      // SSR
+      if (window.ssr?.env?.STRAPI_STUDENT_INTERN_URL) {
+        url = window.ssr.env.STRAPI_STUDENT_INTERN_URL;
+      }
+      // CSR
+      if (window.env?.STRAPI_STUDENT_EXTERN_URL) {
+        url = window.env.STRAPI_STUDENT_EXTERN_URL;
+      }
+    } else {
+      // SSR
+      if (window.ssr?.env?.STRAPI_INTERN_URL) {
+        url = window.ssr.env.STRAPI_INTERN_URL;
+      }
+      // CSR
+      if (window.env?.STRAPI_EXTERN_URL) {
+        url = window.env.STRAPI_EXTERN_URL;
+      }
     }
     if (!url) {
       throw new Error("GraphQL URL is required!");
     }
     url += "/graphql";
-    GraphQLClient.instance = new GraphQLClient(url);
-    return GraphQLClient.instance;
+    if (student) {
+      GraphQLClient.studentInstance = new GraphQLClient(url);
+      return GraphQLClient.studentInstance;
+    } else {
+      GraphQLClient.instance = new GraphQLClient(url);
+      return GraphQLClient.instance;
+    }
   }
 
   async auth(email: string, password: string) {

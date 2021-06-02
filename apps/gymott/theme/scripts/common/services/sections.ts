@@ -59,6 +59,9 @@ export class SectionsService {
         case "ComponentSectionSlideshow":
           sectionsObj.slideshow = section;
           break;
+        case "ComponentStudentSectionStudentQuote":
+          sectionsObj.studentQuote = section;
+          break;
         default:
           console.warn(
             `[SectionsService] Unknown section type "${(section as any)?.__typename
@@ -137,7 +140,9 @@ export class SectionsService {
             sections.push(dynamicZoneSection);
             break;
           case "ComponentSectionBlackboardSlideshow":
-            console.debug("TODO @ Moritz");
+            sections.push(dynamicZoneSection);
+            break;
+          case "ComponentStudentSectionStudentQuote":
             sections.push(dynamicZoneSection);
             break;
           default:

@@ -56,7 +56,7 @@ export class BlogPageComponent extends PageComponent {
   protected async getPosts(slug?: string) {
     if (slug) {
       // Get posts by category
-      this.scope.category = (await this.blog.get(slug)) || undefined;
+      this.scope.category = (await this.blog.getDetail(slug)) || undefined;
       if (this.scope.category?.blog_entries) {
         this.scope.posts = this.scope.category?.blog_entries as Post[];
       }

@@ -5,6 +5,7 @@ import pugTemplate from "./gy-page-item.component.pug";
 
 export interface Scope {
   page?: Page;
+  showDate: boolean;
   catTextAt: number;
   sections: SectionObject;
 }
@@ -17,12 +18,13 @@ export class GyPageItemComponent extends Component {
 
   scope: Scope = {
     page: undefined,
+    showDate: false,
     catTextAt: 300,
     sections: {},
   };
 
   static get observedAttributes(): string[] {
-    return ["page", "cat-text-at"];
+    return ["page", "cat-text-at", "show-date"];
   }
 
   protected requiredAttributes() {
@@ -30,7 +32,7 @@ export class GyPageItemComponent extends Component {
   }
 
   protected async beforeBind() {
-    await super.afterBind();
+    await super.beforeBind();
     if (this.scope.page) {
       this.scope.sections = await this.page.getSectionsObject(this.scope.page);
     }

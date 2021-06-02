@@ -3,7 +3,7 @@ import { Post } from "./post";
 import { Page } from "./page";
 import { SearchNamespace } from "./search-namespace";
 import {
-  StrapiGqlSchoolSubjectFragmentFragment,
+  StrapiGqlSchoolSubjectDetailFragmentFragment,
   StrapiGqlHome,
   StrapiGqlTeacherDetailFragmentFragment,
 } from "./strapi-gql";
@@ -14,5 +14,5 @@ export type EntryType =
   | Post["__typename"]
   | Page["__typename"]
   | StrapiGqlHome["__typename"]
-  | StrapiGqlSchoolSubjectFragmentFragment["__typename"]
+  | StrapiGqlSchoolSubjectDetailFragmentFragment["__typename"]
   | StrapiGqlTeacherDetailFragmentFragment["__typename"];

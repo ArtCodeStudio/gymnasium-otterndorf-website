@@ -1,0 +1,7 @@
+#import "../fragments/quotes.gql"
+
+query quote {
+  quote {
+    ...QuotesFragment
+  }
+} 

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/27/2021 8:27:28 PM"
+    "x-generation-date": "06/02/2021 8:57:43 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -8902,6 +8902,42 @@
           "contact_info": {
             "type": "string"
           },
+          "link": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "navigation_link": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "dynamiczone"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -8915,6 +8951,42 @@
           },
           "contact_info": {
             "type": "string"
+          },
+          "link": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "navigation_link": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "dynamiczone"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -9158,7 +9230,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9204,7 +9277,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9255,7 +9329,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9281,7 +9356,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9374,7 +9450,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9448,7 +9525,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9501,7 +9579,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9527,7 +9606,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9647,6 +9727,30 @@
                           }
                         }
                       }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -9676,7 +9780,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9722,7 +9827,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9773,7 +9879,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9799,7 +9906,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9892,7 +10000,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -9966,7 +10075,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -10019,7 +10129,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -10045,7 +10156,8 @@
                         "home.news",
                         "section.gallery-slideshow",
                         "home.calendar",
-                        "section.blackboard-slideshow"
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -10165,6 +10277,30 @@
                           }
                         }
                       }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -11033,9 +11169,6 @@
                         "biography": {
                           "type": "string"
                         },
-                        "published_at": {
-                          "type": "string"
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -11402,9 +11535,6 @@
                           "type": "uid"
                         },
                         "biography": {
-                          "type": "string"
-                        },
-                        "published_at": {
                           "type": "string"
                         },
                         "created_by": {
@@ -13137,9 +13267,6 @@
                 "biography": {
                   "type": "string"
                 },
-                "published_at": {
-                  "type": "string"
-                },
                 "created_by": {
                   "type": "string"
                 },
@@ -13722,10 +13849,6 @@
           },
           "biography": {
             "type": "string"
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -13752,10 +13875,6 @@
           },
           "biography": {
             "type": "string"
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           },
           "created_by": {
             "type": "string"

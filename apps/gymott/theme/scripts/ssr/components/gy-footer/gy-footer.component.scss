@@ -3,14 +3,9 @@ gy-footer {
   
   footer {
     background-color: $light;
-    border-top: solid $cyan 2px;
+    border-top: 1px solid #cacfcd;
   }
 
-  @include media-breakpoint-up(md) { 
-    .footer-right {
-      border-left: solid $cyan 2px;
-    }  
-  }
   
   .footer-bottom {
     bottom: 0;

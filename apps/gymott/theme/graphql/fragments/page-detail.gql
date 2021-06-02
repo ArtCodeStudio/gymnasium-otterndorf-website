@@ -1,21 +1,30 @@
+#import "./blog-entry-basic.gql"
 #import "./component-section-slideshow.gql"
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
 #import "./component-section-gallery-slideshow.gql"
 
-fragment BlogEntryFragment on BlogEntry {
+fragment PageDetailFragment on Page {
   __typename
   id
-  title
-  slug
   created_at
   updated_at
-  published_at
-  author
-  blog_category {
-    slug
-    name
+  title
+  slug
+  calendar_key
+  assets {
+    ... on ComponentSidebarAssets {
+      file {
+        url
+      }
+      name
+    }
   }
+
+  blog_entries {
+    ...BlogEntryBasicFragment
+  }
+
   content {
     __typename
     ... on ComponentSectionSlideshow {

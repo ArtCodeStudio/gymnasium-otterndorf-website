@@ -6,6 +6,7 @@ import { HomeNews } from "./home-news";
 import { HomeCalendar } from "./home-calendar";
 import { SectionGallerySlideshow } from "./section-gallery-slideshow";
 import { SectionBlackboardSlideshow } from "./section-blackboard-slideshow";
+import { SectionStudentQuote } from "./section-student-quote";
 
 /**
  * Type for transformed sections
@@ -18,4 +19,5 @@ export type Section =
   | HomeCalendar
   | SectionSlideshow
   | SectionGallerySlideshow
-  | SectionBlackboardSlideshow;
+  | SectionBlackboardSlideshow
+  | SectionStudentQuote;

@@ -1,0 +1,10 @@
+overwrite: true
+schema: "../strapi-student/exports/graphql/*.graphql"
+documents: "../theme/graphql-student/**/*.gql"
+generates:
+  ./src/types/strapi-gql-student.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+    config:
+      typesPrefix: ""

@@ -1,0 +1,7 @@
+#import "../fragments/blog-entry-detail.gql"
+
+query blogEntriesDetailBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  blogEntries(sort:"created_at:desc", start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...BlogEntryDetailFragment
+  }
+}

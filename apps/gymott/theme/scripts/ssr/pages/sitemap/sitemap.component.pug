@@ -18,6 +18,7 @@
         a.list-group-item.list-group-item-action(rv-each-post="blogPosts" rv-href="post.slug | post" rv-text="post.title")
       h2.text-center(rv-show="subjects | size") Schulfächer
       .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-href=" | school-subject") Übersicht
         a.list-group-item.list-group-item-action(rv-each-subject="subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
       h2.text-center(rv-show="galleries | size") Galerien
       .list-group.my-5

@@ -1,7 +1,9 @@
 import { GraphQLClient } from "./graphql";
 import {
-  StrapiGqlTeacherBySlugsQuery,
-  StrapiGqlTeacherBySlugsQueryVariables,
+  StrapiGqlTeacherDetailBySlugsQuery,
+  StrapiGqlTeacherDetailBySlugsQueryVariables,
+  StrapiGqlTeacherBasicBySlugsQuery,
+  StrapiGqlTeacherBasicBySlugsQueryVariables,
   ResponseError,
   StrapiGqlTeacherDetailFragmentFragment,
   Teacher,
@@ -10,7 +12,7 @@ import {
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { teacherFormatter } from "../formatters";
-import teacherBySlugsQuery from "../../../graphql/queries/teacher-by-slugs.gql";
+import teacherDetailBySlugsQuery from "../../../graphql/queries/teacher-detail-by-slugs.gql";
 
 export class TeacherService {
   protected graphql = GraphQLClient.getInstance();
@@ -44,11 +46,15 @@ export class TeacherService {
     return result as Teacher;
   }
 
-  async list(slugs: string[] = []) {
-    const vars: StrapiGqlTeacherBySlugsQueryVariables = { slugs };
+  async listDetail(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlTeacherDetailBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
     const teacherRes =
-      await this.graphql.requestCached<StrapiGqlTeacherBySlugsQuery>(
-        teacherBySlugsQuery,
+      await this.graphql.requestCached<StrapiGqlTeacherDetailBySlugsQuery>(
+        teacherDetailBySlugsQuery,
         vars
       );
     const teachers = teacherRes.teachers || [];
@@ -63,8 +69,45 @@ export class TeacherService {
       }) as Teacher[];
   }
 
-  async get(slug: string) {
-    const teachers = await this.list([slug]);
+  async listBasic(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlTeacherBasicBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    const teacherRes =
+      await this.graphql.requestCached<StrapiGqlTeacherBasicBySlugsQuery>(
+        teacherDetailBySlugsQuery,
+        vars
+      );
+    const teachers = teacherRes.teachers || [];
+    return teachers
+      .filter((teacher) => teacher !== null)
+      .map((teacher) => {
+        if (teacher) {
+          return this.transform(teacher);
+        } else {
+          return teacher;
+        }
+      }) as Teacher[];
+  }
+
+  async getDetail(slug: string) {
+    const teachers = await this.listDetail([slug], 1);
+    if (!Array.isArray(teachers) || teachers.length <= 0) {
+      const error: ResponseError = new Error("Not found!");
+      error.status = 404;
+      throw error;
+    }
+    const teacher = teachers?.[0] || null;
+    if (teacher) {
+      return this.transform(teacher);
+    }
+    return null;
+  }
+
+  async getBasic(slug: string) {
+    const teachers = await this.listBasic([slug], 1);
     if (!Array.isArray(teachers) || teachers.length <= 0) {
       const error: ResponseError = new Error("Not found!");
       error.status = 404;
@@ -89,6 +132,7 @@ export class TeacherService {
             active: false,
           },
           {
+            label: "Lehrer",
             type: ENTRY_TYPE.Teacher,
             active: false,
             url: teacherFormatter.read(),
@@ -106,9 +150,10 @@ export class TeacherService {
 
     if (teachers.length > 1) {
       const header: PageHeader = {
-        title: "Übersicht",
+        title: "Lehrer",
         breadcrumbs: [
           {
+            label: "Lehrer",
             type: ENTRY_TYPE.Home,
             url: "/",
             active: false,

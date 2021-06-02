@@ -65,7 +65,8 @@ $breadcrumb-active-color: $body-color;
 $breadcrumb-margin-bottom: $headings-margin-bottom;
 
 // CARDS
-$card-cap-bg: $white;
+$card-cap-bg: transparent;
+$card-border-width: 0;
 
 // COMPONENTS
 $component-active-color: $blue;

@@ -4,8 +4,8 @@ import { MarkdownService } from '../markdown/markdown.service';
 import { NavService } from '../nav';
 import { SearchTeacher } from './types';
 import {
-  StrapiGqlTeacherBySlugsQuery,
-  StrapiGqlTeacherBySlugsQueryVariables,
+  StrapiGqlTeacherDetailBySlugsQuery,
+  StrapiGqlTeacherDetailBySlugsQueryVariables,
   StrapiGqlTeacherDetailFragmentFragment,
 } from '../strapi/types';
 
@@ -19,7 +19,7 @@ export class TeacherService {
   }
 
   public async flattens(
-    teachers: StrapiGqlTeacherBySlugsQuery['teachers'],
+    teachers: StrapiGqlTeacherDetailBySlugsQuery['teachers'],
   ): Promise<SearchTeacher[]> {
     const pTeachers = teachers.map((teacher) => this.flatten(teacher));
     return await Promise.all(pTeachers);
@@ -49,13 +49,17 @@ export class TeacherService {
     };
   }
 
-  public async list(slugs: string[] = []) {
-    const vars: StrapiGqlTeacherBySlugsQueryVariables = { slugs };
-    let teachers: StrapiGqlTeacherBySlugsQuery['teachers'] = null;
+  public async list(slugs: string[] = [], limit = 500, start = 0) {
+    const vars: StrapiGqlTeacherDetailBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    let teachers: StrapiGqlTeacherDetailBySlugsQuery['teachers'] = null;
     try {
       const result =
-        await this.strapi.graphql.execute<StrapiGqlTeacherBySlugsQuery>(
-          'graphql/queries/teacher-by-slugs',
+        await this.strapi.graphql.execute<StrapiGqlTeacherDetailBySlugsQuery>(
+          'graphql/queries/teacher-detail-by-slugs',
           vars,
         );
       teachers = result.teachers;
@@ -63,14 +67,15 @@ export class TeacherService {
       console.error(error);
     }
     if (Array.isArray(teachers)) {
-      return await Promise.all(
+      const result = await Promise.all(
         teachers.map((teacher) => this.flatten(teacher)),
       );
+      return result.filter((teacher) => !!teacher.href);
     }
     return null;
   }
 
   protected async get(slug: string) {
-    return this.list([slug])?.[0] || null;
+    return this.list([slug], 1)?.[0] || null;
   }
 }

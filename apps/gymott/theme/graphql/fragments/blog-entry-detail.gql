@@ -2,18 +2,19 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
 #import "./component-section-gallery-slideshow.gql"
-#import "./teacher-basic.gql"
 
-fragment SchoolSubjectFragment on Subject {
+fragment BlogEntryDetailFragment on BlogEntry {
+  __typename
   id
-  slug
   title
+  slug
   created_at
   updated_at
-  teachers {
-    ... on Teacher {
-      ...TeacherBasicFragment
-    }
+  published_at
+  author
+  blog_category {
+    slug
+    name
   }
   content {
     __typename

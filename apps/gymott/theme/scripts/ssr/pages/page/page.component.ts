@@ -70,7 +70,7 @@ export class PagePageComponent extends PageComponent {
     if (page?.["blog_entries"]) {
       for (const blogEntry of page?.["blog_entries"]) {
         if (blogEntry) {
-          this.scope.blogEntries.push(blogEntry);
+          this.scope.blogEntries.push(blogEntry as Post);
         }
       }
     }
@@ -89,7 +89,7 @@ export class PagePageComponent extends PageComponent {
 
   protected async beforeBind() {
     try {
-      const page = await this.page.get(this.ctx.params.slug);
+      const page = await this.page.getDetail(this.ctx.params.slug);
 
       if (page) {
         this.scope.page = page;

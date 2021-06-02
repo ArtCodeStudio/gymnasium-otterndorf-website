@@ -9,4 +9,4 @@
       a.mx-1(rv-each-category="categories" rv-text="category.name" rv-href="category.slug | blog" csr-rv-route-class-active csr-rv-route-preload)
   section.row(csr-rv-masonry='{"percentPosition": true }')
     .col-12.col-md-6.col-lg-4(rv-each-item="posts")
-      gy-blog-entry-item(rv-post="item")
+      gy-blog-entry-item(rv-co-post="item")

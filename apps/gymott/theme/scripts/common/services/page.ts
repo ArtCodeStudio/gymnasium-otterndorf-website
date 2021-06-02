@@ -1,7 +1,7 @@
 import { GraphQLClient } from "./graphql";
 import {
-  StrapiGqlPageBySlugsQuery,
-  StrapiGqlPageBySlugsQueryVariables,
+  StrapiGqlPageDetailBySlugsQuery,
+  StrapiGqlPageDetailBySlugsQueryVariables,
   StrapiGqlPageBasicBySlugsQuery,
   StrapiGqlPageBasicBySlugsQueryVariables,
   ResponseError,
@@ -13,7 +13,7 @@ import {
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { pageFormatter } from "../formatters";
-import pageBySlugsQuery from "../../../graphql/queries/page-by-slugs.gql";
+import pageDetailBySlugsQuery from "../../../graphql/queries/page-detail-by-slugs.gql";
 import pageBasicBySlugsQuery from "../../../graphql/queries/page-basic-by-slugs.gql";
 
 export class PageService {
@@ -48,18 +48,34 @@ export class PageService {
     return pages.filter((page) => !!page) as Page[];
   }
 
-  public async list(slugs: string[] = [], limit = 50, start = 0) {
-    const vars: StrapiGqlPageBySlugsQueryVariables = { slugs, limit, start };
-    const pageRes = await this.graphql.requestCached<StrapiGqlPageBySlugsQuery>(
-      pageBySlugsQuery,
-      vars
-    );
+  public async listDetail(slugs: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlPageDetailBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    const pageRes =
+      await this.graphql.requestCached<StrapiGqlPageDetailBySlugsQuery>(
+        pageDetailBySlugsQuery,
+        vars
+      );
     const pages = pageRes.pages || [];
     return pages.filter((page) => !!page) as Page[];
   }
 
-  public async get(slug: string) {
-    const pages = await this.list([slug]);
+  public async getDetail(slug: string) {
+    const pages = await this.listDetail([slug], 1);
+    if (!Array.isArray(pages) || pages.length <= 0) {
+      const error: ResponseError = new Error("Not found!");
+      error.status = 404;
+      throw error;
+    }
+    const page = pages?.[0] || null;
+    return page;
+  }
+
+  public async getBasic(slug: string) {
+    const pages = await this.listBasic([slug], 1);
     if (!Array.isArray(pages) || pages.length <= 0) {
       const error: ResponseError = new Error("Not found!");
       error.status = 404;
@@ -91,12 +107,12 @@ export class PageService {
       title: page?.title || "Seiten",
       breadcrumbs: [
         {
-          label: "Startseite",
           type: ENTRY_TYPE.Home,
           url: "/",
           active: false,
         },
         {
+          label: "Unterseiten",
           type: ENTRY_TYPE.Page,
           active: page ? false : true,
           url: pageFormatter.read(),

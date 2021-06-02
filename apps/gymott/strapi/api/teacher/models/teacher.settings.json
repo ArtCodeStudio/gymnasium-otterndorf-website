@@ -9,7 +9,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -42,7 +42,8 @@
       "required": true
     },
     "biography": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": false
     }
   }
 }

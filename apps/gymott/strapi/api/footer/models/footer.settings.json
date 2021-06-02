@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "footers",
   "info": {
-    "name": "Footer"
+    "name": "Footer",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -25,6 +26,11 @@
     },
     "contact_info": {
       "type": "text"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": true,
+      "component": "link-item.link"
     }
   }
 }

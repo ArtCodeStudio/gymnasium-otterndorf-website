@@ -2,7 +2,7 @@
   "name": "@gymott/strapi",
   "private": true,
   "version": "0.0.1",
-  "description": "A Strapi application",
+  "description": "Strapi application for teachers and school administration",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",

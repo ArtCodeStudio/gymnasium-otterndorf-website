@@ -21,7 +21,8 @@
         "home.news",
         "section.gallery-slideshow",
         "home.calendar",
-        "section.blackboard-slideshow"
+        "section.blackboard-slideshow",
+        "student-section.student-quote"
       ]
     }
   }

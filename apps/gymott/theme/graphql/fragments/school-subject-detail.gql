@@ -1,30 +1,21 @@
-#import "./blog-entry-basic.gql"
 #import "./component-section-slideshow.gql"
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
 #import "./component-section-gallery-slideshow.gql"
+#import "./teacher-basic.gql"
 
-fragment PageFragment on Page {
+fragment SchoolSubjectDetailFragment on Subject {
   __typename
   id
+  slug
+  title
   created_at
   updated_at
-  title
-  slug
-  calendar_key
-  assets {
-    ... on ComponentSidebarAssets {
-      file {
-        url
-      }
-      name
+  teachers {
+    ... on Teacher {
+      ...TeacherBasicFragment
     }
   }
-
-  blog_entries {
-    ...BlogEntryBasicFragment
-  }
-
   content {
     __typename
     ... on ComponentSectionSlideshow {

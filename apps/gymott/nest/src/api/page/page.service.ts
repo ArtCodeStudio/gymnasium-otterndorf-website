@@ -42,7 +42,7 @@ export class PageService {
     };
   }
 
-  public async list(slugs: string[] = [], limit = 50, start = 0) {
+  public async list(slugs: string[] = [], limit = 500, start = 0) {
     const vars: StrapiGqlPageBasicBySlugsQueryVariables = {
       slugs,
       limit,
@@ -60,12 +60,13 @@ export class PageService {
       console.error(error);
     }
     if (Array.isArray(pages)) {
-      return await Promise.all(pages.map((page) => this.flatten(page)));
+      const result = await Promise.all(pages.map((page) => this.flatten(page)));
+      return result.filter((page) => !!page.href);
     }
     return null;
   }
 
   protected async get(slug: string) {
-    return this.list([slug])?.[0] || null;
+    return this.list([slug], 1)?.[0] || null;
   }
 }
