@@ -27,7 +27,7 @@ export const redbird: RedbirdOptions = {
   },
   ssl: {
     http2: true,
-    redirect: true, // False to disable HTTPS autoredirect to this route.
+    redirect: true, // False to disable HTTPS auto redirect to this route.
     /**
      * SSL port used to serve registered https routes with LetsEncrypt certificate.
      */
@@ -55,6 +55,8 @@ export const apps: ManagerApp[] = [
       env: {
         STRAPI_INTERN_URL: "http://127.0.0.1:3002",
         STRAPI_EXTERN_URL: "https://gym-strapi.artandcode.de",
+        STRAPI_STUDENT_INTERN_URL: "http://127.0.0.1:3003",
+        STRAPI_STUDENT_EXTERN_URL: "https://gym-strapi-student.artandcode.de",
         NEST_INTERN_URL: "http://127.0.0.1:3001",
         NEST_EXTERN_URL: "https://gym.artandcode.de/",
       },
@@ -75,6 +77,8 @@ export const apps: ManagerApp[] = [
         ADMIN_URL: "/admin",
         DATABASE_CONNECTOR: "bookshelf",
         DATABASE_CLIENT: "sqlite",
+        DATABASE_NAME: "strapi",
+        DATABASE_USERNAME: "strapi",
       },
     },
   },
@@ -93,6 +97,8 @@ export const apps: ManagerApp[] = [
         ADMIN_URL: "/admin",
         DATABASE_CONNECTOR: "bookshelf",
         DATABASE_CLIENT: "sqlite",
+        DATABASE_NAME: "strapi",
+        DATABASE_USERNAME: "strapi",
       },
     },
   },
