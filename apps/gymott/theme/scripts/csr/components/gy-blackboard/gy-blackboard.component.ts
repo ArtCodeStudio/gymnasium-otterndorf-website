@@ -256,7 +256,7 @@ export class GyBlackboardComponent extends Component {
   private _sponge = {
     ...this._chalk,
     fillColor: "#4e4e4e",
-    strokeColor: "rgba(64, 64, 64, 0.25)",
+    strokeColor: "#4e4e4e",
     strokeFillOrder: "stroke",
     size: 80,
     inkAmount: 15,
@@ -266,14 +266,6 @@ export class GyBlackboardComponent extends Component {
     dripCount: 0 as number,
     weights: {
       ...this._chalk.weights,
-      square: 0.3,
-      surround: 0.4,
-      fizzle: 0.2,
-    },
-    draww() {
-      // const canvas = this.getCanvas();
-      this.strokeCount++;
-      this.dripCount++;
     },
     onMouseDown(event: MouseEvent | TouchEvent) {
       this.start = this.prev = this.cur = this.math.getCoordinates(event);
