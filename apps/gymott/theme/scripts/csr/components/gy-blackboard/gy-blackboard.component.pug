@@ -1,6 +1,10 @@
 .gy-blackboard-icons
-  button.btn.btn-link.button-chalk(rv-on-click="selectChalk")
+  button.btn.btn-link.button-chalk(rv-on-click="toggleSelectChalk")
     bs5-icon.iconset.size-36.mb-2(src="/images/chalk.svg" size="36")
-  button.btn.btn-link.button-sponge(rv-on-click="selectSponge")
+  button.btn.btn-link.button-sponge(rv-on-click="toggleSelectSponge")
     bs5-icon.iconset.size-36(src="/images/sponge.svg" size="36")
+  button.btn.btn-link.button-save(rv-if="isDirty" rv-on-click="save")
+    bs5-icon.iconset.size-36(src="/iconset/svg/icon_floppy.svg" size="32")
+  button.btn.btn-link.button-sponge(rv-if="isDirty" rv-on-click="restore")
+    bs5-icon.iconset.size-36(src="/iconset/svg/icon_refresh.svg" size="32")
 canvas(width=1920 height=1200)
