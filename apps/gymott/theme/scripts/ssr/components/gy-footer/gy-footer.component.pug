@@ -1,12 +1,13 @@
 footer.container-fluid.container-xxl
   .row
     .col-12.col-md-6.px-0
-      a(ssr-rv-href="mapLink" rel="noopener noreferrer" target="_blank")
-        img.img-fluid.h-100(ssr-rv-src="mapImageUrl | strapi" ssr-rv-alt="mapImageAlt")
+      a(ssr-rv-href="data.mapLink" rel="noopener noreferrer" target="_blank")
+        img.img-fluid.h-100(ssr-rv-src="data.mapImageUrl | strapi" ssr-rv-alt="data.mapImageAlt")
     .footer-right.col-12.col-md-6
       .row.h-100
         gy-logo.col-12
-        h5.col-12.contact-info(ssr-rv-text="contactInfo")
+        h5.col-12.contact-info(ssr-rv-text="data.contactInfo")
         .col-12.footer-bottom.align-self-end 
-          
+          a(ssr-rv-each-link="data.links" ssr-rv-href="link.url") 
+            h6(ssr-rv-text="link.title") 
           h6 (c) gymnasium-otterndorf.de

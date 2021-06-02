@@ -4,11 +4,7 @@ import { FooterService } from "../../../common/services";
 import pugTemplate from "./gy-footer.component.pug";
 
 export interface Scope {
-  foo?: any;
-  mapImageUrl?: string;
-  mapImageAlt?: string;
-  mapLink?: string;
-  contactInfo?: string;
+  data?: any;
 }
 
 export class GyFooterComponent extends Component {
@@ -31,19 +27,7 @@ export class GyFooterComponent extends Component {
   }
 
   protected async beforeBind() {
-    const footerObject = await FooterService.getInstance().get();
-    if (footerObject.footer?.contact_info) {
-      this.scope.contactInfo = footerObject.footer?.contact_info;
-    }
-    if (footerObject.footer?.map_link) {
-      this.scope.mapLink = footerObject.footer?.map_link;
-    }
-    if (footerObject.footer?.map_image?.alternativeText) {
-      this.scope.mapImageAlt = footerObject.footer?.map_image.alternativeText;
-    }
-    if (footerObject.footer?.map_image?.url) {
-      this.scope.mapImageUrl = footerObject.footer?.map_image.url;
-    }
+    this.scope.data = await FooterService.getInstance().get();
     await super.beforeBind();
   }
 
