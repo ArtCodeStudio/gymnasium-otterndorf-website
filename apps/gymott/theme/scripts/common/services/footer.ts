@@ -20,7 +20,15 @@ export class FooterService {
     return FooterService.instance;
   }
 
-  get(): Promise<StrapiGqlFooterQuery> {
-    return this.graphql.requestCached<StrapiGqlFooterQuery>(footerQuery);
+  async get() {
+    const res = await this.graphql.requestCached<StrapiGqlFooterQuery>(
+      footerQuery
+    );
+
+    return {
+      mapLink: res.footer?.map_link,
+      mapImage: res.footer?.map_image,
+      
+    };
   }
 }

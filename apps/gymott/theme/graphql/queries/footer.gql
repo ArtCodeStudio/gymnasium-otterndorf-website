@@ -6,5 +6,26 @@ query footer {
     }
   	map_link
     contact_info
+    link {
+      navigation_link {
+        title
+        type {
+          __typename
+          ... on ComponentLinkTypePage {
+            page {
+              slug
+            }
+          }
+          ... on ComponentLinkTypeWeb {
+            URL
+          }
+          ... on ComponentLinkTypePost {
+            post {
+              slug
+            }
+          }
+        }
+      }
+    }
   }
 }

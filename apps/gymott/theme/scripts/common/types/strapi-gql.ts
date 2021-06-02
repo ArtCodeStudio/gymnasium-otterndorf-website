@@ -652,6 +652,7 @@ export type StrapiGqlFooter = {
   map_image?: Maybe<StrapiGqlUploadFile>;
   map_link?: Maybe<Scalars['String']>;
   contact_info?: Maybe<Scalars['String']>;
+  link?: Maybe<Array<Maybe<StrapiGqlComponentLinkItemLink>>>;
   published_at?: Maybe<Scalars['DateTime']>;
 };
 
@@ -659,6 +660,7 @@ export type StrapiGqlFooterInput = {
   map_image?: Maybe<Scalars['ID']>;
   map_link?: Maybe<Scalars['String']>;
   contact_info?: Maybe<Scalars['String']>;
+  link?: Maybe<Array<Maybe<StrapiGqlComponentLinkItemLinkInput>>>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -2833,6 +2835,7 @@ export type StrapiGqlEditFooterInput = {
   map_image?: Maybe<Scalars['ID']>;
   map_link?: Maybe<Scalars['String']>;
   contact_info?: Maybe<Scalars['String']>;
+  link?: Maybe<Array<Maybe<StrapiGqlEditComponentLinkItemLinkInput>>>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -3571,7 +3574,29 @@ export type StrapiGqlFooterQuery = (
     & { map_image?: Maybe<(
       { __typename?: 'UploadFile' }
       & Pick<StrapiGqlUploadFile, 'url' | 'alternativeText'>
-    )> }
+    )>, link?: Maybe<Array<Maybe<(
+      { __typename?: 'ComponentLinkItemLink' }
+      & { navigation_link?: Maybe<(
+        { __typename?: 'NavigationLink' }
+        & Pick<StrapiGqlNavigationLink, 'title'>
+        & { type?: Maybe<Array<Maybe<(
+          { __typename: 'ComponentLinkTypeWeb' }
+          & Pick<StrapiGqlComponentLinkTypeWeb, 'URL'>
+        ) | { __typename: 'ComponentLinkTypeSchulfach' } | (
+          { __typename: 'ComponentLinkTypePage' }
+          & { page?: Maybe<(
+            { __typename?: 'Page' }
+            & Pick<StrapiGqlPage, 'slug'>
+          )> }
+        ) | { __typename: 'ComponentLinkTypeStrapi' } | (
+          { __typename: 'ComponentLinkTypePost' }
+          & { post?: Maybe<(
+            { __typename?: 'BlogEntry' }
+            & Pick<StrapiGqlBlogEntry, 'slug'>
+          )> }
+        ) | { __typename: 'ComponentLinkTypeBlog' } | { __typename: 'ComponentLinkTypeTeacher' }>>> }
+      )> }
+    )>>> }
   )> }
 );
 
