@@ -1,3 +1,9 @@
+body.gy-right-sidebar-hidden {
+  bs5-sidebar {
+    box-shadow: none !important;
+  }
+}
+
 gy-right-sidebar {
   .hide-in-sidebar {
     display: none !important;

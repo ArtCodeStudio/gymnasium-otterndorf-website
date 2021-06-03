@@ -18,6 +18,8 @@ import { PostService } from './api/post/post.service';
 import { SchoolSubjectService } from './api/school-subject/school-subject.service';
 import { TeacherService } from './api/teacher/teacher.service';
 import { MarkdownService } from './api/markdown/markdown.service';
+import { WebhookService } from './webhook/webhook.service';
+import { WebhookController } from './webhook/webhook.controller';
 
 @Module({
   imports: [
@@ -27,7 +29,12 @@ import { MarkdownService } from './api/markdown/markdown.service';
     LunrModule,
     ThemeModule.forRoot(theme),
   ],
-  controllers: [CalendarController, SearchController, SuggestController],
+  controllers: [
+    CalendarController,
+    SearchController,
+    SuggestController,
+    WebhookController,
+  ],
   providers: [
     ConfigService,
     StrapiService,
@@ -39,6 +46,7 @@ import { MarkdownService } from './api/markdown/markdown.service';
     SchoolSubjectService,
     TeacherService,
     MarkdownService,
+    WebhookService,
   ],
 })
 export class AppModule {
