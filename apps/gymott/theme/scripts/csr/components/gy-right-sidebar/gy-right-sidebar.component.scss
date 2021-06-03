@@ -5,23 +5,21 @@ gy-right-sidebar {
   bs5-sidebar {
     background-color: $right-sidebar-bg-color;
     border-left: $navbar-border-width $navbar-border-style $right-sidebar-border-color;
-    .list-group-item {
-      color: $white;
-      background-color: transparent;
-      border: none;
-      &.disabled {
-        color: transparentize($white, 0.5);
-        background-color: transparent;
-      }
-    }
     @include media-breakpoint-up(xl) {
       background-color: $gray;
       border-left-color: $navbar-border-color;
-      .list-group-item {
-        color: $black;
-        &.disabled {
-          color: transparentize($black, 0.5);
-          background-color: transparent;
+    }
+    gy-nav-slide {
+      @include media-breakpoint-down(xl) {
+        .list-group-item {
+          color: $white;
+          &.disabled {
+            color: transparentize($white, 0.5);
+          }
+          &.active {
+            background-color: $white;
+            color: $component-active-color;
+          }
         }
       }
     }

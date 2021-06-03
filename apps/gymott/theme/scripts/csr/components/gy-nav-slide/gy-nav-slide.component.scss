@@ -5,26 +5,27 @@ gy-nav-slide {
     > .row {
       .slide {
         min-height: 50px;
-        .list-group-item {
-          &.disabled {
-            opacity: 0.8;
-          }
-          &.active {
-            background-color: inherit;
-            color: $component-active-color;
-            cursor: default;
-            @include media-breakpoint-down(xl) {
-              background-color: $component-active-bg;
-            }
-          }
-          &.list-group-item-parent {
-            cursor: pointer;
-          }
-        }
         .slide-caption {
           position: initial;
         }
       }
+    }
+  }
+
+  .list-group-item {
+    background-color: transparent;
+    border: none;
+    &.disabled {
+      background-color: transparent;
+      opacity: 0.8;
+    }
+    &.active {
+      background-color: transparent;
+      color: $component-active-color;
+      cursor: default;
+    }
+    &.list-group-item-parent {
+      cursor: pointer;
     }
   }
 }

@@ -5,7 +5,6 @@ gy-footer {
     background-color: $light;
     border-top: 1px solid #cacfcd;
   }
-
   
   .footer-bottom {
     bottom: 0;
@@ -13,6 +12,13 @@ gy-footer {
 
   .contact-info {
     white-space: pre-line;
+  }
+
+  gy-nav-slide {
+    .list-group-item {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 

@@ -48,7 +48,7 @@ export class GyNavSlideComponent extends Component {
   }
 
   protected requiredAttributes() {
-    return ["entry"];
+    return [];
   }
 
   constructor() {
@@ -135,6 +135,9 @@ export class GyNavSlideComponent extends Component {
 
   protected async beforeBind() {
     await super.beforeBind();
+    if (!this.scope.entry) {
+      this.scope.entry = await NavigationService.getInstance().getMenu();
+    }
     this.initSlides();
     this.initRouterEventDispatcher();
   }

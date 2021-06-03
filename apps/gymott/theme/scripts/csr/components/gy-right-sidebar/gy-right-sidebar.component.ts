@@ -7,13 +7,9 @@ import {
   SlideshowState,
 } from "@ribajs/bs5";
 import { GyNavSlideComponent } from "../gy-nav-slide/gy-nav-slide.component";
-import { NavigationService } from "../../services";
 import pugTemplate from "./gy-right-sidebar.component.pug";
-import { Awaited } from "../../../common/types";
 
-export interface Scope {
-  navEntry: Awaited<ReturnType<NavigationService["getMenu"]>> | null;
-}
+export type Scope = Record<string, never>;
 
 export class GyRightSidebarComponent extends Component {
   public static tagName = "gy-right-sidebar";
@@ -23,16 +19,10 @@ export class GyRightSidebarComponent extends Component {
   protected navSlide: GyNavSlideComponent | null = null;
   protected slideshow: Bs5SlideshowComponent | null = null;
 
-  scope: Scope = {
-    navEntry: null,
-  };
+  scope: Scope = {};
 
   static get observedAttributes(): string[] {
-    return ["nav-entry"];
-  }
-
-  constructor() {
-    super();
+    return [];
   }
 
   protected setSidebarStateClassToBody(state: SlideshowState) {
@@ -50,20 +40,6 @@ export class GyRightSidebarComponent extends Component {
   }
 
   protected onSidebarToggle = this._onSidebarToggle.bind(this);
-
-  protected async beforeBind() {
-    await super.beforeBind();
-    if (!this.scope.navEntry) {
-      this.scope.navEntry = await NavigationService.getInstance().getMenu();
-    }
-
-    // this.setAttribute("nav-entry", JSON.stringify(this.scope.navEntry));
-    this.debug("navEntry", this.scope.navEntry);
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
-  }
 
   protected async afterAllBind() {
     this.sidebar = this.querySelector<Bs5SidebarComponent>(
