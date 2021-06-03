@@ -1,0 +1,16 @@
+{
+  "name": "@gymott/test",
+  "private": true,
+  "scripts": {
+    "start": "ts-node request-memory.ts"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.1",
+    "@types/node": "^15.9.0",
+    "@types/node-fetch": "^2.5.10",
+    "ts-node": "^10.0.0"
+  }
+}
