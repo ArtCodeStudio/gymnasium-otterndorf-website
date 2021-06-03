@@ -4,4 +4,5 @@ export interface NavigationLink {
   label: string;
   href?: string;
   children: NavigationLink[];
+  hideInSidebar: boolean;
 }

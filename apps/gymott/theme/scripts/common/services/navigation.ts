@@ -84,6 +84,7 @@ export class NavigationService {
         type: "list",
         id: baseItem?.navigation_link?.id || "",
         label: baseItem?.navigation_link?.title || baseItem.title || "",
+        hideInSidebar: baseItem.hideInSidebar || false,
         href,
         children: [],
       };
@@ -94,6 +95,7 @@ export class NavigationService {
       label: "",
       id: "",
       children: [],
+      hideInSidebar: false,
     };
   }
 

@@ -459,12 +459,14 @@ export type StrapiGqlComponentNavigationNavigationLevelEntry = {
   parent?: Maybe<StrapiGqlNavigationLink>;
   navigation_link?: Maybe<StrapiGqlNavigationLink>;
   title?: Maybe<Scalars['String']>;
+  hideInSidebar?: Maybe<Scalars['Boolean']>;
 };
 
 export type StrapiGqlComponentNavigationNavigationLevelEntryInput = {
   parent?: Maybe<Scalars['ID']>;
   navigation_link?: Maybe<Scalars['ID']>;
   title?: Maybe<Scalars['String']>;
+  hideInSidebar?: Maybe<Scalars['Boolean']>;
 };
 
 export type StrapiGqlComponentNavigationNavigationSection = {
@@ -2742,6 +2744,7 @@ export type StrapiGqlEditComponentNavigationNavigationLevelEntryInput = {
   parent?: Maybe<Scalars['ID']>;
   navigation_link?: Maybe<Scalars['ID']>;
   title?: Maybe<Scalars['String']>;
+  hideInSidebar?: Maybe<Scalars['Boolean']>;
 };
 
 export type StrapiGqlEditComponentNavigationNavigationSectionInput = {
@@ -3339,7 +3342,7 @@ export type StrapiGqlMenuFragmentFragment = (
   { __typename?: 'Menu' }
   & { entries?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentNavigationNavigationLevelEntry' }
-    & Pick<StrapiGqlComponentNavigationNavigationLevelEntry, 'id' | 'title'>
+    & Pick<StrapiGqlComponentNavigationNavigationLevelEntry, 'id' | 'title' | 'hideInSidebar'>
     & { parent?: Maybe<(
       { __typename?: 'NavigationLink' }
       & Pick<StrapiGqlNavigationLink, 'id'>
