@@ -1,4 +1,7 @@
 gy-right-sidebar {
+  .hide-in-sidebar {
+    display: none !important;
+  }
   a {
     text-decoration: none;
   }
@@ -9,17 +12,19 @@ gy-right-sidebar {
       background-color: $gray;
       border-left-color: $navbar-border-color;
     }
-    gy-nav-slide {
-      @include media-breakpoint-down(xl) {
-        .list-group-item {
-          color: $white;
-          &.disabled {
-            color: transparentize($white, 0.5);
-          }
-          &.active {
-            background-color: $white;
-            color: $component-active-color;
-          }
+    .list-group-item {
+      background-color: transparent;
+      border: none;
+    }
+    @include media-breakpoint-down(xl) {
+      .list-group-item {
+        color: $white;
+        &.disabled {
+          color: transparentize($white, 0.5);
+        }
+        &.active {
+          background-color: $white;
+          color: $component-active-color;
         }
       }
     }

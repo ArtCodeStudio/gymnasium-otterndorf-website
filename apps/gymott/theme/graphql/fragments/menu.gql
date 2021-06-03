@@ -6,7 +6,8 @@ fragment MenuFragment on Menu {
     parent {
       id
     }
-    title,
+    title
+    hideInSidebar
     navigation_link {
       ...NavigationLinkFragment
     }

@@ -1,9 +1,5 @@
 import { Component } from "@ribajs/core";
-import {
-  SlideshowSlide,
-  Bs5SlideshowComponent,
-  Bs5SidebarComponent,
-} from "@ribajs/bs5";
+import { SlideshowSlide, Bs5SlideshowComponent } from "@ribajs/bs5";
 import { Pjax } from "@ribajs/router";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-nav-slide.component.pug";
@@ -22,7 +18,6 @@ export interface Scope {
   onNavTapstart: GyNavSlideComponent["onNavTapstart"];
   onNavTap: GyNavSlideComponent["onNavTap"];
   onBackTap: GyNavSlideComponent["onBackTap"];
-  onCloseTap: GyNavSlideComponent["onCloseTap"];
 }
 
 export class GyNavSlideComponent extends Component {
@@ -30,7 +25,6 @@ export class GyNavSlideComponent extends Component {
   public _debug = false;
   protected autobind = true;
   protected slideshow: Bs5SlideshowComponent | null = null;
-  protected sidebar: Bs5SidebarComponent | null = null;
   protected pjax?: Pjax;
   protected routerEvents = new EventDispatcher("main");
 
@@ -40,7 +34,6 @@ export class GyNavSlideComponent extends Component {
     onNavTapstart: this.onNavTapstart.bind(this),
     onNavTap: this.onNavTap.bind(this),
     onBackTap: this.onBackTap.bind(this),
-    onCloseTap: this.onCloseTap.bind(this),
   };
 
   static get observedAttributes(): string[] {
@@ -90,10 +83,6 @@ export class GyNavSlideComponent extends Component {
       throw new Error("index not set!");
     }
     this.slideshow?.goTo(index - 1);
-  }
-
-  public onCloseTap() {
-    this.sidebar?.hide();
   }
 
   protected newSlide(index: number) {
@@ -150,23 +139,8 @@ export class GyNavSlideComponent extends Component {
   protected async afterAllBind() {
     this.slideshow = this.querySelector(Bs5SlideshowComponent.tagName);
 
-    if (
-      this.parentElement?.tagName.toUpperCase() ===
-      Bs5SidebarComponent.tagName.toUpperCase()
-    ) {
-      this.sidebar = this.parentElement as Bs5SidebarComponent;
-    } else {
-      this.sidebar =
-        this.parentElement?.parentElement?.querySelector(
-          Bs5SidebarComponent.tagName
-        ) || null;
-    }
-
     if (!this.slideshow) {
       console.warn("Slideshow not found!");
-    }
-    if (!this.sidebar) {
-      console.warn("Sidebar not found!");
     }
   }
 
