@@ -24,7 +24,8 @@
     "!packages/riba/infra/schematics",
     "apps/*/*",
     "!apps/*/strapi",
-    "!apps/*/strapi-student"
+    "!apps/*/strapi-student",
+    "test"
   ],
   "resolutions": {
     "@types/express-serve-static-core": "latest",
