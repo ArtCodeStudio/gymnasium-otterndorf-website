@@ -80,14 +80,14 @@
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/experimental-utils": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
-    "@yarnpkg/pnpify": "^3.0.0-rc.3",
+    "@yarnpkg/pnpify": "^3.0.0-rc.6",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "node-gyp": "^8.1.0",
     "prettier": "^2.3.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.2"
   },
   "dependencies": {
     "@root/encoding": "^1.0.1",
