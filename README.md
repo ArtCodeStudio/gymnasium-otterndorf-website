@@ -15,12 +15,11 @@ We ignore Strapi in the workspace because it is currently not compatible with Ya
 This repository has submodules, so you need to pulling the latest submodules, too:
 
 ```sh
-git clone https://github.com/ArtCodeStudio/riba-nest-projects.git
+git clone --recurse-submodules https://github.com/ArtCodeStudio/riba-nest-projects.git
 cd riba-nest-projects
-git submodule update --init --recursive
 ```
 
-If you have already pulled the repository with his submodules, you can just run:
+If you have already pulled the repository you can just run:
 
 ```sh
 git pull --recurse-submodules
