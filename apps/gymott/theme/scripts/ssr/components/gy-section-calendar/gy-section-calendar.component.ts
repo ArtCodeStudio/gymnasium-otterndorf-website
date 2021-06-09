@@ -31,9 +31,7 @@ export class GySectionCalendarComponent extends Component {
     super();
   }
 
-  protected async beforeBind() {
-    this.scope.calendarEntries = await CalendarService.getInstance().get();
-
+  protected transformCalendarEntries() {
     if (this.scope.section?.dates) {
       this.scope.calendarEntries = this.scope.calendarEntries.slice(
         0,
@@ -52,13 +50,23 @@ export class GySectionCalendarComponent extends Component {
     });
   }
 
-  protected async afterBind() {
-    await super.afterBind();
+  protected async getCalendarEntries() {
+    this.scope.calendarEntries = await CalendarService.getInstance().get();
+    this.transformCalendarEntries();
+  }
+
+  protected async beforeBind() {
+    await this.getCalendarEntries();
+    await super.beforeBind();
   }
 
   protected connectedCallback() {
-    super.connectedCallback();
-    this.init(GySectionCalendarComponent.observedAttributes);
+    try {
+      super.connectedCallback();
+      this.init(GySectionCalendarComponent.observedAttributes);
+    } catch (error) {
+      this.throw(error);
+    }
   }
 
   protected template() {

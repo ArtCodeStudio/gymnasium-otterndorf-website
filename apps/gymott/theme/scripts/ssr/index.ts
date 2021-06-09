@@ -3,6 +3,7 @@ import "../common/@types";
 import { SSRModule } from "@ribajs/ssr";
 import { Riba, coreModule } from "@ribajs/core";
 import { Bs5IconComponent, bs5Module } from "@ribajs/bs5";
+// import { EventDispatcher } from "@ribajs/events";
 import {
   CalendarFormatter,
   LocaleFormatter,
@@ -84,11 +85,6 @@ riba.lifecycle.events.on("ComponentLifecycle:allBound", () => {
   window.ssr.events.trigger("ready");
 });
 
-// riba.lifecycle.events.on("ComponentLifecycle:timeout", () => {
-//   console.error("timeout!");
-//   window.ssr.events.trigger("ready");
-// });
-
 riba.lifecycle.events.on("ComponentLifecycle:error", (error: Error) => {
   // console.error(error);
   window.ssr.events.trigger("error", error);
@@ -98,3 +94,13 @@ const view = riba.bind(document.body, window.model);
 
 // WORKAROUND / FIXME view.traverse method seems not to be working in jsdom
 view.registComponents();
+
+// window.addEventListener(
+//   "beforeunload",
+//   () => {
+//     console.debug("Window closing, clear Riba");
+//     EventDispatcher.clearAllInstances();
+//     view.unbind();
+//   },
+//   false
+// );

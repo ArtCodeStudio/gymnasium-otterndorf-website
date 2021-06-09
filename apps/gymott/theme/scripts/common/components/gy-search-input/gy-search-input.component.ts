@@ -104,14 +104,22 @@ export class GySearchInputComponent extends Component {
   }
 
   protected async afterAllBind() {
-    this.searchResultContainers = Array.from(
-      document.querySelectorAll<GySearchResultComponent>("gy-search-result")
-    );
+    try {
+      this.searchResultContainers = Array.from(
+        document.querySelectorAll<GySearchResultComponent>("gy-search-result")
+      );
+    } catch (error) {
+      this.throw(error);
+    }
   }
 
   protected connectedCallback() {
-    super.connectedCallback();
-    this.init(GySearchInputComponent.observedAttributes);
+    try {
+      super.connectedCallback();
+      this.init(GySearchInputComponent.observedAttributes);
+    } catch (error) {
+      this.throw(error);
+    }
   }
 
   protected template() {

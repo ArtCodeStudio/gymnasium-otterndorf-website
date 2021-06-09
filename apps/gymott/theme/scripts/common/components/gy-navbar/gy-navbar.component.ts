@@ -105,10 +105,14 @@ export class GyNavbarComponent extends Component {
    * Set style of other elements which are depending on the navbar style
    */
   protected setDependentStyles() {
+    // If JSDom is destroyed
+    if (!document) {
+      return;
+    }
     const searchResults = Array.from(
       document.querySelectorAll<GySearchResultComponent>("gy-search-result")
     );
-    const body = document.body;
+    const body = document.body || null;
     const hideNavbarShadowEl = document.querySelector<HTMLElement>(
       ".hide-navbar-shadow"
     );
@@ -144,39 +148,60 @@ export class GyNavbarComponent extends Component {
    * Internal "unthrottled" version of `onResize`.
    */
   protected _onResize() {
-    this.setDependentStyles();
+    try {
+      this.setDependentStyles();
+    } catch (error) {
+      this.throw(error);
+    }
   }
 
   protected onResize = throttle(this._onResize.bind(this));
 
   protected _onScroll(event: Event | CustomEvent) {
-    const scrollPosition = (event as CustomEvent).detail.currentPosition;
-    // If position is top
-    if (scrollPosition.y <= this.height) {
-      this.show();
-    }
+    try {
+      const scrollPosition = (event as CustomEvent).detail.currentPosition;
+      // If position is top
+      if (scrollPosition.y <= this.height) {
+        this.show();
+      }
 
-    // If position is bottom
-    if (scrollPosition.y + this.visibleHeight >= scrollPosition.maxY) {
-      this.hideIfViewport();
+      // If position is bottom
+      if (scrollPosition.y + this.visibleHeight >= scrollPosition.maxY) {
+        this.hideIfViewport();
+      }
+    } catch (error) {
+      this.throw(error);
     }
   }
   protected onScroll = this._onScroll.bind(this);
 
   protected _onScrollUp(/*event: CustomEvent*/) {
-    this.hideIfViewport();
+    try {
+      this.hideIfViewport();
+    } catch (error) {
+      this.throw(error);
+    }
   }
   protected onScrollUp = this._onScrollUp.bind(this);
 
   protected _onScrollDown(/*event: CustomEvent*/) {
-    this.show();
+    try {
+      this.show();
+    } catch (error) {
+      this.throw(error);
+    }
   }
   protected onScrollDown = this._onScrollDown.bind(this);
 
   // On all Components are ready
   protected async afterAllBind() {
-    this.setDependentStyles();
-    this.sidebar = document.querySelector(Bs5SidebarComponent.tagName);
+    try {
+      this.setDependentStyles();
+      this.sidebar =
+        document?.querySelector(Bs5SidebarComponent.tagName) || null;
+    } catch (error) {
+      this.throw(error);
+    }
   }
 
   protected onBreakpointChanges(breakpoint: Breakpoint) {
