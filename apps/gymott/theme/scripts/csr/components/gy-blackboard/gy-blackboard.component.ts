@@ -265,8 +265,114 @@ export class GyBlackboardComponent extends Component {
     weights: {
       ...this._chalk.weights,
     },
-    onMouseDown(event: MouseEvent | TouchEvent) {
-      this.start = this.prev = this.cur = this.math.getCoordinates(event);
+    draw() {
+      const canvas = this.getCanvas();
+
+      if (!canvas) {
+        console.error(new Error("canvas is falsy!"));
+        return;
+      }
+
+      if (!this.cur) {
+        console.error(new Error("cur vector is falsy!"));
+        return;
+      }
+
+      if (!this.prev) {
+        console.error(new Error("prev vector is falsy!"));
+        return;
+      }
+
+      const ctx = canvas.getContext("2d");
+
+      if (!ctx) {
+        console.error(new Error("ctx is falsy!"));
+        return;
+      }
+
+      const v = this.math.diff(this.cur, this.prev);
+      const vlen = this.math.length(v);
+      const s = Math.ceil(this.size / 2);
+      const stepNum = this.math.clamp(Math.floor(vlen / s), 37, 1);
+      v.x *= s / vlen;
+      v.y *= s / vlen;
+
+      const dotSize =
+        this.sep *
+        this.math.clamp(
+          (this.inkAmount / this.latestStrokeLength) * 2.25,
+          0.72,
+          0.5
+        ) *
+        10;
+      const dotNum = Math.ceil(this.size * this.sep) / 50;
+
+      ctx.save();
+      ctx.fillStyle = this.fillColor;
+      ctx.globalCompositeOperation = this.globalCompositeOperation;
+      ctx.strokeStyle = this.strokeColor;
+      ctx.beginPath();
+      const w = ((Math.random() * dotSize + dotSize) * 3) / 4;
+      const h = ((Math.random() * dotSize + dotSize) * 3) / 4;
+      for (let j = 1; j <= stepNum; j++) {
+        const p = { x: this.prev!.x + v.x * j, y: this.prev!.y + v.y * j };
+
+        // draw big surrounding stroke
+        if (Math.random() < this.weights.surround) {
+          ctx.lineWidth = Math.max(w, h);
+          ctx.lineCap = ctx.lineJoin = "round";
+          ctx.moveTo(this.prev!.x, this.prev!.y);
+          ctx.lineTo(p.x, p.y);
+        }
+      }
+      if (vlen < 30 && Math.random() > 0.6) {
+        ((point, amount, life) => {
+          const deltaT = 30;
+          let rate = 0;
+          const drawDrip = () => {
+            const lastPoint = { ...point };
+            point.x += life * rate;
+            point.y += (Math.random() * life * amount) / 20;
+            life -= 0.1;
+            if (Math.random() < 0.03) {
+              rate += Math.random() * 0.06 - 0.03;
+            } else if (Math.random() < 0.05) {
+              rate *= 0.007;
+            }
+            ctx.save();
+            ctx.lineWidth = amount * 0.8 + life * 0.2;
+            ctx.strokeStyle = "#4e4e4e";
+            ctx.lineCap = "round";
+            ctx.beginPath();
+            ctx.moveTo(lastPoint.x, lastPoint.y);
+            ctx.lineTo(point.x, point.y);
+            ctx.stroke();
+            ctx.restore();
+            if (life > 0) {
+              setTimeout(drawDrip, deltaT);
+            }
+          };
+          setTimeout(drawDrip, deltaT);
+        })(
+          { ...this.cur },
+          (Math.random() * this.size * (Math.random() + 1)) / 8,
+          12
+        );
+      }
+      if (this.strokeFillOrder === "stroke") {
+        ctx.stroke();
+        ctx.fill();
+      } else if (this.strokeFillOrder === "fill") {
+        ctx.fill();
+        ctx.stroke();
+      } else if (Math.random() > 0.5) {
+        ctx.stroke();
+        ctx.fill();
+      } else {
+        ctx.fill();
+        ctx.stroke();
+      }
+      ctx.restore();
     },
   };
 
