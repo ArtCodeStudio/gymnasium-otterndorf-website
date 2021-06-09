@@ -2,7 +2,6 @@
 import { Component } from "@ribajs/core";
 import { Vector2d } from "../../../common";
 import pugTemplate from "./gy-blackboard.component.pug";
-import { Bs5SlideshowComponent } from "@ribajs/bs5";
 
 export interface GyBlackboardComponentScope {
   backgroundImage?: string | undefined;
@@ -24,8 +23,6 @@ export class GyBlackboardComponent extends Component {
   public static tagName = "gy-blackboard";
   public _debug = false;
   protected autobind = true;
-
-  private _containingSlideshow: Bs5SlideshowComponent;
 
   private _canvas: HTMLCanvasElement | null = null;
   private _ctx: CanvasRenderingContext2D | null = null;
@@ -94,6 +91,7 @@ export class GyBlackboardComponent extends Component {
     onMouseMove(event: MouseEvent | TouchEvent) {
       // Prevent touch scroll behaviour on touch devices
       event.preventDefault();
+      event.stopPropagation();
       if (!this.start) {
         return;
       }
@@ -276,7 +274,6 @@ export class GyBlackboardComponent extends Component {
     this._selectedTool = this._chalk;
     this.classList.add("chalk-selected");
     this.classList.remove("sponge-selected");
-    this._containingSlideshow.disableTouchScroll();
   }
 
   public toggleSelectChalk() {
@@ -293,7 +290,6 @@ export class GyBlackboardComponent extends Component {
     this._selectedTool = this._sponge;
     this.classList.remove("chalk-selected");
     this.classList.add("sponge-selected");
-    this._containingSlideshow.disableTouchScroll();
   }
 
   public toggleSelectSponge() {
@@ -308,7 +304,6 @@ export class GyBlackboardComponent extends Component {
     this._selectedTool = null;
     this.classList.remove("chalk-selected");
     this.classList.remove("sponge-selected");
-    this._containingSlideshow.enableTouchScroll();
   }
 
   public restore() {
@@ -319,11 +314,7 @@ export class GyBlackboardComponent extends Component {
     if (this._canvas) {
       const link = document.createElement("a");
       link.setAttribute("download", "blackboard.png");
-      link.setAttribute(
-        "href",
-        this._canvas.toDataURL("image/png")
-        //.replace("image/png", "image/octet-stream")
-      );
+      link.setAttribute("href", this._canvas.toDataURL("image/png"));
       link.click();
     }
   }
@@ -349,16 +340,6 @@ export class GyBlackboardComponent extends Component {
 
   constructor() {
     super();
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    let element: HTMLElement | null = this;
-    while (
-      element &&
-      element.tagName.toUpperCase() !==
-        Bs5SlideshowComponent.tagName.toUpperCase()
-    ) {
-      element = element.parentElement;
-    }
-    this._containingSlideshow = element as unknown as Bs5SlideshowComponent;
   }
 
   protected async beforeBind() {
