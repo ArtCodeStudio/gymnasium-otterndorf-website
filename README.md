@@ -1,4 +1,4 @@
-# riba-nest-projects
+# gymnasium-otterndorf-website
 
 Monorepo of projects build with Nest.js + Riba.js + Strapi
 

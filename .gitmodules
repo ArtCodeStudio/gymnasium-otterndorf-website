@@ -4,3 +4,6 @@
 [submodule "packages/redbird"]
 	path = packages/redbird
 	url = https://github.com/ArtCodeStudio/redbird.git
+[submodule "packages/node-app-manager"]
+	path = packages/node-app-manager
+	url = https://github.com/ArtCodeStudio/node-app-manager.git

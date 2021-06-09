@@ -1,11 +1,11 @@
-import type { ManagerApp } from "@manager/nest/src/types/app";
-import type { ManagerOptions } from "@manager/nest/src/types/options";
-import type { RedbirdOptions } from "@manager/nest/src/redbird/types/options";
+import type { ManagerApp } from "@artcodestudio/node-app-manager/src/types/app";
+import type { ManagerOptions } from "@artcodestudio/node-app-manager/src/types/options";
+import type { RedbirdOptions } from "@artcodestudio/node-app-manager/src/redbird/types/options";
 
 import { resolve } from "path";
 
 export const manager: ManagerOptions = {
-  pkgName: "@manager/nest",
+  pkgName: "@artcodestudio/node-app-manager",
   domain: "manage.artandcode.de",
   target: {
     port: 3000,

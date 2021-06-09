@@ -55,7 +55,6 @@ export class SearchService implements OnModuleInit {
       data: {
         include: true,
         highlight: true,
-        shorten: true,
       },
     });
   }
@@ -73,7 +72,6 @@ export class SearchService implements OnModuleInit {
       data: {
         include: true,
         highlight: true,
-        shorten: true,
       },
     });
   }
@@ -91,7 +89,6 @@ export class SearchService implements OnModuleInit {
       data: {
         include: true,
         highlight: true,
-        shorten: true,
       },
     });
   }
@@ -110,7 +107,6 @@ export class SearchService implements OnModuleInit {
       data: {
         include: true,
         highlight: true,
-        shorten: true,
       },
     });
   }
@@ -128,7 +124,6 @@ export class SearchService implements OnModuleInit {
       data: {
         include: true,
         highlight: true,
-        shorten: true,
       },
     });
   }
@@ -146,7 +141,6 @@ export class SearchService implements OnModuleInit {
       data: {
         include: true,
         highlight: true,
-        shorten: true,
       },
     });
   }

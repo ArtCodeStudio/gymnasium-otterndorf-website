@@ -1,30 +1,30 @@
 {
-  "name": "riba-nest-projects",
+  "name": "gymnasium-otterndorf-website",
   "private": true,
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
   "scripts": {
-    "postinstall": "yarn run install:outside",
-    "install:outside": "cd apps/gymott/strapi && NODE_OPTIONS='' npm install",
-    "build": "yarn workspaces foreach run build && yarn run build:outside",
-    "build:outside": "cd apps/gymott/strapi NODE_OPTIONS='' npm run build",
-    "start:local": "yarn workspace @manager/nest run start:local",
-    "start:prod": "yarn workspace @manager/nest run start:prod",
-    "start:dev": "yarn workspace @manager/nest run start:dev",
-    "watch:local": "yarn workspace @manager/nest run watch:local",
-    "watch:prod": "yarn workspace @manager/nest run watch:prod",
-    "watch:dev": "yarn workspace @manager/nest run watch:dev"
+    "postinstall": "yarn run install:strapi && yarn run install:strapi-student",
+    "install:strapi": "cd apps/gymott/strapi && NODE_OPTIONS='' npm install",
+    "install:strapi-student": "cd apps/gymott/strapi-student && NODE_OPTIONS='' npm install",
+    "build": "yarn workspaces foreach run build && yarn run build:strapi && yarn run build:strapi-student",
+    "build:strapi": "cd apps/gymott/strapi NODE_OPTIONS='' npm run build",
+    "build:strapi-student": "cd apps/gymott/strapi-student NODE_OPTIONS='' npm run build",
+    "start:local": "node-app-manager --env local",
+    "start:prod": "node-app-manager --env production",
+    "start:dev": "node-app-manager --env development"
   },
   "workspaces": [
-    "packages/redbird",
+    "packages/node-app-manager/backend",
+    "packages/node-app-manager/packages/redbird",
     "packages/riba/packages/*",
     "packages/riba/backend/*",
     "packages/riba/infra/*",
     "!packages/riba/infra/cli",
     "!packages/riba/infra/doc",
     "!packages/riba/infra/schematics",
-    "apps/*/*",
-    "!apps/*/strapi",
-    "!apps/*/strapi-student",
+    "apps/gymott/*",
+    "!apps/gymott/strapi",
+    "!apps/gymott/strapi-student",
     "test"
   ],
   "resolutions": {
@@ -72,7 +72,7 @@
     "sass": "1.32.13"
   },
   "devDependencies": {
-    "@manager/nest": "workspace:*",
+    "@artcodestudio/node-app-manager": "workspace:*",
     "@ribajs/eslint-config": "workspace:*",
     "@ribajs/iconset": "workspace:*",
     "@ribajs/tsconfig": "workspace:*",
@@ -92,6 +92,7 @@
   "dependencies": {
     "@root/encoding": "^1.0.1",
     "@root/keypairs": "^0.10.1",
+    "greenlock-store-fs": "^3.2.2",
     "pug": "^3.0.2"
   }
 }
