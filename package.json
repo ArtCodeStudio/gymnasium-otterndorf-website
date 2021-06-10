@@ -4,11 +4,11 @@
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
   "scripts": {
     "postinstall": "yarn run install:strapi && yarn run install:strapi-student",
-    "install:strapi": "cd apps/gymott/strapi && NODE_OPTIONS='' npm install",
-    "install:strapi-student": "cd apps/gymott/strapi-student && NODE_OPTIONS='' npm install",
+    "install:strapi": "cd app/strapi && NODE_OPTIONS='' npm install",
+    "install:strapi-student": "cd app/strapi-student && NODE_OPTIONS='' npm install",
     "build": "yarn workspaces foreach run build && yarn run build:strapi && yarn run build:strapi-student",
-    "build:strapi": "cd apps/gymott/strapi NODE_OPTIONS='' npm run build",
-    "build:strapi-student": "cd apps/gymott/strapi-student NODE_OPTIONS='' npm run build",
+    "build:strapi": "cd app/strapi NODE_OPTIONS='' npm run build",
+    "build:strapi-student": "cd app/strapi-student NODE_OPTIONS='' npm run build",
     "start:local": "node-app-manager --env local",
     "start:prod": "node-app-manager --env production",
     "start:dev": "node-app-manager --env development"
@@ -22,9 +22,9 @@
     "!packages/riba/infra/cli",
     "!packages/riba/infra/doc",
     "!packages/riba/infra/schematics",
-    "apps/gymott/*",
-    "!apps/gymott/strapi",
-    "!apps/gymott/strapi-student",
+    "app/*",
+    "!app/strapi",
+    "!app/strapi-student",
     "test"
   ],
   "resolutions": {

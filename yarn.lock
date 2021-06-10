@@ -2706,9 +2706,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gymott/common@workspace:*, @gymott/common@workspace:apps/gymott/common":
+"@gymott/common@workspace:*, @gymott/common@workspace:app/common":
   version: 0.0.0-use.local
-  resolution: "@gymott/common@workspace:apps/gymott/common"
+  resolution: "@gymott/common@workspace:app/common"
   dependencies:
     "@graphql-codegen/cli": 1.21.5
     "@graphql-codegen/typescript": ^1.22.1
@@ -2726,11 +2726,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gymott/nest@workspace:apps/gymott/nest":
+"@gymott/nest@workspace:app/nest":
   version: 0.0.0-use.local
-  resolution: "@gymott/nest@workspace:apps/gymott/nest"
+  resolution: "@gymott/nest@workspace:app/nest"
   dependencies:
-    "@gymott/common": "workspace:apps/gymott/common"
+    "@gymott/common": "workspace:*"
     "@nestjs/cli": ^7.6.0
     "@nestjs/common": ^7.6.17
     "@nestjs/config": ^0.6.3
@@ -2805,9 +2805,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@gymott/theme@workspace:apps/gymott/theme":
+"@gymott/theme@workspace:app/theme":
   version: 0.0.0-use.local
-  resolution: "@gymott/theme@workspace:apps/gymott/theme"
+  resolution: "@gymott/theme@workspace:app/theme"
   dependencies:
     "@babel/cli": ^7.14.5
     "@babel/core": ^7.14.5
