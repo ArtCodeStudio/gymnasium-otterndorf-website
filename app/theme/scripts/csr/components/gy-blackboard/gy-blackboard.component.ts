@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Component } from "@ribajs/core";
 import { Vector2d } from "../../../common";
@@ -89,7 +90,7 @@ export class GyBlackboardComponent extends Component {
       this.start = this.prev = this.cur = null;
     },
     onMouseMove(event: MouseEvent | TouchEvent) {
-      // Prevent touch scroll behaviour on touch devices
+      // Prevent touch scroll behavior on touch devices
       event.preventDefault();
       event.stopPropagation();
       if (!this.start) {
@@ -177,7 +178,7 @@ export class GyBlackboardComponent extends Component {
           const x = p.x + r * Math.sin(c) - w / 2;
           const y = p.y + r * Math.cos(c) - h / 2;
 
-          // draw fizzly stroke
+          // draw fizzy stroke
           if (Math.random() < this.weights.fizzle) {
             ctx!.lineWidth = Math.min(w, h) / 2;
             const arr = [
@@ -195,13 +196,13 @@ export class GyBlackboardComponent extends Component {
                 [this.prev!.x + v.x * (j - 1), this.prev!.y + v.y * (j - 1)],
                 [
                   this.prev!.x +
-                    w * Math.sin(c) +
-                    v.x * j +
-                    r * (Math.random() - 0.5),
+                  w * Math.sin(c) +
+                  v.x * j +
+                  r * (Math.random() - 0.5),
                   this.prev!.y +
-                    h * Math.cos(c) +
-                    v.y * j +
-                    r * (Math.random() - 0.5),
+                  h * Math.cos(c) +
+                  v.y * j +
+                  r * (Math.random() - 0.5),
                 ],
               ],
             ];
@@ -305,7 +306,6 @@ export class GyBlackboardComponent extends Component {
           0.5
         ) *
         10;
-      const dotNum = Math.ceil(this.size * this.sep) / 50;
 
       ctx.save();
       ctx.fillStyle = this.fillColor;
