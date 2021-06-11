@@ -27,7 +27,9 @@
         "content.image",
         "content.text",
         "section.slideshow",
-        "section.gallery-slideshow"
+        "section.gallery-slideshow",
+        "section.blackboard-slideshow",
+        "content.button"
       ]
     },
     "calendar_key": {

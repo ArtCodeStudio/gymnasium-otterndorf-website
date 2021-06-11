@@ -31,9 +31,8 @@
       "type": "string"
     },
     "subjects": {
-      "columnName": "Fächer",
-      "targetColumnName": "Lehrer",
       "via": "teachers",
+      "columnName": "Fächer",
       "collection": "subject"
     },
     "slug": {

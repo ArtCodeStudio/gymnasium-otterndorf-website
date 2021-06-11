@@ -335,7 +335,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -382,7 +383,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -434,7 +436,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -461,7 +464,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -555,7 +559,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -630,7 +635,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -684,7 +690,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -711,7 +718,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -850,7 +858,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -862,6 +871,94 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]
@@ -888,7 +985,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -935,7 +1033,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -987,7 +1086,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -1014,7 +1114,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -1108,7 +1209,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -1183,7 +1285,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -1237,7 +1340,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -1264,7 +1368,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -1403,7 +1508,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -1415,6 +1521,94 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]

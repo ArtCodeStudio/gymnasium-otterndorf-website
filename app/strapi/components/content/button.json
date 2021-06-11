@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_content_buttons",
+  "info": {
+    "name": "Button",
+    "icon": "hand-pointer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "alignment": {
+      "type": "enumeration",
+      "enum": [
+        "Left",
+        "Center",
+        "Right"
+      ],
+      "required": true,
+      "default": "Center"
+    },
+    "color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.color",
+      "required": true
+    },
+    "link": {
+      "model": "navigation-link"
+    }
+  }
+}

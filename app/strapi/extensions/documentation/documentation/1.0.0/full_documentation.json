@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/03/2021 11:37:35 AM"
+    "x-generation-date": "06/11/2021 10:01:25 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -8284,7 +8284,8 @@
                         "content.text",
                         "content.image",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -8306,7 +8307,8 @@
                         "content.text",
                         "content.image",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -8395,7 +8397,8 @@
                         "content.text",
                         "content.image",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -8444,7 +8447,8 @@
                         "content.text",
                         "content.image",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -8476,6 +8480,89 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]
@@ -8596,7 +8683,8 @@
                         "content.text",
                         "content.image",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -8618,7 +8706,8 @@
                         "content.text",
                         "content.image",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -8707,7 +8796,8 @@
                         "content.text",
                         "content.image",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -8756,7 +8846,8 @@
                         "content.text",
                         "content.image",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -8788,6 +8879,89 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]
@@ -9231,7 +9405,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9278,7 +9453,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9330,7 +9506,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9357,7 +9534,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9451,7 +9629,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9526,7 +9705,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9580,7 +9760,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9607,7 +9788,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9746,7 +9928,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9758,6 +9941,94 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]
@@ -9784,7 +10055,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9831,7 +10103,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9883,7 +10156,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -9910,7 +10184,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -10004,7 +10279,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -10079,7 +10355,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -10133,7 +10410,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -10160,7 +10438,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -10299,7 +10578,8 @@
                         "section.gallery-slideshow",
                         "home.calendar",
                         "section.blackboard-slideshow",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -10311,6 +10591,94 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]
@@ -11604,7 +11972,9 @@
                         "content.image",
                         "content.text",
                         "section.slideshow",
-                        "section.gallery-slideshow"
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -11693,7 +12063,9 @@
                         "content.image",
                         "content.text",
                         "section.slideshow",
-                        "section.gallery-slideshow"
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -11715,7 +12087,9 @@
                         "content.image",
                         "content.text",
                         "section.slideshow",
-                        "section.gallery-slideshow"
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -11757,7 +12131,9 @@
                         "content.image",
                         "content.text",
                         "section.slideshow",
-                        "section.gallery-slideshow"
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -11796,6 +12172,226 @@
                   "required": [
                     "id",
                     "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slides": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "image"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "school_subject": {
+                            "required": [
+                              "id",
+                              "title",
+                              "slug"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "teachers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "content": {
+                                "type": "dynamiczone"
+                              },
+                              "slug": {
+                                "type": "uid"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "image": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]
@@ -12002,7 +12598,9 @@
                         "content.image",
                         "content.text",
                         "section.slideshow",
-                        "section.gallery-slideshow"
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -12091,7 +12689,9 @@
                         "content.image",
                         "content.text",
                         "section.slideshow",
-                        "section.gallery-slideshow"
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -12113,7 +12713,9 @@
                         "content.image",
                         "content.text",
                         "section.slideshow",
-                        "section.gallery-slideshow"
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -12155,7 +12757,9 @@
                         "content.image",
                         "content.text",
                         "section.slideshow",
-                        "section.gallery-slideshow"
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -12194,6 +12798,226 @@
                   "required": [
                     "id",
                     "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slides": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "image"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "school_subject": {
+                            "required": [
+                              "id",
+                              "title",
+                              "slug"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "teachers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "content": {
+                                "type": "dynamiczone"
+                              },
+                              "slug": {
+                                "type": "uid"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "image": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]
@@ -13302,7 +14126,9 @@
                         "content.image",
                         "content.text",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -13391,7 +14217,9 @@
                         "content.image",
                         "content.text",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -13413,7 +14241,9 @@
                         "content.image",
                         "content.text",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -13462,7 +14292,9 @@
                         "content.image",
                         "content.text",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -13494,6 +14326,226 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slides": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "image"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "school_subject": {
+                            "required": [
+                              "id",
+                              "title",
+                              "slug"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "teachers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "content": {
+                                "type": "dynamiczone"
+                              },
+                              "slug": {
+                                "type": "uid"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "image": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]
@@ -13531,7 +14583,9 @@
                         "content.image",
                         "content.text",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -13620,7 +14674,9 @@
                         "content.image",
                         "content.text",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -13642,7 +14698,9 @@
                         "content.image",
                         "content.text",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -13691,7 +14749,9 @@
                         "content.image",
                         "content.text",
                         "section.gallery-slideshow",
-                        "section.slideshow"
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
                       ]
                     },
                     "id": {
@@ -13723,6 +14783,226 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slides": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "image"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "school_subject": {
+                            "required": [
+                              "id",
+                              "title",
+                              "slug"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "teachers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "content": {
+                                "type": "dynamiczone"
+                              },
+                              "slug": {
+                                "type": "uid"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "image": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
+                    },
+                    "link": {
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "dynamiczone"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color"
                   ]
                 }
               ]

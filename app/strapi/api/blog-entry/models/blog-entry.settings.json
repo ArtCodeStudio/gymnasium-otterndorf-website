@@ -25,7 +25,8 @@
         "content.text",
         "content.image",
         "section.gallery-slideshow",
-        "section.slideshow"
+        "section.slideshow",
+        "content.button"
       ]
     },
     "blog_category": {

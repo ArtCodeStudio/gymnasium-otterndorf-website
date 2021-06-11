@@ -22,7 +22,8 @@
         "section.gallery-slideshow",
         "home.calendar",
         "section.blackboard-slideshow",
-        "student-section.student-quote"
+        "student-section.student-quote",
+        "content.button"
       ]
     }
   }

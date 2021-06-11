@@ -18,8 +18,9 @@
       "required": true
     },
     "teachers": {
-      "via": "subjects",
       "columnName": "Lehrer",
+      "targetColumnName": "Fächer",
+      "via": "subjects",
       "collection": "teacher",
       "dominant": true
     },
@@ -29,7 +30,9 @@
         "content.image",
         "content.text",
         "section.gallery-slideshow",
-        "section.slideshow"
+        "section.slideshow",
+        "section.blackboard-slideshow",
+        "content.button"
       ]
     },
     "slug": {
