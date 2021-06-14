@@ -30,7 +30,6 @@
     "strapi-plugin-i18n": "^3.6.3",
     "strapi-plugin-upload": "^3.6.3",
     "strapi-plugin-users-permissions": "^3.6.3",
-    "strapi-plugin-wysiwyg-toastui": "^0.1.5",
     "strapi-utils": "^3.6.3",
     "whatwg-fetch": "^3.6.2"
   },
