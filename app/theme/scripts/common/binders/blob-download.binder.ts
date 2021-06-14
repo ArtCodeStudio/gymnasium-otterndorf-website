@@ -5,18 +5,15 @@ import { Binder } from "@ribajs/core";
  */
 export const blobDownloadBinder: Binder<string> = {
   name: "blob-download",
-  routine(el: HTMLElement, url: string) {
+  async routine(el: HTMLElement, url: string) {
     console.debug("download", url);
     if (!url) {
       console.warn("No url to download!");
       return;
     }
-    el.addEventListener("click", async () => {
-      const data = await fetch(url);
-      const blob = await data.blob();
-      const objectUrl = URL.createObjectURL(blob);
-      el.setAttribute("href", objectUrl);
-      console.debug("objectUrl", objectUrl);
-    });
+    const data = await fetch(url);
+    const blob = await data.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    el.setAttribute("href", objectUrl);
   },
 };

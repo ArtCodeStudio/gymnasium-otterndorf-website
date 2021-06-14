@@ -52,7 +52,7 @@ export class NavigationService {
     return parentEntry;
   }
 
-  protected getHref(
+  public getHref(
     baseItem: StrapiGqlComponentNavigationNavigationLevelEntry
   ) {
     const type = baseItem?.navigation_link?.type?.[0];

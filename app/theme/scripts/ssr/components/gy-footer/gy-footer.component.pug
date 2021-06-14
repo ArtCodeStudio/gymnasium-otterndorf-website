@@ -7,9 +7,10 @@ footer.container-fluid.container-xxl
         img.img-fluid.h-100(ssr-rv-src="data.mapImageUrl | strapi" ssr-rv-alt="data.mapImageAlt")
     .footer-right.col-12.col-md-6
       .row.h-100
-        gy-logo.col-12
-        h5.col-12.contact-info(ssr-rv-text="data.contactInfo")
+        .col-12.contact-info
+          .h5
+            p(ssr-rv-html="data.contactInfo | markdown")
         .col-12.footer-bottom.align-self-end 
-          a(ssr-rv-each-link="data.links" ssr-rv-href="link.url") 
-            h6(ssr-rv-text="link.title") 
+          a(ssr-rv-each-link="data.links" ssr-rv-href="link | nav-item-url") 
+            .h6(ssr-rv-text="link | | nav-item-label")
           h6 (c) gymnasium-otterndorf.de

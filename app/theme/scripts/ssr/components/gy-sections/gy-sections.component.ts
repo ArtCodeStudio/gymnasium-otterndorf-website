@@ -58,6 +58,7 @@ export class GySectionsComponent extends Component {
     switch (section.__typename) {
       case "ComponentContentText":
       case "ComponentContentImage":
+      case "ComponentContentButton":
         return "col-12 col-md-8 offset-md-2";
       case "ComponentHomeNews":
         return "col-12 col-md-8 mx-auto";

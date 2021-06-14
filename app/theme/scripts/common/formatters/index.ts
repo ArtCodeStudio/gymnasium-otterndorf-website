@@ -4,6 +4,8 @@ export * from "./entry-type-name";
 export * from "./gallery";
 export * from "./markdown";
 export * from "./media-center";
+export * from "./nav-item-label";
+export * from "./nav-item-url";
 export * from "./nest";
 export * from "./page";
 export * from "./post";
