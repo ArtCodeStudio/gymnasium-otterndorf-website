@@ -2,12 +2,15 @@ gy-footer {
   display: block;
   
   footer {
-    background-color: $light;
-    border-top: 1px solid #cacfcd;
+    background-color: $cyan;
   }
   
   .footer-bottom {
     bottom: 0;
+  }
+
+  .footer-map {
+    min-height: 30vh
   }
 
   .contact-info {

@@ -78,6 +78,7 @@
     "@ribajs/extras": "workspace:*",
     "@ribajs/i18n": "workspace:*",
     "@ribajs/iconset": "workspace:*",
+    "@ribajs/leaflet-map": "workspace:*",
     "@ribajs/masonry": "workspace:*",
     "@ribajs/moment": "workspace:*",
     "@ribajs/router": "workspace:*",

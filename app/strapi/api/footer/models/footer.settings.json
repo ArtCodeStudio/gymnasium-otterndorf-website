@@ -25,7 +25,7 @@
       "type": "string"
     },
     "contact_info": {
-      "type": "text"
+      "type": "richtext"
     },
     "link": {
       "type": "component",

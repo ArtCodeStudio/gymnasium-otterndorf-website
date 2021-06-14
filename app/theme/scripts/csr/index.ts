@@ -6,6 +6,7 @@ import { routerModule } from "@ribajs/router";
 import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 import { bs5Module } from "@ribajs/bs5";
 import { bs5PhotoswipeModule } from "@ribajs/bs5-photoswipe";
+import { leafletModule } from "@ribajs/leaflet-map";
 import { masonryModule } from "@ribajs/masonry";
 import {
   CalendarFormatter,
@@ -69,6 +70,7 @@ export class CSRApp {
     );
     this.riba.module.regist(bs5Module.init());
     this.riba.module.regist(bs5PhotoswipeModule);
+    this.riba.module.regist(leafletModule);
     this.riba.module.regist(masonryModule);
     this.riba.module.formatter.regists({
       CalendarFormatter,

@@ -2,9 +2,9 @@ footer.container-fluid.container-xxl
   .row
     .col-12.d-block.d-md-none
       gy-nav-slide.my-5
-    .col-12.col-md-6.px-0
-      a(ssr-rv-href="data.mapLink" rel="noopener noreferrer" target="_blank")
-        img.img-fluid.h-100(ssr-rv-src="data.mapImageUrl | strapi" ssr-rv-alt="data.mapImageAlt")
+    .footer-map.col-12.col-md-6.px-0
+      leaflet-map(initial-lat="53.81002822661543" initial-lng="8.903347774026562" initial-zoom="16" tile-url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png")
+        marker(lat="53.81002822661543" lng="8.903347774026562" open-by-default="true") Gymnasium Otterndorf
     .footer-right.col-12.col-md-6
       .row.h-100
         .col-12.contact-info
