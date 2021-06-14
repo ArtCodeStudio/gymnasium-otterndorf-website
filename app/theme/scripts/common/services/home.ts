@@ -38,7 +38,7 @@ export class GyHomeService {
 
     const DynamicZoneSections = (response.home?.sections ||
       []) as DynamicZoneSection[];
-    const sections = await GyHomeService.sections.transform(
+    const sections = await GyHomeService.sections.toArray(
       DynamicZoneSections
     );
     return sections;

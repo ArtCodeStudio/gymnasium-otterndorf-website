@@ -1,6 +1,7 @@
 import {
   StrapiGqlComponentContentImage,
   StrapiGqlComponentContentText,
+  StrapiGqlComponentContentButton,
   StrapiGqlComponentSectionFacts,
   StrapiGqlComponentHomeNews,
   StrapiGqlComponentSectionSlideshow,
@@ -16,6 +17,7 @@ import {
 export type DynamicZoneSection =
   | StrapiGqlComponentContentImage
   | StrapiGqlComponentContentText
+  | StrapiGqlComponentContentButton
   | StrapiGqlComponentSectionFacts
   | StrapiGqlComponentHomeNews
   | StrapiGqlComponentSectionSlideshow

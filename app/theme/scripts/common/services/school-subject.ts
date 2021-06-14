@@ -88,7 +88,7 @@ export class SchoolSubjectService {
     if (schoolSubject?.content) {
       const dynamicZoneSections = (schoolSubject?.content ||
         []) as DynamicZoneSection[];
-      return SchoolSubjectService.sections.transform(dynamicZoneSections);
+      return SchoolSubjectService.sections.toArray(dynamicZoneSections);
     }
     return [];
   }

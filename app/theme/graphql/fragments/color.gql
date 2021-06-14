@@ -1,0 +1,3 @@
+fragment ColorFragment on ComponentTypesColor {
+  color
+}

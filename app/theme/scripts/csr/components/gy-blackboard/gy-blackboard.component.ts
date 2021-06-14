@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Component } from "@ribajs/core";
 import { Vector2d } from "../../../common";

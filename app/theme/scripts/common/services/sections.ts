@@ -41,6 +41,9 @@ export class SectionsService {
         case "ComponentContentText":
           sectionsObj.text = section;
           break;
+        case "ComponentContentButton":
+          sectionsObj.button = section;
+          break;
         case "ComponentHomeCalendar":
           sectionsObj.calendar = section;
           break;
@@ -73,7 +76,7 @@ export class SectionsService {
     return sectionsObj;
   }
 
-  async transform(dynamicZoneSections: DynamicZoneSection[]) {
+  async toArray(dynamicZoneSections: DynamicZoneSection[]) {
     const sections: Section[] = [];
     for (let i = 0; i < dynamicZoneSections.length; i++) {
       if (dynamicZoneSections[i]) {
@@ -90,9 +93,12 @@ export class SectionsService {
           case "ComponentContentText":
             sections.push({
               __typename: dynamicZoneSection.__typename,
-              id: dynamicZoneSection.id || "",
+              id: dynamicZoneSection.id,
               text: dynamicZoneSection.text || "",
             });
+            break;
+          case "ComponentContentButton":
+            sections.push(dynamicZoneSection);
             break;
           case "ComponentSectionSlideshow":
             if (dynamicZoneSection.slideshow?.id) {

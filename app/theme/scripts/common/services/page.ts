@@ -88,7 +88,7 @@ export class PageService {
   public async getSections(page: Page) {
     if (page?.content) {
       const DynamicZoneSections = (page?.content || []) as DynamicZoneSection[];
-      return PageService.sections.transform(DynamicZoneSections);
+      return PageService.sections.toArray(DynamicZoneSections);
     }
     return [];
   }

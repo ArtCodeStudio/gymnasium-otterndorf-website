@@ -1,5 +1,6 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
+#import "./component-content-button.gql"
 
 # Shorter version if BlogEntryDetailFragment, e.g. for news, search results and blog post overview
 fragment BlogEntryBasicFragment on BlogEntry {
@@ -17,11 +18,15 @@ fragment BlogEntryBasicFragment on BlogEntry {
   }
   content {
     __typename
+    # Content sections
+    ... on ComponentContentText {
+      ...ComponentContentTextFragment
+    }
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }
-    ... on ComponentContentText {
-      ...ComponentContentTextFragment
+    ... on ComponentContentButton {
+      ...ComponentContentButtonFragment
     }
   }
 }

@@ -1,0 +1,14 @@
+#import "./navigation-link.gql"
+#import "./color.gql"
+
+fragment ComponentContentButtonFragment on ComponentContentButton {
+  id
+  label
+  alignment
+  color {
+    ...ColorFragment
+  }
+  link {
+    ...NavigationLinkFragment
+  }
+}

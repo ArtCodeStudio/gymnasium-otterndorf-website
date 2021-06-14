@@ -1,5 +1,6 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
+#import "./component-content-button.gql"
 
 fragment PageBasicFragment on Page {
   __typename
@@ -10,11 +11,15 @@ fragment PageBasicFragment on Page {
   slug
   content {
     __typename
+    # Content sections
+    ... on ComponentContentText {
+      ...ComponentContentTextFragment
+    }
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }
-    ... on ComponentContentText {
-      ...ComponentContentTextFragment
+    ... on ComponentContentButton {
+      ...ComponentContentButtonFragment
     }
   }
 }

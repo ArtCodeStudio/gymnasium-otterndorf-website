@@ -1,5 +1,6 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
+#import "./component-content-button.gql"
 
 fragment SchoolSubjectBasicFragment on Subject {
   __typename
@@ -10,11 +11,15 @@ fragment SchoolSubjectBasicFragment on Subject {
   updated_at
   content {
     __typename
+    # Content sections
+    ... on ComponentContentText {
+      ...ComponentContentTextFragment
+    }
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }
-    ... on ComponentContentText {
-      ...ComponentContentTextFragment
+    ... on ComponentContentButton {
+      ...ComponentContentButtonFragment
     }
   }
 }

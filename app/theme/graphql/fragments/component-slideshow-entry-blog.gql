@@ -1,3 +1,5 @@
+#import "./color.gql"
+
 fragment ComponentSlideshowEntryBlogFragment on ComponentSlideshowSlideshowEntryBlog {
   id
   image {
@@ -6,7 +8,7 @@ fragment ComponentSlideshowEntryBlogFragment on ComponentSlideshowSlideshowEntry
   subtitle
   label
   color {
-    color
+    ...ColorFragment
   }
   post {
     __typename

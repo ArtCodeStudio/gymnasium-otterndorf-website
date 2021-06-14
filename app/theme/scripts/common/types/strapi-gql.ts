@@ -3159,7 +3159,10 @@ export type StrapiGqlBlogEntryBasicFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentImage' }
     & StrapiGqlComponentContentImageFragmentFragment
-  ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentContentButton' }>>> }
+  ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | (
+    { __typename: 'ComponentContentButton' }
+    & StrapiGqlComponentContentButtonFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlBlogEntryDetailFragmentFragment = (
@@ -3180,7 +3183,15 @@ export type StrapiGqlBlogEntryDetailFragmentFragment = (
   ) | (
     { __typename: 'ComponentSectionSlideshow' }
     & StrapiGqlComponentSectionSlideshowFragmentFragment
-  ) | { __typename: 'ComponentContentButton' }>>> }
+  ) | (
+    { __typename: 'ComponentContentButton' }
+    & StrapiGqlComponentContentButtonFragmentFragment
+  )>>> }
+);
+
+export type StrapiGqlColorFragmentFragment = (
+  { __typename?: 'ComponentTypesColor' }
+  & Pick<StrapiGqlComponentTypesColor, 'color'>
 );
 
 export type StrapiGqlComponentBlackboardSlideFragmentFragment = (
@@ -3192,6 +3203,18 @@ export type StrapiGqlComponentBlackboardSlideFragmentFragment = (
   )>, image?: Maybe<(
     { __typename?: 'UploadFile' }
     & Pick<StrapiGqlUploadFile, 'formats' | 'alternativeText' | 'url'>
+  )> }
+);
+
+export type StrapiGqlComponentContentButtonFragmentFragment = (
+  { __typename?: 'ComponentContentButton' }
+  & Pick<StrapiGqlComponentContentButton, 'id' | 'label' | 'alignment'>
+  & { color?: Maybe<(
+    { __typename?: 'ComponentTypesColor' }
+    & StrapiGqlColorFragmentFragment
+  )>, link?: Maybe<(
+    { __typename?: 'NavigationLink' }
+    & StrapiGqlNavigationLinkFragmentFragment
   )> }
 );
 
@@ -3282,7 +3305,7 @@ export type StrapiGqlComponentSlideshowEntryBlogFragmentFragment = (
     & Pick<StrapiGqlUploadFile, 'formats'>
   )>, color?: Maybe<(
     { __typename?: 'ComponentTypesColor' }
-    & Pick<StrapiGqlComponentTypesColor, 'color'>
+    & StrapiGqlColorFragmentFragment
   )>, post?: Maybe<(
     { __typename: 'BlogEntry' }
     & Pick<StrapiGqlBlogEntry, 'slug'>
@@ -3297,7 +3320,7 @@ export type StrapiGqlComponentSlideshowEntryPageFragmentFragment = (
     & Pick<StrapiGqlUploadFile, 'formats'>
   )>, color?: Maybe<(
     { __typename?: 'ComponentTypesColor' }
-    & Pick<StrapiGqlComponentTypesColor, 'color'>
+    & StrapiGqlColorFragmentFragment
   )>, page?: Maybe<(
     { __typename: 'Page' }
     & Pick<StrapiGqlPage, 'slug'>
@@ -3312,7 +3335,7 @@ export type StrapiGqlComponentSlideshowEntryFragmentFragment = (
     & Pick<StrapiGqlUploadFile, 'formats'>
   )>, color?: Maybe<(
     { __typename?: 'ComponentTypesColor' }
-    & Pick<StrapiGqlComponentTypesColor, 'color'>
+    & StrapiGqlColorFragmentFragment
   )> }
 );
 
@@ -3356,7 +3379,11 @@ export type StrapiGqlHomeFragmentFragment = (
   ) | (
     { __typename: 'ComponentStudentSectionStudentQuote' }
     & StrapiGqlComponentStudentSectionStudentQuoteFragmentFragment
-  ) | { __typename: 'ComponentContentButton' }>>> }
+  ) | (
+    { __typename: 'ComponentContentButton' }
+    & StrapiGqlComponentContentButtonFragmentFragment
+    & StrapiGqlComponentContentButtonFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlMediaCenterFragmentFragment = (
@@ -3428,7 +3455,10 @@ export type StrapiGqlPageBasicFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentText' }
     & StrapiGqlComponentContentTextFragmentFragment
-  ) | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentContentButton' }>>> }
+  ) | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | (
+    { __typename: 'ComponentContentButton' }
+    & StrapiGqlComponentContentButtonFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlPageDetailFragmentFragment = (
@@ -3456,7 +3486,10 @@ export type StrapiGqlPageDetailFragmentFragment = (
   ) | (
     { __typename: 'ComponentSectionGallerySlideshow' }
     & StrapiGqlComponentSectionGallerySlideshowFragmentFragment
-  ) | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentContentButton' }>>> }
+  ) | { __typename: 'ComponentSectionBlackboardSlideshow' } | (
+    { __typename: 'ComponentContentButton' }
+    & StrapiGqlComponentContentButtonFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlSchoolSubjectBasicFragmentFragment = (
@@ -3468,7 +3501,10 @@ export type StrapiGqlSchoolSubjectBasicFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentText' }
     & StrapiGqlComponentContentTextFragmentFragment
-  ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentContentButton' }>>> }
+  ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | (
+    { __typename: 'ComponentContentButton' }
+    & StrapiGqlComponentContentButtonFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlSchoolSubjectDetailFragmentFragment = (
@@ -3489,7 +3525,10 @@ export type StrapiGqlSchoolSubjectDetailFragmentFragment = (
   ) | (
     { __typename: 'ComponentSectionSlideshow' }
     & StrapiGqlComponentSectionSlideshowFragmentFragment
-  ) | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentContentButton' }>>> }
+  ) | { __typename: 'ComponentSectionBlackboardSlideshow' } | (
+    { __typename: 'ComponentContentButton' }
+    & StrapiGqlComponentContentButtonFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlSectionSlideshowFragmentFragment = (

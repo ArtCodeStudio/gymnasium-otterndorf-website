@@ -1,5 +1,6 @@
 import { SectionContentImage } from "./section-content-image";
 import { SectionContentText } from "./section-content-text";
+import { SectionContentButton } from "./section-content-button";
 import { SectionFacts } from "./section-facts";
 import { SectionSlideshow } from "./section-slideshow";
 import { SectionStudentQuote } from "./section-student-quote";
@@ -14,6 +15,7 @@ import { SectionBlackboardSlideshow } from "./section-blackboard-slideshow";
 export interface SectionObject {
   image?: SectionContentImage;
   text?: SectionContentText;
+  button?: SectionContentButton;
   facts?: SectionFacts;
   news?: HomeNews;
   calendar?: HomeCalendar;

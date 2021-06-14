@@ -142,7 +142,7 @@ export class BlogService {
   public async getSections(post: Post) {
     if (post?.content) {
       const DynamicZoneSections = (post?.content || []) as DynamicZoneSection[];
-      return BlogService.sections.transform(DynamicZoneSections);
+      return BlogService.sections.toArray(DynamicZoneSections);
     }
     return [];
   }

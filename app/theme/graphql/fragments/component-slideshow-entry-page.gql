@@ -1,3 +1,5 @@
+#import "./color.gql"
+
 fragment ComponentSlideshowEntryPageFragment on ComponentSlideshowSlideshowEntryPage {
   id
   image {
@@ -6,7 +8,7 @@ fragment ComponentSlideshowEntryPageFragment on ComponentSlideshowSlideshowEntry
   subtitle
   label
   color {
-    color
+    ...ColorFragment
   }
   page {
     __typename

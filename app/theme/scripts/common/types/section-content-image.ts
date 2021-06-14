@@ -1,8 +1,3 @@
-import { StrapiGqlUploadFile } from "./strapi-gql";
+import { StrapiGqlComponentContentImage } from "./strapi-gql";
 
-export interface SectionContentImage {
-  __typename: "ComponentContentImage";
-  id: string;
-  image: Pick<StrapiGqlUploadFile, "formats"> | null;
-  caption: string;
-}
+export type SectionContentImage = StrapiGqlComponentContentImage;
