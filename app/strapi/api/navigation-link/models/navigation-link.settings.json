@@ -23,7 +23,9 @@
         "link-type.strapi",
         "link-type.post",
         "link-type.blog",
-        "link-type.teacher"
+        "link-type.teacher",
+        "link-type.gallery",
+        "link-type.media-center"
       ],
       "max": 1,
       "required": false

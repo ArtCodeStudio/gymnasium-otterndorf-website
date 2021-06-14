@@ -3,7 +3,7 @@
  */
 export const galleryFormatter = {
   name: "gallery",
-  read(slug?: string, index?: number, gid?: number) {
+  read(slug?: string | null, index?: number, gid?: number) {
     if (!slug) {
       return "";
     }

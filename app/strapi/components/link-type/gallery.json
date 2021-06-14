@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_link_type_galleries",
+  "info": {
+    "name": "gallery",
+    "icon": "photo-video"
+  },
+  "options": {},
+  "attributes": {
+    "gallery": {
+      "model": "gallery"
+    }
+  }
+}

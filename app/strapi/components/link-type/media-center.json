@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_link_type_media_centers",
+  "info": {
+    "name": "mediaCenter",
+    "icon": "video"
+  },
+  "options": {},
+  "attributes": {
+    "mediaCenter": {
+      "model": "media-center"
+    }
+  }
+}

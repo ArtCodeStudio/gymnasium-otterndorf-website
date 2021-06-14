@@ -1,11 +1,13 @@
 import { GraphQLClient } from "./graphql";
-import { ResponseError, NavigationLink } from "../types";
+import { ResponseError, NavigationLink, StrapiGqlNavigationLink } from "../types";
 import {
   strapiFormatter,
   pageFormatter,
   postFormatter,
   blogFormatter,
   schoolSubjectFormatter,
+  mediaCenterFormatter,
+  galleryFormatter,
 } from "../formatters";
 import {
   StrapiGqlMenuQuery,
@@ -53,9 +55,22 @@ export class NavigationService {
   }
 
   public getHref(
-    baseItem: StrapiGqlComponentNavigationNavigationLevelEntry
+    baseItem: StrapiGqlComponentNavigationNavigationLevelEntry | StrapiGqlNavigationLink
   ) {
-    const type = baseItem?.navigation_link?.type?.[0];
+    let navigationLink: StrapiGqlNavigationLink | undefined;
+    if ((baseItem as StrapiGqlNavigationLink).type) {
+      navigationLink = baseItem as StrapiGqlNavigationLink;
+    }
+
+    if ((baseItem as StrapiGqlComponentNavigationNavigationLevelEntry).navigation_link) {
+      navigationLink = (baseItem as StrapiGqlComponentNavigationNavigationLevelEntry).navigation_link as StrapiGqlNavigationLink;
+    }
+
+    if (!navigationLink) {
+      throw new Error("Navigation link not found!")
+    }
+
+    const type = navigationLink.type?.[0];
     if (!type) {
       return "";
     }
@@ -72,6 +87,10 @@ export class NavigationService {
         return type.URL || "";
       case "ComponentLinkTypeStrapi":
         return strapiFormatter.read(type.URL);
+      case "ComponentLinkTypeMediaCenter":
+        return mediaCenterFormatter.read(type.mediaCenter?.slug);
+      case "ComponentLinkTypeGallery":
+        return galleryFormatter.read(type.gallery?.slug);
     }
   }
 

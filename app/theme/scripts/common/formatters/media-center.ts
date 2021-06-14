@@ -3,7 +3,7 @@
  */
 export const mediaCenterFormatter = {
   name: "media-center",
-  read(slug?: string) {
+  read(slug?: string | null) {
     if (!slug) {
       return "";
     }

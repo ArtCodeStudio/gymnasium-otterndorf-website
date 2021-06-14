@@ -33,5 +33,17 @@ fragment NavigationLinkFragment on NavigationLink {
         slug
       }
     }
+    ... on ComponentLinkTypeMediaCenter {
+      mediaCenter {
+        title
+        slug
+      }
+    }
+    ... on ComponentLinkTypeGallery {
+      gallery {
+        title
+        slug
+      }
+    }
   }
 }
