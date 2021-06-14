@@ -52,6 +52,7 @@ $display-font-weight: $headings-font-weight;
 
 // LINKS
 $link-color: $body-color;
+$link-hover-color: $green;
 $btn-link-color:              $link-color;
 $btn-link-hover-color:        $link-hover-color;
 
@@ -69,5 +70,5 @@ $card-cap-bg: transparent;
 // $card-border-width: 0;
 
 // COMPONENTS
-$component-active-color: $blue;
+$component-active-color: $green;
 $component-active-bg: $white;
