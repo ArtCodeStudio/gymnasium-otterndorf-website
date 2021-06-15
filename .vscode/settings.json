@@ -1,7 +1,8 @@
 {
   "search.exclude": {
     "**/.yarn": true,
-    "**/.pnp.*": true
+    "**/.pnp.*": true,
+    "packages/node-app-manager/packages/riba/**/*": true,
   },
   "eslint.nodePath": ".yarn/sdks",
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
@@ -54,6 +55,7 @@
     "octobercms",
     "photoswipe",
     "pinterest",
+    "playsinline",
     "pnpify",
     "postgres",
     "prebuild",

@@ -2,8 +2,9 @@
 //- For Client side logic
 .container-fluid(csr-rv-class-watch="watching")
   rv-video(csr-rv-parent csr-rv-co-video-src="currentVideoSrc | strapi" autoplay-on-min-buffer="0.3")
-    video(autoplay muted loop disablePictureInPicture)
-      span Your browser does not support the video tag.
+    .video-wrapper(csr-rv-class-loading="loading" csr-rv-loading="loading")
+      video(autoplay muted loop disablePictureInPicture)
+        span Your browser does not support the video tag.
     .video-controls.video-controls-top.p-2
       .d-flex.justify-content-start
         .video-control.m-2.d-flex.align-items-center.cursor-pointer(csr-rv-on-click="$parent.backToOverview")

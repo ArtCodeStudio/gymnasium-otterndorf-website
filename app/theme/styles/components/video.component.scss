@@ -1,0 +1,10 @@
+rv-video {
+  .video-wrapper {
+    &.loading {
+      background-image: url(/images/loading.svg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100px;
+    }
+  }
+}

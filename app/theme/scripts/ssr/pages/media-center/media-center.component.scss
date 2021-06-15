@@ -16,14 +16,17 @@ media-center-page {
     }
 
     rv-video {
+      video {
+        opacity: 1;
+      }
       .video-controls {
         opacity: 1;
       }
     }
-  } 
+  }
 
   .content-slider-wrapper {
-    background: $media-center-overlay-background;
+    // background: $media-center-overlay-background;
     position: absolute;
     top: 0;
     left: 0;
@@ -69,6 +72,10 @@ media-center-page {
     position: relative;
     left: 0;
     top: 0;
+
+    video {
+      opacity: 0.5;
+    }
 
     .video-controls {
       position: absolute;
