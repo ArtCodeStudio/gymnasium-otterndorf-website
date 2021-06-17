@@ -2833,6 +2833,7 @@ __metadata:
     "@babel/runtime-corejs3": ^7.14.6
     "@graphql-tools/webpack-loader": ^6.4.0
     "@gymott/common": "workspace:*"
+    "@ribajs/artcodestudio": "workspace:*"
     "@ribajs/babel-config": "workspace:*"
     "@ribajs/bs5": "workspace:*"
     "@ribajs/bs5-photoswipe": "workspace:*"
@@ -4018,6 +4019,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ribajs/artcodestudio@workspace:*, @ribajs/artcodestudio@workspace:packages/riba/packages/artcodestudio":
+  version: 0.0.0-use.local
+  resolution: "@ribajs/artcodestudio@workspace:packages/riba/packages/artcodestudio"
+  dependencies:
+    "@babel/runtime": ^7.14.6
+    "@babel/runtime-corejs3": ^7.14.6
+    "@ribajs/bs5": "workspace:*"
+    "@ribajs/core": "workspace:*"
+    "@ribajs/utils": "workspace:*"
+    "@types/node": ^15.12.2
+  languageName: unknown
+  linkType: soft
+
 "@ribajs/babel-config@workspace:*, @ribajs/babel-config@workspace:packages/riba/infra/babel-config":
   version: 0.0.0-use.local
   resolution: "@ribajs/babel-config@workspace:packages/riba/infra/babel-config"
@@ -4532,7 +4546,7 @@ __metadata:
     "@babel/runtime": ^7.14.6
     "@babel/runtime-corejs3": ^7.14.6
     "@ribajs/core": "workspace:*"
-    "@ribajs/events": "workspace:packages/events"
+    "@ribajs/events": "workspace:*"
     "@ribajs/utils": "workspace:*"
     "@types/masonry-layout": ^4.2.2
     "@types/node": ^15.12.2
@@ -4744,6 +4758,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ribajs/npm-package@workspace:packages/riba/infra/npm-package"
   dependencies:
+    "@ribajs/artcodestudio": "workspace:*"
     "@ribajs/bs4": "workspace:*"
     "@ribajs/bs5": "workspace:*"
     "@ribajs/content-slider": "workspace:*"
@@ -4759,6 +4774,8 @@ __metadata:
     "@ribajs/shopify-tda": "workspace:*"
     leaflet: ^1.7.1
   dependenciesMeta:
+    "@ribajs/artcodestudio":
+      optional: true
     "@ribajs/bs4":
       optional: true
     "@ribajs/bs5":
@@ -5186,7 +5203,7 @@ __metadata:
     "@babel/runtime-corejs3": ^7.14.6
     "@ribajs/core": "workspace:*"
     "@ribajs/events": "workspace:*"
-    "@ribajs/utils": "workspace:packages/utils"
+    "@ribajs/utils": "workspace:*"
     "@types/express": ^4.17.12
     "@types/node": ^15.12.2
   languageName: unknown
@@ -5240,22 +5257,9 @@ __metadata:
   dependencies:
     "@babel/core": ^7.14.6
     "@graphql-tools/webpack-loader": ^6.4.0
-    "@ribajs/bs4": "workspace:*"
-    "@ribajs/bs5": "workspace:*"
-    "@ribajs/content-slider": "workspace:*"
-    "@ribajs/core": "workspace:*"
     "@ribajs/eslint-config": "workspace:*"
-    "@ribajs/i18n": "workspace:*"
-    "@ribajs/iconset": "workspace:*"
-    "@ribajs/leaflet-map": "workspace:*"
-    "@ribajs/moment": "workspace:*"
     "@ribajs/npm-package": "workspace:*"
-    "@ribajs/octobercms": "workspace:*"
-    "@ribajs/photoswipe": "workspace:*"
     "@ribajs/postcss-config": "workspace:*"
-    "@ribajs/shopify": "workspace:*"
-    "@ribajs/shopify-easdk": "workspace:*"
-    "@ribajs/shopify-tda": "workspace:*"
     "@yarnpkg/pnpify": ^3.0.0-rc.6
     babel-loader: ^8.2.2
     copy-webpack-plugin: ^9.0.0
@@ -5267,7 +5271,6 @@ __metadata:
     html-loader: ^2.1.2
     html-webpack-plugin: ^5.3.1
     inspectpack: ^4.7.1
-    leaflet: ^1.7.1
     mini-css-extract-plugin: ^1.6.0
     pkg-dir: ^5.0.0
     postcss: ^8.3.4
@@ -5299,35 +5302,6 @@ __metadata:
     url: ^0.11.0
     util: ^0.12.3
     webpack: ^5.3.2
-  dependenciesMeta:
-    "@ribajs/bs4":
-      optional: true
-    "@ribajs/bs5":
-      optional: true
-    "@ribajs/content-slider":
-      optional: true
-    "@ribajs/core":
-      optional: true
-    "@ribajs/i18n":
-      optional: true
-    "@ribajs/iconset":
-      optional: true
-    "@ribajs/leaflet-map":
-      optional: true
-    "@ribajs/moment":
-      optional: true
-    "@ribajs/octobercms":
-      optional: true
-    "@ribajs/photoswipe":
-      optional: true
-    "@ribajs/shopify":
-      optional: true
-    "@ribajs/shopify-easdk":
-      optional: true
-    "@ribajs/shopify-tda":
-      optional: true
-    leaflet:
-      optional: true
   languageName: unknown
   linkType: soft
 

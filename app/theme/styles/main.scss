@@ -2,6 +2,7 @@
 @import 'charset';
 // @import 'fonts';
 @import 'variables-bootstrap';
+@import 'variables-riba';
 @import 'variables-theme';
 @import '~bootstrap/scss/bootstrap';
 @import 'variables-bootstrap';
@@ -11,6 +12,7 @@
 @import '~@ribajs/bs5/src/index';
 @import '~@ribajs/bs5-photoswipe/src/index';
 @import "~@ribajs/content-slider/src/index";
+@import "~@ribajs/artcodestudio/src/index";
 
 // External Components
 @import 'components';

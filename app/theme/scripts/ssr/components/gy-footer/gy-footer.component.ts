@@ -1,10 +1,11 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { FooterService } from "../../../common/services";
+import { FooterService, NavigationService } from "../../../common/services";
 import pugTemplate from "./gy-footer.component.pug";
+import { Awaited } from "../../../common";
 
 export interface Scope {
-  data?: any;
+  data?: Awaited<ReturnType<FooterService['get']>>;
 }
 
 export class GyFooterComponent extends Component {
@@ -12,7 +13,9 @@ export class GyFooterComponent extends Component {
   public _debug = false;
   protected autobind = true;
 
-  scope: Scope = {};
+  scope: Scope = {
+    data: undefined
+  };
 
   static get observedAttributes(): string[] {
     return [];
@@ -27,7 +30,9 @@ export class GyFooterComponent extends Component {
   }
 
   protected async beforeBind() {
+    const credits = NavigationService.getInstance().newItem("Credits & Quellcode", "url", "/credits");
     this.scope.data = await FooterService.getInstance().get();
+    this.scope.data?.links.push(credits);
     await super.beforeBind();
   }
 

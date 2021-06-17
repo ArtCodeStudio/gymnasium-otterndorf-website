@@ -1,5 +1,5 @@
 import { GraphQLClient } from "./graphql";
-import { ResponseError, NavigationLink, StrapiGqlNavigationLink } from "../types";
+import { ResponseError, NavigationLink, StrapiGqlNavigationLink, StrapiGqlComponentLinkItemLink, StrapiGqlComponentLinkTypeWeb, StrapiGqlComponentLinkTypeStrapi, StrapiGqlComponentLinkTypeTeacher, StrapiGqlComponentLinkTypeMediaCenter } from "../types";
 import {
   strapiFormatter,
   pageFormatter,
@@ -94,7 +94,94 @@ export class NavigationService {
     }
   }
 
-  protected newItem(
+  public newItem(title: string, type: 'page' | 'url' | 'strapi' | 'subject' | 'post' | 'blog' | 'gallery' | 'mediacenter', urlOrSlug: string): StrapiGqlComponentLinkItemLink {
+    const item: StrapiGqlComponentLinkItemLink = {
+      __typename: 'ComponentLinkItemLink',
+      id: "0",
+      navigation_link: {
+        __typename: 'NavigationLink',
+        id: "0",
+        created_at: "0",
+        updated_at: "0",
+        title,
+        type: [
+
+        ]
+      }
+    }
+
+    switch (type) {
+      case 'page':
+        item.navigation_link?.type?.push({
+          __typename: 'ComponentLinkTypePage',
+          id: "0",
+          page: {
+            id: "0",
+            created_at: "0",
+            updated_at: "0",
+            slug: urlOrSlug,
+            title,
+          },
+        })
+        break;
+      case 'url':
+        item.navigation_link?.type?.push({
+          __typename: 'ComponentLinkTypeWeb',
+          URL: urlOrSlug,
+        } as StrapiGqlComponentLinkTypeWeb)
+        break;
+      case 'strapi':
+        item.navigation_link?.type?.push({
+          __typename: 'ComponentLinkTypeStrapi',
+          id: "0",
+          URL: urlOrSlug,
+        } as StrapiGqlComponentLinkTypeStrapi);
+        break;
+      case 'subject':
+        item.navigation_link?.type?.push({
+          __typename: 'ComponentLinkTypeTeacher',
+          id: "0",
+          title,
+          slug: urlOrSlug,
+        } as StrapiGqlComponentLinkTypeTeacher);
+        break;
+      case 'mediacenter':
+        item.navigation_link?.type?.push({
+          __typename: 'ComponentLinkTypeMediaCenter',
+          id: "0",
+          mediaCenter: {
+            id: "0",
+            created_at: "0",
+            updated_at: "0",
+            title,
+            slug: urlOrSlug,
+          }
+        } as StrapiGqlComponentLinkTypeMediaCenter);
+        break;
+      case 'post':
+        item.navigation_link?.type?.push({
+          __typename: 'ComponentLinkTypePost',
+          id: "0",
+          post: {
+            __typename: 'BlogEntry',
+            id: "0",
+            created_at: "0",
+            updated_at: "0",
+            author: "Art+Code Studio",
+            title,
+            slug: urlOrSlug,
+          }
+        });
+        break;
+      default:
+        console.debug(`TODO Add support to generate link item of type "${type}"`);
+        break;
+    }
+
+    return item;
+  }
+
+  protected newLink(
     baseItem?: StrapiGqlComponentNavigationNavigationLevelEntry
   ): NavigationLink {
     if (baseItem) {
@@ -121,7 +208,7 @@ export class NavigationService {
   protected buildTree(
     baseEntries: StrapiGqlMenuFragmentFragment["entries"] = []
   ) {
-    const result = this.newItem();
+    const result = this.newLink();
     let count = 0;
     let ignored = 0;
 
@@ -138,7 +225,7 @@ export class NavigationService {
         // Root element
         if (!entry.parent) {
           result.children.push(
-            this.newItem(
+            this.newLink(
               entry as StrapiGqlComponentNavigationNavigationLevelEntry
             )
           );
@@ -148,7 +235,7 @@ export class NavigationService {
           const parentEntry = this.findParent(result, entry.parent.id);
           if (parentEntry) {
             parentEntry.children?.push(
-              this.newItem(
+              this.newLink(
                 entry as StrapiGqlComponentNavigationNavigationLevelEntry
               )
             );

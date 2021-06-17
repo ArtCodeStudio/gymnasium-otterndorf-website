@@ -3,6 +3,8 @@ import "../common/@types";
 import { SSRModule } from "@ribajs/ssr";
 import { Riba, coreModule } from "@ribajs/core";
 import { Bs5IconComponent, bs5Module } from "@ribajs/bs5";
+import { artAndCodeStudioModule } from "@ribajs/artcodestudio";
+
 // import { EventDispatcher } from "@ribajs/events";
 import {
   CalendarFormatter,
@@ -71,6 +73,7 @@ riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 // Regist modules
 riba.module.regist(coreModule.init({}));
 riba.module.regist(SSRModule.init({}));
+riba.module.regist(artAndCodeStudioModule.init({}));
 
 riba.module.formatter.regists({
   CalendarFormatter,

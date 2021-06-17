@@ -17,7 +17,7 @@
     "lint:csr": "tsc -p tsconfig.json --noEmit"
   },
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
-  "license": "MIT",
+  "license": "AGPL",
   "devDependencies": {
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.6",
@@ -70,6 +70,7 @@
   },
   "dependencies": {
     "@gymott/common": "workspace:*",
+    "@ribajs/artcodestudio": "workspace:*",
     "@ribajs/bs5": "workspace:*",
     "@ribajs/bs5-photoswipe": "workspace:*",
     "@ribajs/content-slider": "workspace:*",

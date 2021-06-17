@@ -8,7 +8,7 @@ export const themeConfig: ThemeConfig = {
   pageComponentsDir: "scripts/ssr/pages",
   timeout: 5000,
   cache: {
-    ttl: 160,
+    ttl: 0,
   },
   ssr: {
     rootTag: "ssr-root-page",
@@ -58,6 +58,10 @@ export const themeConfig: ThemeConfig = {
     {
       path: ["/teacher", "/lehrer", "/teacher/:slug", "/lehrer/:slug"],
       component: "teacher-page",
+    },
+    {
+      path: ["/credits"],
+      component: "credits-page",
     },
   ],
   errorRoutes: {

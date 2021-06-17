@@ -2,6 +2,7 @@
   "name": "gymnasium-otterndorf-website",
   "private": true,
   "author": "Art+Code Studio (Pascal Garber) <pascal@artandcode.studio>",
+  "license": "AGPL",
   "scripts": {
     "postinstall": "yarn run install:strapi && yarn run install:strapi-student",
     "install:strapi": "cd app/strapi && NODE_OPTIONS='' npm install",

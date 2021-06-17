@@ -1,5 +1,5 @@
 import { GraphQLClient } from "./graphql";
-import { StrapiGqlFooterQuery } from "../types";
+import { StrapiGqlFooterQuery, StrapiGqlComponentLinkItemLink } from "../types";
 import { SectionsService } from "./sections";
 import footerQuery from "../../../graphql/queries/footer.gql";
 
@@ -30,7 +30,7 @@ export class FooterService {
       mapImageUrl: res.footer?.map_image?.url,
       mapImageAlt: res.footer?.map_image?.alternativeText,
       contactInfo: res.footer?.contact_info,
-      links: res.footer?.link || [],
+      links: (res.footer?.link || []) as StrapiGqlComponentLinkItemLink[],
     };
   }
 }
