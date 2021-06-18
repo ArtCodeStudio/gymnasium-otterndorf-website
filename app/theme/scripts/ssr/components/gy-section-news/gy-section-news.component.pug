@@ -2,6 +2,6 @@
   h2.col-12.section-heading Aktuelles
 .row(csr-rv-masonry='{"percentPosition": true }')
   .col-12.col-lg-6(ssr-rv-each-page="section.pages")
-      gy-page-item(rv-if="page.__typename | eq 'Page'" rv-co-page="page" cat-text-at="150" pinned="true")
+    gy-page-item(rv-if="page.__typename | eq 'Page'" rv-co-page="page" cat-text-at="150" pinned="true")
   .col-12.col-lg-6(ssr-rv-each-post="posts")
-      gy-blog-entry-item(rv-if="post.__typename | eq 'BlogEntry'" rv-co-post="post" cat-text-at="150")
+    gy-blog-entry-item(rv-if="post.__typename | eq 'BlogEntry'" rv-co-post="post" cat-text-at="150")

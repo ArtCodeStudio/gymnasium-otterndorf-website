@@ -7,6 +7,7 @@ import { HomeNews } from "./home-news";
 import { HomeCalendar } from "./home-calendar";
 import { SectionGallerySlideshow } from "./section-gallery-slideshow";
 import { SectionBlackboardSlideshow } from "./section-blackboard-slideshow";
+import { SectionBlogSlideshow } from "./section-blog-slideshow";
 import { SectionStudentQuote } from "./section-student-quote";
 
 /**
@@ -22,4 +23,5 @@ export type Section =
   | SectionSlideshow
   | SectionGallerySlideshow
   | SectionBlackboardSlideshow
+  | SectionBlogSlideshow
   | SectionStudentQuote;

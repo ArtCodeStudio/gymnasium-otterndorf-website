@@ -1,3 +1,5 @@
+#import "./blog-entry-basic.gql"
+
 fragment BlogCategoryBasicFragment on BlogCategory {
   __typename
   id
@@ -7,7 +9,7 @@ fragment BlogCategoryBasicFragment on BlogCategory {
   slug
   blog_entries {
     ...on BlogEntry {
-      slug
+      ...BlogEntryBasicFragment
     }
   }
 }

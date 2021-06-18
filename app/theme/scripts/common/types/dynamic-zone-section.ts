@@ -8,6 +8,7 @@ import {
   StrapiGqlComponentSectionGallerySlideshow,
   StrapiGqlComponentHomeCalendar,
   StrapiGqlComponentSectionBlackboardSlideshow,
+  StrapiGqlComponentSectionBlogSlideshow,
   StrapiGqlComponentStudentSectionStudentQuote,
 } from "./strapi-gql";
 
@@ -24,4 +25,5 @@ export type DynamicZoneSection =
   | StrapiGqlComponentSectionGallerySlideshow
   | StrapiGqlComponentHomeCalendar
   | StrapiGqlComponentSectionBlackboardSlideshow
+  | StrapiGqlComponentSectionBlogSlideshow
   | StrapiGqlComponentStudentSectionStudentQuote;

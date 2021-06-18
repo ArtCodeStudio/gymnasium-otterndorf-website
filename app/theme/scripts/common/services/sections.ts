@@ -53,6 +53,9 @@ export class SectionsService {
         case "ComponentSectionBlackboardSlideshow":
           sectionsObj.blackboardSlideshow = section;
           break;
+        case "ComponentSectionBlogSlideshow":
+          sectionsObj.blogSlideshow = section;
+          break;
         case "ComponentSectionFacts":
           sectionsObj.facts = section;
           break;
@@ -141,6 +144,21 @@ export class SectionsService {
                 );
             }
             sections.push(sectionGallerySlideshow);
+            break;
+          case "ComponentSectionBlogSlideshow":
+            const sectionBlogSlideshow = clone(true, dynamicZoneSection);
+            if (
+              sectionBlogSlideshow.blog?.blog_entries?.length &&
+              sectionBlogSlideshow.blog?.blog_entries?.length >
+              sectionBlogSlideshow.limit
+            ) {
+              sectionBlogSlideshow.blog.blog_entries =
+                sectionBlogSlideshow.blog.blog_entries.slice(
+                  0,
+                  sectionBlogSlideshow.limit
+                );
+            }
+            sections.push(sectionBlogSlideshow);
             break;
           case "ComponentHomeCalendar":
             sections.push(dynamicZoneSection);

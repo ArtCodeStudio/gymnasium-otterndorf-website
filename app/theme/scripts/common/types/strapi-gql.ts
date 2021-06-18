@@ -3186,7 +3186,7 @@ export type StrapiGqlBlogCategoryBasicFragmentFragment = (
   & Pick<StrapiGqlBlogCategory, 'id' | 'created_at' | 'updated_at' | 'name' | 'slug'>
   & { blog_entries?: Maybe<Array<Maybe<(
     { __typename?: 'BlogEntry' }
-    & Pick<StrapiGqlBlogEntry, 'slug'>
+    & StrapiGqlBlogEntryBasicFragmentFragment
   )>>> }
 );
 

@@ -14,6 +14,7 @@ export * from "./search-item";
 export * from "./search-namespace";
 export * from "./search-result";
 export * from "./section-blackboard-slideshow";
+export * from "./section-blog-slideshow";
 export * from "./section-content-button";
 export * from "./section-content-image";
 export * from "./section-content-text";

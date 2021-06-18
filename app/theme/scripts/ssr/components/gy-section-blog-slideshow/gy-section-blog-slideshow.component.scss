@@ -1,0 +1,25 @@
+gy-section-blog-slideshow {
+    background: $gallery-background-image;
+    background-size: $gallery-background-image-size;
+    display: block;
+    bs5-slideshow {
+        background: $gallery-background-gradient;
+        .slideshow-controls, .slideshow-indicators {
+            bs5-icon {
+                color: white;
+            }
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        .slideshow-indicators {
+            margin-left: 0;
+            margin-right: 0;
+            justify-content: end;
+            &.indicators-bottom, &.indicators-sm-bottom, &.indicators-md-bottom, &.indicators-lg-bottom, &.indicators-xl-bottom, &.indicators-xxl-bottom {
+                bottom: 0;
+            }
+        }
+    }
+
+}

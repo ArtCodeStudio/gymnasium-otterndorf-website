@@ -6,6 +6,7 @@ import pugTemplate from "./gy-blog-entry-item.component.pug";
 export interface Scope {
   post?: Post;
   showDate: boolean;
+  showCategory: boolean;
   catTextAt: number;
   sections: SectionObject;
 }
@@ -19,12 +20,13 @@ export class GyBlogEntryItemComponent extends Component {
   scope: Scope = {
     post: undefined,
     showDate: true,
+    showCategory: true,
     catTextAt: 300,
     sections: {},
   };
 
   static get observedAttributes(): string[] {
-    return ["post", "cat-text-at", "show-date"];
+    return ["post", "cat-text-at", "show-date", "show-category"];
   }
 
   protected requiredAttributes() {
