@@ -9,11 +9,13 @@
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
+    "AGPL",
     "Garber",
     "Lexend",
     "Otterndorf",
     "Pjax",
     "Prefetch",
+    "Quellcode",
     "Schulfach",
     "Startseite",
     "Zoomable",

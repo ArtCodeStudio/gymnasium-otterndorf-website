@@ -32,7 +32,7 @@ export class GyFooterComponent extends Component {
   protected async beforeBind() {
     const credits = NavigationService.getInstance().newItem("Credits & Quellcode", "url", "/credits");
     this.scope.data = await FooterService.getInstance().get();
-    this.scope.data?.links.push(credits);
+    this.scope.data?.links.unshift(credits);
     await super.beforeBind();
   }
 

@@ -11,7 +11,7 @@
             dt.col-12: a(rv-href="'fuerstberger' | teacher") Thomas Fürstberger
             dd.col-12 Lehrer des Gymnasium Otterndorf
             dt.col-12 Daniel Omran
-            dd.col-12 Ehemaliger Schüler des Gymnasium Otterndorf
+            dd.col-12 Mitentwickler und (inzwischen ehemaliger) Schüler des Gymnasium Otterndorf
             dt.col-12: a(href="https://ceyhunguney.com/" target="_blank") Ceyhun Güney
             dd.col-12 Designer
             dt.col-12: a(href="https://artandcode.studio/" target="_blank") Art+Code Studio 
@@ -48,16 +48,32 @@
           h1 Technologien 
           p Alle von diesem Projekt verwendeten Technologien sind ebenfalls Open Source und stehen unter freien Lizenzen. 
           dl.row
-            dt.col-12 Strapi
+            dt.col-12 Node.js
             dd.col-12
-              a(href="https://strapi.io/" target="_blank") Strapi
-              |  ist ein Headless CMS für das Backend und der Inhaltspflege.
+              a(href="https://nodejs.org/de/" target="_blank") Node.js
+              |  ermöglichst es JavaScript auf dem Server zu verwenden. Auch hierzu gibt es 
+              a(href="https://cre.fm/cre167-nodejs" target="_blank") eine schöne Podcast-Folge
+              |, die zwar noch aus den Anfangszeiten von Node.js stammt aber trotzdem einen guten Überblick über das potential von Node.js verschafft. Node.js führt in diesem Projekt die Serveranwendungen (Nest und Strapi) aus.
             dt.col-12 TypeScript
             dd.col-12
               a(href="https://www.typescriptlang.org/" target="_blank") TypeScript
               |  ist quasi ein Aufsatz auf JavaScript und reichert es um Typesicherheit an. Der Podcast 
               a(href="https://workingdraft.de/"  target="_blank") Working Draft 
               | beschäftigt sich in unterschiedlichen Folgen mit TypeScript.
+            dt.col-12 Nest
+            dd.col-12
+              a(href="https://nestjs.com/" target="_blank") Nest
+              |  ist ein progressives Node.js-Framework zur Erstellung effizienter, zuverlässiger und skalierbarer serverseitiger Anwendungen. Nest kommt bei diesem Projekt für eigene API's (zum Beispiel für die Kalenderabfrage oder die Suche) zum Einsatz und kümmert sich um das Rendern sowie ausliefern der Webdaten. 
+              a(href="https://www.programmier.bar/podcast-episodes/folge-71-nestjs-mit-gerd-jungbluth" target="_blank") Hier gibt es eine interessante Podcast-Folge zu dem Framework
+              | .
+            dt.col-12 Lunr.js
+            dd.col-12
+              a(href="https://lunrjs.com/" target="_blank") Lunr.js
+              |  ist eine leichtgewichtige Such-Engine für Node.js ohne dafür eine zusätzliche Serveranwendung zu benötigen. Lunr.js kommt bei diesem Projekt für die Volltext-Suche im Header zum Einsatz und ist in die Nest-Anwendung integriert.
+            dt.col-12 Strapi
+            dd.col-12
+              a(href="https://strapi.io/" target="_blank") Strapi
+              |  ist ein Headless CMS für das Backend und der Inhaltspflege.
             dt.col-12 Riba
             dd.col-12
               a(href="https://ribajs.com/" target="_blank") Riba
@@ -67,25 +83,9 @@
             dt.col-12 Bootstrap 5
             dd.col-12
               a(href="https://getbootstrap.com/" target="_blank") Bootstrap 5
-              |  ist CSS-Framework für  
+              |  ist ein CSS-Framework für  
               a(href="https://de.wikipedia.org/wiki/Responsive_Webdesign" target="_blank") Responsive- und Mobile-First-
               | Webanwendungen. Das Layout dieser Webpräsenz basiert zu großen Teilen auf Bootstrap 5, wurde aber an vielen Stellen z.B. durch SCSS-Variablen angepasst. 
-            dt.col-12 Nest
-            dd.col-12
-              a(href="https://nestjs.com/" target="_blank") Nest
-              |  ist ein progressives Node.js-Framework zur Erstellung effizienter, zuverlässiger und skalierbarer serverseitiger Anwendungen. Nest kommt bei diesem Projekt für eigene API's (zum Beispiel für die Kalenderabfrage oder die Suche) zum Einsatz und kümmert sich um das Rendern sowie ausliefern der Webdaten.
-              a(href="https://www.programmier.bar/podcast-episodes/folge-71-nestjs-mit-gerd-jungbluth" target="_blank") Hier gibt es eine interessante Podcast-Folge zu dem Framework
-              | .
-            dt.col-12 Lunr.js
-            dd.col-12
-              a(href="https://lunrjs.com/" target="_blank") Lunr.js
-              |  ist eine leichtgewichtige Such-Engine für Node.js ohne dafür eine zusätzliche Serveranwendung zu benötigen. Lunr.js kommt bei diesem Projekt für die Volltext-Suche im Header zum Einsatz und ist in die Nest-Anwendung integriert.
-            dt.col-12 Node.js
-            dd.col-12
-              a(href="https://nodejs.org/de/" target="_blank") Node.js
-              |  ermöglichst es JavaScript auf dem Server zu verwenden. Auch hierzu gibt es 
-              a(href="https://cre.fm/cre167-nodejs" target="_blank") eine schöne Podcast-Folge
-              |, die zwar noch aus den Anfangszeiten von Node.js stammt aber trotzdem einen guten Überblick über das potential von Node.js verschafft. Node.js führt in diesem Projekt die Serveranwendungen (Nest und Strapi) aus.
             dt.col-12 Git
             dd.col-12
               a(href="https://de.wikipedia.org/wiki/Git" target="_blank") Git
@@ -97,8 +97,18 @@
               a(href="https://www.openstreetmap.de/" target="_blank") OpenStreetMap
               |  ist ein internationales Projekt mit dem Ziel, eine freie Weltkarte zu erschaffen. Dafür sammeln alle beteiligten Helfer weltweit Daten über Straßen, Eisenbahnen, Flüsse, Wälder, Häuser und vieles mehr. Die OpenStreetMap wird in diesem Projekt für die Karte im Footer und dem Routenplaner genutzt.
             dt.col-12 Und noch vieles mehr
-            dd.col-12 Es kommen weitere Technologien wie beispielsweise SCSS, Pug, Webpack und Babel zum Einsatz. Doch alle Technologien hier aufzulisten würde den Rahmen sprengen. Wenn du dich dafür interessierst, dann durchstöbere einfach den  
-              a(href="https://github.com/ArtCodeStudio/gymnasium-otterndorf-website") Quellcode dieses Projekts
+            dd.col-12 Es kommen weitere Technologien wie beispielsweise 
+              a(href="https://graphql.org/" target="_blank") GraphQL
+              | , 
+              a(href="https://sass-lang.com/" target="_blank") Sass / SCSS
+              | , 
+              a(href="https://pugjs.org" target="_blank") Pug
+              | , 
+              a(href="https://webpack.js.org/" target="_blank") Webpack 
+              | und 
+              a(href="https://babeljs.io/" target="_blank") Babel 
+              | zum Einsatz. Doch alle Technologien hier aufzulisten würde den Rahmen sprengen. Wenn du dich dafür interessierst, dann durchstöbere einfach den  
+              a(href="https://github.com/ArtCodeStudio/gymnasium-otterndorf-website" target="_blank") Quellcode dieses Projekts
               | .
       section.row.my-5
         .col-12
@@ -107,5 +117,5 @@
             a(href="https://www.freepik.com/" target="_blank") freepik
             | . Diese haben wir hier aufgelistet: 
           ul.list-unstyled
-            li: a(href="https://www.freepik.com/photos/background") Das Hintergrundbild der Gallery ist von kues
-            li: a(href="https://www.freepik.com/free-photos-vectors/business") Lehrer-Profilbilder von studiogstock
+            li: a(href="https://www.freepik.com/free-photo/concrete-wall_928906.htm#page=1&query=concrete%20wall%20texture&position=0" target="_blank") Das Hintergrundbild der Gallery ist von kues
+            li: a(href="https://www.freepik.com/free-vector/group-business-people-characters_5825518.htm#page=1&query=avatar&position=15" target="_blank") Lehrer-Profilbilder von studiogstock
