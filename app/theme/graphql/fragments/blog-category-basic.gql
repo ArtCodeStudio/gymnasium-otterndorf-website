@@ -5,9 +5,9 @@ fragment BlogCategoryBasicFragment on BlogCategory {
   updated_at
   name
   slug
-  # blog_entries {
-  #   ...on BlogEntry {
-  #     slug
-  #   }
-  # }
+  blog_entries {
+    ...on BlogEntry {
+      slug
+    }
+  }
 }

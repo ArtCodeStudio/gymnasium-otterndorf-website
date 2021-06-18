@@ -2,7 +2,12 @@
 #import "./component-content-image.gql"
 #import "./component-content-button.gql"
 #import "./component-section-slideshow.gql"
+#import "./component-section-facts.gql"
 #import "./component-section-gallery-slideshow.gql"
+#import "./component-section-blackboard-slideshow.gql"
+#import "./component-home-news.gql"
+#import "./component-student-section-student-quote.gql"
+#import "./component-section-blog-slideshow.gql"
 
 fragment BlogEntryDetailFragment on BlogEntry {
   __typename
@@ -33,8 +38,29 @@ fragment BlogEntryDetailFragment on BlogEntry {
     ... on ComponentSectionSlideshow {
       ...ComponentSectionSlideshowFragment
     }
+    ... on ComponentSectionFacts {
+      ...ComponentSectionFactsFragment
+    }
+    ... on ComponentHomeNews {
+      ...ComponentHomeNewsFragment
+    }
+    ... on ComponentContentButton {
+      ...ComponentContentButtonFragment
+    }
     ... on ComponentSectionGallerySlideshow {
       ...ComponentSectionGallerySlideshowFragment
+    }
+    ... on ComponentSectionBlackboardSlideshow {
+      ...ComponentSectionBlackboardSlideshowFragment
+    }
+    ... on ComponentStudentSectionStudentQuote {
+      ...ComponentStudentSectionStudentQuoteFragment
+    }
+    ... on ComponentStudentSectionStudentQuote {
+      ...ComponentStudentSectionStudentQuoteFragment
+    }
+    ... on ComponentSectionBlogSlideshow {
+      ...ComponentSectionBlogSlideshowFragment
     }
   }
 }

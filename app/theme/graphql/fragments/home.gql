@@ -7,6 +7,7 @@
 #import "./component-section-blackboard-slideshow.gql"
 #import "./component-home-news.gql"
 #import "./component-student-section-student-quote.gql"
+#import "./component-section-blog-slideshow.gql"
 
 fragment HomeFragment on Home {
   sections {
@@ -42,6 +43,9 @@ fragment HomeFragment on Home {
     }
     ... on ComponentStudentSectionStudentQuote {
       ...ComponentStudentSectionStudentQuoteFragment
+    }
+    ... on ComponentSectionBlogSlideshow {
+      ...ComponentSectionBlogSlideshowFragment
     }
   }
 }

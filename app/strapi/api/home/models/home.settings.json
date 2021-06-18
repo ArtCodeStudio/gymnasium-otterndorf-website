@@ -23,7 +23,8 @@
         "home.calendar",
         "section.blackboard-slideshow",
         "student-section.student-quote",
-        "content.button"
+        "content.button",
+        "section.blog-slideshow"
       ]
     }
   }

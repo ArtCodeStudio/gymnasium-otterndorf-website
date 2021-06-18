@@ -1,0 +1,11 @@
+#import "./blog-category-basic.gql"
+
+fragment ComponentSectionBlogSlideshowFragment on ComponentSectionBlogSlideshow {
+  id
+  limit
+  blog {
+    ... on BlogCategory {
+      ...BlogCategoryBasicFragment
+    }
+  }
+}

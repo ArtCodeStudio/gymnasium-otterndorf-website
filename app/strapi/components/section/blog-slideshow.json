@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_section_blog_slideshows",
+  "info": {
+    "name": "Blog Slideshow",
+    "icon": "blog"
+  },
+  "options": {},
+  "attributes": {
+    "blog": {
+      "model": "blog-category"
+    },
+    "limit": {
+      "type": "integer",
+      "required": true,
+      "default": 3,
+      "max": 10,
+      "min": 1
+    }
+  }
+}

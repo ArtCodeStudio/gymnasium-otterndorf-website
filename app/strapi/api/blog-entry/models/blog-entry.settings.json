@@ -26,7 +26,13 @@
         "content.image",
         "section.gallery-slideshow",
         "section.slideshow",
-        "content.button"
+        "content.button",
+        "section.blog-slideshow",
+        "section.blackboard-slideshow",
+        "home.calendar",
+        "home.news",
+        "section.facts",
+        "student-section.student-quote"
       ]
     },
     "blog_category": {

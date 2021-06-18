@@ -32,7 +32,12 @@
         "section.gallery-slideshow",
         "section.slideshow",
         "section.blackboard-slideshow",
-        "content.button"
+        "content.button",
+        "section.blog-slideshow",
+        "home.news",
+        "home.calendar",
+        "section.facts",
+        "student-section.student-quote"
       ]
     },
     "slug": {

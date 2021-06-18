@@ -2,19 +2,19 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "Gymnasium Otterndorf Strapi REST API",
+    "title": "DOCUMENTATION",
     "description": "",
-    "termsOfService": "",
+    "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
     "contact": {
-      "name": "Art+Code Studio Team",
-      "email": "hi@artandcode.studio",
-      "url": "https://artandcode.studio/"
+      "name": "TEAM",
+      "email": "contact-email@something.io",
+      "url": "mywebsite.io"
     },
     "license": {
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/14/2021 1:10:03 PM"
+    "x-generation-date": "06/18/2021 1:07:02 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -23,12 +23,16 @@
   },
   "servers": [
     {
-      "url": "https://gym-strapi.artandcode.de",
-      "description": "Dev server"
+      "url": "http://localhost:1337",
+      "description": "Development server"
     },
     {
-      "url": "http://localhost:1337",
-      "description": "Locale server"
+      "url": "YOUR_STAGING_SERVER",
+      "description": "Staging server"
+    },
+    {
+      "url": "YOUR_PRODUCTION_SERVER",
+      "description": "Production server"
     }
   ],
   "externalDocs": {
@@ -8281,7 +8285,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8304,7 +8314,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8394,7 +8410,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8444,7 +8466,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8487,7 +8515,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8559,6 +8593,397 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slides": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "image"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "school_subject": {
+                            "required": [
+                              "id",
+                              "title",
+                              "slug"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "teachers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "content": {
+                                "type": "dynamiczone"
+                              },
+                              "slug": {
+                                "type": "uid"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "image": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "dates": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "calendar_key": {
+                            "type": "string"
+                          },
+                          "blog_categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "assets": {
+                            "type": "dynamiczone"
+                          },
+                          "blog_entries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "facts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "integer",
+                      "default": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "size"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
                   ]
                 }
               ]
@@ -8680,7 +9105,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8703,7 +9134,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8793,7 +9230,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8843,7 +9286,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8886,7 +9335,13 @@
                         "content.image",
                         "section.gallery-slideshow",
                         "section.slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -8958,6 +9413,397 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "slides": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "image"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "school_subject": {
+                            "required": [
+                              "id",
+                              "title",
+                              "slug"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "teachers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "content": {
+                                "type": "dynamiczone"
+                              },
+                              "slug": {
+                                "type": "uid"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "image": {
+                            "required": [
+                              "id",
+                              "name",
+                              "hash",
+                              "mime",
+                              "size",
+                              "url",
+                              "provider"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "alternativeText": {
+                                "type": "string"
+                              },
+                              "caption": {
+                                "type": "string"
+                              },
+                              "width": {
+                                "type": "integer"
+                              },
+                              "height": {
+                                "type": "integer"
+                              },
+                              "formats": {
+                                "type": "object"
+                              },
+                              "hash": {
+                                "type": "string"
+                              },
+                              "ext": {
+                                "type": "string"
+                              },
+                              "mime": {
+                                "type": "string"
+                              },
+                              "size": {
+                                "type": "number"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "previewUrl": {
+                                "type": "string"
+                              },
+                              "provider": {
+                                "type": "string"
+                              },
+                              "provider_metadata": {
+                                "type": "object"
+                              },
+                              "related": {
+                                "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "dates": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "calendar_key": {
+                            "type": "string"
+                          },
+                          "blog_categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "assets": {
+                            "type": "dynamiczone"
+                          },
+                          "blog_entries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "facts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "integer",
+                      "default": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "size"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
                   ]
                 }
               ]
@@ -9402,7 +10248,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9450,7 +10297,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9503,7 +10351,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9531,7 +10380,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9626,7 +10476,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9702,7 +10553,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9757,7 +10609,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9785,7 +10638,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9925,7 +10779,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -9953,7 +10808,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10025,6 +10881,67 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
                   ]
                 }
               ]
@@ -10052,7 +10969,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10100,7 +11018,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10153,7 +11072,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10181,7 +11101,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10276,7 +11197,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10352,7 +11274,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10407,7 +11330,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10435,7 +11359,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10575,7 +11500,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10603,7 +11529,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -10675,6 +11602,67 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
                   ]
                 }
               ]
@@ -12198,7 +13186,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12289,7 +13282,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12313,7 +13311,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12357,7 +13360,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12408,7 +13416,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12544,7 +13557,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12616,6 +13634,256 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "calendar_key": {
+                            "type": "string"
+                          },
+                          "blog_categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "assets": {
+                            "type": "dynamiczone"
+                          },
+                          "blog_entries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "dates": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "facts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "integer",
+                      "default": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "size"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
                   ]
                 }
               ]
@@ -12824,7 +14092,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12915,7 +14188,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12939,7 +14217,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -12983,7 +14266,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -13034,7 +14322,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -13170,7 +14463,12 @@
                         "section.slideshow",
                         "section.gallery-slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -13242,6 +14540,256 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "calendar_key": {
+                            "type": "string"
+                          },
+                          "blog_categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "assets": {
+                            "type": "dynamiczone"
+                          },
+                          "blog_entries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "dates": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "facts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "integer",
+                      "default": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "size"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
                   ]
                 }
               ]
@@ -14352,7 +15900,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14443,7 +15996,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14467,7 +16025,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14518,7 +16081,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14562,7 +16130,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14698,7 +16271,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14770,6 +16348,256 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "calendar_key": {
+                            "type": "string"
+                          },
+                          "blog_categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "assets": {
+                            "type": "dynamiczone"
+                          },
+                          "blog_entries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "dates": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "facts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "integer",
+                      "default": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "size"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
                   ]
                 }
               ]
@@ -14809,7 +16637,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14900,7 +16733,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14924,7 +16762,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -14975,7 +16818,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -15019,7 +16867,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -15155,7 +17008,12 @@
                         "section.gallery-slideshow",
                         "section.slideshow",
                         "section.blackboard-slideshow",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
                       ]
                     },
                     "id": {
@@ -15227,6 +17085,256 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "pages": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "calendar_key": {
+                            "type": "string"
+                          },
+                          "blog_categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "assets": {
+                            "type": "dynamiczone"
+                          },
+                          "blog_entries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "dates": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "facts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "subtitle": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "integer",
+                      "default": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "size"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
                   ]
                 }
               ]

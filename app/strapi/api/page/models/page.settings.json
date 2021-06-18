@@ -29,7 +29,12 @@
         "section.slideshow",
         "section.gallery-slideshow",
         "section.blackboard-slideshow",
-        "content.button"
+        "content.button",
+        "section.blog-slideshow",
+        "home.news",
+        "home.calendar",
+        "section.facts",
+        "student-section.student-quote"
       ]
     },
     "calendar_key": {

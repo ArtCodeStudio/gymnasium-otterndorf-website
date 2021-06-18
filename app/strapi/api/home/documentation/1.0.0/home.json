@@ -336,7 +336,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -384,7 +385,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -437,7 +439,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -465,7 +468,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -560,7 +564,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -636,7 +641,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -691,7 +697,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -719,7 +726,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -859,7 +867,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -887,7 +896,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -959,6 +969,67 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
                   ]
                 }
               ]
@@ -986,7 +1057,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1034,7 +1106,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1087,7 +1160,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1115,7 +1189,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1210,7 +1285,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1286,7 +1362,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1341,7 +1418,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1369,7 +1447,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1509,7 +1588,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1537,7 +1617,8 @@
                         "home.calendar",
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
-                        "content.button"
+                        "content.button",
+                        "section.blog-slideshow"
                       ]
                     },
                     "id": {
@@ -1609,6 +1690,67 @@
                     "label",
                     "alignment",
                     "color"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "blog": {
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "blog_entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 3
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "limit"
                   ]
                 }
               ]
