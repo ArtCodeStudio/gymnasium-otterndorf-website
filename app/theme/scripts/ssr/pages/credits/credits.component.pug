@@ -45,6 +45,38 @@
             | .
       section.row.my-5
         .col-12
+          h1 API
+          p
+            a(href="https://de.wikipedia.org/wiki/Programmierschnittstelle" target="_blank") API
+            |  steht wörtlich für <strong>A</strong>nwendungs­<strong>p</strong>rogrammier­<strong>i</strong>nterface und ist ein Programmteil, der von einem Softwaresystem anderen Programmen zur Anbindung an das System zur Verfügung gestellt wird.
+            | Mit der öffentlichen API vom Gynmasium Otterndorf hast du also die Möglichkeit die Inhalte der Seite in einer anderen oder selbstentwickelten Software abzufragen.
+            | Denkbar wäre z.B. eine News-Reader-App welche die Blog-Artikel oder den Kalender abfragt.
+            | Ein anderes Beispiel wäre eine Webseite, welche einige Inhalte der Gymnasium-Otterndorf-Seite einbinden möchte, dafür eigenet sich besonders gut die Schülerinnen-Instanz von Strapi, wo die Schülerinnen auch eigene Inhalte anlegen dürfen.
+          h2 Wie kann ich die API nutzen?
+          p 
+            | Um die API nutzen zu können um einfach nur die Inhalte abzufragen sind keine Zugangsdaten notwendig, sollten wir jedoch feststellen, dass die API auf irgendeine weise im negativen Sinne ausgenutzt wird, dann werden wir dies ändern.
+            | Es ist über die API auch möglich Daten anzulegen, zu ändern und zu löschen, diesen Zugriff haben wir aber logischerweise begrenzt. Falls du einen solchen Zugriff benötigst, dann nimm gerne 
+            a(href="https://artandcode.studio/" target="_blank") Kontakt mit uns 
+            |  auf.
+          dl.row
+            dt.col-12 REST-API für die Inhaltsabfrage
+            dd.col-12 Die  
+              a(rv-href="'/documentation' | strapi" target="_blank") Dokumentation findest du hier
+              | . Dort kannst du die API auch direkt ausprobieren.
+            dt.col-12 GraphQL-API für die Inhaltsabfrage
+            dd.col-12 Die  
+              a(rv-href="'/graphql' | strapi" target="_blank") Dokumentation findest du hier
+              | . Dort kannst du die API auch direkt ausprobieren.
+            dt.col-12 REST-API für die Schülerinnen-Inhaltsabfrage
+            dd.col-12 Die  
+              a(rv-href="'/documentation' | strapi-student" target="_blank") Dokumentation findest du hier
+              | . Dort kannst du die API auch direkt ausprobieren.
+            dt.col-12 GraphQL-API für die Schülerinnen-Inhaltsabfrage
+            dd.col-12 Die  
+              a(rv-href="'/graphql' | strapi-student" target="_blank") Dokumentation findest du hier
+              | . Dort kannst du die API auch direkt ausprobieren.
+      section.row.my-5
+        .col-12
           h1 Technologien 
           p Alle von diesem Projekt verwendeten Technologien sind ebenfalls Open Source und stehen unter freien Lizenzen. 
           dl.row
@@ -73,7 +105,8 @@
             dt.col-12 Strapi
             dd.col-12
               a(href="https://strapi.io/" target="_blank") Strapi
-              |  ist ein Headless CMS für das Backend und der Inhaltspflege.
+              |  ist ein Headless CMS für das Backend und der Inhaltspflege. Diese Seite betreibt zwei Instanzen von Strapi. Eine für den Hauptinhalt der Seite auf die nur die Betreiber dieser Seite Zugriff haben.
+              | Die zweite Instanz ist für Schülerinnen gedacht auf der sie selbst Zugriff haben und bei Bedarf in eine selbst entwickelte Webseite oder Software integrieren können. Die Sprüche des Tages auf der Startseite werden ebenfalls in der Schülerinnen-Instanz gepflegt.
             dt.col-12 Riba
             dd.col-12
               a(href="https://ribajs.com/" target="_blank") Riba

@@ -28,7 +28,7 @@ export class CreditsPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    this.head.title = "Credits und Quellcode";
+    this.head.title = "Credits, Quellcode und API";
     await super.beforeBind();
   }
 
