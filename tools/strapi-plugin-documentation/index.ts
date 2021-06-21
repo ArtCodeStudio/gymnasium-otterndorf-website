@@ -6,7 +6,7 @@ import { promises as fs } from "fs";
 import { resolve } from "path";
 
 
-const strapiTeacher = async () => {
+const setStrapiDocumentationConfig = async () => {
 
   const settingsPath = ["../../app/strapi/node_modules/strapi-plugin-documentation/config/settings.json", "../../app/strapi/extensions/documentation/documentation/1.0.0/full_documentation.json"];
 
@@ -49,7 +49,7 @@ const strapiTeacher = async () => {
   }
 }
 
-const strapiStudents = async () => {
+const setStrapiStudentsDocumentationConfig = async () => {
 
   const settingsPath = ["../../app/strapi-student/node_modules/strapi-plugin-documentation/config/settings.json", "../../app/strapi-student/extensions/documentation/documentation/1.0.0/full_documentation.json"];
 
@@ -83,14 +83,12 @@ const strapiStudents = async () => {
 
   for (const _path of settingsPath) {
     const path = resolve(__dirname, _path);
-    const fileRaw = await fs.readFile(path, "utf8");
-    const data = JSON.parse(fileRaw);
+    const data = JSON.parse(await fs.readFile(path, "utf8"));
     const merged = { ...data, ...overwrites };
-    const writeData = JSON.stringify(merged, null, 2);
-    await fs.writeFile(path, writeData);
+    await fs.writeFile(path, JSON.stringify(merged, null, 2));
     console.debug(`Write to ${path}`);
   }
 }
 
-strapiTeacher();
-strapiStudents();
+setStrapiDocumentationConfig();
+setStrapiStudentsDocumentationConfig();

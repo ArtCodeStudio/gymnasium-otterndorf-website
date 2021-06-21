@@ -1,0 +1,27 @@
+{
+  "info": {
+    "version": "1.0.0",
+    "title": "Gymnasium Otterndorf Strapi Students REST API",
+    "description": "",
+    "termsOfService": "https://gym.artandcode.de/credits",
+    "contact": {
+      "name": "Art+Code Studio Team",
+      "email": "hi@artandcode.studio",
+      "url": "https://artandcode.studio/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://gym-strapi-student.artandcode.de",
+      "description": "Development server"
+    },
+    {
+      "url": "https://strapi-student.gymnasium-otterndorf.de",
+      "description": "Production server"
+    },
+    {
+      "url": "http://localhost:1337",
+      "description": "Locale server"
+    }
+  ]
+}
