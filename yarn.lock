@@ -2802,6 +2802,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@gymott/strapi-plugin-documentation-config@workspace:tools/strapi-plugin-documentation":
+  version: 0.0.0-use.local
+  resolution: "@gymott/strapi-plugin-documentation-config@workspace:tools/strapi-plugin-documentation"
+  dependencies:
+    "@tsconfig/node16": ^1.0.1
+    "@types/node": ^15.12.4
+    ts-node: ^10.0.0
+    typescript: ^4.3.4
+  languageName: unknown
+  linkType: soft
+
 "@gymott/test@workspace:test":
   version: 0.0.0-use.local
   resolution: "@gymott/test@workspace:test"

@@ -7,9 +7,10 @@
     "postinstall": "yarn run install:strapi && yarn run install:strapi-student",
     "install:strapi": "cd app/strapi && NODE_OPTIONS='' npm install",
     "install:strapi-student": "cd app/strapi-student && NODE_OPTIONS='' npm install",
-    "build": "yarn workspaces foreach run build && yarn run build:strapi && yarn run build:strapi-student",
+    "build": "yarn workspaces foreach run build && yarn run build:strapi && yarn run build:strapi-student && yarn run build:strapi-configs",
     "build:strapi": "cd app/strapi NODE_OPTIONS='' npm run build",
     "build:strapi-student": "cd app/strapi-student NODE_OPTIONS='' npm run build",
+    "build:strapi-configs": "yarn workspace @gymott/strapi-plugin-documentation-config run start",
     "start:local": "node-app-manager --env local",
     "start:prod": "node-app-manager --env production",
     "start:dev": "node-app-manager --env development"
@@ -26,7 +27,8 @@
     "app/*",
     "!app/strapi",
     "!app/strapi-student",
-    "test"
+    "test",
+    "tools/*"
   ],
   "resolutions": {
     "@types/express-serve-static-core": "latest",
