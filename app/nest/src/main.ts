@@ -8,6 +8,7 @@ import {
 } from '@nestjs/platform-express';
 import * as cookieParser from 'cookie-parser';
 import * as expressSession from 'express-session';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
 import * as config from './config/config';
@@ -44,6 +45,20 @@ async function bootstrap() {
    * Set express session
    */
   app.use(session);
+
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('Gymnasium Otterndorf API')
+    .setDescription('Documentation for our own API Endpoints')
+    .setVersion('1.0')
+    .setContact("Art+Code Studio Team", "https://artandcode.studio/", "hi@artandcode.studio")
+    .setTermsOfService("https://gym.artandcode.de/credits")
+    .addTag('calendar')
+    .addTag('search')
+    .addTag('suggestions')
+    .build();
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('api', app, document);
+
 
   await app.listen(config.app.port);
 

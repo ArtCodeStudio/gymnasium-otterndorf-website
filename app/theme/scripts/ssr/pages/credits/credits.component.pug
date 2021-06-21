@@ -11,7 +11,7 @@
             dt.col-12: a(rv-href="'fuerstberger' | teacher") Thomas Fürstberger
             dd.col-12 Lehrer des Gymnasium Otterndorf
             dt.col-12 Daniel Omran
-            dd.col-12 Mitentwickler und (inzwischen ehemaliger) Schüler des Gymnasium Otterndorf
+            dd.col-12 (Inzwischen ehemaliger) Schüler des Gymnasium Otterndorf
             dt.col-12: a(href="https://ceyhunguney.com/" target="_blank") Ceyhun Güney
             dd.col-12 Designer
             dt.col-12: a(href="https://artandcode.studio/" target="_blank") Art+Code Studio 
@@ -35,7 +35,7 @@
           p
             | Dadurch ermöglichen wir es beispielsweise anderen Schulen oder Organisationen auf Basis dieses Quellcodes eigene Webpräsenzenzen zu entwickeln.
             | Vielleicht bist du auch selbst Programmiererin oder möchtest es lernen, dann kannst du von dem Quellcode möglicherweise etwas lernen.
-            | Auch Schülerinnen am Gymnasium Otterndorf könnten auf diese Weise die Schule unterstützen und die Seite verbessern.
+            | Auch Schüler:innen am Gymnasium Otterndorf könnten auf diese Weise die Schule unterstützen und die Seite verbessern.
             | So oder so, neue Features die dabei entstehen können bei Bedarf in dieses Projekt zurückfließen, womit dieses Projekt davon profitieren kann, so wie du ebenfalls von diesem Projekt profitierst.
           p
             | Falls du etwas davon vor hast oder noch weitere Fragen hast, dann 
@@ -51,33 +51,33 @@
             |  steht wörtlich für <strong>A</strong>nwendungs­<strong>p</strong>rogrammier­<strong>i</strong>nterface und ist ein Programmteil, der von einem Softwaresystem anderen Programmen zur Anbindung an das System zur Verfügung gestellt wird.
             | Mit der öffentlichen API vom Gynmasium Otterndorf hast du also die Möglichkeit die Inhalte der Seite in einer anderen oder selbstentwickelten Software abzufragen.
             | Denkbar wäre z.B. eine News-Reader-App welche die Blog-Artikel oder den Kalender abfragt.
-            | Ein anderes Beispiel wäre eine Webseite, welche einige Inhalte der Gymnasium-Otterndorf-Seite einbinden möchte, dafür eigenet sich besonders gut die Schülerinnen-Instanz von Strapi, wo die Schülerinnen auch eigene Inhalte anlegen dürfen.
+            | Ein anderes Beispiel wäre eine Webseite, welche einige Inhalte der Gymnasium-Otterndorf-Seite einbinden möchte, dafür eigenet sich besonders gut die Schüler:innen-Instanz von Strapi, wo die Schüler:innen auch eigene Inhalte anlegen dürfen.
           h2 Wie kann ich die API nutzen?
           p 
-            | Um die API nutzen zu können um einfach nur die Inhalte abzufragen sind keine Zugangsdaten notwendig, sollten wir jedoch feststellen, dass die API auf irgendeine weise im negativen Sinne ausgenutzt wird, dann werden wir dies ändern.
-            | Es ist über die API auch möglich Daten anzulegen, zu ändern und zu löschen, diesen Zugriff haben wir aber logischerweise begrenzt. Falls du einen solchen Zugriff benötigst, dann nimm gerne 
+            | Für die API's steht ein Playground zur Verfügung in dem die API ausprobiert werden kann.  
+            | Wenn du einfach nur Inhalte abfragen möchtest sind dafür keine Zugangsdaten notwendig, du kannst also einfach direkt loslegen.
+            | Es ist auch möglich Daten anzulegen, zu ändern und zu löschen, falls du auch hierfür Zugriff benötigst, dann nimm gerne 
             a(href="https://artandcode.studio/" target="_blank") Kontakt mit uns 
             |  auf.
+          p.text-red
+            | Sollten wir feststellen, dass die API ausgenutzt wird, dann werden wir den Zugriff für alle einschränken.
           dl.row
-            dt.col-12 REST-API für die Inhalte
-            dd.col-12 Die  
-              a(rv-href="'/documentation' | strapi" target="_blank") Dokumentation findest du hier
-              | . Dort kannst du die API auch direkt ausprobieren.
-            dt.col-12 GraphQL-API für die Inhalte
-            dd.col-12 Die  
-              a(rv-href="'/graphql' | strapi" target="_blank") Dokumentation findest du hier
-              | . Dort kannst du die API auch direkt ausprobieren.
-            dt.col-12 REST-API für die Schülerinnen-Inhalte
-            dd.col-12 Die  
-              a(rv-href="'/documentation' | strapi-student" target="_blank") Dokumentation findest du hier
-              | . Dort kannst du die API auch direkt ausprobieren.
-            dt.col-12 GraphQL-API für die Schülerinnen-Inhalte
-            dd.col-12 Die  
-              a(rv-href="'/graphql' | strapi-student" target="_blank") Dokumentation findest du hier
-              | . Dort kannst du die API auch direkt ausprobieren.
+            dt.col-12 Strapi API für die Inhalte
+            dd.col-12   
+              a(rv-href="'/documentation' | strapi" target="_blank") REST-API Playground.
+            dd.col-12   
+              a(rv-href="'/graphql' | strapi" target="_blank") GraphQL-API Playground.
+            dt.col-12 Strapi API für Schüler:innen-Inhalte
+            dd.col-12   
+              a(rv-href="'/documentation' | strapi-student" target="_blank") REST-API Playground.
+            dd.col-12   
+              a(rv-href="'/graphql' | strapi-student" target="_blank") GraphQL-API Playground.
+            dt.col-12 API für die Suche, den Suchvorschlägen und den Kalender
+            dd.col-12   
+              a(href="/api" target="_blank") REST-API Playground.
           p Solltest du die GraphQL-API verwenden wollen kannst du dir 
-            a(href="https://github.com/ArtCodeStudio/gymnasium-otterndorf-website/tree/main/app/theme" target="_blank") die GraphQL-Dateien im Quellcode
-            |  anschauen. 
+            a(href="https://github.com/ArtCodeStudio/gymnasium-otterndorf-website/tree/main/app/theme" target="_blank") unsere GraphQL-Dateien im Quellcode
+            |  anschauen und als inspiration verwenden. 
       section.row.my-5
         .col-12
           h1 Technologien 
@@ -109,7 +109,7 @@
             dd.col-12
               a(href="https://strapi.io/" target="_blank") Strapi
               |  ist ein Headless CMS für das Backend und der Inhaltspflege. Diese Seite betreibt zwei Instanzen von Strapi. Eine für den Hauptinhalt der Seite auf die nur die Betreiber dieser Seite Zugriff haben.
-              | Die zweite Instanz ist für Schülerinnen gedacht auf der sie selbst Zugriff haben und bei Bedarf in eine selbst entwickelte Webseite oder Software integrieren können. Die Sprüche des Tages auf der Startseite werden ebenfalls in der Schülerinnen-Instanz gepflegt.
+              | Die zweite Instanz ist für Schüler:innen gedacht auf der sie selbst Zugriff haben und bei Bedarf in eine selbst entwickelte Webseite oder Software integrieren können. Die Sprüche des Tages auf der Startseite werden ebenfalls in der Schüler:innen-Instanz gepflegt.
             dt.col-12 Riba
             dd.col-12
               a(href="https://ribajs.com/" target="_blank") Riba

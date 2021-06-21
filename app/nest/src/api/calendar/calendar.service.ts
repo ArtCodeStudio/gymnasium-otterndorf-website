@@ -42,7 +42,7 @@ export class CalendarService {
         case 'VTODO':
           break;
         default:
-          console.warn('Unknown component type: ' + component.type);
+          console.warn('Unknown calendar component type: ' + component.type);
           break;
       }
     }

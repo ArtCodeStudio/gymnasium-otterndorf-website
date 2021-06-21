@@ -1,6 +1,7 @@
 import { Controller, Response, Post, Body, Res } from '@nestjs/common';
 import { WebhookService } from './webhook.service';
 import { StrapiWebhookData } from './types';
+import { ApiExcludeEndpoint } from '@nestjs/swagger';
 
 @Controller('webhook')
 export class WebhookController {
@@ -8,6 +9,7 @@ export class WebhookController {
     //
   }
 
+  @ApiExcludeEndpoint()
   @Post('strapi')
   async post(@Res() res: Response, @Body() body: StrapiWebhookData) {
     this.webhook.onWebhhook(body);
