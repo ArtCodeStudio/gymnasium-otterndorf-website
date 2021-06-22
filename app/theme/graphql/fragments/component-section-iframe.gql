@@ -1,0 +1,6 @@
+fragment ComponentSectionIFrameFragment on ComponentSectionIFrame {
+  id
+  URL
+  width
+  height
+}
