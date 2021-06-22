@@ -10,7 +10,7 @@
       "email": "hi@artandcode.studio",
       "url": "https://artandcode.studio/"
     },
-    "x-generation-date": "06/22/2021 12:57:01 PM"
+    "x-generation-date": "06/22/2021 1:13:53 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -10349,7 +10349,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10398,7 +10399,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10452,7 +10454,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10481,7 +10484,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10577,7 +10581,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10654,7 +10659,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10710,7 +10716,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10739,7 +10746,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10880,7 +10888,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10909,7 +10918,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -10998,7 +11008,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11042,6 +11053,47 @@
                   "required": [
                     "id",
                     "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]
@@ -11070,7 +11122,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11119,7 +11172,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11173,7 +11227,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11202,7 +11257,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11298,7 +11354,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11375,7 +11432,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11431,7 +11489,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11460,7 +11519,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11601,7 +11661,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11630,7 +11691,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11719,7 +11781,8 @@
                         "section.blackboard-slideshow",
                         "student-section.student-quote",
                         "content.button",
-                        "section.blog-slideshow"
+                        "section.blog-slideshow",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -11763,6 +11826,47 @@
                   "required": [
                     "id",
                     "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]

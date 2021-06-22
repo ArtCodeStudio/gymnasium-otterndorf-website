@@ -24,7 +24,8 @@
         "section.blackboard-slideshow",
         "student-section.student-quote",
         "content.button",
-        "section.blog-slideshow"
+        "section.blog-slideshow",
+        "section.i-frame"
       ]
     }
   }
