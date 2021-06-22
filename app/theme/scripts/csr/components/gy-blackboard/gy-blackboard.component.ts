@@ -195,13 +195,13 @@ export class GyBlackboardComponent extends Component {
                 [this.prev!.x + v.x * (j - 1), this.prev!.y + v.y * (j - 1)],
                 [
                   this.prev!.x +
-                  w * Math.sin(c) +
-                  v.x * j +
-                  r * (Math.random() - 0.5),
+                    w * Math.sin(c) +
+                    v.x * j +
+                    r * (Math.random() - 0.5),
                   this.prev!.y +
-                  h * Math.cos(c) +
-                  v.y * j +
-                  r * (Math.random() - 0.5),
+                    h * Math.cos(c) +
+                    v.y * j +
+                    r * (Math.random() - 0.5),
                 ],
               ],
             ];

@@ -16,7 +16,7 @@ export class GySectionButtonComponent extends Component {
 
   scope: Scope = {
     section: undefined,
-    btnCls: '',
+    btnCls: "",
     style: {},
   };
 
@@ -34,28 +34,28 @@ export class GySectionButtonComponent extends Component {
 
   protected async beforeBind() {
     if (!this.scope.section) {
-      throw new Error('"section" attribute is required!')
+      throw new Error('"section" attribute is required!');
     }
-    const color = this.scope.section.color?.color || 'blue';
+    const color = this.scope.section.color?.color || "blue";
     this.scope.btnCls = `btn-outline-${color}`;
 
     switch (this.scope.section.alignment.toLowerCase()) {
-      case 'left':
+      case "left":
         this.scope.style = {
-          marginRight: 'auto'
-        }
+          marginRight: "auto",
+        };
         break;
-      case 'right':
+      case "right":
         this.scope.style = {
-          marginLeft: 'auto'
-        }
+          marginLeft: "auto",
+        };
         break;
-      case 'center':
+      case "center":
       default:
         this.scope.style = {
-          marginLeft: 'auto',
-          marginRight: 'auto'
-        }
+          marginLeft: "auto",
+          marginRight: "auto",
+        };
         break;
     }
     await super.beforeBind();

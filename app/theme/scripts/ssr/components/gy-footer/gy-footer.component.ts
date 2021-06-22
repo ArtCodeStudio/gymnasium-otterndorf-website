@@ -5,7 +5,7 @@ import pugTemplate from "./gy-footer.component.pug";
 import { Awaited } from "../../../common";
 
 export interface Scope {
-  data?: Awaited<ReturnType<FooterService['get']>>;
+  data?: Awaited<ReturnType<FooterService["get"]>>;
 }
 
 export class GyFooterComponent extends Component {
@@ -14,7 +14,7 @@ export class GyFooterComponent extends Component {
   protected autobind = true;
 
   scope: Scope = {
-    data: undefined
+    data: undefined,
   };
 
   static get observedAttributes(): string[] {
@@ -30,7 +30,11 @@ export class GyFooterComponent extends Component {
   }
 
   protected async beforeBind() {
-    const credits = NavigationService.getInstance().newItem("Credits, Quellcode und API", "url", "/credits");
+    const credits = NavigationService.getInstance().newItem(
+      "Credits, Quellcode und API",
+      "url",
+      "/credits"
+    );
     this.scope.data = await FooterService.getInstance().get();
     this.scope.data?.links.unshift(credits);
     await super.beforeBind();
