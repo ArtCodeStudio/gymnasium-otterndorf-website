@@ -124,8 +124,9 @@ export class GyNavbarComponent extends Component {
       for (const searchResult of searchResults) {
         // -1 to prevent flashing on hight dpi screens
         searchResult.style.top = this.visibleHeight - 1 + "px";
-        searchResult.style.maxHeight = `calc(100vh - ${this.visibleHeight - 1
-          }px)`;
+        searchResult.style.maxHeight = `calc(100vh - ${
+          this.visibleHeight - 1
+        }px)`;
       }
     }
 

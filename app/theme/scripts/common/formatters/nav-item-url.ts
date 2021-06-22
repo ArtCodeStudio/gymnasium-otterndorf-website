@@ -7,6 +7,6 @@ import { StrapiGqlComponentNavigationNavigationLevelEntry } from "../types";
 export const navItemUrlFormatter = {
   name: "nav-item-url",
   read(item: StrapiGqlComponentNavigationNavigationLevelEntry) {
-    return NavigationService.getInstance().getHref(item)
+    return NavigationService.getInstance().getHref(item);
   },
 };

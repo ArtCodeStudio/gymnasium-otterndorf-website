@@ -9,6 +9,7 @@ import { SectionGallerySlideshow } from "./section-gallery-slideshow";
 import { SectionBlackboardSlideshow } from "./section-blackboard-slideshow";
 import { SectionBlogSlideshow } from "./section-blog-slideshow";
 import { SectionStudentQuote } from "./section-student-quote";
+import { SectionIFrame } from "./section-iframe";
 
 /**
  * Type for transformed sections
@@ -24,4 +25,5 @@ export type Section =
   | SectionGallerySlideshow
   | SectionBlackboardSlideshow
   | SectionBlogSlideshow
-  | SectionStudentQuote;
+  | SectionStudentQuote
+  | SectionIFrame;

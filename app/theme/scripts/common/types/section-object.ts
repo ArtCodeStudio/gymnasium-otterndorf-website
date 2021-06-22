@@ -9,6 +9,7 @@ import { HomeCalendar } from "./home-calendar";
 import { SectionGallerySlideshow } from "./section-gallery-slideshow";
 import { SectionBlackboardSlideshow } from "./section-blackboard-slideshow";
 import { SectionBlogSlideshow } from "./section-blog-slideshow";
+import { SectionIFrame } from "./section-iframe";
 
 /**
  * Type for transformed sections
@@ -25,4 +26,5 @@ export interface SectionObject {
   blackboardSlideshow?: SectionBlackboardSlideshow;
   blogSlideshow?: SectionBlogSlideshow;
   studentQuote?: SectionStudentQuote;
+  iframe?: SectionIFrame;
 }

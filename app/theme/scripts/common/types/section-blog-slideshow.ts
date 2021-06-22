@@ -1,3 +1,4 @@
-import { StrapiGqlComponentSectionBlogSlideshow } from "./strapi-gql";
+import { StrapiGqlComponentSectionBlogSlideshowFragmentFragment } from "./strapi-gql";
 
-export type SectionBlogSlideshow = StrapiGqlComponentSectionBlogSlideshow;
+export type SectionBlogSlideshow =
+  StrapiGqlComponentSectionBlogSlideshowFragmentFragment;

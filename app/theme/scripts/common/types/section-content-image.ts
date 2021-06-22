@@ -1,3 +1,4 @@
-import { StrapiGqlComponentContentImage } from "./strapi-gql";
+import { StrapiGqlComponentContentImageFragmentFragment } from "./strapi-gql";
 
-export type SectionContentImage = StrapiGqlComponentContentImage;
+export type SectionContentImage =
+  StrapiGqlComponentContentImageFragmentFragment;

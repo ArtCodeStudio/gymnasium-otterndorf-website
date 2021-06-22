@@ -1,6 +1,7 @@
-export interface SectionContentText {
-  __typename: "ComponentContentText";
-  id: string;
+import { StrapiGqlComponentContentTextFragmentFragment } from "./strapi-gql";
+
+export interface SectionContentText
+  extends StrapiGqlComponentContentTextFragmentFragment {
   /** Markdown text */
   text: string;
 }

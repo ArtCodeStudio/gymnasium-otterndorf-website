@@ -1,5 +1,14 @@
 import { GraphQLClient } from "./graphql";
-import { ResponseError, NavigationLink, StrapiGqlNavigationLink, StrapiGqlComponentLinkItemLink, StrapiGqlComponentLinkTypeWeb, StrapiGqlComponentLinkTypeStrapi, StrapiGqlComponentLinkTypeTeacher, StrapiGqlComponentLinkTypeMediaCenter } from "../types";
+import {
+  ResponseError,
+  NavigationLink,
+  StrapiGqlNavigationLink,
+  StrapiGqlComponentLinkItemLink,
+  StrapiGqlComponentLinkTypeWeb,
+  StrapiGqlComponentLinkTypeStrapi,
+  StrapiGqlComponentLinkTypeTeacher,
+  StrapiGqlComponentLinkTypeMediaCenter,
+} from "../types";
 import {
   strapiFormatter,
   pageFormatter,
@@ -55,19 +64,26 @@ export class NavigationService {
   }
 
   public getHref(
-    baseItem: StrapiGqlComponentNavigationNavigationLevelEntry | StrapiGqlNavigationLink
+    baseItem:
+      | StrapiGqlComponentNavigationNavigationLevelEntry
+      | StrapiGqlNavigationLink
   ) {
     let navigationLink: StrapiGqlNavigationLink | undefined;
     if ((baseItem as StrapiGqlNavigationLink).type) {
       navigationLink = baseItem as StrapiGqlNavigationLink;
     }
 
-    if ((baseItem as StrapiGqlComponentNavigationNavigationLevelEntry).navigation_link) {
-      navigationLink = (baseItem as StrapiGqlComponentNavigationNavigationLevelEntry).navigation_link as StrapiGqlNavigationLink;
+    if (
+      (baseItem as StrapiGqlComponentNavigationNavigationLevelEntry)
+        .navigation_link
+    ) {
+      navigationLink = (
+        baseItem as StrapiGqlComponentNavigationNavigationLevelEntry
+      ).navigation_link as StrapiGqlNavigationLink;
     }
 
     if (!navigationLink) {
-      throw new Error("Navigation link not found!")
+      throw new Error("Navigation link not found!");
     }
 
     const type = navigationLink.type?.[0];
@@ -94,26 +110,36 @@ export class NavigationService {
     }
   }
 
-  public newItem(title: string, type: 'page' | 'url' | 'strapi' | 'subject' | 'post' | 'blog' | 'gallery' | 'mediacenter', urlOrSlug: string): StrapiGqlComponentLinkItemLink {
+  public newItem(
+    title: string,
+    type:
+      | "page"
+      | "url"
+      | "strapi"
+      | "subject"
+      | "post"
+      | "blog"
+      | "gallery"
+      | "mediacenter",
+    urlOrSlug: string
+  ): StrapiGqlComponentLinkItemLink {
     const item: StrapiGqlComponentLinkItemLink = {
-      __typename: 'ComponentLinkItemLink',
+      __typename: "ComponentLinkItemLink",
       id: "0",
       navigation_link: {
-        __typename: 'NavigationLink',
+        __typename: "NavigationLink",
         id: "0",
         created_at: "0",
         updated_at: "0",
         title,
-        type: [
-
-        ]
-      }
-    }
+        type: [],
+      },
+    };
 
     switch (type) {
-      case 'page':
+      case "page":
         item.navigation_link?.type?.push({
-          __typename: 'ComponentLinkTypePage',
+          __typename: "ComponentLinkTypePage",
           id: "0",
           page: {
             id: "0",
@@ -122,32 +148,32 @@ export class NavigationService {
             slug: urlOrSlug,
             title,
           },
-        })
+        });
         break;
-      case 'url':
+      case "url":
         item.navigation_link?.type?.push({
-          __typename: 'ComponentLinkTypeWeb',
+          __typename: "ComponentLinkTypeWeb",
           URL: urlOrSlug,
-        } as StrapiGqlComponentLinkTypeWeb)
+        } as StrapiGqlComponentLinkTypeWeb);
         break;
-      case 'strapi':
+      case "strapi":
         item.navigation_link?.type?.push({
-          __typename: 'ComponentLinkTypeStrapi',
+          __typename: "ComponentLinkTypeStrapi",
           id: "0",
           URL: urlOrSlug,
         } as StrapiGqlComponentLinkTypeStrapi);
         break;
-      case 'subject':
+      case "subject":
         item.navigation_link?.type?.push({
-          __typename: 'ComponentLinkTypeTeacher',
+          __typename: "ComponentLinkTypeTeacher",
           id: "0",
           title,
           slug: urlOrSlug,
         } as StrapiGqlComponentLinkTypeTeacher);
         break;
-      case 'mediacenter':
+      case "mediacenter":
         item.navigation_link?.type?.push({
-          __typename: 'ComponentLinkTypeMediaCenter',
+          __typename: "ComponentLinkTypeMediaCenter",
           id: "0",
           mediaCenter: {
             id: "0",
@@ -155,26 +181,28 @@ export class NavigationService {
             updated_at: "0",
             title,
             slug: urlOrSlug,
-          }
+          },
         } as StrapiGqlComponentLinkTypeMediaCenter);
         break;
-      case 'post':
+      case "post":
         item.navigation_link?.type?.push({
-          __typename: 'ComponentLinkTypePost',
+          __typename: "ComponentLinkTypePost",
           id: "0",
           post: {
-            __typename: 'BlogEntry',
+            __typename: "BlogEntry",
             id: "0",
             created_at: "0",
             updated_at: "0",
             author: "Art+Code Studio",
             title,
             slug: urlOrSlug,
-          }
+          },
         });
         break;
       default:
-        console.debug(`TODO Add support to generate link item of type "${type}"`);
+        console.debug(
+          `TODO Add support to generate link item of type "${type}"`
+        );
         break;
     }
 

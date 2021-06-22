@@ -68,9 +68,13 @@ export class SectionsService {
         case "ComponentStudentSectionStudentQuote":
           sectionsObj.studentQuote = section;
           break;
+        case "ComponentSectionIFrame":
+          sectionsObj.iframe = section;
+          break;
         default:
           console.warn(
-            `[SectionsService] Unknown section type "${(section as any)?.__typename
+            `[SectionsService] Unknown section type "${
+              (section as any)?.__typename
             }" detected!`
           );
           break;
@@ -135,7 +139,7 @@ export class SectionsService {
             if (
               sectionGallerySlideshow.gallery?.images?.length &&
               sectionGallerySlideshow.gallery.images.length >
-              sectionGallerySlideshow.limit
+                sectionGallerySlideshow.limit
             ) {
               sectionGallerySlideshow.gallery.images =
                 sectionGallerySlideshow.gallery.images.slice(
@@ -150,7 +154,7 @@ export class SectionsService {
             if (
               sectionBlogSlideshow.blog?.blog_entries?.length &&
               sectionBlogSlideshow.blog?.blog_entries?.length >
-              sectionBlogSlideshow.limit
+                sectionBlogSlideshow.limit
             ) {
               sectionBlogSlideshow.blog.blog_entries =
                 sectionBlogSlideshow.blog.blog_entries.slice(
@@ -169,9 +173,13 @@ export class SectionsService {
           case "ComponentStudentSectionStudentQuote":
             sections.push(dynamicZoneSection);
             break;
+          case "ComponentSectionIFrame":
+            sections.push(dynamicZoneSection);
+            break;
           default:
             console.warn(
-              `[SectionsService] Unknown section type "${(dynamicZoneSection as any)?.__typename
+              `[SectionsService] Unknown section type "${
+                (dynamicZoneSection as any)?.__typename
               }" detected!`
             );
             sections.push(dynamicZoneSection as any);

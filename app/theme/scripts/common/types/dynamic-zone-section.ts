@@ -1,29 +1,31 @@
 import {
-  StrapiGqlComponentContentImage,
-  StrapiGqlComponentContentText,
-  StrapiGqlComponentContentButton,
-  StrapiGqlComponentSectionFacts,
-  StrapiGqlComponentHomeNews,
-  StrapiGqlComponentSectionSlideshow,
-  StrapiGqlComponentSectionGallerySlideshow,
+  StrapiGqlComponentContentImageFragmentFragment,
+  StrapiGqlComponentContentTextFragmentFragment,
+  StrapiGqlComponentContentButtonFragmentFragment,
+  StrapiGqlComponentSectionFactsFragmentFragment,
+  StrapiGqlComponentHomeNewsFragmentFragment,
+  StrapiGqlComponentSectionSlideshowFragmentFragment,
+  StrapiGqlComponentSectionGallerySlideshowFragmentFragment,
   StrapiGqlComponentHomeCalendar,
-  StrapiGqlComponentSectionBlackboardSlideshow,
-  StrapiGqlComponentSectionBlogSlideshow,
-  StrapiGqlComponentStudentSectionStudentQuote,
+  StrapiGqlComponentSectionBlackboardSlideshowFragmentFragment,
+  StrapiGqlComponentSectionBlogSlideshowFragmentFragment,
+  StrapiGqlComponentStudentSectionStudentQuoteFragmentFragment,
+  StrapiGqlComponentSectionIFrameFragmentFragment,
 } from "./strapi-gql";
 
 /**
  * Type for untransformed sections
  */
 export type DynamicZoneSection =
-  | StrapiGqlComponentContentImage
-  | StrapiGqlComponentContentText
-  | StrapiGqlComponentContentButton
-  | StrapiGqlComponentSectionFacts
-  | StrapiGqlComponentHomeNews
-  | StrapiGqlComponentSectionSlideshow
-  | StrapiGqlComponentSectionGallerySlideshow
+  | StrapiGqlComponentContentImageFragmentFragment
+  | StrapiGqlComponentContentTextFragmentFragment
+  | StrapiGqlComponentContentButtonFragmentFragment
+  | StrapiGqlComponentSectionFactsFragmentFragment
+  | StrapiGqlComponentHomeNewsFragmentFragment
+  | StrapiGqlComponentSectionSlideshowFragmentFragment
+  | StrapiGqlComponentSectionGallerySlideshowFragmentFragment
   | StrapiGqlComponentHomeCalendar
-  | StrapiGqlComponentSectionBlackboardSlideshow
-  | StrapiGqlComponentSectionBlogSlideshow
-  | StrapiGqlComponentStudentSectionStudentQuote;
+  | StrapiGqlComponentSectionBlackboardSlideshowFragmentFragment
+  | StrapiGqlComponentSectionBlogSlideshowFragmentFragment
+  | StrapiGqlComponentStudentSectionStudentQuoteFragmentFragment
+  | StrapiGqlComponentSectionIFrameFragmentFragment;
