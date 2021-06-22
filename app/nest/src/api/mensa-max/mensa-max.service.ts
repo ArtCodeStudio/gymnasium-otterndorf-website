@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { Builder, By, until } from 'selenium-webdriver';
 import * as firefox from 'selenium-webdriver/firefox';
 
+import { minify } from 'html-minifier';
+
 require('geckodriver');
 
 @Injectable()
@@ -21,8 +23,22 @@ export class MensaMaxService {
       const outerTableLocator = By.className('Outertable');
       await driver.wait(until.elementsLocated(outerTableLocator), 5000);
       const outerTableEl = await driver.findElement(outerTableLocator);
-      return await outerTableEl.getAttribute('outerHTML');
-      // return driver.getPageSource();
+      const html = await outerTableEl.getAttribute('outerHTML');
+      // const html = await driver.getPageSource();
+      return minify(html, {
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        collapseInlineTagWhitespace: true,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        removeEmptyElements: true,
+        removeEmptyAttributes: true,
+        removeOptionalTags: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        removeTagWhitespace: true,
+      });
     } finally {
       await driver.quit();
     }
