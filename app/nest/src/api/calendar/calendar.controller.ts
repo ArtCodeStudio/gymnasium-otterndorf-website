@@ -6,13 +6,14 @@ import { ApiQuery, ApiOperation, ApiTags } from '@nestjs/swagger';
 @ApiTags('calendar')
 @Controller('api/calendar')
 export class CalendarController {
-  constructor(protected calendar: CalendarService) { }
+  constructor(protected calendar: CalendarService) {}
 
   @ApiQuery({
-    name: "key",
-    description: "The calendar key, if no key is specified, the default public calendar is used.",
+    name: 'key',
+    description:
+      'The calendar key, if no key is specified, the default public calendar is used.',
     required: false,
-    type: String
+    type: String,
   })
   @Get()
   @ApiOperation({ summary: 'Get the next calendar entries' })
