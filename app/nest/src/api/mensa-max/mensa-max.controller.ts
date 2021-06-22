@@ -18,7 +18,7 @@ export class MensaMaxController {
   @Get()
   @ApiOperation({ summary: 'Get the dishes of the current week' })
   async get(@Res() res: Response) {
-    const html = await this.mensaMax.login();
+    const html = await this.mensaMax.getMensaTable();
     res.json({ html });
   }
 }
