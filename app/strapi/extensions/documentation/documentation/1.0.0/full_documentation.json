@@ -9,7 +9,8 @@
       "name": "Art+Code Studio Team",
       "email": "hi@artandcode.studio",
       "url": "https://artandcode.studio/"
-    }
+    },
+    "x-generation-date": "06/22/2021 12:57:01 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -8286,7 +8287,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8315,7 +8317,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8411,7 +8414,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8467,7 +8471,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8516,7 +8521,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8605,7 +8611,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8666,7 +8673,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8807,7 +8815,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8836,7 +8845,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8913,7 +8923,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8967,7 +8978,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -8979,6 +8991,47 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]
@@ -9106,7 +9159,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9135,7 +9189,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9231,7 +9286,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9287,7 +9343,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9336,7 +9393,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9425,7 +9483,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9486,7 +9545,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9627,7 +9687,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9656,7 +9717,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9733,7 +9795,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9787,7 +9850,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -9799,6 +9863,47 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]
@@ -13186,7 +13291,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13282,7 +13388,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13311,7 +13418,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13360,7 +13468,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13416,7 +13525,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13557,7 +13667,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13646,7 +13757,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13707,7 +13819,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13784,7 +13897,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13813,7 +13927,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13867,7 +13982,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -13879,6 +13995,47 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]
@@ -14092,7 +14249,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14188,7 +14346,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14217,7 +14376,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14266,7 +14426,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14322,7 +14483,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14463,7 +14625,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14552,7 +14715,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14613,7 +14777,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14690,7 +14855,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14719,7 +14885,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14773,7 +14940,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -14785,6 +14953,47 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]
@@ -15900,7 +16109,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -15996,7 +16206,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16025,7 +16236,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16081,7 +16293,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16130,7 +16343,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16271,7 +16485,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16360,7 +16575,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16421,7 +16637,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16498,7 +16715,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16527,7 +16745,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16581,7 +16800,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16593,6 +16813,47 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]
@@ -16637,7 +16898,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16733,7 +16995,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16762,7 +17025,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16818,7 +17082,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -16867,7 +17132,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -17008,7 +17274,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -17097,7 +17364,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -17158,7 +17426,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -17235,7 +17504,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -17264,7 +17534,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -17318,7 +17589,8 @@
                         "home.news",
                         "home.calendar",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -17330,6 +17602,47 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]

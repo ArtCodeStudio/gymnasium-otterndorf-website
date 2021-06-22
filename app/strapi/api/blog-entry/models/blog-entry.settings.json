@@ -32,7 +32,8 @@
         "home.calendar",
         "home.news",
         "section.facts",
-        "student-section.student-quote"
+        "student-section.student-quote",
+        "section.i-frame"
       ]
     },
     "blog_category": {

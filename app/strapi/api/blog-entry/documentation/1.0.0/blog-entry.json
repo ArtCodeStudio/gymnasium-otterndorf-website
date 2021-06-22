@@ -562,7 +562,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -591,7 +592,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -687,7 +689,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -743,7 +746,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -792,7 +796,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -881,7 +886,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -942,7 +948,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1083,7 +1090,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1112,7 +1120,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1189,7 +1198,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1243,7 +1253,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1255,6 +1266,47 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]
@@ -1382,7 +1434,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1411,7 +1464,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1507,7 +1561,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1563,7 +1618,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1612,7 +1668,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1701,7 +1758,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1762,7 +1820,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1903,7 +1962,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -1932,7 +1992,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -2009,7 +2070,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -2063,7 +2125,8 @@
                         "home.calendar",
                         "home.news",
                         "section.facts",
-                        "student-section.student-quote"
+                        "student-section.student-quote",
+                        "section.i-frame"
                       ]
                     },
                     "id": {
@@ -2075,6 +2138,47 @@
                   },
                   "required": [
                     "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.text",
+                        "content.image",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.blackboard-slideshow",
+                        "home.calendar",
+                        "home.news",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "URL": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "string",
+                      "default": "100%"
+                    },
+                    "height": {
+                      "type": "string",
+                      "default": "100vh"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "URL",
+                    "width",
+                    "height"
                   ]
                 }
               ]
