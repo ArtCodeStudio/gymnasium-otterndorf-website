@@ -2747,6 +2747,7 @@ __metadata:
   resolution: "@gymott/nest@workspace:app/nest"
   dependencies:
     "@gymott/common": "workspace:*"
+    "@joshuaavalon/cheerio-table-parser": ^2.0.3
     "@nestjs/cli": ^7.6.0
     "@nestjs/common": ^7.6.18
     "@nestjs/config": ^0.6.3
@@ -2763,6 +2764,7 @@ __metadata:
     "@types/cache-manager": ^3.4.0
     "@types/consolidate": ^0.14.0
     "@types/cookie-parser": ^1.4.2
+    "@types/domhandler": ^2.4.1
     "@types/express": ^4.17.12
     "@types/express-session": ^1.17.3
     "@types/html-minifier": ^4.0.0
@@ -3554,6 +3556,16 @@ __metadata:
     "@types/yargs": ^16.0.0
     chalk: ^4.0.0
   checksum: 7c1ef76bcb799a9010e6f1d5485ebb49b4052dcbc98f17f2979cd028688bb96f7b0072822e0e252659ef989d82c6c0a5cdd750b97b27e11c041efc735a0f84f4
+  languageName: node
+  linkType: hard
+
+"@joshuaavalon/cheerio-table-parser@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@joshuaavalon/cheerio-table-parser@npm:2.0.3"
+  dependencies:
+    cheerio: ^1.0.0-rc.5
+    lodash: ^4.17.20
+  checksum: 4e3b70687f365c7f2ab9921737ee8270b305f1ade79ed83d9f32944c712b623a6ecf9e8ec7970072f6c22643e277b499670b324508de6e81948b88e2bf1b98aa
   languageName: node
   linkType: hard
 
@@ -5813,6 +5825,13 @@ __metadata:
   version: 4.1.5
   resolution: "@types/debug@npm:4.1.5"
   checksum: 416ad24bc589be0fb8c78bea972aa7d4ffdf6b136239701b1792674463b2dbf8c6707f6055ec484f79ec1f2b528ffef90c87e55df7e4a0f458184cad5bf0cfc8
+  languageName: node
+  linkType: hard
+
+"@types/domhandler@npm:*, @types/domhandler@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@types/domhandler@npm:2.4.1"
+  checksum: bcd85fb5e4d661a0975cb6f9408a2062bba28db026db468c59d08b61520126c1a2b32a48e39866e434c2d366401101821ee07fe0e336777565d9258ad987c9c4
   languageName: node
   linkType: hard
 
@@ -9406,7 +9425,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cheerio@npm:^1.0.0-rc.10":
+"cheerio@npm:^1.0.0-rc.10, cheerio@npm:^1.0.0-rc.5":
   version: 1.0.0-rc.10
   resolution: "cheerio@npm:1.0.0-rc.10"
   dependencies:
@@ -11216,21 +11235,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"domhandler@npm:*, domhandler@npm:^4.0.0, domhandler@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "domhandler@npm:4.2.0"
+  dependencies:
+    domelementtype: ^2.2.0
+  checksum: 1bdb0ae6b9a93f4a2e8a77da304a435bfd35af0e52c5208f24277093b7fa2e6084cdbd4eb7fdd5c0ca5bf2c67736a19b258fe9e61588f4c49eaa0abde8d3595d
+  languageName: node
+  linkType: hard
+
 "domhandler@npm:^2.3.0":
   version: 2.4.2
   resolution: "domhandler@npm:2.4.2"
   dependencies:
     domelementtype: 1
   checksum: dbe99b096aaf6e0618efc2e7e39d46448cba00999b08ba14970ee4d7a8916c4d4d463fcc1b4a7f247b34f47d1c115eec8fa5f8a4d1e430b2207da32bdf41f49a
-  languageName: node
-  linkType: hard
-
-"domhandler@npm:^4.0.0, domhandler@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "domhandler@npm:4.2.0"
-  dependencies:
-    domelementtype: ^2.2.0
-  checksum: 1bdb0ae6b9a93f4a2e8a77da304a435bfd35af0e52c5208f24277093b7fa2e6084cdbd4eb7fdd5c0ca5bf2c67736a19b258fe9e61588f4c49eaa0abde8d3595d
   languageName: node
   linkType: hard
 
