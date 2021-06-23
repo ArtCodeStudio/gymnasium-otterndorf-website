@@ -31,7 +31,7 @@ export class MensaMaxService {
           collapseInlineTagWhitespace: true,
           removeAttributeQuotes: true,
           removeComments: true,
-          removeEmptyElements: true,
+          removeEmptyElements: false,
           removeEmptyAttributes: true,
           removeOptionalTags: true,
           removeRedundantAttributes: true,
@@ -49,7 +49,6 @@ export class MensaMaxService {
 
   async getData(p: string, e: string) {
     const url = `https://login.mensaonline.de/LOGINPLAN.ASPX?P=${p}&E=${e}`;
-    console.debug('url', url);
     const html = await this.getMensaTable(url, true);
     const $dom = cheerio.load(html);
 

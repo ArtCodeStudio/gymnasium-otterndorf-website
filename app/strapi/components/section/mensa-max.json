@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_section_mensa_maxes",
+  "info": {
+    "name": "MensaMax",
+    "icon": "carrot"
+  },
+  "options": {},
+  "attributes": {
+    "p": {
+      "type": "string",
+      "required": true,
+      "default": "CUX000"
+    },
+    "e": {
+      "type": "string",
+      "required": true,
+      "default": "SZO"
+    }
+  }
+}

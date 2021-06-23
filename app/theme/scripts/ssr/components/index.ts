@@ -10,6 +10,7 @@ export { GySectionCalendarComponent } from "./gy-section-calendar/gy-section-cal
 export { GySectionFactsComponent } from "./gy-section-facts/gy-section-facts.component";
 export { GySectionGallerySlideshowComponent } from "./gy-section-gallery-slideshow/gy-section-gallery-slideshow.component";
 export { GySectionIFrameComponent } from "./gy-section-iframe/gy-section-iframe.component";
+export { GySectionMensaMaxComponent } from "./gy-section-mensa-max/gy-section-mensa-max.component";
 export { GySectionNewsComponent } from "./gy-section-news/gy-section-news.component";
 export { GySectionImageComponent } from "./gy-section-image/gy-section-image.component";
 export { GySectionSlideshowComponent } from "./gy-section-slideshow/gy-section-slideshow.component";

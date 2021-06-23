@@ -7,6 +7,7 @@ export { GraphQLClient } from "./graphql";
 export { GyHomeService } from "./home";
 export { MarkdownService } from "./markdown";
 export { MediaCenterService } from "./media-center";
+export { MensaMaxService } from "./mensa-max";
 export { NavigationService } from "./navigation";
 export { PageService } from "./page";
 export { SchoolSubjectService } from "./school-subject";

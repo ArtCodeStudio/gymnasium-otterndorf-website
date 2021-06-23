@@ -1,0 +1,43 @@
+gy-mensa-max {
+  display: block;
+
+  .loading {
+    width: 100%;
+    height: 200px;
+    color: $blue;
+  }
+
+  table.Outertable {
+
+    min-width: 100%;
+    user-select: none;
+
+    input, #strDetails, #lblLegende1, #lblMeineBestellungen, [id^=tblrating_] {
+      display: none;
+    }
+    * {
+      background: transparent !important;
+    }
+
+    > tbody > tr:nth-child(2) {
+      display: none;
+    }
+
+    #tblMain {
+      min-width: 100%;
+    }
+
+    .tdHeaderTop {
+      min-width: 100%;
+      text-align: left;
+    }
+  
+    tr.tdHeader> th:first-child,
+    tr.tdFooter2 > td:first-child,
+    tr.tdFooter > td:first-child
+    {
+      display: none
+    }
+  }
+
+}

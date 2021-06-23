@@ -21,6 +21,7 @@ export * from "./section-content-text";
 export * from "./section-facts";
 export * from "./section-gallery-slideshow";
 export * from "./section-iframe";
+export * from "./section-mensa-max";
 export * from "./section-object";
 export * from "./section-slideshow-entry";
 export * from "./section-slideshow";
