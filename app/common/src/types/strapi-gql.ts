@@ -208,7 +208,7 @@ export type StrapiGqlBlogEntryConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlBlogEntryConnection>;
 };
 
-export type StrapiGqlBlogEntryContentDynamicZone = StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentHomeCalendar | StrapiGqlComponentHomeNews | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame;
+export type StrapiGqlBlogEntryContentDynamicZone = StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentHomeCalendar | StrapiGqlComponentHomeNews | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax;
 
 
 export type StrapiGqlBlogEntryGroupBy = {
@@ -833,7 +833,7 @@ export type StrapiGqlHomeInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type StrapiGqlHomeSectionsDynamicZone = StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionFacts | StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentHomeNews | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionIFrame;
+export type StrapiGqlHomeSectionsDynamicZone = StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionFacts | StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentHomeNews | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax;
 
 
 export type StrapiGqlI18NLocale = {
@@ -1894,7 +1894,7 @@ export type StrapiGqlSubjectConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlSubjectConnection>;
 };
 
-export type StrapiGqlSubjectContentDynamicZone = StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentHomeNews | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame;
+export type StrapiGqlSubjectContentDynamicZone = StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentHomeNews | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax;
 
 
 export type StrapiGqlSubjectGroupBy = {
@@ -3253,7 +3253,7 @@ export type StrapiGqlBlogEntryBasicFragmentFragment = (
   ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | (
     { __typename: 'ComponentContentButton' }
     & StrapiGqlComponentContentButtonFragmentFragment
-  ) | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' }>>> }
+  ) | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' }>>> }
 );
 
 export type StrapiGqlBlogEntryDetailFragmentFragment = (
@@ -3297,6 +3297,9 @@ export type StrapiGqlBlogEntryDetailFragmentFragment = (
   ) | (
     { __typename: 'ComponentSectionIFrame' }
     & StrapiGqlComponentSectionIFrameFragmentFragment
+  ) | (
+    { __typename: 'ComponentSectionMensaMax' }
+    & StrapiGqlComponentSectionMensaMaxFragmentFragment
   )>>> }
 );
 
@@ -3519,6 +3522,9 @@ export type StrapiGqlHomeFragmentFragment = (
   ) | (
     { __typename: 'ComponentSectionIFrame' }
     & StrapiGqlComponentSectionIFrameFragmentFragment
+  ) | (
+    { __typename: 'ComponentSectionMensaMax' }
+    & StrapiGqlComponentSectionMensaMaxFragmentFragment
   )>>> }
 );
 
@@ -3674,7 +3680,7 @@ export type StrapiGqlSchoolSubjectBasicFragmentFragment = (
   ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | (
     { __typename: 'ComponentContentButton' }
     & StrapiGqlComponentContentButtonFragmentFragment
-  ) | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' }>>> }
+  ) | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' }>>> }
 );
 
 export type StrapiGqlSchoolSubjectDetailFragmentFragment = (
@@ -3717,6 +3723,9 @@ export type StrapiGqlSchoolSubjectDetailFragmentFragment = (
   ) | (
     { __typename: 'ComponentSectionIFrame' }
     & StrapiGqlComponentSectionIFrameFragmentFragment
+  ) | (
+    { __typename: 'ComponentSectionMensaMax' }
+    & StrapiGqlComponentSectionMensaMaxFragmentFragment
   )>>> }
 );
 
