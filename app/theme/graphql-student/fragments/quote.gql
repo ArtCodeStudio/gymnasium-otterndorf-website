@@ -1,0 +1,11 @@
+fragment QuoteFragment on ComponentSectionsQuotes {
+  title
+  text
+  source
+  mascot {
+    formats
+    alternativeText
+    url
+  }
+  position
+}

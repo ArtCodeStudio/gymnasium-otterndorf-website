@@ -2,14 +2,19 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "Gymnasium Otterndorf Strapi Students REST API",
+    "title": "DOCUMENTATION",
     "description": "",
-    "termsOfService": "https://gym.artandcode.de/credits",
+    "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
     "contact": {
-      "name": "Art+Code Studio Team",
-      "email": "hi@artandcode.studio",
-      "url": "https://artandcode.studio/"
-    }
+      "name": "TEAM",
+      "email": "contact-email@something.io",
+      "url": "mywebsite.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-generation-date": "06/23/2021 3:44:40 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -18,16 +23,16 @@
   },
   "servers": [
     {
-      "url": "https://gym-strapi-student.artandcode.de",
+      "url": "http://localhost:1337",
       "description": "Development server"
     },
     {
-      "url": "https://strapi-student.gymnasium-otterndorf.de",
-      "description": "Production server"
+      "url": "YOUR_STAGING_SERVER",
+      "description": "Staging server"
     },
     {
-      "url": "http://localhost:1337",
-      "description": "Locale server"
+      "url": "YOUR_PRODUCTION_SERVER",
+      "description": "Production server"
     }
   ],
   "externalDocs": {
@@ -2590,7 +2595,9 @@
               "type": "object",
               "required": [
                 "id",
-                "text"
+                "text",
+                "mascot",
+                "position"
               ],
               "properties": {
                 "id": {
@@ -2604,6 +2611,87 @@
                 },
                 "title": {
                   "type": "string"
+                },
+                "mascot": {
+                  "required": [
+                    "id",
+                    "name",
+                    "hash",
+                    "mime",
+                    "size",
+                    "url",
+                    "provider"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {
+                      "type": "object"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {
+                      "type": "object"
+                    },
+                    "related": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "position": {
+                  "type": "string",
+                  "default": "topLeft",
+                  "enum": [
+                    "topLeft",
+                    "topRight",
+                    "bottomLeft",
+                    "bottomRight",
+                    "leftTop",
+                    "leftBottom",
+                    "rightTop",
+                    "rightBottom"
+                  ]
                 }
               }
             }
@@ -2618,7 +2706,9 @@
               "type": "object",
               "required": [
                 "id",
-                "text"
+                "text",
+                "mascot",
+                "position"
               ],
               "properties": {
                 "id": {
@@ -2632,6 +2722,87 @@
                 },
                 "title": {
                   "type": "string"
+                },
+                "mascot": {
+                  "required": [
+                    "id",
+                    "name",
+                    "hash",
+                    "mime",
+                    "size",
+                    "url",
+                    "provider"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {
+                      "type": "object"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {
+                      "type": "object"
+                    },
+                    "related": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "position": {
+                  "type": "string",
+                  "default": "topLeft",
+                  "enum": [
+                    "topLeft",
+                    "topRight",
+                    "bottomLeft",
+                    "bottomRight",
+                    "leftTop",
+                    "leftBottom",
+                    "rightTop",
+                    "rightBottom"
+                  ]
                 }
               }
             }

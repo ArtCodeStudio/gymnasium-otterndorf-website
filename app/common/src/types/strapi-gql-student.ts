@@ -35,6 +35,8 @@ export type ComponentSectionsQuoteInput = {
   text: Scalars['String'];
   source?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
+  mascot?: Maybe<Scalars['ID']>;
+  position?: Maybe<Enum_Componentsectionsquotes_Position>;
 };
 
 export type ComponentSectionsQuotes = {
@@ -43,9 +45,22 @@ export type ComponentSectionsQuotes = {
   text: Scalars['String'];
   source?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
+  mascot?: Maybe<UploadFile>;
+  position: Enum_Componentsectionsquotes_Position;
 };
 
 
+
+export enum Enum_Componentsectionsquotes_Position {
+  TopLeft = 'topLeft',
+  TopRight = 'topRight',
+  BottomLeft = 'bottomLeft',
+  BottomRight = 'bottomRight',
+  LeftTop = 'leftTop',
+  LeftBottom = 'leftBottom',
+  RightTop = 'rightTop',
+  RightBottom = 'rightBottom'
+}
 
 export type FileInfoInput = {
   name?: Maybe<Scalars['String']>;
@@ -814,6 +829,8 @@ export type EditComponentSectionsQuoteInput = {
   text?: Maybe<Scalars['String']>;
   source?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
+  mascot?: Maybe<Scalars['ID']>;
+  position?: Maybe<Enum_Componentsectionsquotes_Position>;
 };
 
 export type EditFileInput = {
@@ -902,12 +919,21 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type QuoteFragmentFragment = (
+  { __typename?: 'ComponentSectionsQuotes' }
+  & Pick<ComponentSectionsQuotes, 'title' | 'text' | 'source' | 'position'>
+  & { mascot?: Maybe<(
+    { __typename?: 'UploadFile' }
+    & Pick<UploadFile, 'formats' | 'alternativeText' | 'url'>
+  )> }
+);
+
 export type QuotesFragmentFragment = (
   { __typename: 'Quotes' }
   & Pick<Quotes, 'id' | 'created_at' | 'updated_at'>
   & { quotes?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentSectionsQuotes' }
-    & Pick<ComponentSectionsQuotes, 'title' | 'text' | 'source'>
+    & QuoteFragmentFragment
   )>>> }
 );
 

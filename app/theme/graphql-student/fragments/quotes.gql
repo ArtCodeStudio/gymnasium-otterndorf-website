@@ -1,3 +1,5 @@
+#import "./quote.gql"
+
 fragment QuotesFragment on Quotes {
   __typename
   id
@@ -5,10 +7,7 @@ fragment QuotesFragment on Quotes {
   updated_at
   quotes {
     ...on ComponentSectionsQuotes {
-      title
-      text
-      source
+      ...QuoteFragment
     }
-    
   }
 }

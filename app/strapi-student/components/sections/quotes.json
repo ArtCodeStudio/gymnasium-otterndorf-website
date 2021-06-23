@@ -16,6 +16,31 @@
     },
     "title": {
       "type": "string"
+    },
+    "mascot": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "topLeft",
+        "topRight",
+        "bottomLeft",
+        "bottomRight",
+        "leftTop",
+        "leftBottom",
+        "rightTop",
+        "rightBottom"
+      ],
+      "default": "topLeft",
+      "required": true
     }
   }
 }

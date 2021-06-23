@@ -8,7 +8,10 @@ import { strapiStudentFormatter } from "./strapi-student";
  */
 export const strapiStudentImageUrlFormatter = {
   name: "strapi-student-image-url",
-  read(image: StrapiImage, format: StrapiImageFormatType = "thumbnail") {
+  read(
+    image: StrapiImage,
+    format: StrapiImageFormatType | "original" = "thumbnail"
+  ) {
     const imageFormat = strapiImageFormatter.read(image, format);
     return strapiStudentFormatter.read(imageFormat.url);
   },

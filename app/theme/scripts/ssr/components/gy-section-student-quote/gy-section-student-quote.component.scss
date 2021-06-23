@@ -12,28 +12,38 @@ gy-section-student-quote {
         }
     }
 
-    /**
-     * @author Rik Schennink
-     * @see https://codepen.io/rikschennink/pen/mjywQb
-     */ 
+    img.mascot {
+        max-width: 250px;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+/**
+* @author Rik Schennink
+* @see https://codepen.io/rikschennink/pen/mjywQb
+*/ 
+.bubble {
+    // bubble layout
+    position: relative;
+    max-width: 100%;
+    
+    // bubble looks
+    background-color: $bubble-bg-color;
+    border-radius: 1rem;
+
+    @extend .shadow;
+    &::before {
+        // tip layout
+        content: '';
+        position: absolute;
+        width: 0;
+        border: $bubble-tip-size solid transparent;
+    }
+}
+
+@include media-breakpoint-down(md) {
     .bubble {
-        // bubble layout
-        position: relative;
-        max-width: 100%;
-        
-        // bubble looks
-        background-color: $bubble-bg-color;
-        border-radius: 1rem;
-
-        @extend .shadow;
-        &::before {
-            // tip layout
-            content: '';
-            position: absolute;
-            width: 0;
-            border: $bubble-tip-size solid transparent;
-        }
-
         &.bubble-top-left, &.bubble-top-right {
             // tip looks
             &::before {
@@ -67,14 +77,14 @@ gy-section-student-quote {
         }
 
         /**
-         *      *
-         *     ********
-         *     *      *
-         *     *      *
-         *     *      *
-         *     ********
-         *
-         */
+        *      *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      *
+        *     ********
+        *
+        */
         &.bubble-top-left {
             border-top: none;
             &::before {
@@ -83,14 +93,14 @@ gy-section-student-quote {
             }
         }
         /**
-         *
-         *     ********
-         *     *      *
-         *     *      *
-         *     *      *
-         *     ********
-         *      *
-         */
+        *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      *
+        *     ********
+        *      *
+        */
         &.bubble-bottom-left {
             &::before {
                 top: 100%;
@@ -98,14 +108,14 @@ gy-section-student-quote {
             }
         }
         /**
-         *           *
-         *     ********
-         *     *      *
-         *     *      *
-         *     *      *
-         *     ********
-         *
-         */
+        *           *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      *
+        *     ********
+        *
+        */
         &.bubble-top-right {
             &::before {
                 bottom: 100%;
@@ -113,14 +123,14 @@ gy-section-student-quote {
             }
         }
         /**
-         *
-         *     ********
-         *     *      *
-         *     *      *
-         *     *      *
-         *     ********
-         *           *
-         */
+        *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      *
+        *     ********
+        *           *
+        */
         &.bubble-bottom-right {
             &::before {
                 top: 100%;
@@ -128,14 +138,14 @@ gy-section-student-quote {
             }
         }
         /**
-         *
-         *     ********
-         *    **      *
-         *     *      *
-         *     *      *
-         *     ********
-         *
-         */
+        *
+        *     ********
+        *    **      *
+        *     *      *
+        *     *      *
+        *     ********
+        *
+        */
         &.bubble-left-top {
             &::before {
                 right: 100%;
@@ -143,14 +153,14 @@ gy-section-student-quote {
             }
         }
         /**
-         *
-         *     ********
-         *     *      *
-         *     *      *
-         *    **      *
-         *     ********
-         *
-         */
+        *
+        *     ********
+        *     *      *
+        *     *      *
+        *    **      *
+        *     ********
+        *
+        */
         &.bubble-left-bottom {
             &::before {
                 right: 100%;
@@ -158,14 +168,14 @@ gy-section-student-quote {
             }
         }
         /**
-         *
-         *     ********
-         *     *      **
-         *     *      *
-         *     *      *
-         *     ********
-         *
-         */
+        *
+        *     ********
+        *     *      **
+        *     *      *
+        *     *      *
+        *     ********
+        *
+        */
         &.bubble-right-top {
             &::before {
                 left: 100%;
@@ -173,15 +183,175 @@ gy-section-student-quote {
             }
         }
         /**
-         *
-         *     ********
-         *     *      *
-         *     *      *
-         *     *      **
-         *     ********
-         *
-         */
+        *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      **
+        *     ********
+        *
+        */
         &.bubble-right-bottom {
+            &::before {
+                left: 100%;
+                bottom: $bubble-tip-spacing;
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(md) {
+    .bubble {
+
+        &.bubble-md-top-left, &.bubble-md-top-right {
+            // tip looks
+            &::before {
+                border-bottom-color: $bubble-bg-color;
+                // filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+            }
+        }
+    
+        &.bubble-md-bottom-left, &.bubble-md-bottom-right {
+            // tip looks
+            &::before {
+                border-top-color: $bubble-bg-color;
+                // filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+            }
+        }
+    
+        &.bubble-md-left-top, &.bubble-md-left-bottom {
+            // tip looks
+            &::before {
+                border-right-color: $bubble-bg-color;
+                // filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+            }
+        }
+    
+        &.bubble-md-right-top, &.bubble-md-right-bottom {
+            // tip looks
+            &::before {
+                border-left-color: $bubble-bg-color;
+                // filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+            }
+        }
+
+        /**
+        *      *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      *
+        *     ********
+        *
+        */
+        &.bubble-md-top-left {
+            border-top: none;
+            &::before {
+                bottom: 100%;
+                left: $bubble-tip-spacing;
+            }
+        }
+        /**
+        *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      *
+        *     ********
+        *      *
+        */
+        &.bubble-md-bottom-left {
+            &::before {
+                top: 100%;
+                left: $bubble-tip-spacing;
+            }
+        }
+        /**
+        *           *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      *
+        *     ********
+        *
+        */
+        &.bubble-md-top-right {
+            &::before {
+                bottom: 100%;
+                right: $bubble-tip-spacing;
+            }
+        }
+        /**
+        *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      *
+        *     ********
+        *           *
+        */
+        &.bubble-md-bottom-right {
+            &::before {
+                top: 100%;
+                right: $bubble-tip-spacing;
+            }
+        }
+        /**
+        *
+        *     ********
+        *    **      *
+        *     *      *
+        *     *      *
+        *     ********
+        *
+        */
+        &.bubble-md-left-top {
+            &::before {
+                right: 100%;
+                top: $bubble-tip-spacing;
+            }
+        }
+        /**
+        *
+        *     ********
+        *     *      *
+        *     *      *
+        *    **      *
+        *     ********
+        *
+        */
+        &.bubble-md-left-bottom {
+            &::before {
+                right: 100%;
+                bottom: $bubble-tip-spacing;
+            }
+        }
+        /**
+        *
+        *     ********
+        *     *      **
+        *     *      *
+        *     *      *
+        *     ********
+        *
+        */
+        &.bubble-md-right-top {
+            &::before {
+                left: 100%;
+                top: $bubble-tip-spacing;
+            }
+        }
+        /**
+        *
+        *     ********
+        *     *      *
+        *     *      *
+        *     *      **
+        *     ********
+        *
+        */
+        &.bubble-md-right-bottom {
             &::before {
                 left: 100%;
                 bottom: $bubble-tip-spacing;

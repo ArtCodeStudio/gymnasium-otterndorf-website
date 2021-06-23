@@ -10,9 +10,14 @@ import type {
  */
 export const strapiStudentImageFormatter = {
   name: "strapi-student-image",
-  read(image: StrapiImage, format: StrapiImageFormatType = "thumbnail") {
+  read(
+    image: StrapiImage,
+    format: StrapiImageFormatType | "original" = "thumbnail"
+  ) {
     let imageFormat: StrapiImageFormat = image.formats.thumbnail;
     switch (format) {
+      case "original":
+        return image;
       case "large":
         imageFormat =
           image.formats.large ||
