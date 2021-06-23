@@ -2747,7 +2747,6 @@ __metadata:
   resolution: "@gymott/nest@workspace:app/nest"
   dependencies:
     "@gymott/common": "workspace:*"
-    "@joshuaavalon/cheerio-table-parser": ^2.0.3
     "@nestjs/cli": ^7.6.0
     "@nestjs/common": ^7.6.18
     "@nestjs/config": ^0.6.3
@@ -2764,7 +2763,6 @@ __metadata:
     "@types/cache-manager": ^3.4.0
     "@types/consolidate": ^0.14.0
     "@types/cookie-parser": ^1.4.2
-    "@types/domhandler": ^2.4.1
     "@types/express": ^4.17.12
     "@types/express-session": ^1.17.3
     "@types/html-minifier": ^4.0.0
@@ -3556,16 +3554,6 @@ __metadata:
     "@types/yargs": ^16.0.0
     chalk: ^4.0.0
   checksum: 7c1ef76bcb799a9010e6f1d5485ebb49b4052dcbc98f17f2979cd028688bb96f7b0072822e0e252659ef989d82c6c0a5cdd750b97b27e11c041efc735a0f84f4
-  languageName: node
-  linkType: hard
-
-"@joshuaavalon/cheerio-table-parser@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@joshuaavalon/cheerio-table-parser@npm:2.0.3"
-  dependencies:
-    cheerio: ^1.0.0-rc.5
-    lodash: ^4.17.20
-  checksum: 4e3b70687f365c7f2ab9921737ee8270b305f1ade79ed83d9f32944c712b623a6ecf9e8ec7970072f6c22643e277b499670b324508de6e81948b88e2bf1b98aa
   languageName: node
   linkType: hard
 
@@ -4605,6 +4593,45 @@ __metadata:
     jest: ^27.0.5
     jest-extended: ^0.11.5
     leaflet: ^1.7.1
+    prettier: 2.3.1
+    ts-jest: ^27.0.3
+    typescript: ^4.3.4
+    webpack: ^5.40.0
+    webpack-cli: ^4.7.2
+  languageName: unknown
+  linkType: soft
+
+"@ribajs/luxon@workspace:packages/riba/packages/luxon":
+  version: 0.0.0-use.local
+  resolution: "@ribajs/luxon@workspace:packages/riba/packages/luxon"
+  dependencies:
+    "@babel/cli": ^7.14.5
+    "@babel/core": ^7.14.6
+    "@babel/plugin-proposal-class-properties": ^7.14.5
+    "@babel/plugin-proposal-export-default-from": ^7.14.5
+    "@babel/plugin-proposal-object-rest-spread": ^7.14.7
+    "@babel/plugin-syntax-dynamic-import": ^7.8.3
+    "@babel/plugin-transform-runtime": ^7.14.5
+    "@babel/preset-env": ^7.14.7
+    "@babel/preset-typescript": ^7.14.5
+    "@babel/runtime": ^7.14.6
+    "@babel/runtime-corejs3": ^7.14.7
+    "@ribajs/core": "workspace:*"
+    "@ribajs/eslint-config": "workspace:*"
+    "@ribajs/tsconfig": "workspace:*"
+    "@types/jest": ^26.0.23
+    "@types/luxon": ^1.27.0
+    "@typescript-eslint/eslint-plugin": ^4.28.0
+    "@typescript-eslint/parser": ^4.28.0
+    babel-loader: ^8.2.2
+    babel-plugin-array-includes: ^2.0.3
+    core-js: ^3.15.0
+    eslint: ^7.29.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
+    jest: ^27.0.5
+    jest-extended: ^0.11.5
+    luxon: ^1.27.0
     prettier: 2.3.1
     ts-jest: ^27.0.3
     typescript: ^4.3.4
@@ -5828,13 +5855,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/domhandler@npm:*, @types/domhandler@npm:^2.4.1":
-  version: 2.4.1
-  resolution: "@types/domhandler@npm:2.4.1"
-  checksum: bcd85fb5e4d661a0975cb6f9408a2062bba28db026db468c59d08b61520126c1a2b32a48e39866e434c2d366401101821ee07fe0e336777565d9258ad987c9c4
-  languageName: node
-  linkType: hard
-
 "@types/emscripten@npm:^1.38.0":
   version: 1.39.4
   resolution: "@types/emscripten@npm:1.39.4"
@@ -6249,6 +6269,13 @@ __metadata:
   version: 2.3.3
   resolution: "@types/lunr@npm:2.3.3"
   checksum: ae9e99337eb7ba9b6673167f212f5054ff9116daf1d507224b28fa3cbacea126a1101f788160e707d834cb4f9aa285c257f30777f7795241d82660042d958a09
+  languageName: node
+  linkType: hard
+
+"@types/luxon@npm:^1.27.0":
+  version: 1.27.0
+  resolution: "@types/luxon@npm:1.27.0"
+  checksum: ebce0d4c671086c18517784abd5e49e836024d32eddcf189e03ecc1ef4547dadd194895461b53ea34c230e9eaf38f2d2c87183322e3dbcd5e0d658c6f9938995
   languageName: node
   linkType: hard
 
@@ -9425,7 +9452,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cheerio@npm:^1.0.0-rc.10, cheerio@npm:^1.0.0-rc.5":
+"cheerio@npm:^1.0.0-rc.10":
   version: 1.0.0-rc.10
   resolution: "cheerio@npm:1.0.0-rc.10"
   dependencies:
@@ -11235,21 +11262,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domhandler@npm:*, domhandler@npm:^4.0.0, domhandler@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "domhandler@npm:4.2.0"
-  dependencies:
-    domelementtype: ^2.2.0
-  checksum: 1bdb0ae6b9a93f4a2e8a77da304a435bfd35af0e52c5208f24277093b7fa2e6084cdbd4eb7fdd5c0ca5bf2c67736a19b258fe9e61588f4c49eaa0abde8d3595d
-  languageName: node
-  linkType: hard
-
 "domhandler@npm:^2.3.0":
   version: 2.4.2
   resolution: "domhandler@npm:2.4.2"
   dependencies:
     domelementtype: 1
   checksum: dbe99b096aaf6e0618efc2e7e39d46448cba00999b08ba14970ee4d7a8916c4d4d463fcc1b4a7f247b34f47d1c115eec8fa5f8a4d1e430b2207da32bdf41f49a
+  languageName: node
+  linkType: hard
+
+"domhandler@npm:^4.0.0, domhandler@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "domhandler@npm:4.2.0"
+  dependencies:
+    domelementtype: ^2.2.0
+  checksum: 1bdb0ae6b9a93f4a2e8a77da304a435bfd35af0e52c5208f24277093b7fa2e6084cdbd4eb7fdd5c0ca5bf2c67736a19b258fe9e61588f4c49eaa0abde8d3595d
   languageName: node
   linkType: hard
 
@@ -17045,7 +17072,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"luxon@npm:^1.21.3, luxon@npm:^1.3.3":
+"luxon@npm:^1.21.3, luxon@npm:^1.27.0, luxon@npm:^1.3.3":
   version: 1.27.0
   resolution: "luxon@npm:1.27.0"
   checksum: c60f73b6b94bdd4e43c731133aa746388b907a26a5a426478c2520b263bec1dae4dc6e269a3410374789551309c65af5d245fae4cef61b72c3ad64a4c3e8b2b9

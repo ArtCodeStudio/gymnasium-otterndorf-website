@@ -33,7 +33,8 @@
         "home.news",
         "section.facts",
         "student-section.student-quote",
-        "section.i-frame"
+        "section.i-frame",
+        "section.mensa-max"
       ]
     },
     "blog_category": {

@@ -589,7 +589,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -686,7 +687,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -716,7 +718,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -773,7 +776,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -823,7 +827,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -965,7 +970,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1055,7 +1061,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1117,7 +1124,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1195,7 +1203,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1225,7 +1234,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1280,7 +1290,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1310,7 +1321,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1333,6 +1345,44 @@
                     "URL",
                     "width",
                     "height"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame",
+                        "section.mensa-max"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "p": {
+                      "type": "string",
+                      "default": "CUX000"
+                    },
+                    "e": {
+                      "type": "string",
+                      "default": "SZO"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "p",
+                    "e"
                   ]
                 }
               ]
@@ -1378,7 +1428,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1475,7 +1526,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1505,7 +1557,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1562,7 +1615,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1612,7 +1666,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1754,7 +1809,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1844,7 +1900,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1906,7 +1963,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1984,7 +2042,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -2014,7 +2073,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -2069,7 +2129,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -2099,7 +2160,8 @@
                         "home.calendar",
                         "section.facts",
                         "student-section.student-quote",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -2122,6 +2184,44 @@
                     "URL",
                     "width",
                     "height"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.gallery-slideshow",
+                        "section.slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame",
+                        "section.mensa-max"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "p": {
+                      "type": "string",
+                      "default": "CUX000"
+                    },
+                    "e": {
+                      "type": "string",
+                      "default": "SZO"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "p",
+                    "e"
                   ]
                 }
               ]

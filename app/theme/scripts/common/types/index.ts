@@ -2,6 +2,7 @@ export * from "./awaited";
 export * from "./blog";
 export * from "./breadcrumb";
 export * from "./home-news";
+export * from "./mensa-max-data";
 export * from "./dynamic-zone-section";
 export * from "./entry-type";
 export * from "./navigation-link";

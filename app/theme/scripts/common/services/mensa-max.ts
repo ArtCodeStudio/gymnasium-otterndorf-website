@@ -1,6 +1,7 @@
 import { HttpService } from "@ribajs/core";
 import { hashCode } from "@ribajs/utils/src/type";
 import { defaultCache } from "./cache";
+import { MensaMaxData } from "../types";
 
 export class MensaMaxService {
   protected static instance: MensaMaxService;
@@ -23,10 +24,10 @@ export class MensaMaxService {
   async get(p: string, e: string, expiresIn: number | string = "60 mins") {
     const url = `${this.host}${this.url}/${p}/${e}`;
     const cacheKey = hashCode(url);
-    return defaultCache.resolve<any>(
+    return defaultCache.resolve<MensaMaxData>(
       cacheKey,
       async () => {
-        const res = await HttpService.getJSON<any>(url);
+        const res = await HttpService.getJSON<MensaMaxData>(url);
         return res.body;
       },
       expiresIn

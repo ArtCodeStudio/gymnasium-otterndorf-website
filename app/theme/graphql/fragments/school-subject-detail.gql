@@ -11,6 +11,7 @@
 #import "./component-student-section-student-quote.gql"
 #import "./component-section-blog-slideshow.gql"
 #import "./component-section-iframe.gql"
+#import "./component-section-mensa-max.gql"
 
 fragment SchoolSubjectDetailFragment on Subject {
   __typename
@@ -63,6 +64,9 @@ fragment SchoolSubjectDetailFragment on Subject {
     }
     ... on ComponentSectionIFrame {
       ...ComponentSectionIFrameFragment
+    }
+    ...on ComponentSectionMensaMax {
+      ...ComponentSectionMensaMaxFragment
     }
   }
 }

@@ -9,6 +9,7 @@
 #import "./component-student-section-student-quote.gql"
 #import "./component-section-blog-slideshow.gql"
 #import "./component-section-iframe.gql"
+#import "./component-section-mensa-max.gql"
 
 fragment BlogEntryDetailFragment on BlogEntry {
   __typename
@@ -65,6 +66,9 @@ fragment BlogEntryDetailFragment on BlogEntry {
     }
     ... on ComponentSectionIFrame {
       ...ComponentSectionIFrameFragment
+    }
+    ...on ComponentSectionMensaMax {
+      ...ComponentSectionMensaMaxFragment
     }
   }
 }

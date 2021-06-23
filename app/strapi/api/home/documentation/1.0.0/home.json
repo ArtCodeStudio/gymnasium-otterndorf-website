@@ -338,7 +338,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -388,7 +389,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -443,7 +445,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -473,7 +476,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -570,7 +574,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -648,7 +653,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -705,7 +711,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -735,7 +742,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -877,7 +885,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -907,7 +916,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -997,7 +1007,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1059,7 +1070,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1082,6 +1094,44 @@
                     "URL",
                     "width",
                     "height"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.i-frame",
+                        "section.mensa-max"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "p": {
+                      "type": "string",
+                      "default": "CUX000"
+                    },
+                    "e": {
+                      "type": "string",
+                      "default": "SZO"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "p",
+                    "e"
                   ]
                 }
               ]
@@ -1111,7 +1161,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1161,7 +1212,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1216,7 +1268,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1246,7 +1299,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1343,7 +1397,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1421,7 +1476,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1478,7 +1534,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1508,7 +1565,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1650,7 +1708,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1680,7 +1739,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1770,7 +1830,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1832,7 +1893,8 @@
                         "student-section.student-quote",
                         "content.button",
                         "section.blog-slideshow",
-                        "section.i-frame"
+                        "section.i-frame",
+                        "section.mensa-max"
                       ]
                     },
                     "id": {
@@ -1855,6 +1917,44 @@
                     "URL",
                     "width",
                     "height"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.i-frame",
+                        "section.mensa-max"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "p": {
+                      "type": "string",
+                      "default": "CUX000"
+                    },
+                    "e": {
+                      "type": "string",
+                      "default": "SZO"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "p",
+                    "e"
                   ]
                 }
               ]
