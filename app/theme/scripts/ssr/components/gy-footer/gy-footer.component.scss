@@ -10,7 +10,16 @@ gy-footer {
   }
 
   .footer-map {
-    min-height: 30vh
+    min-height: 30vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    .footer-map-buttons {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 400;
+    }
   }
 
   .contact-info {
