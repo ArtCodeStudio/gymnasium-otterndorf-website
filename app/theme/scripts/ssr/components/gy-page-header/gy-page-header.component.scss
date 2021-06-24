@@ -1,6 +1,23 @@
 gy-page-header {
   display: block;
+
+  .draggable {
+    * {
+      user-select: none;
+      user-drag: none;
+    }
+  }
+
   .breadcrumb-item {
+
+    + .breadcrumb-item {
+      // For no wrap the breadcrumb separator
+      &:before {
+        float: none;
+        display: inline-block;
+      }
+    }
+
     a {
       color: $body-color;
       &.active {

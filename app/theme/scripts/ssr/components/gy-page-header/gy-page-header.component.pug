@@ -1,9 +1,9 @@
-nav(rv-if="header.breadcrumbs | size" aria-label="breadcrumb")
-  ol.breadcrumb
-    li.breadcrumb-item(rv-each-breadcrumb="header.breadcrumbs" rv-class-active="breadcrumb.active")
+nav.scrollbar-green.scrollbar-x-auto(rv-if="header.breadcrumbs | size" aria-label="breadcrumb" csr-rv-scrollbar-draggable csr-rv-scroll-position-x="'end'")
+  ol.breadcrumb.d-flex.flex-nowrap.text-nowrap
+    li.breadcrumb-item(draggable="false" rv-each-breadcrumb="header.breadcrumbs" rv-class-active="breadcrumb.active")
       small(rv-if="breadcrumb.active" aria-current="page" rv-text="breadcrumb.type | entry-type-name | prefer breadcrumb.label")
       small(rv-unless="breadcrumb.active")
-        a(rv-if="breadcrumb.url" rv-href="breadcrumb.url" rv-text="breadcrumb.type | entry-type-name | prefer breadcrumb.label")
+        a(draggable="false" rv-if="breadcrumb.url" rv-href="breadcrumb.url" rv-text="breadcrumb.type | entry-type-name | prefer breadcrumb.label")
         span(rv-unless="breadcrumb.url" rv-text="breadcrumb.type | entry-type-name | prefer breadcrumb.label")
 
 h1(rv-text="header.title")
