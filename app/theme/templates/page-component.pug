@@ -20,6 +20,12 @@ html(lang='en')
     meta(name="msapplication-config" content="/favicons/browserconfig.xml")
     meta(name="theme-color" content="#ffffff")
 
+    //- Feeds
+    link(rel="alternate" type="application/rss+xml" title="Gymnasium Otterndorf Podcast" href="/api/feed/podcast")
+    link(rel="alternate" type="application/rss+xml" title="Gymnasium Otterndorf Neuigkeiten (RSS 2.0)" href="/api/feed/rss")
+    link(rel="alternate" type="application/atom+xml" title="Gymnasium Otterndorf Neuigkeiten (Atom)" href="/api/feed/atom")
+    link(rel="alternate" type="application/feed+json" title="Gymnasium Otterndorf Neuigkeiten (JSON Feed 1.0)" href="/api/feed/json")
+
     //- Preload
     link(rel="prefetch" href="/images/bg-gallery.webp")
     

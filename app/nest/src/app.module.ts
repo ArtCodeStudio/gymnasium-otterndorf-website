@@ -22,6 +22,8 @@ import { WebhookService } from './webhook/webhook.service';
 import { WebhookController } from './webhook/webhook.controller';
 import { MensaMaxController } from './api/mensa-max/mensa-max.controller';
 import { MensaMaxService } from './api/mensa-max/mensa-max.service';
+import { FeedController } from './api/feed/feed.controller';
+import { FeedService } from './api/feed/feed.service';
 
 @Module({
   imports: [
@@ -37,6 +39,7 @@ import { MensaMaxService } from './api/mensa-max/mensa-max.service';
     SuggestController,
     WebhookController,
     MensaMaxController,
+    FeedController,
   ],
   providers: [
     ConfigService,
@@ -51,6 +54,7 @@ import { MensaMaxService } from './api/mensa-max/mensa-max.service';
     MarkdownService,
     WebhookService,
     MensaMaxService,
+    FeedService,
   ],
 })
 export class AppModule {

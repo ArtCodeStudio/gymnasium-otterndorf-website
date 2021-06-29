@@ -33,7 +33,7 @@ export class NavService {
       case 'blog':
         return '/blog/' + slug;
       case 'ComponentLinkTypeMediaCenter':
-        return `/media-center/${slug}`
+        return `/media-center/${slug}`;
       case 'gallery':
       case 'ComponentLinkTypeGallery':
         return `/gallery/${slug}`;
@@ -58,11 +58,11 @@ export class NavService {
         return NavService.buildHref(type.__typename, type.schulfach?.slug);
       case 'ComponentLinkTypeWeb':
         return type.URL ? type.URL : '';
-      case "ComponentLinkTypeStrapi":
+      case 'ComponentLinkTypeStrapi':
         return NavService.buildHref(type.__typename, type.URL);
-      case "ComponentLinkTypeMediaCenter":
+      case 'ComponentLinkTypeMediaCenter':
         return NavService.buildHref(type.__typename, type.mediaCenter?.slug);
-      case "ComponentLinkTypeGallery":
+      case 'ComponentLinkTypeGallery':
         return NavService.buildHref(type.__typename, type.gallery?.slug);
     }
   }
