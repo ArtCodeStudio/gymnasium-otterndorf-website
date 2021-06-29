@@ -9,11 +9,6 @@ import { bs5PhotoswipeModule } from "@ribajs/bs5-photoswipe";
 import { leafletModule } from "@ribajs/leaflet-map";
 import { masonryModule } from "@ribajs/masonry";
 import { artAndCodeStudioModule } from "@ribajs/artcodestudio";
-import {
-  CalendarFormatter,
-  LocaleFormatter,
-  DateFormatFormatter,
-} from "@ribajs/moment";
 
 // Common
 import * as commonBinders from "../common/binders";
@@ -73,11 +68,6 @@ export class CSRApp {
     this.riba.module.regist(bs5PhotoswipeModule);
     this.riba.module.regist(leafletModule);
     this.riba.module.regist(masonryModule);
-    this.riba.module.formatter.regists({
-      CalendarFormatter,
-      LocaleFormatter,
-      DateFormatFormatter,
-    });
     this.riba.module.regist(contentSliderModule.init({}));
     this.riba.module.regist(artAndCodeStudioModule.init({}));
 

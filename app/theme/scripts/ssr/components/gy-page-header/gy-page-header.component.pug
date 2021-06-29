@@ -19,7 +19,7 @@ small(rv-if="header.teachers | size")
     span(rv-if="header.teachers | size | minus 1 | gt %teacher%") , 
 
 small(rv-if="showDate | and header.updatedAt")
-  span(rv-text="header.updatedAt | moment-locale 'de' | calendar | capitalize")
+  span(rv-text="header.updatedAt | lx-from-iso | lx-set-locale 'de' | lx-to-moment-calendar | capitalize")
   span(rv-if="header.author")
     |  
 small(rv-if="header.author")

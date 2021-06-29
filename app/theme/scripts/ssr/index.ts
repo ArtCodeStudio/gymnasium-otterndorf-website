@@ -6,11 +6,6 @@ import { Bs5IconComponent, bs5Module } from "@ribajs/bs5";
 import { artAndCodeStudioModule } from "@ribajs/artcodestudio";
 
 // import { EventDispatcher } from "@ribajs/events";
-import {
-  CalendarFormatter,
-  LocaleFormatter,
-  DateFormatFormatter,
-} from "@ribajs/moment";
 
 import { luxonModule } from "@ribajs/luxon";
 // import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
@@ -77,12 +72,6 @@ riba.module.regist(coreModule.init({}));
 riba.module.regist(SSRModule.init({}));
 riba.module.regist(artAndCodeStudioModule.init({}));
 riba.module.regist(luxonModule.init({}));
-
-riba.module.formatter.regists({
-  CalendarFormatter,
-  LocaleFormatter,
-  DateFormatFormatter,
-});
 
 // After all components are bound wie trigger the ssr ready event,
 // as soon as this event is triggered the ssr rendering will be done returns the rendered html
