@@ -52,6 +52,7 @@
     "@ribajs/iconset": "workspace:*",
     "@ribajs/jquery": "workspace:*",
     "@ribajs/leaflet-map": "workspace:*",
+    "@ribajs/luxon": "workspace:*",
     "@ribajs/moment": "workspace:*",
     "@ribajs/monaco-editor": "workspace:*",
     "@ribajs/octobercms": "workspace:*",

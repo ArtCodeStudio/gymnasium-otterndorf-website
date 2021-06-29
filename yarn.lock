@@ -2873,6 +2873,7 @@ __metadata:
     "@ribajs/i18n": "workspace:*"
     "@ribajs/iconset": "workspace:*"
     "@ribajs/leaflet-map": "workspace:*"
+    "@ribajs/luxon": "workspace:*"
     "@ribajs/masonry": "workspace:*"
     "@ribajs/moment": "workspace:*"
     "@ribajs/router": "workspace:*"
@@ -4601,7 +4602,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ribajs/luxon@workspace:packages/riba/packages/luxon":
+"@ribajs/luxon@workspace:*, @ribajs/luxon@workspace:packages/riba/packages/luxon":
   version: 0.0.0-use.local
   resolution: "@ribajs/luxon@workspace:packages/riba/packages/luxon"
   dependencies:

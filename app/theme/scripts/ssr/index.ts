@@ -11,6 +11,8 @@ import {
   LocaleFormatter,
   DateFormatFormatter,
 } from "@ribajs/moment";
+
+import { luxonModule } from "@ribajs/luxon";
 // import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 // import { ready } from "@ribajs/utils/src/dom";
 
@@ -74,6 +76,7 @@ riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 riba.module.regist(coreModule.init({}));
 riba.module.regist(SSRModule.init({}));
 riba.module.regist(artAndCodeStudioModule.init({}));
+riba.module.regist(luxonModule.init({}));
 
 riba.module.formatter.regists({
   CalendarFormatter,
