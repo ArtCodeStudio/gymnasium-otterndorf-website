@@ -36,7 +36,8 @@
         "section.facts",
         "student-section.student-quote",
         "section.i-frame",
-        "section.mensa-max"
+        "section.mensa-max",
+        "section.podcast-episode"
       ]
     },
     "calendar_key": {

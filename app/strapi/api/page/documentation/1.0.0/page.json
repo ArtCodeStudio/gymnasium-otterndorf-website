@@ -551,7 +551,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -649,7 +650,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -680,7 +682,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -731,7 +734,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -789,7 +793,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -932,7 +937,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1023,7 +1029,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1086,7 +1093,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1165,7 +1173,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1196,7 +1205,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1252,7 +1262,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1283,7 +1294,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1325,7 +1337,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1344,6 +1357,212 @@
                     "id",
                     "p",
                     "e"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "pubDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "image": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "explicit": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "episode": {
+                      "type": "integer"
+                    },
+                    "season": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "default": "Full",
+                      "enum": [
+                        "Full",
+                        "Trailer",
+                        "Bonus"
+                      ]
+                    },
+                    "block": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "content",
+                    "pubDate",
+                    "description",
+                    "explicit",
+                    "episode",
+                    "season",
+                    "type",
+                    "block"
                   ]
                 }
               ]
@@ -1559,7 +1778,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1657,7 +1877,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1688,7 +1909,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1739,7 +1961,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1797,7 +2020,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -1940,7 +2164,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -2031,7 +2256,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -2094,7 +2320,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -2173,7 +2400,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -2204,7 +2432,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -2260,7 +2489,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -2291,7 +2521,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -2333,7 +2564,8 @@
                         "section.facts",
                         "student-section.student-quote",
                         "section.i-frame",
-                        "section.mensa-max"
+                        "section.mensa-max",
+                        "section.podcast-episode"
                       ]
                     },
                     "id": {
@@ -2352,6 +2584,212 @@
                     "id",
                     "p",
                     "e"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "pubDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "image": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "explicit": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "episode": {
+                      "type": "integer"
+                    },
+                    "season": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "default": "Full",
+                      "enum": [
+                        "Full",
+                        "Trailer",
+                        "Bonus"
+                      ]
+                    },
+                    "block": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "content",
+                    "pubDate",
+                    "description",
+                    "explicit",
+                    "episode",
+                    "season",
+                    "type",
+                    "block"
                   ]
                 }
               ]

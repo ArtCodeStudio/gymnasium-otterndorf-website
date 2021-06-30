@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/podcast-feed",
+      "handler": "podcast-feed.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/podcast-feed",
+      "handler": "podcast-feed.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/podcast-feed",
+      "handler": "podcast-feed.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "kind": "singleType",
+  "collectionName": "podcast_feeds",
+  "info": {
+    "name": "Podcast Feed",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 3800
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "language": {
+      "type": "string",
+      "required": true,
+      "default": "de",
+      "maxLength": 2,
+      "minLength": 2
+    },
+    "Category": {
+      "type": "component",
+      "repeatable": true,
+      "component": "podcast.category",
+      "required": true
+    },
+    "explicit": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "default": "Gymnasium Otterndorf",
+      "required": true
+    },
+    "owner_name": {
+      "type": "string",
+      "required": true
+    },
+    "owner_email": {
+      "type": "email",
+      "default": "schule@gymnasium-otterndorf.de",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Episodic",
+        "Serial"
+      ],
+      "default": "Episodic",
+      "required": true
+    },
+    "copyright": {
+      "type": "string",
+      "default": "Copyright 2021 Gymnasium Otterndorf",
+      "required": true
+    },
+    "block": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "complete": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "blogs": {
+      "collection": "blog-category"
+    }
+  }
+}

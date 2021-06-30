@@ -26,7 +26,8 @@
         "content.button",
         "section.blog-slideshow",
         "section.i-frame",
-        "section.mensa-max"
+        "section.mensa-max",
+        "section.podcast-episode"
       ]
     }
   }

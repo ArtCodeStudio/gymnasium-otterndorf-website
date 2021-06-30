@@ -4,8 +4,6 @@ import { MarkdownService } from '../markdown/markdown.service';
 import { Feed } from 'feed';
 import * as Podcast from 'podcast';
 
-// https://github.com/maxnowack/node-podcast
-
 @Injectable()
 export class FeedService {
   constructor(
@@ -13,6 +11,7 @@ export class FeedService {
     protected readonly markdown: MarkdownService,
   ) {}
 
+  // TODO properties, see https://github.com/jpmonette/feed
   public async get() {
     const feed = new Feed({
       title: 'Gymnasium Otterndorf Neuigkeiten',
@@ -41,6 +40,7 @@ export class FeedService {
     return feed;
   }
 
+  // TODO properties, see https://github.com/maxnowack/node-podcast
   public async getPodcast() {
     const feed = new Podcast({
       title: 'Gymnasium Otterndorf Podcast',
