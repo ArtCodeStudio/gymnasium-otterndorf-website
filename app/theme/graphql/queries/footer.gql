@@ -1,10 +1,10 @@
 #import "../fragments/navigation-link.gql"
+#import "../fragments/image.gql"
 
 query footer {
   footer {
     map_image {
-      url
-      alternativeText
+      ...ImageFragment
     }
   	map_link
     contact_info

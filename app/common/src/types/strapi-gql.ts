@@ -3506,7 +3506,10 @@ export type StrapiGqlBlogEntryBasicFragmentFragment = (
   ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | (
     { __typename: 'ComponentContentButton' }
     & StrapiGqlComponentContentButtonFragmentFragment
-  ) | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' } | { __typename: 'ComponentSectionPodcastEpisode' }>>> }
+  ) | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' } | (
+    { __typename: 'ComponentSectionPodcastEpisode' }
+    & StrapiGqlComponentSectionPodcastEpisodeFragmentFragment
+  )>>> }
 );
 
 export type StrapiGqlBlogEntryDetailFragmentFragment = (
@@ -3572,7 +3575,7 @@ export type StrapiGqlComponentBlackboardSlideFragmentFragment = (
     & StrapiGqlSchoolSubjectBasicFragmentFragment
   )>, image?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats' | 'alternativeText' | 'url'>
+    & StrapiGqlImageFragmentFragment
   )> }
 );
 
@@ -3593,7 +3596,7 @@ export type StrapiGqlComponentContentImageFragmentFragment = (
   & Pick<StrapiGqlComponentContentImage, 'id' | 'caption'>
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats' | 'alternativeText' | 'url'>
+    & StrapiGqlImageFragmentFragment
   )> }
 );
 
@@ -3607,7 +3610,7 @@ export type StrapiGqlComponentGalleryImageFragmentFragment = (
   & Pick<StrapiGqlComponentGalleryImage, 'id' | 'title' | 'caption'>
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
+    & StrapiGqlImageFragmentFragment
   )> }
 );
 
@@ -3686,7 +3689,7 @@ export type StrapiGqlComponentSectionPodcastEpisodeFragmentFragment = (
     & StrapiGqlPodcastEpisodeUploadFileFragmentFragment
   )>, image?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats' | 'url'>
+    & StrapiGqlImageFragmentFragment
   )> }
 );
 
@@ -3703,7 +3706,7 @@ export type StrapiGqlComponentSlideshowEntryBlogFragmentFragment = (
   & Pick<StrapiGqlComponentSlideshowSlideshowEntryBlog, 'id' | 'subtitle' | 'label'>
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
+    & StrapiGqlImageFragmentFragment
   )>, color?: Maybe<(
     { __typename?: 'ComponentTypesColor' }
     & StrapiGqlColorFragmentFragment
@@ -3718,7 +3721,7 @@ export type StrapiGqlComponentSlideshowEntryPageFragmentFragment = (
   & Pick<StrapiGqlComponentSlideshowSlideshowEntryPage, 'id' | 'subtitle' | 'label'>
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
+    & StrapiGqlImageFragmentFragment
   )>, color?: Maybe<(
     { __typename?: 'ComponentTypesColor' }
     & StrapiGqlColorFragmentFragment
@@ -3733,7 +3736,7 @@ export type StrapiGqlComponentSlideshowEntryFragmentFragment = (
   & Pick<StrapiGqlComponentSlideshowSlideshowEntry, 'id' | 'subtitle'>
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
+    & StrapiGqlImageFragmentFragment
   )>, color?: Maybe<(
     { __typename?: 'ComponentTypesColor' }
     & StrapiGqlColorFragmentFragment
@@ -3797,6 +3800,11 @@ export type StrapiGqlHomeFragmentFragment = (
     { __typename: 'ComponentSectionPodcastEpisode' }
     & StrapiGqlComponentSectionPodcastEpisodeFragmentFragment
   )>>> }
+);
+
+export type StrapiGqlImageFragmentFragment = (
+  { __typename?: 'UploadFile' }
+  & Pick<StrapiGqlUploadFile, 'formats' | 'alternativeText' | 'url'>
 );
 
 export type StrapiGqlMediaCenterFragmentFragment = (
@@ -4033,7 +4041,7 @@ export type StrapiGqlTeacherDetailFragmentFragment = (
   & Pick<StrapiGqlTeacher, 'id' | 'slug' | 'name' | 'first_name' | 'biography'>
   & { image?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
+    & StrapiGqlImageFragmentFragment
   )>, subjects?: Maybe<Array<Maybe<(
     { __typename?: 'Subject' }
     & StrapiGqlSchoolSubjectBasicFragmentFragment
@@ -4124,7 +4132,7 @@ export type StrapiGqlFooterQuery = (
     & Pick<StrapiGqlFooter, 'map_link' | 'contact_info'>
     & { map_image?: Maybe<(
       { __typename?: 'UploadFile' }
-      & Pick<StrapiGqlUploadFile, 'url' | 'alternativeText'>
+      & StrapiGqlImageFragmentFragment
     )>, link?: Maybe<Array<Maybe<(
       { __typename?: 'ComponentLinkItemLink' }
       & { navigation_link?: Maybe<(

@@ -1,7 +1,9 @@
+#import "./image.gql"
+
 fragment ComponentGalleryImageFragment on ComponentGalleryImage {
   id
   image {
-    formats
+    ...ImageFragment
   }
   title
   caption

@@ -1,4 +1,5 @@
 #import "./school-subject-basic.gql"
+#import "./image.gql"
 
 fragment ComponentBlackboardSlideFragment on ComponentBlackboardSlide {
   id
@@ -8,8 +9,6 @@ fragment ComponentBlackboardSlideFragment on ComponentBlackboardSlide {
     }
   }
   image {
-    formats
-    alternativeText
-    url
+    ...ImageFragment
   }
 }

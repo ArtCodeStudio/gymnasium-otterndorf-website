@@ -919,12 +919,17 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type ImageFragmentFragment = (
+  { __typename?: 'UploadFile' }
+  & Pick<UploadFile, 'formats' | 'alternativeText' | 'url'>
+);
+
 export type QuoteFragmentFragment = (
   { __typename?: 'ComponentSectionsQuotes' }
   & Pick<ComponentSectionsQuotes, 'title' | 'text' | 'source' | 'position'>
   & { mascot?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<UploadFile, 'formats' | 'alternativeText' | 'url'>
+    & ImageFragmentFragment
   )> }
 );
 

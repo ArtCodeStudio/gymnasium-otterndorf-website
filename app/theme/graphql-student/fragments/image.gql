@@ -1,0 +1,5 @@
+fragment ImageFragment on UploadFile {
+  formats
+  alternativeText
+  url
+}

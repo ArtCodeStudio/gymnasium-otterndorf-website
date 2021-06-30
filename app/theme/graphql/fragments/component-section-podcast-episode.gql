@@ -1,4 +1,5 @@
 #import "./podcast-episode-upload-file.gql"
+#import "./image.gql"
 
 fragment ComponentSectionPodcastEpisodeFragment on ComponentSectionPodcastEpisode {
   __typename
@@ -12,10 +13,7 @@ fragment ComponentSectionPodcastEpisodeFragment on ComponentSectionPodcastEpisod
   pubDate
   description
   image {
-    ... on UploadFile {
-      formats
-      url
-    }
+    ...ImageFragment
   }
   explicit
   episode

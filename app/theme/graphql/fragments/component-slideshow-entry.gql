@@ -1,9 +1,10 @@
 #import "./color.gql"
+#import "./image.gql"
 
 fragment ComponentSlideshowEntryFragment on ComponentSlideshowSlideshowEntry {
   id
   image {
-    formats
+    ...ImageFragment
   }
   subtitle
   color {

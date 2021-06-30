@@ -1,9 +1,9 @@
+#import "./image.gql"
+
 fragment ComponentContentImageFragment on ComponentContentImage {
   id
   image {
-    formats
-    alternativeText
-    url
+    ...ImageFragment
   }
   caption
 }

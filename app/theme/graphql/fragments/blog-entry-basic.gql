@@ -2,6 +2,8 @@
 #import "./component-content-image.gql"
 #import "./component-content-button.gql"
 
+#import "./component-section-podcast-episode.gql"
+
 # Shorter version if BlogEntryDetailFragment, e.g. for news, search results and blog post overview
 fragment BlogEntryBasicFragment on BlogEntry {
   __typename
@@ -27,6 +29,10 @@ fragment BlogEntryBasicFragment on BlogEntry {
     }
     ... on ComponentContentButton {
       ...ComponentContentButtonFragment
+    }
+    # Other sections we can extract content (like texts and images) from
+    ... on ComponentSectionPodcastEpisode {
+      ...ComponentSectionPodcastEpisodeFragment
     }
   }
 }
