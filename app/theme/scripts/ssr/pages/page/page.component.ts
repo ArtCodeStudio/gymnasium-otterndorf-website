@@ -6,14 +6,13 @@ import {
   Page,
   PageHeader,
   replaceBodyPageClass,
-  Post,
 } from "../../../common";
 
 export interface Scope {
   assets: Page["assets"];
   sections: Section[];
   header: PageHeader | Record<string, never>;
-  blogEntries: Post[];
+  // blogEntries: Post[];
   calendarKey: string;
   page: Page | Record<string, never>;
 }
@@ -28,7 +27,7 @@ export class PagePageComponent extends PageComponent {
   scope: Scope = {
     page: {},
     assets: [],
-    blogEntries: [],
+    // blogEntries: [],
     sections: [],
     header: {},
     calendarKey: "",
@@ -66,23 +65,13 @@ export class PagePageComponent extends PageComponent {
     }
   }
 
-  protected setPosts(page: Page) {
-    if (page?.["blog_entries"]) {
-      for (const blogEntry of page?.["blog_entries"]) {
-        if (blogEntry) {
-          this.scope.blogEntries.push(blogEntry as Post);
-        }
-      }
-    }
-  }
-
   protected setTitle(page: Page) {
     if (page?.title) {
       this.head.title = page.title;
     }
   }
 
-  // TODO @Daniel
+  // TODO
   protected setCalendarKey(page: Page) {
     this.scope.calendarKey = page?.["calendar_key"] || "";
   }
@@ -98,7 +87,6 @@ export class PagePageComponent extends PageComponent {
         this.setSections(page);
         this.setHeader(page);
         this.setAssets(page);
-        this.setPosts(page);
       }
     } catch (error) {
       this.throw(error);

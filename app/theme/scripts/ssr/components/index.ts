@@ -12,6 +12,7 @@ export { GySectionGallerySlideshowComponent } from "./gy-section-gallery-slidesh
 export { GySectionIFrameComponent } from "./gy-section-iframe/gy-section-iframe.component";
 export { GySectionMensaMaxComponent } from "./gy-section-mensa-max/gy-section-mensa-max.component";
 export { GySectionNewsComponent } from "./gy-section-news/gy-section-news.component";
+export { GySectionPodcastEpisodeComponent } from "./gy-section-podcast-episode/gy-section-podcast-episode.component";
 export { GySectionImageComponent } from "./gy-section-image/gy-section-image.component";
 export { GySectionSlideshowComponent } from "./gy-section-slideshow/gy-section-slideshow.component";
 export { GySectionStudentQuoteComponent } from "./gy-section-student-quote/gy-section-student-quote.component";

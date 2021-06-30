@@ -74,6 +74,9 @@ export class SectionsService {
         case "ComponentSectionMensaMax":
           sectionsObj.mensamax = section;
           break;
+        case "ComponentSectionPodcastEpisode":
+          sectionsObj.podcastEpisode = section;
+          break;
         default:
           console.warn(
             `[SectionsService] Unknown section type "${
@@ -180,6 +183,9 @@ export class SectionsService {
             sections.push(dynamicZoneSection);
             break;
           case "ComponentSectionMensaMax":
+            sections.push(dynamicZoneSection);
+            break;
+          case "ComponentSectionPodcastEpisode":
             sections.push(dynamicZoneSection);
             break;
           default:

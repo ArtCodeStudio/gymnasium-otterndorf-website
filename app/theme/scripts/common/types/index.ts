@@ -24,6 +24,7 @@ export * from "./section-gallery-slideshow";
 export * from "./section-iframe";
 export * from "./section-mensa-max";
 export * from "./section-object";
+export * from "./section-podcast-episode";
 export * from "./section-slideshow-entry";
 export * from "./section-slideshow";
 export * from "./section-student-quote";

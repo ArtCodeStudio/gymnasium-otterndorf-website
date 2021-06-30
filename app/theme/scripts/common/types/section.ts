@@ -11,6 +11,7 @@ import { SectionBlogSlideshow } from "./section-blog-slideshow";
 import { SectionStudentQuote } from "./section-student-quote";
 import { SectionIFrame } from "./section-iframe";
 import { SectionMensaMax } from "./section-mensa-max";
+import { SectionPodcastEpisode } from "./section-podcast-episode";
 
 /**
  * Type for transformed sections
@@ -28,4 +29,5 @@ export type Section =
   | SectionBlogSlideshow
   | SectionStudentQuote
   | SectionIFrame
-  | SectionMensaMax;
+  | SectionMensaMax
+  | SectionPodcastEpisode;

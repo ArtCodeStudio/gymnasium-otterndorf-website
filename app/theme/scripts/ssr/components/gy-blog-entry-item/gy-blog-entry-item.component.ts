@@ -1,6 +1,11 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { BlogService, SectionObject, Post } from "../../../common";
+import {
+  BlogService,
+  SectionObject,
+  Post,
+  StrapiGqlImageFragmentFragment,
+} from "../../../common";
 import pugTemplate from "./gy-blog-entry-item.component.pug";
 
 export interface Scope {
@@ -9,6 +14,8 @@ export interface Scope {
   showCategory: boolean;
   catTextAt: number;
   sections: SectionObject;
+  md: string;
+  image?: StrapiGqlImageFragmentFragment;
 }
 
 export class GyBlogEntryItemComponent extends Component {
@@ -23,6 +30,8 @@ export class GyBlogEntryItemComponent extends Component {
     showCategory: true,
     catTextAt: 300,
     sections: {},
+    md: "",
+    image: undefined,
   };
 
   static get observedAttributes(): string[] {
@@ -34,9 +43,18 @@ export class GyBlogEntryItemComponent extends Component {
   }
 
   protected async beforeBind() {
-    await super.afterBind();
+    await super.beforeBind();
     if (this.scope.post) {
       this.scope.sections = await this.blog.getSectionsObject(this.scope.post);
+      this.scope.md =
+        this.scope.sections.text?.text ||
+        this.scope.sections.podcastEpisode?.description ||
+        "";
+
+      this.scope.image =
+        this.scope.sections.image?.image ||
+        this.scope.sections.podcastEpisode?.image ||
+        undefined;
     }
   }
 
