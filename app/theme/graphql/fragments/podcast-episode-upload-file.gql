@@ -1,0 +1,6 @@
+fragment PodcastEpisodeUploadFileFragment on UploadFile {
+  mime
+  url
+  ext
+  name
+}

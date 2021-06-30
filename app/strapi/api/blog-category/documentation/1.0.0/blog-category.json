@@ -565,12 +565,6 @@
                 "slug": {
                   "type": "uid"
                 },
-                "pages": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "author": {
                   "type": "string"
                 },

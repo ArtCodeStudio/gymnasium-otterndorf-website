@@ -678,12 +678,6 @@
                         "assets": {
                           "type": "dynamiczone"
                         },
-                        "blog_entries": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -766,12 +760,6 @@
                         },
                         "slug": {
                           "type": "uid"
-                        },
-                        "pages": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
                         },
                         "author": {
                           "type": "string"
@@ -1160,12 +1148,6 @@
                         "assets": {
                           "type": "dynamiczone"
                         },
-                        "blog_entries": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -1248,12 +1230,6 @@
                         },
                         "slug": {
                           "type": "uid"
-                        },
-                        "pages": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
                         },
                         "author": {
                           "type": "string"

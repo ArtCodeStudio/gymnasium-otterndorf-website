@@ -1,0 +1,25 @@
+#import "./podcast-episode-upload-file.gql"
+
+fragment ComponentSectionPodcastEpisodeFragment on ComponentSectionPodcastEpisode {
+  __typename
+  id
+  title
+  content {
+    ... on UploadFile {
+      ...PodcastEpisodeUploadFileFragment
+    }
+  }
+  pubDate
+  description
+  image {
+    ... on UploadFile {
+      formats
+      url
+    }
+  }
+  explicit
+  episode
+  season
+  type
+  block
+}

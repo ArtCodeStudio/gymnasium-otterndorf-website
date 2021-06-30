@@ -51,11 +51,6 @@
       "components": [
         "sidebar.assets"
       ]
-    },
-    "blog_entries": {
-      "via": "pages",
-      "collection": "blog-entry",
-      "dominant": true
     }
   }
 }

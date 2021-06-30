@@ -47,10 +47,6 @@
       "targetField": "title",
       "required": true
     },
-    "pages": {
-      "via": "blog_entries",
-      "collection": "page"
-    },
     "author": {
       "type": "string",
       "required": true,

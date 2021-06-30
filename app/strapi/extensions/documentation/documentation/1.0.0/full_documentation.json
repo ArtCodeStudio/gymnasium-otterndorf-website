@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/30/2021 11:53:06 AM"
+    "x-generation-date": "06/30/2021 1:57:43 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -8516,12 +8516,6 @@
                 "slug": {
                   "type": "uid"
                 },
-                "pages": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "author": {
                   "type": "string"
                 },
@@ -9222,12 +9216,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -9328,7 +9316,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -9654,54 +9643,6 @@
           },
           "slug": {
             "type": "uid"
-          },
-          "pages": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title",
-                "slug"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "slug": {
-                  "type": "uid"
-                },
-                "content": {
-                  "type": "dynamiczone"
-                },
-                "calendar_key": {
-                  "type": "string"
-                },
-                "blog_categories": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "assets": {
-                  "type": "dynamiczone"
-                },
-                "blog_entries": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
           },
           "author": {
             "type": "string",
@@ -10363,12 +10304,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -10469,7 +10404,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -10768,12 +10704,6 @@
           },
           "slug": {
             "type": "uid"
-          },
-          "pages": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "author": {
             "type": "string",
@@ -11488,12 +11418,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -11772,7 +11696,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -12530,12 +12455,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -12814,7 +12733,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -13927,12 +13847,6 @@
                         "assets": {
                           "type": "dynamiczone"
                         },
-                        "blog_entries": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -14015,12 +13929,6 @@
                         },
                         "slug": {
                           "type": "uid"
-                        },
-                        "pages": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
                         },
                         "author": {
                           "type": "string"
@@ -14409,12 +14317,6 @@
                         "assets": {
                           "type": "dynamiczone"
                         },
-                        "blog_entries": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -14497,12 +14399,6 @@
                         },
                         "slug": {
                           "type": "uid"
-                        },
-                        "pages": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
                         },
                         "author": {
                           "type": "string"
@@ -15374,12 +15270,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -15512,7 +15402,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -15933,52 +15824,6 @@
                   ]
                 }
               ]
-            }
-          },
-          "blog_entries": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title",
-                "slug",
-                "author"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "content": {
-                  "type": "dynamiczone"
-                },
-                "blog_category": {
-                  "type": "string"
-                },
-                "slug": {
-                  "type": "uid"
-                },
-                "pages": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "author": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
             }
           }
         }
@@ -16601,12 +16446,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -16739,7 +16578,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -17135,12 +16975,6 @@
               ]
             }
           },
-          "blog_entries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "created_by": {
             "type": "string"
           },
@@ -17446,10 +17280,6 @@
                 }
               }
             }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -17652,10 +17482,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -17898,12 +17724,6 @@
                         "slug": {
                           "type": "uid"
                         },
-                        "pages": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
                         "author": {
                           "type": "string"
                         },
@@ -18066,12 +17886,6 @@
                         },
                         "assets": {
                           "type": "dynamiczone"
-                        },
-                        "blog_entries": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
                         },
                         "created_by": {
                           "type": "string"
@@ -18353,12 +18167,6 @@
                         "slug": {
                           "type": "uid"
                         },
-                        "pages": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
                         "author": {
                           "type": "string"
                         },
@@ -18521,12 +18329,6 @@
                         },
                         "assets": {
                           "type": "dynamiczone"
-                        },
-                        "blog_entries": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
                         },
                         "created_by": {
                           "type": "string"
@@ -19246,12 +19048,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -19384,7 +19180,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -20304,12 +20101,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -20442,7 +20233,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {

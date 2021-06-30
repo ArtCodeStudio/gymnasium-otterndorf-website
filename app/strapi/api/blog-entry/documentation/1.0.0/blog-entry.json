@@ -1181,12 +1181,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -1287,7 +1281,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -1613,54 +1608,6 @@
           },
           "slug": {
             "type": "uid"
-          },
-          "pages": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title",
-                "slug"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "slug": {
-                  "type": "uid"
-                },
-                "content": {
-                  "type": "dynamiczone"
-                },
-                "calendar_key": {
-                  "type": "string"
-                },
-                "blog_categories": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "assets": {
-                  "type": "dynamiczone"
-                },
-                "blog_entries": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
           },
           "author": {
             "type": "string",
@@ -2322,12 +2269,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -2428,7 +2369,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -2727,12 +2669,6 @@
           },
           "slug": {
             "type": "uid"
-          },
-          "pages": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "author": {
             "type": "string",

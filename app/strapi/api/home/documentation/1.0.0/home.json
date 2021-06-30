@@ -622,12 +622,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -906,7 +900,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {
@@ -1664,12 +1659,6 @@
                           "assets": {
                             "type": "dynamiczone"
                           },
-                          "blog_entries": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
                           "created_by": {
                             "type": "string"
                           },
@@ -1948,7 +1937,8 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "title"
                   ]
                 },
                 {

@@ -12,6 +12,7 @@
 #import "./component-section-blog-slideshow.gql"
 #import "./component-section-iframe.gql"
 #import "./component-section-mensa-max.gql"
+#import "./component-section-podcast-episode.gql"
 
 fragment PageDetailFragment on Page {
   __typename
@@ -28,10 +29,6 @@ fragment PageDetailFragment on Page {
       }
       name
     }
-  }
-
-  blog_entries {
-    ...BlogEntryBasicFragment
   }
 
   content {
@@ -76,6 +73,9 @@ fragment PageDetailFragment on Page {
     }
     ...on ComponentSectionMensaMax {
       ...ComponentSectionMensaMaxFragment
+    }
+    ... on ComponentSectionPodcastEpisode {
+      ...ComponentSectionPodcastEpisodeFragment
     }
   }
 }

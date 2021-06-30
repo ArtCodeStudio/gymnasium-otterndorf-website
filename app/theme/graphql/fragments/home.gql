@@ -10,6 +10,7 @@
 #import "./component-section-blog-slideshow.gql"
 #import "./component-section-iframe.gql"
 #import "./component-section-mensa-max.gql"
+#import "./component-section-podcast-episode.gql"
 
 fragment HomeFragment on Home {
   sections {
@@ -54,6 +55,9 @@ fragment HomeFragment on Home {
     }
     ...on ComponentSectionMensaMax {
       ...ComponentSectionMensaMaxFragment
+    }
+    ... on ComponentSectionPodcastEpisode {
+      ...ComponentSectionPodcastEpisodeFragment
     }
   }
 }
