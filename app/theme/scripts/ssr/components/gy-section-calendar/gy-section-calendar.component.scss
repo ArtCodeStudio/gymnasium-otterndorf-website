@@ -6,6 +6,28 @@ gy-section-calendar {
     margin: 0;
     padding: 0;
     .event {
+      display: grid;
+      grid-template-columns: 7rem auto;
+      grid-template-rows: 7rem;
+      .calendar-date {
+        margin: 0 0.75rem 0.75rem 0;
+        background: white;
+        border: 1rem transparent;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        box-shadow: 0 3px rgba(180, 180, 180, 0.5);
+        .calendar-date-day {
+          color: #72b52b;
+        }
+        .calendar-date-month {
+          text-transform: uppercase;
+        }
+      }
+      .calendar-info {
+      }
       p {
         margin: 0;
       }
@@ -18,5 +40,4 @@ gy-section-calendar {
       }
     }
   }
-  
 }
