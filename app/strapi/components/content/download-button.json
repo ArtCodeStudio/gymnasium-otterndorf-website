@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_content_download_buttons",
+  "info": {
+    "name": "Download Button",
+    "icon": "download"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "alignment": {
+      "type": "enumeration",
+      "enum": [
+        "Left",
+        "Center",
+        "Right"
+      ],
+      "default": "Center",
+      "required": true
+    },
+    "color": {
+      "type": "component",
+      "repeatable": true,
+      "component": "types.color",
+      "required": true
+    },
+    "file": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    }
+  }
+}

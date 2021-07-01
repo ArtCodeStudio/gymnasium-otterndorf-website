@@ -552,7 +552,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -651,7 +652,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -683,7 +685,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -735,7 +738,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -794,7 +798,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -938,7 +943,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1030,7 +1036,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1094,7 +1101,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1168,7 +1176,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1200,7 +1209,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1257,7 +1267,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1290,7 +1301,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1333,7 +1345,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1372,7 +1385,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1558,6 +1572,148 @@
                     "season",
                     "type",
                     "block"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode",
+                        "content.download-button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "color": {
+                            "type": "string",
+                            "default": "blue",
+                            "enum": [
+                              "blue",
+                              "green",
+                              "cyan",
+                              "greenlight",
+                              "yellow",
+                              "red",
+                              "light",
+                              "dark",
+                              "white"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "file": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color",
+                    "file"
                   ]
                 }
               ]
@@ -1728,7 +1884,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1827,7 +1984,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1859,7 +2017,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1911,7 +2070,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -1970,7 +2130,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2114,7 +2275,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2206,7 +2368,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2270,7 +2433,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2344,7 +2508,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2376,7 +2541,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2433,7 +2599,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2466,7 +2633,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2509,7 +2677,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2548,7 +2717,8 @@
                         "student-section.student-quote",
                         "section.i-frame",
                         "section.mensa-max",
-                        "section.podcast-episode"
+                        "section.podcast-episode",
+                        "content.download-button"
                       ]
                     },
                     "id": {
@@ -2734,6 +2904,148 @@
                     "season",
                     "type",
                     "block"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode",
+                        "content.download-button"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "alignment": {
+                      "type": "string",
+                      "default": "Center",
+                      "enum": [
+                        "Left",
+                        "Center",
+                        "Right"
+                      ]
+                    },
+                    "color": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "color": {
+                            "type": "string",
+                            "default": "blue",
+                            "enum": [
+                              "blue",
+                              "green",
+                              "cyan",
+                              "greenlight",
+                              "yellow",
+                              "red",
+                              "light",
+                              "dark",
+                              "white"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "file": {
+                      "required": [
+                        "id",
+                        "name",
+                        "hash",
+                        "mime",
+                        "size",
+                        "url",
+                        "provider"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "alternativeText": {
+                          "type": "string"
+                        },
+                        "caption": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "formats": {
+                          "type": "object"
+                        },
+                        "hash": {
+                          "type": "string"
+                        },
+                        "ext": {
+                          "type": "string"
+                        },
+                        "mime": {
+                          "type": "string"
+                        },
+                        "size": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "previewUrl": {
+                          "type": "string"
+                        },
+                        "provider": {
+                          "type": "string"
+                        },
+                        "provider_metadata": {
+                          "type": "object"
+                        },
+                        "related": {
+                          "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "alignment",
+                    "color",
+                    "file"
                   ]
                 }
               ]
