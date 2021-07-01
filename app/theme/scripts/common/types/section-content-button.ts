@@ -1,4 +1,8 @@
-import { StrapiGqlComponentContentButtonFragmentFragment } from "./strapi-gql";
+import {
+  StrapiGqlComponentContentButtonFragmentFragment,
+  StrapiGqlComponentContentDownloadButtonFragmentFragment,
+} from "./strapi-gql";
 
 export type SectionContentButton =
-  StrapiGqlComponentContentButtonFragmentFragment;
+  | StrapiGqlComponentContentButtonFragmentFragment
+  | StrapiGqlComponentContentDownloadButtonFragmentFragment;

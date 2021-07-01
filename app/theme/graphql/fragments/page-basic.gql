@@ -18,8 +18,8 @@ fragment PageBasicFragment on Page {
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }
-    ... on ComponentContentButton {
-      ...ComponentContentButtonFragment
-    }
+    # ... on ComponentContentButton {
+    #   ...ComponentContentButtonFragment
+    # }
   }
 }

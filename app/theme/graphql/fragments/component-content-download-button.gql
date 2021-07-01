@@ -2,7 +2,7 @@
 #import "./color.gql"
 #import "./alignment.gql"
 
-fragment ComponentContentButtonFragment on ComponentContentButton {
+fragment ComponentContentDownloadButtonFragment on ComponentContentDownloadButton {
   id
   label
   alignment {
@@ -11,7 +11,7 @@ fragment ComponentContentButtonFragment on ComponentContentButton {
   color {
     ...ColorFragment
   }
-  link {
-    ...NavigationLinkFragment
+  file {
+    url
   }
 }

@@ -1,6 +1,7 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
 #import "./component-content-button.gql"
+#import "./component-content-download-button.gql"
 #import "./component-section-slideshow.gql"
 #import "./component-section-facts.gql"
 #import "./component-section-gallery-slideshow.gql"
@@ -25,6 +26,9 @@ fragment HomeFragment on Home {
     ... on ComponentContentButton {
       ...ComponentContentButtonFragment
     }
+    ... on ComponentContentDownloadButton {
+      ...ComponentContentDownloadButtonFragment
+    }
     # Other sections
     ... on ComponentSectionSlideshow {
       ...ComponentSectionSlideshowFragment
@@ -34,9 +38,6 @@ fragment HomeFragment on Home {
     }
     ... on ComponentHomeNews {
       ...ComponentHomeNewsFragment
-    }
-    ... on ComponentContentButton {
-      ...ComponentContentButtonFragment
     }
     ... on ComponentSectionGallerySlideshow {
       ...ComponentSectionGallerySlideshowFragment

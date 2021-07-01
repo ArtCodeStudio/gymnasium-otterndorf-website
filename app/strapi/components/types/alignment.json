@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_types_alignments",
+  "info": {
+    "name": "alignment",
+    "icon": "align-center"
+  },
+  "options": {},
+  "attributes": {
+    "alignment": {
+      "type": "enumeration",
+      "enum": [
+        "Left",
+        "Center",
+        "Right"
+      ]
+    }
+  }
+}

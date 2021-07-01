@@ -10,6 +10,8 @@
             gy-section-image.col-12(ssr-rv-co-section="section")
         .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentButton'") 
             gy-section-button.col-12(ssr-rv-co-section="section")
+        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentDownloadButton'") 
+            gy-section-button.col-12(ssr-rv-co-section="section")
         //- Other Sections
         .row(ssr-rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
             gy-section-slideshow.col-12.px-0(ssr-rv-co-section="section")

@@ -2,7 +2,8 @@
   "collectionName": "components_content_download_buttons",
   "info": {
     "name": "Download Button",
-    "icon": "download"
+    "icon": "download",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,19 +11,9 @@
       "type": "string",
       "required": true
     },
-    "alignment": {
-      "type": "enumeration",
-      "enum": [
-        "Left",
-        "Center",
-        "Right"
-      ],
-      "default": "Center",
-      "required": true
-    },
     "color": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "types.color",
       "required": true
     },
@@ -37,6 +28,12 @@
       "plugin": "upload",
       "required": true,
       "pluginOptions": {}
+    },
+    "alignment": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.alignment",
+      "required": true
     }
   }
 }

@@ -18,8 +18,8 @@ fragment SchoolSubjectBasicFragment on Subject {
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }
-    ... on ComponentContentButton {
-      ...ComponentContentButtonFragment
-    }
+    # ... on ComponentContentButton {
+    #   ...ComponentContentButtonFragment
+    # }
   }
 }

@@ -11,16 +11,6 @@
       "type": "string",
       "required": true
     },
-    "alignment": {
-      "type": "enumeration",
-      "enum": [
-        "Left",
-        "Center",
-        "Right"
-      ],
-      "required": true,
-      "default": "Center"
-    },
     "color": {
       "type": "component",
       "repeatable": false,
@@ -29,6 +19,12 @@
     },
     "link": {
       "model": "navigation-link"
+    },
+    "alignment": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.alignment",
+      "required": true
     }
   }
 }

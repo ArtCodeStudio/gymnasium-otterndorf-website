@@ -1,12 +1,17 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-button.component.pug";
-import { SectionContentButton } from "../../../common/types";
+import { SectionContentButton, NavigationLink } from "../../../common/types";
+import {
+  navItemUrlFormatter,
+  strapiFormatter,
+} from "../../../common/formatters";
 
 export interface Scope {
   section?: SectionContentButton;
   btnCls: string;
   style: Partial<CSSStyleDeclaration>;
+  link: string;
 }
 
 export class GySectionButtonComponent extends Component {
@@ -18,6 +23,7 @@ export class GySectionButtonComponent extends Component {
     section: undefined,
     btnCls: "",
     style: {},
+    link: "",
   };
 
   static get observedAttributes(): string[] {
@@ -39,7 +45,18 @@ export class GySectionButtonComponent extends Component {
     const color = this.scope.section.color?.color || "blue";
     this.scope.btnCls = `btn-outline-${color}`;
 
-    switch (this.scope.section.alignment.toLowerCase()) {
+    if (this.scope.section.__typename === "ComponentContentButton") {
+      this.scope.link =
+        navItemUrlFormatter.read(
+          this.scope.section.link as unknown as NavigationLink
+        ) || "";
+    } else if (
+      this.scope.section.__typename === "ComponentContentDownloadButton"
+    ) {
+      this.scope.link = strapiFormatter.read(this.scope.section.file?.url);
+    }
+
+    switch (this.scope.section.alignment?.alignment?.toLowerCase()) {
       case "left":
         this.scope.style = {
           marginRight: "auto",

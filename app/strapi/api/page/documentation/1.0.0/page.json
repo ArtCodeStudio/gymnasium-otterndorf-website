@@ -953,15 +953,6 @@
                     "label": {
                       "type": "string"
                     },
-                    "alignment": {
-                      "type": "string",
-                      "default": "Center",
-                      "enum": [
-                        "Left",
-                        "Center",
-                        "Right"
-                      ]
-                    },
                     "color": {
                       "type": "object",
                       "required": [
@@ -1009,13 +1000,32 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "alignment": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "alignment": {
+                          "type": "string",
+                          "enum": [
+                            "Left",
+                            "Center",
+                            "Right"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
                     "label",
-                    "alignment",
-                    "color"
+                    "color",
+                    "alignment"
                   ]
                 },
                 {
@@ -1602,41 +1612,29 @@
                     "label": {
                       "type": "string"
                     },
-                    "alignment": {
-                      "type": "string",
-                      "default": "Center",
-                      "enum": [
-                        "Left",
-                        "Center",
-                        "Right"
-                      ]
-                    },
                     "color": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "color": {
-                            "type": "string",
-                            "default": "blue",
-                            "enum": [
-                              "blue",
-                              "green",
-                              "cyan",
-                              "greenlight",
-                              "yellow",
-                              "red",
-                              "light",
-                              "dark",
-                              "white"
-                            ]
-                          }
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
                         }
                       }
                     },
@@ -1706,14 +1704,33 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "alignment": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "alignment": {
+                          "type": "string",
+                          "enum": [
+                            "Left",
+                            "Center",
+                            "Right"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
                     "label",
-                    "alignment",
                     "color",
-                    "file"
+                    "file",
+                    "alignment"
                   ]
                 }
               ]
@@ -2285,15 +2302,6 @@
                     "label": {
                       "type": "string"
                     },
-                    "alignment": {
-                      "type": "string",
-                      "default": "Center",
-                      "enum": [
-                        "Left",
-                        "Center",
-                        "Right"
-                      ]
-                    },
                     "color": {
                       "type": "object",
                       "required": [
@@ -2341,13 +2349,32 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "alignment": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "alignment": {
+                          "type": "string",
+                          "enum": [
+                            "Left",
+                            "Center",
+                            "Right"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
                     "label",
-                    "alignment",
-                    "color"
+                    "color",
+                    "alignment"
                   ]
                 },
                 {
@@ -2934,41 +2961,29 @@
                     "label": {
                       "type": "string"
                     },
-                    "alignment": {
-                      "type": "string",
-                      "default": "Center",
-                      "enum": [
-                        "Left",
-                        "Center",
-                        "Right"
-                      ]
-                    },
                     "color": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "id"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "color": {
-                            "type": "string",
-                            "default": "blue",
-                            "enum": [
-                              "blue",
-                              "green",
-                              "cyan",
-                              "greenlight",
-                              "yellow",
-                              "red",
-                              "light",
-                              "dark",
-                              "white"
-                            ]
-                          }
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
                         }
                       }
                     },
@@ -3038,14 +3053,33 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "alignment": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "alignment": {
+                          "type": "string",
+                          "enum": [
+                            "Left",
+                            "Center",
+                            "Right"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
                     "label",
-                    "alignment",
                     "color",
-                    "file"
+                    "file",
+                    "alignment"
                   ]
                 }
               ]
