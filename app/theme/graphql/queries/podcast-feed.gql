@@ -1,0 +1,29 @@
+#import "../fragments/image.gql"
+#import "../fragments/blog-category-basic.gql"
+#import "../fragments/component-podcast-category.gql"
+
+query podcastFeed {
+  podcastFeed {
+    id
+    title
+    description
+    image {
+      ...ImageFragment
+    }
+    language
+    category {
+      ...ComponentPodcastCategoryFragment
+    }
+    explicit
+    author
+    owner_name
+    owner_email
+    type
+    copyright
+    block
+    complete
+    blogs {
+      ...BlogCategoryBasicFragment
+    }
+  }
+}

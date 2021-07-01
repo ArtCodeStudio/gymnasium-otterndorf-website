@@ -72,8 +72,7 @@
     "@ribajs/postcss-config": "workspace:*",
     "@ribajs/nest-lunr": "workspace:*",
     "@ribajs/babel-config": "workspace:*",
-    "@ribajs/esbuild": "workspace:*",
-    "sass": "1.32.13"
+    "@ribajs/esbuild": "workspace:*"
   },
   "devDependencies": {
     "@artcodestudio/node-app-manager": "workspace:*",

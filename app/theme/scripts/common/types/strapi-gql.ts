@@ -1576,7 +1576,7 @@ export type StrapiGqlPodcastFeed = {
   description: Scalars['String'];
   image?: Maybe<StrapiGqlUploadFile>;
   language: Scalars['String'];
-  Category?: Maybe<Array<Maybe<StrapiGqlComponentPodcastCategory>>>;
+  category?: Maybe<Array<Maybe<StrapiGqlComponentPodcastCategory>>>;
   explicit: Scalars['Boolean'];
   author: Scalars['String'];
   owner_name: Scalars['String'];
@@ -1601,7 +1601,7 @@ export type StrapiGqlPodcastFeedInput = {
   description: Scalars['String'];
   image?: Maybe<Scalars['ID']>;
   language?: Maybe<Scalars['String']>;
-  Category?: Maybe<Array<StrapiGqlComponentPodcastCategoryInput>>;
+  category?: Maybe<Array<StrapiGqlComponentPodcastCategoryInput>>;
   explicit?: Maybe<Scalars['Boolean']>;
   author?: Maybe<Scalars['String']>;
   owner_name: Scalars['String'];
@@ -3247,7 +3247,7 @@ export type StrapiGqlEditPodcastFeedInput = {
   description?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['ID']>;
   language?: Maybe<Scalars['String']>;
-  Category?: Maybe<Array<Maybe<StrapiGqlEditComponentPodcastCategoryInput>>>;
+  category?: Maybe<Array<Maybe<StrapiGqlEditComponentPodcastCategoryInput>>>;
   explicit?: Maybe<Scalars['Boolean']>;
   author?: Maybe<Scalars['String']>;
   owner_name?: Maybe<Scalars['String']>;
@@ -3635,6 +3635,11 @@ export type StrapiGqlComponentMediaCenterMovieFragmentFragment = (
   )> }
 );
 
+export type StrapiGqlComponentPodcastCategoryFragmentFragment = (
+  { __typename?: 'ComponentPodcastCategory' }
+  & Pick<StrapiGqlComponentPodcastCategory, 'name'>
+);
+
 export type StrapiGqlComponentSectionBlackboardSlideshowFragmentFragment = (
   { __typename?: 'ComponentSectionBlackboardSlideshow' }
   & Pick<StrapiGqlComponentSectionBlackboardSlideshow, 'id'>
@@ -3949,7 +3954,7 @@ export type StrapiGqlPageDetailFragmentFragment = (
 
 export type StrapiGqlPodcastEpisodeUploadFileFragmentFragment = (
   { __typename?: 'UploadFile' }
-  & Pick<StrapiGqlUploadFile, 'mime' | 'url' | 'ext' | 'name'>
+  & Pick<StrapiGqlUploadFile, 'mime' | 'url' | 'ext' | 'name' | 'size'>
 );
 
 export type StrapiGqlSchoolSubjectBasicFragmentFragment = (
@@ -4234,6 +4239,27 @@ export type StrapiGqlPageDetailBySlugsQuery = (
     { __typename?: 'Page' }
     & StrapiGqlPageDetailFragmentFragment
   )>>> }
+);
+
+export type StrapiGqlPodcastFeedQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type StrapiGqlPodcastFeedQuery = (
+  { __typename?: 'Query' }
+  & { podcastFeed?: Maybe<(
+    { __typename?: 'PodcastFeed' }
+    & Pick<StrapiGqlPodcastFeed, 'id' | 'title' | 'description' | 'language' | 'explicit' | 'author' | 'owner_name' | 'owner_email' | 'type' | 'copyright' | 'block' | 'complete'>
+    & { image?: Maybe<(
+      { __typename?: 'UploadFile' }
+      & StrapiGqlImageFragmentFragment
+    )>, category?: Maybe<Array<Maybe<(
+      { __typename?: 'ComponentPodcastCategory' }
+      & StrapiGqlComponentPodcastCategoryFragmentFragment
+    )>>>, blogs?: Maybe<Array<Maybe<(
+      { __typename?: 'BlogCategory' }
+      & StrapiGqlBlogCategoryBasicFragmentFragment
+    )>>> }
+  )> }
 );
 
 export type StrapiGqlSchoolSubjectBasicBySlugsQueryVariables = Exact<{

@@ -38,7 +38,7 @@
       "maxLength": 2,
       "minLength": 2
     },
-    "Category": {
+    "category": {
       "type": "component",
       "repeatable": true,
       "component": "podcast.category",

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PostService } from '../post';
+import { SearchPost } from '../../types';
 import { MarkdownService } from '../markdown/markdown.service';
 import { Feed } from 'feed';
 import * as Podcast from 'podcast';
@@ -10,6 +11,18 @@ export class FeedService {
     protected readonly post: PostService,
     protected readonly markdown: MarkdownService,
   ) {}
+
+  public getSiteUrl() {
+    return process.env.NEST_EXTERN_URL;
+  }
+
+  public getFeedUrl() {
+    return `${process.env.NEST_EXTERN_URL}/api/feed/podcast`.replace('//', '/');
+  }
+
+  public getPostUrl(post: SearchPost) {
+    return process.env.NEST_EXTERN_URL + post.href.replace('//', '/');
+  }
 
   // TODO properties, see https://github.com/jpmonette/feed
   public async get() {
@@ -44,11 +57,8 @@ export class FeedService {
   public async getPodcast() {
     const feed = new Podcast({
       title: 'Gymnasium Otterndorf Podcast',
-      feedUrl: `${process.env.NEST_EXTERN_URL}/api/feed/podcast`.replace(
-        '//',
-        '/',
-      ),
-      siteUrl: process.env.NEST_EXTERN_URL,
+      feedUrl: this.getFeedUrl(),
+      siteUrl: this.getSiteUrl(),
       author: 'Gymnasium Otterndorf',
       copyright: 'All rights reserved 2021, Gymnasium Otterndorf',
     });
@@ -60,7 +70,7 @@ export class FeedService {
         title: post.title,
         description: post.text, // TODO trim
         content: await this.markdown.html(post.md),
-        url: process.env.NEST_EXTERN_URL + post.href.replace('//', '/'),
+        url: this.getPostUrl(post),
         date: new Date(post.updatedAt), // TODO created
         author: post.author,
         // image

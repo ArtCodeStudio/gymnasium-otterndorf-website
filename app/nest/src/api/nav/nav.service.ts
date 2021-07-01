@@ -14,6 +14,26 @@ export class NavService {
     //
   }
 
+  static buildStrapiSrc(
+    src?: string,
+    backend: 'strapi' | 'strapi-students' = 'strapi',
+  ) {
+    if (!src) {
+      src = '';
+    }
+
+    if (src.startsWith('http')) {
+      return src;
+    }
+
+    const strapiUrl =
+      backend === 'strapi'
+        ? process.env.STRAPI_EXTERN_URL
+        : process.env.STRAPI_STUDENT_EXTERN_URL;
+
+    return `${strapiUrl}/${src}`.replace('//', '/');
+  }
+
   static buildHref(type: string, slug?: string) {
     if (!slug) {
       return '';

@@ -31,6 +31,7 @@
     "@ribajs/nest-lunr": "workspace:*",
     "@ribajs/nest-theme": "workspace:*",
     "@ribajs/node-graphql-client": "workspace:*",
+    "@ribajs/podcast": "workspace:packages/riba/packages/podcast",
     "@ribajs/ssr": "workspace:*",
     "@types/consolidate": "^0.14.0",
     "@types/express": "^4.17.12",

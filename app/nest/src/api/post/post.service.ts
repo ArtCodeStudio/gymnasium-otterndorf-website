@@ -4,8 +4,11 @@ import { MarkdownService } from '../markdown/markdown.service';
 import { NavService } from '../nav';
 import { SearchPost } from './types';
 import {
-  StrapiGqlBlogEntriesDetailBySlugsQuery,
-  StrapiGqlBlogEntriesDetailBySlugsQueryVariables,
+  StrapiGqlBlogEntriesBasicBySlugsQuery,
+  StrapiGqlBlogEntriesBasicBySlugsQueryVariables,
+  StrapiGqlBlogEntryBasicFragmentFragment,
+  StrapiGqlComponentSectionPodcastEpisodeFragmentFragment,
+  StrapiGqlImageFragmentFragment,
 } from '../strapi/types';
 
 @Injectable()
@@ -22,9 +25,43 @@ export class PostService {
    * @param posts
    */
   public async flattens(
-    posts: StrapiGqlBlogEntriesDetailBySlugsQuery['blogEntries'],
+    posts: StrapiGqlBlogEntriesBasicBySlugsQuery['blogEntries'],
   ): Promise<SearchPost[]> {
     return Promise.all(posts.map((post) => this.flatten(post)));
+  }
+
+  protected async getContentObject(
+    post: StrapiGqlBlogEntryBasicFragmentFragment,
+  ) {
+    const images: StrapiGqlImageFragmentFragment[] = [];
+    const texts: string[] = [];
+    const markdowns: string[] = [];
+    const podcastEpisodes: StrapiGqlComponentSectionPodcastEpisodeFragmentFragment[] =
+      [];
+
+    for (const section of post.content) {
+      switch (section.__typename) {
+        case 'ComponentContentText':
+          markdowns.push(section.text);
+          texts.push(await this.markdown.strip(section.text));
+          break;
+        case 'ComponentContentImage':
+          images.push(section.image);
+          break;
+        case 'ComponentSectionPodcastEpisode':
+          podcastEpisodes.push(section);
+          break;
+        default:
+          break;
+      }
+    }
+
+    return {
+      images,
+      texts,
+      markdowns,
+      podcastEpisodes,
+    };
   }
 
   /**
@@ -32,27 +69,17 @@ export class PostService {
    * @param post
    */
   public async flatten(
-    post: StrapiGqlBlogEntriesDetailBySlugsQuery['blogEntries'][0],
+    post: StrapiGqlBlogEntryBasicFragmentFragment,
   ): Promise<SearchPost> {
-    const pTexts = post.content
-      .filter((content) => (content as unknown as SearchPost).text)
-      .map((content) =>
-        this.markdown.strip((content as unknown as SearchPost).text),
-      );
-
-    const texts = await Promise.all(pTexts);
-
-    const PMarkdowns = post.content
-      .filter((content) => (content as unknown as SearchPost).text)
-      .map((content) => (content as unknown as SearchPost).text);
-
-    const markdowns = await Promise.all(PMarkdowns);
+    const { texts, markdowns } = await this.getContentObject(post);
 
     return {
       id: post.id,
       title: post.title,
       slug: post.slug,
+      /** Plain text without markdown */
       text: texts.join('\n'),
+      /** Markdown (no HTML) */
       md: markdowns.join('\n\n'),
       updatedAt: post.updated_at || post.created_at,
       href: NavService.buildHref('post', post.slug),
@@ -61,31 +88,65 @@ export class PostService {
     };
   }
 
-  public async list(slugs: string[] | null = [], limit = 500, start = 0) {
-    const vars: StrapiGqlBlogEntriesDetailBySlugsQueryVariables = {
+  public async listRaw(slugs: string[] | null = [], limit = 500, start = 0) {
+    const vars: StrapiGqlBlogEntriesBasicBySlugsQueryVariables = {
       slugs,
       limit,
       start,
     };
-    let posts: StrapiGqlBlogEntriesDetailBySlugsQuery['blogEntries'] = null;
+    let posts: StrapiGqlBlogEntriesBasicBySlugsQuery['blogEntries'] = null;
     try {
       const result =
-        await this.strapi.graphql.execute<StrapiGqlBlogEntriesDetailBySlugsQuery>(
-          'graphql/queries/blog-entries-detail-by-slugs',
+        await this.strapi.graphql.execute<StrapiGqlBlogEntriesBasicBySlugsQuery>(
+          'graphql/queries/blog-entries-basic-by-slugs',
           vars,
         );
       posts = result.blogEntries;
+      if (posts) {
+        return posts;
+      }
     } catch (error) {
       console.error(error);
     }
-    if (Array.isArray(posts)) {
-      const result = await Promise.all(posts.map((post) => this.flatten(post)));
-      return result.filter((post) => !!post.href);
-    }
-    return null;
+    return [];
   }
 
-  protected async get(slug: string) {
-    return this.list([slug], 1)?.[0] || null;
+  public async getRaw(
+    slug: string,
+  ): Promise<StrapiGqlBlogEntryBasicFragmentFragment> {
+    return (await this.listRaw([slug], 1))[0] || null;
+  }
+
+  public async list(slugs: string[] | null = [], limit = 500, start = 0) {
+    const posts = await this.listRaw(slugs, limit, start);
+    if (Array.isArray(posts) && posts.length > 0) {
+      const result = await Promise.all(posts.map((post) => this.flatten(post)));
+      return result.filter((post) => !!post.href);
+    } else {
+      console.warn('No blog posts found!', posts);
+    }
+    return [];
+  }
+
+  public async get(slug: string): Promise<SearchPost | null> {
+    return (await this.list([slug], 1))[0] || null;
+  }
+
+  public async getPodcastEpisode(slug: string) {
+    const post = await this.getRaw(slug);
+
+    const { markdowns, podcastEpisodes, images, texts } =
+      await this.getContentObject(post);
+
+    const podcastEpisode = podcastEpisodes[0] || null;
+
+    return {
+      post,
+      markdowns,
+      podcastEpisode,
+      podcastEpisodes,
+      images,
+      texts,
+    };
   }
 }

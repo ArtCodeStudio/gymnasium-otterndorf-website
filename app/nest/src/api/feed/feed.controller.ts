@@ -6,7 +6,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 @ApiTags('feed')
 @Controller('api/feed')
 export class FeedController {
-  constructor(protected feed: FeedService) {}
+  constructor(protected readonly feed: FeedService) {}
 
   @Get('podcast')
   @ApiOperation({ summary: 'Get the podcast feed' })

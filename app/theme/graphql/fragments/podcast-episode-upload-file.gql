@@ -3,4 +3,5 @@ fragment PodcastEpisodeUploadFileFragment on UploadFile {
   url
   ext
   name
+  size
 }

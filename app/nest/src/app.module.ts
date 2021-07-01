@@ -24,6 +24,9 @@ import { MensaMaxController } from './api/mensa-max/mensa-max.controller';
 import { MensaMaxService } from './api/mensa-max/mensa-max.service';
 import { FeedController } from './api/feed/feed.controller';
 import { FeedService } from './api/feed/feed.service';
+import { PodloveController } from './api/podlove/podlove.controller';
+import { PodloveService } from './api/podlove/podlove.service';
+import { PodcastService } from './api/podcast/podcast.service';
 
 @Module({
   imports: [
@@ -40,6 +43,7 @@ import { FeedService } from './api/feed/feed.service';
     WebhookController,
     MensaMaxController,
     FeedController,
+    PodloveController,
   ],
   providers: [
     ConfigService,
@@ -55,6 +59,8 @@ import { FeedService } from './api/feed/feed.service';
     WebhookService,
     MensaMaxService,
     FeedService,
+    PodloveService,
+    PodcastService,
   ],
 })
 export class AppModule {
