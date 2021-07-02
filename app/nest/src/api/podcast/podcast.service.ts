@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {
-  StrapiGqlPodcastFeedQuery,
-  StrapiGqlPodcastFeedQueryVariables,
+  StrapiGqlPodcastConfigQuery,
+  StrapiGqlPodcastConfigQueryVariables,
 } from '../strapi/types';
 import { StrapiService } from '../strapi/strapi.service';
 
@@ -9,18 +9,18 @@ import { StrapiService } from '../strapi/strapi.service';
 export class PodcastService {
   constructor(protected readonly strapi: StrapiService) {}
 
-  public async getFeedConfig() {
-    const vars: StrapiGqlPodcastFeedQueryVariables = {};
-    let podcastFeed: StrapiGqlPodcastFeedQuery['podcastFeed'] = null;
+  public async getConfig() {
+    const vars: StrapiGqlPodcastConfigQueryVariables = {};
+    let podcastConfig: StrapiGqlPodcastConfigQuery['podcastFeed'] = null;
     try {
       const result =
-        await this.strapi.graphql.execute<StrapiGqlPodcastFeedQuery>(
-          'graphql/queries/podcast-feed',
+        await this.strapi.graphql.execute<StrapiGqlPodcastConfigQuery>(
+          'graphql/queries/podcast-config',
           vars,
         );
-      podcastFeed = result.podcastFeed;
-      if (podcastFeed) {
-        return podcastFeed;
+      podcastConfig = result.podcastFeed;
+      if (podcastConfig) {
+        return podcastConfig;
       }
     } catch (error) {
       console.error(error);

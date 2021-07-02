@@ -4302,10 +4302,10 @@ export type StrapiGqlPageDetailBySlugsQuery = (
   )>>> }
 );
 
-export type StrapiGqlPodcastFeedQueryVariables = Exact<{ [key: string]: never; }>;
+export type StrapiGqlPodcastConfigQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type StrapiGqlPodcastFeedQuery = (
+export type StrapiGqlPodcastConfigQuery = (
   { __typename?: 'Query' }
   & { podcastFeed?: Maybe<(
     { __typename?: 'PodcastFeed' }

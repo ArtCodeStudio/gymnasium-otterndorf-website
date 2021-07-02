@@ -243,7 +243,7 @@ export class PodloveService {
   }
 
   public async getShow(): Promise<PodloveWebPlayerShow> {
-    const feedConfig = await this.podcast.getFeedConfig();
+    const feedConfig = await this.podcast.getConfig();
     const show: PodloveWebPlayerShow = {
       title: feedConfig.title,
       subtitle: '', // TODO

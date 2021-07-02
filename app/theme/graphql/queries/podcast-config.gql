@@ -2,7 +2,7 @@
 #import "../fragments/blog-category-basic.gql"
 #import "../fragments/component-podcast-category.gql"
 
-query podcastFeed {
+query podcastConfig {
   podcastFeed {
     id
     title

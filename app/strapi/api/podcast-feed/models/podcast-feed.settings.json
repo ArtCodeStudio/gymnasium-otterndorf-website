@@ -1,8 +1,8 @@
 {
   "kind": "singleType",
-  "collectionName": "podcast_feeds",
+  "collectionName": "podcast_config",
   "info": {
-    "name": "Podcast Feed",
+    "name": "Podcast Config",
     "description": ""
   },
   "options": {
