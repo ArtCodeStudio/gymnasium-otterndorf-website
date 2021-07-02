@@ -1,23 +1,8 @@
-#import "./podcast-episode-upload-file.gql"
-#import "./image.gql"
+#import "./podcast-episode-detail.gql"
 
 fragment ComponentSectionPodcastEpisodeFragment on ComponentSectionPodcastEpisode {
   __typename
-  id
-  title
-  content {
-    ... on UploadFile {
-      ...PodcastEpisodeUploadFileFragment
-    }
+  podcast_episode {
+    ...PodcastEpisodeDetailFragment
   }
-  pubDate
-  description
-  image {
-    ...ImageFragment
-  }
-  explicit
-  episode
-  season
-  type
-  block
 }

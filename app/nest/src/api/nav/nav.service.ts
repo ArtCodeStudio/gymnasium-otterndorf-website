@@ -57,6 +57,9 @@ export class NavService {
       case 'gallery':
       case 'ComponentLinkTypeGallery':
         return `/gallery/${slug}`;
+      case 'PodcastEpisode':
+      case 'podcast':
+        return `/podcast/${slug}`;
     }
   }
 

@@ -74,7 +74,7 @@ export class SectionsService {
         case "ComponentSectionMensaMax":
           sectionsObj.mensamax = section;
           break;
-        case "ComponentSectionPodcastEpisode":
+        case "PodcastEpisode":
           sectionsObj.podcastEpisode = section;
           break;
         default:
@@ -186,7 +186,10 @@ export class SectionsService {
             sections.push(dynamicZoneSection);
             break;
           case "ComponentSectionPodcastEpisode":
-            sections.push(dynamicZoneSection);
+            if (dynamicZoneSection.podcast_episode) {
+              sections.push(dynamicZoneSection.podcast_episode);
+            }
+
             break;
           default:
             console.warn(

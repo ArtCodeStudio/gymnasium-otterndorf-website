@@ -8,9 +8,7 @@
             gy-section-text.col-12(ssr-rv-co-section="section")
         .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
             gy-section-image.col-12(ssr-rv-co-section="section")
-        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentButton'") 
-            gy-section-button.col-12(ssr-rv-co-section="section")
-        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentDownloadButton'") 
+        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentButton' | or section.__typename | eq 'ComponentContentDownloadButton'") 
             gy-section-button.col-12(ssr-rv-co-section="section")
         //- Other Sections
         .row(ssr-rv-if="section.__typename | eq 'ComponentSectionSlideshow'")
@@ -33,5 +31,5 @@
             gy-section-student-quote.col-12.col-md-auto(ssr-rv-co-section="section")
         .row.my-3.justify-content-center(ssr-rv-if="section.__typename | eq 'ComponentSectionMensaMax'") 
             gy-section-mensa-max.col-12(ssr-rv-co-section="section")
-        .row.my-3.justify-content-center(ssr-rv-if="section.__typename | eq 'ComponentSectionPodcastEpisode'") 
+        .row.my-3.justify-content-center(ssr-rv-if="section.__typename | eq 'PodcastEpisode'") 
             gy-section-podcast-episode.col-12(ssr-rv-co-section="section")

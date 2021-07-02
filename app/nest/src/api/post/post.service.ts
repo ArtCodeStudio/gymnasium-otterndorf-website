@@ -7,7 +7,7 @@ import {
   StrapiGqlBlogEntriesBasicBySlugsQuery,
   StrapiGqlBlogEntriesBasicBySlugsQueryVariables,
   StrapiGqlBlogEntryBasicFragmentFragment,
-  StrapiGqlComponentSectionPodcastEpisodeFragmentFragment,
+  StrapiGqlPodcastEpisodeDetailFragmentFragment,
   StrapiGqlImageFragmentFragment,
 } from '../strapi/types';
 
@@ -36,8 +36,7 @@ export class PostService {
     const images: StrapiGqlImageFragmentFragment[] = [];
     const texts: string[] = [];
     const markdowns: string[] = [];
-    const podcastEpisodes: StrapiGqlComponentSectionPodcastEpisodeFragmentFragment[] =
-      [];
+    const podcastEpisodes: StrapiGqlPodcastEpisodeDetailFragmentFragment[] = [];
 
     for (const section of post.content) {
       switch (section.__typename) {
@@ -49,7 +48,7 @@ export class PostService {
           images.push(section.image);
           break;
         case 'ComponentSectionPodcastEpisode':
-          podcastEpisodes.push(section);
+          podcastEpisodes.push(section.podcast_episode);
           break;
         default:
           break;
@@ -117,7 +116,7 @@ export class PostService {
     return (await this.listRaw([slug], 1))[0] || null;
   }
 
-  public async list(slugs: string[] | null = [], limit = 500, start = 0) {
+  public async list(slugs: string[] | null = [], limit = 50, start = 0) {
     const posts = await this.listRaw(slugs, limit, start);
     if (Array.isArray(posts) && posts.length > 0) {
       const result = await Promise.all(posts.map((post) => this.flatten(post)));

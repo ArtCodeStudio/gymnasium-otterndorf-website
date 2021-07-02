@@ -21,10 +21,24 @@ export class PodloveController {
   })
   @ApiParam({
     name: 'slug',
-    description: 'The slug of the blog post with the podcast episode',
+    description: 'The slug of podcast episode',
   })
   async episode(@Res() res: Response, @Param('slug') slug: string) {
     const episode = await this.podlove.getEpisode(slug);
+    return res.json(episode);
+  }
+
+  @Get('blog/:slug')
+  @ApiOperation({
+    summary:
+      'Get a specific episode object for the Podlove Web Player by blog post slug',
+  })
+  @ApiParam({
+    name: 'slug',
+    description: 'The slug of the blog post with the podcast episode',
+  })
+  async episodeByBlog(@Res() res: Response, @Param('slug') slug: string) {
+    const episode = await this.podlove.getEpisodeByBlog(slug);
     return res.json(episode);
   }
 }

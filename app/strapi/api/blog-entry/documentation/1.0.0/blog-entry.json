@@ -1415,66 +1415,65 @@
                     "id": {
                       "type": "string"
                     },
-                    "title": {
-                      "type": "string"
-                    },
-                    "content": {
+                    "podcast_episode": {
                       "required": [
                         "id",
-                        "name",
-                        "hash",
-                        "mime",
-                        "size",
-                        "url",
-                        "provider"
+                        "title",
+                        "content",
+                        "description",
+                        "explicit",
+                        "type",
+                        "block",
+                        "slug",
+                        "season",
+                        "episode"
                       ],
                       "properties": {
                         "id": {
                           "type": "string"
                         },
-                        "name": {
+                        "title": {
                           "type": "string"
                         },
-                        "alternativeText": {
+                        "content": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "pubDate": {
                           "type": "string"
                         },
-                        "caption": {
+                        "description": {
                           "type": "string"
                         },
-                        "width": {
+                        "image": {
+                          "type": "string"
+                        },
+                        "explicit": {
+                          "type": "boolean"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "Full",
+                            "Trailer",
+                            "Bonus"
+                          ]
+                        },
+                        "block": {
+                          "type": "boolean"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "season": {
                           "type": "integer"
                         },
-                        "height": {
+                        "episode": {
                           "type": "integer"
                         },
-                        "formats": {
-                          "type": "object"
-                        },
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {
-                          "type": "object"
-                        },
-                        "related": {
+                        "published_at": {
                           "type": "string"
                         },
                         "created_by": {
@@ -1484,117 +1483,10 @@
                           "type": "string"
                         }
                       }
-                    },
-                    "pubDate": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "description": {
-                      "type": "string"
-                    },
-                    "image": {
-                      "required": [
-                        "id",
-                        "name",
-                        "hash",
-                        "mime",
-                        "size",
-                        "url",
-                        "provider"
-                      ],
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "alternativeText": {
-                          "type": "string"
-                        },
-                        "caption": {
-                          "type": "string"
-                        },
-                        "width": {
-                          "type": "integer"
-                        },
-                        "height": {
-                          "type": "integer"
-                        },
-                        "formats": {
-                          "type": "object"
-                        },
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {
-                          "type": "object"
-                        },
-                        "related": {
-                          "type": "string"
-                        },
-                        "created_by": {
-                          "type": "string"
-                        },
-                        "updated_by": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "explicit": {
-                      "type": "boolean",
-                      "default": false
-                    },
-                    "episode": {
-                      "type": "integer"
-                    },
-                    "season": {
-                      "type": "integer",
-                      "default": 1
-                    },
-                    "type": {
-                      "type": "string",
-                      "default": "Full",
-                      "enum": [
-                        "Full",
-                        "Trailer",
-                        "Bonus"
-                      ]
-                    },
-                    "block": {
-                      "type": "boolean",
-                      "default": false
                     }
                   },
                   "required": [
-                    "id",
-                    "title",
-                    "content",
-                    "pubDate",
-                    "description",
-                    "explicit",
-                    "episode",
-                    "season",
-                    "type",
-                    "block"
+                    "id"
                   ]
                 },
                 {
@@ -2676,66 +2568,65 @@
                     "id": {
                       "type": "string"
                     },
-                    "title": {
-                      "type": "string"
-                    },
-                    "content": {
+                    "podcast_episode": {
                       "required": [
                         "id",
-                        "name",
-                        "hash",
-                        "mime",
-                        "size",
-                        "url",
-                        "provider"
+                        "title",
+                        "content",
+                        "description",
+                        "explicit",
+                        "type",
+                        "block",
+                        "slug",
+                        "season",
+                        "episode"
                       ],
                       "properties": {
                         "id": {
                           "type": "string"
                         },
-                        "name": {
+                        "title": {
                           "type": "string"
                         },
-                        "alternativeText": {
+                        "content": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "pubDate": {
                           "type": "string"
                         },
-                        "caption": {
+                        "description": {
                           "type": "string"
                         },
-                        "width": {
+                        "image": {
+                          "type": "string"
+                        },
+                        "explicit": {
+                          "type": "boolean"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "Full",
+                            "Trailer",
+                            "Bonus"
+                          ]
+                        },
+                        "block": {
+                          "type": "boolean"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "season": {
                           "type": "integer"
                         },
-                        "height": {
+                        "episode": {
                           "type": "integer"
                         },
-                        "formats": {
-                          "type": "object"
-                        },
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {
-                          "type": "object"
-                        },
-                        "related": {
+                        "published_at": {
                           "type": "string"
                         },
                         "created_by": {
@@ -2745,117 +2636,10 @@
                           "type": "string"
                         }
                       }
-                    },
-                    "pubDate": {
-                      "type": "string",
-                      "format": "date-time"
-                    },
-                    "description": {
-                      "type": "string"
-                    },
-                    "image": {
-                      "required": [
-                        "id",
-                        "name",
-                        "hash",
-                        "mime",
-                        "size",
-                        "url",
-                        "provider"
-                      ],
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "alternativeText": {
-                          "type": "string"
-                        },
-                        "caption": {
-                          "type": "string"
-                        },
-                        "width": {
-                          "type": "integer"
-                        },
-                        "height": {
-                          "type": "integer"
-                        },
-                        "formats": {
-                          "type": "object"
-                        },
-                        "hash": {
-                          "type": "string"
-                        },
-                        "ext": {
-                          "type": "string"
-                        },
-                        "mime": {
-                          "type": "string"
-                        },
-                        "size": {
-                          "type": "number"
-                        },
-                        "url": {
-                          "type": "string"
-                        },
-                        "previewUrl": {
-                          "type": "string"
-                        },
-                        "provider": {
-                          "type": "string"
-                        },
-                        "provider_metadata": {
-                          "type": "object"
-                        },
-                        "related": {
-                          "type": "string"
-                        },
-                        "created_by": {
-                          "type": "string"
-                        },
-                        "updated_by": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "explicit": {
-                      "type": "boolean",
-                      "default": false
-                    },
-                    "episode": {
-                      "type": "integer"
-                    },
-                    "season": {
-                      "type": "integer",
-                      "default": 1
-                    },
-                    "type": {
-                      "type": "string",
-                      "default": "Full",
-                      "enum": [
-                        "Full",
-                        "Trailer",
-                        "Bonus"
-                      ]
-                    },
-                    "block": {
-                      "type": "boolean",
-                      "default": false
                     }
                   },
                   "required": [
-                    "id",
-                    "title",
-                    "content",
-                    "pubDate",
-                    "description",
-                    "explicit",
-                    "episode",
-                    "season",
-                    "type",
-                    "block"
+                    "id"
                   ]
                 },
                 {

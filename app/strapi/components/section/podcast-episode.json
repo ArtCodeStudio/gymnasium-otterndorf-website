@@ -7,70 +7,8 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
-    },
-    "content": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": true,
-      "pluginOptions": {}
-    },
-    "pubDate": {
-      "type": "datetime",
-      "required": true
-    },
-    "description": {
-      "type": "richtext",
-      "required": true
-    },
-    "image": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
-      "plugin": "upload",
-      "required": false,
-      "pluginOptions": {}
-    },
-    "explicit": {
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
-    "episode": {
-      "type": "integer",
-      "min": 1,
-      "required": true,
-      "unique": true
-    },
-    "season": {
-      "required": true,
-      "type": "integer",
-      "min": 1,
-      "default": 1
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Full",
-        "Trailer",
-        "Bonus"
-      ],
-      "default": "Full",
-      "required": true
-    },
-    "block": {
-      "type": "boolean",
-      "default": false,
-      "required": true
+    "podcast_episode": {
+      "model": "podcast-episode"
     }
   }
 }

@@ -10,6 +10,8 @@ import type {
   PodloveWebPlayerFile,
 } from '@ribajs/podcast';
 
+import { StrapiGqlPodcastEpisodeDetailFragmentFragment } from '../strapi/types';
+
 import { FeedService } from '../feed/feed.service';
 import { PostService } from '../post/post.service';
 import { PodcastService } from '../podcast/podcast.service';
@@ -23,13 +25,29 @@ export class PodloveService {
     protected readonly podcast: PodcastService,
   ) {}
 
+  public getConfigUrl() {
+    return `${process.env.NEST_EXTERN_URL}/api/podlove/config`.replace(
+      '//',
+      '/',
+    );
+  }
+
   public async getChapters() {
     const chapters: PodloveWebPlayerChapter[] = [];
     return chapters;
   }
 
   public async getPlaylist() {
+    const episodes = await this.podcast.list();
     const playlist: PodloveWebPlayerPlaylistItem[] = [];
+
+    for (const episode of episodes) {
+      playlist.push({
+        config: this.getConfigUrl(),
+        duration: '', // TODO
+        title: episode.title,
+      });
+    }
     return playlist;
   }
 
@@ -255,38 +273,42 @@ export class PodloveService {
     return show;
   }
 
-  public async getEpisode(postSlug: string): Promise<PodloveWebPlayerEpisode> {
-    const { post, podcastEpisode, images, markdowns } =
-      await this.post.getPodcastEpisode(postSlug);
-
-    if (!podcastEpisode.content) {
+  protected async transformEpisodeToPodloveEpisode(
+    episode: StrapiGqlPodcastEpisodeDetailFragmentFragment,
+  ) {
+    if (!episode.content || !episode.content.length) {
       throw new Error('An Audio file is required!');
     }
 
-    const poster = podcastEpisode.image || images[0];
+    const poster = episode.image;
     const posterUrl = NavService.buildStrapiSrc(poster.url);
-    const summary = podcastEpisode.description || markdowns[0] || '';
-    const title = podcastEpisode.title || post.title || '';
-    const publicationDate = podcastEpisode.pubDate || post.published_at;
-    const link = NavService.buildHref('post', post.slug);
+    const summary = episode.description || '';
+    const title = episode.title || '';
+    const publicationDate = episode.pubDate || episode.published_at;
+    const link = NavService.buildHref('podcast', episode.slug);
 
-    const audioFile: PodloveWebPlayerAudio = {
-      mimeType: podcastEpisode.content.mime,
-      size: podcastEpisode.content.size.toString(),
-      url: NavService.buildStrapiSrc(podcastEpisode.content.url),
-      title: podcastEpisode.content.name,
-    };
+    const audioFiles: PodloveWebPlayerAudio[] = [];
+    const downloadFiles: PodloveWebPlayerFile[] = [];
 
-    const downloadFile: PodloveWebPlayerFile = {
-      mimeType: podcastEpisode.content.mime,
-      size: podcastEpisode.content.size.toString(),
-      url: NavService.buildStrapiSrc(podcastEpisode.content.url),
-      title:
-        podcastEpisode.content.ext?.toUpperCase() ||
-        podcastEpisode.content.name,
-    };
+    for (const content of episode.content) {
+      audioFiles.push({
+        mimeType: content.mime,
+        size: content.size.toString(),
+        url: NavService.buildStrapiSrc(content.url),
+        title: content.name,
+      });
+    }
 
-    const episode: PodloveWebPlayerEpisode = {
+    for (const content of episode.content) {
+      downloadFiles.push({
+        mimeType: content.mime,
+        size: content.size.toString(),
+        url: NavService.buildStrapiSrc(content.url),
+        title: content.ext || content.name,
+      });
+    }
+
+    const episodeConfig: PodloveWebPlayerEpisode = {
       // Configuration Version
       version: 5,
 
@@ -319,7 +341,7 @@ export class PodloveService {
        * - (title): title to be displayed in download tab
        * - mimeType: media asset mimeType
        */
-      audio: [audioFile],
+      audio: audioFiles,
 
       /**
        * Files
@@ -332,7 +354,7 @@ export class PodloveService {
        * - title: title to be displayed in download tab
        * - (mimeType): media asset mimeType
        */
-      files: [downloadFile],
+      files: downloadFiles,
 
       /**
        * Chapters:
@@ -422,6 +444,18 @@ export class PodloveService {
       transcripts: [],
     };
 
-    return episode;
+    return episodeConfig;
+  }
+
+  public async getEpisodeByBlog(
+    slug: string,
+  ): Promise<PodloveWebPlayerEpisode> {
+    const { podcastEpisode } = await this.post.getPodcastEpisode(slug);
+    return await this.transformEpisodeToPodloveEpisode(podcastEpisode);
+  }
+
+  public async getEpisode(slug: string): Promise<PodloveWebPlayerEpisode> {
+    const podcastEpisode = await this.podcast.get(slug);
+    return await this.transformEpisodeToPodloveEpisode(podcastEpisode);
   }
 }
