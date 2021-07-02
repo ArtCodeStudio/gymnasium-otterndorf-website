@@ -1,6 +1,5 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
-#import "./component-content-button.gql"
 
 fragment PageBasicFragment on Page {
   __typename
@@ -18,8 +17,5 @@ fragment PageBasicFragment on Page {
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }
-    # ... on ComponentContentButton {
-    #   ...ComponentContentButtonFragment
-    # }
   }
 }

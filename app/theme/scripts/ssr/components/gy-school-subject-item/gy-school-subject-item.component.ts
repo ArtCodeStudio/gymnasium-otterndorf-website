@@ -43,9 +43,13 @@ export class GySchoolSubjectItemComponent extends Component {
   protected async beforeBind() {
     await super.beforeBind();
     if (this.scope.schoolSubject) {
-      this.scope.sections = await this.schoolSubject.getSectionsObject(
-        this.scope.schoolSubject
-      );
+      try {
+        this.scope.sections = await this.schoolSubject.getSectionsObject(
+          this.scope.schoolSubject
+        );
+      } catch (error) {
+        this.throw(error);
+      }
     }
   }
 

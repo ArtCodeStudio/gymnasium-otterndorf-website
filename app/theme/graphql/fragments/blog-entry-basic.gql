@@ -1,6 +1,5 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
-# #import "./component-content-button.gql"
 
 #import "./component-section-podcast-episode.gql"
 
@@ -27,9 +26,6 @@ fragment BlogEntryBasicFragment on BlogEntry {
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }
-    # ... on ComponentContentButton {
-    #   ...ComponentContentButtonFragment
-    # }
     # Other sections we can extract content (like texts and images) from
     ... on ComponentSectionPodcastEpisode {
       ...ComponentSectionPodcastEpisodeFragment

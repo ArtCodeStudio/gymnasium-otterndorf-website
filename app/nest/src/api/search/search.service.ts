@@ -222,6 +222,11 @@ export class SearchService implements OnModuleInit {
   }
 
   onModuleInit() {
-    this.refresh();
+    try {
+      this.refresh();
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 }

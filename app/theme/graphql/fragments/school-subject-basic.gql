@@ -1,6 +1,5 @@
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
-#import "./component-content-button.gql"
 
 fragment SchoolSubjectBasicFragment on Subject {
   __typename
@@ -18,8 +17,5 @@ fragment SchoolSubjectBasicFragment on Subject {
     ... on ComponentContentImage {
       ...ComponentContentImageFragment
     }
-    # ... on ComponentContentButton {
-    #   ...ComponentContentButtonFragment
-    # }
   }
 }
