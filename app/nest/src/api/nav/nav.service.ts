@@ -14,10 +14,7 @@ export class NavService {
     //
   }
 
-  static buildStrapiSrc(
-    src?: string,
-    backend: 'strapi' | 'strapi-students' = 'strapi',
-  ) {
+  static buildNestSrc(src?: string) {
     if (!src) {
       src = '';
     }
@@ -26,12 +23,41 @@ export class NavService {
       return src;
     }
 
-    const strapiUrl =
+    let nestUrl = process.env.NEST_EXTERN_URL;
+
+    if (nestUrl.endsWith('/')) {
+      nestUrl = nestUrl.substring(0, nestUrl.length - 1);
+    }
+
+    if (src.startsWith('/')) {
+      src = src.substring(1);
+    }
+
+    return `${nestUrl}/${src}`;
+  }
+
+  static buildStrapiSrc(
+    src?: string,
+    backend: 'strapi' | 'strapi-students' = 'strapi',
+  ) {
+    if (!src) {
+      src = '';
+    }
+
+    let strapiUrl =
       backend === 'strapi'
         ? process.env.STRAPI_EXTERN_URL
         : process.env.STRAPI_STUDENT_EXTERN_URL;
 
-    return `${strapiUrl}/${src}`.replace('//', '/');
+    if (strapiUrl.endsWith('/')) {
+      strapiUrl = strapiUrl.substring(0, strapiUrl.length - 1);
+    }
+
+    if (src.startsWith('/')) {
+      src = src.substring(1);
+    }
+
+    return `${strapiUrl}/${src}`;
   }
 
   static buildHref(type: string, slug?: string) {

@@ -21,14 +21,12 @@ export class PodcastService {
           'graphql/queries/podcast-config',
           vars,
         );
+      console.debug('getConfig', result);
       podcastConfig = result.podcastFeed;
-      if (podcastConfig) {
-        return podcastConfig;
-      }
     } catch (error) {
       console.error(error);
     }
-    return null;
+    return podcastConfig;
   }
 
   public async list(slugs: string[] | null = [], limit = 50, start = 0) {
@@ -41,7 +39,7 @@ export class PodcastService {
     try {
       const result =
         await this.strapi.graphql.execute<StrapiGqlPodcastEpisodesDetailBySlugsQuery>(
-          'graphql/queries/podcast-config',
+          'graphql/queries/podcast-episodes-detail-by-slugs',
           vars,
         );
       episodes.push(...result.podcastEpisodes);

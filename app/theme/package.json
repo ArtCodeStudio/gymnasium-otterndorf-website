@@ -82,6 +82,7 @@
     "@ribajs/leaflet-map": "workspace:*",
     "@ribajs/luxon": "workspace:*",
     "@ribajs/masonry": "workspace:*",
+    "@ribajs/podcast": "workspace:packages/riba/packages/podcast",
     "@ribajs/router": "workspace:*",
     "@ribajs/ssr": "workspace:*",
     "@ribajs/types": "workspace:*",

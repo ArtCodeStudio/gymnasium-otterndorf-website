@@ -15,7 +15,9 @@ import { StrapiGqlPodcastEpisodeDetailFragmentFragment } from '../strapi/types';
 import { FeedService } from '../feed/feed.service';
 import { PostService } from '../post/post.service';
 import { PodcastService } from '../podcast/podcast.service';
+import { StrapiService } from '../strapi/strapi.service';
 import { NavService } from '../nav';
+import { basename } from 'path';
 
 @Injectable()
 export class PodloveService {
@@ -23,13 +25,19 @@ export class PodloveService {
     protected readonly feed: FeedService,
     protected readonly post: PostService,
     protected readonly podcast: PodcastService,
+    protected readonly strapi: StrapiService,
   ) {}
 
   public getConfigUrl() {
-    return `${process.env.NEST_EXTERN_URL}/api/podlove/config`.replace(
-      '//',
-      '/',
-    );
+    return NavService.buildNestSrc('api/podlove/config');
+  }
+
+  public getEpisodeConfigUrl(slug: string) {
+    return NavService.buildNestSrc(`api/podlove/episode/${slug}`);
+  }
+
+  public getEpisodeConfigUrlByBlogPostSlug(slug: string) {
+    return NavService.buildNestSrc(`api/podlove/episode/post/${slug}`);
   }
 
   public async getChapters() {
@@ -42,11 +50,25 @@ export class PodloveService {
     const playlist: PodloveWebPlayerPlaylistItem[] = [];
 
     for (const episode of episodes) {
-      playlist.push({
-        config: this.getConfigUrl(),
-        duration: '', // TODO
-        title: episode.title,
-      });
+      if (episode) {
+        let duration = '';
+        if (episode.content.length > 0) {
+          const audioMetadata = await this.strapi.getAudioMetadata(
+            basename(episode.content[0].url),
+            { duration: true },
+          );
+
+          duration = this.strapi.secondsToTime(
+            audioMetadata.format.duration || 0,
+          );
+        }
+
+        playlist.push({
+          config: this.getEpisodeConfigUrl(episode.slug),
+          duration,
+          title: episode.title,
+        });
+      }
     }
     return playlist;
   }
@@ -263,7 +285,7 @@ export class PodloveService {
   public async getShow(): Promise<PodloveWebPlayerShow> {
     const feedConfig = await this.podcast.getConfig();
     const show: PodloveWebPlayerShow = {
-      title: feedConfig.title,
+      title: feedConfig.title || '',
       subtitle: '', // TODO
       summary: feedConfig.description,
       poster: NavService.buildStrapiSrc(feedConfig.image?.url) || '',
@@ -280,12 +302,14 @@ export class PodloveService {
       throw new Error('An Audio file is required!');
     }
 
-    const poster = episode.image;
-    const posterUrl = NavService.buildStrapiSrc(poster.url);
+    const poster:
+      | StrapiGqlPodcastEpisodeDetailFragmentFragment['image']
+      | null = episode.image;
+    const posterUrl = NavService.buildStrapiSrc(poster?.url);
     const summary = episode.description || '';
     const title = episode.title || '';
     const publicationDate = episode.pubDate || episode.published_at;
-    const link = NavService.buildHref('podcast', episode.slug);
+    const link = NavService.buildNestSrc(`podcast/${episode.slug}`);
 
     const audioFiles: PodloveWebPlayerAudio[] = [];
     const downloadFiles: PodloveWebPlayerFile[] = [];
@@ -308,6 +332,15 @@ export class PodloveService {
       });
     }
 
+    const audioMetadata = await this.strapi.getAudioMetadata(
+      basename(episode.content[0].url),
+      { duration: true },
+    );
+
+    const duration = this.strapi.secondsToTime(
+      audioMetadata.format.duration || 0,
+    );
+
     const episodeConfig: PodloveWebPlayerEpisode = {
       // Configuration Version
       version: 5,
@@ -326,8 +359,8 @@ export class PodloveService {
       // ISO 8601 DateTime format, this is capable of adding a time offset, see https://en.wikipedia.org/wiki/ISO_8601
       publicationDate,
       poster: posterUrl,
-      // ISO 8601 Duration format ([hh]:[mm]:[ss].[sss]), capable of add ing milliseconds, see https://en.wikipedia.org/wiki/ISO_8601
-      duration: '01:31:18.610', // TODO
+      // ISO 8601 Duration format ([hh]:[mm]:[ss].[sss]), capable of adding milliseconds, see https://en.wikipedia.org/wiki/ISO_8601
+      duration,
       link,
       /**
        * Audio Assets

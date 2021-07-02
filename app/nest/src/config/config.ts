@@ -4,13 +4,14 @@ import { resolve } from 'path';
 import findRoot = require('find-root');
 import { registerAs } from '@nestjs/config';
 import { NestThemeConfig } from '@ribajs/nest-theme';
+import { AppConfig } from '../types';
 
 const THEME_ACTIVE = process.env.THEME_ACTIVE || 'theme';
 const ROOT = findRoot(process.cwd());
 const PACKAGES = resolve(ROOT, '..');
 const THEME_DIR = process.env.THEME_DIR || resolve(PACKAGES, THEME_ACTIVE);
 
-export const app = {
+export const app: AppConfig = {
   root: ROOT,
   port: Number(process.env.PORT) || 3000,
   environment:

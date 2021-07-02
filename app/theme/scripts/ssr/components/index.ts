@@ -2,6 +2,7 @@ export { GyBlogEntryItemComponent } from "./gy-blog-entry-item/gy-blog-entry-ite
 export { GyFooterComponent } from "./gy-footer/gy-footer.component";
 export { GyPageHeaderComponent } from "./gy-page-header/gy-page-header.component";
 export { GyPageItemComponent } from "./gy-page-item/gy-page-item.component";
+export { GyPodcastEpisodeItemComponent } from "./gy-podcast-episode-item/gy-podcast-episode-item.component";
 export { GySchoolSubjectItemComponent } from "./gy-school-subject-item/gy-school-subject-item.component";
 export { GySectionBlackboardSlideshowComponent } from "./gy-section-blackboard-slideshow/gy-section-blackboard-slideshow.component";
 export { GySectionBlogSlideshowComponent } from "./gy-section-blog-slideshow/gy-section-blog-slideshow.component";

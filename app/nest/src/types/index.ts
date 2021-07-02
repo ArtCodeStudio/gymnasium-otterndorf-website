@@ -1,3 +1,4 @@
+export * from './app-config';
 export * from '../api/search/types/index';
 export * from '../api/strapi/types/index';
 export * from '../api/nav/types/index';

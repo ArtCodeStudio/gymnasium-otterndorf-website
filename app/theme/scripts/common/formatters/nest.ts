@@ -15,7 +15,7 @@ export const nestFormatter = {
     }
     if (!url.startsWith("http")) {
       const host =
-        window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_INTERN_URL || "";
+        window?.ssr?.env?.NEST_EXTERN_URL || window?.env?.NEST_EXTERN_URL || "";
       url = host + url;
     }
     return url;

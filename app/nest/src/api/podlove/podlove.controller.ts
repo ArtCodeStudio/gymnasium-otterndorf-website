@@ -28,7 +28,7 @@ export class PodloveController {
     return res.json(episode);
   }
 
-  @Get('blog/:slug')
+  @Get('episode/post/:slug')
   @ApiOperation({
     summary:
       'Get a specific episode object for the Podlove Web Player by blog post slug',

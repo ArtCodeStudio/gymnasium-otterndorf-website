@@ -9,6 +9,7 @@ import { bs5PhotoswipeModule } from "@ribajs/bs5-photoswipe";
 import { leafletModule } from "@ribajs/leaflet-map";
 import { masonryModule } from "@ribajs/masonry";
 import { artAndCodeStudioModule } from "@ribajs/artcodestudio";
+import { podcastModule } from "@ribajs/podcast";
 
 // Common
 import * as commonBinders from "../common/binders";
@@ -27,7 +28,7 @@ declare global {
     env: {
       STRAPI_EXTERN_URL: string;
       STRAPI_STUDENT_EXTERN_URL: string;
-      NEST_INTERN_URL: string;
+      NEST_EXTERN_URL: string;
     };
   }
 }
@@ -70,6 +71,7 @@ export class CSRApp {
     this.riba.module.regist(masonryModule);
     this.riba.module.regist(contentSliderModule.init({}));
     this.riba.module.regist(artAndCodeStudioModule.init({}));
+    this.riba.module.regist(podcastModule.init({}));
 
     this.view = this.riba.bind(document.body, this.model);
 

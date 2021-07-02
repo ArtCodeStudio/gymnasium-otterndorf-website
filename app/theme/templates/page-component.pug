@@ -44,6 +44,6 @@ html(lang='en')
       window.env = {};
       window.env.STRAPI_EXTERN_URL = "#{env.STRAPI_EXTERN_URL}";
       window.env.STRAPI_STUDENT_EXTERN_URL = "#{env.STRAPI_STUDENT_EXTERN_URL}";
-      window.env.NEST_INTERN_URL = window.location.protocol +"//" +window.location.hostname + (window.location.port ? `:${window.location.port}` : '');
+      window.env.NEST_EXTERN_URL = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : '');
     script(src='/csr/vendors.bundle.js')
     script(src='/csr/main.bundle.js')

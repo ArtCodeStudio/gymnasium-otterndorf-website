@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PostService } from '../post';
 import { SearchPost } from '../../types';
+import { NavService } from '../nav';
+import { PodcastService } from '../podcast/podcast.service';
 import { MarkdownService } from '../markdown/markdown.service';
 import { Feed } from 'feed';
 import * as Podcast from 'podcast';
@@ -9,19 +11,20 @@ import * as Podcast from 'podcast';
 export class FeedService {
   constructor(
     protected readonly post: PostService,
+    protected readonly podcast: PodcastService,
     protected readonly markdown: MarkdownService,
   ) {}
 
   public getSiteUrl() {
-    return process.env.NEST_EXTERN_URL;
+    return NavService.buildNestSrc('');
   }
 
   public getFeedUrl() {
-    return `${process.env.NEST_EXTERN_URL}/api/feed/podcast`.replace('//', '/');
+    return NavService.buildNestSrc('api/feed/podcast');
   }
 
   public getPostUrl(post: SearchPost) {
-    return process.env.NEST_EXTERN_URL + post.href.replace('//', '/');
+    return NavService.buildNestSrc(post.href);
   }
 
   // TODO properties, see https://github.com/jpmonette/feed
