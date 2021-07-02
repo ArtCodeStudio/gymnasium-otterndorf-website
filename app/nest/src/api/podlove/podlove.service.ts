@@ -210,7 +210,7 @@ export class PodloveService {
               'sans-serif',
             ],
             weight: 800,
-            src: ['(/fonts/lexend/wlpzgwvFAVdoq2_nXIIB3kZK.woff2'],
+            src: ['/fonts/lexend/wlpzgwvFAVdoq2_nXIIB3kZK.woff2'],
           },
           regular: {
             name: 'Lexend',
