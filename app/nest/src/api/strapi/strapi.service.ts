@@ -45,7 +45,7 @@ export class StrapiService {
 
   /**
    * Seconds to ISO 8601 Duration format ([hh]:[mm]:[ss].[sss])
-   * Thanks to https://stackoverflow.com/a/6313008
+   * @credits https://stackoverflow.com/a/6313008
    * @param timeInSeconds
    * @returns
    */

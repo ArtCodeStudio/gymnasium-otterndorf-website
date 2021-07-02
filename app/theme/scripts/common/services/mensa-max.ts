@@ -6,7 +6,7 @@ import { MensaMaxData } from "../types";
 export class MensaMaxService {
   protected static instance: MensaMaxService;
   protected host =
-    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_INTERN_URL || "";
+    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_EXTERN_URL || "";
   protected url = "/api/mensa-max";
 
   protected constructor() {

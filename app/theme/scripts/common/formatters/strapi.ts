@@ -13,13 +13,23 @@ export const strapiFormatter = {
       );
       return url;
     }
-    if (!url.startsWith("http")) {
-      const strapiUrl =
-        window?.env?.STRAPI_EXTERN_URL ||
-        window?.ssr?.env?.STRAPI_EXTERN_URL ||
-        "";
-      url = strapiUrl + url;
+    if (url.startsWith("http")) {
+      return url;
     }
-    return url;
+
+    let host =
+      window?.env?.STRAPI_EXTERN_URL ||
+      window?.ssr?.env?.STRAPI_EXTERN_URL ||
+      "";
+
+    if (host.endsWith("/")) {
+      host = host.substring(0, host.length - 1);
+    }
+
+    if (url.startsWith("/")) {
+      url = url.substring(1);
+    }
+
+    return `${host}/${url}`;
   },
 };

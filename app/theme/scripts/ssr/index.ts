@@ -28,7 +28,7 @@ declare global {
     env: {
       STRAPI_STUDENT_EXTERN_URL: string;
       STRAPI_EXTERN_URL: string;
-      NEST_INTERN_URL: string;
+      NEST_EXTERN_URL: string;
     };
     model: any;
   }

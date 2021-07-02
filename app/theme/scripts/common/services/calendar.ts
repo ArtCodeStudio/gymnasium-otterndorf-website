@@ -6,7 +6,7 @@ import type { CalendarComponent } from "ical";
 export class CalendarService {
   protected static instance: CalendarService;
   protected host =
-    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_INTERN_URL || "";
+    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_EXTERN_URL || "";
   protected url = "/api/calendar";
 
   protected constructor() {

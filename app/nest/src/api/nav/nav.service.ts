@@ -14,6 +14,12 @@ export class NavService {
     //
   }
 
+  /**
+   * Similar to nestFormatter
+   * @see nestFormatter app/theme/scripts/common/formatters/nest.ts
+   * @param src
+   * @returns
+   */
   static buildNestSrc(src?: string) {
     if (!src) {
       src = '';

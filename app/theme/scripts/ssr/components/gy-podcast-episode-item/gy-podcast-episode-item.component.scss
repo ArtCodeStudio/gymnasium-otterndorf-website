@@ -1,3 +1,17 @@
 gy-podcast-episode-item {
   display: block;
+  podlove-web-player, #podlove-web-player {
+    width: 950px;
+    max-width: 950px;
+    min-height: 300px;
+
+  }
+  #podlove-web-player {
+    &:empty {
+      background-image: url(/images/loading-blue.svg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100px;
+    }
+  }
 }

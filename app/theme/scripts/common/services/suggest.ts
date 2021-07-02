@@ -5,7 +5,7 @@ import { SuggestResult } from "../types/suggest-result";
 export class SuggestService {
   protected static instance: SuggestService;
   protected host =
-    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_INTERN_URL || "";
+    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_EXTERN_URL || "";
 
   protected constructor() {
     /** protected */

@@ -178,10 +178,10 @@ export class PodloveService {
          * - use this generator to get a direct visual feedback:
          */
         tokens: {
-          brand: '#87B0D4',
-          brandDark: '#0F2942',
-          brandDarkest: '#1A3A4A',
-          brandLightest: '#E5EAECFF',
+          brand: '#006825',
+          brandDark: '#0075BD',
+          brandDarkest: '#0075BD',
+          brandLightest: '#5DCED1',
           shadeDark: '#807E7C',
           shadeBase: '#807E7C',
           contrast: '#000',
@@ -200,22 +200,22 @@ export class PodloveService {
          */
         fonts: {
           ci: {
-            name: 'RobotoBlack',
+            name: 'Lexend',
             family: [
-              'RobotoBlack',
+              'Lexend',
               'Calibri',
               'Candara',
               'Arial',
               'Helvetica',
               'sans-serif',
             ],
-            weight: 900,
-            src: ['./assets/roboto-black.woff2'],
+            weight: 800,
+            src: ['(/fonts/lexend/wlpzgwvFAVdoq2_nXIIB3kZK.woff2'],
           },
           regular: {
-            name: 'FiraSansLight',
+            name: 'Lexend',
             family: [
-              'FiraSansLight',
+              'Lexend',
               'Calibri',
               'Candara',
               'Arial',
@@ -223,20 +223,20 @@ export class PodloveService {
               'sans-serif',
             ],
             weight: 300,
-            src: ['./assets/fira-sans-light.woff2'],
+            src: ['/fonts/lexend/wlpzgwvFAVdoq2_nUIYB3kZK.woff2'],
           },
           bold: {
-            name: 'FiraSansBold',
+            name: 'Lexend',
             family: [
-              'FiraSansBold',
+              'Lexend',
               'Calibri',
               'Candara',
               'Arial',
               'Helvetica',
               'sans-serif',
             ],
-            weight: 700,
-            src: ['./assets/fira-sans-normal.woff2'],
+            weight: 600,
+            src: ['/fonts/lexend/wlpzgwvFAVdoq2_nJIAB3kZK.woff2'],
           },
         },
       },
