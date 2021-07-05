@@ -18,9 +18,13 @@ gy-section-calendar {
         flex-direction: column;
         text-align: center;
         align-items: center;
+        justify-content: center;
         box-shadow: 0 3px rgba(180, 180, 180, 0.5);
         .calendar-date-day {
+          font-size: calc(1.375rem + 1.5vw);
           color: #72b52b;
+          font-weight: 500;
+          line-height: 90%;
         }
         .calendar-date-month {
           text-transform: uppercase;
