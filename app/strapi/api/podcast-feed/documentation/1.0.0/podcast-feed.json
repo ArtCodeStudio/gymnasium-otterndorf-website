@@ -329,7 +329,8 @@
           "type",
           "copyright",
           "block",
-          "complete"
+          "complete",
+          "subtitle"
         ],
         "properties": {
           "id": {
@@ -612,6 +613,9 @@
                 }
               }
             }
+          },
+          "subtitle": {
+            "type": "string"
           }
         }
       },
@@ -628,7 +632,8 @@
           "type",
           "copyright",
           "block",
-          "complete"
+          "complete",
+          "subtitle"
         ],
         "properties": {
           "title": {
@@ -814,6 +819,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "subtitle": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

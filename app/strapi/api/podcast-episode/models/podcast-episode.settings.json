@@ -79,6 +79,10 @@
       "type": "integer",
       "required": true,
       "min": 1
+    },
+    "subtitle": {
+      "type": "string",
+      "required": true
     }
   }
 }

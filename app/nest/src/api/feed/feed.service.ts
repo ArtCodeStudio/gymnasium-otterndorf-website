@@ -20,9 +20,18 @@ export class FeedService {
   }
 
   public getFeedUrl() {
+    return NavService.buildNestSrc('api/feed/rss');
+  }
+
+  public getPodcastEpisodeUrl() {
+    return NavService.buildNestSrc('api/feed/rss');
+  }
+
+  public getPodcastFeedUrl() {
     return NavService.buildNestSrc('api/feed/podcast');
   }
 
+  // TODO move tp post service
   public getPostUrl(post: SearchPost) {
     return NavService.buildNestSrc(post.href);
   }
@@ -31,8 +40,8 @@ export class FeedService {
   public async get() {
     const feed = new Feed({
       title: 'Gymnasium Otterndorf Neuigkeiten',
-      id: process.env.NEST_EXTERN_URL,
-      link: process.env.NEST_EXTERN_URL,
+      id: NavService.buildNestSrc(''),
+      link: this.getSiteUrl(),
       copyright: '2021, Gymnasium Otterndorf',
     });
 
@@ -58,25 +67,68 @@ export class FeedService {
 
   // TODO properties, see https://github.com/maxnowack/node-podcast
   public async getPodcast() {
+    const feedConfig = await this.podcast.getConfig();
+    const episodes = await this.podcast.list();
+
     const feed = new Podcast({
-      title: 'Gymnasium Otterndorf Podcast',
+      title: feedConfig.title,
       feedUrl: this.getFeedUrl(),
       siteUrl: this.getSiteUrl(),
-      author: 'Gymnasium Otterndorf',
-      copyright: 'All rights reserved 2021, Gymnasium Otterndorf',
+      author: feedConfig.owner_name, // TODO
+      itunesOwner: {
+        email: feedConfig.owner_email,
+        name: feedConfig.owner_name,
+      },
+      copyright: feedConfig.copyright,
+      description: feedConfig.description,
+      imageUrl: feedConfig.image?.url,
+      itunesExplicit: feedConfig.explicit || false,
+      itunesSubtitle: feedConfig.subtitle,
+      itunesType: feedConfig.type.toLowerCase() as 'episodic' | 'serial',
+      language: feedConfig.language,
     });
 
-    const posts = await this.post.list();
+    for (const episode of episodes) {
+      if (
+        episode.content.length <= 0 &&
+        episode.content[0] &&
+        episode.content[0].url
+      ) {
+        continue;
+      }
 
-    for (const post of posts) {
+      // TODO add to iTunes namespace
+      if (episode.block) {
+        continue;
+      }
+
+      const audioFile = {
+        ...episode.content[0],
+        duration: await this.podcast.getAudioDuration(episode.content[0].url),
+      };
+
+      const html = await this.markdown.html(episode.description);
+
       feed.addItem({
-        title: post.title,
-        description: post.text, // TODO trim
-        content: await this.markdown.html(post.md),
-        url: this.getPostUrl(post),
-        date: new Date(post.updatedAt), // TODO created
-        author: post.author,
-        // image
+        title: episode.title,
+        description: episode.subtitle,
+        content: html,
+        url: await this.podcast.getEpisodeUrl(episode.slug),
+        date: new Date(episode.pubDate),
+        // author: episode.author, TODO
+        guid: episode.id,
+        itunesImage: episode.image?.url,
+        itunesSubtitle: episode.subtitle,
+        itunesEpisode: episode.episode,
+        itunesSeason: episode.season,
+        itunesExplicit: episode.explicit || false,
+        // itunesBlock: episode.block || false,
+        itunesDuration: audioFile.duration,
+        enclosure: {
+          url: NavService.buildStrapiSrc(audioFile.url),
+          file: audioFile.name,
+          size: audioFile.size,
+        },
       });
     }
 

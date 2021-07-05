@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/02/2021 7:35:40 AM"
+    "x-generation-date": "07/05/2021 11:23:44 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9985,7 +9985,8 @@
                         "block",
                         "slug",
                         "season",
-                        "episode"
+                        "episode",
+                        "subtitle"
                       ],
                       "properties": {
                         "id": {
@@ -10031,6 +10032,9 @@
                         },
                         "episode": {
                           "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -11138,7 +11142,8 @@
                         "block",
                         "slug",
                         "season",
-                        "episode"
+                        "episode",
+                        "subtitle"
                       ],
                       "properties": {
                         "id": {
@@ -11184,6 +11189,9 @@
                         },
                         "episode": {
                           "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -12651,7 +12659,8 @@
                         "block",
                         "slug",
                         "season",
-                        "episode"
+                        "episode",
+                        "subtitle"
                       ],
                       "properties": {
                         "id": {
@@ -12697,6 +12706,9 @@
                         },
                         "episode": {
                           "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -13753,7 +13765,8 @@
                         "block",
                         "slug",
                         "season",
-                        "episode"
+                        "episode",
+                        "subtitle"
                       ],
                       "properties": {
                         "id": {
@@ -13799,6 +13812,9 @@
                         },
                         "episode": {
                           "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -16331,7 +16347,8 @@
                         "block",
                         "slug",
                         "season",
-                        "episode"
+                        "episode",
+                        "subtitle"
                       ],
                       "properties": {
                         "id": {
@@ -16377,6 +16394,9 @@
                         },
                         "episode": {
                           "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -17572,7 +17592,8 @@
                         "block",
                         "slug",
                         "season",
-                        "episode"
+                        "episode",
+                        "subtitle"
                       ],
                       "properties": {
                         "id": {
@@ -17618,6 +17639,9 @@
                         },
                         "episode": {
                           "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -17908,7 +17932,8 @@
           "block",
           "slug",
           "season",
-          "episode"
+          "episode",
+          "subtitle"
         ],
         "properties": {
           "id": {
@@ -18088,6 +18113,9 @@
           "episode": {
             "type": "integer"
           },
+          "subtitle": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -18103,7 +18131,8 @@
           "block",
           "slug",
           "season",
-          "episode"
+          "episode",
+          "subtitle"
         ],
         "properties": {
           "title": {
@@ -18143,6 +18172,9 @@
           "episode": {
             "type": "integer"
           },
+          "subtitle": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -18169,7 +18201,8 @@
           "type",
           "copyright",
           "block",
-          "complete"
+          "complete",
+          "subtitle"
         ],
         "properties": {
           "id": {
@@ -18452,6 +18485,9 @@
                 }
               }
             }
+          },
+          "subtitle": {
+            "type": "string"
           }
         }
       },
@@ -18468,7 +18504,8 @@
           "type",
           "copyright",
           "block",
-          "complete"
+          "complete",
+          "subtitle"
         ],
         "properties": {
           "title": {
@@ -18654,6 +18691,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "subtitle": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -20497,7 +20537,8 @@
                         "block",
                         "slug",
                         "season",
-                        "episode"
+                        "episode",
+                        "subtitle"
                       ],
                       "properties": {
                         "id": {
@@ -20543,6 +20584,9 @@
                         },
                         "episode": {
                           "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"
@@ -21615,7 +21659,8 @@
                         "block",
                         "slug",
                         "season",
-                        "episode"
+                        "episode",
+                        "subtitle"
                       ],
                       "properties": {
                         "id": {
@@ -21661,6 +21706,9 @@
                         },
                         "episode": {
                           "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
                         },
                         "published_at": {
                           "type": "string"

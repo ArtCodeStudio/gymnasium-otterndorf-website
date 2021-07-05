@@ -8,6 +8,7 @@ import type {
   PodloveWebPlayerShow,
   PodloveWebPlayerAudio,
   PodloveWebPlayerFile,
+  PodloveWebPlayerTheme,
 } from '@ribajs/podcast';
 
 import { StrapiGqlPodcastEpisodeDetailFragmentFragment } from '../strapi/types';
@@ -17,7 +18,6 @@ import { PostService } from '../post/post.service';
 import { PodcastService } from '../podcast/podcast.service';
 import { StrapiService } from '../strapi/strapi.service';
 import { NavService } from '../nav';
-import { basename } from 'path';
 
 @Injectable()
 export class PodloveService {
@@ -51,17 +51,9 @@ export class PodloveService {
 
     for (const episode of episodes) {
       if (episode) {
-        let duration = '';
-        if (episode.content.length > 0) {
-          const audioMetadata = await this.strapi.getAudioMetadata(
-            basename(episode.content[0].url),
-            { duration: true },
-          );
-
-          duration = this.strapi.secondsToTime(
-            audioMetadata.format.duration || 0,
-          );
-        }
+        const duration = await this.podcast.getAudioDuration(
+          episode.content?.[0]?.url,
+        );
 
         playlist.push({
           config: this.getEpisodeConfigUrl(episode.slug),
@@ -161,6 +153,81 @@ export class PodloveService {
     return config;
   }
 
+  public async getThemeConfig(): Promise<PodloveWebPlayerTheme> {
+    const theme: PodloveWebPlayerTheme = {
+      /**
+       * Tokens
+       * - if defined the player defaults are dropped
+       * - rgba as well as hex values are allowed
+       * - use this generator to get a direct visual feedback:
+       */
+      tokens: {
+        brand: '#006825',
+        brandDark: '#0075BD',
+        brandDarkest: '#0075BD',
+        brandLightest: '#5DCED1',
+        shadeDark: '#807E7C',
+        shadeBase: '#807E7C',
+        contrast: '#000',
+        alt: '#fff',
+      },
+
+      /**
+       * Fonts
+       * - by default the system font stack is used (https://css-tricks.com/snippets/css/system-font-stack/)
+       *
+       * font:
+       * - name: font name that is used in the font stack
+       * - family: list of fonts in a fallback order
+       * - weight: font weight of the defined font
+       * - src: list of web font sources (allowed: woff, woff2, ttf, eot, svg)
+       */
+      fonts: {
+        ci: {
+          name: 'Lexend',
+          family: [
+            'Lexend',
+            'Calibri',
+            'Candara',
+            'Arial',
+            'Helvetica',
+            'sans-serif',
+          ],
+          weight: 800,
+          src: ['/fonts/lexend/wlpzgwvFAVdoq2_nXIIB3kZK.woff2'],
+        },
+        regular: {
+          name: 'Lexend',
+          family: [
+            'Lexend',
+            'Calibri',
+            'Candara',
+            'Arial',
+            'Helvetica',
+            'sans-serif',
+          ],
+          weight: 300,
+          src: ['/fonts/lexend/wlpzgwvFAVdoq2_nUIYB3kZK.woff2'],
+        },
+        bold: {
+          name: 'Lexend',
+          family: [
+            'Lexend',
+            'Calibri',
+            'Candara',
+            'Arial',
+            'Helvetica',
+            'sans-serif',
+          ],
+          weight: 600,
+          src: ['/fonts/lexend/wlpzgwvFAVdoq2_nJIAB3kZK.woff2'],
+        },
+      },
+    };
+
+    return theme;
+  }
+
   public async getConfig(): Promise<PodloveWebPlayerConfig> {
     const config: PodloveWebPlayerConfig = {
       version: 5,
@@ -168,78 +235,9 @@ export class PodloveService {
       // player asset base path, falls back to ./
       base: 'player/',
 
-      activeTab: 'chapters', // default active tab, can be set to [chapters, files, share, playlist]
+      activeTab: 'shownotes',
 
-      theme: {
-        /**
-         * Tokens
-         * - if defined the player defaults are dropped
-         * - rgba as well as hex values are allowed
-         * - use this generator to get a direct visual feedback:
-         */
-        tokens: {
-          brand: '#006825',
-          brandDark: '#0075BD',
-          brandDarkest: '#0075BD',
-          brandLightest: '#5DCED1',
-          shadeDark: '#807E7C',
-          shadeBase: '#807E7C',
-          contrast: '#000',
-          alt: '#fff',
-        },
-
-        /**
-         * Fonts
-         * - by default the system font stack is used (https://css-tricks.com/snippets/css/system-font-stack/)
-         *
-         * font:
-         * - name: font name that is used in the font stack
-         * - family: list of fonts in a fallback order
-         * - weight: font weight of the defined font
-         * - src: list of web font sources (allowed: woff, woff2, ttf, eot, svg)
-         */
-        fonts: {
-          ci: {
-            name: 'Lexend',
-            family: [
-              'Lexend',
-              'Calibri',
-              'Candara',
-              'Arial',
-              'Helvetica',
-              'sans-serif',
-            ],
-            weight: 800,
-            src: ['/fonts/lexend/wlpzgwvFAVdoq2_nXIIB3kZK.woff2'],
-          },
-          regular: {
-            name: 'Lexend',
-            family: [
-              'Lexend',
-              'Calibri',
-              'Candara',
-              'Arial',
-              'Helvetica',
-              'sans-serif',
-            ],
-            weight: 300,
-            src: ['/fonts/lexend/wlpzgwvFAVdoq2_nUIYB3kZK.woff2'],
-          },
-          bold: {
-            name: 'Lexend',
-            family: [
-              'Lexend',
-              'Calibri',
-              'Candara',
-              'Arial',
-              'Helvetica',
-              'sans-serif',
-            ],
-            weight: 600,
-            src: ['/fonts/lexend/wlpzgwvFAVdoq2_nJIAB3kZK.woff2'],
-          },
-        },
-      },
+      theme: await this.getThemeConfig(),
 
       /**
        * Subscribe Button
@@ -255,28 +253,29 @@ export class PodloveService {
        */
       playlist: await this.getPlaylist(),
 
-      /*
-        Share Tab
-      */
-      share: {
-        /**
-         * Share Channels:
-         * - list of available channels in share tab
-         */
-        channels: [
-          'facebook',
-          'twitter',
-          'whats-app',
-          'linkedin',
-          'pinterest',
-          'xing',
-          'mail',
-          'link',
-        ],
-        // share outlet, if not provided embed snippet is not available
-        outlet: '/share.html',
-        sharePlaytime: true,
-      },
+      /**
+       * Share Tab
+       * TODO
+       */
+      // share: {
+      //   /**
+      //    * Share Channels:
+      //    * - list of available channels in share tab
+      //    */
+      //   channels: [
+      //     'facebook',
+      //     'twitter',
+      //     'whats-app',
+      //     'linkedin',
+      //     'pinterest',
+      //     'xing',
+      //     'mail',
+      //     'link',
+      //   ],
+      //   // share outlet, if not provided embed snippet is not available
+      //   outlet: '/share.html',
+      //   sharePlaytime: true,
+      // },
     };
 
     return config;
@@ -286,7 +285,7 @@ export class PodloveService {
     const feedConfig = await this.podcast.getConfig();
     const show: PodloveWebPlayerShow = {
       title: feedConfig.title || '',
-      subtitle: '', // TODO
+      subtitle: feedConfig.subtitle || '',
       summary: feedConfig.description,
       poster: NavService.buildStrapiSrc(feedConfig.image?.url) || '',
       link: this.feed.getSiteUrl(),
@@ -308,6 +307,7 @@ export class PodloveService {
     const posterUrl = NavService.buildStrapiSrc(poster?.url);
     const summary = episode.description || '';
     const title = episode.title || '';
+    const subtitle = episode.subtitle || '';
     const publicationDate = episode.pubDate || episode.published_at;
     const link = NavService.buildNestSrc(`podcast/${episode.slug}`);
 
@@ -332,13 +332,8 @@ export class PodloveService {
       });
     }
 
-    const audioMetadata = await this.strapi.getAudioMetadata(
-      basename(episode.content[0].url),
-      { duration: true },
-    );
-
-    const duration = this.strapi.secondsToTime(
-      audioMetadata.format.duration || 0,
+    const duration = await this.podcast.getAudioDuration(
+      episode.content?.[0]?.url,
     );
 
     const episodeConfig: PodloveWebPlayerEpisode = {
@@ -354,7 +349,7 @@ export class PodloveService {
        * Episode related Information
        */
       title,
-      subtitle: '', // TODO
+      subtitle,
       summary: summary,
       // ISO 8601 DateTime format, this is capable of adding a time offset, see https://en.wikipedia.org/wiki/ISO_8601
       publicationDate,
@@ -407,66 +402,66 @@ export class PodloveService {
        * - (group): contributors group
        */
       contributors: [
-        {
-          id: '1',
-          name: 'Alexander Heimbuch',
-          avatar: '/assets/alexander-heimbuch.jpeg',
-          role: {
-            id: '1',
-            slug: 'team',
-            title: 'Team',
-          },
-          group: {
-            id: '2',
-            slug: 'on-air',
-            title: 'On Air',
-          },
-        },
-        {
-          id: '2',
-          name: 'Michaela Lehr',
-          avatar: '/assets/michaela-lehr.jpeg',
-          role: {
-            id: '1',
-            slug: 'team',
-            title: 'Team',
-          },
-          group: {
-            id: '2',
-            slug: 'on-air',
-            title: 'On Air',
-          },
-        },
-        {
-          id: '3',
-          name: 'Eric Teubert',
-          avatar: '/assets/eric-teubert.jpeg',
-          role: {
-            id: '1',
-            slug: 'team',
-            title: 'Team',
-          },
-          group: {
-            id: '2',
-            slug: 'on-air',
-            title: 'On Air',
-          },
-        },
-        {
-          id: '4',
-          name: 'Simon',
-          avatar: '/assets/simon.jpeg',
-          role: {
-            id: '2',
-            slug: 'guest',
-            title: 'Gast',
-          },
-          group: {
-            id: '2',
-            slug: 'on-air',
-            title: 'On Air',
-          },
-        },
+        // {
+        //   id: '1',
+        //   name: 'Alexander Heimbuch',
+        //   avatar: '/assets/alexander-heimbuch.jpeg',
+        //   role: {
+        //     id: '1',
+        //     slug: 'team',
+        //     title: 'Team',
+        //   },
+        //   group: {
+        //     id: '2',
+        //     slug: 'on-air',
+        //     title: 'On Air',
+        //   },
+        // },
+        // {
+        //   id: '2',
+        //   name: 'Michaela Lehr',
+        //   avatar: '/assets/michaela-lehr.jpeg',
+        //   role: {
+        //     id: '1',
+        //     slug: 'team',
+        //     title: 'Team',
+        //   },
+        //   group: {
+        //     id: '2',
+        //     slug: 'on-air',
+        //     title: 'On Air',
+        //   },
+        // },
+        // {
+        //   id: '3',
+        //   name: 'Eric Teubert',
+        //   avatar: '/assets/eric-teubert.jpeg',
+        //   role: {
+        //     id: '1',
+        //     slug: 'team',
+        //     title: 'Team',
+        //   },
+        //   group: {
+        //     id: '2',
+        //     slug: 'on-air',
+        //     title: 'On Air',
+        //   },
+        // },
+        // {
+        //   id: '4',
+        //   name: 'Simon',
+        //   avatar: '/assets/simon.jpeg',
+        //   role: {
+        //     id: '2',
+        //     slug: 'guest',
+        //     title: 'Gast',
+        //   },
+        //   group: {
+        //     id: '2',
+        //     slug: 'on-air',
+        //     title: 'On Air',
+        //   },
+        // },
       ],
 
       /**

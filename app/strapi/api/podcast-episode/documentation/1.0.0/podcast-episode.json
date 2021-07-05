@@ -538,7 +538,8 @@
           "block",
           "slug",
           "season",
-          "episode"
+          "episode",
+          "subtitle"
         ],
         "properties": {
           "id": {
@@ -718,6 +719,9 @@
           "episode": {
             "type": "integer"
           },
+          "subtitle": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -733,7 +737,8 @@
           "block",
           "slug",
           "season",
-          "episode"
+          "episode",
+          "subtitle"
         ],
         "properties": {
           "title": {
@@ -772,6 +777,9 @@
           },
           "episode": {
             "type": "integer"
+          },
+          "subtitle": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",

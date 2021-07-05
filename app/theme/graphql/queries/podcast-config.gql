@@ -6,6 +6,7 @@ query podcastConfig {
   podcastFeed {
     id
     title
+    subtitle
     description
     image {
       ...ImageFragment

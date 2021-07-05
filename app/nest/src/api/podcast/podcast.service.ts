@@ -7,10 +7,24 @@ import {
   StrapiGqlPodcastEpisodeDetailFragmentFragment,
 } from '../strapi/types';
 import { StrapiService } from '../strapi/strapi.service';
+import { NavService } from '../nav';
+import { basename } from 'path';
 
 @Injectable()
 export class PodcastService {
   constructor(protected readonly strapi: StrapiService) {}
+
+  public async getAudioDuration(audioFileUrl: string) {
+    const audioMetadata = await this.strapi.getAudioMetadata(
+      basename(audioFileUrl),
+      { duration: true },
+    );
+
+    const duration = this.strapi.secondsToTime(
+      audioMetadata.format.duration || 0,
+    );
+    return duration;
+  }
 
   public async getConfig() {
     const vars: StrapiGqlPodcastConfigQueryVariables = {};
@@ -53,5 +67,9 @@ export class PodcastService {
     slug: string,
   ): Promise<StrapiGqlPodcastEpisodeDetailFragmentFragment> {
     return (await this.list([slug], 1))[0] || null;
+  }
+
+  public async getEpisodeUrl(slug: string) {
+    return NavService.buildNestSrc(`podcast/${slug}`);
   }
 }

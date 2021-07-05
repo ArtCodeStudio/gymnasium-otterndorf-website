@@ -39,7 +39,6 @@ export class StrapiService {
    */
   public async getAudioMetadata(filename: string, options: IOptions = {}) {
     const path = this.getUploadFileLocalPath(filename);
-    console.debug('getAudioDurationInSeconds', path);
     return await parseAudioFile(path, options);
   }
 

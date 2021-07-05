@@ -89,6 +89,10 @@
     },
     "blogs": {
       "collection": "blog-category"
+    },
+    "subtitle": {
+      "type": "string",
+      "required": true
     }
   }
 }

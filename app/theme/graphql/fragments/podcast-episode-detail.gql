@@ -5,6 +5,7 @@ fragment PodcastEpisodeDetailFragment on PodcastEpisode {
   __typename
   id
   title
+  subtitle
   slug
   content {
     ... on UploadFile {
