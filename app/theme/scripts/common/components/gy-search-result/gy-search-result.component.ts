@@ -73,14 +73,14 @@ export class GySearchResultComponent extends Component {
   }
 
   public onSuggest(event: Event, context: any, el: HTMLSpanElement) {
-    console.debug("onSuggest", event, el);
+    // console.debug("onSuggest", event, el);
     for (const searchInput of this.searchInputs) {
       searchInput.setSuggest(el.innerText);
     }
   }
 
   public onOpen(item: SearchResult, event: Event) {
-    console.debug("onOpen", item, event.target);
+    // console.debug("onOpen", item, event.target);
 
     this.reset();
     if (item.data.href) {
@@ -89,7 +89,7 @@ export class GySearchResultComponent extends Component {
   }
 
   public onToggleItem(item: SearchItem, event: Event) {
-    console.debug("onToggleItem", item);
+    // console.debug("onToggleItem", item);
     event.stopPropagation();
     // event.preventDefault();
     if (item.opts.expanded) {

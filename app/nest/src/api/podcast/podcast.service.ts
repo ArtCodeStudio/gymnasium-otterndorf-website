@@ -35,7 +35,6 @@ export class PodcastService {
           'graphql/queries/podcast-config',
           vars,
         );
-      console.debug('getConfig', result);
       podcastConfig = result.podcastFeed;
     } catch (error) {
       console.error(error);

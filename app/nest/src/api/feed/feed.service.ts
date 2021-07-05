@@ -5,7 +5,7 @@ import { NavService } from '../nav';
 import { PodcastService } from '../podcast/podcast.service';
 import { MarkdownService } from '../markdown/markdown.service';
 import { Feed } from 'feed';
-import * as Podcast from 'podcast';
+import { Podcast } from 'podcast';
 
 @Injectable()
 export class FeedService {

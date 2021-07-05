@@ -53,7 +53,7 @@ export class MediaCenterPageComponent extends PageComponent {
     this.head.title = this.ctx.params.slug + " MediaCenter";
     try {
       const mediaCenter = await this.mediaCenter.get(this.ctx.params.slug);
-      console.debug("mediaCenter", mediaCenter);
+      // console.debug("mediaCenter", mediaCenter);
 
       if (mediaCenter) {
         if (mediaCenter.title) {
