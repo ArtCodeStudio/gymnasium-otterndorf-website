@@ -413,6 +413,16 @@ export type StrapiGqlComponentLinkTypePageInput = {
   page?: Maybe<Scalars['ID']>;
 };
 
+export type StrapiGqlComponentLinkTypePodcast = {
+  __typename?: 'ComponentLinkTypePodcast';
+  id: Scalars['ID'];
+  podcastEpisode?: Maybe<StrapiGqlPodcastEpisode>;
+};
+
+export type StrapiGqlComponentLinkTypePodcastInput = {
+  podcastEpisode?: Maybe<Scalars['ID']>;
+};
+
 export type StrapiGqlComponentLinkTypePost = {
   __typename?: 'ComponentLinkTypePost';
   id: Scalars['ID'];
@@ -641,50 +651,50 @@ export type StrapiGqlComponentSlideshowSlideshowEntry = {
   __typename?: 'ComponentSlideshowSlideshowEntry';
   id: Scalars['ID'];
   image?: Maybe<StrapiGqlUploadFile>;
-  subtitle?: Maybe<Scalars['String']>;
+  subtitle: Scalars['String'];
   color?: Maybe<StrapiGqlComponentTypesColor>;
 };
 
 export type StrapiGqlComponentSlideshowSlideshowEntryBlog = {
   __typename?: 'ComponentSlideshowSlideshowEntryBlog';
   id: Scalars['ID'];
-  subtitle?: Maybe<Scalars['String']>;
+  subtitle: Scalars['String'];
   image?: Maybe<StrapiGqlUploadFile>;
   post?: Maybe<StrapiGqlBlogEntry>;
-  label?: Maybe<Scalars['String']>;
+  label: Scalars['String'];
   color?: Maybe<StrapiGqlComponentTypesColor>;
 };
 
 export type StrapiGqlComponentSlideshowSlideshowEntryBlogInput = {
-  subtitle?: Maybe<Scalars['String']>;
+  subtitle: Scalars['String'];
   image?: Maybe<Scalars['ID']>;
   post?: Maybe<Scalars['ID']>;
   label?: Maybe<Scalars['String']>;
-  color?: Maybe<StrapiGqlComponentTypesColorInput>;
+  color: StrapiGqlComponentTypesColorInput;
 };
 
 export type StrapiGqlComponentSlideshowSlideshowEntryInput = {
   image?: Maybe<Scalars['ID']>;
-  subtitle?: Maybe<Scalars['String']>;
-  color?: Maybe<StrapiGqlComponentTypesColorInput>;
+  subtitle: Scalars['String'];
+  color: StrapiGqlComponentTypesColorInput;
 };
 
 export type StrapiGqlComponentSlideshowSlideshowEntryPage = {
   __typename?: 'ComponentSlideshowSlideshowEntryPage';
   id: Scalars['ID'];
   image?: Maybe<StrapiGqlUploadFile>;
-  subtitle?: Maybe<Scalars['String']>;
+  subtitle: Scalars['String'];
   page?: Maybe<StrapiGqlPage>;
-  label?: Maybe<Scalars['String']>;
+  label: Scalars['String'];
   color?: Maybe<StrapiGqlComponentTypesColor>;
 };
 
 export type StrapiGqlComponentSlideshowSlideshowEntryPageInput = {
   image?: Maybe<Scalars['ID']>;
-  subtitle?: Maybe<Scalars['String']>;
+  subtitle: Scalars['String'];
   page?: Maybe<Scalars['ID']>;
   label?: Maybe<Scalars['String']>;
-  color?: Maybe<StrapiGqlComponentTypesColorInput>;
+  color: StrapiGqlComponentTypesColorInput;
 };
 
 export type StrapiGqlComponentStudentSectionStudentQuote = {
@@ -1102,7 +1112,7 @@ export type StrapiGqlMenuInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type StrapiGqlMorph = StrapiGqlUsersPermissionsMe | StrapiGqlUsersPermissionsMeRole | StrapiGqlUsersPermissionsLoginPayload | StrapiGqlUserPermissionsPasswordPayload | StrapiGqlBlogCategory | StrapiGqlBlogCategoryConnection | StrapiGqlBlogCategoryAggregator | StrapiGqlBlogCategoryGroupBy | StrapiGqlBlogCategoryConnectionId | StrapiGqlBlogCategoryConnectionCreated_At | StrapiGqlBlogCategoryConnectionUpdated_At | StrapiGqlBlogCategoryConnectionName | StrapiGqlBlogCategoryConnectionSlug | StrapiGqlCreateBlogCategoryPayload | StrapiGqlUpdateBlogCategoryPayload | StrapiGqlDeleteBlogCategoryPayload | StrapiGqlBlogEntry | StrapiGqlBlogEntryConnection | StrapiGqlBlogEntryAggregator | StrapiGqlBlogEntryGroupBy | StrapiGqlBlogEntryConnectionId | StrapiGqlBlogEntryConnectionCreated_At | StrapiGqlBlogEntryConnectionUpdated_At | StrapiGqlBlogEntryConnectionTitle | StrapiGqlBlogEntryConnectionBlog_Category | StrapiGqlBlogEntryConnectionSlug | StrapiGqlBlogEntryConnectionAuthor | StrapiGqlBlogEntryConnectionPublished_At | StrapiGqlCreateBlogEntryPayload | StrapiGqlUpdateBlogEntryPayload | StrapiGqlDeleteBlogEntryPayload | StrapiGqlFooter | StrapiGqlUpdateFooterPayload | StrapiGqlDeleteFooterPayload | StrapiGqlGallery | StrapiGqlGalleryConnection | StrapiGqlGalleryAggregator | StrapiGqlGalleryGroupBy | StrapiGqlGalleryConnectionId | StrapiGqlGalleryConnectionCreated_At | StrapiGqlGalleryConnectionUpdated_At | StrapiGqlGalleryConnectionTitle | StrapiGqlGalleryConnectionSlug | StrapiGqlCreateGalleryPayload | StrapiGqlUpdateGalleryPayload | StrapiGqlDeleteGalleryPayload | StrapiGqlHome | StrapiGqlUpdateHomePayload | StrapiGqlDeleteHomePayload | StrapiGqlMediaCenter | StrapiGqlMediaCenterConnection | StrapiGqlMediaCenterAggregator | StrapiGqlMediaCenterGroupBy | StrapiGqlMediaCenterConnectionId | StrapiGqlMediaCenterConnectionCreated_At | StrapiGqlMediaCenterConnectionUpdated_At | StrapiGqlMediaCenterConnectionTitle | StrapiGqlMediaCenterConnectionSlug | StrapiGqlCreateMediaCenterPayload | StrapiGqlUpdateMediaCenterPayload | StrapiGqlDeleteMediaCenterPayload | StrapiGqlMenu | StrapiGqlUpdateMenuPayload | StrapiGqlDeleteMenuPayload | StrapiGqlNavigationLink | StrapiGqlNavigationLinkConnection | StrapiGqlNavigationLinkAggregator | StrapiGqlNavigationLinkGroupBy | StrapiGqlNavigationLinkConnectionId | StrapiGqlNavigationLinkConnectionCreated_At | StrapiGqlNavigationLinkConnectionUpdated_At | StrapiGqlNavigationLinkConnectionTitle | StrapiGqlCreateNavigationLinkPayload | StrapiGqlUpdateNavigationLinkPayload | StrapiGqlDeleteNavigationLinkPayload | StrapiGqlPage | StrapiGqlPageConnection | StrapiGqlPageAggregator | StrapiGqlPageGroupBy | StrapiGqlPageConnectionId | StrapiGqlPageConnectionCreated_At | StrapiGqlPageConnectionUpdated_At | StrapiGqlPageConnectionTitle | StrapiGqlPageConnectionSlug | StrapiGqlPageConnectionCalendar_Key | StrapiGqlCreatePagePayload | StrapiGqlUpdatePagePayload | StrapiGqlDeletePagePayload | StrapiGqlPodcastEpisode | StrapiGqlPodcastEpisodeConnection | StrapiGqlPodcastEpisodeAggregator | StrapiGqlPodcastEpisodeAggregatorSum | StrapiGqlPodcastEpisodeAggregatorAvg | StrapiGqlPodcastEpisodeAggregatorMin | StrapiGqlPodcastEpisodeAggregatorMax | StrapiGqlPodcastEpisodeGroupBy | StrapiGqlPodcastEpisodeConnectionId | StrapiGqlPodcastEpisodeConnectionCreated_At | StrapiGqlPodcastEpisodeConnectionUpdated_At | StrapiGqlPodcastEpisodeConnectionTitle | StrapiGqlPodcastEpisodeConnectionPubDate | StrapiGqlPodcastEpisodeConnectionDescription | StrapiGqlPodcastEpisodeConnectionImage | StrapiGqlPodcastEpisodeConnectionExplicit | StrapiGqlPodcastEpisodeConnectionType | StrapiGqlPodcastEpisodeConnectionBlock | StrapiGqlPodcastEpisodeConnectionSlug | StrapiGqlPodcastEpisodeConnectionSeason | StrapiGqlPodcastEpisodeConnectionEpisode | StrapiGqlPodcastEpisodeConnectionSubtitle | StrapiGqlPodcastEpisodeConnectionPublished_At | StrapiGqlCreatePodcastEpisodePayload | StrapiGqlUpdatePodcastEpisodePayload | StrapiGqlDeletePodcastEpisodePayload | StrapiGqlPodcastFeed | StrapiGqlUpdatePodcastFeedPayload | StrapiGqlDeletePodcastFeedPayload | StrapiGqlSectionSlideshow | StrapiGqlSectionSlideshowConnection | StrapiGqlSectionSlideshowAggregator | StrapiGqlSectionSlideshowGroupBy | StrapiGqlSectionSlideshowConnectionId | StrapiGqlSectionSlideshowConnectionCreated_At | StrapiGqlSectionSlideshowConnectionUpdated_At | StrapiGqlSectionSlideshowConnectionTitle | StrapiGqlCreateSectionSlideshowPayload | StrapiGqlUpdateSectionSlideshowPayload | StrapiGqlDeleteSectionSlideshowPayload | StrapiGqlSubject | StrapiGqlSubjectConnection | StrapiGqlSubjectAggregator | StrapiGqlSubjectGroupBy | StrapiGqlSubjectConnectionId | StrapiGqlSubjectConnectionCreated_At | StrapiGqlSubjectConnectionUpdated_At | StrapiGqlSubjectConnectionTitle | StrapiGqlSubjectConnectionSlug | StrapiGqlCreateSubjectPayload | StrapiGqlUpdateSubjectPayload | StrapiGqlDeleteSubjectPayload | StrapiGqlTeacher | StrapiGqlTeacherConnection | StrapiGqlTeacherAggregator | StrapiGqlTeacherGroupBy | StrapiGqlTeacherConnectionId | StrapiGqlTeacherConnectionCreated_At | StrapiGqlTeacherConnectionUpdated_At | StrapiGqlTeacherConnectionImage | StrapiGqlTeacherConnectionName | StrapiGqlTeacherConnectionFirst_Name | StrapiGqlTeacherConnectionSlug | StrapiGqlTeacherConnectionBiography | StrapiGqlCreateTeacherPayload | StrapiGqlUpdateTeacherPayload | StrapiGqlDeleteTeacherPayload | StrapiGqlToolbar | StrapiGqlUpdateToolbarPayload | StrapiGqlDeleteToolbarPayload | StrapiGqlI18NLocale | StrapiGqlUploadFile | StrapiGqlUploadFileConnection | StrapiGqlUploadFileAggregator | StrapiGqlUploadFileAggregatorSum | StrapiGqlUploadFileAggregatorAvg | StrapiGqlUploadFileAggregatorMin | StrapiGqlUploadFileAggregatorMax | StrapiGqlUploadFileGroupBy | StrapiGqlUploadFileConnectionId | StrapiGqlUploadFileConnectionCreated_At | StrapiGqlUploadFileConnectionUpdated_At | StrapiGqlUploadFileConnectionName | StrapiGqlUploadFileConnectionAlternativeText | StrapiGqlUploadFileConnectionCaption | StrapiGqlUploadFileConnectionWidth | StrapiGqlUploadFileConnectionHeight | StrapiGqlUploadFileConnectionFormats | StrapiGqlUploadFileConnectionHash | StrapiGqlUploadFileConnectionExt | StrapiGqlUploadFileConnectionMime | StrapiGqlUploadFileConnectionSize | StrapiGqlUploadFileConnectionUrl | StrapiGqlUploadFileConnectionPreviewUrl | StrapiGqlUploadFileConnectionProvider | StrapiGqlUploadFileConnectionProvider_Metadata | StrapiGqlDeleteFilePayload | StrapiGqlUsersPermissionsPermission | StrapiGqlUsersPermissionsRole | StrapiGqlUsersPermissionsRoleConnection | StrapiGqlUsersPermissionsRoleAggregator | StrapiGqlUsersPermissionsRoleGroupBy | StrapiGqlUsersPermissionsRoleConnectionId | StrapiGqlUsersPermissionsRoleConnectionName | StrapiGqlUsersPermissionsRoleConnectionDescription | StrapiGqlUsersPermissionsRoleConnectionType | StrapiGqlCreateRolePayload | StrapiGqlUpdateRolePayload | StrapiGqlDeleteRolePayload | StrapiGqlUsersPermissionsUser | StrapiGqlUsersPermissionsUserConnection | StrapiGqlUsersPermissionsUserAggregator | StrapiGqlUsersPermissionsUserGroupBy | StrapiGqlUsersPermissionsUserConnectionId | StrapiGqlUsersPermissionsUserConnectionCreated_At | StrapiGqlUsersPermissionsUserConnectionUpdated_At | StrapiGqlUsersPermissionsUserConnectionUsername | StrapiGqlUsersPermissionsUserConnectionEmail | StrapiGqlUsersPermissionsUserConnectionProvider | StrapiGqlUsersPermissionsUserConnectionConfirmed | StrapiGqlUsersPermissionsUserConnectionBlocked | StrapiGqlUsersPermissionsUserConnectionRole | StrapiGqlCreateUserPayload | StrapiGqlUpdateUserPayload | StrapiGqlDeleteUserPayload | StrapiGqlComponentBlackboardSlide | StrapiGqlComponentContentButton | StrapiGqlComponentContentDownloadButton | StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentGalleryImage | StrapiGqlComponentHomeCalendar | StrapiGqlComponentHomeFact | StrapiGqlComponentHomeNews | StrapiGqlComponentLinkItemLink | StrapiGqlComponentLinkItemText | StrapiGqlComponentLinkTypeBlog | StrapiGqlComponentLinkTypeGallery | StrapiGqlComponentLinkTypeMediaCenter | StrapiGqlComponentLinkTypePage | StrapiGqlComponentLinkTypePost | StrapiGqlComponentLinkTypeSchulfach | StrapiGqlComponentLinkTypeStrapi | StrapiGqlComponentLinkTypeTeacher | StrapiGqlComponentLinkTypeWeb | StrapiGqlComponentMediaCenterMovie | StrapiGqlComponentNavigationNavigationEntry | StrapiGqlComponentNavigationNavigationLevelEntry | StrapiGqlComponentNavigationNavigationSection | StrapiGqlComponentPodcastCategory | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionFacts | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSidebarAssets | StrapiGqlComponentSlideshowSlideshowEntryBlog | StrapiGqlComponentSlideshowSlideshowEntryPage | StrapiGqlComponentSlideshowSlideshowEntry | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentTypesAlignment | StrapiGqlComponentTypesColor;
+export type StrapiGqlMorph = StrapiGqlUsersPermissionsMe | StrapiGqlUsersPermissionsMeRole | StrapiGqlUsersPermissionsLoginPayload | StrapiGqlUserPermissionsPasswordPayload | StrapiGqlBlogCategory | StrapiGqlBlogCategoryConnection | StrapiGqlBlogCategoryAggregator | StrapiGqlBlogCategoryGroupBy | StrapiGqlBlogCategoryConnectionId | StrapiGqlBlogCategoryConnectionCreated_At | StrapiGqlBlogCategoryConnectionUpdated_At | StrapiGqlBlogCategoryConnectionName | StrapiGqlBlogCategoryConnectionSlug | StrapiGqlCreateBlogCategoryPayload | StrapiGqlUpdateBlogCategoryPayload | StrapiGqlDeleteBlogCategoryPayload | StrapiGqlBlogEntry | StrapiGqlBlogEntryConnection | StrapiGqlBlogEntryAggregator | StrapiGqlBlogEntryGroupBy | StrapiGqlBlogEntryConnectionId | StrapiGqlBlogEntryConnectionCreated_At | StrapiGqlBlogEntryConnectionUpdated_At | StrapiGqlBlogEntryConnectionTitle | StrapiGqlBlogEntryConnectionBlog_Category | StrapiGqlBlogEntryConnectionSlug | StrapiGqlBlogEntryConnectionAuthor | StrapiGqlBlogEntryConnectionPublished_At | StrapiGqlCreateBlogEntryPayload | StrapiGqlUpdateBlogEntryPayload | StrapiGqlDeleteBlogEntryPayload | StrapiGqlFooter | StrapiGqlUpdateFooterPayload | StrapiGqlDeleteFooterPayload | StrapiGqlGallery | StrapiGqlGalleryConnection | StrapiGqlGalleryAggregator | StrapiGqlGalleryGroupBy | StrapiGqlGalleryConnectionId | StrapiGqlGalleryConnectionCreated_At | StrapiGqlGalleryConnectionUpdated_At | StrapiGqlGalleryConnectionTitle | StrapiGqlGalleryConnectionSlug | StrapiGqlCreateGalleryPayload | StrapiGqlUpdateGalleryPayload | StrapiGqlDeleteGalleryPayload | StrapiGqlHome | StrapiGqlUpdateHomePayload | StrapiGqlDeleteHomePayload | StrapiGqlMediaCenter | StrapiGqlMediaCenterConnection | StrapiGqlMediaCenterAggregator | StrapiGqlMediaCenterGroupBy | StrapiGqlMediaCenterConnectionId | StrapiGqlMediaCenterConnectionCreated_At | StrapiGqlMediaCenterConnectionUpdated_At | StrapiGqlMediaCenterConnectionTitle | StrapiGqlMediaCenterConnectionSlug | StrapiGqlCreateMediaCenterPayload | StrapiGqlUpdateMediaCenterPayload | StrapiGqlDeleteMediaCenterPayload | StrapiGqlMenu | StrapiGqlUpdateMenuPayload | StrapiGqlDeleteMenuPayload | StrapiGqlNavigationLink | StrapiGqlNavigationLinkConnection | StrapiGqlNavigationLinkAggregator | StrapiGqlNavigationLinkGroupBy | StrapiGqlNavigationLinkConnectionId | StrapiGqlNavigationLinkConnectionCreated_At | StrapiGqlNavigationLinkConnectionUpdated_At | StrapiGqlNavigationLinkConnectionTitle | StrapiGqlCreateNavigationLinkPayload | StrapiGqlUpdateNavigationLinkPayload | StrapiGqlDeleteNavigationLinkPayload | StrapiGqlPage | StrapiGqlPageConnection | StrapiGqlPageAggregator | StrapiGqlPageGroupBy | StrapiGqlPageConnectionId | StrapiGqlPageConnectionCreated_At | StrapiGqlPageConnectionUpdated_At | StrapiGqlPageConnectionTitle | StrapiGqlPageConnectionSlug | StrapiGqlPageConnectionCalendar_Key | StrapiGqlCreatePagePayload | StrapiGqlUpdatePagePayload | StrapiGqlDeletePagePayload | StrapiGqlPodcastEpisode | StrapiGqlPodcastEpisodeConnection | StrapiGqlPodcastEpisodeAggregator | StrapiGqlPodcastEpisodeAggregatorSum | StrapiGqlPodcastEpisodeAggregatorAvg | StrapiGqlPodcastEpisodeAggregatorMin | StrapiGqlPodcastEpisodeAggregatorMax | StrapiGqlPodcastEpisodeGroupBy | StrapiGqlPodcastEpisodeConnectionId | StrapiGqlPodcastEpisodeConnectionCreated_At | StrapiGqlPodcastEpisodeConnectionUpdated_At | StrapiGqlPodcastEpisodeConnectionTitle | StrapiGqlPodcastEpisodeConnectionPubDate | StrapiGqlPodcastEpisodeConnectionDescription | StrapiGqlPodcastEpisodeConnectionImage | StrapiGqlPodcastEpisodeConnectionExplicit | StrapiGqlPodcastEpisodeConnectionType | StrapiGqlPodcastEpisodeConnectionBlock | StrapiGqlPodcastEpisodeConnectionSlug | StrapiGqlPodcastEpisodeConnectionSeason | StrapiGqlPodcastEpisodeConnectionEpisode | StrapiGqlPodcastEpisodeConnectionSubtitle | StrapiGqlPodcastEpisodeConnectionPublished_At | StrapiGqlCreatePodcastEpisodePayload | StrapiGqlUpdatePodcastEpisodePayload | StrapiGqlDeletePodcastEpisodePayload | StrapiGqlPodcastFeed | StrapiGqlUpdatePodcastFeedPayload | StrapiGqlDeletePodcastFeedPayload | StrapiGqlSectionSlideshow | StrapiGqlSectionSlideshowConnection | StrapiGqlSectionSlideshowAggregator | StrapiGqlSectionSlideshowGroupBy | StrapiGqlSectionSlideshowConnectionId | StrapiGqlSectionSlideshowConnectionCreated_At | StrapiGqlSectionSlideshowConnectionUpdated_At | StrapiGqlSectionSlideshowConnectionTitle | StrapiGqlCreateSectionSlideshowPayload | StrapiGqlUpdateSectionSlideshowPayload | StrapiGqlDeleteSectionSlideshowPayload | StrapiGqlSubject | StrapiGqlSubjectConnection | StrapiGqlSubjectAggregator | StrapiGqlSubjectGroupBy | StrapiGqlSubjectConnectionId | StrapiGqlSubjectConnectionCreated_At | StrapiGqlSubjectConnectionUpdated_At | StrapiGqlSubjectConnectionTitle | StrapiGqlSubjectConnectionSlug | StrapiGqlCreateSubjectPayload | StrapiGqlUpdateSubjectPayload | StrapiGqlDeleteSubjectPayload | StrapiGqlTeacher | StrapiGqlTeacherConnection | StrapiGqlTeacherAggregator | StrapiGqlTeacherGroupBy | StrapiGqlTeacherConnectionId | StrapiGqlTeacherConnectionCreated_At | StrapiGqlTeacherConnectionUpdated_At | StrapiGqlTeacherConnectionImage | StrapiGqlTeacherConnectionName | StrapiGqlTeacherConnectionFirst_Name | StrapiGqlTeacherConnectionSlug | StrapiGqlTeacherConnectionBiography | StrapiGqlCreateTeacherPayload | StrapiGqlUpdateTeacherPayload | StrapiGqlDeleteTeacherPayload | StrapiGqlToolbar | StrapiGqlUpdateToolbarPayload | StrapiGqlDeleteToolbarPayload | StrapiGqlI18NLocale | StrapiGqlUploadFile | StrapiGqlUploadFileConnection | StrapiGqlUploadFileAggregator | StrapiGqlUploadFileAggregatorSum | StrapiGqlUploadFileAggregatorAvg | StrapiGqlUploadFileAggregatorMin | StrapiGqlUploadFileAggregatorMax | StrapiGqlUploadFileGroupBy | StrapiGqlUploadFileConnectionId | StrapiGqlUploadFileConnectionCreated_At | StrapiGqlUploadFileConnectionUpdated_At | StrapiGqlUploadFileConnectionName | StrapiGqlUploadFileConnectionAlternativeText | StrapiGqlUploadFileConnectionCaption | StrapiGqlUploadFileConnectionWidth | StrapiGqlUploadFileConnectionHeight | StrapiGqlUploadFileConnectionFormats | StrapiGqlUploadFileConnectionHash | StrapiGqlUploadFileConnectionExt | StrapiGqlUploadFileConnectionMime | StrapiGqlUploadFileConnectionSize | StrapiGqlUploadFileConnectionUrl | StrapiGqlUploadFileConnectionPreviewUrl | StrapiGqlUploadFileConnectionProvider | StrapiGqlUploadFileConnectionProvider_Metadata | StrapiGqlDeleteFilePayload | StrapiGqlUsersPermissionsPermission | StrapiGqlUsersPermissionsRole | StrapiGqlUsersPermissionsRoleConnection | StrapiGqlUsersPermissionsRoleAggregator | StrapiGqlUsersPermissionsRoleGroupBy | StrapiGqlUsersPermissionsRoleConnectionId | StrapiGqlUsersPermissionsRoleConnectionName | StrapiGqlUsersPermissionsRoleConnectionDescription | StrapiGqlUsersPermissionsRoleConnectionType | StrapiGqlCreateRolePayload | StrapiGqlUpdateRolePayload | StrapiGqlDeleteRolePayload | StrapiGqlUsersPermissionsUser | StrapiGqlUsersPermissionsUserConnection | StrapiGqlUsersPermissionsUserAggregator | StrapiGqlUsersPermissionsUserGroupBy | StrapiGqlUsersPermissionsUserConnectionId | StrapiGqlUsersPermissionsUserConnectionCreated_At | StrapiGqlUsersPermissionsUserConnectionUpdated_At | StrapiGqlUsersPermissionsUserConnectionUsername | StrapiGqlUsersPermissionsUserConnectionEmail | StrapiGqlUsersPermissionsUserConnectionProvider | StrapiGqlUsersPermissionsUserConnectionConfirmed | StrapiGqlUsersPermissionsUserConnectionBlocked | StrapiGqlUsersPermissionsUserConnectionRole | StrapiGqlCreateUserPayload | StrapiGqlUpdateUserPayload | StrapiGqlDeleteUserPayload | StrapiGqlComponentBlackboardSlide | StrapiGqlComponentContentButton | StrapiGqlComponentContentDownloadButton | StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentGalleryImage | StrapiGqlComponentHomeCalendar | StrapiGqlComponentHomeFact | StrapiGqlComponentHomeNews | StrapiGqlComponentLinkItemLink | StrapiGqlComponentLinkItemText | StrapiGqlComponentLinkTypeBlog | StrapiGqlComponentLinkTypeGallery | StrapiGqlComponentLinkTypeMediaCenter | StrapiGqlComponentLinkTypePage | StrapiGqlComponentLinkTypePodcast | StrapiGqlComponentLinkTypePost | StrapiGqlComponentLinkTypeSchulfach | StrapiGqlComponentLinkTypeStrapi | StrapiGqlComponentLinkTypeTeacher | StrapiGqlComponentLinkTypeWeb | StrapiGqlComponentMediaCenterMovie | StrapiGqlComponentNavigationNavigationEntry | StrapiGqlComponentNavigationNavigationLevelEntry | StrapiGqlComponentNavigationNavigationSection | StrapiGqlComponentPodcastCategory | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionFacts | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSidebarAssets | StrapiGqlComponentSlideshowSlideshowEntryBlog | StrapiGqlComponentSlideshowSlideshowEntryPage | StrapiGqlComponentSlideshowSlideshowEntry | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentTypesAlignment | StrapiGqlComponentTypesColor;
 
 export type StrapiGqlMutation = {
   __typename?: 'Mutation';
@@ -1493,7 +1503,7 @@ export type StrapiGqlNavigationLinkInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type StrapiGqlNavigationLinkTypeDynamicZone = StrapiGqlComponentLinkTypeWeb | StrapiGqlComponentLinkTypeSchulfach | StrapiGqlComponentLinkTypePage | StrapiGqlComponentLinkTypeStrapi | StrapiGqlComponentLinkTypePost | StrapiGqlComponentLinkTypeBlog | StrapiGqlComponentLinkTypeTeacher | StrapiGqlComponentLinkTypeGallery | StrapiGqlComponentLinkTypeMediaCenter;
+export type StrapiGqlNavigationLinkTypeDynamicZone = StrapiGqlComponentLinkTypeWeb | StrapiGqlComponentLinkTypeSchulfach | StrapiGqlComponentLinkTypePage | StrapiGqlComponentLinkTypeStrapi | StrapiGqlComponentLinkTypePost | StrapiGqlComponentLinkTypeBlog | StrapiGqlComponentLinkTypeTeacher | StrapiGqlComponentLinkTypeGallery | StrapiGqlComponentLinkTypeMediaCenter | StrapiGqlComponentLinkTypePodcast;
 
 
 export type StrapiGqlPage = {
@@ -2226,7 +2236,7 @@ export type StrapiGqlSectionSlideshow = {
   id: Scalars['ID'];
   created_at: Scalars['DateTime'];
   updated_at: Scalars['DateTime'];
-  entries?: Maybe<Array<Maybe<StrapiGqlSectionSlideshowEntriesDynamicZone>>>;
+  entries: Array<Maybe<StrapiGqlSectionSlideshowEntriesDynamicZone>>;
   title: Scalars['String'];
 };
 
@@ -2279,7 +2289,7 @@ export type StrapiGqlSectionSlideshowGroupBy = {
 };
 
 export type StrapiGqlSectionSlideshowInput = {
-  entries?: Maybe<Array<Scalars['SectionSlideshowEntriesDynamicZoneInput']>>;
+  entries: Array<Scalars['SectionSlideshowEntriesDynamicZoneInput']>;
   title: Scalars['String'];
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -3279,6 +3289,11 @@ export type StrapiGqlEditComponentLinkTypePageInput = {
   page?: Maybe<Scalars['ID']>;
 };
 
+export type StrapiGqlEditComponentLinkTypePodcastInput = {
+  id?: Maybe<Scalars['ID']>;
+  podcastEpisode?: Maybe<Scalars['ID']>;
+};
+
 export type StrapiGqlEditComponentLinkTypePostInput = {
   id?: Maybe<Scalars['ID']>;
   post?: Maybe<Scalars['ID']>;
@@ -3563,7 +3578,7 @@ export type StrapiGqlEditRoleInput = {
 };
 
 export type StrapiGqlEditSectionSlideshowInput = {
-  entries?: Maybe<Array<Scalars['SectionSlideshowEntriesDynamicZoneInput']>>;
+  entries: Array<Scalars['SectionSlideshowEntriesDynamicZoneInput']>;
   title?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -4202,7 +4217,7 @@ export type StrapiGqlNavigationLinkFragmentFragment = (
       { __typename?: 'MediaCenter' }
       & Pick<StrapiGqlMediaCenter, 'title' | 'slug'>
     )> }
-  )>>> }
+  ) | { __typename: 'ComponentLinkTypePodcast' }>>> }
 );
 
 export type StrapiGqlPageBasicFragmentFragment = (
@@ -4355,7 +4370,7 @@ export type StrapiGqlSchoolSubjectDetailFragmentFragment = (
 export type StrapiGqlSectionSlideshowFragmentFragment = (
   { __typename?: 'SectionSlideshow' }
   & Pick<StrapiGqlSectionSlideshow, 'title' | 'id'>
-  & { entries?: Maybe<Array<Maybe<(
+  & { entries: Array<Maybe<(
     { __typename?: 'ComponentSlideshowSlideshowEntry' }
     & StrapiGqlComponentSlideshowEntryFragmentFragment
   ) | (
@@ -4364,7 +4379,7 @@ export type StrapiGqlSectionSlideshowFragmentFragment = (
   ) | (
     { __typename?: 'ComponentSlideshowSlideshowEntryPage' }
     & StrapiGqlComponentSlideshowEntryPageFragmentFragment
-  )>>> }
+  )>> }
 );
 
 export type StrapiGqlTeacherBasicFragmentFragment = (

@@ -555,7 +555,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -584,7 +585,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -641,7 +643,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -704,7 +707,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -732,7 +736,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -793,7 +798,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -847,7 +853,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -910,7 +917,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -959,7 +967,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -983,6 +992,104 @@
                         },
                         "movies": {
                           "type": "component"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "link-type.web",
+                        "link-type.schulfach",
+                        "link-type.page",
+                        "link-type.strapi",
+                        "link-type.post",
+                        "link-type.blog",
+                        "link-type.teacher",
+                        "link-type.gallery",
+                        "link-type.media-center",
+                        "link-type.podcast"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "podcastEpisode": {
+                      "required": [
+                        "id",
+                        "title",
+                        "content",
+                        "description",
+                        "explicit",
+                        "type",
+                        "block",
+                        "slug",
+                        "season",
+                        "episode",
+                        "subtitle"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "pubDate": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "image": {
+                          "type": "string"
+                        },
+                        "explicit": {
+                          "type": "boolean"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "Full",
+                            "Trailer",
+                            "Bonus"
+                          ]
+                        },
+                        "block": {
+                          "type": "boolean"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "season": {
+                          "type": "integer"
+                        },
+                        "episode": {
+                          "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"
@@ -1025,7 +1132,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1054,7 +1162,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1111,7 +1220,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1174,7 +1284,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1202,7 +1313,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1263,7 +1375,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1317,7 +1430,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1380,7 +1494,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1429,7 +1544,8 @@
                         "link-type.blog",
                         "link-type.teacher",
                         "link-type.gallery",
-                        "link-type.media-center"
+                        "link-type.media-center",
+                        "link-type.podcast"
                       ]
                     },
                     "id": {
@@ -1453,6 +1569,104 @@
                         },
                         "movies": {
                           "type": "component"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "link-type.web",
+                        "link-type.schulfach",
+                        "link-type.page",
+                        "link-type.strapi",
+                        "link-type.post",
+                        "link-type.blog",
+                        "link-type.teacher",
+                        "link-type.gallery",
+                        "link-type.media-center",
+                        "link-type.podcast"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "podcastEpisode": {
+                      "required": [
+                        "id",
+                        "title",
+                        "content",
+                        "description",
+                        "explicit",
+                        "type",
+                        "block",
+                        "slug",
+                        "season",
+                        "episode",
+                        "subtitle"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "pubDate": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "image": {
+                          "type": "string"
+                        },
+                        "explicit": {
+                          "type": "boolean"
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "Full",
+                            "Trailer",
+                            "Bonus"
+                          ]
+                        },
+                        "block": {
+                          "type": "boolean"
+                        },
+                        "slug": {
+                          "type": "uid"
+                        },
+                        "season": {
+                          "type": "integer"
+                        },
+                        "episode": {
+                          "type": "integer"
+                        },
+                        "subtitle": {
+                          "type": "string"
+                        },
+                        "published_at": {
+                          "type": "string"
                         },
                         "created_by": {
                           "type": "string"

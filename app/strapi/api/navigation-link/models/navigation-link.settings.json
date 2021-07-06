@@ -25,7 +25,8 @@
         "link-type.blog",
         "link-type.teacher",
         "link-type.gallery",
-        "link-type.media-center"
+        "link-type.media-center",
+        "link-type.podcast"
       ],
       "max": 1,
       "required": false

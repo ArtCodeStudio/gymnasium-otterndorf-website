@@ -8,6 +8,7 @@ import {
   StrapiGqlComponentLinkTypeStrapi,
   StrapiGqlComponentLinkTypeTeacher,
   StrapiGqlComponentLinkTypeMediaCenter,
+  StrapiGqlEnum_Podcastepisode_Type,
 } from "../types";
 import {
   strapiFormatter,
@@ -17,6 +18,7 @@ import {
   schoolSubjectFormatter,
   mediaCenterFormatter,
   galleryFormatter,
+  podcastFormatter,
 } from "../formatters";
 import {
   StrapiGqlMenuQuery,
@@ -107,6 +109,8 @@ export class NavigationService {
         return mediaCenterFormatter.read(type.mediaCenter?.slug);
       case "ComponentLinkTypeGallery":
         return galleryFormatter.read(type.gallery?.slug);
+      case "ComponentLinkTypePodcast":
+        return podcastFormatter.read(type.podcastEpisode?.slug);
     }
   }
 
@@ -120,7 +124,8 @@ export class NavigationService {
       | "post"
       | "blog"
       | "gallery"
-      | "mediacenter",
+      | "mediacenter"
+      | "podcast",
     urlOrSlug: string
   ): StrapiGqlComponentLinkItemLink {
     const item: StrapiGqlComponentLinkItemLink = {
@@ -193,7 +198,29 @@ export class NavigationService {
             id: "0",
             created_at: "0",
             updated_at: "0",
-            author: "Art+Code Studio",
+            author: "",
+            title,
+            slug: urlOrSlug,
+          },
+        });
+        break;
+      case "podcast":
+        item.navigation_link?.type?.push({
+          __typename: "ComponentLinkTypePodcast",
+          id: "0",
+          podcastEpisode: {
+            __typename: "PodcastEpisode",
+            id: "0",
+            description: "",
+            block: false,
+            episode: 0,
+            explicit: false,
+            season: 0,
+            subtitle: "",
+            type: StrapiGqlEnum_Podcastepisode_Type.Full,
+
+            created_at: "0",
+            updated_at: "0",
             title,
             slug: urlOrSlug,
           },

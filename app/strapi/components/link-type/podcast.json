@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_link_type_podcasts",
+  "info": {
+    "name": "PodcastEpisode",
+    "icon": "music",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "podcastEpisode": {
+      "model": "podcast-episode"
+    }
+  }
+}
