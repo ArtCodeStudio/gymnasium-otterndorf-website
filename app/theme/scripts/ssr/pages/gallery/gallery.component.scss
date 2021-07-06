@@ -1,10 +1,18 @@
-gallery-page {
-  display: block;
+body.gallery-page {
   background: $gallery-background-image;
   background-size: $gallery-background-image-size;
+  min-height: 100vh;
+  #layout-bottom {
+    display: none;
+  }
+}
+
+gallery-page {
+  display: block;
+  background: $gallery-background-gradient;
+  min-height: 100vh;
   > .container-fluid {
-    min-height: 100vh;
-    background: $gallery-background-gradient;
+    height: 100%;
     bs5-photoswipe {
       max-width: 100vw;
     }
