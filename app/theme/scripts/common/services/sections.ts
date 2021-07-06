@@ -44,6 +44,9 @@ export class SectionsService {
         case "ComponentContentButton":
           sectionsObj.button = section;
           break;
+        case "ComponentContentDownloadButton":
+          sectionsObj.button = section;
+          break;
         case "ComponentHomeCalendar":
           sectionsObj.calendar = section;
           break;
@@ -110,6 +113,7 @@ export class SectionsService {
               text: dynamicZoneSection.text || "",
             });
             break;
+          case "ComponentContentDownloadButton":
           case "ComponentContentButton":
             sections.push(dynamicZoneSection);
             break;

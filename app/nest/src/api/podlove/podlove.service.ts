@@ -10,6 +10,7 @@ import type {
   PodloveWebPlayerFile,
   PodloveWebPlayerTheme,
 } from '@ribajs/podcast';
+import { MarkdownService } from '../markdown/markdown.service';
 
 import { StrapiGqlPodcastEpisodeDetailFragmentFragment } from '../strapi/types';
 
@@ -26,6 +27,7 @@ export class PodloveService {
     protected readonly post: PostService,
     protected readonly podcast: PodcastService,
     protected readonly strapi: StrapiService,
+    protected readonly markdown: MarkdownService,
   ) {}
 
   public getConfigUrl() {
@@ -97,10 +99,10 @@ export class PodloveService {
         {
           id: 'downcast',
         },
-        {
-          id: 'google-podcasts',
-          service: feedUrl,
-        },
+        // {
+        //   id: 'google-podcasts',
+        //   service: feedUrl,
+        // },
         {
           id: 'gpodder',
         },
@@ -122,10 +124,10 @@ export class PodloveService {
         {
           id: 'pocket-casts',
         },
-        {
-          id: 'pocket-casts',
-          service: feedUrl,
-        },
+        // {
+        //   id: 'pocket-casts',
+        //   service: feedUrl,
+        // },
         {
           id: 'pod-grasp',
         },
@@ -228,14 +230,16 @@ export class PodloveService {
     return theme;
   }
 
-  public async getConfig(): Promise<PodloveWebPlayerConfig> {
+  public async getConfig(
+    overwrite: Partial<PodloveWebPlayerConfig> = {},
+  ): Promise<PodloveWebPlayerConfig> {
     const config: PodloveWebPlayerConfig = {
       version: 5,
 
       // player asset base path, falls back to ./
       base: 'player/',
 
-      activeTab: 'shownotes',
+      activeTab: 'none',
 
       theme: await this.getThemeConfig(),
 
@@ -278,7 +282,10 @@ export class PodloveService {
       // },
     };
 
-    return config;
+    return {
+      ...config,
+      ...overwrite,
+    };
   }
 
   public async getShow(): Promise<PodloveWebPlayerShow> {
@@ -286,7 +293,7 @@ export class PodloveService {
     const show: PodloveWebPlayerShow = {
       title: feedConfig.title || '',
       subtitle: feedConfig.subtitle || '',
-      summary: feedConfig.description,
+      summary: await this.markdown.html(feedConfig.description),
       poster: NavService.buildStrapiSrc(feedConfig.image?.url) || '',
       link: this.feed.getSiteUrl(),
     };
@@ -305,7 +312,9 @@ export class PodloveService {
       | StrapiGqlPodcastEpisodeDetailFragmentFragment['image']
       | null = episode.image;
     const posterUrl = NavService.buildStrapiSrc(poster?.url);
-    const summary = episode.description || '';
+    const summary = episode.description
+      ? await this.markdown.html(episode.description)
+      : '';
     const title = episode.title || '';
     const subtitle = episode.subtitle || '';
     const publicationDate = episode.pubDate || episode.published_at;

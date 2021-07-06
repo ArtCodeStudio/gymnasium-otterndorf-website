@@ -2,6 +2,7 @@ import {
   StrapiGqlComponentContentImageFragmentFragment,
   StrapiGqlComponentContentTextFragmentFragment,
   StrapiGqlComponentContentButtonFragmentFragment,
+  StrapiGqlComponentContentDownloadButtonFragmentFragment,
   StrapiGqlComponentSectionFactsFragmentFragment,
   StrapiGqlComponentHomeNewsFragmentFragment,
   StrapiGqlComponentSectionSlideshowFragmentFragment,
@@ -22,6 +23,7 @@ export type DynamicZoneSection =
   | StrapiGqlComponentContentImageFragmentFragment
   | StrapiGqlComponentContentTextFragmentFragment
   | StrapiGqlComponentContentButtonFragmentFragment
+  | StrapiGqlComponentContentDownloadButtonFragmentFragment
   | StrapiGqlComponentSectionFactsFragmentFragment
   | StrapiGqlComponentHomeNewsFragmentFragment
   | StrapiGqlComponentSectionSlideshowFragmentFragment
