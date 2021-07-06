@@ -8,6 +8,7 @@ export * from "./nav-item-label";
 export * from "./nav-item-url";
 export * from "./nest";
 export * from "./page";
+export * from "./podcast";
 export * from "./post";
 export * from "./remove-empty-clock";
 export * from "./school-subject";

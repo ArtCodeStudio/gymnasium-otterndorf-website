@@ -10,6 +10,7 @@ export { MediaCenterService } from "./media-center";
 export { MensaMaxService } from "./mensa-max";
 export { NavigationService } from "./navigation";
 export { PageService } from "./page";
+export { PodcastService } from "./podcast";
 export { PodloveService } from "./podlove";
 export { SchoolSubjectService } from "./school-subject";
 export { SearchService } from "./search";

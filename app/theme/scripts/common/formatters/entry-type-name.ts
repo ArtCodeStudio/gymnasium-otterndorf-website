@@ -43,6 +43,10 @@ export const entryTypeNameFormatter = {
         return "Startseite";
       case ENTRY_TYPE.Teacher:
         return "Lehrer";
+      case ENTRY_TYPE.Podcast:
+        return "Podcast";
+      case ENTRY_TYPE.PodcastEpisode:
+        return "Podcast Folge";
       case ENTRY_TYPE.Unknown:
       default:
         return "Unbekannter Type";

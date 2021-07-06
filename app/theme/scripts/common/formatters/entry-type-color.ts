@@ -19,6 +19,8 @@ export const entryTypeColorFormatter = {
         return "green";
       case ENTRY_TYPE.Page:
       case ENTRY_TYPE.Home:
+      case ENTRY_TYPE.Podcast:
+      case ENTRY_TYPE.PodcastEpisode:
         return "cyan";
       case ENTRY_TYPE.SchoolSubject:
         return "greenlight";

@@ -1,16 +1,12 @@
-import { HttpService } from "@ribajs/core";
-import { hashCode } from "@ribajs/utils/src/type";
-import { defaultCache } from "./cache";
 import type { CalendarComponent } from "ical";
+import { NestService } from "../types";
 
-export class CalendarService {
+export class CalendarService extends NestService {
   protected static instance: CalendarService;
-  protected host =
-    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_EXTERN_URL || "";
   protected url = "/api/calendar";
 
   protected constructor() {
-    /** protected */
+    super();
   }
 
   public static getInstance() {
@@ -22,22 +18,17 @@ export class CalendarService {
   }
 
   async get(calendarKey?: string, expiresIn: number | string = "5 mins") {
-    const cacheKey = hashCode(this.url + calendarKey);
-    return defaultCache.resolve<CalendarComponent[]>(
-      cacheKey,
-      async () => {
-        let options = {};
-        if (calendarKey) {
-          options = { calendarKey };
-        }
-        const res = await HttpService.getJSON<CalendarComponent[]>(
-          this.host + this.url,
-          options
-        );
-        const events = res.body || [];
-        return events;
-      },
+    const url = this.host + this.url;
+    let options = {};
+    if (calendarKey) {
+      options = { calendarKey };
+    }
+    const res = await this._getCached<CalendarComponent[]>(
+      url,
+      options,
       expiresIn
     );
+    const events = res.body || [];
+    return events;
   }
 }

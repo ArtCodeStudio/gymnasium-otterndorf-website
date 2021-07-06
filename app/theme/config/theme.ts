@@ -60,6 +60,14 @@ export const themeConfig: ThemeConfig = {
       component: "teacher-page",
     },
     {
+      path: ["/podcast"],
+      component: "podcast-page",
+    },
+    {
+      path: ["/podcast/:slug", "/seite/:slug"],
+      component: "podcast-episode-page",
+    },
+    {
       path: ["/credits"],
       component: "credits-page",
     },

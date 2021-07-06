@@ -8,6 +8,8 @@ export { IndexPageComponent } from "./index/index.component";
 export { MediaCenterPageComponent } from "./media-center/media-center.component";
 export { PagePageComponent } from "./page/page.component";
 export { PagesPageComponent } from "./pages/pages.component";
+export { PodcastEpisodePageComponent } from "./podcast-episode/podcast-episode.component";
+export { PodcastPageComponent } from "./podcast/podcast.component";
 export { SchoolSubjectPageComponent } from "./school-subject/school-subject.component";
 export { SchoolSubjectsPageComponent } from "./school-subjects/school-subjects.component";
 export { SitemapPageComponent } from "./sitemap/sitemap.component";

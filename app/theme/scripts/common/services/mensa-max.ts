@@ -1,16 +1,11 @@
-import { HttpService } from "@ribajs/core";
-import { hashCode } from "@ribajs/utils/src/type";
-import { defaultCache } from "./cache";
-import { MensaMaxData } from "../types";
+import { MensaMaxData, NestService } from "../types";
 
-export class MensaMaxService {
+export class MensaMaxService extends NestService {
   protected static instance: MensaMaxService;
-  protected host =
-    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_EXTERN_URL || "";
   protected url = "/api/mensa-max";
 
   protected constructor() {
-    /** protected */
+    super();
   }
 
   public static getInstance() {
@@ -23,14 +18,7 @@ export class MensaMaxService {
 
   async get(p: string, e: string, expiresIn: number | string = "60 mins") {
     const url = `${this.host}${this.url}/${p}/${e}`;
-    const cacheKey = hashCode(url);
-    return defaultCache.resolve<MensaMaxData>(
-      cacheKey,
-      async () => {
-        const res = await HttpService.getJSON<MensaMaxData>(url);
-        return res.body;
-      },
-      expiresIn
-    );
+    const res = await this._getCached<MensaMaxData>(url, {}, expiresIn);
+    return await res.body;
   }
 }

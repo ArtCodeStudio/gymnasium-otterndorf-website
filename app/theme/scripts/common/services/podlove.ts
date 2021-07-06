@@ -1,17 +1,16 @@
-import { HttpService } from "@ribajs/core";
+import { NestService, PageHeader } from "../types";
+import { ENTRY_TYPE } from "../constants";
+import { podcastFormatter } from "../formatters";
 import {
   PodloveWebPlayerEpisode,
   PodloveWebPlayerConfig,
 } from "@ribajs/podcast";
-import { defaultCache } from "./cache";
-
-export class PodloveService {
+export class PodloveService extends NestService {
   protected static instance: PodloveService;
-  protected host =
-    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_EXTERN_URL || "";
 
   protected constructor() {
     /** protected */
+    super();
   }
 
   public static getInstance() {
@@ -22,36 +21,62 @@ export class PodloveService {
     return PodloveService.instance;
   }
 
-  protected async _get<T>(url: string) {
-    const res = await HttpService.getJSON<T>(url, {});
-    if (res.status !== 200) {
-      throw new Error(res.text.toString());
-    }
-    return res.body;
+  public static getConfigPath() {
+    return "/api/podlove/config";
   }
 
-  protected async _getCached<T>(url: string) {
-    return defaultCache.resolve<T>(
-      url,
-      async () => {
-        return await this._get<T>(url);
-      },
-      "5 mins"
-    );
+  public static getEpisodeConfigPath(slug: string) {
+    return `/api/podlove/episode/${slug}`;
   }
 
   public async getConfig(slug: string) {
     const url = this.host + "/api/podlove/episode/" + slug;
-    return await this._getCached<PodloveWebPlayerConfig>(url);
+    const res = await this._getCached<PodloveWebPlayerConfig>(url);
+    return res.body;
   }
 
   public async get(slug: string) {
     const url = this.host + "/api/podlove/episode/" + slug;
-    return await this._getCached<PodloveWebPlayerEpisode>(url);
+    const res = await this._getCached<PodloveWebPlayerEpisode>(url);
+    return res.body;
   }
 
   public async getByPost(slug: string) {
     const url = this.host + "/api/podlove/episode/post/" + slug;
-    return await this._getCached<PodloveWebPlayerEpisode>(url);
+    const res = await this._getCached<PodloveWebPlayerEpisode>(url);
+    return res.body;
+  }
+
+  public getHeader(
+    episode?: PodloveWebPlayerEpisode,
+    slug?: string
+  ): PageHeader {
+    const header: PageHeader = {
+      title: episode?.title || "Alle Podcasts",
+      breadcrumbs: [
+        {
+          type: ENTRY_TYPE.Home,
+          url: "/",
+          active: false,
+        },
+        {
+          type: ENTRY_TYPE.Podcast,
+          active: episode ? false : true,
+          url: podcastFormatter.read(),
+        },
+      ],
+      updatedAt: episode?.publicationDate,
+    };
+
+    if (episode && slug) {
+      header.breadcrumbs.push({
+        label: episode.title,
+        type: ENTRY_TYPE.PodcastEpisode,
+        active: true,
+        url: podcastFormatter.read(slug),
+      });
+    }
+
+    return header;
   }
 }

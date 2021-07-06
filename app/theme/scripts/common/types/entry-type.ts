@@ -6,6 +6,8 @@ import {
   StrapiGqlSchoolSubjectDetailFragmentFragment,
   StrapiGqlHome,
   StrapiGqlTeacherDetailFragmentFragment,
+  StrapiGqlPodcastEpisodeDetailFragmentFragment,
+  StrapiGqlPodcastFeed,
 } from "./strapi-gql";
 
 export type EntryType =
@@ -15,4 +17,6 @@ export type EntryType =
   | Page["__typename"]
   | StrapiGqlHome["__typename"]
   | StrapiGqlSchoolSubjectDetailFragmentFragment["__typename"]
-  | StrapiGqlTeacherDetailFragmentFragment["__typename"];
+  | StrapiGqlTeacherDetailFragmentFragment["__typename"]
+  | StrapiGqlPodcastEpisodeDetailFragmentFragment["__typename"]
+  | StrapiGqlPodcastFeed["__typename"];

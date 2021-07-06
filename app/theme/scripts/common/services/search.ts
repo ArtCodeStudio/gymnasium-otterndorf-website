@@ -1,14 +1,11 @@
-import { HttpService } from "@ribajs/core";
-import { defaultCache } from "./cache";
 import { SearchResult } from "../types/search-result";
+import { NestService } from "../types";
 
-export class SearchService {
+export class SearchService extends NestService {
   protected static instance: SearchService;
-  protected host =
-    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_EXTERN_URL || "";
 
   protected constructor() {
-    /** protected */
+    super();
   }
 
   public static getInstance() {
@@ -19,22 +16,12 @@ export class SearchService {
     return SearchService.instance;
   }
 
-  protected async _get(url: string) {
-    const res = await HttpService.getJSON<SearchResult[]>(url, {});
+  public async get(term: string) {
+    const url = this.host + "/api/search/" + encodeURIComponent(term);
+    const res = await this._getCached<SearchResult[]>(url);
     if (res.status !== 200) {
       throw new Error(res.body.toString());
     }
     return res.body;
-  }
-
-  public async get(term: string) {
-    const url = this.host + "/api/search/" + encodeURIComponent(term);
-    return defaultCache.resolve<SearchResult[]>(
-      url,
-      async () => {
-        return await this._get(url);
-      },
-      "5 mins"
-    );
   }
 }
