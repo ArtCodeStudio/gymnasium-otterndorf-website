@@ -95,7 +95,7 @@ export class NavService {
     }
   }
 
-  public getHref(
+  public static getHref(
     navLink:
       | StrapiGqlMenuQuery['menu']['entries'][0]['navigation_link']
       | StrapiGqlNavigationLinksByIdsQuery['navigationLinks'][0],
@@ -128,7 +128,7 @@ export class NavService {
     return {
       id: nav.id,
       title: nav.title,
-      href: this.getHref(nav),
+      href: NavService.getHref(nav),
     };
   }
 

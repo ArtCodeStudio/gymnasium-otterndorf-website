@@ -1,4 +1,4 @@
-import { StrapiGqlPodcastEpisodeDetailFragmentFragment } from "./strapi-gql";
+import { StrapiGqlPodcastEpisodeBasicFragmentFragment } from "./strapi-gql";
 
 export type SectionPodcastEpisode =
-  StrapiGqlPodcastEpisodeDetailFragmentFragment;
+  StrapiGqlPodcastEpisodeBasicFragmentFragment;

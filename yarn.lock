@@ -15046,13 +15046,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"include-folder@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "include-folder@npm:1.0.0"
-  checksum: 1cbef689997bad48e842eaaff7a695cee3d866c198f5cc9d2545d679e0fe488f636ae1b7883b67c69a987ddd707cd3c3e435410c376092f885364f9ad8c37c66
-  languageName: node
-  linkType: hard
-
 "indent-string@npm:^3.0.0":
   version: 3.2.0
   resolution: "indent-string@npm:3.2.0"
@@ -20107,7 +20100,6 @@ fsevents@^1.2.7:
     "@types/node": ^16.0.0
     "@types/rss": ^0.0.28
     ava: ^3.15.0
-    include-folder: ^1.0.0
     mockdate: ^3.0.5
     rss: ^1.2.2
     ts-node: ^10.0.0

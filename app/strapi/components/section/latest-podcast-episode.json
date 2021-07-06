@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_section_latest_podcast_episodes",
+  "info": {
+    "name": "Latest Podcast Episode",
+    "icon": "file-audio"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

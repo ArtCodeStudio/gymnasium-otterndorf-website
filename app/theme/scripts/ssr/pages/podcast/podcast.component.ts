@@ -2,14 +2,14 @@ import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./podcast.component.pug";
 import { PodcastService } from "../../services";
 import {
-  StrapiGqlPodcastEpisodeDetailFragmentFragment,
+  StrapiGqlPodcastEpisodeBasicFragmentFragment,
   PageHeader,
   replaceBodyPageClass,
 } from "../../../common";
 
 export interface Scope {
   header: PageHeader | Record<string, never>;
-  episodes: StrapiGqlPodcastEpisodeDetailFragmentFragment[];
+  episodes: StrapiGqlPodcastEpisodeBasicFragmentFragment[];
 }
 
 export class PodcastPageComponent extends PageComponent {

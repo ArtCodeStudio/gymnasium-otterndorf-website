@@ -2,14 +2,14 @@ import { GraphQLClient } from "./graphql";
 import {
   PageHeader,
   NestService,
-  StrapiGqlPodcastEpisodesDetailBySlugsQueryVariables,
-  StrapiGqlPodcastEpisodeDetailFragmentFragment,
-  StrapiGqlPodcastEpisodesDetailBySlugsQuery,
+  StrapiGqlPodcastEpisodesBasicBySlugsQueryVariables,
+  StrapiGqlPodcastEpisodeBasicFragmentFragment,
+  StrapiGqlPodcastEpisodesBasicBySlugsQuery,
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { podcastFormatter } from "../formatters";
 
-import podcastEpisodesDetailBySlugs from "../../../graphql/queries/podcast-episodes-detail-by-slugs.gql";
+import podcastEpisodesBasicBySlugs from "../../../graphql/queries/podcast-episodes-basic-by-slugs.gql";
 
 export class PodcastService extends NestService {
   protected graphql = GraphQLClient.getInstance();
@@ -29,34 +29,36 @@ export class PodcastService extends NestService {
   }
 
   public async list(slugs: string[] | null = [], limit = 50, start = 0) {
-    const vars: StrapiGqlPodcastEpisodesDetailBySlugsQueryVariables = {
+    const vars: StrapiGqlPodcastEpisodesBasicBySlugsQueryVariables = {
       slugs,
       limit,
       start,
     };
-    const episodes: StrapiGqlPodcastEpisodeDetailFragmentFragment[] = [];
+    const episodes: StrapiGqlPodcastEpisodeBasicFragmentFragment[] = [];
 
     const result =
-      await this.graphql.requestCached<StrapiGqlPodcastEpisodesDetailBySlugsQuery>(
-        podcastEpisodesDetailBySlugs,
+      await this.graphql.requestCached<StrapiGqlPodcastEpisodesBasicBySlugsQuery>(
+        podcastEpisodesBasicBySlugs,
         vars
       );
 
-    result.podcastEpisodes?.forEach((epi) => {
-      if (epi) episodes.push(epi);
-    });
+    if (result.podcastEpisodes) {
+      for (const epi of result.podcastEpisodes) {
+        if (epi) episodes.push(epi);
+      }
+    }
 
     return episodes;
   }
 
   public async get(
     slug: string
-  ): Promise<StrapiGqlPodcastEpisodeDetailFragmentFragment> {
+  ): Promise<StrapiGqlPodcastEpisodeBasicFragmentFragment> {
     return (await this.list([slug], 1))[0] || null;
   }
 
   public getHeader(
-    episode?: StrapiGqlPodcastEpisodeDetailFragmentFragment,
+    episode?: StrapiGqlPodcastEpisodeBasicFragmentFragment,
     slug?: string
   ): PageHeader {
     const header: PageHeader = {

@@ -1,5 +1,6 @@
 #import "./podcast-episode-upload-file.gql"
 #import "./image.gql"
+#import "./component-podcast-chapters.gql"
 
 fragment PodcastEpisodeDetailFragment on PodcastEpisode {
   __typename
@@ -23,4 +24,7 @@ fragment PodcastEpisodeDetailFragment on PodcastEpisode {
   season
   type
   block
+  chapters {
+    ...ComponentPodcastChaptersFragment
+  }
 }

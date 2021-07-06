@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_podcast_chapters",
+  "info": {
+    "name": "Chapters",
+    "icon": "bars"
+  },
+  "options": {},
+  "attributes": {
+    "start": {
+      "type": "time",
+      "required": true,
+      "default": "00:00:00"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "model": "navigation-link"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    }
+  }
+}

@@ -4,7 +4,6 @@ import type {
   PodloveWebPlayerConfig,
   PodloveWebPlayerSubscribeButton,
   PodloveWebPlayerPlaylistItem,
-  PodloveWebPlayerChapter,
   PodloveWebPlayerShow,
   PodloveWebPlayerAudio,
   PodloveWebPlayerFile,
@@ -12,7 +11,10 @@ import type {
 } from '@ribajs/podcast';
 import { MarkdownService } from '../markdown/markdown.service';
 
-import { StrapiGqlPodcastEpisodeDetailFragmentFragment } from '../strapi/types';
+import {
+  StrapiGqlPodcastEpisodeDetailFragmentFragment,
+  StrapiGqlPodcastEpisodeBasicFragmentFragment,
+} from '../strapi/types';
 
 import { FeedService } from '../feed/feed.service';
 import { PostService } from '../post/post.service';
@@ -42,9 +44,8 @@ export class PodloveService {
     return NavService.buildNestSrc(`api/podlove/episode/post/${slug}`);
   }
 
-  public async getChapters() {
-    const chapters: PodloveWebPlayerChapter[] = [];
-    return chapters;
+  public getChapters(episode: StrapiGqlPodcastEpisodeDetailFragmentFragment) {
+    return this.podcast.transformChapters(episode, true);
   }
 
   public async getPlaylist() {
@@ -398,7 +399,7 @@ export class PodloveService {
        * - can be a plain list or a reference to a json file
        * - if present chapters tab will be available
        */
-      chapters: await this.getChapters(),
+      chapters: this.getChapters(episode),
 
       /**
        * Contributors
@@ -484,12 +485,12 @@ export class PodloveService {
     return episodeConfig;
   }
 
-  public async getEpisodeByBlog(
-    slug: string,
-  ): Promise<PodloveWebPlayerEpisode> {
-    const { podcastEpisode } = await this.post.getPodcastEpisode(slug);
-    return await this.transformEpisodeToPodloveEpisode(podcastEpisode);
-  }
+  // public async getEpisodeByBlog(
+  //   slug: string,
+  // ): Promise<PodloveWebPlayerEpisode> {
+  //   const { podcastEpisode } = await this.post.getPodcastEpisode(slug);
+  //   return await this.transformEpisodeToPodloveEpisode(podcastEpisode);
+  // }
 
   public async getEpisode(slug: string): Promise<PodloveWebPlayerEpisode> {
     const podcastEpisode = await this.podcast.get(slug);

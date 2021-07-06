@@ -8,6 +8,7 @@ import {
   StrapiGqlPodcastEpisodeDetailFragmentFragment,
   Maybe,
 } from '../strapi/types';
+import type { PodloveWebPlayerChapter } from '@ribajs/podcast';
 import { PodcastCategory } from './types/podcast-category';
 
 import { StrapiService } from '../strapi/strapi.service';
@@ -39,6 +40,51 @@ export class PodcastService {
       .replace('NonProfit', 'Non-Profit')
       .replace('SelfImprovement', 'Self-Improvement')
       .replace('StandUp', 'Stand-Up');
+  }
+
+  public transformChapters(
+    episode: StrapiGqlPodcastEpisodeDetailFragmentFragment,
+    absoluteUrl = false,
+  ) {
+    const chapters: PodloveWebPlayerChapter[] = [];
+
+    if (!episode.chapters) {
+      return chapters;
+    }
+    for (const chapter of episode.chapters) {
+      let href: string | undefined;
+      let image: string | undefined;
+
+      if (chapter.href) {
+        href = NavService.getHref(chapter.href);
+        if (href && absoluteUrl) {
+          href = NavService.buildNestSrc(href);
+        }
+      }
+
+      if (chapter.image) {
+        image = chapter.image?.url;
+        if (absoluteUrl) {
+          image = NavService.buildStrapiSrc(image);
+        }
+      }
+
+      const newChapter: PodloveWebPlayerChapter = {
+        start: chapter.start,
+        title: chapter.title,
+      };
+
+      if (href) {
+        newChapter.href = href;
+      }
+
+      if (image) {
+        newChapter.image = image;
+      }
+
+      chapters.push(newChapter);
+    }
+    return chapters;
   }
 
   public async buildCategoryTree(
@@ -129,7 +175,7 @@ export class PodcastService {
         if (epi) episodes.push(epi);
       });
     } catch (error) {
-      console.error(error);
+      console.error('[Podcast] ' + error);
     }
     return episodes;
   }

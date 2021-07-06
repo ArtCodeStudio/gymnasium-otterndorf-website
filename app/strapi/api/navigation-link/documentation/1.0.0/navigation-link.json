@@ -1088,6 +1088,9 @@
                         "subtitle": {
                           "type": "string"
                         },
+                        "chapters": {
+                          "type": "component"
+                        },
                         "published_at": {
                           "type": "string"
                         },
@@ -1664,6 +1667,9 @@
                         },
                         "subtitle": {
                           "type": "string"
+                        },
+                        "chapters": {
+                          "type": "component"
                         },
                         "published_at": {
                           "type": "string"

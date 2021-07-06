@@ -1,8 +1,8 @@
-#import "./podcast-episode-detail.gql"
+#import "./podcast-episode-basic.gql"
 
 fragment ComponentSectionPodcastEpisodeFragment on ComponentSectionPodcastEpisode {
   __typename
   podcast_episode {
-    ...PodcastEpisodeDetailFragment
+    ...PodcastEpisodeBasicFragment
   }
 }

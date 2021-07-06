@@ -45,5 +45,11 @@ fragment NavigationLinkFragment on NavigationLink {
         slug
       }
     }
+    ... on ComponentLinkTypePodcast {
+      podcastEpisode {
+        title
+        slug
+      }
+    }
   }
 }

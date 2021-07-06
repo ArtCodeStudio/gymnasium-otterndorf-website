@@ -4,15 +4,13 @@ import { PodloveService, PodcastService } from "../../services";
 import {
   PageHeader,
   replaceBodyPageClass,
-  StrapiGqlPodcastEpisodeDetailFragmentFragment,
+  StrapiGqlPodcastEpisodeBasicFragmentFragment,
 } from "../../../common";
 
 export interface Scope {
   params: PodcastEpisodePageComponent["ctx"]["params"];
   header: PageHeader | Record<string, never>;
-  episode:
-    | StrapiGqlPodcastEpisodeDetailFragmentFragment
-    | Record<string, never>;
+  episode: StrapiGqlPodcastEpisodeBasicFragmentFragment | Record<string, never>;
 }
 
 export class PodcastEpisodePageComponent extends PageComponent {

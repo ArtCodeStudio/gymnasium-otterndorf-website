@@ -1,0 +1,17 @@
+#import "./image.gql"
+
+fragment PodcastEpisodeBasicFragment on PodcastEpisode {
+  __typename
+  id
+  title
+  subtitle
+  slug
+  pubDate
+  published_at
+  description
+  image {
+    ...ImageFragment
+  }
+  episode
+  season
+}

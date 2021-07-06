@@ -7,7 +7,7 @@ import {
   StrapiGqlBlogEntriesBasicBySlugsQuery,
   StrapiGqlBlogEntriesBasicBySlugsQueryVariables,
   StrapiGqlBlogEntryBasicFragmentFragment,
-  StrapiGqlPodcastEpisodeDetailFragmentFragment,
+  StrapiGqlPodcastEpisodeBasicFragmentFragment,
   StrapiGqlImageFragmentFragment,
 } from '../strapi/types';
 
@@ -36,7 +36,7 @@ export class PostService {
     const images: StrapiGqlImageFragmentFragment[] = [];
     const texts: string[] = [];
     const markdowns: string[] = [];
-    const podcastEpisodes: StrapiGqlPodcastEpisodeDetailFragmentFragment[] = [];
+    const podcastEpisodes: StrapiGqlPodcastEpisodeBasicFragmentFragment[] = [];
 
     for (const section of post.content) {
       switch (section.__typename) {

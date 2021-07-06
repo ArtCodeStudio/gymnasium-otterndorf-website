@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/06/2021 1:45:37 PM"
+    "x-generation-date": "07/06/2021 6:12:13 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -10037,6 +10037,9 @@
                         "subtitle": {
                           "type": "string"
                         },
+                        "chapters": {
+                          "type": "component"
+                        },
                         "published_at": {
                           "type": "string"
                         },
@@ -11194,6 +11197,9 @@
                         },
                         "subtitle": {
                           "type": "string"
+                        },
+                        "chapters": {
+                          "type": "component"
                         },
                         "published_at": {
                           "type": "string"
@@ -12713,6 +12719,9 @@
                         "subtitle": {
                           "type": "string"
                         },
+                        "chapters": {
+                          "type": "component"
+                        },
                         "published_at": {
                           "type": "string"
                         },
@@ -13819,6 +13828,9 @@
                         },
                         "subtitle": {
                           "type": "string"
+                        },
+                        "chapters": {
+                          "type": "component"
                         },
                         "published_at": {
                           "type": "string"
@@ -15061,6 +15073,9 @@
                         "subtitle": {
                           "type": "string"
                         },
+                        "chapters": {
+                          "type": "component"
+                        },
                         "published_at": {
                           "type": "string"
                         },
@@ -15637,6 +15652,9 @@
                         },
                         "subtitle": {
                           "type": "string"
+                        },
+                        "chapters": {
+                          "type": "component"
                         },
                         "published_at": {
                           "type": "string"
@@ -16616,6 +16634,9 @@
                         },
                         "subtitle": {
                           "type": "string"
+                        },
+                        "chapters": {
+                          "type": "component"
                         },
                         "published_at": {
                           "type": "string"
@@ -17863,6 +17884,9 @@
                         "subtitle": {
                           "type": "string"
                         },
+                        "chapters": {
+                          "type": "component"
+                        },
                         "published_at": {
                           "type": "string"
                         },
@@ -18336,6 +18360,118 @@
           "subtitle": {
             "type": "string"
           },
+          "chapters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "start",
+                "title"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "start": {
+                  "type": "string",
+                  "default": "00:00:00"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "href": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "dynamiczone"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "image": {
+                  "required": [
+                    "id",
+                    "name",
+                    "hash",
+                    "mime",
+                    "size",
+                    "url",
+                    "provider"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {
+                      "type": "object"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {
+                      "type": "object"
+                    },
+                    "related": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -18394,6 +18530,118 @@
           },
           "subtitle": {
             "type": "string"
+          },
+          "chapters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "start",
+                "title"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "start": {
+                  "type": "string",
+                  "default": "00:00:00"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "href": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "dynamiczone"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "image": {
+                  "required": [
+                    "id",
+                    "name",
+                    "hash",
+                    "mime",
+                    "size",
+                    "url",
+                    "provider"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {
+                      "type": "object"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {
+                      "type": "object"
+                    },
+                    "related": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -20833,6 +21081,9 @@
                         "subtitle": {
                           "type": "string"
                         },
+                        "chapters": {
+                          "type": "component"
+                        },
                         "published_at": {
                           "type": "string"
                         },
@@ -21955,6 +22206,9 @@
                         },
                         "subtitle": {
                           "type": "string"
+                        },
+                        "chapters": {
+                          "type": "component"
                         },
                         "published_at": {
                           "type": "string"

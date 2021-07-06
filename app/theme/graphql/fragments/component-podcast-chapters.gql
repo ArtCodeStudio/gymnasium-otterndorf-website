@@ -1,0 +1,16 @@
+#import "./navigation-link.gql"
+#import "./image.gql"
+#import "./component-podcast-chapters.gql"
+
+fragment ComponentPodcastChaptersFragment on ComponentPodcastChapters {
+  __typename
+  id
+  start
+  title
+  href {
+    ...NavigationLinkFragment
+  }
+  image {
+    ...ImageFragment
+  }
+}

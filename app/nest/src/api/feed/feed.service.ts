@@ -5,7 +5,11 @@ import { NavService } from '../nav';
 import { PodcastService } from '../podcast/podcast.service';
 import { MarkdownService } from '../markdown/markdown.service';
 import { Feed } from 'feed';
-import { Podcast, FeedItunesCategory } from 'podcast';
+import {
+  Podcast,
+  FeedItunesCategory,
+  ItemSimpleChaptersChapters,
+} from 'podcast';
 
 @Injectable()
 export class FeedService {
@@ -50,7 +54,7 @@ export class FeedService {
     for (const post of posts) {
       feed.addItem({
         title: post.title,
-        link: process.env.NEST_EXTERN_URL + post.href.replace('//', '/'),
+        link: NavService.buildNestSrc('blog'),
         date: new Date(post.updatedAt),
         content: await this.markdown.html(post.md),
         author: [
@@ -124,6 +128,13 @@ export class FeedService {
 
       const html = await this.markdown.html(episode.description);
 
+      const chapters = this.podcast.transformChapters(episode, true);
+
+      const pscChapters: ItemSimpleChaptersChapters = {
+        version: '1.2',
+        chapter: chapters,
+      };
+
       feed.addItem({
         title: episode.title,
         description: episode.subtitle,
@@ -144,6 +155,7 @@ export class FeedService {
           file: audioFile.name,
           size: audioFile.size,
         },
+        pscChapters,
       });
     }
 
