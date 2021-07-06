@@ -5,4 +5,5 @@ export { BlogEntryPageComponent } from "./blog-entry/blog-entry.component";
 export { IndexPageComponent } from "./index/index.component";
 export { MediaCenterPageComponent } from "./media-center/media-center.component";
 export { PagesPageComponent } from "./pages/pages.component";
+export { SchoolSubjectPageComponent } from "./school-subject/school-subject.component";
 export { TeacherPageComponent } from "./teacher/teacher.component";
