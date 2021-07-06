@@ -530,6 +530,7 @@
       "Section-slideshow": {
         "required": [
           "id",
+          "entries",
           "title"
         ],
         "properties": {
@@ -651,7 +652,10 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "image",
+                    "subtitle",
+                    "color"
                   ]
                 },
                 {
@@ -806,7 +810,11 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "subtitle",
+                    "image",
+                    "label",
+                    "color"
                   ]
                 },
                 {
@@ -963,7 +971,11 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "image",
+                    "subtitle",
+                    "label",
+                    "color"
                   ]
                 }
               ]
@@ -976,6 +988,7 @@
       },
       "NewSection-slideshow": {
         "required": [
+          "entries",
           "title"
         ],
         "properties": {
@@ -1094,7 +1107,10 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "image",
+                    "subtitle",
+                    "color"
                   ]
                 },
                 {
@@ -1249,7 +1265,11 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "subtitle",
+                    "image",
+                    "label",
+                    "color"
                   ]
                 },
                 {
@@ -1406,7 +1426,11 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "image",
+                    "subtitle",
+                    "label",
+                    "color"
                   ]
                 }
               ]

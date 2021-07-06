@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/05/2021 11:23:44 AM"
+    "x-generation-date": "07/06/2021 1:28:33 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9327,6 +9327,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
@@ -10484,6 +10485,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
@@ -11808,6 +11810,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
@@ -12914,6 +12917,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
@@ -15629,6 +15633,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
@@ -16874,6 +16879,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
@@ -18706,6 +18712,7 @@
       "Section-slideshow": {
         "required": [
           "id",
+          "entries",
           "title"
         ],
         "properties": {
@@ -18827,7 +18834,10 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "image",
+                    "subtitle",
+                    "color"
                   ]
                 },
                 {
@@ -18982,7 +18992,11 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "subtitle",
+                    "image",
+                    "label",
+                    "color"
                   ]
                 },
                 {
@@ -19139,7 +19153,11 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "image",
+                    "subtitle",
+                    "label",
+                    "color"
                   ]
                 }
               ]
@@ -19152,6 +19170,7 @@
       },
       "NewSection-slideshow": {
         "required": [
+          "entries",
           "title"
         ],
         "properties": {
@@ -19270,7 +19289,10 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "image",
+                    "subtitle",
+                    "color"
                   ]
                 },
                 {
@@ -19425,7 +19447,11 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "subtitle",
+                    "image",
+                    "label",
+                    "color"
                   ]
                 },
                 {
@@ -19582,7 +19608,11 @@
                     }
                   },
                   "required": [
-                    "id"
+                    "id",
+                    "image",
+                    "subtitle",
+                    "label",
+                    "color"
                   ]
                 }
               ]
@@ -19879,6 +19909,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
@@ -21001,6 +21032,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {

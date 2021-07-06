@@ -17,7 +17,8 @@
         "slideshow.slideshow-entry",
         "slideshow.slideshow-entry-blog",
         "slideshow.slideshow-entry-page"
-      ]
+      ],
+      "required": true
     },
     "title": {
       "type": "string",

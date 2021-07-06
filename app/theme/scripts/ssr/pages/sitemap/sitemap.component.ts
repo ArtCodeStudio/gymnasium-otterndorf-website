@@ -7,6 +7,7 @@ import {
   GalleryService,
   MediaCenterService,
   TeacherService,
+  PodcastService,
 } from "../../services";
 import { Awaited, replaceBodyPageClass } from "../../../common";
 
@@ -19,6 +20,7 @@ export interface Scope {
   galleries: Awaited<ReturnType<GalleryService["list"]>>;
   mediaCenters: Awaited<ReturnType<MediaCenterService["list"]>>;
   teachers: Awaited<ReturnType<TeacherService["listBasic"]>>;
+  podcastEpisodes: Awaited<ReturnType<PodcastService["list"]>>;
 }
 
 export class SitemapPageComponent extends PageComponent {
@@ -32,6 +34,7 @@ export class SitemapPageComponent extends PageComponent {
   protected gallery = GalleryService.getInstance();
   protected mediaCenter = MediaCenterService.getInstance();
   protected teacher = TeacherService.getInstance();
+  protected podcast = PodcastService.getInstance();
 
   scope: Scope = {
     title: "Sitemap",
@@ -42,6 +45,7 @@ export class SitemapPageComponent extends PageComponent {
     galleries: [],
     mediaCenters: [],
     teachers: [],
+    podcastEpisodes: [],
   };
 
   static get observedAttributes(): string[] {
@@ -125,6 +129,15 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.teachers;
   }
 
+  protected async getPodcastEpisodes() {
+    try {
+      this.scope.podcastEpisodes = await this.podcast.list();
+    } catch (error) {
+      this.throw(error);
+    }
+    return this.scope.podcastEpisodes;
+  }
+
   protected async beforeBind() {
     this.head.title = this.scope.title;
 
@@ -135,6 +148,7 @@ export class SitemapPageComponent extends PageComponent {
     await this.getGalleries();
     await this.getMediaCenters();
     await this.getTeachers();
+    await this.getPodcastEpisodes();
 
     await super.beforeBind();
   }

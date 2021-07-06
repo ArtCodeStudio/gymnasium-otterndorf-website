@@ -30,3 +30,7 @@
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-href=" | teacher") Übersicht
         a.list-group-item.list-group-item-action(rv-each-teacher="teachers" rv-href="teacher.slug | teacher" rv-text="teacher.fullName")
+      h2.text-center(rv-show="teachers | size") Podcast
+      .list-group.my-5
+        a.list-group-item.list-group-item-action(rv-href=" | podcast") Übersicht
+        a.list-group-item.list-group-item-action(rv-each-episode="podcastEpisodes" rv-href="episode.slug | podcast" rv-text="episode.title")

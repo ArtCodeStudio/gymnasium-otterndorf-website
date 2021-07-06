@@ -794,6 +794,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
@@ -1916,6 +1917,7 @@
                     "slideshow": {
                       "required": [
                         "id",
+                        "entries",
                         "title"
                       ],
                       "properties": {
