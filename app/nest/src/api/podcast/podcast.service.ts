@@ -2,13 +2,18 @@ import { Injectable } from '@nestjs/common';
 import {
   StrapiGqlPodcastConfigQuery,
   StrapiGqlPodcastConfigQueryVariables,
+  StrapiGqlComponentPodcastCategoryFragmentFragment,
   StrapiGqlPodcastEpisodesDetailBySlugsQuery,
   StrapiGqlPodcastEpisodesDetailBySlugsQueryVariables,
   StrapiGqlPodcastEpisodeDetailFragmentFragment,
+  Maybe,
 } from '../strapi/types';
+import { PodcastCategory } from './types/podcast-category';
+
 import { StrapiService } from '../strapi/strapi.service';
 import { NavService } from '../nav';
 import { basename } from 'path';
+import { FeedItunesCategory } from 'podcast';
 
 @Injectable()
 export class PodcastService {
@@ -24,6 +29,71 @@ export class PodcastService {
       audioMetadata.format.duration || 0,
     );
     return duration;
+  }
+
+  protected transformCategoryName(category: string) {
+    return category
+      .replace('_and_', ' &amp; ')
+      .replace('_and_', ' &amp; ')
+      .replace('_', ' ')
+      .replace('NonProfit', 'Non-Profit')
+      .replace('SelfImprovement', 'Self-Improvement')
+      .replace('StandUp', 'Stand-Up');
+  }
+
+  public async buildCategoryTree(
+    categories: Maybe<StrapiGqlComponentPodcastCategoryFragmentFragment>[],
+  ) {
+    const tree: PodcastCategory = {};
+
+    if (!categories) {
+      return tree;
+    }
+
+    for (const category of categories) {
+      if (!category) {
+        continue;
+      }
+
+      const cats = category.name.split('__');
+
+      if (cats.length <= 0) {
+        continue;
+      }
+
+      let catName = this.transformCategoryName(cats[0]);
+      tree[catName] = tree[catName] || {};
+      const pointer: PodcastCategory = tree[catName];
+
+      for (let i = 1; i < cats.length; i++) {
+        catName = catName = this.transformCategoryName(cats[i]);
+        pointer[catName] = pointer[catName] || {};
+      }
+    }
+
+    return tree;
+  }
+
+  public async categoryTreeToNodePodcast(tree: PodcastCategory) {
+    const results: FeedItunesCategory[] = [];
+    for (const text of Object.keys(tree)) {
+      const subtree = tree[text];
+      const item: FeedItunesCategory = {
+        text,
+        subcats: await this.categoryTreeToNodePodcast(subtree),
+      };
+      results.push(item);
+    }
+
+    return results;
+  }
+
+  public async buildCategoryTreeForNodePodcast(
+    categories: Maybe<StrapiGqlComponentPodcastCategoryFragmentFragment>[],
+  ) {
+    return await this.categoryTreeToNodePodcast(
+      await this.buildCategoryTree(categories),
+    );
   }
 
   public async getConfig() {
@@ -55,7 +125,9 @@ export class PodcastService {
           'graphql/queries/podcast-episodes-detail-by-slugs',
           vars,
         );
-      episodes.push(...result.podcastEpisodes);
+      result.podcastEpisodes?.forEach((epi) => {
+        if (epi) episodes.push(epi);
+      });
     } catch (error) {
       console.error(error);
     }

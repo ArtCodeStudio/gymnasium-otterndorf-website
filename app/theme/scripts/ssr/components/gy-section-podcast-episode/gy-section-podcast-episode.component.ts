@@ -7,23 +7,6 @@ export interface Scope {
   section?: SectionPodcastEpisode;
 }
 
-// TODO Podcast
-
-// "_and_" -> " &amp; "
-// "_" -> " "
-
-// "NonProfit" -> "Non-Profit"
-// "SelfImprovement" -> "Self-Improvement"
-// "StandUp" -> "Stand-Up"
-
-// "__" -> To subcategory
-
-// TODO Episode
-
-// enclosure
-// guid by blog post slug
-// duration
-
 export class GySectionPodcastEpisodeComponent extends Component {
   public static tagName = "gy-section-podcast-episode";
   public _debug = false;

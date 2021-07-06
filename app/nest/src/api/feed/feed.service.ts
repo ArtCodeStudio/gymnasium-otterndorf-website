@@ -5,7 +5,7 @@ import { NavService } from '../nav';
 import { PodcastService } from '../podcast/podcast.service';
 import { MarkdownService } from '../markdown/markdown.service';
 import { Feed } from 'feed';
-import { Podcast } from 'podcast';
+import { Podcast, FeedItunesCategory } from 'podcast';
 
 @Injectable()
 export class FeedService {
@@ -31,7 +31,7 @@ export class FeedService {
     return NavService.buildNestSrc('api/feed/podcast');
   }
 
-  // TODO move tp post service
+  // TODO move to post service
   public getPostUrl(post: SearchPost) {
     return NavService.buildNestSrc(post.href);
   }
@@ -70,8 +70,23 @@ export class FeedService {
     const feedConfig = await this.podcast.getConfig();
     const episodes = await this.podcast.list();
 
+    // TODO
+    if (!feedConfig) {
+      return new Podcast({});
+    }
+
+    let itunesCategory: FeedItunesCategory[] = [];
+    feedConfig.category = feedConfig?.category || [];
+
+    if (feedConfig?.category) {
+      itunesCategory = await this.podcast.buildCategoryTreeForNodePodcast(
+        feedConfig.category,
+      );
+    }
+
     const feed = new Podcast({
       title: feedConfig.title,
+      language: feedConfig.language,
       feedUrl: this.getFeedUrl(),
       siteUrl: this.getSiteUrl(),
       author: feedConfig.owner_name, // TODO
@@ -85,14 +100,14 @@ export class FeedService {
       itunesExplicit: feedConfig.explicit || false,
       itunesSubtitle: feedConfig.subtitle,
       itunesType: feedConfig.type.toLowerCase() as 'episodic' | 'serial',
-      language: feedConfig.language,
+      itunesCategory,
     });
 
     for (const episode of episodes) {
       if (
-        episode.content.length <= 0 &&
-        episode.content[0] &&
-        episode.content[0].url
+        !episode?.content?.length ||
+        !episode.content[0] ||
+        !episode.content[0].url
       ) {
         continue;
       }
