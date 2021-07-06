@@ -3,8 +3,8 @@ ul
   li(ssr-rv-each-entry="calendarEntries")
     .event
       .calendar-date
-        span.calendar-date-day.h1 [ entry.start | lx-from-iso | lx-set-locale 'de' | lx-day ]
-        span.calendar-date-month.h5 [ entry.start | lx-from-iso | lx-set-locale 'de' | lx-month-short ]
+        span.calendar-date-day [ entry.start | lx-from-iso | lx-set-locale 'de' | lx-day ]
+        span.calendar-date-month.h5.mb-0 [ entry.start | lx-from-iso | lx-set-locale 'de' | lx-month-short ]
       .calendar-info
         .event-date
           span [ entry.start | lx-from-iso | lx-set-locale 'de' | lx-to-moment-calendar | capitalize | remove-empty-clock ]
