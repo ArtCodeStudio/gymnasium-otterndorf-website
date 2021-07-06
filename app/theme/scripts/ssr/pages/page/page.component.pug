@@ -1,18 +1,18 @@
 .container-fluid.container-xxl
   .row
-    .col-12
+    .col-12.my-5
       gy-sections(rv-co-sections="sections" context="page" rv-co-header="header")
-    .col-12.col-md-8.offset-md-2
+    .col-12.col-md-8.offset-md-2.my-5
       .row
         .col-12(rv-if="assets | empty | not")
           h3 Downloads
           .row(rv-each-asset="assets")
             .col-12 
               a(rv-href="asset.file.url | strapi" download rv-text="asset.name")
-        .col-12(rv-if="blogEntries | empty | not")
-          h3 Blog Einträge
-          .row(rv-each-blog="blogEntries")
-            .col-12 
-              a(rv-href="blog.slug | blog" rv-text="blog.title") 
-        .col-12(rv-if="calendarKey")
-          gy-dates(rv-calendar-key="calendarKey")
+        //- .col-12(rv-if="blogEntries | empty | not")
+        //-   h3 Blog Einträge
+        //-   .row(rv-each-blog="blogEntries")
+        //-     .col-12 
+        //-       a(rv-href="blog.slug | blog" rv-text="blog.title") 
+        //- .col-12(rv-if="calendarKey")
+        //-   gy-dates(rv-calendar-key="calendarKey")

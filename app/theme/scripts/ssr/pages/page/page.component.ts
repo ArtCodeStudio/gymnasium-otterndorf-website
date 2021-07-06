@@ -13,7 +13,7 @@ export interface Scope {
   sections: Section[];
   header: PageHeader | Record<string, never>;
   // blogEntries: Post[];
-  calendarKey: string;
+  // calendarKey: string;
   page: Page | Record<string, never>;
 }
 
@@ -30,7 +30,7 @@ export class PagePageComponent extends PageComponent {
     // blogEntries: [],
     sections: [],
     header: {},
-    calendarKey: "",
+    // calendarKey: "",
   };
 
   static get observedAttributes(): string[] {
@@ -47,22 +47,44 @@ export class PagePageComponent extends PageComponent {
     this.init(PagePageComponent.observedAttributes);
   }
 
-  protected async setSections(page: Page) {
-    this.scope.sections = await this.page.getSections(page);
-  }
-
   protected setHeader(page: Page) {
     this.scope.header = this.page.getHeader(page);
   }
 
-  protected setAssets(page: Page) {
-    if (page?.assets) {
+  protected getAssetsFromSections(sections: Section[]) {
+    const assets: Page["assets"] = [];
+    for (const section of sections) {
+      if (
+        section.__typename === "ComponentContentDownloadButton" &&
+        section.file?.url
+      ) {
+        assets.push({
+          __typename: "ComponentSidebarAssets",
+          file: section.file,
+          name: section.label,
+        });
+      }
+    }
+    return assets;
+  }
+
+  protected getPageAssets(page: Page) {
+    const assets = [];
+    if (page.assets) {
       for (const asset of page.assets) {
-        if (this.scope.assets && asset) {
-          this.scope.assets.push(asset);
+        if (asset) {
+          assets.push(asset);
         }
       }
     }
+    return assets;
+  }
+
+  protected getAssets(page: Page, sections: Section[]) {
+    const assets = [];
+    assets.push(...this.getAssetsFromSections(sections));
+    assets.push(...this.getPageAssets(page));
+    return assets;
   }
 
   protected setTitle(page: Page) {
@@ -72,9 +94,9 @@ export class PagePageComponent extends PageComponent {
   }
 
   // TODO
-  protected setCalendarKey(page: Page) {
-    this.scope.calendarKey = page?.["calendar_key"] || "";
-  }
+  // protected setCalendarKey(page: Page) {
+  //   this.scope.calendarKey = page?.["calendar_key"] || "";
+  // }
 
   protected async beforeBind() {
     try {
@@ -82,11 +104,14 @@ export class PagePageComponent extends PageComponent {
 
       if (page) {
         this.scope.page = page;
-        this.setCalendarKey(page);
-        this.setTitle(page);
-        this.setSections(page);
+        // this.setCalendarKey(page);
+        this.setTitle(this.scope.page);
+        this.scope.sections = await this.page.getSections(this.scope.page);
         this.setHeader(page);
-        this.setAssets(page);
+        this.scope.assets = this.getAssets(
+          this.scope.page,
+          this.scope.sections
+        );
       }
     } catch (error) {
       this.throw(error);
