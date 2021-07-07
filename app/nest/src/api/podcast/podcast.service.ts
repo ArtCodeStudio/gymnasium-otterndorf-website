@@ -20,6 +20,14 @@ import { FeedItunesCategory } from 'podcast';
 export class PodcastService {
   constructor(protected readonly strapi: StrapiService) {}
 
+  public getEpisodeUrl(slug: string) {
+    return NavService.buildNestSrc(`podcast/${slug}`);
+  }
+
+  public getOverviewUrl() {
+    return NavService.buildNestSrc(`podcast`);
+  }
+
   public async getAudioDuration(audioFileUrl: string) {
     const audioMetadata = await this.strapi.getAudioMetadata(
       basename(audioFileUrl),
@@ -32,10 +40,14 @@ export class PodcastService {
     return duration;
   }
 
+  /**
+   * @see https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12
+   * @param category
+   * @returns
+   */
   protected transformCategoryName(category: string) {
     return category
-      .replace('_and_', ' &amp; ')
-      .replace('_and_', ' &amp; ')
+      .replace('_and_', ' & ') // Must be "&amp;" but will be transformed by node-rss
       .replace('_', ' ')
       .replace('NonProfit', 'Non-Profit')
       .replace('SelfImprovement', 'Self-Improvement')
@@ -184,9 +196,5 @@ export class PodcastService {
     slug: string,
   ): Promise<StrapiGqlPodcastEpisodeDetailFragmentFragment> {
     return (await this.list([slug], 1))[0] || null;
-  }
-
-  public async getEpisodeUrl(slug: string) {
-    return NavService.buildNestSrc(`podcast/${slug}`);
   }
 }

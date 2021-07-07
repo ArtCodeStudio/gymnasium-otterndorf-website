@@ -27,10 +27,6 @@ export class FeedService {
     return NavService.buildNestSrc('api/feed/rss');
   }
 
-  public getPodcastEpisodeUrl() {
-    return NavService.buildNestSrc('api/feed/rss');
-  }
-
   public getPodcastFeedUrl() {
     return NavService.buildNestSrc('api/feed/podcast');
   }
@@ -88,11 +84,15 @@ export class FeedService {
       );
     }
 
+    const feedImage = feedConfig.image?.url
+      ? NavService.buildStrapiSrc(feedConfig.image.url)
+      : undefined;
+
     const feed = new Podcast({
       title: feedConfig.title,
       language: feedConfig.language,
-      feedUrl: this.getFeedUrl(),
-      siteUrl: this.getSiteUrl(),
+      feedUrl: this.getPodcastFeedUrl(),
+      siteUrl: this.podcast.getOverviewUrl(),
       author: feedConfig.owner_name, // TODO
       itunesOwner: {
         email: feedConfig.owner_email,
@@ -100,7 +100,7 @@ export class FeedService {
       },
       copyright: feedConfig.copyright,
       description: feedConfig.description,
-      imageUrl: feedConfig.image?.url,
+      imageUrl: feedImage,
       itunesExplicit: feedConfig.explicit || false,
       itunesSubtitle: feedConfig.subtitle,
       itunesType: feedConfig.type.toLowerCase() as 'episodic' | 'serial',
@@ -135,15 +135,19 @@ export class FeedService {
         chapter: chapters,
       };
 
+      const episodeImage = episode.image?.url
+        ? NavService.buildStrapiSrc(episode.image.url)
+        : feedImage;
+
       feed.addItem({
         title: episode.title,
         description: episode.subtitle,
         content: html,
-        url: await this.podcast.getEpisodeUrl(episode.slug),
+        url: this.podcast.getEpisodeUrl(episode.slug),
         date: new Date(episode.pubDate),
         // author: episode.author, TODO
         guid: episode.id,
-        itunesImage: episode.image?.url,
+        imageUrl: episodeImage,
         itunesSubtitle: episode.subtitle,
         itunesEpisode: episode.episode,
         itunesSeason: episode.season,

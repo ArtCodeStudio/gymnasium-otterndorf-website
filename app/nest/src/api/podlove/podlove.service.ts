@@ -11,10 +11,7 @@ import type {
 } from '@ribajs/podcast';
 import { MarkdownService } from '../markdown/markdown.service';
 
-import {
-  StrapiGqlPodcastEpisodeDetailFragmentFragment,
-  StrapiGqlPodcastEpisodeBasicFragmentFragment,
-} from '../strapi/types';
+import { StrapiGqlPodcastEpisodeDetailFragmentFragment } from '../strapi/types';
 
 import { FeedService } from '../feed/feed.service';
 import { PostService } from '../post/post.service';
@@ -38,10 +35,6 @@ export class PodloveService {
 
   public getEpisodeConfigUrl(slug: string) {
     return NavService.buildNestSrc(`api/podlove/episode/${slug}`);
-  }
-
-  public getEpisodeConfigUrlByBlogPostSlug(slug: string) {
-    return NavService.buildNestSrc(`api/podlove/episode/post/${slug}`);
   }
 
   public getChapters(episode: StrapiGqlPodcastEpisodeDetailFragmentFragment) {
@@ -69,7 +62,7 @@ export class PodloveService {
   }
 
   public async getSubscribeButtonConfig() {
-    const feedUrl = this.feed.getFeedUrl();
+    const feedUrl = this.feed.getPodcastFeedUrl();
     const config: PodloveWebPlayerSubscribeButton = {
       feed: feedUrl, // Rss feed
 
@@ -304,15 +297,22 @@ export class PodloveService {
 
   protected async transformEpisodeToPodloveEpisode(
     episode: StrapiGqlPodcastEpisodeDetailFragmentFragment,
+    show?: PodloveWebPlayerShow,
   ) {
     if (!episode.content || !episode.content.length) {
       throw new Error('An Audio file is required!');
     }
 
+    if (!show) {
+      show = await this.getShow();
+    }
+
     const poster:
       | StrapiGqlPodcastEpisodeDetailFragmentFragment['image']
       | null = episode.image;
-    const posterUrl = NavService.buildStrapiSrc(poster?.url);
+    const posterUrl = poster?.url
+      ? NavService.buildStrapiSrc(poster?.url)
+      : show.poster;
     const summary = episode.description
       ? await this.markdown.html(episode.description)
       : '';
@@ -353,7 +353,7 @@ export class PodloveService {
       /**
        * Show Related Information
        */
-      show: await this.getShow(),
+      show,
 
       /**
        * Episode related Information
@@ -485,15 +485,9 @@ export class PodloveService {
     return episodeConfig;
   }
 
-  // public async getEpisodeByBlog(
-  //   slug: string,
-  // ): Promise<PodloveWebPlayerEpisode> {
-  //   const { podcastEpisode } = await this.post.getPodcastEpisode(slug);
-  //   return await this.transformEpisodeToPodloveEpisode(podcastEpisode);
-  // }
-
   public async getEpisode(slug: string): Promise<PodloveWebPlayerEpisode> {
     const podcastEpisode = await this.podcast.get(slug);
-    return await this.transformEpisodeToPodloveEpisode(podcastEpisode);
+    const show = await this.getShow();
+    return await this.transformEpisodeToPodloveEpisode(podcastEpisode, show);
   }
 }
