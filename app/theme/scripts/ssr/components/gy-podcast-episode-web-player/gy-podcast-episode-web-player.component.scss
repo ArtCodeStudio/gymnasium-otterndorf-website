@@ -1,15 +1,14 @@
 gy-podcast-episode-web-player {
   display: block;
   max-width: 950px;
-  podlove-web-player, #podlove-web-player {
+  podlove-web-player, podlove-web-player > * {
     width: 950px;
     min-width: 260px;
     max-width: 100%;
-    min-height: 300px;
-  }
-  #podlove-web-player {
-    &:empty, > root {
+    min-height: 250px;
+    &.podlove-web-player-loading {
       max-width: 950px;
+      width: 100%;
       background-image: url(/images/loading-blue.svg);
       background-repeat: no-repeat;
       background-position: center center;

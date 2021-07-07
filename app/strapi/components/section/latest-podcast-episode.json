@@ -10,6 +10,19 @@
     "title": {
       "type": "string",
       "required": true
+    },
+    "activeTab": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "shownotes",
+        "chapters",
+        "files",
+        "share",
+        "playlist"
+      ],
+      "required": true,
+      "default": "none"
     }
   }
 }
