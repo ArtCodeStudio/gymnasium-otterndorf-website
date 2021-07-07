@@ -623,10 +623,12 @@ export type StrapiGqlComponentSectionLatestPodcastEpisode = {
   __typename?: 'ComponentSectionLatestPodcastEpisode';
   id: Scalars['ID'];
   title: Scalars['String'];
+  activeTab: StrapiGqlEnum_Componentsectionlatestpodcastepisode_Activetab;
 };
 
 export type StrapiGqlComponentSectionLatestPodcastEpisodeInput = {
   title: Scalars['String'];
+  activeTab?: Maybe<StrapiGqlEnum_Componentsectionlatestpodcastepisode_Activetab>;
 };
 
 export type StrapiGqlComponentSectionMensaMax = {
@@ -866,6 +868,15 @@ export enum StrapiGqlEnum_Componentpodcastcategory_Name {
   TvAndFilmFilmInterviews = 'TV_and_Film__Film_Interviews',
   TvAndFilmFilmReviews = 'TV_and_Film__Film_Reviews',
   TvAndFilmTvReviews = 'TV_and_Film__TV_Reviews'
+}
+
+export enum StrapiGqlEnum_Componentsectionlatestpodcastepisode_Activetab {
+  None = 'none',
+  Shownotes = 'shownotes',
+  Chapters = 'chapters',
+  Files = 'files',
+  Share = 'share',
+  Playlist = 'playlist'
 }
 
 export enum StrapiGqlEnum_Componenttypesalignment_Alignment {
@@ -3423,6 +3434,7 @@ export type StrapiGqlEditComponentSectionIFrameInput = {
 export type StrapiGqlEditComponentSectionLatestPodcastEpisodeInput = {
   id?: Maybe<Scalars['ID']>;
   title?: Maybe<Scalars['String']>;
+  activeTab?: Maybe<StrapiGqlEnum_Componentsectionlatestpodcastepisode_Activetab>;
 };
 
 export type StrapiGqlEditComponentSectionMensaMaxInput = {
@@ -4078,7 +4090,7 @@ export type StrapiGqlComponentSectionIFrameFragmentFragment = (
 
 export type StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment = (
   { __typename?: 'ComponentSectionLatestPodcastEpisode' }
-  & Pick<StrapiGqlComponentSectionLatestPodcastEpisode, 'id' | 'title'>
+  & Pick<StrapiGqlComponentSectionLatestPodcastEpisode, 'id' | 'title' | 'activeTab'>
 );
 
 export type StrapiGqlComponentSectionMensaMaxFragmentFragment = (

@@ -2,10 +2,12 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import { PodloveService } from "../../services";
 import pugTemplate from "./gy-podcast-latest-episode-web-player.component.pug";
+import { PodloveWebPlayerTab } from "@ribajs/podcast";
 
 export interface Scope {
   episodeConfigUrl: string;
   configUrl: string;
+  activeTab: PodloveWebPlayerTab;
 }
 
 export class GyPodcastLatestEpisodeWebPlayerComponent extends Component {
@@ -16,15 +18,16 @@ export class GyPodcastLatestEpisodeWebPlayerComponent extends Component {
   scope: Scope = {
     episodeConfigUrl: "",
     configUrl: "",
+    activeTab: "none",
   };
 
   static get observedAttributes(): string[] {
-    return [];
+    return ["active-tab"];
   }
 
   protected async beforeBind() {
     await super.beforeBind();
-    this.scope.configUrl = PodloveService.getConfigPath("playlist");
+    this.scope.configUrl = PodloveService.getConfigPath(this.scope.activeTab);
     this.scope.episodeConfigUrl = PodloveService.getLatestEpisodeConfigPath();
   }
 
