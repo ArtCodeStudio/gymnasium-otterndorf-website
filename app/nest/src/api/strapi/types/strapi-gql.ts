@@ -199,7 +199,7 @@ export type StrapiGqlBlogEntryConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlBlogEntryConnection>;
 };
 
-export type StrapiGqlBlogEntryContentDynamicZone = StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentHomeCalendar | StrapiGqlComponentHomeNews | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentContentDownloadButton;
+export type StrapiGqlBlogEntryContentDynamicZone = StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentHomeCalendar | StrapiGqlComponentHomeNews | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentContentDownloadButton | StrapiGqlComponentSectionLatestPodcastEpisode;
 
 
 export type StrapiGqlBlogEntryGroupBy = {
@@ -544,19 +544,19 @@ export type StrapiGqlComponentPodcastCategoryInput = {
 };
 
 export type StrapiGqlComponentPodcastChapterInput = {
-  start?: Maybe<Scalars['Time']>;
   title: Scalars['String'];
   href?: Maybe<Scalars['ID']>;
   image?: Maybe<Scalars['ID']>;
+  start?: Maybe<Scalars['String']>;
 };
 
 export type StrapiGqlComponentPodcastChapters = {
   __typename?: 'ComponentPodcastChapters';
   id: Scalars['ID'];
-  start: Scalars['Time'];
   title: Scalars['String'];
   href?: Maybe<StrapiGqlNavigationLink>;
   image?: Maybe<StrapiGqlUploadFile>;
+  start: Scalars['String'];
 };
 
 export type StrapiGqlComponentSectionBlackboardSlideshow = {
@@ -622,11 +622,11 @@ export type StrapiGqlComponentSectionIFrameInput = {
 export type StrapiGqlComponentSectionLatestPodcastEpisode = {
   __typename?: 'ComponentSectionLatestPodcastEpisode';
   id: Scalars['ID'];
-  title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
 };
 
 export type StrapiGqlComponentSectionLatestPodcastEpisodeInput = {
-  title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
 };
 
 export type StrapiGqlComponentSectionMensaMax = {
@@ -1029,7 +1029,7 @@ export type StrapiGqlHomeInput = {
   updated_by?: Maybe<Scalars['ID']>;
 };
 
-export type StrapiGqlHomeSectionsDynamicZone = StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionFacts | StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentHomeNews | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentContentDownloadButton;
+export type StrapiGqlHomeSectionsDynamicZone = StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionFacts | StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentHomeNews | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentContentDownloadButton | StrapiGqlComponentSectionLatestPodcastEpisode;
 
 
 export type StrapiGqlI18NLocale = {
@@ -1605,7 +1605,7 @@ export type StrapiGqlPageConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlPageConnection>;
 };
 
-export type StrapiGqlPageContentDynamicZone = StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentHomeNews | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentContentDownloadButton;
+export type StrapiGqlPageContentDynamicZone = StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentHomeNews | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentContentDownloadButton | StrapiGqlComponentSectionLatestPodcastEpisode;
 
 
 export type StrapiGqlPageGroupBy = {
@@ -2385,7 +2385,7 @@ export type StrapiGqlSubjectConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlSubjectConnection>;
 };
 
-export type StrapiGqlSubjectContentDynamicZone = StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentHomeNews | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentContentDownloadButton;
+export type StrapiGqlSubjectContentDynamicZone = StrapiGqlComponentContentImage | StrapiGqlComponentContentText | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentContentButton | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentHomeNews | StrapiGqlComponentHomeCalendar | StrapiGqlComponentSectionFacts | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentContentDownloadButton | StrapiGqlComponentSectionLatestPodcastEpisode;
 
 
 export type StrapiGqlSubjectGroupBy = {
@@ -3384,10 +3384,10 @@ export type StrapiGqlEditComponentPodcastCategoryInput = {
 
 export type StrapiGqlEditComponentPodcastChapterInput = {
   id?: Maybe<Scalars['ID']>;
-  start?: Maybe<Scalars['Time']>;
   title?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['ID']>;
   image?: Maybe<Scalars['ID']>;
+  start?: Maybe<Scalars['String']>;
 };
 
 export type StrapiGqlEditComponentSectionBlackboardSlideshowInput = {
@@ -3869,7 +3869,7 @@ export type StrapiGqlBlogEntryBasicFragmentFragment = (
   ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentContentButton' } | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' } | (
     { __typename: 'ComponentSectionPodcastEpisode' }
     & StrapiGqlComponentSectionPodcastEpisodeFragmentFragment
-  ) | { __typename: 'ComponentContentDownloadButton' }>>> }
+  ) | { __typename: 'ComponentContentDownloadButton' } | { __typename: 'ComponentSectionLatestPodcastEpisode' }>>> }
 );
 
 export type StrapiGqlBlogEntryDetailFragmentFragment = (
@@ -3921,6 +3921,9 @@ export type StrapiGqlBlogEntryDetailFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentDownloadButton' }
     & StrapiGqlComponentContentDownloadButtonFragmentFragment
+  ) | (
+    { __typename: 'ComponentSectionLatestPodcastEpisode' }
+    & StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment
   )>>> }
 );
 
@@ -4073,6 +4076,11 @@ export type StrapiGqlComponentSectionIFrameFragmentFragment = (
   & Pick<StrapiGqlComponentSectionIFrame, 'id' | 'URL' | 'width' | 'height'>
 );
 
+export type StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment = (
+  { __typename?: 'ComponentSectionLatestPodcastEpisode' }
+  & Pick<StrapiGqlComponentSectionLatestPodcastEpisode, 'id' | 'title'>
+);
+
 export type StrapiGqlComponentSectionMensaMaxFragmentFragment = (
   { __typename?: 'ComponentSectionMensaMax' }
   & Pick<StrapiGqlComponentSectionMensaMax, 'id' | 'p' | 'e'>
@@ -4194,6 +4202,9 @@ export type StrapiGqlHomeFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentDownloadButton' }
     & StrapiGqlComponentContentDownloadButtonFragmentFragment
+  ) | (
+    { __typename: 'ComponentSectionLatestPodcastEpisode' }
+    & StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment
   )>>> }
 );
 
@@ -4289,7 +4300,7 @@ export type StrapiGqlPageBasicFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentText' }
     & StrapiGqlComponentContentTextFragmentFragment
-  ) | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentContentButton' } | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' } | { __typename: 'ComponentSectionPodcastEpisode' } | { __typename: 'ComponentContentDownloadButton' }>>> }
+  ) | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentContentButton' } | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' } | { __typename: 'ComponentSectionPodcastEpisode' } | { __typename: 'ComponentContentDownloadButton' } | { __typename: 'ComponentSectionLatestPodcastEpisode' }>>> }
 );
 
 export type StrapiGqlPageDetailFragmentFragment = (
@@ -4344,6 +4355,9 @@ export type StrapiGqlPageDetailFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentDownloadButton' }
     & StrapiGqlComponentContentDownloadButtonFragmentFragment
+  ) | (
+    { __typename: 'ComponentSectionLatestPodcastEpisode' }
+    & StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment
   )>>> }
 );
 
@@ -4385,7 +4399,7 @@ export type StrapiGqlSchoolSubjectBasicFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentText' }
     & StrapiGqlComponentContentTextFragmentFragment
-  ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentContentButton' } | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' } | { __typename: 'ComponentSectionPodcastEpisode' } | { __typename: 'ComponentContentDownloadButton' }>>> }
+  ) | { __typename: 'ComponentSectionGallerySlideshow' } | { __typename: 'ComponentSectionSlideshow' } | { __typename: 'ComponentSectionBlackboardSlideshow' } | { __typename: 'ComponentContentButton' } | { __typename: 'ComponentSectionBlogSlideshow' } | { __typename: 'ComponentHomeNews' } | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentSectionFacts' } | { __typename: 'ComponentStudentSectionStudentQuote' } | { __typename: 'ComponentSectionIFrame' } | { __typename: 'ComponentSectionMensaMax' } | { __typename: 'ComponentSectionPodcastEpisode' } | { __typename: 'ComponentContentDownloadButton' } | { __typename: 'ComponentSectionLatestPodcastEpisode' }>>> }
 );
 
 export type StrapiGqlSchoolSubjectDetailFragmentFragment = (
@@ -4436,6 +4450,9 @@ export type StrapiGqlSchoolSubjectDetailFragmentFragment = (
   ) | (
     { __typename: 'ComponentContentDownloadButton' }
     & StrapiGqlComponentContentDownloadButtonFragmentFragment
+  ) | (
+    { __typename: 'ComponentSectionLatestPodcastEpisode' }
+    & StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment
   )>>> }
 );
 

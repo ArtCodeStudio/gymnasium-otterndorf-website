@@ -1,7 +1,7 @@
 #import "../fragments/podcast-episode-basic.gql"
 
 query podcastEpisodesBasicBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
-  podcastEpisodes(start: $start, limit: $limit, where: { slug: $slugs }) {
+  podcastEpisodes(sort:"pubDate:desc", start: $start, limit: $limit, where: { slug: $slugs }) {
     ...PodcastEpisodeBasicFragment
   }
 }

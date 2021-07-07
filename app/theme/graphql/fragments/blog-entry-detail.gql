@@ -12,6 +12,7 @@
 #import "./component-section-iframe.gql"
 #import "./component-section-mensa-max.gql"
 #import "./component-section-podcast-episode.gql"
+#import "./component-section-latest-podcast-episode.gql"
 
 fragment BlogEntryDetailFragment on BlogEntry {
   __typename
@@ -74,6 +75,9 @@ fragment BlogEntryDetailFragment on BlogEntry {
     }
     ... on ComponentSectionPodcastEpisode {
       ...ComponentSectionPodcastEpisodeFragment
+    }
+    ... on ComponentSectionLatestPodcastEpisode {
+      ...ComponentSectionLatestPodcastEpisodeFragment
     }
   }
 }

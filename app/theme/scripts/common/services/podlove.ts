@@ -4,6 +4,7 @@ import { podcastFormatter } from "../formatters";
 import {
   PodloveWebPlayerEpisode,
   PodloveWebPlayerConfig,
+  PodloveWebPlayerTab,
 } from "@ribajs/podcast";
 export class PodloveService extends NestService {
   protected static instance: PodloveService;
@@ -21,8 +22,19 @@ export class PodloveService extends NestService {
     return PodloveService.instance;
   }
 
-  public static getConfigPath() {
-    return "/api/podlove/config";
+  public static getConfigPath(activeTab?: PodloveWebPlayerTab) {
+    return `/api/podlove/config?activeTab=${activeTab}`;
+  }
+
+  public static getConfigPathForEpisode(
+    episodeSlug: string,
+    activeTab?: PodloveWebPlayerTab
+  ) {
+    return `/api/podlove/config/${episodeSlug}?activeTab=${activeTab}`;
+  }
+
+  public static getLatestEpisodeConfigPath() {
+    return `/api/podlove/episode`;
   }
 
   public static getEpisodeConfigPath(slug: string) {

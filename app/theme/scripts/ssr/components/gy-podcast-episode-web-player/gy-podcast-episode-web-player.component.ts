@@ -18,7 +18,7 @@ export class GyPodcastEpisodeWebPlayerComponent extends Component {
   scope: Scope = {
     episode: undefined,
     episodeConfigUrl: "",
-    configUrl: PodloveService.getConfigPath(),
+    configUrl: "",
   };
 
   static get observedAttributes(): string[] {
@@ -32,9 +32,13 @@ export class GyPodcastEpisodeWebPlayerComponent extends Component {
   protected async beforeBind() {
     await super.beforeBind();
     if (!this.scope.episode?.slug) {
-      this.throw(new Error("episode object with slug property is required!"));
-      return;
+      throw new Error("The episode attribute is required!");
     }
+    // For episode by slug
+    this.scope.configUrl = PodloveService.getConfigPathForEpisode(
+      this.scope.episode.slug,
+      "none"
+    );
     this.scope.episodeConfigUrl = PodloveService.getEpisodeConfigPath(
       this.scope.episode.slug
     );

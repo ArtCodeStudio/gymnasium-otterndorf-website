@@ -41,7 +41,7 @@ export class PodloveService {
     return this.podcast.transformChapters(episode, true);
   }
 
-  public async getPlaylist() {
+  public async getPlaylist(activeEpisodeSlug?: string) {
     const episodes = await this.podcast.list();
     const playlist: PodloveWebPlayerPlaylistItem[] = [];
 
@@ -55,6 +55,7 @@ export class PodloveService {
           config: this.getEpisodeConfigUrl(episode.slug),
           duration,
           title: episode.title,
+          active: activeEpisodeSlug === episode.slug,
         });
       }
     }
@@ -225,8 +226,13 @@ export class PodloveService {
   }
 
   public async getConfig(
+    activeEpisodeSlug?: string,
     overwrite: Partial<PodloveWebPlayerConfig> = {},
   ): Promise<PodloveWebPlayerConfig> {
+    if (!activeEpisodeSlug) {
+      activeEpisodeSlug = (await this.podcast.latest())?.slug;
+    }
+
     const config: PodloveWebPlayerConfig = {
       version: 5,
 
@@ -249,7 +255,7 @@ export class PodloveService {
        * - can be a plain list or a reference to a json file
        * - if present playlist tab will be available
        */
-      playlist: await this.getPlaylist(),
+      playlist: await this.getPlaylist(activeEpisodeSlug),
 
       /**
        * Share Tab
@@ -274,12 +280,10 @@ export class PodloveService {
       //   outlet: '/share.html',
       //   sharePlaytime: true,
       // },
-    };
 
-    return {
-      ...config,
       ...overwrite,
     };
+    return config;
   }
 
   public async getShow(): Promise<PodloveWebPlayerShow> {
@@ -487,6 +491,12 @@ export class PodloveService {
 
   public async getEpisode(slug: string): Promise<PodloveWebPlayerEpisode> {
     const podcastEpisode = await this.podcast.get(slug);
+    const show = await this.getShow();
+    return await this.transformEpisodeToPodloveEpisode(podcastEpisode, show);
+  }
+
+  public async getLatestEpisode(): Promise<PodloveWebPlayerEpisode> {
+    const podcastEpisode = await this.podcast.latest();
     const show = await this.getShow();
     return await this.transformEpisodeToPodloveEpisode(podcastEpisode, show);
   }

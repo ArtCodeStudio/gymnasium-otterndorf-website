@@ -1,3 +1,10 @@
 gy-section-text {
     display: inline-block;
+    blockquote {
+        @extend .blockquote;
+        @extend .p-3;
+        font-style: italic;
+        background-color: $gray-200;
+        
+    }
 }

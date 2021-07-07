@@ -1,0 +1,4 @@
+fragment ComponentSectionLatestPodcastEpisodeFragment on ComponentSectionLatestPodcastEpisode {
+  id
+  title
+}

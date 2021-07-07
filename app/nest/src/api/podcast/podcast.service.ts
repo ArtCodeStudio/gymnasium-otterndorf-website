@@ -170,6 +170,9 @@ export class PodcastService {
     return podcastConfig;
   }
 
+  /**
+   * List episodes
+   */
   public async list(slugs: string[] | null = [], limit = 50, start = 0) {
     const vars: StrapiGqlPodcastEpisodesDetailBySlugsQueryVariables = {
       slugs,
@@ -192,9 +195,19 @@ export class PodcastService {
     return episodes;
   }
 
+  /**
+   * Get the episode object for a episode by slug
+   */
   public async get(
     slug: string,
   ): Promise<StrapiGqlPodcastEpisodeDetailFragmentFragment> {
     return (await this.list([slug], 1))[0] || null;
+  }
+
+  /**
+   * Get the episode object for the latest episode
+   */
+  public async latest(): Promise<StrapiGqlPodcastEpisodeDetailFragmentFragment> {
+    return (await this.list([], 1))[0] || null;
   }
 }

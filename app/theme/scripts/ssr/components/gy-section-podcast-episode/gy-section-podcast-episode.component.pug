@@ -1,3 +1,5 @@
 .row
   .col-auto.mx-auto.my-5
-    gy-podcast-episode-web-player(ssr-rv-co-episode="section")
+    h2.section-heading.text-center(ssr-rv-if="section.title" ssr-rv-text="section.title")
+    gy-podcast-episode-web-player(ssr-rv-if="episode" ssr-rv-co-episode="episode")
+    gy-podcast-latest-episode-web-player(ssr-rv-unless="episode")

@@ -341,7 +341,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -395,7 +396,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -453,7 +455,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -486,7 +489,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -586,7 +590,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -661,7 +666,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -721,7 +727,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -754,7 +761,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -899,7 +907,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -933,7 +942,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1036,7 +1046,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1101,7 +1112,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1145,7 +1157,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1185,7 +1198,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1291,7 +1305,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1419,6 +1434,41 @@
                     "color",
                     "file",
                     "alignment"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode",
+                        "content.download-button",
+                        "section.latest-podcast-episode"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title"
                   ]
                 }
               ]
@@ -1451,7 +1501,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1505,7 +1556,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1563,7 +1615,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1596,7 +1649,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1696,7 +1750,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1771,7 +1826,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1831,7 +1887,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -1864,7 +1921,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -2009,7 +2067,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -2043,7 +2102,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -2146,7 +2206,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -2211,7 +2272,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -2255,7 +2317,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -2295,7 +2358,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -2401,7 +2465,8 @@
                         "section.i-frame",
                         "section.mensa-max",
                         "section.podcast-episode",
-                        "content.download-button"
+                        "content.download-button",
+                        "section.latest-podcast-episode"
                       ]
                     },
                     "id": {
@@ -2529,6 +2594,41 @@
                     "color",
                     "file",
                     "alignment"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode",
+                        "content.download-button",
+                        "section.latest-podcast-episode"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title"
                   ]
                 }
               ]

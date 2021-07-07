@@ -1,10 +1,15 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-podcast-episode.component.pug";
-import { SectionPodcastEpisode } from "../../../common/types";
+import {
+  SectionPodcastEpisode,
+  SectionLatestPodcastEpisode,
+} from "../../../common/types";
 
 export interface Scope {
-  section?: SectionPodcastEpisode;
+  section?: SectionPodcastEpisode | SectionLatestPodcastEpisode;
+  episode?: SectionPodcastEpisode;
+  title: string;
 }
 
 export class GySectionPodcastEpisodeComponent extends Component {
@@ -14,6 +19,8 @@ export class GySectionPodcastEpisodeComponent extends Component {
 
   scope: Scope = {
     section: undefined,
+    episode: undefined,
+    title: "",
   };
 
   static get observedAttributes(): string[] {
@@ -29,6 +36,14 @@ export class GySectionPodcastEpisodeComponent extends Component {
   }
 
   protected async beforeBind() {
+    if (this.scope.section?.__typename === "PodcastEpisode") {
+      this.scope.episode = this.scope.section;
+    }
+    if (
+      this.scope.section?.__typename === "ComponentSectionLatestPodcastEpisode"
+    ) {
+      this.scope.title = this.scope.section.title;
+    }
     await super.beforeBind();
   }
 

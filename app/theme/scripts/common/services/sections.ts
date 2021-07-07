@@ -80,6 +80,9 @@ export class SectionsService {
         case "PodcastEpisode":
           sectionsObj.podcastEpisode = section;
           break;
+        case "ComponentSectionLatestPodcastEpisode":
+          sectionsObj.latestPodcastEpisode = section;
+          break;
         default:
           console.warn(
             `[SectionsService] Unknown section type "${
@@ -193,7 +196,9 @@ export class SectionsService {
             if (dynamicZoneSection.podcast_episode) {
               sections.push(dynamicZoneSection.podcast_episode);
             }
-
+            break;
+          case "ComponentSectionLatestPodcastEpisode":
+            sections.push(dynamicZoneSection);
             break;
           default:
             console.warn(

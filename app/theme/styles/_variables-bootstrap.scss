@@ -11,9 +11,19 @@ $blue: #0075BD;
 $green: #006825;
 $cyan: #5DCED1;
 $greenlight: #3EB701;
-$gray: #E0E6E4;
 
-$gray-100: $gray;
+$white:    #fff;
+$gray-100: #f8faf9;
+$gray-200: #e9efea;
+$gray-300: #dee6e0;
+$gray-400: #E0E6E4;
+$gray-500: #adbdb2;
+$gray-600: #6c7d70;
+$gray-700: #49574e;
+$gray-800: #344036;
+$gray-900: #212922;
+$black:    #000;
+
 $grays: (
   "100": $gray-100,
   "200": $gray-200,
@@ -26,11 +36,9 @@ $grays: (
   "900": $gray-900
 );
 
-$light: $gray-100;
+$light: $gray-400;
 $body-bg: $white;
 $border-color: $gray-900;
-
-$primary: $blue;
 
 // https://getbootstrap.com/docs/5.0/customize/sass/#add-to-map
 $theme-colors: (
@@ -49,6 +57,7 @@ $theme-colors: (
 $font-family-sans-serif: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-weight-bold: 600;
 $display-font-weight: $headings-font-weight;
+$blockquote-font-size: $font-size-base;
 
 // LINKS
 $link-color: $body-color;
@@ -58,7 +67,7 @@ $btn-link-hover-color:        $link-hover-color;
 
 // PROGRESS
 $progress-height: 10px;
-$progress-bg: rgba($gray, .5);
+$progress-bg: rgba($gray-400, .5);
 $progress-bar-transition: width .1s linear, margin-left .1s linear;
 
 // BREADCRUMBS

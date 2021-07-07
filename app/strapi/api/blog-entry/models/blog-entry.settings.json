@@ -36,7 +36,8 @@
         "section.i-frame",
         "section.mensa-max",
         "section.podcast-episode",
-        "content.download-button"
+        "content.download-button",
+        "section.latest-podcast-episode"
       ]
     },
     "blog_category": {

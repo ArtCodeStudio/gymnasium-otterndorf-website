@@ -35,3 +35,5 @@
             gy-section-mensa-max.col-12(ssr-rv-co-section="section")
         .row.my-3(ssr-rv-if="section.__typename | eq 'PodcastEpisode'") 
             gy-section-podcast-episode.col-12(ssr-rv-co-section="section")
+        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentSectionLatestPodcastEpisode'") 
+            gy-section-podcast-episode.col-12(ssr-rv-co-section="section")

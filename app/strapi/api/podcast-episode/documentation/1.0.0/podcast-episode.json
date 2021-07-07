@@ -728,16 +728,12 @@
               "type": "object",
               "required": [
                 "id",
-                "start",
-                "title"
+                "title",
+                "start"
               ],
               "properties": {
                 "id": {
                   "type": "string"
-                },
-                "start": {
-                  "type": "string",
-                  "default": "00:00:00"
                 },
                 "title": {
                   "type": "string"
@@ -830,6 +826,10 @@
                       "type": "string"
                     }
                   }
+                },
+                "start": {
+                  "type": "string",
+                  "default": "00:00:00.000"
                 }
               }
             }
@@ -899,16 +899,12 @@
               "type": "object",
               "required": [
                 "id",
-                "start",
-                "title"
+                "title",
+                "start"
               ],
               "properties": {
                 "id": {
                   "type": "string"
-                },
-                "start": {
-                  "type": "string",
-                  "default": "00:00:00"
                 },
                 "title": {
                   "type": "string"
@@ -1001,6 +997,10 @@
                       "type": "string"
                     }
                   }
+                },
+                "start": {
+                  "type": "string",
+                  "default": "00:00:00.000"
                 }
               }
             }

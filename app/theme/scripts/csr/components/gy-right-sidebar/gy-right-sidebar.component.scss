@@ -15,7 +15,7 @@ gy-right-sidebar {
     background-color: $right-sidebar-bg-color;
     border-left: $navbar-border-width $navbar-border-style $right-sidebar-border-color;
     @include media-breakpoint-up(xl) {
-      background-color: $gray;
+      background-color: $light;
       border-left-color: $navbar-border-color;
     }
     .list-group-item {
@@ -39,7 +39,7 @@ gy-right-sidebar {
     position: fixed;
     top: -1px;
     right: $bs5-sidebar-width - 1;
-    background-color: $gray;
+    background-color: $light;
     width: $hide-navbar-shadow-width;
     height: 86px;
     z-index: $zindex-hide-navbar-shadow;
