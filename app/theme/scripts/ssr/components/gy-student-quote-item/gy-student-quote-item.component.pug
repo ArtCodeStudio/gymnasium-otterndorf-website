@@ -1,0 +1,11 @@
+.row
+  div(rv-add-class="quote.mascotClass")
+    img.img-fluid.mascot(rv-if="quote.mascot" rv-src="quote.mascot | strapi-student-image-url 'original'" rv-alt="quote.mascot.alternativeText")
+  div(rv-add-class="quote.bubbleClass")
+    .quote.p-3.m-5(rv-add-class="quote.positionClass")
+        h5(ssr-rv-if="quote.title" ssr-rv-text="quote.title")
+        figure.my-0
+          blockquote.card-text(ssr-rv-text="quote.text")
+          figcaption.card-text(ssr-rv-if="quote.source")
+            cite.fst-normal
+              em(ssr-rv-text="quote.source")

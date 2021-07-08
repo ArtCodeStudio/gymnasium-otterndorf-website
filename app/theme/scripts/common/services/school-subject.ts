@@ -122,7 +122,7 @@ export class SchoolSubjectService {
     return [];
   }
 
-  getHeader(schoolSubject?: SchoolSubject): PageHeader {
+  public getHeader(schoolSubject?: SchoolSubject): PageHeader {
     const header: PageHeader = {
       title: schoolSubject?.title || "Schulfächer",
       breadcrumbs: [

@@ -71,6 +71,10 @@ export const themeConfig: ThemeConfig = {
       path: ["/credits"],
       component: "credits-page",
     },
+    {
+      path: ["/students/quote"],
+      component: "students-quotes-page",
+    },
   ],
   errorRoutes: {
     404: {

@@ -18,6 +18,7 @@ export { GySectionNewsComponent } from "./gy-section-news/gy-section-news.compon
 export { GySectionPodcastEpisodeComponent } from "./gy-section-podcast-episode/gy-section-podcast-episode.component";
 export { GySectionImageComponent } from "./gy-section-image/gy-section-image.component";
 export { GySectionSlideshowComponent } from "./gy-section-slideshow/gy-section-slideshow.component";
+export { GyStudentQuoteItemComponent } from "./gy-student-quote-item/gy-student-quote-item.component";
 export { GySectionStudentQuoteComponent } from "./gy-section-student-quote/gy-section-student-quote.component";
 export { GySectionTextComponent } from "./gy-section-text/gy-section-text.component";
 export { GySectionsComponent } from "./gy-sections/gy-sections.component";

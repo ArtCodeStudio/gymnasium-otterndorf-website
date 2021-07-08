@@ -13,4 +13,5 @@ export { PodcastPageComponent } from "./podcast/podcast.component";
 export { SchoolSubjectPageComponent } from "./school-subject/school-subject.component";
 export { SchoolSubjectsPageComponent } from "./school-subjects/school-subjects.component";
 export { SitemapPageComponent } from "./sitemap/sitemap.component";
+export { StudentsQuotesPageComponent } from "./students-quotes/students-quotes.component";
 export { TeacherPageComponent } from "./teacher/teacher.component";

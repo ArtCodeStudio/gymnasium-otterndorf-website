@@ -1,17 +1,7 @@
 .row(ssr-rv-add-class="color | theme-bg-class")
   .col-12(ssr-rv-if="section.title")
     h2.section-heading.text-center(ssr-rv-if="section.title" ssr-rv-text="section.title")
-  .col-12.col-md-8.mx-auto(ssr-rv-if="section.title")
-    .row(ssr-rv-each-quote="quotes")
-      div(rv-add-class="quote.mascotClass")
-        img.img-fluid.mascot(rv-if="quote.mascot" rv-src="quote.mascot | strapi-student-image-url 'original'" rv-alt="quote.mascot.alternativeText")
-      div(rv-add-class="quote.bubbleClass")
-        .quote.p-3.m-5(rv-add-class="quote.positionClass")
-            h5(ssr-rv-if="quote.title" ssr-rv-text="quote.title")
-            figure.my-0
-              blockquote.card-text(ssr-rv-text="quote.text")
-              figcaption.card-text(ssr-rv-if="quote.source")
-                cite.fst-normal
-                  em(ssr-rv-text="quote.source")
+  .col-12.col-md-8.mx-auto
+    gy-student-quote-item(ssr-rv-each-quote="quotes" ssr-rv-co-quote="quote")
   .col-12.my-5.text-center
-    a.btn.btn-outline-dark.mx-auto Archiv anschauen
+    a.btn.btn-outline-dark.mx-auto(ssr-rv-href=" | student-quote") Archiv anschauen

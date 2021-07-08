@@ -10,6 +10,7 @@ export * from "./nest";
 export * from "./page";
 export * from "./podcast";
 export * from "./post";
+export * from "./student-quote";
 export * from "./remove-empty-clock";
 export * from "./school-subject";
 export * from "./strapi-image-url";
