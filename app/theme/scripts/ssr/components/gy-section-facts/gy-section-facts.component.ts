@@ -1,5 +1,6 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
+import { themeBackgroundClassFormatter } from "../../../common/formatters/index";
 import pugTemplate from "./gy-section-facts.component.pug";
 
 export interface Scope {
@@ -27,8 +28,13 @@ export class GySectionFactsComponent extends Component {
     super();
   }
 
-  protected async afterBind() {
-    await super.afterBind();
+  protected async beforeBind() {
+    this.classList.add(
+      themeBackgroundClassFormatter.read(
+        this.scope.section?.color?.color || "cyan"
+      )
+    );
+    await super.beforeBind();
   }
 
   protected connectedCallback() {

@@ -1,8 +1,12 @@
+#import "./color.gql"
+
 fragment ComponentSectionFactsFragment on ComponentSectionFacts {
   facts {
     number
     title
     subtitle
+  }  
+  color {
+    ...ColorFragment
   }
-  size
 }

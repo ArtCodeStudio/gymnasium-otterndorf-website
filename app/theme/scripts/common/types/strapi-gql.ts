@@ -583,14 +583,14 @@ export type StrapiGqlComponentSectionBlogSlideshowInput = {
 
 export type StrapiGqlComponentSectionFactInput = {
   facts?: Maybe<Array<Maybe<StrapiGqlComponentHomeFactInput>>>;
-  size?: Maybe<Scalars['Int']>;
+  color: StrapiGqlComponentTypesColorInput;
 };
 
 export type StrapiGqlComponentSectionFacts = {
   __typename?: 'ComponentSectionFacts';
   id: Scalars['ID'];
   facts?: Maybe<Array<Maybe<StrapiGqlComponentHomeFact>>>;
-  size: Scalars['Int'];
+  color?: Maybe<StrapiGqlComponentTypesColor>;
 };
 
 export type StrapiGqlComponentSectionGallerySlideshow = {
@@ -3419,7 +3419,7 @@ export type StrapiGqlEditComponentSectionBlogSlideshowInput = {
 export type StrapiGqlEditComponentSectionFactInput = {
   id?: Maybe<Scalars['ID']>;
   facts?: Maybe<Array<Maybe<StrapiGqlEditComponentHomeFactInput>>>;
-  size?: Maybe<Scalars['Int']>;
+  color?: Maybe<StrapiGqlEditComponentTypesColorInput>;
 };
 
 export type StrapiGqlEditComponentSectionGallerySlideshowInput = {
@@ -4073,11 +4073,13 @@ export type StrapiGqlComponentSectionBlogSlideshowFragmentFragment = (
 
 export type StrapiGqlComponentSectionFactsFragmentFragment = (
   { __typename?: 'ComponentSectionFacts' }
-  & Pick<StrapiGqlComponentSectionFacts, 'size'>
   & { facts?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentHomeFact' }
     & Pick<StrapiGqlComponentHomeFact, 'number' | 'title' | 'subtitle'>
-  )>>> }
+  )>>>, color?: Maybe<(
+    { __typename?: 'ComponentTypesColor' }
+    & StrapiGqlColorFragmentFragment
+  )> }
 );
 
 export type StrapiGqlComponentSectionGallerySlideshowFragmentFragment = (

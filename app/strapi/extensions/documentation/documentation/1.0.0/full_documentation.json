@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/08/2021 10:43:38 AM"
+    "x-generation-date": "07/08/2021 11:42:52 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9832,14 +9832,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {
@@ -11088,14 +11110,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {
@@ -12082,14 +12126,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {
@@ -13287,14 +13353,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {
@@ -16810,14 +16898,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {
@@ -18154,14 +18264,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {
@@ -21446,14 +21578,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {
@@ -22667,14 +22821,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {

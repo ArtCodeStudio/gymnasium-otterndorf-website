@@ -138,11 +138,7 @@ export class SectionsService {
             }
             break;
           case "ComponentSectionFacts":
-            sections.push({
-              __typename: dynamicZoneSection.__typename,
-              facts: dynamicZoneSection.facts || [],
-              size: dynamicZoneSection.size || 12,
-            });
+            sections.push(dynamicZoneSection);
             break;
           case "ComponentHomeNews":
             sections.push(dynamicZoneSection as HomeNews);

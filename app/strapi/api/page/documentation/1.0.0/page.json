@@ -1260,14 +1260,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {
@@ -2604,14 +2626,36 @@
                         }
                       }
                     },
-                    "size": {
-                      "type": "integer",
-                      "default": 1
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "size"
+                    "color"
                   ]
                 },
                 {

@@ -12,13 +12,11 @@
       "repeatable": true,
       "component": "home.fact"
     },
-    "size": {
-      "required": true,
-      "unique": false,
-      "default": 1,
-      "max": 12,
-      "type": "integer",
-      "min": 1
+    "color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.color",
+      "required": true
     }
   }
 }
