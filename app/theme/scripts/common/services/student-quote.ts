@@ -1,6 +1,6 @@
 import { GraphQLClient } from "./graphql";
 import { StrapiGqlStudent } from "../types";
-import quoteQuery from "../../../graphql-student/queries/quote.gql";
+import quotesByIdsQuery from "../../../graphql-student/queries/quotes-by-ids.gql";
 
 export class StudentQuoteService {
   protected graphql = GraphQLClient.getInstance(true);
@@ -19,13 +19,23 @@ export class StudentQuoteService {
     return StudentQuoteService.instance;
   }
 
-  public async get() {
-    const vars: StrapiGqlStudent.QuoteQueryVariables = {};
+  public async list(ids: string[] = [], limit = 50, start = 0) {
+    const vars: StrapiGqlStudent.QuotesByIdsQueryVariables = {
+      ids,
+      limit,
+      start,
+    };
     const quoteResponse =
-      await this.graphql.requestCached<StrapiGqlStudent.QuoteQuery>(
-        quoteQuery,
+      await this.graphql.requestCached<StrapiGqlStudent.QuotesByIdsQuery>(
+        quotesByIdsQuery,
         vars
       );
-    return quoteResponse["quote"];
+    return quoteResponse?.["quotes"] || [];
+  }
+
+  public async get(
+    id: string
+  ): Promise<StrapiGqlStudent.QuoteFragmentFragment | null> {
+    return (await this.list([id], 1))[0] || null;
   }
 }

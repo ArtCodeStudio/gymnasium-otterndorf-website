@@ -1,6 +1,10 @@
 #import "./image.gql"
 
-fragment QuoteFragment on ComponentSectionsQuotes {
+fragment QuoteFragment on Quote {
+  __typename
+  id
+  created_at
+  updated_at
   title
   text
   source
@@ -8,4 +12,5 @@ fragment QuoteFragment on ComponentSectionsQuotes {
     ...ImageFragment
   }
   position
+  speechBubble
 }

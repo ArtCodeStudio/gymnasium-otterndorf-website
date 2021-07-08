@@ -1,5 +1,11 @@
+#import "./color.gql"
+
 # This is just the container of the quotes, the quotes itself are stored in the strapi students instance
 fragment ComponentStudentSectionStudentQuoteFragment on ComponentStudentSectionStudentQuote {
   id
   title
+  limit
+  color {
+    ...ColorFragment
+  }
 }

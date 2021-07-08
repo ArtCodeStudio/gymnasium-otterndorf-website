@@ -1,11 +1,16 @@
 {
-  "collectionName": "components_sections_quotes",
+  "kind": "collectionType",
+  "collectionName": "quotes",
   "info": {
-    "name": "quotes",
-    "icon": "quote-left",
+    "name": "quote",
     "description": ""
   },
-  "options": {},
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
   "attributes": {
     "text": {
       "type": "text",
@@ -39,7 +44,11 @@
         "rightTop",
         "rightBottom"
       ],
-      "default": "topLeft",
+      "required": true
+    },
+    "speechBubble": {
+      "type": "boolean",
+      "default": true,
       "required": true
     }
   }

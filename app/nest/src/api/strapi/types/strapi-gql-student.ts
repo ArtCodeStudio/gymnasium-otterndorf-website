@@ -31,27 +31,9 @@ export type AdminUser = {
   lastname: Scalars['String'];
 };
 
-export type ComponentSectionsQuoteInput = {
-  text: Scalars['String'];
-  source?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  mascot?: Maybe<Scalars['ID']>;
-  position?: Maybe<Enum_Componentsectionsquotes_Position>;
-};
-
-export type ComponentSectionsQuotes = {
-  __typename?: 'ComponentSectionsQuotes';
-  id: Scalars['ID'];
-  text: Scalars['String'];
-  source?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  mascot?: Maybe<UploadFile>;
-  position: Enum_Componentsectionsquotes_Position;
-};
 
 
-
-export enum Enum_Componentsectionsquotes_Position {
+export enum Enum_Quote_Position {
   TopLeft = 'topLeft',
   TopRight = 'topRight',
   BottomLeft = 'bottomLeft',
@@ -110,10 +92,11 @@ export type LocaleInput = {
 };
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Quotes | UpdateQuotePayload | DeleteQuotePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_At | UploadFileConnectionUpdated_At | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentSectionsQuotes;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Quote | QuoteConnection | QuoteAggregator | QuoteGroupBy | QuoteConnectionId | QuoteConnectionCreated_At | QuoteConnectionUpdated_At | QuoteConnectionText | QuoteConnectionSource | QuoteConnectionTitle | QuoteConnectionMascot | QuoteConnectionPosition | QuoteConnectionSpeechBubble | QuoteConnectionPublished_At | CreateQuotePayload | UpdateQuotePayload | DeleteQuotePayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_At | UploadFileConnectionUpdated_At | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload;
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createQuote?: Maybe<CreateQuotePayload>;
   updateQuote?: Maybe<UpdateQuotePayload>;
   deleteQuote?: Maybe<DeleteQuotePayload>;
   /** Delete one file */
@@ -141,8 +124,18 @@ export type Mutation = {
 };
 
 
+export type MutationCreateQuoteArgs = {
+  input?: Maybe<CreateQuoteInput>;
+};
+
+
 export type MutationUpdateQuoteArgs = {
   input?: Maybe<UpdateQuoteInput>;
+};
+
+
+export type MutationDeleteQuoteArgs = {
+  input?: Maybe<DeleteQuoteInput>;
 };
 
 
@@ -239,7 +232,9 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
-  quote?: Maybe<Quotes>;
+  quote?: Maybe<Quote>;
+  quotes?: Maybe<Array<Maybe<Quote>>>;
+  quotesConnection?: Maybe<QuoteConnection>;
   files?: Maybe<Array<Maybe<UploadFile>>>;
   filesConnection?: Maybe<UploadFileConnection>;
   role?: Maybe<UsersPermissionsRole>;
@@ -254,7 +249,25 @@ export type Query = {
 
 
 export type QueryQuoteArgs = {
+  id: Scalars['ID'];
   publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryQuotesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryQuotesConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 
@@ -320,18 +333,117 @@ export type QueryUsersConnectionArgs = {
   where?: Maybe<Scalars['JSON']>;
 };
 
-export type QuoteInput = {
-  quotes?: Maybe<Array<Maybe<ComponentSectionsQuoteInput>>>;
-  created_by?: Maybe<Scalars['ID']>;
-  updated_by?: Maybe<Scalars['ID']>;
-};
-
-export type Quotes = {
-  __typename?: 'Quotes';
+export type Quote = {
+  __typename?: 'Quote';
   id: Scalars['ID'];
   created_at: Scalars['DateTime'];
   updated_at: Scalars['DateTime'];
-  quotes?: Maybe<Array<Maybe<ComponentSectionsQuotes>>>;
+  text: Scalars['String'];
+  source?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  mascot?: Maybe<UploadFile>;
+  position: Enum_Quote_Position;
+  speechBubble: Scalars['Boolean'];
+  published_at?: Maybe<Scalars['DateTime']>;
+};
+
+export type QuoteAggregator = {
+  __typename?: 'QuoteAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type QuoteConnection = {
+  __typename?: 'QuoteConnection';
+  values?: Maybe<Array<Maybe<Quote>>>;
+  groupBy?: Maybe<QuoteGroupBy>;
+  aggregate?: Maybe<QuoteAggregator>;
+};
+
+export type QuoteConnectionCreated_At = {
+  __typename?: 'QuoteConnectionCreated_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionId = {
+  __typename?: 'QuoteConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionMascot = {
+  __typename?: 'QuoteConnectionMascot';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionPosition = {
+  __typename?: 'QuoteConnectionPosition';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionPublished_At = {
+  __typename?: 'QuoteConnectionPublished_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionSource = {
+  __typename?: 'QuoteConnectionSource';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionSpeechBubble = {
+  __typename?: 'QuoteConnectionSpeechBubble';
+  key?: Maybe<Scalars['Boolean']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionText = {
+  __typename?: 'QuoteConnectionText';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionTitle = {
+  __typename?: 'QuoteConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteConnectionUpdated_At = {
+  __typename?: 'QuoteConnectionUpdated_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<QuoteConnection>;
+};
+
+export type QuoteGroupBy = {
+  __typename?: 'QuoteGroupBy';
+  id?: Maybe<Array<Maybe<QuoteConnectionId>>>;
+  created_at?: Maybe<Array<Maybe<QuoteConnectionCreated_At>>>;
+  updated_at?: Maybe<Array<Maybe<QuoteConnectionUpdated_At>>>;
+  text?: Maybe<Array<Maybe<QuoteConnectionText>>>;
+  source?: Maybe<Array<Maybe<QuoteConnectionSource>>>;
+  title?: Maybe<Array<Maybe<QuoteConnectionTitle>>>;
+  mascot?: Maybe<Array<Maybe<QuoteConnectionMascot>>>;
+  position?: Maybe<Array<Maybe<QuoteConnectionPosition>>>;
+  speechBubble?: Maybe<Array<Maybe<QuoteConnectionSpeechBubble>>>;
+  published_at?: Maybe<Array<Maybe<QuoteConnectionPublished_At>>>;
+};
+
+export type QuoteInput = {
+  text: Scalars['String'];
+  source?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  mascot?: Maybe<Scalars['ID']>;
+  position: Enum_Quote_Position;
+  speechBubble?: Maybe<Scalars['Boolean']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
 };
 
 export type RoleInput = {
@@ -774,6 +886,15 @@ export type UsersPermissionsUserGroupBy = {
   role?: Maybe<Array<Maybe<UsersPermissionsUserConnectionRole>>>;
 };
 
+export type CreateQuoteInput = {
+  data?: Maybe<QuoteInput>;
+};
+
+export type CreateQuotePayload = {
+  __typename?: 'createQuotePayload';
+  quote?: Maybe<Quote>;
+};
+
 export type CreateRoleInput = {
   data?: Maybe<RoleInput>;
 };
@@ -801,9 +922,13 @@ export type DeleteFilePayload = {
   file?: Maybe<UploadFile>;
 };
 
+export type DeleteQuoteInput = {
+  where?: Maybe<InputId>;
+};
+
 export type DeleteQuotePayload = {
   __typename?: 'deleteQuotePayload';
-  quote?: Maybe<Quotes>;
+  quote?: Maybe<Quote>;
 };
 
 export type DeleteRoleInput = {
@@ -822,15 +947,6 @@ export type DeleteUserInput = {
 export type DeleteUserPayload = {
   __typename?: 'deleteUserPayload';
   user?: Maybe<UsersPermissionsUser>;
-};
-
-export type EditComponentSectionsQuoteInput = {
-  id?: Maybe<Scalars['ID']>;
-  text?: Maybe<Scalars['String']>;
-  source?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  mascot?: Maybe<Scalars['ID']>;
-  position?: Maybe<Enum_Componentsectionsquotes_Position>;
 };
 
 export type EditFileInput = {
@@ -861,7 +977,13 @@ export type EditLocaleInput = {
 };
 
 export type EditQuoteInput = {
-  quotes?: Maybe<Array<Maybe<EditComponentSectionsQuoteInput>>>;
+  text?: Maybe<Scalars['String']>;
+  source?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  mascot?: Maybe<Scalars['ID']>;
+  position?: Maybe<Enum_Quote_Position>;
+  speechBubble?: Maybe<Scalars['Boolean']>;
+  published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -891,12 +1013,13 @@ export type EditUserInput = {
 };
 
 export type UpdateQuoteInput = {
+  where?: Maybe<InputId>;
   data?: Maybe<EditQuoteInput>;
 };
 
 export type UpdateQuotePayload = {
   __typename?: 'updateQuotePayload';
-  quote?: Maybe<Quotes>;
+  quote?: Maybe<Quote>;
 };
 
 export type UpdateRoleInput = {
@@ -925,30 +1048,25 @@ export type ImageFragmentFragment = (
 );
 
 export type QuoteFragmentFragment = (
-  { __typename?: 'ComponentSectionsQuotes' }
-  & Pick<ComponentSectionsQuotes, 'title' | 'text' | 'source' | 'position'>
+  { __typename: 'Quote' }
+  & Pick<Quote, 'id' | 'created_at' | 'updated_at' | 'title' | 'text' | 'source' | 'position' | 'speechBubble'>
   & { mascot?: Maybe<(
     { __typename?: 'UploadFile' }
     & ImageFragmentFragment
   )> }
 );
 
-export type QuotesFragmentFragment = (
-  { __typename: 'Quotes' }
-  & Pick<Quotes, 'id' | 'created_at' | 'updated_at'>
+export type QuotesByIdsQueryVariables = Exact<{
+  ids: Array<Maybe<Scalars['ID']>> | Maybe<Scalars['ID']>;
+  limit: Scalars['Int'];
+  start: Scalars['Int'];
+}>;
+
+
+export type QuotesByIdsQuery = (
+  { __typename?: 'Query' }
   & { quotes?: Maybe<Array<Maybe<(
-    { __typename?: 'ComponentSectionsQuotes' }
+    { __typename?: 'Quote' }
     & QuoteFragmentFragment
   )>>> }
-);
-
-export type QuoteQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type QuoteQuery = (
-  { __typename?: 'Query' }
-  & { quote?: Maybe<(
-    { __typename?: 'Quotes' }
-    & QuotesFragmentFragment
-  )> }
 );

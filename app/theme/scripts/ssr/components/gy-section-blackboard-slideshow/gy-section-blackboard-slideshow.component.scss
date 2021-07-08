@@ -15,4 +15,15 @@ gy-section-blackboard-slideshow {
       box-shadow: none;
     }
   }
+
+  gy-blackboard {
+    &:empty {
+      width: 100%;
+      min-height: 300px;
+      background-image: url(/images/loading-blue.svg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100px;
+    }
+  }
 }

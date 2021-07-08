@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/07/2021 3:10:01 PM"
+    "x-generation-date": "07/08/2021 10:43:38 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9870,11 +9870,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -10248,11 +10280,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]
@@ -11081,11 +11126,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -11459,11 +11536,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]
@@ -12482,11 +12572,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -13030,11 +13152,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]
@@ -13642,11 +13777,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -14190,11 +14357,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]
@@ -16668,11 +16848,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -17046,11 +17258,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]
@@ -17967,11 +18192,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -18345,11 +18602,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]
@@ -21214,11 +21484,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -21592,11 +21894,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]
@@ -22390,11 +22705,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -22768,11 +23115,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]

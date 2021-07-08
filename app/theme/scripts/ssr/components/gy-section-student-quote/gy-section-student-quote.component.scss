@@ -23,7 +23,7 @@ gy-section-student-quote {
 * @author Rik Schennink
 * @see https://codepen.io/rikschennink/pen/mjywQb
 */ 
-.bubble {
+.speech-bubble {
     // bubble layout
     position: relative;
     max-width: 100%;
@@ -43,8 +43,8 @@ gy-section-student-quote {
 }
 
 @include media-breakpoint-down(md) {
-    .bubble {
-        &.bubble-top-left, &.bubble-top-right {
+    .speech-bubble {
+        &.position-top-left, &.position-top-right {
             // tip looks
             &::before {
                 border-bottom-color: $bubble-bg-color;
@@ -52,7 +52,7 @@ gy-section-student-quote {
             }
         }
 
-        &.bubble-bottom-left, &.bubble-bottom-right {
+        &.position-bottom-left, &.position-bottom-right {
             // tip looks
             &::before {
                 border-top-color: $bubble-bg-color;
@@ -60,7 +60,7 @@ gy-section-student-quote {
             }
         }
 
-        &.bubble-left-top, &.bubble-left-bottom {
+        &.position-left-top, &.position-left-bottom {
             // tip looks
             &::before {
                 border-right-color: $bubble-bg-color;
@@ -68,7 +68,7 @@ gy-section-student-quote {
             }
         }
 
-        &.bubble-right-top, &.bubble-right-bottom {
+        &.position-right-top, &.position-right-bottom {
             // tip looks
             &::before {
                 border-left-color: $bubble-bg-color;
@@ -85,7 +85,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-top-left {
+        &.position-top-left {
             border-top: none;
             &::before {
                 bottom: 100%;
@@ -101,7 +101,7 @@ gy-section-student-quote {
         *     ********
         *      *
         */
-        &.bubble-bottom-left {
+        &.position-bottom-left {
             &::before {
                 top: 100%;
                 left: $bubble-tip-spacing;
@@ -116,7 +116,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-top-right {
+        &.position-top-right {
             &::before {
                 bottom: 100%;
                 right: $bubble-tip-spacing;
@@ -131,7 +131,7 @@ gy-section-student-quote {
         *     ********
         *           *
         */
-        &.bubble-bottom-right {
+        &.position-bottom-right {
             &::before {
                 top: 100%;
                 right: $bubble-tip-spacing;
@@ -146,7 +146,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-left-top {
+        &.position-left-top {
             &::before {
                 right: 100%;
                 top: $bubble-tip-spacing;
@@ -161,7 +161,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-left-bottom {
+        &.position-left-bottom {
             &::before {
                 right: 100%;
                 bottom: $bubble-tip-spacing;
@@ -176,7 +176,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-right-top {
+        &.position-right-top {
             &::before {
                 left: 100%;
                 top: $bubble-tip-spacing;
@@ -191,7 +191,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-right-bottom {
+        &.position-right-bottom {
             &::before {
                 left: 100%;
                 bottom: $bubble-tip-spacing;
@@ -202,9 +202,9 @@ gy-section-student-quote {
 
 
 @include media-breakpoint-up(md) {
-    .bubble {
+    .speech-bubble {
 
-        &.bubble-md-top-left, &.bubble-md-top-right {
+        &.position-md-top-left, &.position-md-top-right {
             // tip looks
             &::before {
                 border-bottom-color: $bubble-bg-color;
@@ -212,7 +212,7 @@ gy-section-student-quote {
             }
         }
     
-        &.bubble-md-bottom-left, &.bubble-md-bottom-right {
+        &.position-md-bottom-left, &.position-md-bottom-right {
             // tip looks
             &::before {
                 border-top-color: $bubble-bg-color;
@@ -220,7 +220,7 @@ gy-section-student-quote {
             }
         }
     
-        &.bubble-md-left-top, &.bubble-md-left-bottom {
+        &.position-md-left-top, &.position-md-left-bottom {
             // tip looks
             &::before {
                 border-right-color: $bubble-bg-color;
@@ -228,7 +228,7 @@ gy-section-student-quote {
             }
         }
     
-        &.bubble-md-right-top, &.bubble-md-right-bottom {
+        &.position-md-right-top, &.position-md-right-bottom {
             // tip looks
             &::before {
                 border-left-color: $bubble-bg-color;
@@ -245,7 +245,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-md-top-left {
+        &.position-md-top-left {
             border-top: none;
             &::before {
                 bottom: 100%;
@@ -261,7 +261,7 @@ gy-section-student-quote {
         *     ********
         *      *
         */
-        &.bubble-md-bottom-left {
+        &.position-md-bottom-left {
             &::before {
                 top: 100%;
                 left: $bubble-tip-spacing;
@@ -276,7 +276,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-md-top-right {
+        &.position-md-top-right {
             &::before {
                 bottom: 100%;
                 right: $bubble-tip-spacing;
@@ -291,7 +291,7 @@ gy-section-student-quote {
         *     ********
         *           *
         */
-        &.bubble-md-bottom-right {
+        &.position-md-bottom-right {
             &::before {
                 top: 100%;
                 right: $bubble-tip-spacing;
@@ -306,7 +306,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-md-left-top {
+        &.position-md-left-top {
             &::before {
                 right: 100%;
                 top: $bubble-tip-spacing;
@@ -321,7 +321,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-md-left-bottom {
+        &.position-md-left-bottom {
             &::before {
                 right: 100%;
                 bottom: $bubble-tip-spacing;
@@ -336,7 +336,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-md-right-top {
+        &.position-md-right-top {
             &::before {
                 left: 100%;
                 top: $bubble-tip-spacing;
@@ -351,7 +351,7 @@ gy-section-student-quote {
         *     ********
         *
         */
-        &.bubble-md-right-bottom {
+        &.position-md-right-bottom {
             &::before {
                 left: 100%;
                 bottom: $bubble-tip-spacing;

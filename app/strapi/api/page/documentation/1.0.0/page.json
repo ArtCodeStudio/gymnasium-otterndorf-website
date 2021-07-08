@@ -1298,11 +1298,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -1676,11 +1708,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]
@@ -2597,11 +2642,43 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "limit",
+                    "color"
                   ]
                 },
                 {
@@ -2975,11 +3052,24 @@
                     },
                     "title": {
                       "type": "string"
+                    },
+                    "activeTab": {
+                      "type": "string",
+                      "default": "none",
+                      "enum": [
+                        "none",
+                        "shownotes",
+                        "chapters",
+                        "files",
+                        "share",
+                        "playlist"
+                      ]
                     }
                   },
                   "required": [
                     "id",
-                    "title"
+                    "title",
+                    "activeTab"
                   ]
                 }
               ]

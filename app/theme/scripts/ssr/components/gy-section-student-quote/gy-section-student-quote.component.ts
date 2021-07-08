@@ -12,6 +12,7 @@ import {
 export interface Scope {
   section?: SectionStudentQuote;
   quotes: StudentQuote[];
+  color: string;
 }
 
 export class GySectionStudentQuoteComponent extends Component {
@@ -23,6 +24,7 @@ export class GySectionStudentQuoteComponent extends Component {
   scope: Scope = {
     section: undefined,
     quotes: [],
+    color: "yellow",
   };
 
   static get observedAttributes(): string[] {
@@ -37,22 +39,20 @@ export class GySectionStudentQuoteComponent extends Component {
     super();
   }
 
-  protected transformQuote(quote: StudentQuote): StudentQuote {
-    if (!quote) {
-      return quote;
-    }
-
+  protected transformQuote(
+    quote: StrapiGqlStudent.QuoteFragmentFragment & Partial<StudentQuote>
+  ): StudentQuote {
     const position = kebabCase(quote.position);
 
-    quote.bubblePositionClass = "bubble-md-" + (position || "left-top");
+    quote.positionClass = "position-md-" + (position || "left-top");
 
     // Add extra small device position classes
-    if (quote.bubblePositionClass.startsWith("bubble-md-left")) {
-      quote.bubblePositionClass += " bubble-top-left";
+    if (quote.positionClass.startsWith("position-md-left")) {
+      quote.positionClass += " position-top-left";
     }
 
-    if (quote.bubblePositionClass.startsWith("bubble-md-right")) {
-      quote.bubblePositionClass += " bubble-top-right";
+    if (quote.positionClass.startsWith("position-md-right")) {
+      quote.positionClass += " position-top-right";
     }
 
     quote.bubbleClass = "col-12";
@@ -92,28 +92,40 @@ export class GySectionStudentQuoteComponent extends Component {
       }
     }
 
-    return quote;
+    if (quote.speechBubble) {
+      quote.positionClass += " speech-bubble";
+    }
+
+    return quote as StudentQuote;
   }
 
   protected transformQuotes(
-    quotes: StrapiGqlStudent.QuotesFragmentFragment["quotes"]
+    _quotes: Array<StrapiGqlStudent.QuoteFragmentFragment | null> | null
   ): StudentQuote[] {
-    if (!quotes) {
+    if (!_quotes) {
       return [];
     }
-    return quotes.map((quote) => {
-      return this.transformQuote(
-        quote as StrapiGqlStudent.ComponentSectionsQuotes
-      );
-    });
+    const qoutes: StudentQuote[] = [];
+    for (const _quote of _quotes) {
+      if (_quote) {
+        qoutes.push(this.transformQuote(_quote));
+      }
+    }
+
+    return qoutes;
   }
 
   protected async beforeBind() {
     await super.beforeBind();
-    const quote = await this.studentQuote.get();
-    if (quote?.quotes) {
-      const quotes = this.transformQuotes(quote?.quotes);
-      this.scope.quotes = quotes;
+    this.scope.color = this.scope.section?.color?.color || "yellow";
+    const quotes = await this.studentQuote.list(
+      [],
+      this.scope.section?.limit || 1
+    );
+    if (quotes) {
+      this.scope.quotes = this.transformQuotes(
+        quotes as Array<StrapiGqlStudent.QuoteFragmentFragment | null> | null
+      );
     }
   }
 

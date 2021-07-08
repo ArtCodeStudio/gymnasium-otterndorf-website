@@ -1,0 +1,7 @@
+#import "../fragments/quote.gql"
+
+query quotesByIds($ids: [ID]!, $limit: Int!, $start: Int!) {
+  quotes(sort:"created_at:desc", start: $start, limit: $limit, where: { id: $ids }) {
+    ...QuoteFragment
+  }
+} 
