@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "teachers",
   "info": {
-    "name": "Teacher",
+    "name": "Teachers",
     "displayName": "Lehrer",
     "description": ""
   },
@@ -31,8 +31,9 @@
       "type": "string"
     },
     "subjects": {
-      "via": "teachers",
       "columnName": "Fächer",
+      "targetColumnName": "Lehrer",
+      "via": "teachers",
       "collection": "subject"
     },
     "slug": {

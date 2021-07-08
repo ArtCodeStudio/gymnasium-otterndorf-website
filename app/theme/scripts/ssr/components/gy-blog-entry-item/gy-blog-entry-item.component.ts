@@ -10,12 +10,16 @@ import pugTemplate from "./gy-blog-entry-item.component.pug";
 
 export interface Scope {
   post?: Post;
+  showText: boolean;
   showDate: boolean;
+  showTitle: boolean;
   showCategory: boolean;
   catTextAt: number;
   sections: SectionObject;
   md: string;
   image?: StrapiGqlImageFragmentFragment;
+  /** If true showText will be set to false if an image is found */
+  preferImage: boolean;
 }
 
 export class GyBlogEntryItemComponent extends Component {
@@ -26,16 +30,27 @@ export class GyBlogEntryItemComponent extends Component {
 
   scope: Scope = {
     post: undefined,
+    showText: true,
     showDate: true,
+    showTitle: true,
     showCategory: true,
     catTextAt: 300,
     sections: {},
     md: "",
     image: undefined,
+    preferImage: false,
   };
 
   static get observedAttributes(): string[] {
-    return ["post", "cat-text-at", "show-date", "show-category"];
+    return [
+      "post",
+      "cat-text-at",
+      "show-date",
+      "show-text",
+      "show-title",
+      "show-category",
+      "prefer-image",
+    ];
   }
 
   protected requiredAttributes() {
@@ -55,6 +70,13 @@ export class GyBlogEntryItemComponent extends Component {
         this.scope.sections.image?.image ||
         this.scope.sections.podcastEpisode?.image ||
         undefined;
+
+      if (this.scope.image && this.scope.preferImage) {
+        this.scope.showTitle = false;
+        this.scope.showText = false;
+        this.scope.showDate = false;
+        this.scope.showCategory = false;
+      }
     }
   }
 

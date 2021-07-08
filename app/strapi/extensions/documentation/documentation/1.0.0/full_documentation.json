@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/08/2021 11:42:52 AM"
+    "x-generation-date": "07/08/2021 5:01:07 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9269,7 +9269,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -9282,6 +9283,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -9520,11 +9532,47 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "style": {
+                      "type": "string",
+                      "default": "color",
+                      "enum": [
+                        "color",
+                        "art",
+                        "dreamy"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "limit"
+                    "limit",
+                    "style"
                   ]
                 },
                 {
@@ -10547,7 +10595,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -10560,6 +10609,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -10798,11 +10858,47 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "style": {
+                      "type": "string",
+                      "default": "color",
+                      "enum": [
+                        "color",
+                        "art",
+                        "dreamy"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "limit"
+                    "limit",
+                    "style"
                   ]
                 },
                 {
@@ -11806,7 +11902,8 @@
       },
       "Gallery": {
         "required": [
-          "id"
+          "id",
+          "style"
         ],
         "properties": {
           "id": {
@@ -11904,10 +12001,48 @@
                 }
               }
             }
+          },
+          "style": {
+            "type": "string",
+            "default": "color",
+            "enum": [
+              "color",
+              "art",
+              "dreamy"
+            ]
+          },
+          "color": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string",
+                "default": "blue",
+                "enum": [
+                  "blue",
+                  "green",
+                  "cyan",
+                  "greenlight",
+                  "yellow",
+                  "red",
+                  "light",
+                  "dark",
+                  "white"
+                ]
+              }
+            }
           }
         }
       },
       "NewGallery": {
+        "required": [
+          "style"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -11999,6 +12134,41 @@
                 "title": {
                   "type": "string"
                 }
+              }
+            }
+          },
+          "style": {
+            "type": "string",
+            "default": "color",
+            "enum": [
+              "color",
+              "art",
+              "dreamy"
+            ]
+          },
+          "color": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string",
+                "default": "blue",
+                "enum": [
+                  "blue",
+                  "green",
+                  "cyan",
+                  "greenlight",
+                  "yellow",
+                  "red",
+                  "light",
+                  "dark",
+                  "white"
+                ]
               }
             }
           },
@@ -12397,7 +12567,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -12410,6 +12581,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -12840,11 +13022,47 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "style": {
+                      "type": "string",
+                      "default": "color",
+                      "enum": [
+                        "color",
+                        "art",
+                        "dreamy"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "limit"
+                    "limit",
+                    "style"
                   ]
                 },
                 {
@@ -13624,7 +13842,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -13637,6 +13856,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -14067,11 +14297,47 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "style": {
+                      "type": "string",
+                      "default": "color",
+                      "enum": [
+                        "color",
+                        "art",
+                        "dreamy"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "limit"
+                    "limit",
+                    "style"
                   ]
                 },
                 {
@@ -15379,7 +15645,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -15392,6 +15659,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -15959,7 +16237,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -15972,6 +16251,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -16390,7 +16680,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -16403,6 +16694,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -16732,11 +17034,47 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "style": {
+                      "type": "string",
+                      "default": "color",
+                      "enum": [
+                        "color",
+                        "art",
+                        "dreamy"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "limit"
+                    "limit",
+                    "style"
                   ]
                 },
                 {
@@ -17756,7 +18094,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -17769,6 +18108,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -18098,11 +18448,47 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "style": {
+                      "type": "string",
+                      "default": "color",
+                      "enum": [
+                        "color",
+                        "art",
+                        "dreamy"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "limit"
+                    "limit",
+                    "style"
                   ]
                 },
                 {
@@ -21015,7 +21401,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -21028,6 +21415,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -21412,11 +21810,47 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "style": {
+                      "type": "string",
+                      "default": "color",
+                      "enum": [
+                        "color",
+                        "art",
+                        "dreamy"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "limit"
+                    "limit",
+                    "style"
                   ]
                 },
                 {
@@ -22258,7 +22692,8 @@
                     },
                     "gallery": {
                       "required": [
-                        "id"
+                        "id",
+                        "style"
                       ],
                       "properties": {
                         "id": {
@@ -22271,6 +22706,17 @@
                           "type": "uid"
                         },
                         "images": {
+                          "type": "component"
+                        },
+                        "style": {
+                          "type": "string",
+                          "enum": [
+                            "color",
+                            "art",
+                            "dreamy"
+                          ]
+                        },
+                        "color": {
                           "type": "component"
                         },
                         "created_by": {
@@ -22655,11 +23101,47 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "style": {
+                      "type": "string",
+                      "default": "color",
+                      "enum": [
+                        "color",
+                        "art",
+                        "dreamy"
+                      ]
+                    },
+                    "color": {
+                      "type": "object",
+                      "required": [
+                        "id"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string",
+                          "default": "blue",
+                          "enum": [
+                            "blue",
+                            "green",
+                            "cyan",
+                            "greenlight",
+                            "yellow",
+                            "red",
+                            "light",
+                            "dark",
+                            "white"
+                          ]
+                        }
+                      }
                     }
                   },
                   "required": [
                     "id",
-                    "limit"
+                    "limit",
+                    "style"
                   ]
                 },
                 {

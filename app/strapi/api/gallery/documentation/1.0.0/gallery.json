@@ -516,7 +516,8 @@
     "schemas": {
       "Gallery": {
         "required": [
-          "id"
+          "id",
+          "style"
         ],
         "properties": {
           "id": {
@@ -614,10 +615,48 @@
                 }
               }
             }
+          },
+          "style": {
+            "type": "string",
+            "default": "color",
+            "enum": [
+              "color",
+              "art",
+              "dreamy"
+            ]
+          },
+          "color": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string",
+                "default": "blue",
+                "enum": [
+                  "blue",
+                  "green",
+                  "cyan",
+                  "greenlight",
+                  "yellow",
+                  "red",
+                  "light",
+                  "dark",
+                  "white"
+                ]
+              }
+            }
           }
         }
       },
       "NewGallery": {
+        "required": [
+          "style"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -709,6 +748,41 @@
                 "title": {
                   "type": "string"
                 }
+              }
+            }
+          },
+          "style": {
+            "type": "string",
+            "default": "color",
+            "enum": [
+              "color",
+              "art",
+              "dreamy"
+            ]
+          },
+          "color": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string",
+                "default": "blue",
+                "enum": [
+                  "blue",
+                  "green",
+                  "cyan",
+                  "greenlight",
+                  "yellow",
+                  "red",
+                  "light",
+                  "dark",
+                  "white"
+                ]
               }
             }
           },

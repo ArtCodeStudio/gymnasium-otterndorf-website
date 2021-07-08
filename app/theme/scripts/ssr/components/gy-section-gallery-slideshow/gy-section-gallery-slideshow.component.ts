@@ -30,12 +30,15 @@ export class GySectionGallerySlideshowComponent extends Component {
     super();
   }
 
-  protected async afterBind() {
-    // console.debug(
-    //   "[gy-section-gallery-slideshow] this.scope.section",
-    //   this.scope.section
-    // );
-    await super.afterBind();
+  protected async beforeBind() {
+    const gallery = this.scope.section?.gallery;
+    if (gallery?.style) {
+      this.classList.add(`slideshow-style-${gallery.style}`);
+    }
+    if (gallery?.color?.color) {
+      this.classList.add(`bg-${gallery.color?.color}`);
+    }
+    await super.beforeBind();
   }
 
   protected connectedCallback() {

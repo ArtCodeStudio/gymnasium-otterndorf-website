@@ -1,11 +1,12 @@
 a.card.hover-card-sm.mb-3(rv-href="post.slug | post")
-  img(rv-if="image" rv-src="image | strapi-image-url 'small'" class="card-img-top" rv-alt="image.alternativeText")
-  .card-body
+  .card-body(rv-if="showTitle | or showCategory")
     span(rv-if="showCategory")
       h6.card-subtitle.mb-2(rv-if="post.blog_category.name" rv-text="post.blog_category.name" rv-add-class="post.__typename | entry-type-color | prepend 'text-'")
       h6.card-subtitle.mb-2(rv-unless="post.blog_category.name" rv-text="post.__typename | entry-type-name" rv-add-class="post.__typename | entry-type-color | prepend 'text-'")
-    h5.card-title(rv-text="post.title")
-    p.card-text(rv-if="md")
+    h5.card-title(rv-if="showTitle" rv-text="post.title")
+  img(rv-if="image" rv-src="image | strapi-image-url 'small'" class="card-img-top" rv-alt="image.alternativeText")
+  .card-body(rv-if="showText | or showDate")
+    p.card-text(rv-if="md | and showText")
       span(rv-html="md | markdown | strip-html | cut catTextAt ' ...'")
     span.card-text.text-muted(rv-if="showDate")
       | [ post.updated_at | or post.published_at | lx-from-iso | lx-set-locale 'de' | lx-to-moment-calendar | capitalize ] von [ post.author ]

@@ -75,6 +75,12 @@ export class GalleryPageComponent extends PageComponent {
         if (gallery.images) {
           this.scope.images = gallery.images;
         }
+        if (gallery.style) {
+          this.classList.add(`gallery-style-${gallery.style}`);
+        }
+        if (gallery.color?.color) {
+          this.classList.add(`bg-${gallery.color?.color}`);
+        }
       }
     } catch (error) {
       this.throw(error);

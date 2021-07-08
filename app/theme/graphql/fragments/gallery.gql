@@ -1,4 +1,5 @@
 #import "./component-gallery-image.gql"
+#import "./color.gql"
 
 fragment GalleryFragment on Gallery {
   id
@@ -8,5 +9,9 @@ fragment GalleryFragment on Gallery {
     ... on ComponentGalleryImage {
       ...ComponentGalleryImageFragment
     }
+  }
+  style
+  color {
+    ...ColorFragment
   }
 }

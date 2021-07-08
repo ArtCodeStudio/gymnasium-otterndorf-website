@@ -1,75 +1,76 @@
 podlove-web-player(rv-episode="episodeConfigUrl | nest" rv-config="configUrl | nest")
-  root(data-test='player--xl' style='max-width:950px;min-width:260px;')
-    .flex.flex-col(class='tablet:px-6 tablet:pt-6 mobile:px-4 mobile:pt-4')
-      .flex-col.items-center(class='mobile:flex tablet:hidden')
-        show-title.text-sm.leading-tight
-        episode-title.text-base.text-center.leading-tight.mb-3
-        subscribe-button.mb-4(class='mobile:flex tablet:hidden')
-        poster.rounded-sm.w-48.shadow.overflow-hidden
-        divider.w-full.my-6
-      .flex-grow(class='tablet:flex')
-        .w-64(class='mobile:hidden tablet:block tablet:mr-6')
-          poster.rounded-sm.shadow.overflow-hidden
-        .w-full
-          .hidden(class='tablet:block')
-            show-title.text-base.leading-tight
-            episode-title.text-xl.leading-tight(class='desktop:text-2xl')
-            divider.w-full.my-4
-          .flex.items-center.justify-between
-            .block
-              play-state(on='active')
-                speed-control.flex.items-center
-            .flex
-              play-state(on='active')
-                chapter-previous.mx-2.block
-              play-state(on='active')
-                step-backward.mx-2.block
-              play-button.mx-2.block(:label="$t('PLAYER.PLAY_EPISODE')")
-              play-state(on='active')
-                step-forward.mx-2.block
-              play-state(on='active')
-                chapter-next.mx-2.block
-            .block
-              play-state(on='active')
-                volume-control.flex.items-center
-          .flex.w-full
-            progress-bar
-          .flex.w-full.-mt-2
-            .text-left(class='w-3/12')
-              timer-current.text-sm
-            .text-center.truncate(class='w-6/12')
-              play-state(on='active')
-                current-chapter.text-sm
-            .text-right(class='w-3/12')
-              timer-duration.text-sm
-      divider.w-full.mt-6.mb-3
-      .flex.justify-between
-        .flex.justify-between(class='mobile:w-full tablet:w-3/12 desktop:w-3/12')
-          tab-trigger(tab='shownotes')
-            icon(type='info')
-          tab-trigger(tab='chapters')
-            icon(type='chapter')
-          tab-trigger(tab='transcripts')
-            icon(type='transcripts')
-          tab-trigger(tab='files')
-            icon(type='download')
-          tab-trigger(tab='playlist')
-            icon(type='playlist')
-          tab-trigger(tab='share')
-            icon(type='share')
-        subscribe-button.mt-1(class='mobile:hidden tablet:flex')
-    .w-full.relative.overflow-hidden
-      tab(name='shownotes')
-        tab-shownotes
-      tab(name='chapters')
-        tab-chapters
-      tab(name='transcripts')
-        tab-transcripts
-      tab(name='files')
-        tab-files
-      tab(name='playlist')
-        tab-playlist
-      tab(name='share')
-        tab-share
-      tab-overflow
-    error
+  div
+    root(data-test='player--xl' style='max-width:950px;min-width:260px;')
+      .flex.flex-col(class='tablet:px-6 tablet:pt-6 mobile:px-4 mobile:pt-4')
+        .flex-col.items-center(class='mobile:flex tablet:hidden')
+          show-title.text-sm.leading-tight
+          episode-title.text-base.text-center.leading-tight.mb-3
+          subscribe-button.mb-4(class='mobile:flex tablet:hidden')
+          poster.rounded-sm.w-48.shadow.overflow-hidden
+          divider.w-full.my-6
+        .flex-grow(class='tablet:flex')
+          .w-64(class='mobile:hidden tablet:block tablet:mr-6')
+            poster.rounded-sm.shadow.overflow-hidden
+          .w-full
+            .hidden(class='tablet:block')
+              show-title.text-base.leading-tight
+              episode-title.text-xl.leading-tight(class='desktop:text-2xl')
+              divider.w-full.my-4
+            .flex.items-center.justify-between
+              .block
+                play-state(on='active')
+                  speed-control.flex.items-center
+              .flex
+                play-state(on='active')
+                  chapter-previous.mx-2.block
+                play-state(on='active')
+                  step-backward.mx-2.block
+                play-button.mx-2.block(:label="$t('PLAYER.PLAY_EPISODE')")
+                play-state(on='active')
+                  step-forward.mx-2.block
+                play-state(on='active')
+                  chapter-next.mx-2.block
+              .block
+                play-state(on='active')
+                  volume-control.flex.items-center
+            .flex.w-full
+              progress-bar
+            .flex.w-full.-mt-2
+              .text-left(class='w-3/12')
+                timer-current.text-sm
+              .text-center.truncate(class='w-6/12')
+                play-state(on='active')
+                  current-chapter.text-sm
+              .text-right(class='w-3/12')
+                timer-duration.text-sm
+        divider.w-full.mt-6.mb-3
+        .flex.justify-between
+          .flex.justify-between(class='mobile:w-full tablet:w-3/12 desktop:w-3/12')
+            tab-trigger(tab='shownotes')
+              icon(type='info')
+            tab-trigger(tab='chapters')
+              icon(type='chapter')
+            tab-trigger(tab='transcripts')
+              icon(type='transcripts')
+            tab-trigger(tab='files')
+              icon(type='download')
+            tab-trigger(tab='playlist')
+              icon(type='playlist')
+            tab-trigger(tab='share')
+              icon(type='share')
+          subscribe-button.mt-1(class='mobile:hidden tablet:flex')
+      .w-full.relative.overflow-hidden
+        tab(name='shownotes')
+          tab-shownotes
+        tab(name='chapters')
+          tab-chapters
+        tab(name='transcripts')
+          tab-transcripts
+        tab(name='files')
+          tab-files
+        tab(name='playlist')
+          tab-playlist
+        tab(name='share')
+          tab-share
+        tab-overflow
+      error

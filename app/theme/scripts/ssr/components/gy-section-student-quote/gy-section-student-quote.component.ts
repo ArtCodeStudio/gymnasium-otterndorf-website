@@ -1,12 +1,10 @@
 import { Component } from "@ribajs/core";
-import { kebabCase } from "@ribajs/utils";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-student-quote.component.pug";
 import {
   SectionStudentQuote,
   StudentQuoteService,
   StudentQuote,
-  StrapiGqlStudent,
 } from "../../../common";
 
 export interface Scope {

@@ -153,7 +153,6 @@ export class TeacherService {
         title: "Lehrer",
         breadcrumbs: [
           {
-            label: "Lehrer",
             type: ENTRY_TYPE.Home,
             url: "/",
             active: false,

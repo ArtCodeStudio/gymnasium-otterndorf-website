@@ -4,9 +4,10 @@ bs5-slideshow.row.py-5(xs-controls="false" md-controls="true" xs-indicators="tru
         .row.slideshow-row.py-3
             .slide.col-12(ssr-rv-each-entry="section.gallery.images")
                 .row.h-100.align-items-center
-                    a.col-10.col-md-4.mx-auto.card.hover-card.p-3(csr-rv-not-draggable ssr-rv-href="section.gallery.slug | gallery %entry%")
-                        img.img-fluid.w-100(lazyload="lazy" ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt="entry.image.alternativeText")
-                        //- .title(ssr-rv-text="entry.title")
+                    .col-10.col-md-4.mx-auto
+                        a.card.hover-card.card-image(csr-rv-not-draggable ssr-rv-href="section.gallery.slug | gallery %entry%")
+                            img.img-fluid.w-100(lazyload="lazy" ssr-rv-src='entry.image | strapi-image-url "large"' ssr-rv-alt="entry.image.alternativeText")
+                            //- .title(ssr-rv-text="entry.title")
         .row.my-3
             .col-auto.mx-auto
                 a.btn.btn-outline-white.fw-bold(rv-href="section.gallery.slug | gallery") Alle ansehen

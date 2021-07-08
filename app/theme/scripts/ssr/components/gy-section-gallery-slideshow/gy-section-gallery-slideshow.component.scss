@@ -1,9 +1,25 @@
 gy-section-gallery-slideshow {
-    background: $gallery-background-image;
-    background-size: $gallery-background-image-size;
     display: block;
+    &.slideshow-style-art {
+        background: $gallery-art-background-image;
+        background-size: $gallery-art-background-size;
+        bs5-slideshow {
+            background: $gallery-background-gradient;
+        }
+        .card-image {
+            @extend .p-3;
+        }
+    }
+    &.slideshow-style-dreamy {
+        background: $gallery-dreamy-background-image;
+        background-size: $gallery-dreamy-background-size;   
+    }
+    &.slideshow-style-dreamy, &.slideshow-style-color {
+        .card-image {
+          @extend .p-1;
+        }
+    }
     bs5-slideshow {
-        background: $gallery-background-gradient;
         .slideshow-controls, .slideshow-indicators {
             bs5-icon {
                 color: white;

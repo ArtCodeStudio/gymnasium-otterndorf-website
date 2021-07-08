@@ -2,7 +2,8 @@
   "collectionName": "components_section_blog_slideshows",
   "info": {
     "name": "Blog Slideshow",
-    "icon": "blog"
+    "icon": "blog",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,6 +16,21 @@
       "default": 3,
       "max": 10,
       "min": 1
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "color",
+        "art",
+        "dreamy"
+      ],
+      "required": true,
+      "default": "color"
+    },
+    "color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.color"
     }
   }
 }

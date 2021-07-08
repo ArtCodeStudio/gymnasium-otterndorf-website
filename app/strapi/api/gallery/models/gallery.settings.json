@@ -23,6 +23,21 @@
       "type": "component",
       "repeatable": true,
       "component": "gallery.image"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "color",
+        "art",
+        "dreamy"
+      ],
+      "required": true,
+      "default": "color"
+    },
+    "color": {
+      "type": "component",
+      "repeatable": false,
+      "component": "types.color"
     }
   }
 }

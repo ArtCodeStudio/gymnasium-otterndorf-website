@@ -6,6 +6,7 @@ import { BlogService } from "../../services";
 
 export interface Scope {
   section?: SectionBlogSlideshow | null;
+  preferImage: boolean;
 }
 
 export class GySectionBlogSlideshowComponent extends Component {
@@ -16,6 +17,7 @@ export class GySectionBlogSlideshowComponent extends Component {
 
   scope: Scope = {
     section: null,
+    preferImage: false,
   };
 
   static get observedAttributes(): string[] {
@@ -30,12 +32,20 @@ export class GySectionBlogSlideshowComponent extends Component {
     super();
   }
 
-  protected async afterBind() {
-    // console.debug(
-    //   "[gy-section-blog-slideshow] this.scope.section",
-    //   this.scope.section
-    // );
-    await super.afterBind();
+  protected async beforeBind() {
+    if (this.scope.section?.style) {
+      this.classList.add(`slideshow-style-${this.scope.section.style}`);
+      switch (this.scope.section?.style) {
+        case "art":
+        case "dreamy":
+          this.scope.preferImage = true;
+          break;
+      }
+    }
+    if (this.scope.section?.color?.color) {
+      this.classList.add(`bg-${this.scope.section.color?.color}`);
+    }
+    await super.beforeBind();
   }
 
   protected connectedCallback() {

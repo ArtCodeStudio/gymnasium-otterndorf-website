@@ -18,8 +18,12 @@ $section-heading-decoration: underline;
 $section-heading-underline-offset: 4px;
 
 $gallery-background-gradient: radial-gradient(circle, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
-$gallery-background-image: #c2c2c2 url('/images/bg-gallery.webp') repeat center center;
-$gallery-background-image-size: 100%;
+$gallery-art-background-image: #c2c2c2 url('/images/bg-gallery.webp') repeat center center;
+$gallery-art-background-size: 100%;
+// $gallery-dreamy-background-image: #9e47aa url('/images/bg-dreamy.svg') repeat center center;
+$gallery-dreamy-background-image: $blue url('/images/bg-dreamy.jpg') no-repeat center center;
+$gallery-dreamy-background-size: cover;
+$gallery-min-height: 100vh;
 
 $media-center-background-color: $black;
 $media-center-overlay-background: rgba($dark, 0.7);
