@@ -2,7 +2,7 @@
   "name": "@gymott/strapi-plugin-documentation-config",
   "devDependencies": {
     "@tsconfig/node16": "^1.0.1",
-    "@types/node": "^16.0.1",
+    "@types/node": "^16.3.0",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.5"
   },
