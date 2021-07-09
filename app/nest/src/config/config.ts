@@ -16,6 +16,7 @@ export const app: AppConfig = {
   port: Number(process.env.PORT) || 3000,
   environment:
     process.env.NODE_ENV === 'development' ? 'development' : 'production',
+  host: process.env.NEST_EXTERN_URL,
 };
 
 export const theme: NestThemeConfig = {

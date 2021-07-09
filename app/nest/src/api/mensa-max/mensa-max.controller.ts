@@ -34,7 +34,7 @@ export class MensaMaxController {
     summary:
       'Get the dishes of the current week, e.g. "/api/mensa-max/CUX000/SZO"',
   })
-  @CacheTTL(60)
+  @CacheTTL(86400) // 24h
   async get(
     @Res() res: Response,
     @Param('p') p: string,

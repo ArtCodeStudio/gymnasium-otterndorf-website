@@ -12,6 +12,7 @@
     "build:csr": "webpack --progress --color --env production --config webpack.csr.js",
     "build:csr:dev": "webpack --progress --color --env development --config webpack.csr.js",
     "watch": "webpack --color --watch --env development",
+    "watch:prod": "webpack --color --watch --env production",
     "lint": "eslint . --ext .ts,.tsx --fix && npm run lint:ssr && npm run lint:csr",
     "lint:ssr": "tsc -p tsconfig.ssr.json --noEmit",
     "lint:csr": "tsc -p tsconfig.json --noEmit"

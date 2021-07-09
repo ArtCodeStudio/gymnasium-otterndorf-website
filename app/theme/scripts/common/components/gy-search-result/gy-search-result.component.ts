@@ -79,7 +79,7 @@ export class GySearchResultComponent extends Component {
     }
   }
 
-  public onOpen(item: SearchResult, event: Event) {
+  public onOpen(item: SearchResult /*, event: Event*/) {
     // console.debug("onOpen", item, event.target);
 
     this.reset();
@@ -117,9 +117,13 @@ export class GySearchResultComponent extends Component {
   }
 
   protected async onChange() {
-    await this.calibrateSuggestions();
-    await this.calibrateResult();
-    await this.calibrateAlert();
+    try {
+      await this.calibrateSuggestions();
+      await this.calibrateResult();
+      await this.calibrateAlert();
+    } catch (error) {
+      console.error("[onChange]", error);
+    }
   }
 
   protected prefetchItem(url?: string) {

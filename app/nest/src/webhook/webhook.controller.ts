@@ -12,7 +12,7 @@ export class WebhookController {
   @ApiExcludeEndpoint()
   @Post('strapi')
   async post(@Res() res: Response, @Body() body: StrapiWebhookData) {
-    this.webhook.onWebhhook(body);
+    this.webhook.onWebhook(body);
     res.json();
   }
 }

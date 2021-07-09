@@ -1,8 +1,4 @@
-import {
-  HttpService,
-  HttpServiceResponse,
-  HttpServiceOptions,
-} from "@ribajs/core";
+import { HttpService, HttpServiceOptions } from "@ribajs/core";
 import { defaultCache } from "../services/cache";
 
 export abstract class NestService {
@@ -11,7 +7,10 @@ export abstract class NestService {
 
   protected async _get<T>(url: string, options: HttpServiceOptions = {}) {
     const res = await HttpService.getJSON<T>(url, options);
-    return res;
+    return {
+      body: res.body,
+      status: res.status,
+    };
   }
 
   protected async _getCached<T>(
@@ -19,7 +18,7 @@ export abstract class NestService {
     options: HttpServiceOptions = {},
     expiresIn: number | string = "5 mins"
   ) {
-    return defaultCache.resolve<HttpServiceResponse<T>>(
+    return defaultCache.resolve<{ body: T; status: number }>(
       url + JSON.stringify(options),
       async () => {
         return await this._get<T>(url);

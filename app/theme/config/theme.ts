@@ -1,7 +1,7 @@
-import type { ThemeConfigFile } from "@ribajs/ssr";
+import type { ThemeConfigFile, ThemeConfig } from "@ribajs/ssr";
 
 export const config: ThemeConfigFile = (env: string | undefined) => {
-  return {
+  const config: ThemeConfig = {
     name: "Demo Theme",
     viewEngine: "pug",
     assetsDir: "assets",
@@ -9,7 +9,12 @@ export const config: ThemeConfigFile = (env: string | undefined) => {
     pageComponentsDir: "scripts/ssr/pages",
     timeout: 5000,
     cache: {
-      ttl: env === "production" ? 3600 : 0,
+      // One year cache on production
+      ttl: env === "production" ? 31556952 : 31556952, // 0,
+      refresh: {
+        active: true,
+        startPath: "/sitemap",
+      },
     },
     ssr: {
       rootTag: "ssr-root-page",
@@ -86,4 +91,5 @@ export const config: ThemeConfigFile = (env: string | undefined) => {
       },
     },
   };
+  return config;
 };

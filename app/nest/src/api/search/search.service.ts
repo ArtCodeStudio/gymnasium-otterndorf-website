@@ -148,9 +148,7 @@ export class SearchService implements OnModuleInit {
   public async refreshPage() {
     const ns: Namespace = 'page';
     const pages = await this.page.list();
-
-    // console.debug(ns, JSON.stringify(pages, null, 2));
-
+    this.lunr.reset(ns);
     for (const page of pages) {
       this.lunr.add(ns, page);
       this.suggest.load(ns, page.title, { reset: false });
@@ -162,9 +160,7 @@ export class SearchService implements OnModuleInit {
   public async refreshNav() {
     const ns: Namespace = 'nav';
     const navs = await this.nav.list([]);
-
-    // console.debug(ns, JSON.stringify(navs, null, 2));
-
+    this.lunr.reset(ns);
     for (const nav of navs) {
       this.lunr.add(ns, nav);
       this.suggest.load(ns, nav.title, { reset: false });
@@ -175,9 +171,7 @@ export class SearchService implements OnModuleInit {
   public async refreshPost() {
     const ns: Namespace = 'post';
     const posts = await this.post.list();
-
-    // console.debug(ns, JSON.stringify(posts, null, 2));
-
+    this.lunr.reset(ns);
     for (const post of posts) {
       this.lunr.add(ns, post);
       this.suggest.load(ns, post.title, { reset: false });
@@ -193,6 +187,7 @@ export class SearchService implements OnModuleInit {
   public async refreshSchoolSubject() {
     const ns: Namespace = 'schoolSubject';
     const subjects = await this.subject.list();
+    this.lunr.reset(ns);
     for (const subject of subjects) {
       this.lunr.add(ns, subject);
       this.suggest.load(ns, subject.title, { reset: false });
@@ -204,6 +199,7 @@ export class SearchService implements OnModuleInit {
   public async refreshTeacher() {
     const ns: Namespace = 'teacher';
     const teachers = await this.teacher.list();
+    this.lunr.reset(ns);
     for (const teacher of teachers) {
       this.lunr.add(ns, teacher);
       this.suggest.load(ns, teacher.title, { reset: false });

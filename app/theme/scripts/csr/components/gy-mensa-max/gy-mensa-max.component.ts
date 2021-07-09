@@ -36,11 +36,9 @@ export class GyMensaMaxComponent extends Component {
   }
 
   protected async getMensaMax() {
-    console.debug("getMensaMax", this.scope);
     if (this.scope.e && this.scope.p) {
       try {
         const result = await this.mensaMax.get(this.scope.p, this.scope.e);
-        console.debug("getMensaMax result", result);
         this.scope.url = result.url;
         this.scope.html = result.html;
       } catch (error) {
