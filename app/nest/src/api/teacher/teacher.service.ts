@@ -25,24 +25,12 @@ export class TeacherService {
     return await Promise.all(pTeachers);
   }
 
-  protected getFullName(teacher: StrapiGqlTeacherDetailFragmentFragment) {
-    let fullName = '';
-    if (typeof teacher.first_name === 'string') {
-      fullName += teacher.first_name + ' ';
-    }
-    if (typeof teacher.name === 'string') {
-      fullName += teacher?.name;
-    }
-
-    return fullName;
-  }
-
   public async flatten(
     teacher: StrapiGqlTeacherDetailFragmentFragment,
   ): Promise<SearchTeacher> {
     return {
       id: teacher.id,
-      title: this.getFullName(teacher),
+      title: teacher.name,
       slug: teacher.slug,
       text: await this.markdown.strip(teacher.biography),
       href: NavService.buildHref('teacher', teacher.slug),

@@ -1,0 +1,7 @@
+#import "../fragments/former-student-detail.gql"
+
+query formerStudentDetailBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  formerStudents(start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...FormerStudentDetailFragment
+  }
+} 

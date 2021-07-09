@@ -5,7 +5,6 @@ import {
   StrapiGqlTeacherBasicBySlugsQuery,
   StrapiGqlTeacherBasicBySlugsQueryVariables,
   ResponseError,
-  StrapiGqlTeacherDetailFragmentFragment,
   Teacher,
   PageHeader,
 } from "../types";
@@ -31,21 +30,6 @@ export class TeacherService {
     return TeacherService.instance;
   }
 
-  protected transform(teacher: StrapiGqlTeacherDetailFragmentFragment) {
-    const result: Partial<Teacher> = {
-      ...(teacher || {}),
-      fullName: "",
-    };
-    if (typeof result.first_name === "string") {
-      result.fullName += result.first_name + " ";
-    }
-    if (typeof result.name === "string") {
-      result.fullName += result?.name;
-    }
-
-    return result as Teacher;
-  }
-
   async listDetail(slugs: string[] = [], limit = 50, start = 0) {
     const vars: StrapiGqlTeacherDetailBySlugsQueryVariables = {
       slugs,
@@ -58,15 +42,7 @@ export class TeacherService {
         vars
       );
     const teachers = teacherRes.teachers || [];
-    return teachers
-      .filter((teacher) => teacher !== null)
-      .map((teacher) => {
-        if (teacher) {
-          return this.transform(teacher);
-        } else {
-          return teacher;
-        }
-      }) as Teacher[];
+    return teachers;
   }
 
   async listBasic(slugs: string[] = [], limit = 50, start = 0) {
@@ -81,15 +57,7 @@ export class TeacherService {
         vars
       );
     const teachers = teacherRes.teachers || [];
-    return teachers
-      .filter((teacher) => teacher !== null)
-      .map((teacher) => {
-        if (teacher) {
-          return this.transform(teacher);
-        } else {
-          return teacher;
-        }
-      }) as Teacher[];
+    return teachers;
   }
 
   async getDetail(slug: string) {
@@ -100,10 +68,7 @@ export class TeacherService {
       throw error;
     }
     const teacher = teachers?.[0] || null;
-    if (teacher) {
-      return this.transform(teacher);
-    }
-    return null;
+    return teacher;
   }
 
   async getBasic(slug: string) {
@@ -114,17 +79,14 @@ export class TeacherService {
       throw error;
     }
     const teacher = teachers?.[0] || null;
-    if (teacher) {
-      return this.transform(teacher);
-    }
-    return null;
+    return teacher;
   }
 
   public getHeader(teachers: Teacher[]): PageHeader | Record<string, never> {
     if (teachers.length === 1) {
       const teacher = teachers[0];
       const header: PageHeader = {
-        title: teacher.fullName || "",
+        title: teacher.name || "",
         breadcrumbs: [
           {
             type: ENTRY_TYPE.Home,
@@ -138,7 +100,7 @@ export class TeacherService {
             url: teacherFormatter.read(),
           },
           {
-            label: teacher.fullName,
+            label: teacher.name,
             type: ENTRY_TYPE.Teacher,
             active: true,
             url: teacherFormatter.read(teacher.slug),

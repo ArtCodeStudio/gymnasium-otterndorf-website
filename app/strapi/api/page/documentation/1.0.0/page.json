@@ -1587,6 +1587,12 @@
                         "chapters": {
                           "type": "component"
                         },
+                        "contributors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
                         "published_at": {
                           "type": "string"
                         },
@@ -3003,6 +3009,12 @@
                         },
                         "chapters": {
                           "type": "component"
+                        },
+                        "contributors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
                         },
                         "published_at": {
                           "type": "string"

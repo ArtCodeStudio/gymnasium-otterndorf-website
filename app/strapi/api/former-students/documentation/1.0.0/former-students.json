@@ -1,18 +1,19 @@
 {
   "paths": {
-    "/teachers": {
+    "/former-students": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the former-students's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve former-students document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Teacher"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -51,7 +52,7 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Former-students"
         ],
         "parameters": [
           {
@@ -194,79 +195,16 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new former-students record",
         "responses": {
           "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Teacher"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Teacher"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewTeacher"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/teachers/count": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
+            "description": "Retrieve former-students document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "count": {
-                      "type": "integer"
+                    "foo": {
+                      "type": "string"
                     }
                   }
                 }
@@ -306,22 +244,36 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Former-students"
         ],
-        "parameters": []
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewFormer-students"
+              }
+            }
+          }
+        }
       }
     },
-    "/teachers/{id}": {
+    "/former-students/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of former-students documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve former-students document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teacher"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -359,7 +311,64 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Former-students"
+        ],
+        "parameters": []
+      }
+    },
+    "/former-students/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "Find one former-students record",
+        "responses": {
+          "200": {
+            "description": "Retrieve former-students document(s)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Former-students"
         ],
         "parameters": [
           {
@@ -376,14 +385,18 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single former-students record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve former-students document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teacher"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -421,7 +434,7 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Former-students"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +442,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTeacher"
+                "$ref": "#/components/schemas/NewFormer-students"
               }
             }
           }
@@ -449,10 +462,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single former-students record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single former-students based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +508,7 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Former-students"
         ],
         "parameters": [
           {
@@ -514,14 +527,25 @@
   },
   "components": {
     "schemas": {
-      "Teacher": {
+      "Former-students": {
         "required": [
           "id",
           "name",
-          "slug"
+          "slug",
+          "biography",
+          "image"
         ],
         "properties": {
           "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "uid"
+          },
+          "biography": {
             "type": "string"
           },
           "image": {
@@ -591,73 +615,31 @@
               }
             }
           },
-          "name": {
-            "type": "string"
-          },
-          "subjects": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title",
-                "slug"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "teachers": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "content": {
-                  "type": "dynamiczone"
-                },
-                "slug": {
-                  "type": "uid"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "slug": {
-            "type": "uid"
-          },
-          "biography": {
-            "type": "string"
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
-      "NewTeacher": {
+      "NewFormer-students": {
         "required": [
           "name",
-          "slug"
+          "slug",
+          "biography"
         ],
         "properties": {
           "name": {
             "type": "string"
           },
-          "subjects": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "slug": {
             "type": "uid"
           },
           "biography": {
             "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -669,9 +651,5 @@
       }
     }
   },
-  "tags": [
-    {
-      "name": "Teacher"
-    }
-  ]
+  "tags": []
 }

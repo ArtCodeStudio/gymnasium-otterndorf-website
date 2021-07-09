@@ -1,0 +1,7 @@
+#import "../fragments/podcaster-detail.gql"
+
+query podcasterDetailBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  podcasters(start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...PodcasterDetailFragment
+  }
+} 

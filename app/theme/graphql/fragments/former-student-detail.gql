@@ -1,0 +1,11 @@
+#import "./image.gql"
+
+fragment FormerStudentDetailFragment on FormerStudents {
+  id
+  slug
+  name
+  biography
+  image {
+    ...ImageFragment
+  }
+}

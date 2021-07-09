@@ -29,7 +29,7 @@
       h2.text-center(rv-show="teachers | size") Lehrer
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-href=" | teacher") Übersicht
-        a.list-group-item.list-group-item-action(rv-each-teacher="teachers" rv-href="teacher.slug | teacher" rv-text="teacher.fullName")
+        a.list-group-item.list-group-item-action(rv-each-teacher="teachers" rv-href="teacher.slug | teacher" rv-text="teacher.name")
       h2.text-center(rv-show="teachers | size") Podcast
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-href=" | podcast") Übersicht

@@ -2,6 +2,8 @@ export const MAX_EXPAND_TEXT_LENGTH = 200;
 export const MAX_EXPAND_TEXT_LENGTH_OFFSET = 100;
 export enum ENTRY_TYPE {
   StudentQuote,
+  FormerStudent,
+  Podcaster,
   Post,
   Podcast,
   PodcastEpisode,

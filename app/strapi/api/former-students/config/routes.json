@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/former-students",
+      "handler": "former-students.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/former-students/count",
+      "handler": "former-students.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/former-students/:id",
+      "handler": "former-students.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/former-students",
+      "handler": "former-students.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/former-students/:id",
+      "handler": "former-students.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/former-students/:id",
+      "handler": "former-students.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

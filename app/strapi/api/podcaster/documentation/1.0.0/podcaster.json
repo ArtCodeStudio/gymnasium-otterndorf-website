@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/teachers": {
+    "/podcasters": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Teacher"
+                    "$ref": "#/components/schemas/Podcaster"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Podcaster"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teacher"
+                  "$ref": "#/components/schemas/Podcaster"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Podcaster"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTeacher"
+                "$ref": "#/components/schemas/NewPodcaster"
               }
             }
           }
         }
       }
     },
-    "/teachers/count": {
+    "/podcasters/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Podcaster"
         ],
         "parameters": []
       }
     },
-    "/teachers/{id}": {
+    "/podcasters/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teacher"
+                  "$ref": "#/components/schemas/Podcaster"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Podcaster"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Teacher"
+                  "$ref": "#/components/schemas/Podcaster"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Podcaster"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTeacher"
+                "$ref": "#/components/schemas/NewPodcaster"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Teacher"
+          "Podcaster"
         ],
         "parameters": [
           {
@@ -514,14 +514,22 @@
   },
   "components": {
     "schemas": {
-      "Teacher": {
+      "Podcaster": {
         "required": [
           "id",
-          "name",
-          "slug"
+          "name"
         ],
         "properties": {
           "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "uid"
+          },
+          "biography": {
             "type": "string"
           },
           "image": {
@@ -591,73 +599,114 @@
               }
             }
           },
-          "name": {
-            "type": "string"
-          },
-          "subjects": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title",
-                "slug"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "teachers": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "content": {
-                  "type": "dynamiczone"
-                },
-                "slug": {
-                  "type": "uid"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
+          "podcast_episodes": {
+            "required": [
+              "id",
+              "title",
+              "content",
+              "description",
+              "explicit",
+              "type",
+              "block",
+              "slug",
+              "season",
+              "episode",
+              "subtitle"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "pubDate": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "explicit": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Full",
+                  "Trailer",
+                  "Bonus"
+                ]
+              },
+              "block": {
+                "type": "boolean"
+              },
+              "slug": {
+                "type": "uid"
+              },
+              "season": {
+                "type": "integer"
+              },
+              "episode": {
+                "type": "integer"
+              },
+              "subtitle": {
+                "type": "string"
+              },
+              "chapters": {
+                "type": "component"
+              },
+              "contributors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
-          "slug": {
-            "type": "uid"
-          },
-          "biography": {
-            "type": "string"
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
-      "NewTeacher": {
+      "NewPodcaster": {
         "required": [
-          "name",
-          "slug"
+          "name"
         ],
         "properties": {
           "name": {
             "type": "string"
           },
-          "subjects": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "slug": {
             "type": "uid"
           },
           "biography": {
             "type": "string"
+          },
+          "podcast_episodes": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "created_by": {
             "type": "string"
@@ -671,7 +720,7 @@
   },
   "tags": [
     {
-      "name": "Teacher"
+      "name": "Podcaster"
     }
   ]
 }

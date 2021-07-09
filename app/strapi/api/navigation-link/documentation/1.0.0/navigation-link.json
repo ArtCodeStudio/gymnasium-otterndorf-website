@@ -876,9 +876,6 @@
                         "name": {
                           "type": "string"
                         },
-                        "first_name": {
-                          "type": "string"
-                        },
                         "subjects": {
                           "type": "array",
                           "items": {
@@ -1102,6 +1099,12 @@
                         },
                         "chapters": {
                           "type": "component"
+                        },
+                        "contributors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
                         },
                         "published_at": {
                           "type": "string"
@@ -1468,9 +1471,6 @@
                         "name": {
                           "type": "string"
                         },
-                        "first_name": {
-                          "type": "string"
-                        },
                         "subjects": {
                           "type": "array",
                           "items": {
@@ -1694,6 +1694,12 @@
                         },
                         "chapters": {
                           "type": "component"
+                        },
+                        "contributors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
                         },
                         "published_at": {
                           "type": "string"

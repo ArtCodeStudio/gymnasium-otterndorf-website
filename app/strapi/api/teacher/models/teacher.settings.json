@@ -27,9 +27,6 @@
       "type": "string",
       "required": true
     },
-    "first_name": {
-      "type": "string"
-    },
     "subjects": {
       "columnName": "Fächer",
       "targetColumnName": "Lehrer",

@@ -1,0 +1,11 @@
+#import "./image.gql"
+
+fragment PodcasterBasicFragment on Podcaster {
+  id
+  slug
+  name
+  biography
+  image {
+    ...ImageFragment
+  }
+}

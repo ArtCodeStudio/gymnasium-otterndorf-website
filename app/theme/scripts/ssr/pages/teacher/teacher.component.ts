@@ -51,7 +51,7 @@ export class TeacherPageComponent extends PageComponent {
       return;
     }
     this.scope.teachers = [teacher];
-    this.head.title = teacher.fullName;
+    this.head.title = teacher.name;
   }
 
   /**

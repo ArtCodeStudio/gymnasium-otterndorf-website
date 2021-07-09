@@ -1,7 +1,7 @@
 #import "./school-subject-basic.gql"
 #import "./image.gql"
 
-fragment TeacherDetailFragment on Teacher {
+fragment PodcasterDetailFragment on Podcaster {
   id
   slug
   name
@@ -9,9 +9,7 @@ fragment TeacherDetailFragment on Teacher {
   image {
     ...ImageFragment
   }
-  subjects {
-    ... on Subject {
-      ...SchoolSubjectBasicFragment
-    }
+  podcast_episodes {
+    ...PodcastEpisodeBasicFragment
   }
 }

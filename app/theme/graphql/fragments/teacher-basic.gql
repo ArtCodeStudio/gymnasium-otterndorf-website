@@ -2,5 +2,4 @@ fragment TeacherBasicFragment on Teacher {
   id
   slug
   name
-  first_name
 }

@@ -110,7 +110,6 @@ export class SchoolSubjectService {
       for (const teacher of schoolSubject?.teachers) {
         if (teacher) {
           teachers.push({
-            first_name: teacher.first_name || "",
             id: teacher.id || "",
             name: teacher.name || "",
             slug: teacher.slug || "",

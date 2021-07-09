@@ -834,6 +834,44 @@
               }
             }
           },
+          "contributors": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "uid"
+                },
+                "biography": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "string"
+                },
+                "podcast_episodes": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -1003,6 +1041,12 @@
                   "default": "00:00:00.000"
                 }
               }
+            }
+          },
+          "contributors": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
           },
           "published_at": {

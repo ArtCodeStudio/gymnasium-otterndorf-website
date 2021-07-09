@@ -10,9 +10,9 @@ export const config: ThemeConfigFile = (env: string | undefined) => {
     timeout: 5000,
     cache: {
       // One year cache on production
-      ttl: env === "production" ? 31556952 : 31556952, // 0,
+      ttl: env === "production" ? 31556952 : 0,
       refresh: {
-        active: true,
+        active: env === "production",
         startPath: "/sitemap",
       },
     },

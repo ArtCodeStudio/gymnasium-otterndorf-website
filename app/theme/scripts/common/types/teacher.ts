@@ -1,5 +1,3 @@
 import type { StrapiGqlTeacherDetailFragmentFragment } from "../types";
 
-export interface Teacher extends StrapiGqlTeacherDetailFragmentFragment {
-  fullName?: string;
-}
+export type Teacher = StrapiGqlTeacherDetailFragmentFragment;
