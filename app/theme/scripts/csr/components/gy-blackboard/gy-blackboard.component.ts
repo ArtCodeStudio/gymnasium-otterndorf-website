@@ -14,6 +14,7 @@ export interface GyBlackboardComponentScope {
   save: GyBlackboardComponent["save"];
   restore: GyBlackboardComponent["restore"];
   isDirty: boolean;
+  isDrawing: boolean;
 }
 
 type GyBlackboardDrawingTool =
@@ -377,6 +378,7 @@ export class GyBlackboardComponent extends Component {
 
   public selectChalk() {
     this._selectedTool = this._chalk;
+    this.scope.isDrawing = true;
     this.classList.add("chalk-selected");
     this.classList.remove("sponge-selected");
   }
@@ -393,6 +395,7 @@ export class GyBlackboardComponent extends Component {
     this.debug("sponge");
     // TODO
     this._selectedTool = this._sponge;
+    this.scope.isDrawing = true;
     this.classList.remove("chalk-selected");
     this.classList.add("sponge-selected");
   }
@@ -407,6 +410,7 @@ export class GyBlackboardComponent extends Component {
 
   public selectNone() {
     this._selectedTool = null;
+    this.scope.isDrawing = false;
     this.classList.remove("chalk-selected");
     this.classList.remove("sponge-selected");
   }
@@ -433,6 +437,7 @@ export class GyBlackboardComponent extends Component {
     save: this.save.bind(this),
     restore: this.restore.bind(this),
     isDirty: false,
+    isDrawing: false,
   };
 
   static get observedAttributes(): string[] {
@@ -499,14 +504,6 @@ export class GyBlackboardComponent extends Component {
   }
   protected onMouseDown = this._onMouseDown.bind(this);
 
-  protected _onClick() {
-    if (!this._selectedTool && this.scope.link) {
-      window.location.href = this.scope.link;
-    }
-  }
-
-  protected onClick = this._onClick.bind(this);
-
   protected _onMouseUp(event: MouseEvent | TouchEvent) {
     if (this._selectedTool) {
       this._selectedTool.onMouseUp(event);
@@ -531,8 +528,6 @@ export class GyBlackboardComponent extends Component {
 
     this.addEventListener("mousemove", this.onMouseMove);
     this.addEventListener("touchmove", this.onMouseMove);
-
-    this.addEventListener("click", this.onClick);
   }
 
   protected removeEventListeners() {
@@ -544,8 +539,6 @@ export class GyBlackboardComponent extends Component {
 
     this.removeEventListener("mousemove", this.onMouseMove);
     this.removeEventListener("touchmove", this.onMouseMove);
-
-    this.removeEventListener("click", this.onClick);
   }
 
   protected async connectedCallback() {
