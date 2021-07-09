@@ -3,7 +3,9 @@
 bs5-slideshow(xs-controls="false" md-controls="true" xs-indicators="false" xs-drag="false" xs-control-prev-icon-src="/images/arrow_chalk.svg" xs-control-next-icon-src="/images/arrow_chalk.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="false")
   .row.slideshow-row.py-3
     .slide.col-12(ssr-rv-each-slide="section.slides")
-      gy-blackboard(rv-background-image="slide.image | strapi-image-url 'large'")
+      .row
+        .col-12.col-md-8.mx-auto
+          gy-blackboard(rv-background-image="slide.image | strapi-image-url 'large'")
   template(type="controls")
     .slideshow-controls.slideshow-control-prev(rv-show='activeBreakpoint.controls' rv-add-class='controlsPositionClass' data-slide='prev')
       button(role="button").btn.btn-link

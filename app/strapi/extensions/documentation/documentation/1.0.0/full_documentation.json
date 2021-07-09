@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/08/2021 5:01:07 PM"
+    "x-generation-date": "07/09/2021 11:46:00 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9712,6 +9712,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }
@@ -11038,6 +11041,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }
@@ -12783,6 +12789,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }
@@ -14058,6 +14067,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }
@@ -16862,6 +16874,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }
@@ -18276,6 +18291,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }
@@ -21638,6 +21656,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }
@@ -22929,6 +22950,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }

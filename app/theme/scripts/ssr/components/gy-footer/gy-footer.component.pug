@@ -12,13 +12,11 @@ footer.container-fluid.container-xxl
         a.m-3.btn.btn-outline-dark(csr-rv-if=" | is-desktop" href="https://www.openstreetmap.org/node/558566641" target="_blank") Karte bearbeiten
         //- Calculate route
         a.m-3.btn.btn-outline-dark(rv-href="data.mapLink" target="_blank") Anfahrt berechnen
-    .footer-right.col-12.col-md-6
+    .footer-right.col-12.col-md-6.p-4
       .row.h-100
         .col-12.contact-info
-          .h5.mb-0.mt-3(ssr-rv-html="data.contactInfo | markdown")
-        .col-12
-
-        .col-12.footer-bottom.align-self-end 
+          .h5(ssr-rv-html="data.contactInfo | markdown")
+        .col-12.align-self-end 
           a(ssr-rv-each-link="data.links" ssr-rv-href="link | nav-item-url") 
             .h6(ssr-rv-text="link | nav-item-label")
           h6 (c) gymnasium-otterndorf.de

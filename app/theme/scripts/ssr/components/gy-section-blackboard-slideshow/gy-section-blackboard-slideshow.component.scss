@@ -5,16 +5,7 @@ gy-section-blackboard-slideshow {
       pointer-events: all;
     }
   }
-  .btn-link {
-    color: $white;
-    &:hover, &:active {
-      opacity: 1;
-      color: $white;
-    }
-    &:focus {
-      box-shadow: none;
-    }
-  }
+
 
   gy-blackboard {
     &:empty {
@@ -25,5 +16,48 @@ gy-section-blackboard-slideshow {
       background-position: center center;
       background-size: 100px;
     }
+
+    .gy-blackboard-icons button {
+      &:hover, &:active {
+        opacity: $blackboard-active-button-opacity;
+        color: $white;
+      }
+      &:focus {
+        box-shadow: none;
+      }
+  
+      @include media-breakpoint-up(md) {
+        color: $dark;
+        opacity: 0;
+        &:hover, &:active {
+          opacity: $blackboard-active-button-opacity;
+          color: $dark;
+        }
+      }
+    }
   }
+
+  &:hover {
+    @include media-breakpoint-up(md) {
+      gy-blackboard {
+        .gy-blackboard-icons button {
+          opacity: $blackboard-button-opacity;
+          &:hover, &:active {
+            opacity: $blackboard-active-button-opacity;
+          }
+        }
+        &.chalk-selected {
+          .gy-blackboard-icons button.button-chalk {
+            opacity: $blackboard-active-button-opacity;
+          }
+        }
+        &.sponge-selected {
+          .gy-blackboard-icons button.button-sponge {
+            opacity: $blackboard-active-button-opacity;
+          }
+        }
+      }
+    }
+  }
+
 }

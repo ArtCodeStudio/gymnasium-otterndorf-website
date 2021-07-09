@@ -913,6 +913,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }
@@ -2188,6 +2191,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "name": {
+                            "type": "string"
                           }
                         }
                       }

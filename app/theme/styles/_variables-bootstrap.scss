@@ -36,9 +36,10 @@ $grays: (
   "900": $gray-900
 );
 
+$dark: $black;
 $light: $gray-400;
 $body-bg: $white;
-$border-color: $gray-900;
+$border-color: $dark;
 
 // https://getbootstrap.com/docs/5.0/customize/sass/#add-to-map
 $theme-colors: (

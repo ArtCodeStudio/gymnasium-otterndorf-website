@@ -20,6 +20,10 @@
       "plugin": "upload",
       "required": true,
       "pluginOptions": {}
+    },
+    "name": {
+      "type": "string",
+      "private": true
     }
   }
 }
