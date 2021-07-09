@@ -18,6 +18,7 @@ gy-section-blackboard-slideshow {
     }
 
     .gy-blackboard-icons button {
+      color: $white;
       &:hover, &:active {
         opacity: $blackboard-active-button-opacity;
         color: $white;
