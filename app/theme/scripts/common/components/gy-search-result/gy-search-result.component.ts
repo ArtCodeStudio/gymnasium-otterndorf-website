@@ -148,10 +148,10 @@ export class GySearchResultComponent extends Component {
 
   protected async calibrateResult() {
     if (this.scope.term.length > 3) {
-      let results = await this.search.get(this.scope.term);
+      let results = await this.search.get(this.scope.term.trim());
       // Fallback
       if (results?.length === 0) {
-        results = await this.search.get(`*${this.scope.term}*`);
+        results = await this.search.get(`*${this.scope.term.trim()}*`);
       }
       this.scope.items = results.map(this.transformResult);
     } else {

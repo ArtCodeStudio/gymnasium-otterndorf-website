@@ -16,11 +16,17 @@ export class SearchService extends NestService {
     return SearchService.instance;
   }
 
-  public async get(term: string) {
-    const url = this.host + "/api/search/" + encodeURIComponent(term);
+  public async get(term: string, limit = 10) {
+    const url = `${this.host}/api/search/${encodeURIComponent(
+      term
+    )}?limit=${limit}`;
     const res = await this._getCached<SearchResult[]>(url);
     if (res.status !== 200) {
       throw new Error(res.body.toString());
+    }
+
+    if (res.body.length >= limit) {
+      res.body = res.body.slice(0, limit);
     }
     return res.body;
   }
