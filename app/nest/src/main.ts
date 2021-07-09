@@ -50,15 +50,18 @@ async function bootstrap() {
     .setTitle('Gymnasium Otterndorf API')
     .setDescription('Documentation for our own API Endpoints')
     .setVersion('1.0')
-    .setContact("Art+Code Studio Team", "https://artandcode.studio/", "hi@artandcode.studio")
-    .setTermsOfService("https://gym.artandcode.de/credits")
+    .setContact(
+      'Art+Code Studio Team',
+      'https://artandcode.studio/',
+      'hi@artandcode.studio',
+    )
+    .setTermsOfService('https://gym.artandcode.de/credits')
     .addTag('calendar')
     .addTag('search')
     .addTag('suggestions')
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
-
 
   await app.listen(config.app.port);
 
