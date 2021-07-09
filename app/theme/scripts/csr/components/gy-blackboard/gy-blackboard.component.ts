@@ -5,6 +5,7 @@ import pugTemplate from "./gy-blackboard.component.pug";
 
 export interface GyBlackboardComponentScope {
   backgroundImage?: string | undefined;
+  link?: string;
   selectChalk: GyBlackboardComponent["selectChalk"];
   selectSponge: GyBlackboardComponent["selectSponge"];
   toggleSelectChalk: GyBlackboardComponent["toggleSelectChalk"];
@@ -51,7 +52,6 @@ export class GyBlackboardComponent extends Component {
       const clientY =
         (e as MouseEvent).clientY || (e as TouchEvent).touches[0]?.clientY;
 
-      // this.debug({ client: { x: clientX, y: clientY }, rect });
       return {
         x: ((clientX - rect.left) * this._canvas.width) / rect.width,
         y: ((clientY - rect.top) * this._canvas.height) / rect.height,
@@ -436,7 +436,7 @@ export class GyBlackboardComponent extends Component {
   };
 
   static get observedAttributes(): string[] {
-    return ["background-image"];
+    return ["background-image", "link"];
   }
 
   protected requiredAttributes() {
@@ -499,6 +499,14 @@ export class GyBlackboardComponent extends Component {
   }
   protected onMouseDown = this._onMouseDown.bind(this);
 
+  protected _onClick() {
+    if (!this._selectedTool && this.scope.link) {
+      window.location.href = this.scope.link;
+    }
+  }
+
+  protected onClick = this._onClick.bind(this);
+
   protected _onMouseUp(event: MouseEvent | TouchEvent) {
     if (this._selectedTool) {
       this._selectedTool.onMouseUp(event);
@@ -523,6 +531,8 @@ export class GyBlackboardComponent extends Component {
 
     this.addEventListener("mousemove", this.onMouseMove);
     this.addEventListener("touchmove", this.onMouseMove);
+
+    this.addEventListener("click", this.onClick);
   }
 
   protected removeEventListeners() {
@@ -534,6 +544,8 @@ export class GyBlackboardComponent extends Component {
 
     this.removeEventListener("mousemove", this.onMouseMove);
     this.removeEventListener("touchmove", this.onMouseMove);
+
+    this.removeEventListener("click", this.onClick);
   }
 
   protected async connectedCallback() {

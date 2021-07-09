@@ -15,6 +15,7 @@ gy-blackboard {
       transition: opacity 0.2s;
     }
   }
+  cursor: pointer;
   &.chalk-selected {
     cursor: crosshair;
     .button-chalk {
