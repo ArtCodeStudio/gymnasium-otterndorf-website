@@ -102,7 +102,7 @@ export class TeacherPageComponent extends PageComponent {
       await this.getTeacher(this.ctx.params.slug);
       const teacher = this.scope.teachers[0];
       if (teacher) {
-        this.scope.sections = await this.teacher.getSections(teacher);
+        // this.scope.sections = await this.teacher.getSections(teacher);
         this.scope.assets = this.getAssets(teacher, this.scope.sections);
       }
     } else {

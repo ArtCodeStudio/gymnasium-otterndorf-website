@@ -10,17 +10,13 @@
     .col-12.col-md-8
       p(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
       .row
-        .col-auto
+        .col-12.col-md-6
           strong
             | Fächer
           span.list-group.list-group-flush
             a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
-    .col-12.my-5
-      gy-sections(rv-co-sections="sections" context="page" rv-co-header="header")
-    .col-12.col-md-8.offset-md-2.my-5
-      .row
-        .col-12(rv-if="assets | empty | not")
-          h3 Downloads
-          .row(rv-each-asset="assets")
-            .col-12 
-              a(rv-href="asset.file.url | strapi" download rv-text="asset.name")
+        .col-12.col-md-6
+          strong(rv-if="assets.length | gt 0")
+            | Unterrichtsmaterialien
+          span.list-group.list-group-flush
+            a.list-group-item.list-group-item-action(rv-each-asset="assets" rv-href="asset.file.url | strapi" download rv-text="asset.name")
