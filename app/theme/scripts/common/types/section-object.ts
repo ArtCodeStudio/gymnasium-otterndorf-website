@@ -13,6 +13,7 @@ import { SectionIFrame } from "./section-iframe";
 import { SectionMensaMax } from "./section-mensa-max";
 import { SectionPodcastEpisode } from "./section-podcast-episode";
 import { SectionLatestPodcastEpisode } from "./section-latest-podcast-episode";
+import { SectionFormerStudents } from "./section-former-students";
 
 /**
  * Type for transformed sections
@@ -33,4 +34,5 @@ export interface SectionObject {
   mensamax?: SectionMensaMax;
   podcastEpisode?: SectionPodcastEpisode;
   latestPodcastEpisode?: SectionLatestPodcastEpisode;
+  formerStudents?: SectionFormerStudents;
 }

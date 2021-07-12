@@ -33,8 +33,6 @@ export type Scalars = {
   SubjectContentDynamicZoneInput: any;
   /** Input type for dynamic zone assets of Teacher */
   TeacherAssetsDynamicZoneInput: any;
-  /** Input type for dynamic zone content of Teacher */
-  TeacherContentDynamicZoneInput: any;
   /** A time string with format: HH:mm:ss.SSS */
   Time: any;
   /** Input type for dynamic zone items of Toolbar */
@@ -231,14 +229,14 @@ export type StrapiGqlBlogEntryInput = {
 
 export type StrapiGqlComponentAttachmentAssetInput = {
   file?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
 };
 
 export type StrapiGqlComponentAttachmentAssets = {
   __typename?: 'ComponentAttachmentAssets';
   id: Scalars['ID'];
   file?: Maybe<StrapiGqlUploadFile>;
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
 };
 
 export type StrapiGqlComponentBlackboardSlide = {
@@ -2780,7 +2778,6 @@ export type StrapiGqlTeacher = {
   name: Scalars['String'];
   slug: Scalars['String'];
   biography?: Maybe<Scalars['String']>;
-  content?: Maybe<Array<Maybe<StrapiGqlTeacherContentDynamicZone>>>;
   assets?: Maybe<Array<Maybe<StrapiGqlTeacherAssetsDynamicZone>>>;
   subjects?: Maybe<Array<Maybe<StrapiGqlSubject>>>;
 };
@@ -2851,9 +2848,6 @@ export type StrapiGqlTeacherConnectionUpdated_At = {
   connection?: Maybe<StrapiGqlTeacherConnection>;
 };
 
-export type StrapiGqlTeacherContentDynamicZone = StrapiGqlComponentSectionIFrame | StrapiGqlComponentSectionSlideshow | StrapiGqlComponentSectionPodcastEpisode | StrapiGqlComponentSectionGallerySlideshow | StrapiGqlComponentSectionFormerStudents | StrapiGqlComponentSectionBlogSlideshow | StrapiGqlComponentSectionBlackboardSlideshow | StrapiGqlComponentSectionMensaMax | StrapiGqlComponentSectionLatestPodcastEpisode | StrapiGqlComponentSectionFacts | StrapiGqlComponentContentDownloadButton | StrapiGqlComponentContentText | StrapiGqlComponentContentImage | StrapiGqlComponentContentButton | StrapiGqlComponentStudentSectionStudentQuote | StrapiGqlComponentHomeNews | StrapiGqlComponentHomeCalendar | StrapiGqlComponentHomeFact;
-
-
 export type StrapiGqlTeacherGroupBy = {
   __typename?: 'TeacherGroupBy';
   id?: Maybe<Array<Maybe<StrapiGqlTeacherConnectionId>>>;
@@ -2871,7 +2865,6 @@ export type StrapiGqlTeacherInput = {
   subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
   slug: Scalars['String'];
   biography?: Maybe<Scalars['String']>;
-  content?: Maybe<Array<Scalars['TeacherContentDynamicZoneInput']>>;
   assets?: Maybe<Array<Scalars['TeacherAssetsDynamicZoneInput']>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -4080,7 +4073,6 @@ export type StrapiGqlEditTeacherInput = {
   subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
   slug?: Maybe<Scalars['String']>;
   biography?: Maybe<Scalars['String']>;
-  content?: Maybe<Array<Scalars['TeacherContentDynamicZoneInput']>>;
   assets?: Maybe<Array<Scalars['TeacherAssetsDynamicZoneInput']>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -5015,55 +5007,7 @@ export type StrapiGqlTeacherDetailFragmentFragment = (
   )>>>, assets?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentAttachmentAssets' }
     & StrapiGqlComponentAttachmentAssetsFragmentFragment
-  )>>>, content?: Maybe<Array<Maybe<(
-    { __typename: 'ComponentSectionIFrame' }
-    & StrapiGqlComponentSectionIFrameFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionSlideshow' }
-    & StrapiGqlComponentSectionSlideshowFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionPodcastEpisode' }
-    & StrapiGqlComponentSectionPodcastEpisodeFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionGallerySlideshow' }
-    & StrapiGqlComponentSectionGallerySlideshowFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionFormerStudents' }
-    & StrapiGqlComponentSectionFormerStudentsFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionBlogSlideshow' }
-    & StrapiGqlComponentSectionBlogSlideshowFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionBlackboardSlideshow' }
-    & StrapiGqlComponentSectionBlackboardSlideshowFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionMensaMax' }
-    & StrapiGqlComponentSectionMensaMaxFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionLatestPodcastEpisode' }
-    & StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment
-  ) | (
-    { __typename: 'ComponentSectionFacts' }
-    & StrapiGqlComponentSectionFactsFragmentFragment
-  ) | (
-    { __typename: 'ComponentContentDownloadButton' }
-    & StrapiGqlComponentContentDownloadButtonFragmentFragment
-  ) | (
-    { __typename: 'ComponentContentText' }
-    & StrapiGqlComponentContentTextFragmentFragment
-  ) | (
-    { __typename: 'ComponentContentImage' }
-    & StrapiGqlComponentContentImageFragmentFragment
-  ) | (
-    { __typename: 'ComponentContentButton' }
-    & StrapiGqlComponentContentButtonFragmentFragment
-  ) | (
-    { __typename: 'ComponentStudentSectionStudentQuote' }
-    & StrapiGqlComponentStudentSectionStudentQuoteFragmentFragment
-  ) | (
-    { __typename: 'ComponentHomeNews' }
-    & StrapiGqlComponentHomeNewsFragmentFragment
-  ) | { __typename: 'ComponentHomeCalendar' } | { __typename: 'ComponentHomeFact' }>>> }
+  )>>> }
 );
 
 export type StrapiGqlUnnamed_1_MutationVariables = Exact<{

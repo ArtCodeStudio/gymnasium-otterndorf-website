@@ -1,5 +1,6 @@
 export { GyBlogEntryItemComponent } from "./gy-blog-entry-item/gy-blog-entry-item.component";
 export { GyFooterComponent } from "./gy-footer/gy-footer.component";
+export { GyFormerStudentItemComponent } from "./gy-former-student-item/gy-former-student-item.component";
 export { GyPageHeaderComponent } from "./gy-page-header/gy-page-header.component";
 export { GyPageItemComponent } from "./gy-page-item/gy-page-item.component";
 export { GyPodcastEpisodeItemComponent } from "./gy-podcast-episode-item/gy-podcast-episode-item.component";
@@ -11,6 +12,7 @@ export { GySectionBlogSlideshowComponent } from "./gy-section-blog-slideshow/gy-
 export { GySectionButtonComponent } from "./gy-section-button/gy-section-button.component";
 export { GySectionCalendarComponent } from "./gy-section-calendar/gy-section-calendar.component";
 export { GySectionFactsComponent } from "./gy-section-facts/gy-section-facts.component";
+export { GySectionFormerStudentsComponent } from "./gy-section-former-students/gy-section-former-students.component";
 export { GySectionGallerySlideshowComponent } from "./gy-section-gallery-slideshow/gy-section-gallery-slideshow.component";
 export { GySectionIFrameComponent } from "./gy-section-iframe/gy-section-iframe.component";
 export { GySectionMensaMaxComponent } from "./gy-section-mensa-max/gy-section-mensa-max.component";

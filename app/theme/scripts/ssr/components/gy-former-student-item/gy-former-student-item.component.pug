@@ -1,0 +1,8 @@
+.row.d-flex.align-items-center
+  .col-4(ssr-rv-if="formerStudent.image")
+    .ratio.ratio-1x1
+      img.img-fluid.rounded-circle(ssr-rv-src="formerStudent.image | strapi-image-url 'small'" rv-alt="image.alternativeText")
+  .col-8
+    .ps-3
+      strong.text-break(ssr-rv-if="formerStudent.name" ssr-rv-text="formerStudent.name")
+      p.text-break(ssr-rv-if="formerStudent.biography" ssr-rv-html="formerStudent.biography | markdown")

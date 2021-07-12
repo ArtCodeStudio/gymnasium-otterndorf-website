@@ -41,7 +41,7 @@ export class GySectionsComponent extends Component {
    * - `-1` if no header is to be displayed (e.g. on the index page)
    */
   public getIndexForPageHeader() {
-    if (this.scope.context === "index") {
+    if (this.scope.context === "index" || this.scope.context === "teacher") {
       return -1;
     }
     if (this.scope.sections?.length) {

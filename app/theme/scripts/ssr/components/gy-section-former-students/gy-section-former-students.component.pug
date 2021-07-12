@@ -1,0 +1,10 @@
+.row
+    .col-12(ssr-rv-if="section.title")
+        h2.section-heading.text-center(ssr-rv-text="section.title")
+    .col-12(ssr-rv-if="section.description")
+        h2.section-heading.text-center(ssr-rv-text="section.description")
+    .col-12
+        bs5-slideshow(xs-controls="false" xs-indicators="false" xs-drag="true" xs-sticky="false" xs-autoplay="true" xs-autoplay-velocity="0.05") 
+            .row.slideshow-row.py-3.d-flex.align-items-center
+                .slide.col-12.col-md-8.col-xl-6(ssr-rv-each-former-student="formerStudents")
+                    gy-former-student-item(ssr-rv-co-former-student="formerStudent")

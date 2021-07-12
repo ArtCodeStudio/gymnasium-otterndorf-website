@@ -21,6 +21,7 @@ export * from "./section-content-button";
 export * from "./section-content-image";
 export * from "./section-content-text";
 export * from "./section-facts";
+export * from "./section-former-students";
 export * from "./section-gallery-slideshow";
 export * from "./section-iframe";
 export * from "./section-latest-podcast-episode";

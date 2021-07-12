@@ -7,7 +7,7 @@ export const config: ThemeConfigFile = (env: string | undefined) => {
     assetsDir: "assets",
     viewsDir: "templates",
     pageComponentsDir: "scripts/ssr/pages",
-    timeout: 5000,
+    timeout: 10000,
     cache: {
       // One year cache on production
       ttl: env === "production" ? 31556952 : 0,

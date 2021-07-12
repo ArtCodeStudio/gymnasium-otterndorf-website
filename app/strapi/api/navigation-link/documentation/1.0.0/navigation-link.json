@@ -888,9 +888,6 @@
                         "biography": {
                           "type": "string"
                         },
-                        "content": {
-                          "type": "dynamiczone"
-                        },
                         "assets": {
                           "type": "dynamiczone"
                         },
@@ -1488,9 +1485,6 @@
                         },
                         "biography": {
                           "type": "string"
-                        },
-                        "content": {
-                          "type": "dynamiczone"
                         },
                         "assets": {
                           "type": "dynamiczone"

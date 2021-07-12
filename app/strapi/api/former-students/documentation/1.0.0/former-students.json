@@ -546,7 +546,8 @@
             "type": "uid"
           },
           "biography": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 800
           },
           "image": {
             "required": [
@@ -635,7 +636,8 @@
             "type": "uid"
           },
           "biography": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 800
           },
           "published_at": {
             "type": "string",

@@ -15,6 +15,7 @@ import {
   StrapiGqlComponentSectionMensaMaxFragmentFragment,
   StrapiGqlComponentSectionPodcastEpisodeFragmentFragment,
   StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment,
+  StrapiGqlComponentSectionFormerStudentsFragmentFragment,
 } from "./strapi-gql";
 
 /**
@@ -36,4 +37,5 @@ export type DynamicZoneSection =
   | StrapiGqlComponentSectionIFrameFragmentFragment
   | StrapiGqlComponentSectionMensaMaxFragmentFragment
   | StrapiGqlComponentSectionPodcastEpisodeFragmentFragment
-  | StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment;
+  | StrapiGqlComponentSectionLatestPodcastEpisodeFragmentFragment
+  | StrapiGqlComponentSectionFormerStudentsFragmentFragment;
