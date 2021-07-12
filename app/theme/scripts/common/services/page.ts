@@ -18,7 +18,7 @@ import pageBasicBySlugsQuery from "../../../graphql/queries/page-basic-by-slugs.
 
 export class PageService {
   protected graphql = GraphQLClient.getInstance();
-  protected static sections = SectionsService.getInstance();
+  public static sections = SectionsService.getInstance();
   protected static instance: PageService;
 
   protected constructor() {

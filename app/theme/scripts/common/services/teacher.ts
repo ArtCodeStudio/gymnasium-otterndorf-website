@@ -7,6 +7,8 @@ import {
   ResponseError,
   Teacher,
   PageHeader,
+  SectionObject,
+  DynamicZoneSection,
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
@@ -80,6 +82,24 @@ export class TeacherService {
     }
     const teacher = teachers?.[0] || null;
     return teacher;
+  }
+
+  public async getSections(teacher: Teacher) {
+    if (teacher?.content) {
+      const DynamicZoneSections = (teacher?.content ||
+        []) as DynamicZoneSection[];
+      return TeacherService.sections.toArray(DynamicZoneSections);
+    }
+    return [];
+  }
+
+  public async getSectionsObject(teacher: Teacher): Promise<SectionObject> {
+    if (!teacher.content) {
+      return {};
+    }
+    const sectionsArr = await this.getSections(teacher);
+    const sectionsObj = TeacherService.sections.toObject(sectionsArr);
+    return sectionsObj;
   }
 
   public getHeader(teachers: Teacher[]): PageHeader | Record<string, never> {

@@ -9,6 +9,7 @@ import {
   SectionSlideshowEntry,
   StrapiGqlComponentSlideshowEntryFragmentFragment,
   StrapiGqlComponentSlideshowEntryBlogFragmentFragment,
+  StrapiGqlComponentAttachmentAssetsFragmentFragment,
   HomeNews,
 } from "../types";
 import sectionSlideshowById from "../../../graphql/queries/section-slideshow-by-id.gql";
@@ -207,6 +208,23 @@ export class SectionsService {
       }
     }
     return sections;
+  }
+
+  public getAssetsFromSections(sections: Section[]) {
+    const assets: StrapiGqlComponentAttachmentAssetsFragmentFragment[] = [];
+    for (const section of sections) {
+      if (
+        section.__typename === "ComponentContentDownloadButton" &&
+        section.file?.url
+      ) {
+        assets.push({
+          __typename: "ComponentAttachmentAssets",
+          file: section.file,
+          name: section.label,
+        });
+      }
+    }
+    return assets;
   }
 
   async getSlideshow(id: string) {

@@ -6,15 +6,16 @@ import {
   Page,
   PageHeader,
   replaceBodyPageClass,
+  StrapiGqlComponentAttachmentAssetsFragmentFragment,
 } from "../../../common";
 
 export interface Scope {
-  assets: Page["assets"];
+  assets: StrapiGqlComponentAttachmentAssetsFragmentFragment[];
   sections: Section[];
   header: PageHeader | Record<string, never>;
+  page: Page | Record<string, never>;
   // blogEntries: Post[];
   // calendarKey: string;
-  page: Page | Record<string, never>;
 }
 
 export class PagePageComponent extends PageComponent {
@@ -27,9 +28,9 @@ export class PagePageComponent extends PageComponent {
   scope: Scope = {
     page: {},
     assets: [],
-    // blogEntries: [],
     sections: [],
     header: {},
+    // blogEntries: [],
     // calendarKey: "",
   };
 
@@ -51,23 +52,6 @@ export class PagePageComponent extends PageComponent {
     this.scope.header = this.page.getHeader(page);
   }
 
-  protected getAssetsFromSections(sections: Section[]) {
-    const assets: Page["assets"] = [];
-    for (const section of sections) {
-      if (
-        section.__typename === "ComponentContentDownloadButton" &&
-        section.file?.url
-      ) {
-        assets.push({
-          __typename: "ComponentAttachmentAssets",
-          file: section.file,
-          name: section.label,
-        });
-      }
-    }
-    return assets;
-  }
-
   protected getPageAssets(page: Page) {
     const assets = [];
     if (page.assets) {
@@ -81,8 +65,8 @@ export class PagePageComponent extends PageComponent {
   }
 
   protected getAssets(page: Page, sections: Section[]) {
-    const assets = [];
-    assets.push(...this.getAssetsFromSections(sections));
+    const assets: StrapiGqlComponentAttachmentAssetsFragmentFragment[] = [];
+    assets.push(...PageService.sections.getAssetsFromSections(sections));
     assets.push(...this.getPageAssets(page));
     return assets;
   }

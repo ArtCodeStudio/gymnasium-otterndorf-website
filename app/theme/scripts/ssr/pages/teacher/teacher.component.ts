@@ -1,9 +1,17 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./teacher.component.pug";
-import { TeacherService } from "../../services";
-import { PageHeader, Teacher, replaceBodyPageClass } from "../../../common";
+import { TeacherService, SectionsService } from "../../services";
+import {
+  Section,
+  PageHeader,
+  Teacher,
+  replaceBodyPageClass,
+  StrapiGqlComponentAttachmentAssetsFragmentFragment,
+} from "../../../common";
 
 export interface Scope {
+  assets: Teacher["assets"];
+  sections: Section[];
   params: TeacherPageComponent["ctx"]["params"];
   header: PageHeader | Record<string, never>;
   teachers: Teacher[];
@@ -15,8 +23,11 @@ export class TeacherPageComponent extends PageComponent {
   protected autobind = true;
 
   protected teacher = TeacherService.getInstance();
+  protected sections = SectionsService.getInstance();
 
   scope: Scope = {
+    sections: [],
+    assets: [],
     params: {},
     header: {},
     teachers: [],
@@ -39,6 +50,25 @@ export class TeacherPageComponent extends PageComponent {
 
   protected requiredAttributes(): string[] {
     return [];
+  }
+
+  protected getTeacherAssets(teacher: Teacher) {
+    const assets = [];
+    if (teacher.assets) {
+      for (const asset of teacher.assets) {
+        if (asset) {
+          assets.push(asset);
+        }
+      }
+    }
+    return assets;
+  }
+
+  protected getAssets(teacher: Teacher, sections: Section[]) {
+    const assets: StrapiGqlComponentAttachmentAssetsFragmentFragment[] = [];
+    assets.push(...this.sections.getAssetsFromSections(sections));
+    assets.push(...this.getTeacherAssets(teacher));
+    return assets;
   }
 
   /**
@@ -70,6 +100,11 @@ export class TeacherPageComponent extends PageComponent {
   protected async beforeBind() {
     if (this.ctx.params.slug) {
       await this.getTeacher(this.ctx.params.slug);
+      const teacher = this.scope.teachers[0];
+      if (teacher) {
+        this.scope.sections = await this.teacher.getSections(teacher);
+        this.scope.assets = this.getAssets(teacher, this.scope.sections);
+      }
     } else {
       await this.getTeachers();
     }
