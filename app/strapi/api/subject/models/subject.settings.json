@@ -41,7 +41,8 @@
         "section.mensa-max",
         "section.podcast-episode",
         "content.download-button",
-        "section.latest-podcast-episode"
+        "section.latest-podcast-episode",
+        "section.former-students"
       ]
     },
     "slug": {

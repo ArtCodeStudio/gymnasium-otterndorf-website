@@ -1,0 +1,5 @@
+fragment ComponentSectionFormerStudentsFragment on ComponentSectionFormerStudents {
+  title
+  description
+  limit
+}

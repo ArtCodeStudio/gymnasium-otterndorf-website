@@ -1,0 +1,6 @@
+fragment ComponentAttachmentAssetsFragment on ComponentAttachmentAssets {
+  file {
+    url
+  }
+  name
+}

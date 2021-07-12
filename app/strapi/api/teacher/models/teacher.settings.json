@@ -41,6 +41,35 @@
     "biography": {
       "type": "richtext",
       "required": false
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "section.i-frame",
+        "section.slideshow",
+        "section.podcast-episode",
+        "section.gallery-slideshow",
+        "section.former-students",
+        "section.blog-slideshow",
+        "section.blackboard-slideshow",
+        "section.mensa-max",
+        "section.latest-podcast-episode",
+        "section.facts",
+        "content.download-button",
+        "content.text",
+        "content.image",
+        "content.button",
+        "student-section.student-quote",
+        "home.news",
+        "home.calendar",
+        "home.fact"
+      ]
+    },
+    "assets": {
+      "type": "dynamiczone",
+      "components": [
+        "attachment.assets"
+      ]
     }
   }
 }

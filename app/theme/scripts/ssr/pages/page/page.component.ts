@@ -59,7 +59,7 @@ export class PagePageComponent extends PageComponent {
         section.file?.url
       ) {
         assets.push({
-          __typename: "ComponentSidebarAssets",
+          __typename: "ComponentAttachmentAssets",
           file: section.file,
           name: section.label,
         });

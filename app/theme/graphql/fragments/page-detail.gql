@@ -1,5 +1,7 @@
 #import "./blog-entry-basic.gql"
 
+#import "./component-attachment-assets.gql"
+
 #import "./component-content-text.gql"
 #import "./component-content-image.gql"
 #import "./component-content-button.gql"
@@ -15,6 +17,7 @@
 #import "./component-section-mensa-max.gql"
 #import "./component-section-podcast-episode.gql"
 #import "./component-section-latest-podcast-episode.gql"
+#import "./component-section-former-students.gql"
 
 fragment PageDetailFragment on Page {
   __typename
@@ -25,11 +28,8 @@ fragment PageDetailFragment on Page {
   slug
   calendar_key
   assets {
-    ... on ComponentSidebarAssets {
-      file {
-        url
-      }
-      name
+    ... on ComponentAttachmentAssets {
+      ...ComponentAttachmentAssetsFragment
     }
   }
 
@@ -81,6 +81,9 @@ fragment PageDetailFragment on Page {
     }
     ... on ComponentSectionLatestPodcastEpisode {
       ...ComponentSectionLatestPodcastEpisodeFragment
+    }
+    ... on ComponentSectionFormerStudents {
+      ...ComponentSectionFormerStudentsFragment
     }
   }
 }

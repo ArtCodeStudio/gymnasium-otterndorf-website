@@ -15,6 +15,7 @@
 #import "./component-section-mensa-max.gql"
 #import "./component-section-podcast-episode.gql"
 #import "./component-section-latest-podcast-episode.gql"
+#import "./component-section-former-students.gql"
 
 fragment SchoolSubjectDetailFragment on Subject {
   __typename
@@ -76,6 +77,9 @@ fragment SchoolSubjectDetailFragment on Subject {
     }
     ... on ComponentSectionLatestPodcastEpisode {
       ...ComponentSectionLatestPodcastEpisodeFragment
+    }
+    ... on ComponentSectionFormerStudents {
+      ...ComponentSectionFormerStudentsFragment
     }
   }
 }

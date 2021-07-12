@@ -13,6 +13,7 @@
 #import "./component-section-mensa-max.gql"
 #import "./component-section-podcast-episode.gql"
 #import "./component-section-latest-podcast-episode.gql"
+#import "./component-section-former-students.gql"
 
 fragment BlogEntryDetailFragment on BlogEntry {
   __typename
@@ -78,6 +79,9 @@ fragment BlogEntryDetailFragment on BlogEntry {
     }
     ... on ComponentSectionLatestPodcastEpisode {
       ...ComponentSectionLatestPodcastEpisodeFragment
+    }
+    ... on ComponentSectionFormerStudents {
+      ...ComponentSectionFormerStudentsFragment
     }
   }
 }

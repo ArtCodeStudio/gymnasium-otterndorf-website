@@ -342,7 +342,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -397,7 +398,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -478,7 +480,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -512,7 +515,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -613,7 +617,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -689,7 +694,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -762,7 +768,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -796,7 +803,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -945,7 +953,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1012,7 +1021,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1116,7 +1126,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1218,7 +1229,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1263,7 +1275,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1304,7 +1317,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1417,7 +1431,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1567,7 +1582,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1593,6 +1609,50 @@
                     "id",
                     "title",
                     "activeTab"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode",
+                        "content.download-button",
+                        "section.latest-podcast-episode",
+                        "section.former-students"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 15
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "limit"
                   ]
                 }
               ]
@@ -1626,7 +1686,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1681,7 +1742,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1762,7 +1824,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1796,7 +1859,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1897,7 +1961,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -1973,7 +2038,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2046,7 +2112,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2080,7 +2147,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2229,7 +2297,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2296,7 +2365,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2400,7 +2470,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2502,7 +2573,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2547,7 +2619,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2588,7 +2661,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2701,7 +2775,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2851,7 +2926,8 @@
                         "section.mensa-max",
                         "section.podcast-episode",
                         "content.download-button",
-                        "section.latest-podcast-episode"
+                        "section.latest-podcast-episode",
+                        "section.former-students"
                       ]
                     },
                     "id": {
@@ -2877,6 +2953,50 @@
                     "id",
                     "title",
                     "activeTab"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "section.slideshow",
+                        "section.facts",
+                        "content.text",
+                        "content.image",
+                        "home.news",
+                        "section.gallery-slideshow",
+                        "home.calendar",
+                        "section.blackboard-slideshow",
+                        "student-section.student-quote",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode",
+                        "content.download-button",
+                        "section.latest-podcast-episode",
+                        "section.former-students"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "default": 15
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "limit"
                   ]
                 }
               ]

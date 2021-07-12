@@ -39,7 +39,8 @@
         "section.mensa-max",
         "section.podcast-episode",
         "content.download-button",
-        "section.latest-podcast-episode"
+        "section.latest-podcast-episode",
+        "section.former-students"
       ]
     },
     "calendar_key": {
@@ -51,7 +52,7 @@
     "assets": {
       "type": "dynamiczone",
       "components": [
-        "sidebar.assets"
+        "attachment.assets"
       ]
     }
   }
