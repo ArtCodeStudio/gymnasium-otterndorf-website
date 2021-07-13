@@ -1,5 +1,5 @@
 h2.section-heading Kalender
-ul 
+ul(ssr-rv-if="calendarEntries | size | gt 0")
   li(ssr-rv-each-entry="calendarEntries")
     .event
       .calendar-date
@@ -10,3 +10,5 @@ ul
           span [ entry.start | lx-from-iso | lx-set-locale 'de' | lx-to-moment-calendar | capitalize | remove-empty-clock ]
           span.event-date(ssr-rv-if="entry.sameDay | not") &nbsp;bis [ entry.end | lx-from-iso | lx-set-locale 'de' | lx-to-moment-calendar | remove-empty-clock ]
         h6.event-name [ entry.summary]
+p(ssr-rv-unless="calendarEntries | size | gt 0")
+  | Derzeit gibt es keine anstehende Termine
