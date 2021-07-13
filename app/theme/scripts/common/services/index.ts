@@ -18,6 +18,7 @@ export { PodloveService } from "./podlove";
 export { SchoolSubjectService } from "./school-subject";
 export { SearchService } from "./search";
 export { SectionsService } from "./sections";
+export { SlideshowService } from "./slideshow";
 export { StudentQuoteService } from "./student-quote";
 export { SuggestService } from "./suggest";
 export { TeacherService } from "./teacher";

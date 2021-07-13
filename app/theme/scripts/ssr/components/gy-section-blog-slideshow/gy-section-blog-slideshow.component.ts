@@ -2,11 +2,14 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-blog-slideshow.component.pug";
 import { SectionBlogSlideshow } from "../../../common/types";
-import { BlogService } from "../../services";
+import { BlogService, SlideshowService } from "../../services";
 
 export interface Scope {
   section?: SectionBlogSlideshow | null;
   preferImage: boolean;
+  textColor: string;
+  getTextColorClass: GySectionBlogSlideshowComponent["getTextColorClass"];
+  getButtonColorClass: GySectionBlogSlideshowComponent["getButtonColorClass"];
 }
 
 export class GySectionBlogSlideshowComponent extends Component {
@@ -18,6 +21,9 @@ export class GySectionBlogSlideshowComponent extends Component {
   scope: Scope = {
     section: null,
     preferImage: false,
+    textColor: "transparent",
+    getTextColorClass: this.getTextColorClass,
+    getButtonColorClass: this.getButtonColorClass,
   };
 
   static get observedAttributes(): string[] {
@@ -32,19 +38,36 @@ export class GySectionBlogSlideshowComponent extends Component {
     super();
   }
 
+  public getTextColorClass(color?: string) {
+    color = color || this.scope.textColor;
+    return `text-` + color;
+  }
+
+  public getButtonColorClass(color?: string, outline = true) {
+    color = color || this.scope.textColor;
+    if (outline) {
+      return `btn-outline-` + color;
+    }
+    return `btn-` + color;
+  }
+
+  protected setStyle() {
+    if (!this.scope.section) {
+      console.warn("Section is required!");
+      return;
+    }
+    const { classes, preferImage, textColor } = SlideshowService.getStyle(
+      this.scope.section
+    );
+    if (preferImage) {
+      this.scope.preferImage = preferImage;
+    }
+    this.scope.textColor = textColor;
+    this.classList.add(...classes.split(" "));
+  }
+
   protected async beforeBind() {
-    if (this.scope.section?.style) {
-      this.classList.add(`slideshow-style-${this.scope.section.style}`);
-      switch (this.scope.section?.style) {
-        case "art":
-        case "dreamy":
-          this.scope.preferImage = true;
-          break;
-      }
-    }
-    if (this.scope.section?.color?.color) {
-      this.classList.add(`bg-${this.scope.section.color?.color}`);
-    }
+    this.setStyle();
     await super.beforeBind();
   }
 

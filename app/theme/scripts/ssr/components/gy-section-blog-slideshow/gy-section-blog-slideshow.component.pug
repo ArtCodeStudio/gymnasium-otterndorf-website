@@ -1,6 +1,6 @@
 bs5-slideshow.row.py-5(xs-controls="false" md-controls="true" xs-indicators="true" xs-drag="false" xs-control-prev-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-control-next-icon-src="/iconset/svg/arrow_carrot_alt.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="true" xs-autoplay-interval="10000")
     .col-12
-        .display-1.text-center.text-white(rv-text="section.blog.name")
+        .display-1.text-center(rv-text="section.blog.name")
         .row.slideshow-row.py-3
             .slide.col-12(ssr-rv-each-entry="section.blog.blog_entries")
                 .row.h-100.align-items-center
@@ -8,7 +8,7 @@ bs5-slideshow.row.py-5(xs-controls="false" md-controls="true" xs-indicators="tru
                         gy-blog-entry-item(ssr-rv-co-post="entry" cat-text-at="300" ssr-rv-prefer-image="preferImage" show-date="true" show-category="false")
         .row.my-3
             .col-auto.mx-auto
-                a.btn.btn-outline-white.fw-bold(ssr-rv-href="section.blog.slug | blog") Alle ansehen
+                a.btn.fw-bold(ssr-rv-href="section.blog.slug | blog" ssr-rv-add-class="getButtonColorClass | call") Alle ansehen
 
     template(type="indicators")
         .row.slideshow-indicators(csr-rv-if="activeBreakpoint.indicators" csr-rv-add-class="indicatorsPositionClass")
@@ -16,6 +16,6 @@ bs5-slideshow.row.py-5(xs-controls="false" md-controls="true" xs-indicators="tru
                 .row
                     .col.py-3.indicators.cursor-pointer(csr-rv-each-slide="items" csr-rv-class-active="slide.active" csr-rv-class-next="%slide% | eq nextIndex" csr-rv-class-inactive="%slide% | eq nextIndex | or slide.active | not" csr-rv-on-click="goTo | args slide.index")
                         .progress(csr-rv-if="slide.active")
-                            .progress-bar.bg-white(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="100" csr-rv-style-margin-left="intervalProgress | append '%'")
+                            .progress-bar(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="100" csr-rv-style-margin-left="intervalProgress | append '%'")
                         .progress(csr-rv-unless="slide.active")
-                            .progress-bar.bg-white(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="intervalProgress" csr-rv-style-width="intervalProgress | append '%'")
+                            .progress-bar(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="intervalProgress" csr-rv-style-width="intervalProgress | append '%'")

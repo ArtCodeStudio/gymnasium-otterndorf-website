@@ -1,14 +1,13 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-gallery-slideshow.component.pug";
-import { SectionGallerySlideshow, Color } from "../../../common/types";
-import { GalleryService, ColorService } from "../../services";
+import { SectionGallerySlideshow } from "../../../common/types";
+import { GalleryService, SlideshowService } from "../../services";
 
 export interface Scope {
   section?: SectionGallerySlideshow | null;
   textColor: string;
   getTextColorClass: GySectionGallerySlideshowComponent["getTextColorClass"];
-  getBackgroundColorClass: GySectionGallerySlideshowComponent["getBackgroundColorClass"];
   getButtonColorClass: GySectionGallerySlideshowComponent["getButtonColorClass"];
 }
 
@@ -20,9 +19,8 @@ export class GySectionGallerySlideshowComponent extends Component {
 
   scope: Scope = {
     section: null,
-    textColor: "white",
+    textColor: "transparent",
     getTextColorClass: this.getTextColorClass,
-    getBackgroundColorClass: this.getBackgroundColorClass,
     getButtonColorClass: this.getButtonColorClass,
   };
 
@@ -43,11 +41,6 @@ export class GySectionGallerySlideshowComponent extends Component {
     return `text-` + color;
   }
 
-  public getBackgroundColorClass(color?: string) {
-    color = color || this.scope.textColor;
-    return `bg-` + color;
-  }
-
   public getButtonColorClass(color?: string, outline = true) {
     color = color || this.scope.textColor;
     if (outline) {
@@ -56,17 +49,20 @@ export class GySectionGallerySlideshowComponent extends Component {
     return `btn-` + color;
   }
 
-  protected async beforeBind() {
-    const gallery = this.scope.section?.gallery;
-    const color: Color = gallery?.color?.color || "transparent";
-    if (gallery?.style) {
-      this.classList.add(`slideshow-style-${gallery.style}`);
-    } else if (color) {
-      this.classList.add(`bg-${color}`);
-      this.scope.textColor = ColorService.getAccentTextColor(color);
-      this.classList.add(`progress-${this.scope.textColor}`);
+  protected setStyle() {
+    if (!this.scope.section?.gallery) {
+      console.warn("Gallery is required!");
+      return;
     }
+    const { classes, textColor } = SlideshowService.getStyle(
+      this.scope.section.gallery
+    );
+    this.scope.textColor = textColor;
+    this.classList.add(...classes.split(" "));
+  }
 
+  protected async beforeBind() {
+    this.setStyle();
     await super.beforeBind();
   }
 
