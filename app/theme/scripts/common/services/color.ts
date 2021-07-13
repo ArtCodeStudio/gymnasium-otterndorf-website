@@ -1,16 +1,15 @@
-import { StrapiGqlEnum_Componenttypescolor_Color } from "../types";
+import { Color } from "../types";
 
 export class ColorService {
-  public static getAccentTextColor(
-    color: StrapiGqlEnum_Componenttypescolor_Color = StrapiGqlEnum_Componenttypescolor_Color.Blue
-  ) {
+  public static getAccentTextColor(color: Color = "transparent") {
     switch (color) {
       case "cyan":
       case "greenlight":
       case "yellow":
       case "light":
       case "white":
-        return "black";
+      case "transparent":
+        return "dark";
       case "dark":
       case "blue":
       case "green":

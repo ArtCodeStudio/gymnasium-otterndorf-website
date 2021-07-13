@@ -1,7 +1,7 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-gallery-slideshow.component.pug";
-import { SectionGallerySlideshow } from "../../../common/types";
+import { SectionGallerySlideshow, Color } from "../../../common/types";
 import { GalleryService, ColorService } from "../../services";
 
 export interface Scope {
@@ -58,14 +58,13 @@ export class GySectionGallerySlideshowComponent extends Component {
 
   protected async beforeBind() {
     const gallery = this.scope.section?.gallery;
+    const color: Color = gallery?.color?.color || "transparent";
     if (gallery?.style) {
       this.classList.add(`slideshow-style-${gallery.style}`);
-    }
-    if (gallery?.color?.color) {
-      this.classList.add(`bg-${gallery.color?.color}`);
-      this.scope.textColor = ColorService.getAccentTextColor(
-        gallery.color.color
-      );
+    } else if (color) {
+      this.classList.add(`bg-${color}`);
+      this.scope.textColor = ColorService.getAccentTextColor(color);
+      this.classList.add(`progress-${this.scope.textColor}`);
     }
 
     await super.beforeBind();
