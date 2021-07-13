@@ -35,6 +35,8 @@ export const entryTypeNameFormatter = {
         return "Slideshow";
       case ENTRY_TYPE.SchoolSubject:
         return "Schulfach";
+      case ENTRY_TYPE.WorkingGroup:
+        return "AG";
       case ENTRY_TYPE.Blog:
         return "Blog";
       case ENTRY_TYPE.Navigation:

@@ -50,6 +50,14 @@ export const config: ThemeConfigFile = (env: string | undefined) => {
         component: "school-subject-page",
       },
       {
+        path: ["/working-group", "/ag"],
+        component: "working-groups-page",
+      },
+      {
+        path: ["/working-group/:slug", "/ag/:slug"],
+        component: "working-group-page",
+      },
+      {
         path: ["/gallery/:slug", "/bilder/:slug"],
         component: "gallery-page",
       },

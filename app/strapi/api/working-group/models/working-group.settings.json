@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "working_groups",
+  "info": {
+    "name": "Working Group"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "teachers": {
+      "collection": "teacher",
+      "via": "working_groups",
+      "dominant": true
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "section.i-frame",
+        "section.slideshow",
+        "section.podcast-episode",
+        "section.gallery-slideshow",
+        "section.former-students",
+        "section.blog-slideshow",
+        "section.blackboard-slideshow",
+        "section.mensa-max",
+        "section.latest-podcast-episode",
+        "section.facts",
+        "content.download-button",
+        "content.text",
+        "content.image",
+        "content.button",
+        "home.news",
+        "home.calendar",
+        "home.fact",
+        "student-section.student-quote"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    }
+  }
+}

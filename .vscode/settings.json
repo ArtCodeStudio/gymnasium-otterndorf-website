@@ -10,6 +10,7 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
     "AGPL",
+    "Componenttypescolor",
     "Garber",
     "Lexend",
     "Otterndorf",
@@ -102,6 +103,7 @@
     "vlen",
     "webroot",
     "whatsapp",
+    "workinggroup",
     "yarnpkg",
     "zindex"
   ],

@@ -10,13 +10,18 @@
     .col-12.col-md-8
       p(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
       .row
-        .col-12.col-md-6
+        .col-12.col-md-4(rv-if="teacher.subjects | size | gt 0")
           strong
             | Fächer
           span.list-group.list-group-flush
             a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
-        .col-12.col-md-6
-          strong(rv-if="assets.length | gt 0")
+        .col-12.col-md-4(rv-if="teacher.working_groups | size | gt 0")
+          strong
+            | AGs
+          span.list-group.list-group-flush
+            a.list-group-item.list-group-item-action(rv-each-working-group="teacher.working_groups" rv-href="workingGroup.slug | working-group" rv-text="workingGroup.title")
+        .col-12.col-md-4(rv-if="assets | size | gt 0")
+          strong
             | Unterrichtsmaterialien
           span.list-group.list-group-flush
             a.list-group-item.list-group-item-action(rv-each-asset="assets" rv-href="asset.file.url | strapi" download rv-text="asset.name")

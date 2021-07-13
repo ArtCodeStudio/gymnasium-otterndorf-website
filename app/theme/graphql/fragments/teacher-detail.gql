@@ -1,4 +1,5 @@
 #import "./school-subject-basic.gql"
+#import "./working-group-basic.gql"
 #import "./image.gql"
 
 #import "./component-attachment-assets.gql"
@@ -14,6 +15,11 @@ fragment TeacherDetailFragment on Teacher {
   subjects {
     ... on Subject {
       ...SchoolSubjectBasicFragment
+    }
+  }
+  working_groups {
+    ... on WorkingGroup {
+      ...WorkingGroupBasicFragment
     }
   }
   assets {

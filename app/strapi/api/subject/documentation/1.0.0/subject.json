@@ -560,6 +560,12 @@
                 "assets": {
                   "type": "dynamiczone"
                 },
+                "working_groups": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },

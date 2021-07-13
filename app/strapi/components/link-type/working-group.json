@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_link_type_working_groups",
+  "info": {
+    "name": "Working Group",
+    "icon": "icons",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "working_group": {
+      "model": "working-group"
+    }
+  }
+}

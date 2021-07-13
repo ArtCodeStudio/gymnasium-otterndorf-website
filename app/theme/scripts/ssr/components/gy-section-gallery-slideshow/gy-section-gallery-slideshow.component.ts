@@ -2,10 +2,14 @@ import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-section-gallery-slideshow.component.pug";
 import { SectionGallerySlideshow } from "../../../common/types";
-import { GalleryService } from "../../services";
+import { GalleryService, ColorService } from "../../services";
 
 export interface Scope {
   section?: SectionGallerySlideshow | null;
+  textColor: string;
+  getTextColorClass: GySectionGallerySlideshowComponent["getTextColorClass"];
+  getBackgroundColorClass: GySectionGallerySlideshowComponent["getBackgroundColorClass"];
+  getButtonColorClass: GySectionGallerySlideshowComponent["getButtonColorClass"];
 }
 
 export class GySectionGallerySlideshowComponent extends Component {
@@ -16,6 +20,10 @@ export class GySectionGallerySlideshowComponent extends Component {
 
   scope: Scope = {
     section: null,
+    textColor: "white",
+    getTextColorClass: this.getTextColorClass,
+    getBackgroundColorClass: this.getBackgroundColorClass,
+    getButtonColorClass: this.getButtonColorClass,
   };
 
   static get observedAttributes(): string[] {
@@ -30,6 +38,24 @@ export class GySectionGallerySlideshowComponent extends Component {
     super();
   }
 
+  public getTextColorClass(color?: string) {
+    color = color || this.scope.textColor;
+    return `text-` + color;
+  }
+
+  public getBackgroundColorClass(color?: string) {
+    color = color || this.scope.textColor;
+    return `bg-` + color;
+  }
+
+  public getButtonColorClass(color?: string, outline = true) {
+    color = color || this.scope.textColor;
+    if (outline) {
+      return `btn-outline-` + color;
+    }
+    return `btn-` + color;
+  }
+
   protected async beforeBind() {
     const gallery = this.scope.section?.gallery;
     if (gallery?.style) {
@@ -37,7 +63,11 @@ export class GySectionGallerySlideshowComponent extends Component {
     }
     if (gallery?.color?.color) {
       this.classList.add(`bg-${gallery.color?.color}`);
+      this.scope.textColor = ColorService.getAccentTextColor(
+        gallery.color.color
+      );
     }
+
     await super.beforeBind();
   }
 

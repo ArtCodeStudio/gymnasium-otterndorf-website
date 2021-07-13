@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/working-groups",
+      "handler": "working-group.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/working-groups/count",
+      "handler": "working-group.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/working-groups/:id",
+      "handler": "working-group.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/working-groups",
+      "handler": "working-group.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/working-groups/:id",
+      "handler": "working-group.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/working-groups/:id",
+      "handler": "working-group.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

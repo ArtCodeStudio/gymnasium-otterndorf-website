@@ -729,6 +729,42 @@
                 }
               ]
             }
+          },
+          "working_groups": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "title",
+                "slug"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "teachers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "content": {
+                  "type": "dynamiczone"
+                },
+                "slug": {
+                  "type": "uid"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -845,6 +881,12 @@
                   ]
                 }
               ]
+            }
+          },
+          "working_groups": {
+            "type": "array",
+            "items": {
+              "type": "string"
             }
           },
           "created_by": {

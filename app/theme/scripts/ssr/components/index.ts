@@ -25,3 +25,4 @@ export { GySectionStudentQuoteComponent } from "./gy-section-student-quote/gy-se
 export { GySectionTextComponent } from "./gy-section-text/gy-section-text.component";
 export { GySectionsComponent } from "./gy-sections/gy-sections.component";
 export { GyTeacherItemComponent } from "./gy-teacher-item/gy-teacher-item.component";
+export { GyWorkingGroupItemComponent } from "./gy-working-group-item/gy-working-group-item.component";

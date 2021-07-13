@@ -1,6 +1,7 @@
 export { BlogService } from "./blog";
 export * from "./cache";
 export { CalendarService } from "./calendar";
+export { ColorService } from "./color";
 export { FooterService } from "./footer";
 export { FormerStudentService } from "./former-student";
 export { GalleryService } from "./gallery";
@@ -21,3 +22,4 @@ export { StudentQuoteService } from "./student-quote";
 export { SuggestService } from "./suggest";
 export { TeacherService } from "./teacher";
 export { ToolbarService } from "./toolbar";
+export { WorkingGroupService } from "./working-group";

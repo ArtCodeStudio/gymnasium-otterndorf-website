@@ -1,0 +1,21 @@
+#import "./component-content-text.gql"
+#import "./component-content-image.gql"
+
+fragment WorkingGroupBasicFragment on WorkingGroup {
+  __typename
+  id
+  slug
+  title
+  created_at
+  updated_at
+  content {
+    __typename
+    # Content sections
+    ... on ComponentContentText {
+      ...ComponentContentTextFragment
+    }
+    ... on ComponentContentImage {
+      ...ComponentContentImageFragment
+    }
+  }
+}

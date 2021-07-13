@@ -44,3 +44,4 @@ export * from "./teacher";
 export * from "./text-expand-options";
 export * from "./theme-color";
 export * from "./vector-2d";
+export * from "./working-group";

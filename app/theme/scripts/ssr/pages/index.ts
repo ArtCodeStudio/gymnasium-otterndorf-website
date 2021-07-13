@@ -15,3 +15,5 @@ export { SchoolSubjectsPageComponent } from "./school-subjects/school-subjects.c
 export { SitemapPageComponent } from "./sitemap/sitemap.component";
 export { StudentsQuotesPageComponent } from "./students-quotes/students-quotes.component";
 export { TeacherPageComponent } from "./teacher/teacher.component";
+export { WorkingGroupPageComponent } from "./working-group/working-group.component";
+export { WorkingGroupsPageComponent } from "./working-groups/working-groups.component";

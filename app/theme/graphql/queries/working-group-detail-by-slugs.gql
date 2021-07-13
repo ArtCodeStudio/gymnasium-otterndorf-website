@@ -1,0 +1,7 @@
+#import "../fragments/working-group-detail.gql"
+
+query workingGroupDetailBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  workingGroups(start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...WorkingGroupDetailFragment
+  }
+} 

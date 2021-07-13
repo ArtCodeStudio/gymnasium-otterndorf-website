@@ -40,8 +40,6 @@ export class GySectionFormerStudentsComponent extends Component {
       [],
       this.scope.section?.limit || 15
     )) as StrapiGqlFormerStudentDetailFragmentFragment[];
-
-    console.debug("formerStudents", this.scope.formerStudents);
     await super.beforeBind();
   }
 

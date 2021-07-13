@@ -1,0 +1,7 @@
+#import "../fragments/working-group-basic.gql"
+
+query workingGroupBasicBySlugs ($slugs: [String]!, $limit: Int!, $start: Int!) {
+  workingGroups(start: $start, limit: $limit, where: { slug: $slugs }) {
+    ...WorkingGroupBasicFragment
+  }
+} 

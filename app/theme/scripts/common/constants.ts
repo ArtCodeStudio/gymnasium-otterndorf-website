@@ -17,6 +17,7 @@ export enum ENTRY_TYPE {
   GallerySlideshow,
   Slideshow,
   SchoolSubject,
+  WorkingGroup,
   Blog,
   Navigation,
   Home,

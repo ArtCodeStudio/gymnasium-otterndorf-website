@@ -556,7 +556,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -586,7 +587,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -644,7 +646,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -708,7 +711,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -737,7 +741,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -799,7 +804,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -854,7 +860,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -891,6 +898,12 @@
                         "assets": {
                           "type": "dynamiczone"
                         },
+                        "working_groups": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -918,7 +931,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -980,7 +994,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1032,7 +1047,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1111,6 +1127,65 @@
                         },
                         "published_at": {
                           "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "link-type.web",
+                        "link-type.schulfach",
+                        "link-type.page",
+                        "link-type.strapi",
+                        "link-type.post",
+                        "link-type.blog",
+                        "link-type.teacher",
+                        "link-type.gallery",
+                        "link-type.media-center",
+                        "link-type.podcast",
+                        "link-type.working-group"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "working_group": {
+                      "required": [
+                        "id",
+                        "title",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "teachers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "content": {
+                          "type": "dynamiczone"
+                        },
+                        "slug": {
+                          "type": "uid"
                         },
                         "created_by": {
                           "type": "string"
@@ -1154,7 +1229,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1184,7 +1260,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1242,7 +1319,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1306,7 +1384,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1335,7 +1414,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1397,7 +1477,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1452,7 +1533,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1489,6 +1571,12 @@
                         "assets": {
                           "type": "dynamiczone"
                         },
+                        "working_groups": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
                         "created_by": {
                           "type": "string"
                         },
@@ -1516,7 +1604,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1578,7 +1667,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1630,7 +1720,8 @@
                         "link-type.teacher",
                         "link-type.gallery",
                         "link-type.media-center",
-                        "link-type.podcast"
+                        "link-type.podcast",
+                        "link-type.working-group"
                       ]
                     },
                     "id": {
@@ -1709,6 +1800,65 @@
                         },
                         "published_at": {
                           "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "link-type.web",
+                        "link-type.schulfach",
+                        "link-type.page",
+                        "link-type.strapi",
+                        "link-type.post",
+                        "link-type.blog",
+                        "link-type.teacher",
+                        "link-type.gallery",
+                        "link-type.media-center",
+                        "link-type.podcast",
+                        "link-type.working-group"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "working_group": {
+                      "required": [
+                        "id",
+                        "title",
+                        "slug"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "teachers": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "content": {
+                          "type": "dynamiczone"
+                        },
+                        "slug": {
+                          "type": "uid"
                         },
                         "created_by": {
                           "type": "string"

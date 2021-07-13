@@ -9,6 +9,7 @@ import {
   StrapiGqlComponentLinkTypeTeacher,
   StrapiGqlComponentLinkTypeMediaCenter,
   StrapiGqlEnum_Podcastepisode_Type,
+  StrapiGqlComponentLinkTypeWorkingGroup,
 } from "../types";
 import {
   strapiFormatter,
@@ -19,6 +20,7 @@ import {
   mediaCenterFormatter,
   galleryFormatter,
   podcastFormatter,
+  workingGroupFormatter,
 } from "../formatters";
 import {
   StrapiGqlMenuQuery,
@@ -111,6 +113,8 @@ export class NavigationService {
         return galleryFormatter.read(type.gallery?.slug);
       case "ComponentLinkTypePodcast":
         return podcastFormatter.read(type.podcastEpisode?.slug);
+      case "ComponentLinkTypeWorkingGroup":
+        return workingGroupFormatter.read(type.working_group?.slug);
     }
   }
 
@@ -125,7 +129,8 @@ export class NavigationService {
       | "blog"
       | "gallery"
       | "mediacenter"
-      | "podcast",
+      | "podcast"
+      | "workinggroup",
     urlOrSlug: string
   ): StrapiGqlComponentLinkItemLink {
     const item: StrapiGqlComponentLinkItemLink = {
@@ -175,6 +180,14 @@ export class NavigationService {
           title,
           slug: urlOrSlug,
         } as StrapiGqlComponentLinkTypeTeacher);
+        break;
+      case "workinggroup":
+        item.navigation_link?.type?.push({
+          __typename: "ComponentLinkTypeWorkingGroup",
+          id: "0",
+          title,
+          slug: urlOrSlug,
+        } as StrapiGqlComponentLinkTypeWorkingGroup);
         break;
       case "mediacenter":
         item.navigation_link?.type?.push({

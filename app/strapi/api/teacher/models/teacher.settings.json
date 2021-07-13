@@ -47,6 +47,10 @@
       "components": [
         "attachment.assets"
       ]
+    },
+    "working_groups": {
+      "via": "teachers",
+      "collection": "working-group"
     }
   }
 }

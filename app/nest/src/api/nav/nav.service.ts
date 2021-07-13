@@ -92,6 +92,8 @@ export class NavService {
       case 'PodcastEpisode':
       case 'podcast':
         return `/podcast/${slug}`;
+      case 'WorkingGroup':
+        return `/working-group/${slug}`;
     }
   }
 

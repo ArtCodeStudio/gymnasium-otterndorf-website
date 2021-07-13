@@ -8,6 +8,7 @@ import {
   StrapiGqlTeacherDetailFragmentFragment,
   StrapiGqlPodcastEpisodeDetailFragmentFragment,
   StrapiGqlPodcastFeed,
+  StrapiGqlWorkingGroup,
 } from "./strapi-gql";
 
 export type EntryType =
@@ -19,4 +20,5 @@ export type EntryType =
   | StrapiGqlSchoolSubjectDetailFragmentFragment["__typename"]
   | StrapiGqlTeacherDetailFragmentFragment["__typename"]
   | StrapiGqlPodcastEpisodeDetailFragmentFragment["__typename"]
-  | StrapiGqlPodcastFeed["__typename"];
+  | StrapiGqlPodcastFeed["__typename"]
+  | StrapiGqlWorkingGroup["__typename"];

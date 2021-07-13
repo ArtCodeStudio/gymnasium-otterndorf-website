@@ -28,6 +28,8 @@ export const getEntryType = (typename?: EntryType | ENTRY_TYPE) => {
     case "schoolSubject":
     case "Subject":
       return ENTRY_TYPE.SchoolSubject;
+    case "WorkingGroup":
+      return ENTRY_TYPE.WorkingGroup;
     case "blog":
       return ENTRY_TYPE.Blog;
     case "nav":

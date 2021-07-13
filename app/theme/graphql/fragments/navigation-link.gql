@@ -51,5 +51,11 @@ fragment NavigationLinkFragment on NavigationLink {
         slug
       }
     }
+    ... on ComponentLinkTypeWorkingGroup {
+      working_group {
+        title
+        slug
+      }
+    }
   }
 }

@@ -24,3 +24,4 @@ export * from "./theme-bg-btn-outline-class";
 export * from "./theme-bg-class";
 export * from "./theme-bg-text-class";
 export * from "./theme-fg-color";
+export * from "./working-group";
