@@ -39,6 +39,7 @@ export class GySectionBlackboardSlideshowComponent extends Component {
   protected connectedCallback() {
     super.connectedCallback();
     this.init(GySectionBlackboardSlideshowComponent.observedAttributes);
+    console.log(JSON.parse(JSON.stringify(this.scope.section)));
   }
 
   protected template() {
