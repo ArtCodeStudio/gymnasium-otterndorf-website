@@ -77,9 +77,9 @@ export class NavService {
       case 'ComponentLinkTypePage':
       case 'page':
         return '/page/' + slug;
-      case 'ComponentLinkTypeSchulfach':
+      case 'ComponentLinkTypeSchoolSubject':
       case 'subject':
-        return '/schulfach/' + slug;
+        return '/school-subject/' + slug;
       case 'teacher':
         return '/teacher/' + slug;
       case 'blog':
@@ -111,8 +111,8 @@ export class NavService {
         return NavService.buildHref(type.__typename, type.blog?.slug);
       case 'ComponentLinkTypePage':
         return NavService.buildHref(type.__typename, type.page?.slug);
-      case 'ComponentLinkTypeSchulfach':
-        return NavService.buildHref(type.__typename, type.schulfach?.slug);
+      case 'ComponentLinkTypeSchoolSubject':
+        return NavService.buildHref(type.__typename, type.school_subject?.slug);
       case 'ComponentLinkTypeWeb':
         return type.URL ? type.URL : '';
       case 'ComponentLinkTypeStrapi':

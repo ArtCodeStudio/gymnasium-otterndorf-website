@@ -102,8 +102,8 @@ export class NavigationService {
         return blogFormatter.read(type.blog?.slug);
       case "ComponentLinkTypePage":
         return pageFormatter.read(type.page?.slug);
-      case "ComponentLinkTypeSchulfach":
-        return schoolSubjectFormatter.read(type.schulfach?.slug);
+      case "ComponentLinkTypeSchoolSubject":
+        return schoolSubjectFormatter.read(type.school_subject?.slug);
       case "ComponentLinkTypeWeb":
         return type.URL || "";
       case "ComponentLinkTypeStrapi":

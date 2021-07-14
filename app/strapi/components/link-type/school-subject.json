@@ -2,8 +2,7 @@
   "collectionName": "components_link_type_school_subjects",
   "info": {
     "name": "School Subject",
-    "icon": "arrow-alt-circle-up",
-    "description": ""
+    "icon": "arrow-alt-circle-up"
   },
   "options": {},
   "attributes": {

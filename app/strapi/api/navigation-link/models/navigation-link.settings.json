@@ -18,7 +18,6 @@
       "type": "dynamiczone",
       "components": [
         "link-type.web",
-        "link-type.schulfach",
         "link-type.page",
         "link-type.strapi",
         "link-type.post",
@@ -27,7 +26,8 @@
         "link-type.gallery",
         "link-type.media-center",
         "link-type.podcast",
-        "link-type.working-group"
+        "link-type.working-group",
+        "link-type.school-subject"
       ],
       "max": 1,
       "required": false
