@@ -5,7 +5,7 @@ bs5-slideshow(xs-controls="false" md-controls="true" xs-indicators="false" xs-dr
     .slide.col-12(ssr-rv-each-slide="section.slides")
       .row
         .col-12.col-md-8.mx-auto
-          gy-blackboard(rv-background-image="slide.image | strapi-image-url 'large'" rv-link="'/school-subject/' | append slide.school_subject.slug")
+          gy-blackboard(rv-background-image="slide.school_subject.blackboard_image | strapi-image-url 'large'" rv-link="'/school-subject/' | append slide.school_subject.slug")
   template(type="controls")
     .slideshow-controls.slideshow-control-prev(rv-show='activeBreakpoint.controls' rv-add-class='controlsPositionClass' data-slide='prev')
       button(role="button").btn.btn-link

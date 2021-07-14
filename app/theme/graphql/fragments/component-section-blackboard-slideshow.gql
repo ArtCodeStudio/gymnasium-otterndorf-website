@@ -1,10 +1,10 @@
-#import "./component-blackboard-slide.gql"
+#import "./school-subject-detail.gql"
 
 fragment ComponentSectionBlackboardSlideshowFragment on ComponentSectionBlackboardSlideshow {
   id
-  slides {
-    ... on ComponentBlackboardSlide {
-      ...ComponentBlackboardSlideFragment
+  subjects {
+    ... on SchoolSubject {
+      ...SchoolSubjectDetailFragment
     }
   }
 }

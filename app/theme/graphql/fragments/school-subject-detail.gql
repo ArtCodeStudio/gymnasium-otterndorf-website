@@ -16,12 +16,16 @@
 #import "./component-section-podcast-episode.gql"
 #import "./component-section-latest-podcast-episode.gql"
 #import "./component-section-former-students.gql"
+#import "./image.gql"
 
 fragment SchoolSubjectDetailFragment on Subject {
   __typename
   id
   slug
   title
+  blackboard_image {
+    ...ImageFragment
+  }
   created_at
   updated_at
   teachers {
