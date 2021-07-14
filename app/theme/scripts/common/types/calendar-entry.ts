@@ -3,7 +3,6 @@ import type {
   CalendarComponent,
   Geo,
   FreeBusy,
-  ParamList,
 } from "ical";
 
 export type CalendarEntry = {

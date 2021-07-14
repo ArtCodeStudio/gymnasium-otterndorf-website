@@ -1,6 +1,5 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { CalendarComponent } from "ical";
 import {
   StrapiGqlComponentHomeCalendar,
   CalendarEntry,
