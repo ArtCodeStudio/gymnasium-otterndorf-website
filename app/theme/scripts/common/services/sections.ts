@@ -37,6 +37,7 @@ export class SectionsService {
     for (const section of sectionsArr) {
       switch (section.__typename) {
         case "ComponentContentImage":
+          // TODO array?
           sectionsObj.image = section;
           break;
         case "ComponentContentText":

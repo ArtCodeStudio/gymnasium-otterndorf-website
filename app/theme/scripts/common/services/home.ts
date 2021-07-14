@@ -3,28 +3,29 @@ import {
   StrapiGqlHomeSectionsQuery,
   StrapiGqlHomeSectionsQueryVariables,
   DynamicZoneSection,
+  Section,
 } from "../types";
 import homeSections from "../../../graphql/queries/home-sections.gql";
 import { SectionsService } from "./sections";
 
-export class GyHomeService {
+export class HomeService {
   protected graphql = GraphQLClient.getInstance();
   protected static sections = SectionsService.getInstance();
-  protected static instance: GyHomeService;
+  protected static instance: HomeService;
 
   protected constructor() {
     /** protected */
   }
 
   public static getInstance() {
-    if (GyHomeService.instance) {
-      return GyHomeService.instance;
+    if (HomeService.instance) {
+      return HomeService.instance;
     }
-    GyHomeService.instance = new GyHomeService();
-    return GyHomeService.instance;
+    HomeService.instance = new HomeService();
+    return HomeService.instance;
   }
 
-  async getSections() {
+  protected async getSectionsRaw() {
     const vars: StrapiGqlHomeSectionsQueryVariables = {};
     const response =
       await this.graphql.requestCached<StrapiGqlHomeSectionsQuery>(
@@ -36,9 +37,20 @@ export class GyHomeService {
       throw new Error("Cant get home sections!");
     }
 
-    const DynamicZoneSections = (response.home?.sections ||
-      []) as DynamicZoneSection[];
-    const sections = await GyHomeService.sections.toArray(DynamicZoneSections);
+    return (response.home?.sections || []) as DynamicZoneSection[];
+  }
+
+  public async getSections() {
+    const dynamicZoneSections = await this.getSectionsRaw();
+    const sections = await HomeService.sections.toArray(dynamicZoneSections);
+    return sections;
+  }
+
+  public async getSectionsObject(sectionsArr?: Section[]) {
+    if (!sectionsArr) {
+      sectionsArr = await this.getSections();
+    }
+    const sections = HomeService.sections.toObject(sectionsArr);
     return sections;
   }
 }

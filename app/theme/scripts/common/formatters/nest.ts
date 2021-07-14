@@ -3,10 +3,7 @@
  */
 export const nestFormatter = {
   name: "nest",
-  read(url?: string) {
-    if (!url) {
-      return "";
-    }
+  read(url = "") {
     if (typeof url !== "string") {
       console.warn(
         `Nest formatter works only with strings, but got "${typeof url}"`

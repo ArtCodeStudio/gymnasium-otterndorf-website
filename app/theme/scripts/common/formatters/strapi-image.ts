@@ -1,5 +1,6 @@
 import type {
   StrapiImage,
+  StrapiGqlImageFragmentFragment,
   StrapiImageFormat,
   StrapiImageFormatType,
 } from "../../common/types";
@@ -11,7 +12,7 @@ import type {
 export const strapiImageFormatter = {
   name: "strapi-image",
   read(
-    image: StrapiImage,
+    image: StrapiImage | StrapiGqlImageFragmentFragment,
     format: StrapiImageFormatType | "original" = "thumbnail"
   ) {
     let imageFormat: StrapiImageFormat = image.formats.thumbnail;
