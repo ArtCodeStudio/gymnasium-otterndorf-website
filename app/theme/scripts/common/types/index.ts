@@ -1,6 +1,7 @@
 export * from "./awaited";
 export * from "./blog";
 export * from "./breadcrumb";
+export * from "./calendar-entry";
 export * from "./color";
 export * from "./home-news";
 export * from "./mensa-max-data";

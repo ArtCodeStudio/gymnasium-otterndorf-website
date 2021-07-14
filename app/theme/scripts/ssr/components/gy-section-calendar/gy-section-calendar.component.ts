@@ -1,12 +1,16 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import { CalendarComponent } from "ical";
+import {
+  StrapiGqlComponentHomeCalendar,
+  CalendarEntry,
+} from "../../../common/types";
 import { CalendarService } from "../../../common/services/calendar";
 import pugTemplate from "./gy-section-calendar.component.pug";
 
 export interface Scope {
-  section?: any;
-  calendarEntries: CalendarComponent[];
+  section?: StrapiGqlComponentHomeCalendar | null;
+  calendarEntries: CalendarEntry[];
 }
 
 export class GySectionCalendarComponent extends Component {
@@ -32,26 +36,32 @@ export class GySectionCalendarComponent extends Component {
   }
 
   protected transformCalendarEntries() {
-    if (this.scope.section?.dates) {
+    if (
+      this.scope.section?.dates &&
+      this.scope.calendarEntries.length &&
+      this.scope.calendarEntries.length > this.scope.section.dates
+    ) {
       this.scope.calendarEntries = this.scope.calendarEntries.slice(
         0,
         this.scope.section.dates
       );
     }
 
-    this.scope.calendarEntries.forEach((e: any) => {
-      if (!e.end || !e.start) return;
-      const start = new Date(e.start);
-      const end = new Date(e.end);
-      e.sameDay =
+    for (const entry of this.scope.calendarEntries) {
+      if (!entry.end || !entry.start) continue;
+      const start = new Date(entry.start);
+      const end = new Date(entry.end);
+      entry.sameDay =
         start.getDate() == end.getDate() &&
         start.getMonth() == end.getMonth() &&
         start.getFullYear() == end.getFullYear();
-    });
+    }
   }
 
   protected async getCalendarEntries() {
-    this.scope.calendarEntries = await CalendarService.getInstance().get();
+    this.scope.calendarEntries.push(
+      ...(await CalendarService.getInstance().get())
+    );
     this.transformCalendarEntries();
   }
 
