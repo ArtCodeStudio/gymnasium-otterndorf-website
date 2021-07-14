@@ -1,0 +1,6 @@
+query pageInfo {
+  pageInfo {
+    title
+    description
+  }
+}

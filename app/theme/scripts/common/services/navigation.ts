@@ -71,6 +71,7 @@ export class NavigationService {
     baseItem:
       | StrapiGqlComponentNavigationNavigationLevelEntry
       | StrapiGqlNavigationLink
+      | NavigationLink
   ) {
     let navigationLink: StrapiGqlNavigationLink | undefined;
     if ((baseItem as StrapiGqlNavigationLink).type) {
@@ -302,6 +303,10 @@ export class NavigationService {
           // Child element
           const parentEntry = this.findParent(result, entry.parent.id);
           if (parentEntry) {
+            if (entry.title === "Schulleben/AGs am Nachmittag") {
+              console.debug("entry", entry);
+              console.debug("parentEntry", parentEntry);
+            }
             parentEntry.children?.push(
               this.newLink(
                 entry as StrapiGqlComponentNavigationNavigationLevelEntry

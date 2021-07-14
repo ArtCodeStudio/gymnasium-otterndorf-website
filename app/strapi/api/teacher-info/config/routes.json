@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/teacher-info",
+      "handler": "teacher-info.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/teacher-info",
+      "handler": "teacher-info.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/teacher-info",
+      "handler": "teacher-info.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

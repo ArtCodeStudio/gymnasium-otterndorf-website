@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_infos",
+  "info": {
+    "name": "Page Info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Unterseiten"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

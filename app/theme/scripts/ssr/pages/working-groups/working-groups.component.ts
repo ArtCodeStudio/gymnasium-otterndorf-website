@@ -10,6 +10,8 @@ import {
 export interface Scope {
   header: PageHeader | Record<string, never>;
   workingGroups: WorkingGroup[];
+  title: string;
+  description: string;
 }
 
 export class WorkingGroupsPageComponent extends PageComponent {
@@ -22,6 +24,8 @@ export class WorkingGroupsPageComponent extends PageComponent {
   scope: Scope = {
     workingGroups: [],
     header: {},
+    title: "AGs",
+    description: "",
   };
 
   static get observedAttributes(): string[] {
@@ -39,13 +43,20 @@ export class WorkingGroupsPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    this.head.title = this.ctx.params.slug;
     try {
       const workingGroups =
         (await this.workingGroup.listBasic()) as WorkingGroup[];
+      const info = await this.workingGroup.info();
+      if (info) {
+        this.scope.title = info.title || this.scope.title;
+        this.scope.description = info.description || this.scope.description;
+      }
       if (workingGroups) {
         this.scope.workingGroups = workingGroups;
-        this.scope.header = this.workingGroup.getHeader();
+        this.scope.header = this.workingGroup.getHeader(
+          undefined,
+          this.scope.title
+        );
       }
     } catch (error) {
       this.throw(error);

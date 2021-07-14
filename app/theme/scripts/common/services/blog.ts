@@ -9,6 +9,8 @@ import {
   StrapiGqlBlogCategoriesBasicBySlugsQueryVariables,
   StrapiGqlBlogCategoriesDetailBySlugsQuery,
   StrapiGqlBlogCategoriesDetailBySlugsQueryVariables,
+  StrapiGqlBlogInfoQuery,
+  StrapiGqlBlogInfoQueryVariables,
   DynamicZoneSection,
   PageHeader,
   SectionObject,
@@ -22,6 +24,7 @@ import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-detai
 import blogEntriesBasicBySlugsQuery from "../../../graphql/queries/blog-entries-basic-by-slugs.gql";
 import blogCategoriesBasicBySlugs from "../../../graphql/queries/blog-categories-basic-by-slugs.gql";
 import blogCategoriesDetailBySlugs from "../../../graphql/queries/blog-categories-detail-by-slugs.gql";
+import blogInfo from "../../../graphql/queries/blog-info.gql";
 
 export class BlogService {
   protected graphql = GraphQLClient.getInstance();
@@ -38,6 +41,15 @@ export class BlogService {
     }
     BlogService.instance = new BlogService();
     return BlogService.instance;
+  }
+
+  public async info() {
+    const vars: StrapiGqlBlogInfoQueryVariables = {};
+    const res = await this.graphql.requestCached<StrapiGqlBlogInfoQuery>(
+      blogInfo,
+      vars
+    );
+    return res.blogInfo;
   }
 
   /**
@@ -193,9 +205,9 @@ export class BlogService {
     return header;
   }
 
-  public getHeader(blog?: Blog): PageHeader {
+  public getHeader(blog?: Blog, title?: string): PageHeader {
     const header: PageHeader = {
-      title: blog?.name || "Alle Artikel",
+      title: blog?.name || title || "Alle Artikel",
       breadcrumbs: [
         {
           type: ENTRY_TYPE.Home,

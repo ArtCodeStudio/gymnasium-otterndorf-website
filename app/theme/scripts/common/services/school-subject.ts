@@ -4,6 +4,8 @@ import {
   StrapiGqlSchoolSubjectDetailBySlugsQueryVariables,
   StrapiGqlSchoolSubjectBasicBySlugsQuery,
   StrapiGqlSchoolSubjectBasicBySlugsQueryVariables,
+  StrapiGqlSchoolSubjectInfoQuery,
+  StrapiGqlSchoolSubjectInfoQueryVariables,
   ResponseError,
   DynamicZoneSection,
   PageHeader,
@@ -16,6 +18,7 @@ import { SectionsService } from "./sections";
 import { schoolSubjectFormatter } from "../formatters";
 import schoolSubjectDetailBySlugs from "../../../graphql/queries/school-subject-detail-by-slugs.gql";
 import schoolSubjectBasicBySlugs from "../../../graphql/queries/school-subject-basic-by-slugs.gql";
+import schoolSubjectInfo from "../../../graphql/queries/school-subject-info.gql";
 
 export class SchoolSubjectService {
   protected graphql = GraphQLClient.getInstance();
@@ -32,6 +35,16 @@ export class SchoolSubjectService {
     }
     SchoolSubjectService.instance = new SchoolSubjectService();
     return SchoolSubjectService.instance;
+  }
+
+  public async info() {
+    const vars: StrapiGqlSchoolSubjectInfoQueryVariables = {};
+    const res =
+      await this.graphql.requestCached<StrapiGqlSchoolSubjectInfoQuery>(
+        schoolSubjectInfo,
+        vars
+      );
+    return res.schoolSubjectInfo;
   }
 
   async listDetail(slugs: string[] = [], limit = 50, start = 0) {
@@ -121,9 +134,9 @@ export class SchoolSubjectService {
     return [];
   }
 
-  public getHeader(schoolSubject?: SchoolSubject): PageHeader {
+  public getHeader(schoolSubject?: SchoolSubject, title?: string): PageHeader {
     const header: PageHeader = {
-      title: schoolSubject?.title || "Schulfächer",
+      title: schoolSubject?.title || title || "Schulfächer",
       breadcrumbs: [
         {
           type: ENTRY_TYPE.Home,
@@ -131,7 +144,7 @@ export class SchoolSubjectService {
           active: false,
         },
         {
-          label: "Schulfächer",
+          label: title || "Schulfächer",
           type: ENTRY_TYPE.SchoolSubject,
           active: schoolSubject ? false : true,
           url: schoolSubjectFormatter.read(),

@@ -1,0 +1,6 @@
+query teacherInfo {
+  teacherInfo {
+    title
+    description
+  }
+}

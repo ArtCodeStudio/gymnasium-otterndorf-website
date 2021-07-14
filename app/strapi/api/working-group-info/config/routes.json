@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/working-group-info",
+      "handler": "working-group-info.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/working-group-info",
+      "handler": "working-group-info.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/working-group-info",
+      "handler": "working-group-info.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

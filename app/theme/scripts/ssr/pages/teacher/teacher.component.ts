@@ -15,6 +15,8 @@ export interface Scope {
   params: TeacherPageComponent["ctx"]["params"];
   header: PageHeader | Record<string, never>;
   teachers: Teacher[];
+  title: string;
+  description: string;
 }
 
 export class TeacherPageComponent extends PageComponent {
@@ -31,6 +33,8 @@ export class TeacherPageComponent extends PageComponent {
     params: {},
     header: {},
     teachers: [],
+    title: "Lehrer",
+    description: "",
   };
 
   static get observedAttributes(): string[] {
@@ -81,7 +85,7 @@ export class TeacherPageComponent extends PageComponent {
       return;
     }
     this.scope.teachers = [teacher];
-    this.head.title = teacher.name;
+    this.scope.title = teacher.name;
   }
 
   /**
@@ -97,6 +101,14 @@ export class TeacherPageComponent extends PageComponent {
     this.head.title = "Lehrer";
   }
 
+  protected async setInfo() {
+    const info = await this.teacher.info();
+    if (info) {
+      this.scope.title = info.title || this.scope.title;
+      this.scope.description = info.description || this.scope.description;
+    }
+  }
+
   protected async beforeBind() {
     if (this.ctx.params.slug) {
       await this.getTeacher(this.ctx.params.slug);
@@ -109,7 +121,14 @@ export class TeacherPageComponent extends PageComponent {
       await this.getTeachers();
     }
 
-    this.scope.header = this.teacher.getHeader(this.scope.teachers);
+    await this.setInfo();
+
+    this.head.title = this.scope.title;
+
+    this.scope.header = this.teacher.getHeader(
+      this.scope.teachers,
+      this.scope.title
+    );
 
     await super.beforeBind();
   }

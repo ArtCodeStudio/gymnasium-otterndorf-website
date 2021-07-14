@@ -4,6 +4,8 @@ import {
   StrapiGqlTeacherDetailBySlugsQueryVariables,
   StrapiGqlTeacherBasicBySlugsQuery,
   StrapiGqlTeacherBasicBySlugsQueryVariables,
+  StrapiGqlTeacherInfoQuery,
+  StrapiGqlTeacherInfoQueryVariables,
   ResponseError,
   Teacher,
   PageHeader,
@@ -12,6 +14,7 @@ import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
 import { teacherFormatter } from "../formatters";
 import teacherDetailBySlugsQuery from "../../../graphql/queries/teacher-detail-by-slugs.gql";
+import teacherInfo from "../../../graphql/queries/teacher-info.gql";
 
 export class TeacherService {
   protected graphql = GraphQLClient.getInstance();
@@ -28,6 +31,15 @@ export class TeacherService {
     }
     TeacherService.instance = new TeacherService();
     return TeacherService.instance;
+  }
+
+  public async info() {
+    const vars: StrapiGqlTeacherInfoQueryVariables = {};
+    const res = await this.graphql.requestCached<StrapiGqlTeacherInfoQuery>(
+      teacherInfo,
+      vars
+    );
+    return res.teacherInfo;
   }
 
   async listDetail(slugs: string[] = [], limit = 50, start = 0) {
@@ -82,11 +94,14 @@ export class TeacherService {
     return teacher;
   }
 
-  public getHeader(teachers: Teacher[]): PageHeader | Record<string, never> {
+  public getHeader(
+    teachers: Teacher[],
+    title?: string
+  ): PageHeader | Record<string, never> {
     if (teachers.length === 1) {
       const teacher = teachers[0];
       const header: PageHeader = {
-        title: teacher.name || "",
+        title: teacher.name || title || "",
         breadcrumbs: [
           {
             type: ENTRY_TYPE.Home,
@@ -94,7 +109,7 @@ export class TeacherService {
             active: false,
           },
           {
-            label: "Lehrer",
+            label: title,
             type: ENTRY_TYPE.Teacher,
             active: false,
             url: teacherFormatter.read(),
@@ -112,7 +127,7 @@ export class TeacherService {
 
     if (teachers.length > 1) {
       const header: PageHeader = {
-        title: "Lehrer",
+        title: title || "Lehrer",
         breadcrumbs: [
           {
             type: ENTRY_TYPE.Home,

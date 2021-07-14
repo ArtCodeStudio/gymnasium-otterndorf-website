@@ -1,0 +1,6 @@
+query schoolSubjectInfo {
+  schoolSubjectInfo {
+    title
+    description
+  }
+}

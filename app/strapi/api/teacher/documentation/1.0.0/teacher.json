@@ -621,6 +621,9 @@
                 "slug": {
                   "type": "uid"
                 },
+                "blackboard_image": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },

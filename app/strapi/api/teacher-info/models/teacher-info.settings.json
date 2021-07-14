@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "teacher_infos",
+  "info": {
+    "name": "Teacher Info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Lehrer"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
