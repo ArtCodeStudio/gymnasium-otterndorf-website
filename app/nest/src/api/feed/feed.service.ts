@@ -4,7 +4,10 @@ import { SearchPost } from '../../types';
 import { NavService } from '../nav';
 import { PodcastService } from '../podcast/podcast.service';
 import { MarkdownService } from '../markdown/markdown.service';
-import { Feed } from 'feed';
+import { GeneralService } from '../general/general.service';
+import { FeedType } from './types/feed-type';
+import { Feed, FeedOptions } from 'feed';
+import { Awaited } from '../../types';
 import {
   Podcast,
   FeedItunesCategory,
@@ -17,14 +20,27 @@ export class FeedService {
     protected readonly post: PostService,
     protected readonly podcast: PodcastService,
     protected readonly markdown: MarkdownService,
+    protected readonly general: GeneralService,
   ) {}
 
   public getSiteUrl() {
     return NavService.buildNestSrc('');
   }
 
-  public getFeedUrl() {
-    return NavService.buildNestSrc('api/feed/rss');
+  public getFeedUrl(type: FeedType) {
+    let url = 'api/feed/';
+    switch (type) {
+      case FeedType.rss:
+        url += 'rss';
+        break;
+      case FeedType.atom:
+        url += 'atom';
+        break;
+      case FeedType.json:
+        url += 'json';
+        break;
+    }
+    return NavService.buildNestSrc(url);
   }
 
   public getPodcastFeedUrl() {
@@ -38,19 +54,56 @@ export class FeedService {
 
   // TODO properties, see https://github.com/jpmonette/feed
   public async get() {
-    const feed = new Feed({
-      title: 'Gymnasium Otterndorf Neuigkeiten',
-      id: NavService.buildNestSrc(''),
-      link: this.getSiteUrl(),
-      copyright: '2021, Gymnasium Otterndorf',
-    });
+    let settings: Awaited<ReturnType<GeneralService['settings']>>;
+    try {
+      settings = await this.general.settings();
+      console.debug('settings', settings);
+    } catch (error) {
+      console.error(error);
+    }
+
+    const link = this.getSiteUrl();
+
+    const options: FeedOptions = {
+      title: settings.title,
+      description: settings.description,
+      id: link,
+      link,
+      copyright: settings.copyright || '',
+      favicon: NavService.buildNestSrc('favicons/favicon.ico'),
+      feedLinks: {
+        rss: this.getFeedUrl(FeedType.rss),
+        atom: this.getFeedUrl(FeedType.atom),
+        json: this.getFeedUrl(FeedType.json),
+      },
+    };
+
+    if (settings.description) {
+      options.description = settings.description;
+    }
+
+    if (settings.language) {
+      options.language = settings.language;
+    }
+
+    if (settings.author_name) {
+      options.author = options.author || {};
+      options.author.name = settings.author_name;
+    }
+
+    if (settings.author_email) {
+      options.author = options.author || {};
+      options.author.name = settings.author_email;
+    }
+
+    const feed = new Feed(options);
 
     const posts = await this.post.list();
 
     for (const post of posts) {
       feed.addItem({
         title: post.title,
-        link: NavService.buildNestSrc('blog'),
+        link: NavService.buildHref('post', post.slug, true),
         date: new Date(post.updatedAt),
         content: await this.markdown.html(post.md),
         author: [

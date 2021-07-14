@@ -27,6 +27,7 @@ import { FeedService } from './api/feed/feed.service';
 import { PodloveController } from './api/podlove/podlove.controller';
 import { PodloveService } from './api/podlove/podlove.service';
 import { PodcastService } from './api/podcast/podcast.service';
+import { GeneralService } from './api/general/general.service';
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ import { PodcastService } from './api/podcast/podcast.service';
     FeedService,
     PodloveService,
     PodcastService,
+    GeneralService,
   ],
 })
 export class AppModule {

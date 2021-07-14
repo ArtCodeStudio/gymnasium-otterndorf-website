@@ -1,0 +1,15 @@
+#import "../fragments/image.gql"
+
+query generalSettings {
+  generalSetting {
+  	title
+    description
+    language
+    image {
+      ...ImageFragment
+    }
+    copyright
+    author_name
+    author_email
+  }
+}

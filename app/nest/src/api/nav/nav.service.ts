@@ -66,35 +66,54 @@ export class NavService {
     return `${strapiUrl}/${src}`;
   }
 
-  static buildHref(type: string, slug?: string) {
-    if (!slug) {
-      return '';
-    }
+  static buildHref(type: string, slug?: string, absolute = false) {
+    let url = '';
     switch (type) {
       case 'ComponentLinkTypeBlog':
       case 'post':
-        return '/post/' + slug;
+        url = '/post';
+        break;
       case 'ComponentLinkTypePage':
       case 'page':
-        return '/page/' + slug;
+        url = '/page';
+        break;
       case 'ComponentLinkTypeSchoolSubject':
       case 'subject':
-        return '/school-subject/' + slug;
+        url = '/school-subject';
+        break;
       case 'teacher':
-        return '/teacher/' + slug;
+        url = '/teacher';
+        break;
       case 'blog':
-        return '/blog/' + slug;
+        url = '/blog';
+        break;
       case 'ComponentLinkTypeMediaCenter':
-        return `/media-center/${slug}`;
+        url = '/media-center';
+        break;
       case 'gallery':
       case 'ComponentLinkTypeGallery':
-        return `/gallery/${slug}`;
+        url = '/gallery';
+        break;
       case 'PodcastEpisode':
       case 'podcast':
-        return `/podcast/${slug}`;
+        url = '/podcast';
+        break;
       case 'WorkingGroup':
-        return `/working-group/${slug}`;
+        url = '/working-group';
+        break;
+      default:
+        throw new Error('Unknown link type!');
     }
+
+    if (slug) {
+      url += '/' + slug;
+    }
+
+    if (absolute) {
+      url = this.buildNestSrc(url);
+    }
+
+    return url;
   }
 
   public static getHref(

@@ -1,0 +1,51 @@
+{
+  "kind": "singleType",
+  "collectionName": "general_settings",
+  "info": {
+    "name": "General Settings",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Gymnasium Otterndorf"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "language": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2,
+      "default": "de"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "copyright": {
+      "type": "string",
+      "required": true
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_email": {
+      "type": "email"
+    }
+  }
+}

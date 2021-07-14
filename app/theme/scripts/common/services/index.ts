@@ -5,6 +5,7 @@ export { ColorService } from "./color";
 export { FooterService } from "./footer";
 export { FormerStudentService } from "./former-student";
 export { GalleryService } from "./gallery";
+export { GeneralService } from "./general";
 export { GraphQLClient } from "./graphql";
 export { GyHomeService } from "./home";
 export { MarkdownService } from "./markdown";

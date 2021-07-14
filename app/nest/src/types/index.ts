@@ -6,3 +6,4 @@ export * from '../api/page/types/index';
 export * from '../api/post/types/index';
 export * from '../api/school-subject/types/index';
 export * from '../api/teacher/types/index';
+export * from './awaited';
