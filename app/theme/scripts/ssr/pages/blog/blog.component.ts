@@ -15,6 +15,8 @@ export interface Scope {
   categories: Blog[];
   header: PageHeader | Record<string, never>;
   posts: Post[];
+  title: string;
+  description: string;
 }
 
 export class BlogPageComponent extends PageComponent {
@@ -31,6 +33,8 @@ export class BlogPageComponent extends PageComponent {
     categories: [],
     header: {},
     params: {},
+    title: "Neuigkeiten",
+    description: "",
   };
 
   static get observedAttributes(): string[] {
@@ -53,6 +57,14 @@ export class BlogPageComponent extends PageComponent {
     return [];
   }
 
+  protected async setInfo() {
+    const info = await this.blog.info();
+    if (info) {
+      this.scope.title = info.title || this.scope.title;
+      this.scope.description = info.description || this.scope.description;
+    }
+  }
+
   protected async getPosts(slug?: string) {
     if (slug) {
       // Get posts by category
@@ -71,16 +83,20 @@ export class BlogPageComponent extends PageComponent {
   }
 
   protected async getHeader() {
-    this.scope.header = this.blog.getHeader(this.scope.category);
+    this.scope.header = this.blog.getHeader(
+      this.scope.category,
+      this.scope.title
+    );
   }
 
   protected async beforeBind() {
     await super.beforeBind();
     await this.getPosts(this.ctx.params.slug);
+    await this.setInfo();
     await this.getHeader();
     await this.getCategories();
 
-    this.head.title = "Blog";
+    this.head.title = this.scope.title;
   }
 
   protected async afterBind() {

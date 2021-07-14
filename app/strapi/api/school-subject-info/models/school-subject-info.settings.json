@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "school_subject_infos",
+  "info": {
+    "name": "School Subject Info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Schulfächer",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

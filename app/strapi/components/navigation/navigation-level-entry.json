@@ -19,6 +19,9 @@
     "hideInSidebar": {
       "type": "boolean",
       "default": false
+    },
+    "children": {
+      "collection": "navigation-link"
     }
   }
 }

@@ -6,6 +6,8 @@ import { Page, PageHeader, replaceBodyPageClass } from "../../../common";
 export interface Scope {
   header: PageHeader | Record<string, never>;
   pages: Page[];
+  title: string;
+  description: string;
 }
 
 export class PagesPageComponent extends PageComponent {
@@ -18,6 +20,8 @@ export class PagesPageComponent extends PageComponent {
   scope: Scope = {
     pages: [],
     header: {},
+    title: "Unterseiten",
+    description: "",
   };
 
   static get observedAttributes(): string[] {
@@ -36,6 +40,14 @@ export class PagesPageComponent extends PageComponent {
 
   protected setHeader() {
     this.scope.header = this.page.getHeader();
+  }
+
+  protected async setInfo() {
+    const info = await this.page.info();
+    if (info) {
+      this.scope.title = info.title || this.scope.title;
+      this.scope.description = info.description || this.scope.description;
+    }
   }
 
   protected async beforeBind() {

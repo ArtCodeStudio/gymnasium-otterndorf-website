@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "working_group_infos",
+  "info": {
+    "name": "Working Group Info",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "AGs"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

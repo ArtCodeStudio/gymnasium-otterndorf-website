@@ -1,0 +1,6 @@
+query workingGroupInfo {
+  workingGroupInfo {
+    title
+    description
+  }
+}

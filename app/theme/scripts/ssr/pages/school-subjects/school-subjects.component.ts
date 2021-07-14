@@ -10,6 +10,8 @@ import {
 export interface Scope {
   header: PageHeader | Record<string, never>;
   schoolSubjects: SchoolSubject[];
+  title: string;
+  description: string;
 }
 
 export class SchoolSubjectsPageComponent extends PageComponent {
@@ -22,6 +24,8 @@ export class SchoolSubjectsPageComponent extends PageComponent {
   scope: Scope = {
     schoolSubjects: [],
     header: {},
+    title: "Schulfächer",
+    description: "",
   };
 
   static get observedAttributes(): string[] {
@@ -38,19 +42,30 @@ export class SchoolSubjectsPageComponent extends PageComponent {
     return [];
   }
 
+  protected async setInfo() {
+    const info = await this.schoolSubject.info();
+    if (info) {
+      this.scope.title = info.title || this.scope.title;
+      this.scope.description = info.description || this.scope.description;
+    }
+  }
+
   protected async beforeBind() {
-    this.head.title = this.ctx.params.slug;
     try {
       const schoolSubjects =
         (await this.schoolSubject.listBasic()) as SchoolSubject[];
+      await this.setInfo();
       if (schoolSubjects) {
         this.scope.schoolSubjects = schoolSubjects;
-        this.scope.header = this.schoolSubject.getHeader();
+        this.scope.header = this.schoolSubject.getHeader(
+          undefined,
+          this.scope.title
+        );
       }
     } catch (error) {
       this.throw(error);
     }
-    this.head.title = this.scope.header.title;
+    this.head.title = this.scope.title;
     await super.beforeBind();
   }
 

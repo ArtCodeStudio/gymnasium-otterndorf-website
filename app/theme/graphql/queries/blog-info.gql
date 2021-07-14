@@ -1,0 +1,6 @@
+query blogInfo {
+  blogInfo {
+    title
+    description
+  }
+}

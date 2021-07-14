@@ -4,6 +4,8 @@ import {
   StrapiGqlWorkingGroupDetailBySlugsQueryVariables,
   StrapiGqlWorkingGroupBasicBySlugsQuery,
   StrapiGqlWorkingGroupBasicBySlugsQueryVariables,
+  StrapiGqlWorkingGroupInfoQuery,
+  StrapiGqlWorkingGroupInfoQueryVariables,
   ResponseError,
   DynamicZoneSection,
   PageHeader,
@@ -16,6 +18,7 @@ import { SectionsService } from "./sections";
 import { workingGroupFormatter } from "../formatters";
 import workingGroupDetailBySlugs from "../../../graphql/queries/working-group-detail-by-slugs.gql";
 import workingGroupBasicBySlugs from "../../../graphql/queries/working-group-basic-by-slugs.gql";
+import workingGroupInfo from "../../../graphql/queries/working-group-info.gql";
 
 export class WorkingGroupService {
   protected graphql = GraphQLClient.getInstance();
@@ -32,6 +35,16 @@ export class WorkingGroupService {
     }
     WorkingGroupService.instance = new WorkingGroupService();
     return WorkingGroupService.instance;
+  }
+
+  public async info() {
+    const vars: StrapiGqlWorkingGroupInfoQueryVariables = {};
+    const res =
+      await this.graphql.requestCached<StrapiGqlWorkingGroupInfoQuery>(
+        workingGroupInfo,
+        vars
+      );
+    return res.workingGroupInfo;
   }
 
   async listDetail(slugs: string[] = [], limit = 50, start = 0) {
@@ -121,9 +134,9 @@ export class WorkingGroupService {
     return [];
   }
 
-  public getHeader(workingGroup?: WorkingGroup): PageHeader {
+  public getHeader(workingGroup?: WorkingGroup, title?: string): PageHeader {
     const header: PageHeader = {
-      title: workingGroup?.title || "AGs",
+      title: workingGroup?.title || title || "AGs",
       breadcrumbs: [
         {
           type: ENTRY_TYPE.Home,
@@ -131,7 +144,7 @@ export class WorkingGroupService {
           active: false,
         },
         {
-          label: "AGs",
+          label: title,
           type: ENTRY_TYPE.WorkingGroup,
           active: workingGroup ? false : true,
           url: workingGroupFormatter.read(),

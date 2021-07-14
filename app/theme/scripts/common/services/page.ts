@@ -4,6 +4,8 @@ import {
   StrapiGqlPageDetailBySlugsQueryVariables,
   StrapiGqlPageBasicBySlugsQuery,
   StrapiGqlPageBasicBySlugsQueryVariables,
+  StrapiGqlPageInfoQuery,
+  StrapiGqlPageInfoQueryVariables,
   ResponseError,
   Page,
   DynamicZoneSection,
@@ -15,6 +17,7 @@ import { SectionsService } from "./sections";
 import { pageFormatter } from "../formatters";
 import pageDetailBySlugsQuery from "../../../graphql/queries/page-detail-by-slugs.gql";
 import pageBasicBySlugsQuery from "../../../graphql/queries/page-basic-by-slugs.gql";
+import pageInfoQuery from "../../../graphql/queries/page-info.gql";
 
 export class PageService {
   protected graphql = GraphQLClient.getInstance();
@@ -31,6 +34,15 @@ export class PageService {
     }
     PageService.instance = new PageService();
     return PageService.instance;
+  }
+
+  public async info() {
+    const vars: StrapiGqlPageInfoQueryVariables = {};
+    const res = await this.graphql.requestCached<StrapiGqlPageInfoQuery>(
+      pageInfoQuery,
+      vars
+    );
+    return res.pageInfo;
   }
 
   public async listBasic(slugs: string[] = [], limit = 50, start = 0) {

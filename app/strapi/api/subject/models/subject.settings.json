@@ -18,8 +18,9 @@
       "required": true
     },
     "teachers": {
-      "via": "subjects",
       "columnName": "Lehrer",
+      "targetColumnName": "Fächer",
+      "via": "subjects",
       "collection": "teacher",
       "dominant": true
     },
@@ -49,6 +50,16 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "blackboard_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

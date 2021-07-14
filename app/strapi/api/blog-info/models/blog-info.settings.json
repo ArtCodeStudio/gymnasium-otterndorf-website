@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "blog_infos",
+  "info": {
+    "name": "Blog Info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Neuigkeiten"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

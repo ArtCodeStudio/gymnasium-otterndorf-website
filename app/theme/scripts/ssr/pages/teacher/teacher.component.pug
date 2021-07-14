@@ -2,6 +2,8 @@
   .row
     .col-12
       gy-page-header.col-12.my-4(ssr-rv-co-header="header")
+    .col-12(ssr-rv-if="description")
+      p(ssr-rv-html="description | markdown")
   section.row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-4.mb-4w(ssr-rv-if="teachers.length | gt 1")
     gy-teacher-item.col.mx-auto(ssr-rv-each-teacher="teachers" ssr-rv-co-teacher="teacher")
   section.row(ssr-rv-unless="teachers.length | gt 1" ssr-rv-assign-teacher="teachers | get 0")
