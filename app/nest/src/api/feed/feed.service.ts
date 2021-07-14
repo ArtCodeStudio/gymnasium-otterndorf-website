@@ -6,7 +6,7 @@ import { PodcastService } from '../podcast/podcast.service';
 import { MarkdownService } from '../markdown/markdown.service';
 import { GeneralService } from '../general/general.service';
 import { FeedType } from './types/feed-type';
-import { Feed, FeedOptions } from 'feed';
+import { Feed, FeedOptions, Item as FeedItem } from 'feed';
 import { Awaited } from '../../types';
 import {
   Podcast,
@@ -78,6 +78,10 @@ export class FeedService {
       },
     };
 
+    if (settings.image?.url) {
+      options.image = NavService.buildStrapiSrc(settings.image.url);
+    }
+
     if (settings.description) {
       options.description = settings.description;
     }
@@ -101,7 +105,7 @@ export class FeedService {
     const posts = await this.post.list();
 
     for (const post of posts) {
-      feed.addItem({
+      const item: FeedItem = {
         title: post.title,
         link: NavService.buildHref('post', post.slug, true),
         date: new Date(post.updatedAt),
@@ -111,8 +115,13 @@ export class FeedService {
             name: post.author,
           },
         ],
-        // image
-      });
+      };
+
+      if (post.images.length && post.images[0]?.url) {
+        item.image = NavService.buildStrapiSrc(post.images[0].url);
+      }
+
+      feed.addItem(item);
     }
 
     return feed;

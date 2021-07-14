@@ -70,7 +70,7 @@ export class PostService {
   public async flatten(
     post: StrapiGqlBlogEntryBasicFragmentFragment,
   ): Promise<SearchPost> {
-    const { texts, markdowns } = await this.getContentObject(post);
+    const { texts, markdowns, images } = await this.getContentObject(post);
 
     return {
       id: post.id,
@@ -80,6 +80,7 @@ export class PostService {
       text: texts.join('\n'),
       /** Markdown (no HTML) */
       md: markdowns.join('\n\n'),
+      images,
       updatedAt: post.updated_at || post.created_at,
       href: NavService.buildHref('post', post.slug),
       author: post.author,
