@@ -1,4 +1,4 @@
-import { StrapiGqlComponentSectionBlackboardSlideshow } from "./strapi-gql";
+import { StrapiGqlComponentSectionBlackboardSlideshowFragmentFragment } from "./strapi-gql";
 
 export type SectionBlackboardSlideshow =
-  StrapiGqlComponentSectionBlackboardSlideshow;
+  StrapiGqlComponentSectionBlackboardSlideshowFragmentFragment;

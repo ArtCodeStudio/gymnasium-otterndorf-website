@@ -88,7 +88,8 @@ export class NavigationService {
     }
 
     if (!navigationLink) {
-      throw new Error("Navigation link not found!");
+      console.warn("Navigation link not found!", baseItem);
+      return;
     }
 
     const type = navigationLink.type?.[0];
