@@ -594,7 +594,7 @@
                     "id": {
                       "type": "string"
                     },
-                    "schulfach": {
+                    "school_subject": {
                       "required": [
                         "id",
                         "title",
@@ -1270,7 +1270,7 @@
                     "id": {
                       "type": "string"
                     },
-                    "schulfach": {
+                    "school_subject": {
                       "required": [
                         "id",
                         "title",

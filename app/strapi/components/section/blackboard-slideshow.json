@@ -13,9 +13,7 @@
       "component": "blackboard.slide"
     },
     "subjects": {
-      "type": "component",
-      "repeatable": true,
-      "component": "link-type.schulfach"
+      "collection": "subject"
     }
   }
 }

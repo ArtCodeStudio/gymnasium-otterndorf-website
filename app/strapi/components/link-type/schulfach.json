@@ -1,12 +1,13 @@
 {
-  "collectionName": "components_link_type_schulfaches",
+  "collectionName": "components_link_type_school_subjects",
   "info": {
-    "name": "Schulfach",
-    "icon": "arrow-alt-circle-up"
+    "name": "School Subject",
+    "icon": "arrow-alt-circle-up",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "schulfach": {
+    "school_subject": {
       "model": "subject"
     }
   }

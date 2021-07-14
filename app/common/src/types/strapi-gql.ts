@@ -469,11 +469,11 @@ export type StrapiGqlComponentLinkTypePostInput = {
 export type StrapiGqlComponentLinkTypeSchulfach = {
   __typename?: 'ComponentLinkTypeSchulfach';
   id: Scalars['ID'];
-  schulfach?: Maybe<StrapiGqlSubject>;
+  school_subject?: Maybe<StrapiGqlSubject>;
 };
 
 export type StrapiGqlComponentLinkTypeSchulfachInput = {
-  schulfach?: Maybe<Scalars['ID']>;
+  school_subject?: Maybe<Scalars['ID']>;
 };
 
 export type StrapiGqlComponentLinkTypeStrapi = {
@@ -616,10 +616,20 @@ export type StrapiGqlComponentSectionBlackboardSlideshow = {
   __typename?: 'ComponentSectionBlackboardSlideshow';
   id: Scalars['ID'];
   slides?: Maybe<Array<Maybe<StrapiGqlComponentBlackboardSlide>>>;
+  subjects?: Maybe<Array<Maybe<StrapiGqlSubject>>>;
+};
+
+
+export type StrapiGqlComponentSectionBlackboardSlideshowSubjectsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
 };
 
 export type StrapiGqlComponentSectionBlackboardSlideshowInput = {
   slides?: Maybe<Array<Maybe<StrapiGqlComponentBlackboardSlideInput>>>;
+  subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
 export type StrapiGqlComponentSectionBlogSlideshow = {
@@ -4094,7 +4104,7 @@ export type StrapiGqlEditComponentLinkTypePostInput = {
 
 export type StrapiGqlEditComponentLinkTypeSchulfachInput = {
   id?: Maybe<Scalars['ID']>;
-  schulfach?: Maybe<Scalars['ID']>;
+  school_subject?: Maybe<Scalars['ID']>;
 };
 
 export type StrapiGqlEditComponentLinkTypeStrapiInput = {
@@ -4164,6 +4174,7 @@ export type StrapiGqlEditComponentPodcastChapterInput = {
 export type StrapiGqlEditComponentSectionBlackboardSlideshowInput = {
   id?: Maybe<Scalars['ID']>;
   slides?: Maybe<Array<Maybe<StrapiGqlEditComponentBlackboardSlideInput>>>;
+  subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
 export type StrapiGqlEditComponentSectionBlogSlideshowInput = {
@@ -4859,18 +4870,6 @@ export type StrapiGqlComponentAttachmentAssetsFragmentFragment = (
   )> }
 );
 
-export type StrapiGqlComponentBlackboardSlideFragmentFragment = (
-  { __typename?: 'ComponentBlackboardSlide' }
-  & Pick<StrapiGqlComponentBlackboardSlide, 'id'>
-  & { school_subject?: Maybe<(
-    { __typename?: 'Subject' }
-    & StrapiGqlSchoolSubjectBasicFragmentFragment
-  )>, image?: Maybe<(
-    { __typename?: 'UploadFile' }
-    & StrapiGqlImageFragmentFragment
-  )> }
-);
-
 export type StrapiGqlComponentContentButtonFragmentFragment = (
   { __typename?: 'ComponentContentButton' }
   & Pick<StrapiGqlComponentContentButton, 'id' | 'label'>
@@ -4965,9 +4964,13 @@ export type StrapiGqlComponentPodcastChaptersFragmentFragment = (
 export type StrapiGqlComponentSectionBlackboardSlideshowFragmentFragment = (
   { __typename?: 'ComponentSectionBlackboardSlideshow' }
   & Pick<StrapiGqlComponentSectionBlackboardSlideshow, 'id'>
-  & { slides?: Maybe<Array<Maybe<(
-    { __typename?: 'ComponentBlackboardSlide' }
-    & StrapiGqlComponentBlackboardSlideFragmentFragment
+  & { subjects?: Maybe<Array<Maybe<(
+    { __typename?: 'Subject' }
+    & Pick<StrapiGqlSubject, 'title' | 'slug'>
+    & { blackboard_image?: Maybe<(
+      { __typename?: 'UploadFile' }
+      & StrapiGqlImageFragmentFragment
+    )> }
   )>>> }
 );
 
@@ -5201,7 +5204,7 @@ export type StrapiGqlNavigationLinkFragmentFragment = (
     & Pick<StrapiGqlComponentLinkTypeWeb, 'URL'>
   ) | (
     { __typename: 'ComponentLinkTypeSchulfach' }
-    & { schulfach?: Maybe<(
+    & { school_subject?: Maybe<(
       { __typename?: 'Subject' }
       & Pick<StrapiGqlSubject, 'title' | 'slug'>
     )> }
@@ -5390,7 +5393,10 @@ export type StrapiGqlSchoolSubjectBasicFragmentFragment = (
 export type StrapiGqlSchoolSubjectDetailFragmentFragment = (
   { __typename: 'Subject' }
   & Pick<StrapiGqlSubject, 'id' | 'slug' | 'title' | 'created_at' | 'updated_at'>
-  & { teachers?: Maybe<Array<Maybe<(
+  & { blackboard_image?: Maybe<(
+    { __typename?: 'UploadFile' }
+    & StrapiGqlImageFragmentFragment
+  )>, teachers?: Maybe<Array<Maybe<(
     { __typename?: 'Teacher' }
     & StrapiGqlTeacherBasicFragmentFragment
   )>>>, content?: Maybe<Array<Maybe<(

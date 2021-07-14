@@ -16,7 +16,7 @@ fragment NavigationLinkFragment on NavigationLink {
       }
     }
     ... on ComponentLinkTypeSchulfach {
-      schulfach {
+      school_subject {
         title
         slug
       }

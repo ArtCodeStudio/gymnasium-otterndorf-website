@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/14/2021 11:23:42 AM"
+    "x-generation-date": "07/14/2021 12:21:41 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -12851,49 +12851,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -14299,49 +14288,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -16329,49 +16307,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -17726,49 +17693,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -19132,7 +19088,7 @@
                     "id": {
                       "type": "string"
                     },
-                    "schulfach": {
+                    "school_subject": {
                       "required": [
                         "id",
                         "title",
@@ -19808,7 +19764,7 @@
                     "id": {
                       "type": "string"
                     },
-                    "schulfach": {
+                    "school_subject": {
                       "required": [
                         "id",
                         "title",
@@ -20905,49 +20861,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -22442,49 +22387,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -26217,49 +26151,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -27697,49 +27620,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -29885,49 +29797,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -31357,49 +31258,38 @@
                     "subjects": {
                       "type": "array",
                       "items": {
-                        "type": "object",
                         "required": [
-                          "id"
+                          "id",
+                          "title",
+                          "slug"
                         ],
                         "properties": {
                           "id": {
                             "type": "string"
                           },
-                          "schulfach": {
-                            "required": [
-                              "id",
-                              "title",
-                              "slug"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "title": {
-                                "type": "string"
-                              },
-                              "teachers": {
-                                "type": "array",
-                                "items": {
-                                  "type": "string"
-                                }
-                              },
-                              "content": {
-                                "type": "dynamiczone"
-                              },
-                              "slug": {
-                                "type": "uid"
-                              },
-                              "blackboard_image": {
-                                "type": "string"
-                              },
-                              "created_by": {
-                                "type": "string"
-                              },
-                              "updated_by": {
-                                "type": "string"
-                              }
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
                             }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
