@@ -15,23 +15,43 @@ const setBodyPageClass = (
     | Component
     | typeof PageComponent
     | typeof Component
+    | string
 ) => {
-  const cls = pageComponent.tagName.toLowerCase();
-  if (!cls.endsWith("-page")) {
+  let tagName = "";
+  if (typeof pageComponent === "string") {
+    tagName = pageComponent.toLowerCase();
+  } else {
+    tagName = pageComponent.tagName.toLowerCase();
+  }
+
+  if (!tagName.endsWith("-page")) {
     console.warn('Page class must be ending with "-page"');
     return;
   }
-  document.body.classList.add(cls);
+  document.body.classList.add(tagName);
+};
+
+export const findPageElement = () => {
+  const pageEl = document.querySelector<PageComponent>("router-view#main > *");
+  console.debug("pageEl", pageEl);
+  return pageEl;
 };
 
 export const replaceBodyPageClass = (
-  pageComponent:
+  pageComponent?:
     | HTMLElement
     | PageComponent
     | Component
     | typeof PageComponent
     | typeof Component
+    | string
 ) => {
+  if (!pageComponent) {
+    pageComponent = findPageElement() || undefined;
+    if (!pageComponent) {
+      throw new Error("Page element not found!");
+    }
+  }
   removeBodyPageClasses();
   setBodyPageClass(pageComponent);
 };

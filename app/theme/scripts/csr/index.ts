@@ -1,6 +1,8 @@
 import { ready } from "@ribajs/utils/src/dom";
+import { replaceBodyPageClass } from "../common";
 import { Riba, View, coreModule } from "@ribajs/core";
 import { extrasModule } from "@ribajs/extras";
+import { EventDispatcher } from "@ribajs/events";
 import { contentSliderModule } from "@ribajs/content-slider";
 import { routerModule } from "@ribajs/router";
 import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
@@ -37,12 +39,17 @@ export class CSRApp {
   protected view?: View;
   protected riba = new Riba();
   protected model: any = {};
+  protected routerEvents = EventDispatcher.getInstance("main");
 
   protected localesService = new LocalesStaticService(
     locales,
     undefined,
     false
   );
+
+  protected onPageChanges() {
+    replaceBodyPageClass();
+  }
 
   constructor() {
     this.riba.configure({
@@ -83,6 +90,8 @@ export class CSRApp {
         console.error(error);
       }
     );
+
+    this.routerEvents.on("transitionCompleted", this.onPageChanges, this);
   }
 }
 
