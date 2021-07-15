@@ -9,6 +9,7 @@ export * from "./dynamic-zone-section";
 export * from "./entry-type";
 export * from "./navigation-link";
 export * from "./nest-service";
+export * from "./open-graph-data";
 export * from "./page-header";
 export * from "./page";
 export * from "./post";

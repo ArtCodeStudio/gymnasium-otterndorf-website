@@ -1,11 +1,6 @@
-import { PageComponent, OpenGraphService } from "@ribajs/ssr";
-import { HomeService, GeneralService } from "../../services";
-import {
-  Section,
-  replaceBodyPageClass,
-  nestFormatter,
-  strapiImageUrlFormatter,
-} from "../../../common";
+import { PageComponent } from "@ribajs/ssr";
+import { HomeService, OpenGraphService } from "../../services";
+import { Section, replaceBodyPageClass } from "../../../common";
 import pugTemplate from "./index.component.pug";
 
 export interface Scope {
@@ -17,7 +12,7 @@ export class IndexPageComponent extends PageComponent {
   public _debug = false;
   protected autobind = true;
   protected home = HomeService.getInstance();
-  protected general = GeneralService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   protected head = {
     title: "Startseite",
@@ -47,21 +42,7 @@ export class IndexPageComponent extends PageComponent {
 
   protected async beforeBind() {
     this.scope.sections = await this.home.getSections();
-    const settings = await this.general.settings();
-    let image = "";
-
-    if (settings?.image?.url) {
-      // TODO get image sizes like we do it for audio files in nest?
-      image = strapiImageUrlFormatter.read(settings.image, "original");
-    }
-
-    OpenGraphService.set({
-      title: this.head.title,
-      image,
-      type: "website",
-      description: settings?.description,
-      url: nestFormatter.read(),
-    });
+    await this.openGraph.setDefault({});
     await super.beforeBind();
   }
 

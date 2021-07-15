@@ -12,6 +12,7 @@ export { MarkdownService } from "./markdown";
 export { MediaCenterService } from "./media-center";
 export { MensaMaxService } from "./mensa-max";
 export { NavigationService } from "./navigation";
+export { OpenGraphService } from "./open-graph";
 export { PageService } from "./page";
 export { PodcastService } from "./podcast";
 export { PodcasterService } from "./podcaster";
