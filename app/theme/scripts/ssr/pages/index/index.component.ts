@@ -59,6 +59,7 @@ export class IndexPageComponent extends PageComponent {
       title: this.head.title,
       image,
       type: "website",
+      description: settings?.description,
       url: nestFormatter.read(),
     });
     await super.beforeBind();
@@ -69,6 +70,6 @@ export class IndexPageComponent extends PageComponent {
   }
 
   protected template() {
-    return pugTemplate(/*this.scope*/ {});
+    return pugTemplate(this.scope);
   }
 }
