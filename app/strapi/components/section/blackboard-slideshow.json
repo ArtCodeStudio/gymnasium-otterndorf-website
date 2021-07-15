@@ -7,11 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "slides": {
-      "type": "component",
-      "repeatable": true,
-      "component": "blackboard.slide"
-    },
     "subjects": {
       "collection": "subject"
     }
