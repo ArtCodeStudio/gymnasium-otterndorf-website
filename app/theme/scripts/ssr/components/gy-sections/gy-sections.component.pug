@@ -4,9 +4,9 @@
         .row(ssr-rv-if="getIndexForPageHeader | call | eq %section%")
             gy-page-header.col-12.my-4(ssr-rv-co-header="header")
         //- Content Sections
-        .row.my-5(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
+        .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
             gy-section-text.col-12(ssr-rv-co-section="section")
-        .row.my-5(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
+        .row.mt-3.mb-5(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
             gy-section-image.col-12(ssr-rv-co-section="section")
         .row.mt-3.mb-5(ssr-rv-if="section.__typename | eq 'ComponentContentButton'") 
             gy-section-button.col-12(ssr-rv-co-section="section")
