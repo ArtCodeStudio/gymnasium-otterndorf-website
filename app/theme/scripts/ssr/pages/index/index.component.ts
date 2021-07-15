@@ -55,7 +55,7 @@ export class IndexPageComponent extends PageComponent {
       image = strapiImageUrlFormatter.read(settings.image, "original");
     }
 
-    OpenGraphService.setMetaTags({
+    OpenGraphService.set({
       title: this.head.title,
       image,
       type: "website",
