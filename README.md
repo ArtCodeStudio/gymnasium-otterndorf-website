@@ -8,7 +8,7 @@ We are using yarn 2 because we make use of the workspace feature of yarn 2 for t
 
 ### Outsides of the workspace
 
-We ignore Strapi in the workspace because it is currently not compatible with Yarn 2 PnP, so we use `npm` for this and excluded it from yarn's workspace (there is no other way to use npm instead of yarn 2 for this package).
+We ignore Strapi in the workspace because it is currently not compatible with Yarn 2 PnP, so we use `npm` for this and excluded it from yarn's workspace (there is no other nvway to use npm instead of yarn 2 for this package).
 
 ### Clone
 
@@ -37,7 +37,7 @@ yarn install
 To install the dependencies which are excluded from the workspace (because they are not compatible with yarn 2) run:
 
 ```sh
-yarn install:outside
+yarn install:strapi && yarn install:strapi-student
 ```
 
 ### PM2
