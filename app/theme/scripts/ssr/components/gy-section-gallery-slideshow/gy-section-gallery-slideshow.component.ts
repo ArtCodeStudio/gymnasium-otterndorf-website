@@ -7,7 +7,6 @@ import { GalleryService, SlideshowService } from "../../services";
 export interface Scope {
   section?: SectionGallerySlideshow | null;
   textColor: string;
-  getTextColorClass: GySectionGallerySlideshowComponent["getTextColorClass"];
   getButtonColorClass: GySectionGallerySlideshowComponent["getButtonColorClass"];
 }
 
@@ -20,7 +19,6 @@ export class GySectionGallerySlideshowComponent extends Component {
   scope: Scope = {
     section: null,
     textColor: "transparent",
-    getTextColorClass: this.getTextColorClass,
     getButtonColorClass: this.getButtonColorClass,
   };
 
@@ -34,11 +32,6 @@ export class GySectionGallerySlideshowComponent extends Component {
 
   constructor() {
     super();
-  }
-
-  public getTextColorClass(color?: string) {
-    color = color || this.scope.textColor;
-    return `text-` + color;
   }
 
   public getButtonColorClass(color?: string, outline = true) {

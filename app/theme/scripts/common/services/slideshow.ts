@@ -22,10 +22,10 @@ export class SlideshowService {
           preferImage = true;
           break;
       }
-    } else {
-      classes = `bg-${color}`;
     }
     const textColor = ColorService.getAccentTextColor(color);
+
+    classes += ` bg-${color}`;
     classes += ` text-${textColor}`;
 
     return {
