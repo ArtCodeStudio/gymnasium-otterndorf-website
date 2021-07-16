@@ -4,6 +4,6 @@
       gy-page-header.col-12.my-4(ssr-rv-co-header="header")
     .col-12(ssr-rv-if="description")
       p(ssr-rv-html="description | markdown")
-  section.row(csr-rv-masonry='{"percentPosition": true }')
+  section.row(csr-rv-image-events csr-rv-masonry='{"percentPosition": true }')
     .col-12.col-md-6.col-lg-4(ssr-rv-each-subject="schoolSubjects")
       gy-school-subject-item(ssr-rv-co-school-subject="subject")

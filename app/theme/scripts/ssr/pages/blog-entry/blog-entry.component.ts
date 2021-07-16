@@ -1,4 +1,4 @@
-import { PageComponent, OpenGraphService } from "@ribajs/ssr";
+import { PageComponent } from "@ribajs/ssr";
 import { BlogService, GeneralService } from "../../services";
 import { Section, PageHeader, replaceBodyPageClass } from "../../../common";
 import pugTemplate from "./blog-entry.component.pug";

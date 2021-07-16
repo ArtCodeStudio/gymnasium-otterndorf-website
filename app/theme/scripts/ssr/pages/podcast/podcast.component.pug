@@ -2,6 +2,6 @@
   .row
     .col-12
       gy-page-header.col-12.my-4(ssr-rv-co-header="header")
-  section.row(csr-rv-masonry='{"percentPosition": true }')
+  section.row(csr-rv-image-events csr-rv-masonry='{"percentPosition": true }')
     .col-12.col-md-6.col-lg-4(rv-each-episode="episodes")
       gy-podcast-episode-item.col.mx-auto(ssr-rv-co-episode="episode")

@@ -10,6 +10,6 @@
         a.mx-1(rv-if="category.blog_entries | size | gt 0" rv-text="category.name" rv-href="category.slug | blog" csr-rv-route-class-active csr-rv-route-preload)
     .col-12(ssr-rv-if="description")
       p(ssr-rv-html="description | markdown")
-  section.row(csr-rv-masonry='{"percentPosition": true }')
+  section.row(csr-rv-image-events csr-rv-masonry='{"percentPosition": true }')
     .col-12.col-md-6.col-lg-4(rv-each-item="posts")
       gy-blog-entry-item(rv-co-post="item")

@@ -4548,6 +4548,7 @@ __metadata:
     "@ribajs/events": "workspace:*"
     "@ribajs/tsconfig": "workspace:*"
     "@ribajs/utils": "workspace:*"
+    "@types/imagesloaded": ^4.1.2
     "@types/jest": ^26.0.24
     "@typescript-eslint/eslint-plugin": ^4.28.3
     "@typescript-eslint/parser": ^4.28.3
@@ -4557,6 +4558,7 @@ __metadata:
     eslint: ^7.30.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^3.4.0
+    imagesloaded: ^4.1.4
     jest: ^27.0.6
     jest-extended: ^0.11.5
     prettier: 2.3.2
@@ -4913,7 +4915,6 @@ __metadata:
     "@types/supertest": ^2.0.11
     "@typescript-eslint/eslint-plugin": ^4.28.3
     "@typescript-eslint/parser": ^4.28.3
-    brakes: ^3.1.0
     cache-manager: ^3.4.4
     cheerio: ^1.0.0-rc.10
     consolidate: ^0.16.0
@@ -6326,6 +6327,15 @@ __metadata:
     "@types/request": "*"
     rrule: 2.6.4
   checksum: 3e8b8a29864f6d57461a561055d6f94f9cdd060e61557997ce531be8a7e7de096a5c6ea93fd4bb25f9195d8b7bebe4edb7e35c5f8ba0591f8bbe3e4530c99435
+  languageName: node
+  linkType: hard
+
+"@types/imagesloaded@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@types/imagesloaded@npm:4.1.2"
+  dependencies:
+    "@types/jquery": "*"
+  checksum: 7f2a72ef6648089b35e3e8336687a5b0d8a84c73253e6f17db45b3c600353e79ed149e9e4d199087efe492578771ac0f6ebf353b1f813c191687d0127b5cf305
   languageName: node
   linkType: hard
 
@@ -9263,7 +9273,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bluebird@npm:3.7.2, bluebird@npm:^3.4.6, bluebird@npm:^3.5.5, bluebird@npm:^3.7.2":
+"bluebird@npm:3.7.2, bluebird@npm:^3.5.5, bluebird@npm:^3.7.2":
   version: 3.7.2
   resolution: "bluebird@npm:3.7.2"
   checksum: 4f2288662f3d4eadbb82d4daa4a7d7976a28fa3c7eb4102c9b4033b03e5be4574ba123ac52a7c103cde4cb7b2d2afc1dbe41817ca15a29ff21ecd258d0286047
@@ -9406,15 +9416,6 @@ __metadata:
   dependencies:
     fill-range: ^7.0.1
   checksum: f3493181c3e91a1333d3c9afc9b3263a3f62f4ced0b033c372efc1373b48a7699557f4e04026b232a8556e043ca5360a9d3008c33852350138d4b0ea57558b8d
-  languageName: node
-  linkType: hard
-
-"brakes@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "brakes@npm:3.1.0"
-  dependencies:
-    bluebird: ^3.4.6
-  checksum: 80f069e8c7250779232ba2cb2a0431b9d5ac258c48126efc5b3c0889cf48f2d4e87399cbf7e99fc97ad87eb69393254bb7a1fd084d96ebabc718f789811383e5
   languageName: node
   linkType: hard
 
@@ -15242,6 +15243,15 @@ fsevents@^1.2.7:
   version: 5.1.8
   resolution: "ignore@npm:5.1.8"
   checksum: b08e3d5b5d94eca13475f29a5d47d221060e9cdd7e38d7647088e29d90130669a970fecbc4cdb41b8fa295c6673740c729d3dc05dadc381f593efb42282cbf9f
+  languageName: node
+  linkType: hard
+
+"imagesloaded@npm:^4.1.4":
+  version: 4.1.4
+  resolution: "imagesloaded@npm:4.1.4"
+  dependencies:
+    ev-emitter: ^1.0.0
+  checksum: f7542689485c6a9355f139e87af9511a718e68e79cba83154560f356d0b2a333c998ccd0140d9a2d0adbd3deb807ce1de5935fcfe2d0e3216641ddaed267a31d
   languageName: node
   linkType: hard
 

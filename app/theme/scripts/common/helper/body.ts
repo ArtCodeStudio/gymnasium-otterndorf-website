@@ -33,7 +33,6 @@ const setBodyPageClass = (
 
 export const findPageElement = () => {
   const pageEl = document.querySelector<PageComponent>("router-view#main > *");
-  console.debug("pageEl", pageEl);
   return pageEl;
 };
 
