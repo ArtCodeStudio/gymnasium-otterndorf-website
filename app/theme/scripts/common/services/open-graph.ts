@@ -3,17 +3,21 @@ import {
   OpenGraph,
   OpenGraphImage,
 } from "@ribajs/ssr";
-import { GeneralService } from "./general";
+import { cutFormatter, stripHtmlFormatter } from "@ribajs/core";
+import { GeneralService, BlogService } from ".";
 import {
   nestFormatter,
   strapiImageUrlFormatter,
   strapiFormatter,
+  postFormatter,
+  markdownFormatter,
 } from "../formatters";
-import { OpenGraphData, StrapiGqlImageFragmentFragment } from "../types";
+import { OpenGraphData, StrapiGqlImageFragmentFragment, Post } from "../types";
 
 export class OpenGraphService {
   protected static instance: OpenGraphService;
   protected general = GeneralService.getInstance();
+  protected blog = BlogService.getInstance();
 
   protected constructor() {
     /** protected */
@@ -33,23 +37,21 @@ export class OpenGraphService {
     }
     const results: string[] | OpenGraphImage[] = [];
     const images = Array.isArray(_image) ? _image : [_image];
+
     for (const image of images) {
       let imageResult: string | OpenGraphImage = "";
 
       if (typeof image === "string") {
         imageResult = strapiFormatter.read(image);
-      }
-
-      if (
-        (image as StrapiGqlImageFragmentFragment).__typename === "UploadFile"
+      } else if (
+        (image as StrapiGqlImageFragmentFragment).url &&
+        (image as StrapiGqlImageFragmentFragment).formats
       ) {
         imageResult = strapiImageUrlFormatter.read(
           image as StrapiGqlImageFragmentFragment,
           "original"
         );
-      }
-
-      if (typeof image === "object" && image.url) {
+      } else if (typeof image === "object" && image.url) {
         imageResult = { ...image };
         imageResult.url = strapiFormatter.read(imageResult.url);
       }
@@ -62,7 +64,7 @@ export class OpenGraphService {
     return results;
   }
 
-  public async setDefault(_data: Partial<OpenGraphData>) {
+  public async setWebsite(_data: Partial<OpenGraphData>) {
     const generalSettings = await this.general.settings();
 
     const data = { ..._data } as OpenGraph;
@@ -72,17 +74,42 @@ export class OpenGraphService {
     data.description = data.description || generalSettings?.description || "";
     data.url = data.url || nestFormatter.read();
 
-    // TODO fixme
-    // const image = this.getImageSrc(
-    //   data.image || (generalSettings?.image as StrapiGqlImageFragmentFragment)
-    // );
+    const image = this.getImageSrc(
+      data.image || (generalSettings?.image as StrapiGqlImageFragmentFragment)
+    );
 
-    // if (image) {
-    //   data.image = image;
-    // }
-
-    console.debug("data", data);
+    if (image) {
+      data.image = image;
+    }
 
     return SSROpenGraphService.set(data);
+  }
+
+  public async setArticle(_data: Partial<OpenGraphData>, post: Post) {
+    const sectionsObj = await this.blog.getSectionsObject(post);
+    const url = _data.url || nestFormatter.read(postFormatter.read(post.slug));
+    let description = _data.description;
+
+    if (
+      !description &&
+      sectionsObj.text &&
+      stripHtmlFormatter.read &&
+      cutFormatter.read
+    ) {
+      const html = markdownFormatter.read(sectionsObj.text?.text);
+      const text = stripHtmlFormatter.read(html);
+      description = cutFormatter.read(text, 300, "...");
+    }
+
+    const data = {
+      ..._data,
+      type: _data.type || "article",
+      title: _data.title || post.title || undefined,
+      image: _data.image || sectionsObj.image || undefined,
+      description,
+      url,
+    } as OpenGraph;
+
+    return this.setWebsite(data);
   }
 }

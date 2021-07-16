@@ -42,7 +42,7 @@ export class IndexPageComponent extends PageComponent {
 
   protected async beforeBind() {
     this.scope.sections = await this.home.getSections();
-    await this.openGraph.setDefault({});
+    await this.openGraph.setWebsite({});
     await super.beforeBind();
   }
 

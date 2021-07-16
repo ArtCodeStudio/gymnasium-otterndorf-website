@@ -1,5 +1,5 @@
 import { PageComponent } from "@ribajs/ssr";
-import { BlogService, GeneralService } from "../../services";
+import { BlogService, OpenGraphService } from "../../services";
 import { Section, PageHeader, replaceBodyPageClass } from "../../../common";
 import pugTemplate from "./blog-entry.component.pug";
 
@@ -16,7 +16,7 @@ export class BlogEntryPageComponent extends PageComponent {
   protected autobind = true;
 
   protected blog = BlogService.getInstance();
-  protected general = GeneralService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     title: "",
@@ -55,15 +55,13 @@ export class BlogEntryPageComponent extends PageComponent {
         this.scope.sections = await this.blog.getSections(post);
         this.scope.title = post.title;
         this.scope.header = this.blog.getPostHeader(post);
-        // const sectionsObj = await this.blog.getSectionsObject(post);
 
-        // OpenGraphService.set({
-        //   title: post.title,
-        //   image: sectionsObj.image,
-        //   type: "article",
-        //   description: settings?.description,
-        //   url: nestFormatter.read(),
-        // });
+        await this.openGraph.setArticle(
+          {
+            title: this.scope.header.title,
+          },
+          post
+        );
       }
     } catch (error) {
       this.throw(error);
