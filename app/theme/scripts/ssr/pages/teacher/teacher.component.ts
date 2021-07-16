@@ -14,7 +14,7 @@ export interface Scope {
   sections: Section[];
   params: TeacherPageComponent["ctx"]["params"];
   header: PageHeader | Record<string, never>;
-  teachers: Teacher[];
+  teacher?: Teacher;
   title: string;
   description: string;
 }
@@ -32,7 +32,7 @@ export class TeacherPageComponent extends PageComponent {
     assets: [],
     params: {},
     header: {},
-    teachers: [],
+    teacher: undefined,
     title: "Lehrer",
     description: "",
   };
@@ -84,21 +84,8 @@ export class TeacherPageComponent extends PageComponent {
       this.throw(new Error(`Teacher with slug "${slug}" not found!`));
       return;
     }
-    this.scope.teachers = [teacher];
+    this.scope.teacher = teacher;
     this.scope.title = teacher.name;
-  }
-
-  /**
-   * Used if no slug is defined
-   */
-  protected async getTeachers() {
-    const teachers = ((await this.teacher.listDetail()) || []) as Teacher[];
-    if (!teachers || !teachers.length) {
-      this.throw(new Error(`No teachers found!`));
-      return;
-    }
-    this.scope.teachers = teachers;
-    this.head.title = "Lehrer";
   }
 
   protected async setInfo() {
@@ -110,23 +97,24 @@ export class TeacherPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    if (this.ctx.params.slug) {
-      await this.getTeacher(this.ctx.params.slug);
-      const teacher = this.scope.teachers[0];
-      if (teacher) {
-        // this.scope.sections = await this.teacher.getSections(teacher);
-        this.scope.assets = this.getAssets(teacher, this.scope.sections);
-      }
-    } else {
-      await this.getTeachers();
+    if (!this.ctx.params.slug) {
+      throw new Error("URL slug is required!");
     }
+
+    await this.getTeacher(this.ctx.params.slug);
+    if (!this.scope.teacher) {
+      throw new Error("Not found!");
+    }
+
+    // this.scope.sections = await this.teacher.getSections(teacher);
+    this.scope.assets = this.getAssets(this.scope.teacher, this.scope.sections);
 
     await this.setInfo();
 
     this.head.title = this.scope.title;
 
     this.scope.header = this.teacher.getHeader(
-      this.scope.teachers,
+      [this.scope.teacher],
       this.scope.title
     );
 

@@ -70,7 +70,11 @@ export const config: ThemeConfigFile = (env: string | undefined) => {
         component: "sitemap-page",
       },
       {
-        path: ["/teacher", "/lehrer", "/teacher/:slug", "/lehrer/:slug"],
+        path: ["/teacher", "/lehrer"],
+        component: "teachers-page",
+      },
+      {
+        path: ["/teacher/:slug", "/lehrer/:slug"],
         component: "teacher-page",
       },
       {

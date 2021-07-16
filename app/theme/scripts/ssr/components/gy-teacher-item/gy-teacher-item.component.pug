@@ -3,13 +3,19 @@
     img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
   .card-body
     a.h2.card-title(rv-href="teacher.slug | teacher" rv-text="teacher.name")
-    span(rv-if="catTextAt | gt 0")
-      p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown | strip-html | cut catTextAt ' ...'")
-    span(rv-unless="catTextAt | gt 0")
-      p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
+    span(rv-if="showBiography")
+      span(rv-if="catTextAt | gt 0")
+        p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown | strip-html | cut catTextAt ' ...'")
+      span(rv-unless="catTextAt | gt 0")
+        p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
     span.card-text.text-muted(rv-if="showDate")
       | [ teacher.updated_at | or teacher.published_at | or teacher.created_at | lx-from-iso | lx-set-locale 'de' | lx-to-moment-calendar | capitalize ]
-  strong.card-header
-    | Fächer
-  span.list-group.list-group-flush
-    a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
+  .card-header
+    span(rv-if="teacher.subjects | size | gt 0")
+      strong Fächer
+      span.list-group.list-group-flush
+        a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
+    span(rv-if="teacher.working_groups | size | gt 0")
+      strong AGs
+      span.list-group.list-group-flush
+        a.list-group-item.list-group-item-action(rv-each-working-group="teacher.working_groups" rv-href="workingGroup.slug | working-group" rv-text="workingGroup.title") 
