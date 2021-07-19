@@ -482,19 +482,21 @@ export class GyBlackboardComponent extends Component {
       image.src = this.scope.backgroundImage;
       // This must be set to prevent a security error being thrown when saving.
       image.crossOrigin = "anonymous";
-      image.addEventListener("load", () => {
-        if (!this._canvas) {
-          console.error(new Error("canvas is falsy!"));
-          return;
-        }
-        this._ctx?.drawImage(
-          image,
-          (this._canvas.width - image.width) / 2,
-          (this._canvas.height - image.height) / 2
-        );
-      });
+      image.addEventListener("load", this.onImageLoad.bind(this, image));
     }
     this.scope.isDirty = false;
+  }
+
+  protected onImageLoad(image: HTMLImageElement) {
+    if (!this._canvas) {
+      console.error(new Error("canvas is falsy!"));
+      return;
+    }
+    this._ctx?.drawImage(
+      image,
+      (this._canvas.width - image.width) / 2,
+      (this._canvas.height - image.height) / 2
+    );
   }
 
   protected _onMouseDown(event: MouseEvent | TouchEvent) {
@@ -520,14 +522,14 @@ export class GyBlackboardComponent extends Component {
   protected onMouseMove = this._onMouseMove.bind(this);
 
   protected addEventListeners() {
-    this.addEventListener("mousedown", this.onMouseDown);
-    this.addEventListener("touchstart", this.onMouseDown);
+    this.addEventListener("mousedown", this.onMouseDown, { passive: true });
+    this.addEventListener("touchstart", this.onMouseDown, { passive: true });
 
-    this.addEventListener("mouseup", this.onMouseUp);
-    this.addEventListener("touchend", this.onMouseUp);
+    this.addEventListener("mouseup", this.onMouseUp, { passive: true });
+    this.addEventListener("touchend", this.onMouseUp, { passive: true });
 
-    this.addEventListener("mousemove", this.onMouseMove);
-    this.addEventListener("touchmove", this.onMouseMove);
+    this.addEventListener("mousemove", this.onMouseMove), { passive: true };
+    this.addEventListener("touchmove", this.onMouseMove, { passive: true });
   }
 
   protected removeEventListeners() {

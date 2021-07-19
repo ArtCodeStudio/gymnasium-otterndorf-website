@@ -1,7 +1,7 @@
 import { Component } from "@ribajs/core";
 import { CountUp } from "countup.js";
 import { isInViewport } from "@ribajs/utils/src/dom";
-import { throttle } from "@ribajs/utils/src/control";
+import { debounce } from "@ribajs/utils/src/control";
 
 export interface Scope {
   target: number;
@@ -56,16 +56,16 @@ export class CountUpComponent extends Component {
     this.checkViewport();
   }
 
-  protected onResize = throttle(this._onResize.bind(this), 500);
+  protected onResize = debounce(this._onResize.bind(this));
 
   /**
-   * Internal "unthrottled" version of `onScroll`.
+   * Internal "undebounced" version of `onScroll`.
    */
   protected _onScroll() {
     this.checkViewport();
   }
 
-  protected onScroll = throttle(this._onScroll.bind(this), 500);
+  protected onScroll = debounce(this._onScroll.bind(this));
 
   protected async beforeBind() {
     await super.beforeBind();

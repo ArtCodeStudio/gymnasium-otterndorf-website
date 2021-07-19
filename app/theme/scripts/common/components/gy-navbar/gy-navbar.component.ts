@@ -3,7 +3,7 @@ import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import { justDigits } from "@ribajs/utils/src/type";
 import pugTemplate from "./gy-navbar.component.pug";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
-import { throttle } from "@ribajs/utils/src/control";
+import { debounce } from "@ribajs/utils/src/control";
 import { ScrollEventsService } from "@ribajs/extras";
 import { Bs5Service, Breakpoint, Bs5SidebarComponent } from "@ribajs/bs5";
 
@@ -146,7 +146,7 @@ export class GyNavbarComponent extends Component {
   }
 
   /**
-   * Internal "unthrottled" version of `onResize`.
+   * Internal "undebounced" version of `onResize`.
    */
   protected _onResize() {
     try {
@@ -156,7 +156,7 @@ export class GyNavbarComponent extends Component {
     }
   }
 
-  protected onResize = throttle(this._onResize.bind(this));
+  protected onResize = debounce(this._onResize.bind(this));
 
   protected _onScroll(event: Event | CustomEvent) {
     try {
@@ -211,9 +211,9 @@ export class GyNavbarComponent extends Component {
 
   protected addEventListeners() {
     window.addEventListener("resize", this.onResize, { passive: true });
-    window.addEventListener("scrolling", this.onScroll);
-    window.addEventListener("scrollup", this.onScrollUp);
-    window.addEventListener("scrolldown", this.onScrollDown);
+    window.addEventListener("scrolling", this.onScroll, { passive: true });
+    window.addEventListener("scrollup", this.onScrollUp, { passive: true });
+    window.addEventListener("scrolldown", this.onScrollDown, { passive: true });
     this.bs5.events.on("breakpoint:changed", this.onBreakpointChanges, this);
   }
 

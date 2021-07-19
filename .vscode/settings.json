@@ -39,6 +39,7 @@
     "contenteditable",
     "countup",
     "currentry",
+    "debouncing",
     "easdk",
     "eintrag",
     "esbuild",
