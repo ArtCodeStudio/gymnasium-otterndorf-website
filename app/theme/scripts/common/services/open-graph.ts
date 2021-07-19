@@ -116,8 +116,6 @@ export class OpenGraphService {
       url,
     } as OpenGraph;
 
-    console.debug("setArticle", data);
-
     return this.set(data);
   }
 }

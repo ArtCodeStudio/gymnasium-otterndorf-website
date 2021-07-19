@@ -6,7 +6,6 @@ import {
   StrapiGqlSchoolSubjectBasicBySlugsQueryVariables,
   StrapiGqlSchoolSubjectInfoQuery,
   StrapiGqlSchoolSubjectInfoQueryVariables,
-  ResponseError,
   DynamicZoneSection,
   PageHeader,
   SchoolSubject,
@@ -15,6 +14,7 @@ import {
 } from "../../common/types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
+import { ResponseErrorService } from "./response-error";
 import { schoolSubjectFormatter } from "../formatters";
 import schoolSubjectDetailBySlugs from "../../../graphql/queries/school-subject-detail-by-slugs.gql";
 import schoolSubjectBasicBySlugs from "../../../graphql/queries/school-subject-basic-by-slugs.gql";
@@ -80,9 +80,7 @@ export class SchoolSubjectService {
   async getDetail(slug: string) {
     const subjects = await this.listDetail([slug], 1);
     if (!Array.isArray(subjects) || subjects.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("School Subject", slug);
     }
     return subjects?.[0] || null;
   }
@@ -90,9 +88,7 @@ export class SchoolSubjectService {
   async getBasic(slug: string) {
     const subjects = await this.listBasic([slug], 1);
     if (!Array.isArray(subjects) || subjects.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("School Subject", slug);
     }
     return subjects?.[0] || null;
   }

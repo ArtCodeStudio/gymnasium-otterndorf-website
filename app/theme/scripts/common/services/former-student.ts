@@ -2,9 +2,9 @@ import { GraphQLClient } from "./graphql";
 import {
   StrapiGqlFormerStudentDetailBySlugsQuery,
   StrapiGqlFormerStudentDetailBySlugsQueryVariables,
-  ResponseError,
 } from "../types";
 import { SectionsService } from "./sections";
+import { ResponseErrorService } from "./response-error";
 import formerStudentDetailBySlugsQuery from "../../../graphql/queries/former-student-detail-by-slugs.gql";
 
 export class FormerStudentService {
@@ -42,9 +42,7 @@ export class FormerStudentService {
   async getDetail(slug: string) {
     const formerStudents = await this.listDetail([slug], 1);
     if (!Array.isArray(formerStudents) || formerStudents.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Former Student", slug);
     }
     const formerStudent = formerStudents?.[0] || null;
     return formerStudent;

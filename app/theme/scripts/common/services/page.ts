@@ -6,7 +6,6 @@ import {
   StrapiGqlPageBasicBySlugsQueryVariables,
   StrapiGqlPageInfoQuery,
   StrapiGqlPageInfoQueryVariables,
-  ResponseError,
   Page,
   DynamicZoneSection,
   PageHeader,
@@ -14,6 +13,7 @@ import {
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
+import { ResponseErrorService } from "./response-error";
 import { pageFormatter } from "../formatters";
 import pageDetailBySlugsQuery from "../../../graphql/queries/page-detail-by-slugs.gql";
 import pageBasicBySlugsQuery from "../../../graphql/queries/page-basic-by-slugs.gql";
@@ -78,9 +78,7 @@ export class PageService {
   public async getDetail(slug: string) {
     const pages = await this.listDetail([slug], 1);
     if (!Array.isArray(pages) || pages.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Page", slug);
     }
     const page = pages?.[0] || null;
     return page;
@@ -89,9 +87,7 @@ export class PageService {
   public async getBasic(slug: string) {
     const pages = await this.listBasic([slug], 1);
     if (!Array.isArray(pages) || pages.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Page", slug);
     }
     const page = pages?.[0] || null;
     return page;

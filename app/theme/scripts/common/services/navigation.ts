@@ -1,6 +1,5 @@
 import { GraphQLClient } from "./graphql";
 import {
-  ResponseError,
   NavigationLink,
   StrapiGqlNavigationLink,
   StrapiGqlComponentLinkItemLink,
@@ -30,6 +29,7 @@ import {
   StrapiGqlMenuFragmentFragment,
   StrapiGqlComponentNavigationNavigationLevelEntry,
 } from "../types";
+import { ResponseErrorService } from "./response-error";
 import menuQuery from "../../../graphql/queries/menu.gql";
 import navigationLinksByIds from "../../../graphql/queries/navigation-links-by-ids.gql";
 
@@ -349,9 +349,7 @@ export class NavigationService {
     // console.debug("navigationRes", JSON.stringify(navigationRes, null, 2));
 
     if (!navigationRes?.menu?.entries) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Navigation");
     }
     const baseEntries = navigationRes?.menu.entries;
     const tree = this.buildTree(baseEntries);

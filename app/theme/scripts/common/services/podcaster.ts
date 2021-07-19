@@ -4,9 +4,9 @@ import {
   StrapiGqlPodcasterDetailBySlugsQueryVariables,
   StrapiGqlPodcasterBasicBySlugsQuery,
   StrapiGqlPodcasterBasicBySlugsQueryVariables,
-  ResponseError,
 } from "../types";
 import { SectionsService } from "./sections";
+import { ResponseErrorService } from "./response-error";
 import podcasterDetailBySlugsQuery from "../../../graphql/queries/podcaster-detail-by-slugs.gql";
 import podcasterBasicBySlugsQuery from "../../../graphql/queries/podcaster-basic-by-slugs.gql";
 
@@ -45,9 +45,7 @@ export class PodcasterService {
   async getDetail(slug: string) {
     const podcasters = await this.listDetail([slug], 1);
     if (!Array.isArray(podcasters) || podcasters.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Podcaster", slug);
     }
     const podcaster = podcasters?.[0] || null;
     return podcaster;
@@ -71,9 +69,7 @@ export class PodcasterService {
   async getBasic(slug: string) {
     const podcasters = await this.listBasic([slug], 1);
     if (!Array.isArray(podcasters) || podcasters.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Podcaster", slug);
     }
     const podcaster = podcasters?.[0] || null;
     return podcaster;

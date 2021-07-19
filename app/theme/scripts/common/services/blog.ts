@@ -1,6 +1,5 @@
 import { GraphQLClient } from "./graphql";
 import {
-  ResponseError,
   StrapiGqlBlogEntriesDetailBySlugsQuery,
   StrapiGqlBlogEntriesDetailBySlugsQueryVariables,
   StrapiGqlBlogEntriesBasicBySlugsQuery,
@@ -19,6 +18,7 @@ import {
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
+import { ResponseErrorService } from "./response-error";
 import { postFormatter, blogFormatter } from "../formatters";
 import blogEntriesBySlugsQuery from "../../../graphql/queries/blog-entries-detail-by-slugs.gql";
 import blogEntriesBasicBySlugsQuery from "../../../graphql/queries/blog-entries-basic-by-slugs.gql";
@@ -124,9 +124,7 @@ export class BlogService {
   public async getPost(slug: string) {
     const posts = await this.listPosts([slug]);
     if (!Array.isArray(posts) || posts.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Blog category", slug);
     }
     return posts[0];
   }
@@ -134,9 +132,7 @@ export class BlogService {
   public async getDetail(slug: string) {
     const blogs = await this.listDetail([slug]);
     if (!Array.isArray(blogs) || blogs.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Blog category", slug);
     }
     return blogs[0];
   }
@@ -144,9 +140,7 @@ export class BlogService {
   public async getBasic(slug: string) {
     const blogs = await this.listBasic([slug]);
     if (!Array.isArray(blogs) || blogs.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Blog category", slug);
     }
     return blogs[0];
   }

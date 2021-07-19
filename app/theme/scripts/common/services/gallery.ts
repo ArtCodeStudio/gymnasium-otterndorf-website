@@ -2,11 +2,11 @@ import { GraphQLClient } from "./graphql";
 import {
   StrapiGqlGalleryBySlugsQuery,
   StrapiGqlGalleryBySlugsQueryVariables,
-  ResponseError,
 } from "../types";
 
 import galleryBySlugs from "../../../graphql/queries/gallery-by-slugs.gql";
-import { MarkdownService } from "../services";
+import { MarkdownService } from "./markdown";
+import { ResponseErrorService } from "./response-error";
 
 export class GalleryService {
   protected graphql = GraphQLClient.getInstance();
@@ -64,9 +64,7 @@ export class GalleryService {
   async get(slug: string) {
     const galleries = await this.list([slug], 1);
     if (!Array.isArray(galleries) || galleries.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Gallery", slug);
     }
     this.renderMarkdown(galleries);
     return galleries?.[0] || null;

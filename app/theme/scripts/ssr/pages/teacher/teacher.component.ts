@@ -1,6 +1,10 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./teacher.component.pug";
-import { TeacherService, SectionsService } from "../../services";
+import {
+  TeacherService,
+  SectionsService,
+  ResponseErrorService,
+} from "../../services";
 import {
   Section,
   PageHeader,
@@ -97,13 +101,14 @@ export class TeacherPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    if (!this.ctx.params.slug) {
+    const slug = this.ctx.params.slug;
+    if (!slug) {
       throw new Error("URL slug is required!");
     }
 
-    await this.getTeacher(this.ctx.params.slug);
+    await this.getTeacher(slug);
     if (!this.scope.teacher) {
-      throw new Error("Not found!");
+      throw ResponseErrorService.notFound("Teacher", slug);
     }
 
     // this.scope.sections = await this.teacher.getSections(teacher);

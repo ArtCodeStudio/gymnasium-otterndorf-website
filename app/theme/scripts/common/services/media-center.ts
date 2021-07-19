@@ -2,9 +2,8 @@ import { GraphQLClient } from "./graphql";
 import {
   StrapiGqlMediaCenterBySlugsQuery,
   StrapiGqlMediaCenterBySlugsQueryVariables,
-  ResponseError,
 } from "../types";
-
+import { ResponseErrorService } from "./response-error";
 import galleryBySlugs from "../../../graphql/queries/media-center-by-slugs.gql";
 
 export class MediaCenterService {
@@ -57,9 +56,7 @@ export class MediaCenterService {
   async get(slug: string) {
     const mediaCenters = await this.list([slug]);
     if (!Array.isArray(mediaCenters) || mediaCenters.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Media Center", slug);
     }
     this.renderMarkdown(mediaCenters);
     return mediaCenters?.[0] || null;

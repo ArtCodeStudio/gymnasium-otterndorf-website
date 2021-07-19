@@ -6,12 +6,12 @@ import {
   StrapiGqlTeacherBasicBySlugsQueryVariables,
   StrapiGqlTeacherInfoQuery,
   StrapiGqlTeacherInfoQueryVariables,
-  ResponseError,
   Teacher,
   PageHeader,
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
+import { ResponseErrorService } from "./response-error";
 import { teacherFormatter } from "../formatters";
 import teacherDetailBySlugsQuery from "../../../graphql/queries/teacher-detail-by-slugs.gql";
 import teacherInfo from "../../../graphql/queries/teacher-info.gql";
@@ -75,9 +75,7 @@ export class TeacherService {
   async getDetail(slug: string) {
     const teachers = await this.listDetail([slug], 1);
     if (!Array.isArray(teachers) || teachers.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Teacher", slug);
     }
     const teacher = teachers?.[0] || null;
     return teacher;
@@ -86,9 +84,7 @@ export class TeacherService {
   async getBasic(slug: string) {
     const teachers = await this.listBasic([slug], 1);
     if (!Array.isArray(teachers) || teachers.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Teacher", slug);
     }
     const teacher = teachers?.[0] || null;
     return teacher;

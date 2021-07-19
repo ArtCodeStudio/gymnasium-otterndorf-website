@@ -6,7 +6,6 @@ import {
   StrapiGqlWorkingGroupBasicBySlugsQueryVariables,
   StrapiGqlWorkingGroupInfoQuery,
   StrapiGqlWorkingGroupInfoQueryVariables,
-  ResponseError,
   DynamicZoneSection,
   PageHeader,
   WorkingGroup,
@@ -15,6 +14,7 @@ import {
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
+import { ResponseErrorService } from "./response-error";
 import { workingGroupFormatter } from "../formatters";
 import workingGroupDetailBySlugs from "../../../graphql/queries/working-group-detail-by-slugs.gql";
 import workingGroupBasicBySlugs from "../../../graphql/queries/working-group-basic-by-slugs.gql";
@@ -80,9 +80,7 @@ export class WorkingGroupService {
   async getDetail(slug: string) {
     const subjects = await this.listDetail([slug], 1);
     if (!Array.isArray(subjects) || subjects.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Working Group", slug);
     }
     return subjects?.[0] || null;
   }
@@ -90,9 +88,7 @@ export class WorkingGroupService {
   async getBasic(slug: string) {
     const subjects = await this.listBasic([slug], 1);
     if (!Array.isArray(subjects) || subjects.length <= 0) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Working Group", slug);
     }
     return subjects?.[0] || null;
   }

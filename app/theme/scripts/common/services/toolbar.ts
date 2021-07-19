@@ -1,5 +1,5 @@
 import { GraphQLClient } from "./graphql";
-import { ResponseError } from "../types/response-error";
+import { ResponseErrorService } from "./response-error";
 import toolbarQuery from "../../../graphql/queries/toolbar.gql";
 
 export class ToolbarService {
@@ -22,9 +22,7 @@ export class ToolbarService {
   public async get() {
     const toolbarRes = await this.graphql.requestCached(toolbarQuery, {});
     if (!toolbarRes?.toolbar?.items) {
-      const error: ResponseError = new Error("Not found!");
-      error.status = 404;
-      throw error;
+      throw ResponseErrorService.notFound("Toolbar");
     }
     const toolbar = toolbarRes?.toolbar;
     return toolbar;

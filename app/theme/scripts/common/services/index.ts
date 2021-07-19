@@ -17,6 +17,7 @@ export { PageService } from "./page";
 export { PodcastService } from "./podcast";
 export { PodcasterService } from "./podcaster";
 export { PodloveService } from "./podlove";
+export { ResponseErrorService } from "./response-error";
 export { SchoolSubjectService } from "./school-subject";
 export { SearchService } from "./search";
 export { SectionsService } from "./sections";
