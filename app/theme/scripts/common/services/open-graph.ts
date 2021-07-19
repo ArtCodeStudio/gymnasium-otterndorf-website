@@ -4,7 +4,7 @@ import {
   OpenGraphImage,
 } from "@ribajs/ssr";
 import { cutFormatter, stripHtmlFormatter } from "@ribajs/core";
-import { GeneralService, BlogService, PageService } from ".";
+import { GeneralService, BlogService, PageService, PodcastService } from ".";
 import {
   nestFormatter,
   strapiImageUrlFormatter,
@@ -12,19 +12,27 @@ import {
   postFormatter,
   pageFormatter,
   markdownFormatter,
+  podcastFormatter,
 } from "../formatters";
 import {
   OpenGraphData,
   StrapiGqlImageFragmentFragment,
+  SectionContentText,
   Post,
   Page,
+  StrapiGqlPodcastEpisodeBasicFragmentFragment,
 } from "../types";
+import {
+  OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
+  OPEN_GRAPH_DESCRIPTION_CUT_MARKER,
+} from "../constants";
 
 export class OpenGraphService {
   protected static instance: OpenGraphService;
   protected general = GeneralService.getInstance();
   protected blog = BlogService.getInstance();
   protected page = PageService.getInstance();
+  protected podcast = PodcastService.getInstance();
 
   protected constructor() {
     /** protected */
@@ -72,6 +80,28 @@ export class OpenGraphService {
     return results;
   }
 
+  protected getTruncatedDescription(sectionText?: SectionContentText | string) {
+    let description = "";
+    let html = "";
+    if (typeof sectionText === "object") {
+      html = markdownFormatter.read(sectionText?.text);
+    }
+
+    if (typeof sectionText === "string") {
+      html = markdownFormatter.read(sectionText);
+    }
+
+    if (html && stripHtmlFormatter.read && cutFormatter.read) {
+      const text = stripHtmlFormatter.read(html);
+      description = cutFormatter.read(
+        text,
+        OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
+        OPEN_GRAPH_DESCRIPTION_CUT_MARKER
+      );
+    }
+    return description;
+  }
+
   public async set(_data: Partial<OpenGraphData>) {
     const generalSettings = await this.general.settings();
 
@@ -101,25 +131,16 @@ export class OpenGraphService {
   public async setPage(_data: Partial<OpenGraphData>, page: Page) {
     const sectionsObj = await this.page.getSectionsObject(page);
     const url = _data.url || nestFormatter.read(pageFormatter.read(page.slug));
-    let description = _data.description;
-
-    if (
-      !description &&
-      sectionsObj.text &&
-      stripHtmlFormatter.read &&
-      cutFormatter.read
-    ) {
-      const html = markdownFormatter.read(sectionsObj.text?.text);
-      const text = stripHtmlFormatter.read(html);
-      description = cutFormatter.read(text, 300, "...");
-    }
 
     const data = {
       ..._data,
       type: _data.type || "website",
       title: _data.title || page.title || undefined,
       image: _data.image || sectionsObj.image?.image || undefined,
-      description,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(sectionsObj.text) ||
+        undefined,
       url,
     } as OpenGraph;
 
@@ -129,25 +150,36 @@ export class OpenGraphService {
   public async setArticle(_data: Partial<OpenGraphData>, post: Post) {
     const sectionsObj = await this.blog.getSectionsObject(post);
     const url = _data.url || nestFormatter.read(postFormatter.read(post.slug));
-    let description = _data.description;
-
-    if (
-      !description &&
-      sectionsObj.text &&
-      stripHtmlFormatter.read &&
-      cutFormatter.read
-    ) {
-      const html = markdownFormatter.read(sectionsObj.text?.text);
-      const text = stripHtmlFormatter.read(html);
-      description = cutFormatter.read(text, 300, "...");
-    }
-
     const data = {
       ..._data,
       type: _data.type || "article",
       title: _data.title || post.title || undefined,
       image: _data.image || sectionsObj.image?.image || undefined,
-      description,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(sectionsObj.text) ||
+        undefined,
+      url,
+    } as OpenGraph;
+
+    return this.set(data);
+  }
+
+  public async setPodcastEpisode(
+    _data: Partial<OpenGraphData>,
+    episode: StrapiGqlPodcastEpisodeBasicFragmentFragment
+  ) {
+    const url =
+      _data.url || nestFormatter.read(podcastFormatter.read(episode.slug));
+    const data = {
+      ..._data,
+      type: _data.type || "article",
+      title: _data.title || episode.title || undefined,
+      image: _data.image || episode.image || undefined,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(episode.description) ||
+        undefined,
       url,
     } as OpenGraph;
 

@@ -1,6 +1,10 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./podcast-episode.component.pug";
-import { PodloveService, PodcastService } from "../../services";
+import {
+  PodloveService,
+  PodcastService,
+  OpenGraphService,
+} from "../../services";
 import {
   PageHeader,
   replaceBodyPageClass,
@@ -20,6 +24,7 @@ export class PodcastEpisodePageComponent extends PageComponent {
 
   protected podlove = PodloveService.getInstance();
   protected podcast = PodcastService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     params: {},
@@ -65,6 +70,13 @@ export class PodcastEpisodePageComponent extends PageComponent {
         this.scope.header = this.podcast.getHeader(
           this.scope.episode,
           this.ctx.params.slug
+        );
+
+        await this.openGraph.setPodcastEpisode(
+          {
+            title: this.scope.header.title,
+          },
+          episode
         );
       } catch (error) {
         this.throw(error);
