@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./school-subject.component.pug";
-import { SchoolSubjectService } from "../../services";
+import { SchoolSubjectService, OpenGraphService } from "../../services";
 import {
   SchoolSubject,
   Section,
@@ -22,6 +22,7 @@ export class SchoolSubjectPageComponent extends PageComponent {
   protected autobind = true;
 
   protected schoolSubject = SchoolSubjectService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     schoolSubject: null,
@@ -67,6 +68,13 @@ export class SchoolSubjectPageComponent extends PageComponent {
         if (this.scope.header) {
           this.head.title = this.scope.header.title;
         }
+
+        await this.openGraph.setSchoolSubject(
+          {
+            title: this.scope.header.title,
+          },
+          schoolSubject
+        );
       }
     } catch (error) {
       this.throw(error);

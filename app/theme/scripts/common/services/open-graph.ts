@@ -4,7 +4,13 @@ import {
   OpenGraphImage,
 } from "@ribajs/ssr";
 import { cutFormatter, stripHtmlFormatter } from "@ribajs/core";
-import { GeneralService, BlogService, PageService, PodcastService } from ".";
+import {
+  GeneralService,
+  BlogService,
+  PageService,
+  PodcastService,
+  SchoolSubjectService,
+} from ".";
 import {
   nestFormatter,
   strapiImageUrlFormatter,
@@ -13,6 +19,7 @@ import {
   pageFormatter,
   markdownFormatter,
   podcastFormatter,
+  schoolSubjectFormatter,
 } from "../formatters";
 import {
   OpenGraphData,
@@ -21,6 +28,7 @@ import {
   Post,
   Page,
   StrapiGqlPodcastEpisodeBasicFragmentFragment,
+  SchoolSubject,
 } from "../types";
 import {
   OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
@@ -33,6 +41,7 @@ export class OpenGraphService {
   protected blog = BlogService.getInstance();
   protected page = PageService.getInstance();
   protected podcast = PodcastService.getInstance();
+  protected schoolSubject = SchoolSubjectService.getInstance();
 
   protected constructor() {
     /** protected */
@@ -128,6 +137,27 @@ export class OpenGraphService {
     return this.set(data);
   }
 
+  public async setPodcastEpisode(
+    _data: Partial<OpenGraphData>,
+    episode: StrapiGqlPodcastEpisodeBasicFragmentFragment
+  ) {
+    const url =
+      _data.url || nestFormatter.read(podcastFormatter.read(episode.slug));
+    const data = {
+      ..._data,
+      type: _data.type || "article",
+      title: _data.title || episode.title || undefined,
+      image: _data.image || episode.image || undefined,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(episode.description) ||
+        undefined,
+      url,
+    } as OpenGraph;
+
+    return this.set(data);
+  }
+
   public async setPage(_data: Partial<OpenGraphData>, page: Page) {
     const sectionsObj = await this.page.getSectionsObject(page);
     const url = _data.url || nestFormatter.read(pageFormatter.read(page.slug));
@@ -165,20 +195,24 @@ export class OpenGraphService {
     return this.set(data);
   }
 
-  public async setPodcastEpisode(
+  public async setSchoolSubject(
     _data: Partial<OpenGraphData>,
-    episode: StrapiGqlPodcastEpisodeBasicFragmentFragment
+    schoolSubject: SchoolSubject
   ) {
+    const sectionsObj = await this.schoolSubject.getSectionsObject(
+      schoolSubject
+    );
     const url =
-      _data.url || nestFormatter.read(podcastFormatter.read(episode.slug));
+      _data.url ||
+      nestFormatter.read(schoolSubjectFormatter.read(schoolSubject.slug));
     const data = {
       ..._data,
-      type: _data.type || "article",
-      title: _data.title || episode.title || undefined,
-      image: _data.image || episode.image || undefined,
+      type: _data.type || "website",
+      title: _data.title || schoolSubject.title || undefined,
+      image: _data.image || sectionsObj.image?.image || undefined,
       description:
         _data.description ||
-        this.getTruncatedDescription(episode.description) ||
+        this.getTruncatedDescription(sectionsObj.text) ||
         undefined,
       url,
     } as OpenGraph;
