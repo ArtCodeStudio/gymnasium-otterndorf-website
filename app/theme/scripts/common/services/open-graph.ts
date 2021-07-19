@@ -4,20 +4,27 @@ import {
   OpenGraphImage,
 } from "@ribajs/ssr";
 import { cutFormatter, stripHtmlFormatter } from "@ribajs/core";
-import { GeneralService, BlogService } from ".";
+import { GeneralService, BlogService, PageService } from ".";
 import {
   nestFormatter,
   strapiImageUrlFormatter,
   strapiFormatter,
   postFormatter,
+  pageFormatter,
   markdownFormatter,
 } from "../formatters";
-import { OpenGraphData, StrapiGqlImageFragmentFragment, Post } from "../types";
+import {
+  OpenGraphData,
+  StrapiGqlImageFragmentFragment,
+  Post,
+  Page,
+} from "../types";
 
 export class OpenGraphService {
   protected static instance: OpenGraphService;
   protected general = GeneralService.getInstance();
   protected blog = BlogService.getInstance();
+  protected page = PageService.getInstance();
 
   protected constructor() {
     /** protected */
@@ -88,6 +95,34 @@ export class OpenGraphService {
   public async setWebsite(_data: Partial<OpenGraphData>) {
     const data = { ..._data } as OpenGraph;
     data.type = data.type || "website";
+    return this.set(data);
+  }
+
+  public async setPage(_data: Partial<OpenGraphData>, page: Page) {
+    const sectionsObj = await this.page.getSectionsObject(page);
+    const url = _data.url || nestFormatter.read(pageFormatter.read(page.slug));
+    let description = _data.description;
+
+    if (
+      !description &&
+      sectionsObj.text &&
+      stripHtmlFormatter.read &&
+      cutFormatter.read
+    ) {
+      const html = markdownFormatter.read(sectionsObj.text?.text);
+      const text = stripHtmlFormatter.read(html);
+      description = cutFormatter.read(text, 300, "...");
+    }
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || page.title || undefined,
+      image: _data.image || sectionsObj.image?.image || undefined,
+      description,
+      url,
+    } as OpenGraph;
+
     return this.set(data);
   }
 

@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./page.component.pug";
-import { PageService } from "../../services";
+import { PageService, OpenGraphService } from "../../services";
 import {
   Section,
   Page,
@@ -14,8 +14,6 @@ export interface Scope {
   sections: Section[];
   header: PageHeader | Record<string, never>;
   page: Page | Record<string, never>;
-  // blogEntries: Post[];
-  // calendarKey: string;
 }
 
 export class PagePageComponent extends PageComponent {
@@ -24,14 +22,13 @@ export class PagePageComponent extends PageComponent {
   protected autobind = true;
 
   protected page = PageService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     page: {},
     assets: [],
     sections: [],
     header: {},
-    // blogEntries: [],
-    // calendarKey: "",
   };
 
   static get observedAttributes(): string[] {
@@ -77,24 +74,25 @@ export class PagePageComponent extends PageComponent {
     }
   }
 
-  // TODO
-  // protected setCalendarKey(page: Page) {
-  //   this.scope.calendarKey = page?.["calendar_key"] || "";
-  // }
-
   protected async beforeBind() {
     try {
       const page = await this.page.getDetail(this.ctx.params.slug);
 
       if (page) {
         this.scope.page = page;
-        // this.setCalendarKey(page);
         this.setTitle(this.scope.page);
         this.scope.sections = await this.page.getSections(this.scope.page);
         this.setHeader(page);
         this.scope.assets = this.getAssets(
           this.scope.page,
           this.scope.sections
+        );
+
+        await this.openGraph.setPage(
+          {
+            title: this.scope.header.title,
+          },
+          page
         );
       }
     } catch (error) {
