@@ -1,3 +1,5 @@
+#import "./image.gql"
+
 fragment ComponentMediaCenterMovieFragment on ComponentMediaCenterMovie {
   id
   title
@@ -6,6 +8,6 @@ fragment ComponentMediaCenterMovieFragment on ComponentMediaCenterMovie {
     url
   }
   poster {
-    formats
+    ...ImageFragment
   }
 }

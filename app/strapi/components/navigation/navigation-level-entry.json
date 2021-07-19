@@ -22,6 +22,10 @@
     },
     "children": {
       "collection": "navigation-link"
+    },
+    "isRootElement": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

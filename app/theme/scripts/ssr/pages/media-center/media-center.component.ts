@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./media-center.component.pug";
-import { MediaCenterService } from "../../services";
+import { MediaCenterService, OpenGraphService } from "../../services";
 import {
   StrapiGqlMediaCenterFragmentFragment,
   StrapiImageFormatType,
@@ -21,6 +21,7 @@ export class MediaCenterPageComponent extends PageComponent {
   protected autobind = true;
 
   protected mediaCenter = MediaCenterService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
@@ -58,15 +59,22 @@ export class MediaCenterPageComponent extends PageComponent {
       if (mediaCenter) {
         if (mediaCenter.title) {
           this.scope.title = mediaCenter.title;
+          this.head.title = this.scope.title;
         }
         if (mediaCenter.movies) {
           this.scope.movies = mediaCenter.movies;
         }
+        await this.openGraph.setMediaCenter(
+          {
+            title: this.head.title,
+          },
+          mediaCenter
+        );
       }
     } catch (error) {
       this.throw(error);
     }
-    this.head.title = this.scope.title;
+
     await super.beforeBind();
   }
 

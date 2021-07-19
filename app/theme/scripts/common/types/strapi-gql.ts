@@ -539,6 +539,7 @@ export type StrapiGqlComponentNavigationNavigationLevelEntry = {
   navigation_link?: Maybe<StrapiGqlNavigationLink>;
   title?: Maybe<Scalars['String']>;
   hideInSidebar?: Maybe<Scalars['Boolean']>;
+  isRootElement?: Maybe<Scalars['Boolean']>;
   children?: Maybe<Array<Maybe<StrapiGqlNavigationLink>>>;
 };
 
@@ -556,6 +557,7 @@ export type StrapiGqlComponentNavigationNavigationLevelEntryInput = {
   title?: Maybe<Scalars['String']>;
   hideInSidebar?: Maybe<Scalars['Boolean']>;
   children?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  isRootElement?: Maybe<Scalars['Boolean']>;
 };
 
 export type StrapiGqlComponentPodcastCategory = {
@@ -587,7 +589,6 @@ export type StrapiGqlComponentPodcastChapters = {
 export type StrapiGqlComponentSectionBlackboardSlideshow = {
   __typename?: 'ComponentSectionBlackboardSlideshow';
   id: Scalars['ID'];
-  slides?: Maybe<Array<Maybe<StrapiGqlComponentBlackboardSlide>>>;
   subjects?: Maybe<Array<Maybe<StrapiGqlSubject>>>;
 };
 
@@ -600,7 +601,6 @@ export type StrapiGqlComponentSectionBlackboardSlideshowSubjectsArgs = {
 };
 
 export type StrapiGqlComponentSectionBlackboardSlideshowInput = {
-  slides?: Maybe<Array<Maybe<StrapiGqlComponentBlackboardSlideInput>>>;
   subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
@@ -4158,6 +4158,7 @@ export type StrapiGqlEditComponentNavigationNavigationLevelEntryInput = {
   title?: Maybe<Scalars['String']>;
   hideInSidebar?: Maybe<Scalars['Boolean']>;
   children?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  isRootElement?: Maybe<Scalars['Boolean']>;
 };
 
 export type StrapiGqlEditComponentPodcastCategoryInput = {
@@ -4175,7 +4176,6 @@ export type StrapiGqlEditComponentPodcastChapterInput = {
 
 export type StrapiGqlEditComponentSectionBlackboardSlideshowInput = {
   id?: Maybe<Scalars['ID']>;
-  slides?: Maybe<Array<Maybe<StrapiGqlEditComponentBlackboardSlideInput>>>;
   subjects?: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
@@ -4963,7 +4963,7 @@ export type StrapiGqlComponentMediaCenterMovieFragmentFragment = (
     & Pick<StrapiGqlUploadFile, 'url'>
   )>, poster?: Maybe<(
     { __typename?: 'UploadFile' }
-    & Pick<StrapiGqlUploadFile, 'formats'>
+    & StrapiGqlImageFragmentFragment
   )> }
 );
 

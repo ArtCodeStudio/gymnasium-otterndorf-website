@@ -404,6 +404,10 @@
                       }
                     }
                   }
+                },
+                "isRootElement": {
+                  "type": "boolean",
+                  "default": false
                 }
               }
             }
@@ -498,6 +502,10 @@
                       }
                     }
                   }
+                },
+                "isRootElement": {
+                  "type": "boolean",
+                  "default": false
                 }
               }
             }

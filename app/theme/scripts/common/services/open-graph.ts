@@ -12,6 +12,7 @@ import {
   SchoolSubjectService,
   WorkingGroupService,
   GalleryService,
+  MediaCenterService,
 } from ".";
 import {
   nestFormatter,
@@ -24,6 +25,7 @@ import {
   schoolSubjectFormatter,
   workingGroupFormatter,
   galleryFormatter,
+  mediaCenterFormatter,
 } from "../formatters";
 import {
   OpenGraphData,
@@ -35,6 +37,7 @@ import {
   SchoolSubject,
   WorkingGroup,
   StrapiGqlGalleryFragmentFragment,
+  StrapiGqlMediaCenterFragmentFragment,
 } from "../types";
 import {
   OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
@@ -50,6 +53,7 @@ export class OpenGraphService {
   protected schoolSubject = SchoolSubjectService.getInstance();
   protected workingGroup = WorkingGroupService.getInstance();
   protected gallery = GalleryService.getInstance();
+  protected mediaCenter = MediaCenterService.getInstance();
 
   protected constructor() {
     /** protected */
@@ -267,6 +271,35 @@ export class OpenGraphService {
       type: _data.type || "website",
       title: _data.title || gallery.title || undefined,
       image: _data.image || imageUrls || undefined,
+      description: _data.description || undefined,
+      url,
+    } as OpenGraph;
+
+    return this.set(data);
+  }
+
+  public async setMediaCenter(
+    _data: Partial<OpenGraphData>,
+    mediaCenter: StrapiGqlMediaCenterFragmentFragment
+  ) {
+    const url =
+      _data.url ||
+      nestFormatter.read(mediaCenterFormatter.read(mediaCenter.slug));
+
+    const videoUrls = mediaCenter.movies
+      ?.map((movie) => movie?.movie?.url)
+      .filter((url) => !!url);
+
+    const posterUrls = mediaCenter.movies
+      ?.map((movie) => movie?.poster?.url)
+      .filter((url) => !!url);
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || mediaCenter.title || undefined,
+      image: _data.image || posterUrls || undefined,
+      video: videoUrls,
       description: _data.description || undefined,
       url,
     } as OpenGraph;
