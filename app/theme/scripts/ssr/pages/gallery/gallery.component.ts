@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./gallery.component.pug";
-import { GalleryService } from "../../services";
+import { GalleryService, OpenGraphService } from "../../services";
 import {
   StrapiGqlGalleryFragmentFragment,
   StrapiImageFormatType,
@@ -24,6 +24,7 @@ export class GalleryPageComponent extends PageComponent {
   protected autobind = true;
 
   protected gallery = GalleryService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     title: "{params.slug | capitalize}",
@@ -71,6 +72,7 @@ export class GalleryPageComponent extends PageComponent {
       if (gallery) {
         if (gallery.title) {
           this.scope.title = gallery.title;
+          this.head.title = this.scope.title;
         }
         if (gallery.images) {
           this.scope.images = gallery.images;
@@ -81,6 +83,12 @@ export class GalleryPageComponent extends PageComponent {
         if (gallery.color?.color) {
           this.classList.add(`bg-${gallery.color?.color}`);
         }
+        await this.openGraph.setGallery(
+          {
+            title: this.head.title,
+          },
+          gallery
+        );
       }
     } catch (error) {
       this.throw(error);

@@ -11,6 +11,7 @@ import {
   PodcastService,
   SchoolSubjectService,
   WorkingGroupService,
+  GalleryService,
 } from ".";
 import {
   nestFormatter,
@@ -22,6 +23,7 @@ import {
   podcastFormatter,
   schoolSubjectFormatter,
   workingGroupFormatter,
+  galleryFormatter,
 } from "../formatters";
 import {
   OpenGraphData,
@@ -32,6 +34,7 @@ import {
   StrapiGqlPodcastEpisodeBasicFragmentFragment,
   SchoolSubject,
   WorkingGroup,
+  StrapiGqlGalleryFragmentFragment,
 } from "../types";
 import {
   OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
@@ -46,6 +49,7 @@ export class OpenGraphService {
   protected podcast = PodcastService.getInstance();
   protected schoolSubject = SchoolSubjectService.getInstance();
   protected workingGroup = WorkingGroupService.getInstance();
+  protected gallery = GalleryService.getInstance();
 
   protected constructor() {
     /** protected */
@@ -241,6 +245,29 @@ export class OpenGraphService {
         _data.description ||
         this.getTruncatedDescription(sectionsObj.text) ||
         undefined,
+      url,
+    } as OpenGraph;
+
+    return this.set(data);
+  }
+
+  public async setGallery(
+    _data: Partial<OpenGraphData>,
+    gallery: StrapiGqlGalleryFragmentFragment
+  ) {
+    const url =
+      _data.url || nestFormatter.read(galleryFormatter.read(gallery.slug));
+
+    const imageUrls = gallery.images
+      ?.map((image) => image?.image?.url)
+      .filter((url) => !!url);
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || gallery.title || undefined,
+      image: _data.image || imageUrls || undefined,
+      description: _data.description || undefined,
       url,
     } as OpenGraph;
 
