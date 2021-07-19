@@ -28,18 +28,9 @@ export class GySectionBlackboardSlideshowComponent extends Component {
     super();
   }
 
-  protected async afterBind() {
-    // console.debug(
-    //   "[gy-section-gallery-slideshow] this.scope.section",
-    //   this.scope.section
-    // );
-    await super.afterBind();
-  }
-
   protected connectedCallback() {
     super.connectedCallback();
     this.init(GySectionBlackboardSlideshowComponent.observedAttributes);
-    console.log(JSON.parse(JSON.stringify(this.scope.section)));
   }
 
   protected template() {

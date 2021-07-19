@@ -57,7 +57,6 @@ export class FeedService {
     let settings: Awaited<ReturnType<GeneralService['settings']>>;
     try {
       settings = await this.general.settings();
-      console.debug('settings', settings);
     } catch (error) {
       console.error(error);
     }

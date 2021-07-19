@@ -304,10 +304,11 @@ export class NavigationService {
           // Child element
           const parentEntry = this.findParent(result, entry.parent.id);
           if (parentEntry) {
-            if (entry.title === "Schulleben/AGs am Nachmittag") {
-              console.debug("entry", entry);
-              console.debug("parentEntry", parentEntry);
-            }
+            // @Tim
+            // if (entry.title === "Schulleben/AGs am Nachmittag") {
+            //   console.debug("entry", entry);
+            //   console.debug("parentEntry", parentEntry);
+            // }
             parentEntry.children?.push(
               this.newLink(
                 entry as StrapiGqlComponentNavigationNavigationLevelEntry
