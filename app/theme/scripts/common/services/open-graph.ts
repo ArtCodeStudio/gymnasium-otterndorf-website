@@ -35,6 +35,7 @@ export class OpenGraphService {
     if (!_image) {
       return;
     }
+
     const results: string[] | OpenGraphImage[] = [];
     const images = Array.isArray(_image) ? _image : [_image];
 
@@ -64,13 +65,12 @@ export class OpenGraphService {
     return results;
   }
 
-  public async setWebsite(_data: Partial<OpenGraphData>) {
+  public async set(_data: Partial<OpenGraphData>) {
     const generalSettings = await this.general.settings();
 
     const data = { ..._data } as OpenGraph;
 
     data.title = data.title || generalSettings?.title || "";
-    data.type = data.type || "website";
     data.description = data.description || generalSettings?.description || "";
     data.url = data.url || nestFormatter.read();
 
@@ -83,6 +83,12 @@ export class OpenGraphService {
     }
 
     return SSROpenGraphService.set(data);
+  }
+
+  public async setWebsite(_data: Partial<OpenGraphData>) {
+    const data = { ..._data } as OpenGraph;
+    data.type = data.type || "website";
+    return this.set(data);
   }
 
   public async setArticle(_data: Partial<OpenGraphData>, post: Post) {
@@ -105,11 +111,13 @@ export class OpenGraphService {
       ..._data,
       type: _data.type || "article",
       title: _data.title || post.title || undefined,
-      image: _data.image || sectionsObj.image || undefined,
+      image: _data.image || sectionsObj.image?.image || undefined,
       description,
       url,
     } as OpenGraph;
 
-    return this.setWebsite(data);
+    console.debug("setArticle", data);
+
+    return this.set(data);
   }
 }
