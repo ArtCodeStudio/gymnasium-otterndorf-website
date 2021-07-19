@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./working-group.component.pug";
-import { WorkingGroupService } from "../../services";
+import { WorkingGroupService, OpenGraphService } from "../../services";
 import {
   WorkingGroup,
   Section,
@@ -22,6 +22,7 @@ export class WorkingGroupPageComponent extends PageComponent {
   protected autobind = true;
 
   protected workingGroup = WorkingGroupService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     workingGroup: null,
@@ -65,6 +66,13 @@ export class WorkingGroupPageComponent extends PageComponent {
         if (this.scope.header) {
           this.head.title = this.scope.header.title;
         }
+
+        await this.openGraph.setWorkingGroup(
+          {
+            title: this.scope.header.title,
+          },
+          workingGroup
+        );
       }
     } catch (error) {
       this.throw(error);

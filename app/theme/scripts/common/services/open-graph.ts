@@ -10,6 +10,7 @@ import {
   PageService,
   PodcastService,
   SchoolSubjectService,
+  WorkingGroupService,
 } from ".";
 import {
   nestFormatter,
@@ -20,6 +21,7 @@ import {
   markdownFormatter,
   podcastFormatter,
   schoolSubjectFormatter,
+  workingGroupFormatter,
 } from "../formatters";
 import {
   OpenGraphData,
@@ -29,6 +31,7 @@ import {
   Page,
   StrapiGqlPodcastEpisodeBasicFragmentFragment,
   SchoolSubject,
+  WorkingGroup,
 } from "../types";
 import {
   OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
@@ -42,6 +45,7 @@ export class OpenGraphService {
   protected page = PageService.getInstance();
   protected podcast = PodcastService.getInstance();
   protected schoolSubject = SchoolSubjectService.getInstance();
+  protected workingGroup = WorkingGroupService.getInstance();
 
   protected constructor() {
     /** protected */
@@ -209,6 +213,29 @@ export class OpenGraphService {
       ..._data,
       type: _data.type || "website",
       title: _data.title || schoolSubject.title || undefined,
+      image: _data.image || sectionsObj.image?.image || undefined,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(sectionsObj.text) ||
+        undefined,
+      url,
+    } as OpenGraph;
+
+    return this.set(data);
+  }
+
+  public async setWorkingGroup(
+    _data: Partial<OpenGraphData>,
+    workingGroup: WorkingGroup
+  ) {
+    const sectionsObj = await this.workingGroup.getSectionsObject(workingGroup);
+    const url =
+      _data.url ||
+      nestFormatter.read(workingGroupFormatter.read(workingGroup.slug));
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || workingGroup.title || undefined,
       image: _data.image || sectionsObj.image?.image || undefined,
       description:
         _data.description ||
