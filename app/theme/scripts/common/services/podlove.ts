@@ -41,20 +41,31 @@ export class PodloveService extends NestService {
     return `/api/podlove/episode/${slug}`;
   }
 
-  public async getConfig(slug: string) {
-    const url = this.host + "/api/podlove/episode/" + slug;
+  public async getConfig(activeTab?: PodloveWebPlayerTab) {
+    const url = this.host + PodloveService.getConfigPath(activeTab);
+    const res = await this._getCached<PodloveWebPlayerConfig>(url);
+    return res.body;
+  }
+
+  public async getConfigForEpisode(
+    episodeSlug: string,
+    activeTab?: PodloveWebPlayerTab
+  ) {
+    const url =
+      this.host +
+      PodloveService.getConfigPathForEpisode(episodeSlug, activeTab);
     const res = await this._getCached<PodloveWebPlayerConfig>(url);
     return res.body;
   }
 
   public async get(slug: string) {
-    const url = this.host + "/api/podlove/episode/" + slug;
+    const url = this.host + PodloveService.getEpisodeConfigPath(slug);
     const res = await this._getCached<PodloveWebPlayerEpisode>(url);
     return res.body;
   }
 
-  public async getByPost(slug: string) {
-    const url = this.host + "/api/podlove/episode/post/" + slug;
+  public async latest() {
+    const url = this.host + PodloveService.getLatestEpisodeConfigPath();
     const res = await this._getCached<PodloveWebPlayerEpisode>(url);
     return res.body;
   }

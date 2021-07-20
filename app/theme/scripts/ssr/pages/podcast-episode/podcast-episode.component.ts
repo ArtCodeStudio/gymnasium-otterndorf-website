@@ -1,10 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./podcast-episode.component.pug";
-import {
-  PodloveService,
-  PodcastService,
-  OpenGraphService,
-} from "../../services";
+import { PodcastService, OpenGraphService } from "../../services";
 import {
   PageHeader,
   replaceBodyPageClass,
@@ -22,7 +18,6 @@ export class PodcastEpisodePageComponent extends PageComponent {
   public _debug = false;
   protected autobind = true;
 
-  protected podlove = PodloveService.getInstance();
   protected podcast = PodcastService.getInstance();
   protected openGraph = OpenGraphService.getInstance();
 

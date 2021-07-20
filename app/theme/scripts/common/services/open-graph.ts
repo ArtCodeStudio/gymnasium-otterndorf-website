@@ -2,6 +2,7 @@ import {
   OpenGraphService as SSROpenGraphService,
   OpenGraph,
   OpenGraphImage,
+  OpenGraphAudio,
 } from "@ribajs/ssr";
 import { cutFormatter, stripHtmlFormatter } from "@ribajs/core";
 import {
@@ -9,6 +10,7 @@ import {
   BlogService,
   PageService,
   PodcastService,
+  PodloveService,
   SchoolSubjectService,
   WorkingGroupService,
   GalleryService,
@@ -56,6 +58,7 @@ export class OpenGraphService {
   protected blog = BlogService.getInstance();
   protected page = PageService.getInstance();
   protected podcast = PodcastService.getInstance();
+  protected podlove = PodloveService.getInstance();
   protected schoolSubject = SchoolSubjectService.getInstance();
   protected workingGroup = WorkingGroupService.getInstance();
   protected gallery = GalleryService.getInstance();
@@ -160,6 +163,14 @@ export class OpenGraphService {
     _data: Partial<OpenGraphData>,
     episode: StrapiGqlPodcastEpisodeBasicFragmentFragment
   ) {
+    const podloveEpisode = await this.podlove.get(episode.slug);
+    const audio: OpenGraphAudio[] = podloveEpisode.audio.map((audio) => {
+      return {
+        url: audio.url,
+        type: audio.mimeType,
+      };
+    });
+
     const url =
       _data.url || nestFormatter.read(podcastFormatter.read(episode.slug));
     const data = {
@@ -167,6 +178,7 @@ export class OpenGraphService {
       type: _data.type || "article",
       title: _data.title || episode.title || undefined,
       image: _data.image || episode.image || undefined,
+      audio,
       description:
         _data.description ||
         this.getTruncatedDescription(episode.description) ||
@@ -179,11 +191,19 @@ export class OpenGraphService {
 
   public async setPodcastOverview(_data: Partial<OpenGraphData>) {
     const url = _data.url || nestFormatter.read(podcastFormatter.read());
+    const podloveLatestEpisode = await this.podlove.latest();
+    const audio: OpenGraphAudio[] = podloveLatestEpisode.audio.map((audio) => {
+      return {
+        url: audio.url,
+        type: audio.mimeType,
+      };
+    });
 
     const data = {
       ..._data,
       type: _data.type || "website",
       title: _data.title || undefined,
+      audio,
       description: _data.description || undefined,
       url,
     } as OpenGraph;
