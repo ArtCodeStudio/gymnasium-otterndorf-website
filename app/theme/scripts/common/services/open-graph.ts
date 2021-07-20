@@ -26,6 +26,7 @@ import {
   workingGroupFormatter,
   galleryFormatter,
   mediaCenterFormatter,
+  blogFormatter,
 } from "../formatters";
 import {
   OpenGraphData,
@@ -39,6 +40,8 @@ import {
   StrapiGqlGalleryFragmentFragment,
   StrapiGqlMediaCenterFragmentFragment,
   StrapiGqlPageInfoQuery,
+  StrapiGqlBlogInfoQuery,
+  Blog,
 } from "../types";
 import {
   OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
@@ -225,6 +228,27 @@ export class OpenGraphService {
       url,
     } as OpenGraph;
 
+    return this.set(data);
+  }
+
+  public async setBlogOverview(
+    _data: Partial<OpenGraphData>,
+    info: StrapiGqlBlogInfoQuery["blogInfo"],
+    category?: Blog
+  ) {
+    const url =
+      _data.url || nestFormatter.read(blogFormatter.read(category?.slug));
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || category?.name || info?.title || undefined,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(info?.description || undefined) ||
+        undefined,
+      url,
+    } as OpenGraph;
     return this.set(data);
   }
 

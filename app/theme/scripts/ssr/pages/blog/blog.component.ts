@@ -1,5 +1,5 @@
 import { PageComponent } from "@ribajs/ssr";
-import { GraphQLClient } from "../../services";
+import { GraphQLClient, OpenGraphService } from "../../services";
 import pugTemplate from "./blog.component.pug";
 import {
   replaceBodyPageClass,
@@ -7,6 +7,7 @@ import {
   Post,
   Blog,
   PageHeader,
+  StrapiGqlBlogInfoQuery,
 } from "../../../common";
 
 export interface Scope {
@@ -24,6 +25,7 @@ export class BlogPageComponent extends PageComponent {
   public _debug = false;
   protected autobind = true;
   protected blog = BlogService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   protected gql = GraphQLClient.getInstance();
 
@@ -33,7 +35,7 @@ export class BlogPageComponent extends PageComponent {
     categories: [],
     header: {},
     params: {},
-    title: "Neuigkeiten",
+    title: "",
     description: "",
   };
 
@@ -44,7 +46,6 @@ export class BlogPageComponent extends PageComponent {
   constructor() {
     super();
     this.scope.params = this.ctx.params;
-    this.debug("env", this.env);
   }
 
   protected connectedCallback() {
@@ -63,9 +64,10 @@ export class BlogPageComponent extends PageComponent {
       this.scope.title = info.title || this.scope.title;
       this.scope.description = info.description || this.scope.description;
     }
+    return info;
   }
 
-  protected async getPosts(slug?: string) {
+  protected async setPosts(slug?: string) {
     if (slug) {
       // Get posts by category
       this.scope.category = (await this.blog.getDetail(slug)) || undefined;
@@ -76,27 +78,49 @@ export class BlogPageComponent extends PageComponent {
       // Get all posts
       this.scope.posts = (await this.blog.listPostsBasic()) as Post[];
     }
+    return {
+      posts: this.scope.posts,
+      category: this.scope.category,
+    };
   }
 
-  protected async getCategories() {
+  protected async setCategories() {
     this.scope.categories = ((await this.blog.listBasic()) as Blog[]) || [];
+    return this.scope.categories;
   }
 
-  protected async getHeader() {
+  protected async setHeader(
+    info: StrapiGqlBlogInfoQuery["blogInfo"],
+    category?: Blog
+  ) {
     this.scope.header = this.blog.getHeader(
-      this.scope.category,
-      this.scope.title
+      this.scope.category || category,
+      this.scope.title || info?.title
+    );
+    this.head.title = this.scope.header.title;
+    return this.scope.header;
+  }
+
+  protected async setOpenGraph(
+    info: StrapiGqlBlogInfoQuery["blogInfo"],
+    category?: Blog
+  ) {
+    return await this.openGraph.setBlogOverview(
+      {
+        title: this.scope.header.title,
+      },
+      info,
+      category
     );
   }
 
   protected async beforeBind() {
     await super.beforeBind();
-    await this.getPosts(this.ctx.params.slug);
-    await this.setInfo();
-    await this.getHeader();
-    await this.getCategories();
-
-    this.head.title = this.scope.title;
+    const { category } = await this.setPosts(this.ctx.params.slug);
+    const info = await this.setInfo();
+    await this.setHeader(info, category);
+    await this.setCategories();
+    await this.setOpenGraph(info, category);
   }
 
   protected async afterBind() {

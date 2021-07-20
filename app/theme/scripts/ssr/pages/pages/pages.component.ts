@@ -77,20 +77,11 @@ export class PagesPageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    try {
-      await this.setPages();
-      const info = await this.setInfo();
-      this.setHeader(info);
-      await this.setOpenGraph(info);
-    } catch (error) {
-      this.throw(error);
-    }
-
     await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
+    await this.setPages();
+    const info = await this.setInfo();
+    this.setHeader(info);
+    await this.setOpenGraph(info);
   }
 
   protected template() {
