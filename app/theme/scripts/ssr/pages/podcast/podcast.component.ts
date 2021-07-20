@@ -1,6 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./podcast.component.pug";
-import { PodcastService } from "../../services";
+import { PodcastService, OpenGraphService } from "../../services";
 import {
   StrapiGqlPodcastEpisodeBasicFragmentFragment,
   PageHeader,
@@ -18,6 +18,7 @@ export class PodcastPageComponent extends PageComponent {
   protected autobind = true;
 
   protected podcast = PodcastService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     episodes: [],
@@ -38,27 +39,31 @@ export class PodcastPageComponent extends PageComponent {
     return [];
   }
 
+  protected async setEpisodes() {
+    const episodes = await this.podcast.list();
+    if (episodes) {
+      this.scope.episodes = episodes;
+    }
+    return episodes;
+  }
+
   protected setHeader() {
     this.scope.header = this.podcast.getHeader();
+    this.head.title = this.scope.header.title;
+    return this.scope.header;
+  }
+
+  protected async setOpenGraph() {
+    return await this.openGraph.setPodcastOverview({
+      title: this.scope.header.title,
+    });
   }
 
   protected async beforeBind() {
-    try {
-      const episodes = await this.podcast.list();
-
-      if (this.scope.episodes && episodes) {
-        this.scope.episodes = episodes;
-        this.setHeader();
-      }
-    } catch (error) {
-      this.throw(error);
-    }
-
     await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
+    await this.setEpisodes();
+    this.setHeader();
+    await this.setOpenGraph();
   }
 
   protected template() {

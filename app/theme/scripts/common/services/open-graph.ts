@@ -155,6 +155,7 @@ export class OpenGraphService {
     return this.set(data);
   }
 
+  // TODO audio
   public async setPodcastEpisode(
     _data: Partial<OpenGraphData>,
     episode: StrapiGqlPodcastEpisodeBasicFragmentFragment
@@ -173,6 +174,19 @@ export class OpenGraphService {
       url,
     } as OpenGraph;
 
+    return this.set(data);
+  }
+
+  public async setPodcastOverview(_data: Partial<OpenGraphData>) {
+    const url = _data.url || nestFormatter.read(podcastFormatter.read());
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || undefined,
+      description: _data.description || undefined,
+      url,
+    } as OpenGraph;
     return this.set(data);
   }
 
