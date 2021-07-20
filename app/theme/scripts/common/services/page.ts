@@ -110,9 +110,12 @@ export class PageService {
     return sectionsObj;
   }
 
-  public getHeader(page?: Page): PageHeader {
+  public getHeader(
+    page?: Page,
+    info?: StrapiGqlPageInfoQuery["pageInfo"]
+  ): PageHeader {
     const header: PageHeader = {
-      title: page?.title || "Seiten",
+      title: page?.title || info?.title || "Seiten",
       breadcrumbs: [
         {
           type: ENTRY_TYPE.Home,

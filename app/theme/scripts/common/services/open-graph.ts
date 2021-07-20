@@ -38,6 +38,7 @@ import {
   WorkingGroup,
   StrapiGqlGalleryFragmentFragment,
   StrapiGqlMediaCenterFragmentFragment,
+  StrapiGqlPageInfoQuery,
 } from "../types";
 import {
   OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
@@ -182,6 +183,26 @@ export class OpenGraphService {
       description:
         _data.description ||
         this.getTruncatedDescription(sectionsObj.text) ||
+        undefined,
+      url,
+    } as OpenGraph;
+
+    return this.set(data);
+  }
+
+  public async setPageOverview(
+    _data: Partial<OpenGraphData>,
+    info: StrapiGqlPageInfoQuery["pageInfo"]
+  ) {
+    const url = _data.url || nestFormatter.read(pageFormatter.read());
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || info?.title || undefined,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(info?.description || undefined) ||
         undefined,
       url,
     } as OpenGraph;

@@ -1,7 +1,12 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./pages.component.pug";
-import { PageService } from "../../services";
-import { Page, PageHeader, replaceBodyPageClass } from "../../../common";
+import { PageService, OpenGraphService } from "../../services";
+import {
+  Page,
+  PageHeader,
+  replaceBodyPageClass,
+  StrapiGqlPageInfoQuery,
+} from "../../../common";
 
 export interface Scope {
   header: PageHeader | Record<string, never>;
@@ -16,6 +21,7 @@ export class PagesPageComponent extends PageComponent {
   protected autobind = true;
 
   protected page = PageService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     pages: [],
@@ -38,8 +44,18 @@ export class PagesPageComponent extends PageComponent {
     return [];
   }
 
-  protected setHeader() {
-    this.scope.header = this.page.getHeader();
+  protected setHeader(info: StrapiGqlPageInfoQuery["pageInfo"]) {
+    this.scope.header = this.page.getHeader(undefined, info);
+    this.head.title = this.scope.header.title;
+    return this.scope.header;
+  }
+
+  protected async setPages() {
+    const pages = await this.page.listBasic();
+    if (this.scope.pages && pages) {
+      this.scope.pages = pages;
+    }
+    return pages;
   }
 
   protected async setInfo() {
@@ -48,16 +64,24 @@ export class PagesPageComponent extends PageComponent {
       this.scope.title = info.title || this.scope.title;
       this.scope.description = info.description || this.scope.description;
     }
+    return info;
+  }
+
+  protected async setOpenGraph(info: StrapiGqlPageInfoQuery["pageInfo"]) {
+    return await this.openGraph.setPageOverview(
+      {
+        title: this.scope.header.title,
+      },
+      info
+    );
   }
 
   protected async beforeBind() {
     try {
-      const pages = await this.page.listBasic();
-
-      if (this.scope.pages && pages) {
-        this.scope.pages = pages;
-        this.setHeader();
-      }
+      await this.setPages();
+      const info = await this.setInfo();
+      this.setHeader(info);
+      await this.setOpenGraph(info);
     } catch (error) {
       this.throw(error);
     }

@@ -1,10 +1,14 @@
 import { PageComponent } from "@ribajs/ssr";
 import { BlogService, OpenGraphService } from "../../services";
-import { Section, PageHeader, replaceBodyPageClass } from "../../../common";
+import {
+  Section,
+  PageHeader,
+  replaceBodyPageClass,
+  Post,
+} from "../../../common";
 import pugTemplate from "./blog-entry.component.pug";
 
 export interface Scope {
-  title: string;
   sections: Section[];
   header: PageHeader | Record<string, never>;
   params: BlogEntryPageComponent["ctx"]["params"];
@@ -19,7 +23,6 @@ export class BlogEntryPageComponent extends PageComponent {
   protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
-    title: "",
     sections: [],
     header: {},
     params: {},
@@ -44,24 +47,39 @@ export class BlogEntryPageComponent extends PageComponent {
     return [];
   }
 
+  protected async setPost() {
+    const post = await BlogService.getInstance().getPost(
+      this.scope.params.slug
+    );
+    if (post) {
+      this.scope.sections = await this.blog.getSections(post);
+    }
+    return post;
+  }
+
+  protected setHeader(post: Post) {
+    this.scope.header = this.blog.getPostHeader(post);
+    this.head.title = this.scope.header.title;
+    return this.scope.header;
+  }
+
+  protected async setOpenGraph(post: Post) {
+    await this.openGraph.setArticle(
+      {
+        title: this.scope.header.title,
+      },
+      post
+    );
+  }
+
   protected async beforeBind() {
     await super.beforeBind();
     this.scope.params = this.ctx.params;
     try {
-      const post = await BlogService.getInstance().getPost(
-        this.scope.params.slug
-      );
+      const post = await this.setPost();
       if (post) {
-        this.scope.sections = await this.blog.getSections(post);
-        this.scope.title = post.title;
-        this.scope.header = this.blog.getPostHeader(post);
-
-        await this.openGraph.setArticle(
-          {
-            title: this.scope.header.title,
-          },
-          post
-        );
+        this.setHeader(post);
+        await this.setOpenGraph(post);
       }
     } catch (error) {
       this.throw(error);
