@@ -1,10 +1,11 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./working-groups.component.pug";
-import { WorkingGroupService } from "../../services";
+import { WorkingGroupService, OpenGraphService } from "../../services";
 import {
   WorkingGroup,
   PageHeader,
   replaceBodyPageClass,
+  StrapiGqlWorkingGroupInfoQuery,
 } from "../../../common";
 
 export interface Scope {
@@ -20,6 +21,7 @@ export class WorkingGroupsPageComponent extends PageComponent {
   protected autobind = true;
 
   protected workingGroup = WorkingGroupService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     workingGroups: [],
@@ -42,31 +44,53 @@ export class WorkingGroupsPageComponent extends PageComponent {
     return [];
   }
 
-  protected async beforeBind() {
-    try {
-      const workingGroups =
-        (await this.workingGroup.listBasic()) as WorkingGroup[];
-      const info = await this.workingGroup.info();
-      if (info) {
-        this.scope.title = info.title || this.scope.title;
-        this.scope.description = info.description || this.scope.description;
-      }
-      if (workingGroups) {
-        this.scope.workingGroups = workingGroups;
-        this.scope.header = this.workingGroup.getHeader(
-          undefined,
-          this.scope.title
-        );
-      }
-    } catch (error) {
-      this.throw(error);
+  protected async setWorkingGroups() {
+    const workingGroups =
+      (await this.workingGroup.listBasic()) as WorkingGroup[];
+
+    if (workingGroups) {
+      this.scope.workingGroups = workingGroups;
     }
-    this.head.title = this.scope.header.title;
-    await super.beforeBind();
+    return workingGroups;
   }
 
-  protected async afterBind() {
-    await super.afterBind();
+  protected async setInfo() {
+    const info = await this.workingGroup.info();
+    if (info) {
+      this.scope.title = info.title || this.scope.title;
+      this.scope.description = info.description || this.scope.description;
+    }
+    return info;
+  }
+
+  protected setHeader(
+    info: StrapiGqlWorkingGroupInfoQuery["workingGroupInfo"]
+  ) {
+    this.scope.header = this.workingGroup.getHeader(
+      undefined,
+      this.scope.title || info?.title
+    );
+    this.head.title = this.scope.header.title;
+    return this.scope.header;
+  }
+
+  protected async setOpenGraph(
+    info: StrapiGqlWorkingGroupInfoQuery["workingGroupInfo"]
+  ) {
+    return await this.openGraph.setWorkingGroupOverview(
+      {
+        title: this.scope.header.title,
+      },
+      info
+    );
+  }
+
+  protected async beforeBind() {
+    await super.beforeBind();
+    await this.setWorkingGroups();
+    const info = await this.setInfo();
+    this.setHeader(info);
+    await this.setOpenGraph(info);
   }
 
   protected template() {

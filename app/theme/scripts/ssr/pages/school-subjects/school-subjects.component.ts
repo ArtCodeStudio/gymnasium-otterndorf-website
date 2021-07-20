@@ -93,10 +93,6 @@ export class SchoolSubjectsPageComponent extends PageComponent {
     await this.setOpenGraph(info);
   }
 
-  protected async afterBind() {
-    await super.afterBind();
-  }
-
   protected template() {
     return pugTemplate(this.scope);
   }
