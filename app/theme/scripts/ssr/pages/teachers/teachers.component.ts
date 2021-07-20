@@ -55,12 +55,9 @@ export class TeachersPageComponent extends PageComponent {
 
   protected async getTeachers() {
     const teachers = ((await this.teacher.listDetail()) || []) as Teacher[];
-    if (!teachers || !teachers.length) {
-      this.throw(new Error(`No teachers found!`));
-      return;
-    }
     this.scope.teachers = teachers;
     this.head.title = "Lehrer";
+    return teachers;
   }
 
   protected async setInfo() {
@@ -69,19 +66,19 @@ export class TeachersPageComponent extends PageComponent {
       this.scope.title = info.title || this.scope.title;
       this.scope.description = info.description || this.scope.description;
     }
+    return info;
+  }
+
+  protected setHeader(teachers: Teacher[]) {
+    this.scope.header = this.teacher.getHeader(teachers, this.scope.title);
+    this.head.title = this.scope.header.title || this.scope.title;
+    return this.scope.header;
   }
 
   protected async beforeBind() {
-    await this.getTeachers();
+    const teachers = await this.getTeachers();
     await this.setInfo();
-
-    this.head.title = this.scope.title;
-
-    this.scope.header = this.teacher.getHeader(
-      this.scope.teachers,
-      this.scope.title
-    );
-
+    this.setHeader(teachers);
     await super.beforeBind();
   }
 

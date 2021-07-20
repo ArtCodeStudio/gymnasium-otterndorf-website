@@ -47,6 +47,8 @@ export class PagePageComponent extends PageComponent {
 
   protected setHeader(page: Page) {
     this.scope.header = this.page.getHeader(page);
+    this.head.title = this.scope.header.title;
+    return this.scope.header;
   }
 
   protected getPageAssets(page: Page) {
@@ -68,42 +70,42 @@ export class PagePageComponent extends PageComponent {
     return assets;
   }
 
-  protected setTitle(page: Page) {
-    if (page?.title) {
-      this.head.title = page.title;
+  protected async setPage() {
+    const page = await this.page.getDetail(this.ctx.params.slug);
+    if (page) {
+      this.scope.page = page;
     }
+    return page;
+  }
+
+  protected setAssets(page: Page) {
+    this.scope.assets = this.getAssets(page, this.scope.sections);
+    return this.scope.assets;
+  }
+
+  protected async setSections(page: Page) {
+    this.scope.sections = await this.page.getSections(page);
+    return this.scope.sections;
+  }
+
+  protected async setOpenGraph(page: Page) {
+    return await this.openGraph.setPage(
+      {
+        title: this.scope.header.title,
+      },
+      page
+    );
   }
 
   protected async beforeBind() {
-    try {
-      const page = await this.page.getDetail(this.ctx.params.slug);
-
-      if (page) {
-        this.scope.page = page;
-        this.setTitle(this.scope.page);
-        this.scope.sections = await this.page.getSections(this.scope.page);
-        this.setHeader(page);
-        this.scope.assets = this.getAssets(
-          this.scope.page,
-          this.scope.sections
-        );
-
-        await this.openGraph.setPage(
-          {
-            title: this.scope.header.title,
-          },
-          page
-        );
-      }
-    } catch (error) {
-      this.throw(error);
-    }
-
     await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
+    const page = await this.setPage();
+    if (page) {
+      await this.setSections(page);
+      this.setHeader(page);
+      this.setAssets(page);
+      await this.setOpenGraph(page);
+    }
   }
 
   protected template() {

@@ -1,10 +1,6 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./teacher.component.pug";
-import {
-  TeacherService,
-  SectionsService,
-  ResponseErrorService,
-} from "../../services";
+import { TeacherService, SectionsService } from "../../services";
 import {
   Section,
   PageHeader,
@@ -82,14 +78,11 @@ export class TeacherPageComponent extends PageComponent {
   /**
    * Used if a slug is defined
    */
-  protected async getTeacher(slug: string) {
-    const teacher: Teacher | null = await this.teacher.getDetail(slug);
-    if (!teacher) {
-      this.throw(new Error(`Teacher with slug "${slug}" not found!`));
-      return;
-    }
+  protected async setTeacher(slug: string) {
+    const teacher = await this.teacher.getDetail(slug);
     this.scope.teacher = teacher;
     this.scope.title = teacher.name;
+    return teacher;
   }
 
   protected async setInfo() {
@@ -100,30 +93,26 @@ export class TeacherPageComponent extends PageComponent {
     }
   }
 
+  protected async setAssets(teacher: Teacher) {
+    this.scope.assets = this.getAssets(teacher, this.scope.sections);
+  }
+
+  protected async setHeader(teacher: Teacher) {
+    this.scope.header = this.teacher.getHeader([teacher], this.scope.title);
+    this.head.title = this.scope.header.title || this.scope.title;
+  }
+
   protected async beforeBind() {
+    await super.beforeBind();
     const slug = this.ctx.params.slug;
     if (!slug) {
       throw new Error("URL slug is required!");
     }
 
-    await this.getTeacher(slug);
-    if (!this.scope.teacher) {
-      throw ResponseErrorService.notFound("Teacher", slug);
-    }
-
-    // this.scope.sections = await this.teacher.getSections(teacher);
-    this.scope.assets = this.getAssets(this.scope.teacher, this.scope.sections);
-
+    const teacher = await this.setTeacher(slug);
     await this.setInfo();
-
-    this.head.title = this.scope.title;
-
-    this.scope.header = this.teacher.getHeader(
-      [this.scope.teacher],
-      this.scope.title
-    );
-
-    await super.beforeBind();
+    await this.setAssets(teacher);
+    await this.setHeader(teacher);
   }
 
   protected async afterBind() {

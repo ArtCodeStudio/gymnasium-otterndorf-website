@@ -79,18 +79,18 @@ export class SchoolSubjectService {
 
   async getDetail(slug: string) {
     const subjects = await this.listDetail([slug], 1);
-    if (!Array.isArray(subjects) || subjects.length <= 0) {
+    if (!subjects || !Array.isArray(subjects) || subjects.length <= 0) {
       throw ResponseErrorService.notFound("School Subject", slug);
     }
-    return subjects?.[0] || null;
+    return subjects[0];
   }
 
   async getBasic(slug: string) {
     const subjects = await this.listBasic([slug], 1);
-    if (!Array.isArray(subjects) || subjects.length <= 0) {
+    if (!subjects || !Array.isArray(subjects) || subjects.length <= 0) {
       throw ResponseErrorService.notFound("School Subject", slug);
     }
-    return subjects?.[0] || null;
+    return subjects[0];
   }
 
   async getSections(schoolSubject: SchoolSubject) {

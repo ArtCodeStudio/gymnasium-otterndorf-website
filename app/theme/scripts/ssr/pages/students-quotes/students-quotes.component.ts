@@ -41,27 +41,24 @@ export class StudentsQuotesPageComponent extends PageComponent {
     this.init(StudentsQuotesPageComponent.observedAttributes);
   }
 
-  protected requiredAttributes(): string[] {
-    return [];
+  protected async setStudentsQuotes() {
+    const quotes =
+      (await this.quote.list()) as StrapiGqlStudent.QuoteFragmentFragment[];
+
+    this.scope.quotes = quotes || [];
+    return quotes;
+  }
+
+  protected setHeader() {
+    this.scope.header = this.quote.getHeader();
+    this.head.title = this.scope.header.title || "Schülersprüche";
   }
 
   protected async beforeBind() {
-    this.head.title = "Schülersprüche";
-    try {
-      const quotes =
-        (await this.quote.list()) as StrapiGqlStudent.QuoteFragmentFragment[];
-
-      this.scope.quotes = quotes || [];
-      this.scope.header = this.quote.getHeader();
-    } catch (error) {
-      this.throw(error);
-    }
-
     await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
+    await this.setStudentsQuotes();
+    this.setHeader();
+    this.setHeader();
   }
 
   protected template() {

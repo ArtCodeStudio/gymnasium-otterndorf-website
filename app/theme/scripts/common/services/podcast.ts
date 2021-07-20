@@ -8,6 +8,7 @@ import {
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { podcastFormatter } from "../formatters";
+import { ResponseErrorService } from "./response-error";
 
 import podcastEpisodesBasicBySlugs from "../../../graphql/queries/podcast-episodes-basic-by-slugs.gql";
 
@@ -54,7 +55,11 @@ export class PodcastService extends NestService {
   public async get(
     slug: string
   ): Promise<StrapiGqlPodcastEpisodeBasicFragmentFragment> {
-    return (await this.list([slug], 1))[0] || null;
+    const episode = (await this.list([slug], 1))[0] || null;
+    if (!episode) {
+      throw ResponseErrorService.notFound("Podcast Episode", slug);
+    }
+    return episode;
   }
 
   public getHeader(

@@ -8,6 +8,8 @@ import {
   StrapiGqlTeacherInfoQueryVariables,
   Teacher,
   PageHeader,
+  StrapiGqlTeacherDetailFragmentFragment,
+  StrapiGqlTeacherBasicFragmentFragment,
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
@@ -74,20 +76,18 @@ export class TeacherService {
 
   async getDetail(slug: string) {
     const teachers = await this.listDetail([slug], 1);
-    if (!Array.isArray(teachers) || teachers.length <= 0) {
+    if (!teachers || !Array.isArray(teachers) || teachers.length <= 0) {
       throw ResponseErrorService.notFound("Teacher", slug);
     }
-    const teacher = teachers?.[0] || null;
-    return teacher;
+    return teachers[0] as StrapiGqlTeacherDetailFragmentFragment;
   }
 
   async getBasic(slug: string) {
     const teachers = await this.listBasic([slug], 1);
-    if (!Array.isArray(teachers) || teachers.length <= 0) {
+    if (!teachers || !Array.isArray(teachers) || teachers.length <= 0) {
       throw ResponseErrorService.notFound("Teacher", slug);
     }
-    const teacher = teachers?.[0] || null;
-    return teacher;
+    return teachers[0] as StrapiGqlTeacherBasicFragmentFragment;
   }
 
   public getHeader(
@@ -105,7 +105,6 @@ export class TeacherService {
             active: false,
           },
           {
-            label: title,
             type: ENTRY_TYPE.Teacher,
             active: false,
             url: teacherFormatter.read(),

@@ -46,40 +46,37 @@ export class MediaCenterPageComponent extends PageComponent {
     this.init(MediaCenterPageComponent.observedAttributes);
   }
 
-  protected requiredAttributes(): string[] {
-    return [];
+  protected async setMediaCenter() {
+    const mediaCenter = await this.mediaCenter.get(this.ctx.params.slug);
+    if (mediaCenter) {
+      if (mediaCenter.title) {
+        this.scope.title = mediaCenter.title;
+        this.head.title = this.scope.title;
+      }
+      if (mediaCenter.movies) {
+        this.scope.movies = mediaCenter.movies;
+      }
+    }
+    return mediaCenter;
+  }
+
+  protected async setOpenGraph(
+    mediaCenter: StrapiGqlMediaCenterFragmentFragment
+  ) {
+    return await this.openGraph.setMediaCenter(
+      {
+        title: this.head.title,
+      },
+      mediaCenter
+    );
   }
 
   protected async beforeBind() {
-    this.head.title = this.ctx.params.slug + " MediaCenter";
-    try {
-      const mediaCenter = await this.mediaCenter.get(this.ctx.params.slug);
-      // console.debug("mediaCenter", mediaCenter);
-
-      if (mediaCenter) {
-        if (mediaCenter.title) {
-          this.scope.title = mediaCenter.title;
-          this.head.title = this.scope.title;
-        }
-        if (mediaCenter.movies) {
-          this.scope.movies = mediaCenter.movies;
-        }
-        await this.openGraph.setMediaCenter(
-          {
-            title: this.head.title,
-          },
-          mediaCenter
-        );
-      }
-    } catch (error) {
-      this.throw(error);
+    const mediaCenter = await this.setMediaCenter();
+    if (mediaCenter) {
+      await this.setOpenGraph(mediaCenter);
     }
-
     await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
   }
 
   protected template() {

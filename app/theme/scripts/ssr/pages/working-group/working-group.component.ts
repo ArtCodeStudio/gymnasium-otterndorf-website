@@ -45,39 +45,49 @@ export class WorkingGroupPageComponent extends PageComponent {
     return [];
   }
 
-  protected async beforeBind() {
-    try {
-      const workingGroup = await this.workingGroup.getDetail(
-        this.ctx.params.slug
-      );
-      this.scope.workingGroup = workingGroup || null;
+  protected async setWorkingGroup(slug: string) {
+    const workingGroup = await this.workingGroup.getDetail(slug);
+    this.scope.workingGroup = workingGroup || null;
+    return workingGroup;
+  }
 
-      if (workingGroup) {
-        if (workingGroup?.title) {
-          this.head.title = this.ctx.params.slug;
-        }
-        this.scope.sections = await this.workingGroup.getSections(workingGroup);
-
-        if (this.scope.workingGroup?.teachers) {
-          this.scope.teachers = this.workingGroup.getTeachers(workingGroup);
-        }
-
-        this.scope.header = this.workingGroup.getHeader(workingGroup);
-        if (this.scope.header) {
-          this.head.title = this.scope.header.title;
-        }
-
-        await this.openGraph.setWorkingGroup(
-          {
-            title: this.scope.header.title,
-          },
-          workingGroup
-        );
-      }
-    } catch (error) {
-      this.throw(error);
+  protected setHeader(workingGroup: WorkingGroup) {
+    this.scope.header = this.workingGroup.getHeader(workingGroup);
+    if (this.scope.header) {
+      this.head.title = this.scope.header.title;
     }
+  }
+
+  protected setTeachers(workingGroup: WorkingGroup) {
+    if (workingGroup.teachers) {
+      this.scope.teachers = this.workingGroup.getTeachers(workingGroup);
+    }
+    return this.scope.teachers;
+  }
+
+  protected async setSections(workingGroup: WorkingGroup) {
+    this.scope.sections = await this.workingGroup.getSections(workingGroup);
+    return this.scope.sections;
+  }
+
+  protected async setOpenGraph(workingGroup: WorkingGroup) {
+    return await this.openGraph.setWorkingGroup(
+      {
+        title: this.scope.header.title,
+      },
+      workingGroup
+    );
+  }
+
+  protected async beforeBind() {
     await super.beforeBind();
+    const workingGroup = await this.setWorkingGroup(this.ctx.params.slug);
+    if (workingGroup) {
+      this.setHeader(workingGroup);
+      this.setTeachers(workingGroup);
+      await this.setSections(workingGroup);
+      await this.setOpenGraph(workingGroup);
+    }
   }
 
   protected template() {

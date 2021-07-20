@@ -40,18 +40,6 @@ export class NotFoundPageComponent extends PageComponent {
     this.init(NotFoundPageComponent.observedAttributes);
   }
 
-  protected requiredAttributes(): string[] {
-    return [];
-  }
-
-  protected async beforeBind() {
-    await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
-  }
-
   protected template() {
     return pugTemplate(this.scope);
   }

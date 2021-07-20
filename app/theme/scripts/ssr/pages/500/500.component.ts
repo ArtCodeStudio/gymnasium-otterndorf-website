@@ -45,20 +45,7 @@ export class InternalErrorPageComponent extends PageComponent {
     this.init(InternalErrorPageComponent.observedAttributes);
   }
 
-  protected requiredAttributes(): string[] {
-    return [];
-  }
-
-  protected async beforeBind() {
-    await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
-  }
-
   protected template() {
-    // Why this.scope throws an error here?
     return pugTemplate(this.scope);
   }
 }

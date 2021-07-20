@@ -63,42 +63,46 @@ export class GalleryPageComponent extends PageComponent {
     return [];
   }
 
-  protected async beforeBind() {
-    this.head.title = this.ctx.params.slug + " Gallery";
-    try {
-      const gallery = await this.gallery.get(this.ctx.params.slug);
-      this.debug("gallery", gallery);
-
-      if (gallery) {
-        if (gallery.title) {
-          this.scope.title = gallery.title;
-          this.head.title = this.scope.title;
-        }
-        if (gallery.images) {
-          this.scope.images = gallery.images;
-        }
-        if (gallery.style) {
-          this.classList.add(`gallery-style-${gallery.style}`);
-        }
-        if (gallery.color?.color) {
-          this.classList.add(`bg-${gallery.color?.color}`);
-        }
-        await this.openGraph.setGallery(
-          {
-            title: this.head.title,
-          },
-          gallery
-        );
+  protected async setGallery() {
+    const gallery = await this.gallery.get(this.ctx.params.slug);
+    if (gallery) {
+      if (gallery.title) {
+        this.scope.title = gallery.title;
+        this.head.title = this.scope.title;
       }
-    } catch (error) {
-      this.throw(error);
+      if (gallery.images) {
+        this.scope.images = gallery.images;
+      }
     }
-    this.head.title = this.scope.title;
-    await super.beforeBind();
+    return gallery;
   }
 
-  protected async afterBind() {
-    await super.afterBind();
+  protected setStyle(gallery: StrapiGqlGalleryFragmentFragment) {
+    if (gallery.style) {
+      this.classList.add(`gallery-style-${gallery.style}`);
+    }
+    if (gallery.color?.color) {
+      this.classList.add(`bg-${gallery.color?.color}`);
+    }
+  }
+
+  protected async setOpenGraph(gallery: StrapiGqlGalleryFragmentFragment) {
+    return await this.openGraph.setGallery(
+      {
+        title: this.head.title,
+      },
+      gallery
+    );
+  }
+
+  protected async beforeBind() {
+    await super.beforeBind();
+    this.head.title = this.ctx.params.slug + " Gallery";
+    const gallery = await this.setGallery();
+    if (gallery) {
+      this.setStyle(gallery);
+      await this.setOpenGraph(gallery);
+    }
   }
 
   protected template() {

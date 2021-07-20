@@ -66,7 +66,7 @@ export class SitemapPageComponent extends PageComponent {
     return [];
   }
 
-  protected async getPages() {
+  protected async setPages() {
     try {
       this.scope.pages = await this.page.listBasic();
     } catch (error) {
@@ -75,7 +75,7 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.pages;
   }
 
-  protected async getBlogs() {
+  protected async setBlogs() {
     try {
       this.scope.blogs = await this.blog.listBasic();
     } catch (error) {
@@ -84,7 +84,7 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.blogs;
   }
 
-  protected async getBlogPosts() {
+  protected async setBlogPosts() {
     try {
       this.scope.blogPosts = await this.blog.listPostsBasic();
     } catch (error) {
@@ -93,7 +93,7 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.blogPosts;
   }
 
-  protected async getSchoolSubjects() {
+  protected async setSchoolSubjects() {
     try {
       this.scope.subjects = await this.subjects.listBasic();
     } catch (error) {
@@ -102,7 +102,7 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.subjects;
   }
 
-  protected async getGalleries() {
+  protected async setGalleries() {
     try {
       this.scope.galleries = await this.gallery.list();
     } catch (error) {
@@ -111,7 +111,7 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.galleries;
   }
 
-  protected async getMediaCenters() {
+  protected async setMediaCenters() {
     try {
       this.scope.mediaCenters = await this.mediaCenter.list();
     } catch (error) {
@@ -120,7 +120,7 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.mediaCenters;
   }
 
-  protected async getTeachers() {
+  protected async setTeachers() {
     try {
       this.scope.teachers = await this.teacher.listBasic();
     } catch (error) {
@@ -129,7 +129,7 @@ export class SitemapPageComponent extends PageComponent {
     return this.scope.teachers;
   }
 
-  protected async getPodcastEpisodes() {
+  protected async setPodcastEpisodes() {
     try {
       this.scope.podcastEpisodes = await this.podcast.list();
     } catch (error) {
@@ -141,14 +141,14 @@ export class SitemapPageComponent extends PageComponent {
   protected async beforeBind() {
     this.head.title = this.scope.title;
 
-    await this.getPages();
-    await this.getBlogs();
-    await this.getBlogPosts();
-    await this.getSchoolSubjects();
-    await this.getGalleries();
-    await this.getMediaCenters();
-    await this.getTeachers();
-    await this.getPodcastEpisodes();
+    await this.setPages();
+    await this.setBlogs();
+    await this.setBlogPosts();
+    await this.setSchoolSubjects();
+    await this.setGalleries();
+    await this.setMediaCenters();
+    await this.setTeachers();
+    await this.setPodcastEpisodes();
 
     await super.beforeBind();
   }

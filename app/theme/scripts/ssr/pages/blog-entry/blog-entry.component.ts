@@ -75,14 +75,10 @@ export class BlogEntryPageComponent extends PageComponent {
   protected async beforeBind() {
     await super.beforeBind();
     this.scope.params = this.ctx.params;
-    try {
-      const post = await this.setPost();
-      if (post) {
-        this.setHeader(post);
-        await this.setOpenGraph(post);
-      }
-    } catch (error) {
-      this.throw(error);
+    const post = await this.setPost();
+    if (post) {
+      this.setHeader(post);
+      await this.setOpenGraph(post);
     }
   }
 

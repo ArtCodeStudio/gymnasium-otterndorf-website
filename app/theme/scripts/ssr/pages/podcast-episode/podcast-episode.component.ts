@@ -46,36 +46,33 @@ export class PodcastEpisodePageComponent extends PageComponent {
     return [];
   }
 
-  protected async getEpisode(slug: string) {
+  protected async setEpisode(slug: string) {
     const episode = await this.podcast.get(slug);
-    if (!episode) {
-      // TODO 404
-      throw new Error(`Podcast episode with slug "${slug}" not found!`);
-    }
+    this.scope.episode = episode;
     return episode;
+  }
+
+  protected setHeader(episode: StrapiGqlPodcastEpisodeBasicFragmentFragment) {
+    this.scope.header = this.podcast.getHeader(episode, this.ctx.params.slug);
+    this.head.title = this.scope.header.title || episode.title;
+  }
+
+  protected async setOpenGraph(
+    episode: StrapiGqlPodcastEpisodeBasicFragmentFragment
+  ) {
+    return await this.openGraph.setPodcastEpisode(
+      {
+        title: this.scope.header.title,
+      },
+      episode
+    );
   }
 
   protected async beforeBind() {
     if (this.ctx.params.slug) {
-      try {
-        const episode = await this.getEpisode(this.ctx.params.slug);
-
-        this.scope.episode = episode;
-        this.head.title = episode.title;
-        this.scope.header = this.podcast.getHeader(
-          this.scope.episode,
-          this.ctx.params.slug
-        );
-
-        await this.openGraph.setPodcastEpisode(
-          {
-            title: this.scope.header.title,
-          },
-          episode
-        );
-      } catch (error) {
-        this.throw(error);
-      }
+      const episode = await this.setEpisode(this.ctx.params.slug);
+      this.setHeader(episode);
+      await this.setOpenGraph(episode);
     }
     await super.beforeBind();
   }

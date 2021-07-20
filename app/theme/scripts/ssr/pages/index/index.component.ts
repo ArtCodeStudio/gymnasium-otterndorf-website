@@ -26,28 +26,16 @@ export class IndexPageComponent extends PageComponent {
     return [];
   }
 
-  constructor() {
-    super();
-  }
-
   protected connectedCallback() {
     super.connectedCallback();
     replaceBodyPageClass(this);
     this.init(IndexPageComponent.observedAttributes);
   }
 
-  protected requiredAttributes(): string[] {
-    return [];
-  }
-
   protected async beforeBind() {
     this.scope.sections = await this.home.getSections();
     await this.openGraph.setWebsite({});
     await super.beforeBind();
-  }
-
-  protected async afterBind() {
-    await super.afterBind();
   }
 
   protected template() {

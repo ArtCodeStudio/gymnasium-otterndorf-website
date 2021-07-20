@@ -41,45 +41,50 @@ export class SchoolSubjectPageComponent extends PageComponent {
     this.init(SchoolSubjectPageComponent.observedAttributes);
   }
 
-  protected requiredAttributes(): string[] {
-    return [];
+  protected async setSchoolSubject() {
+    const schoolSubject = await this.schoolSubject.getDetail(
+      this.ctx.params.slug
+    );
+    this.scope.schoolSubject = schoolSubject || null;
+    return schoolSubject as SchoolSubject;
+  }
+
+  protected setHeader(schoolSubject: SchoolSubject) {
+    this.scope.header = this.schoolSubject.getHeader(schoolSubject);
+    if (this.scope.header) {
+      this.head.title = this.scope.header.title;
+    }
+    return this.scope.header;
+  }
+
+  protected async setSections(schoolSubject: SchoolSubject) {
+    this.scope.sections = await this.schoolSubject.getSections(schoolSubject);
+    return this.scope.sections;
+  }
+
+  protected setTeachers(schoolSubject: SchoolSubject) {
+    if (schoolSubject.teachers) {
+      this.scope.teachers = this.schoolSubject.getTeachers(schoolSubject);
+    }
+    return this.scope.teachers;
+  }
+
+  protected async setOpenGraph(schoolSubject: SchoolSubject) {
+    return await this.openGraph.setSchoolSubject(
+      {
+        title: this.scope.header.title,
+      },
+      schoolSubject
+    );
   }
 
   protected async beforeBind() {
-    try {
-      const schoolSubject = await this.schoolSubject.getDetail(
-        this.ctx.params.slug
-      );
-      this.scope.schoolSubject = schoolSubject || null;
-
-      if (schoolSubject) {
-        if (schoolSubject?.title) {
-          this.head.title = this.ctx.params.slug;
-        }
-        this.scope.sections = await this.schoolSubject.getSections(
-          schoolSubject
-        );
-
-        if (this.scope.schoolSubject?.teachers) {
-          this.scope.teachers = this.schoolSubject.getTeachers(schoolSubject);
-        }
-
-        this.scope.header = this.schoolSubject.getHeader(schoolSubject);
-        if (this.scope.header) {
-          this.head.title = this.scope.header.title;
-        }
-
-        await this.openGraph.setSchoolSubject(
-          {
-            title: this.scope.header.title,
-          },
-          schoolSubject
-        );
-      }
-    } catch (error) {
-      this.throw(error);
-    }
     await super.beforeBind();
+    const schoolSubject = await this.setSchoolSubject();
+    this.setHeader(schoolSubject);
+    await this.setSections(schoolSubject);
+    this.setTeachers(schoolSubject);
+    await this.setOpenGraph(schoolSubject);
   }
 
   protected template() {
