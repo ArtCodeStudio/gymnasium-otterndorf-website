@@ -1,10 +1,11 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./school-subjects.component.pug";
-import { SchoolSubjectService } from "../../services";
+import { SchoolSubjectService, OpenGraphService } from "../../services";
 import {
   SchoolSubject,
   PageHeader,
   replaceBodyPageClass,
+  StrapiGqlSchoolSubjectInfoQuery,
 } from "../../../common";
 
 export interface Scope {
@@ -20,6 +21,7 @@ export class SchoolSubjectsPageComponent extends PageComponent {
   protected autobind = true;
 
   protected schoolSubject = SchoolSubjectService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     schoolSubjects: [],
@@ -48,25 +50,47 @@ export class SchoolSubjectsPageComponent extends PageComponent {
       this.scope.title = info.title || this.scope.title;
       this.scope.description = info.description || this.scope.description;
     }
+    return info;
+  }
+
+  protected async setSchoolSubjects() {
+    const schoolSubjects =
+      (await this.schoolSubject.listBasic()) as SchoolSubject[];
+    await this.setInfo();
+    if (schoolSubjects) {
+      this.scope.schoolSubjects = schoolSubjects;
+    }
+    return schoolSubjects;
+  }
+
+  protected setHeader(
+    info: StrapiGqlSchoolSubjectInfoQuery["schoolSubjectInfo"]
+  ) {
+    this.scope.header = this.schoolSubject.getHeader(
+      undefined,
+      this.scope.title || info?.title
+    );
+    this.head.title = this.scope.header.title;
+    return this.scope.header;
+  }
+
+  protected async setOpenGraph(
+    info: StrapiGqlSchoolSubjectInfoQuery["schoolSubjectInfo"]
+  ) {
+    return await this.openGraph.setSchoolSubjectOverview(
+      {
+        title: this.scope.header.title,
+      },
+      info
+    );
   }
 
   protected async beforeBind() {
-    try {
-      const schoolSubjects =
-        (await this.schoolSubject.listBasic()) as SchoolSubject[];
-      await this.setInfo();
-      if (schoolSubjects) {
-        this.scope.schoolSubjects = schoolSubjects;
-        this.scope.header = this.schoolSubject.getHeader(
-          undefined,
-          this.scope.title
-        );
-      }
-    } catch (error) {
-      this.throw(error);
-    }
-    this.head.title = this.scope.title;
     await super.beforeBind();
+    await this.setSchoolSubjects();
+    const info = await this.setInfo();
+    this.setHeader(info);
+    await this.setOpenGraph(info);
   }
 
   protected async afterBind() {

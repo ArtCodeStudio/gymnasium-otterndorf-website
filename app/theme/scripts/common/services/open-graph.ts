@@ -42,6 +42,7 @@ import {
   StrapiGqlPageInfoQuery,
   StrapiGqlBlogInfoQuery,
   Blog,
+  StrapiGqlSchoolSubjectInfoQuery,
 } from "../types";
 import {
   OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
@@ -274,6 +275,25 @@ export class OpenGraphService {
       url,
     } as OpenGraph;
 
+    return this.set(data);
+  }
+
+  public async setSchoolSubjectOverview(
+    _data: Partial<OpenGraphData>,
+    info: StrapiGqlSchoolSubjectInfoQuery["schoolSubjectInfo"]
+  ) {
+    const url = _data.url || nestFormatter.read(schoolSubjectFormatter.read());
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || info?.title || undefined,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(info?.description || undefined) ||
+        undefined,
+      url,
+    } as OpenGraph;
     return this.set(data);
   }
 
