@@ -12,7 +12,7 @@ footer.container-fluid.container-xxl
         a.m-3.btn.btn-outline-dark(csr-rv-if=" | is-desktop" href="https://www.openstreetmap.org/node/558566641" target="_blank") Karte bearbeiten
         //- Calculate route
         a.m-3.btn.btn-outline-dark(rv-href="data.mapLink" target="_blank") Anfahrt berechnen
-    .footer-right.col-12.col-md-6.p-4
+    .footer-right.col-12.col-md-4.p-4
       .row.h-100
         .col-12.contact-info
           .h5(ssr-rv-html="data.contactInfo | markdown")
@@ -20,3 +20,12 @@ footer.container-fluid.container-xxl
           a(ssr-rv-each-link="data.links" ssr-rv-href="link | nav-item-url") 
             .h6(ssr-rv-text="link | nav-item-label")
           h6 (c) gymnasium-otterndorf.de
+    .footer-internal_links.col-12.col-md-2
+      .row.h-100
+        .col-12.align-self-center.text-center
+          a(href="https://gymott.net/iserv/app/login?target=%2Fiserv%2F" style="text-decoration: none;" target="_blank")
+            img.m-2(src="/images/footer_icon_iserv.svg" style="max-height: 100px; max-width 100px" alt="IServ")
+          a(href="https://login.mensaonline.de/login.aspx?projekt=CUX000&einrichtung=SZO" style="text-decoration: none;" target="_blank") 
+            img.m-2(src="/images/footer_icon_mensamax.svg" style="max-height: 100px; max-width 100px" alt="MensaMax")
+          a(href="http://www.gymnasium-otterndorf.de/vp" style="text-decoration: none;" target="_blank") 
+            img.m-2(src="/images/footer_icon_standins.svg" style="max-height: 100px; max-width 100px" alt="Vertretungen")
