@@ -18,6 +18,17 @@ gy-footer {
     }
   }
 
+  .footer-internal-links {
+    background-color: $blue;
+    a {
+      text-decoration: none;
+      color: $white;
+      &:hover {
+        background-color: darken($blue, 10%)
+      }
+    }
+  }
+
   .contact-info {
     white-space: pre-line;
   }
