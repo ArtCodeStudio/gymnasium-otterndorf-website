@@ -4,7 +4,7 @@ import { Riba, View, coreModule } from "@ribajs/core";
 import { extrasModule } from "@ribajs/extras";
 import { EventDispatcher } from "@ribajs/events";
 import { contentSliderModule } from "@ribajs/content-slider";
-import { routerModule } from "@ribajs/router";
+import { routerModule, FadeTransition } from "@ribajs/router";
 import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 import { bs5Module } from "@ribajs/bs5";
 import { bs5PhotoswipeModule } from "@ribajs/bs5-photoswipe";
@@ -68,7 +68,11 @@ export class CSRApp {
     // Regist modules
     this.riba.module.regist(coreModule.init());
     this.riba.module.regist(extrasModule.init());
-    this.riba.module.regist(routerModule.init());
+    this.riba.module.regist(
+      routerModule.init({
+        defaultTransition: new FadeTransition(),
+      })
+    );
     this.riba.module.regist(
       i18nModule.init({ localesService: this.localesService })
     );
