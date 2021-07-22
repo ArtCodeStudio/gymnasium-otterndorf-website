@@ -5,12 +5,15 @@ import {
   StrapiGqlPodcastEpisodesBasicBySlugsQueryVariables,
   StrapiGqlPodcastEpisodeBasicFragmentFragment,
   StrapiGqlPodcastEpisodesBasicBySlugsQuery,
+  StrapiGqlPodcastConfigQuery,
+  StrapiGqlPodcastConfigQueryVariables,
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { podcastFormatter } from "../formatters";
 import { ResponseErrorService } from "./response-error";
 
 import podcastEpisodesBasicBySlugs from "../../../graphql/queries/podcast-episodes-basic-by-slugs.gql";
+import podcastConfigQuery from "../../../graphql/queries/podcast-config.gql";
 
 export class PodcastService extends NestService {
   protected graphql = GraphQLClient.getInstance();
@@ -62,12 +65,25 @@ export class PodcastService extends NestService {
     return episode;
   }
 
+  public async getConfig(): Promise<
+    StrapiGqlPodcastConfigQuery["podcastFeed"]
+  > {
+    const vars: StrapiGqlPodcastConfigQueryVariables = {};
+    const result =
+      await this.graphql.requestCached<StrapiGqlPodcastConfigQuery>(
+        podcastConfigQuery,
+        vars
+      );
+    return result.podcastFeed;
+  }
+
   public getHeader(
     episode?: StrapiGqlPodcastEpisodeBasicFragmentFragment,
-    slug?: string
+    slug?: string,
+    config?: StrapiGqlPodcastConfigQuery["podcastFeed"]
   ): PageHeader {
     const header: PageHeader = {
-      title: episode?.title || "Alle Podcasts",
+      title: config?.title || episode?.title || "Alle Podcasts",
       breadcrumbs: [
         {
           type: ENTRY_TYPE.Home,
