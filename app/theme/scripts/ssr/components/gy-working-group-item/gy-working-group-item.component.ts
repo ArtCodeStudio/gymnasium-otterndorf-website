@@ -4,6 +4,8 @@ import {
   WorkingGroupService,
   SectionObject,
   WorkingGroup,
+  SectionsService,
+  StrapiGqlImageFragmentFragment,
 } from "../../../common";
 import pugTemplate from "./gy-working-group-item.component.pug";
 
@@ -12,6 +14,8 @@ export interface Scope {
   showDate: boolean;
   catTextAt: number;
   sections: SectionObject;
+  md: string;
+  image?: StrapiGqlImageFragmentFragment;
 }
 
 export class GyWorkingGroupItemComponent extends Component {
@@ -24,7 +28,9 @@ export class GyWorkingGroupItemComponent extends Component {
     workingGroup: undefined,
     showDate: false,
     catTextAt: 300,
-    sections: {},
+    sections: SectionsService.getEmptySectionsObject(),
+    md: "",
+    image: undefined,
   };
 
   static get observedAttributes(): string[] {
@@ -40,17 +46,27 @@ export class GyWorkingGroupItemComponent extends Component {
     this.init(GyWorkingGroupItemComponent.observedAttributes);
   }
 
+  protected async setSections() {
+    if (this.scope.workingGroup) {
+      this.scope.sections = await this.workingGroup.getSectionsObject(
+        this.scope.workingGroup
+      );
+      this.scope.md =
+        this.scope.sections.texts[0]?.text ||
+        this.scope.sections.podcastEpisodes[0]?.description ||
+        "";
+
+      this.scope.image =
+        this.scope.sections.images[0]?.image ||
+        this.scope.sections.podcastEpisodes[0]?.image ||
+        undefined;
+    }
+    return this.scope.sections;
+  }
+
   protected async beforeBind() {
     await super.beforeBind();
-    if (this.scope.workingGroup) {
-      try {
-        this.scope.sections = await this.workingGroup.getSectionsObject(
-          this.scope.workingGroup
-        );
-      } catch (error) {
-        this.throw(error);
-      }
-    }
+    await this.setSections();
   }
 
   protected template() {

@@ -4,7 +4,7 @@
       h1.text-center(ssr-rv-template="title")
   section.row
     .col-12
-      h2.text-center(rv-show="pages | size") Seiten
+      h2.text-center(rv-show="pages | size") Infoseiten
       .list-group.my-5
         a.list-group-item.list-group-item-action(rv-href=" | page") Übersicht
         a.list-group-item.list-group-item-action(rv-each-page="pages" rv-href="page.slug | page" rv-text="page.title")

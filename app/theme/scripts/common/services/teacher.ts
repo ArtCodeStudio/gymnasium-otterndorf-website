@@ -92,12 +92,12 @@ export class TeacherService {
 
   public getHeader(
     teachers: Teacher[],
-    title?: string
+    info?: StrapiGqlTeacherInfoQuery["teacherInfo"]
   ): PageHeader | Record<string, never> {
     if (teachers.length === 1) {
       const teacher = teachers[0];
       const header: PageHeader = {
-        title: teacher.name || title || "",
+        title: teacher.name || info?.title || "",
         breadcrumbs: [
           {
             type: ENTRY_TYPE.Home,
@@ -122,7 +122,7 @@ export class TeacherService {
 
     if (teachers.length > 1) {
       const header: PageHeader = {
-        title: title || "Lehrer",
+        title: info?.title || "Lehrer",
         breadcrumbs: [
           {
             type: ENTRY_TYPE.Home,

@@ -22,6 +22,7 @@ import {
   strapiFormatter,
   postFormatter,
   pageFormatter,
+  teacherFormatter,
   markdownFormatter,
   podcastFormatter,
   schoolSubjectFormatter,
@@ -46,6 +47,8 @@ import {
   Blog,
   StrapiGqlSchoolSubjectInfoQuery,
   StrapiGqlWorkingGroupInfoQuery,
+  StrapiGqlTeacherInfoQuery,
+  Teacher,
 } from "../types";
 import {
   OPEN_GRAPH_DESCRIPTION_MAX_LENGTH,
@@ -177,7 +180,7 @@ export class OpenGraphService {
       ..._data,
       type: _data.type || "article",
       title: _data.title || episode.title || undefined,
-      image: _data.image || episode.image || undefined,
+      image: _data.image || episode.image || podloveEpisode.poster || undefined,
       audio,
       description:
         _data.description ||
@@ -218,10 +221,10 @@ export class OpenGraphService {
       ..._data,
       type: _data.type || "website",
       title: _data.title || page.title || undefined,
-      image: _data.image || sectionsObj.image?.image || undefined,
+      image: _data.image || sectionsObj.images[0]?.image || undefined,
       description:
         _data.description ||
-        this.getTruncatedDescription(sectionsObj.text) ||
+        this.getTruncatedDescription(sectionsObj.texts[0]) ||
         undefined,
       url,
     } as OpenGraph;
@@ -256,10 +259,10 @@ export class OpenGraphService {
       ..._data,
       type: _data.type || "article",
       title: _data.title || post.title || undefined,
-      image: _data.image || sectionsObj.image?.image || undefined,
+      image: _data.image || sectionsObj.images[0]?.image || undefined,
       description:
         _data.description ||
-        this.getTruncatedDescription(sectionsObj.text) ||
+        this.getTruncatedDescription(sectionsObj.texts[0]) ||
         undefined,
       url,
     } as OpenGraph;
@@ -302,10 +305,10 @@ export class OpenGraphService {
       ..._data,
       type: _data.type || "website",
       title: _data.title || schoolSubject.title || undefined,
-      image: _data.image || sectionsObj.image?.image || undefined,
+      image: _data.image || sectionsObj.images[0]?.image || undefined,
       description:
         _data.description ||
-        this.getTruncatedDescription(sectionsObj.text) ||
+        this.getTruncatedDescription(sectionsObj.texts[0]) ||
         undefined,
       url,
     } as OpenGraph;
@@ -344,10 +347,10 @@ export class OpenGraphService {
       ..._data,
       type: _data.type || "website",
       title: _data.title || workingGroup.title || undefined,
-      image: _data.image || sectionsObj.image?.image || undefined,
+      image: _data.image || sectionsObj.images[0]?.image || undefined,
       description:
         _data.description ||
-        this.getTruncatedDescription(sectionsObj.text) ||
+        this.getTruncatedDescription(sectionsObj.texts[0]) ||
         undefined,
       url,
     } as OpenGraph;
@@ -420,6 +423,45 @@ export class OpenGraphService {
       image: _data.image || posterUrls || undefined,
       video: videoUrls,
       description: _data.description || undefined,
+      url,
+    } as OpenGraph;
+
+    return this.set(data);
+  }
+
+  public async setTeacher(_data: Partial<OpenGraphData>, teacher: Teacher) {
+    const url =
+      _data.url || nestFormatter.read(teacherFormatter.read(teacher.slug));
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || teacher.name || undefined,
+      image: _data.image || teacher.image || undefined,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(teacher.biography || "") ||
+        undefined,
+      url,
+    } as OpenGraph;
+
+    return this.set(data);
+  }
+
+  public async setTeacherOverview(
+    _data: Partial<OpenGraphData>,
+    info: StrapiGqlTeacherInfoQuery["teacherInfo"]
+  ) {
+    const url = _data.url || nestFormatter.read(teacherFormatter.read());
+
+    const data = {
+      ..._data,
+      type: _data.type || "website",
+      title: _data.title || info?.title || undefined,
+      description:
+        _data.description ||
+        this.getTruncatedDescription(info?.description || undefined) ||
+        undefined,
       url,
     } as OpenGraph;
 

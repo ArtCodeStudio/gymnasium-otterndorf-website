@@ -2,8 +2,6 @@
   .row
     .col-12
       gy-page-header.col-12.my-4(ssr-rv-co-header="header")
-    .col-12(ssr-rv-if="description")
-      p(ssr-rv-html="description | markdown")
   section.row
     .col-12.col-md-4
       img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")

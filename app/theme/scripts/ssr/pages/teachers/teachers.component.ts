@@ -1,15 +1,18 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./teachers.component.pug";
-import { TeacherService, SectionsService } from "../../services";
 import {
-  Section,
+  TeacherService,
+  SectionsService,
+  OpenGraphService,
+} from "../../services";
+import {
   PageHeader,
   Teacher,
   replaceBodyPageClass,
+  StrapiGqlTeacherInfoQuery,
 } from "../../../common";
 
 export interface Scope {
-  sections: Section[];
   params: TeachersPageComponent["ctx"]["params"];
   header: PageHeader | Record<string, never>;
   teachers: Teacher[];
@@ -24,9 +27,9 @@ export class TeachersPageComponent extends PageComponent {
 
   protected teacher = TeacherService.getInstance();
   protected sections = SectionsService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
-    sections: [],
     params: {},
     header: {},
     teachers: [],
@@ -69,16 +72,29 @@ export class TeachersPageComponent extends PageComponent {
     return info;
   }
 
-  protected setHeader(teachers: Teacher[]) {
-    this.scope.header = this.teacher.getHeader(teachers, this.scope.title);
+  protected setHeader(
+    teachers: Teacher[],
+    info: StrapiGqlTeacherInfoQuery["teacherInfo"]
+  ) {
+    this.scope.header = this.teacher.getHeader(teachers, info);
     this.head.title = this.scope.header.title || this.scope.title;
     return this.scope.header;
   }
 
+  protected async setOpenGraph(info: StrapiGqlTeacherInfoQuery["teacherInfo"]) {
+    return await this.openGraph.setTeacherOverview(
+      {
+        title: this.scope.header.title,
+      },
+      info
+    );
+  }
+
   protected async beforeBind() {
     const teachers = await this.getTeachers();
-    await this.setInfo();
-    this.setHeader(teachers);
+    const info = await this.setInfo();
+    this.setHeader(teachers, info);
+    await this.setOpenGraph(info);
     await super.beforeBind();
   }
 

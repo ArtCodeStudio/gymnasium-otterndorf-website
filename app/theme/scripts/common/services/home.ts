@@ -50,7 +50,7 @@ export class HomeService {
     if (!sectionsArr) {
       sectionsArr = await this.getSections();
     }
-    const sections = HomeService.sections.toObject(sectionsArr);
+    const sections = await HomeService.sections.toObject(sectionsArr);
     return sections;
   }
 }

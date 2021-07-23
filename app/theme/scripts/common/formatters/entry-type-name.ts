@@ -16,7 +16,7 @@ export const entryTypeNameFormatter = {
       case ENTRY_TYPE.Post:
         return "Artikel";
       case ENTRY_TYPE.Page:
-        return "Seite";
+        return "Infoseite";
       case ENTRY_TYPE.Image:
         return "Bild";
       case ENTRY_TYPE.Text:

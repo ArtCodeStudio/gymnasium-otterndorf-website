@@ -33,7 +33,7 @@ export class CreditsPageComponent extends PageComponent {
     return await this.openGraph.setWebsite({
       title: this.head.title,
       description:
-        "Informationen darüber wer bei der Seite mitgewirkt hat, wie du an den Quellcode kommst und wie du die API verwenden kannst.",
+        "Informationen darüber, wer bei der Seite mitgewirkt hat, wie du an den Quellcode kommst und wie du die API verwenden kannst.",
       image: [
         {
           url: nestFormatter.read("images/credits.png"),

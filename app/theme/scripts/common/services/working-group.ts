@@ -93,11 +93,11 @@ export class WorkingGroupService {
     return subjects?.[0] || null;
   }
 
-  async getSections(workingGroup: WorkingGroup) {
+  public async getSections(workingGroup: WorkingGroup) {
     if (workingGroup?.content) {
       const dynamicZoneSections = (workingGroup?.content ||
         []) as DynamicZoneSection[];
-      return WorkingGroupService.sections.toArray(dynamicZoneSections);
+      return await WorkingGroupService.sections.toArray(dynamicZoneSections);
     }
     return [];
   }
@@ -106,10 +106,12 @@ export class WorkingGroupService {
     workingGroup: WorkingGroup
   ): Promise<SectionObject> {
     if (!workingGroup.content) {
-      return {};
+      return SectionsService.getEmptySectionsObject();
     }
     const sectionsArr = await this.getSections(workingGroup);
-    const sectionsObj = WorkingGroupService.sections.toObject(sectionsArr);
+    const sectionsObj = await WorkingGroupService.sections.toObject(
+      sectionsArr
+    );
     return sectionsObj;
   }
 

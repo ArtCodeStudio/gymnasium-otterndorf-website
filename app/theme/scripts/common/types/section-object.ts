@@ -1,3 +1,4 @@
+import { StrapiGqlImageFragmentFragment } from "./strapi-gql";
 import { SectionContentImage } from "./section-content-image";
 import { SectionContentText } from "./section-content-text";
 import { SectionContentButton } from "./section-content-button";
@@ -19,20 +20,22 @@ import { SectionFormerStudents } from "./section-former-students";
  * Type for transformed sections
  */
 export interface SectionObject {
-  image?: SectionContentImage;
-  text?: SectionContentText;
-  button?: SectionContentButton;
-  facts?: SectionFacts;
-  news?: HomeNews;
-  calendar?: HomeCalendar;
-  slideshow?: SectionSlideshow;
-  gallerySlideshow?: SectionGallerySlideshow;
-  blackboardSlideshow?: SectionBlackboardSlideshow;
-  blogSlideshow?: SectionBlogSlideshow;
-  studentQuote?: SectionStudentQuote;
-  iframe?: SectionIFrame;
-  mensamax?: SectionMensaMax;
-  podcastEpisode?: SectionPodcastEpisode;
-  latestPodcastEpisode?: SectionLatestPodcastEpisode;
-  formerStudents?: SectionFormerStudents;
+  previewImage?: StrapiGqlImageFragmentFragment;
+  previewText: string;
+  images: SectionContentImage[];
+  texts: SectionContentText[];
+  buttons: SectionContentButton[];
+  facts: SectionFacts[];
+  news: HomeNews[];
+  calendars: HomeCalendar[];
+  slideshows: SectionSlideshow[];
+  gallerySlideshows: SectionGallerySlideshow[];
+  blackboardSlideshows: SectionBlackboardSlideshow[];
+  blogSlideshows: SectionBlogSlideshow[];
+  studentQuotes: SectionStudentQuote[];
+  iframes: SectionIFrame[];
+  mensamaxs: SectionMensaMax[];
+  podcastEpisodes: SectionPodcastEpisode[];
+  latestPodcastEpisodes: SectionLatestPodcastEpisode[];
+  formerStudents: SectionFormerStudents[];
 }

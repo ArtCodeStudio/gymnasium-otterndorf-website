@@ -1,6 +1,6 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { TeacherService, SectionObject, Teacher } from "../../../common";
+import { TeacherService, Teacher } from "../../../common";
 import pugTemplate from "./gy-teacher-item.component.pug";
 
 export interface Scope {
@@ -8,7 +8,6 @@ export interface Scope {
   showDate: boolean;
   showBiography: boolean;
   catTextAt: number;
-  sections: SectionObject;
 }
 
 export class GyTeacherItemComponent extends Component {
@@ -22,7 +21,6 @@ export class GyTeacherItemComponent extends Component {
     showDate: false,
     showBiography: false,
     catTextAt: -1,
-    sections: {},
   };
 
   static get observedAttributes(): string[] {

@@ -2,7 +2,7 @@
   a(rv-href="teacher.slug | teacher")
     img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
   .card-body
-    a.h2.card-title(rv-href="teacher.slug | teacher" rv-text="teacher.name")
+    a.h5.card-title(rv-href="teacher.slug | teacher" rv-text="teacher.name")
     span(rv-if="showBiography")
       span(rv-if="catTextAt | gt 0")
         p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown | strip-html | cut catTextAt ' ...'")

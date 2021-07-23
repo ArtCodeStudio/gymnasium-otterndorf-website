@@ -148,17 +148,17 @@ export class BlogService {
   public async getSections(post: Post) {
     if (post?.content) {
       const DynamicZoneSections = (post?.content || []) as DynamicZoneSection[];
-      return BlogService.sections.toArray(DynamicZoneSections);
+      return await BlogService.sections.toArray(DynamicZoneSections);
     }
     return [];
   }
 
   public async getSectionsObject(post: Post): Promise<SectionObject> {
     if (!post.content) {
-      return {};
+      return SectionsService.getEmptySectionsObject();
     }
     const sectionsArr = await this.getSections(post);
-    const sectionsObj = BlogService.sections.toObject(sectionsArr);
+    const sectionsObj = await BlogService.sections.toObject(sectionsArr);
     return sectionsObj;
   }
 

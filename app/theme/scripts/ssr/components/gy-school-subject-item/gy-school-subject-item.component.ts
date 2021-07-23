@@ -4,6 +4,7 @@ import {
   SchoolSubjectService,
   SectionObject,
   SchoolSubject,
+  SectionsService,
 } from "../../../common";
 import pugTemplate from "./gy-school-subject-item.component.pug";
 
@@ -24,7 +25,7 @@ export class GySchoolSubjectItemComponent extends Component {
     schoolSubject: undefined,
     showDate: false,
     catTextAt: 300,
-    sections: {},
+    sections: SectionsService.getEmptySectionsObject(),
   };
 
   static get observedAttributes(): string[] {
@@ -40,17 +41,18 @@ export class GySchoolSubjectItemComponent extends Component {
     this.init(GySchoolSubjectItemComponent.observedAttributes);
   }
 
+  protected async setSections() {
+    if (this.scope.schoolSubject) {
+      this.scope.sections = await this.schoolSubject.getSectionsObject(
+        this.scope.schoolSubject
+      );
+    }
+    return this.scope.sections;
+  }
+
   protected async beforeBind() {
     await super.beforeBind();
-    if (this.scope.schoolSubject) {
-      try {
-        this.scope.sections = await this.schoolSubject.getSectionsObject(
-          this.scope.schoolSubject
-        );
-      } catch (error) {
-        this.throw(error);
-      }
-    }
+    await this.setSections();
   }
 
   protected template() {

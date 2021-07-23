@@ -4,7 +4,7 @@ import {
   BlogService,
   SectionObject,
   Post,
-  StrapiGqlImageFragmentFragment,
+  SectionsService,
 } from "../../../common";
 import pugTemplate from "./gy-blog-entry-item.component.pug";
 
@@ -16,8 +16,6 @@ export interface Scope {
   showCategory: boolean;
   catTextAt: number;
   sections: SectionObject;
-  md: string;
-  image?: StrapiGqlImageFragmentFragment;
   /** If true showText will be set to false if an image is found */
   preferImage: boolean;
 }
@@ -35,9 +33,7 @@ export class GyBlogEntryItemComponent extends Component {
     showTitle: true,
     showCategory: true,
     catTextAt: 300,
-    sections: {},
-    md: "",
-    image: undefined,
+    sections: SectionsService.getEmptySectionsObject(),
     preferImage: false,
   };
 
@@ -57,27 +53,22 @@ export class GyBlogEntryItemComponent extends Component {
     return ["post"];
   }
 
-  protected async beforeBind() {
-    await super.beforeBind();
+  protected async setSections() {
     if (this.scope.post) {
       this.scope.sections = await this.blog.getSectionsObject(this.scope.post);
-      this.scope.md =
-        this.scope.sections.text?.text ||
-        this.scope.sections.podcastEpisode?.description ||
-        "";
-
-      this.scope.image =
-        this.scope.sections.image?.image ||
-        this.scope.sections.podcastEpisode?.image ||
-        undefined;
-
-      if (this.scope.image && this.scope.preferImage) {
+      if (this.scope.sections.previewImage && this.scope.preferImage) {
         this.scope.showTitle = false;
         this.scope.showText = false;
         this.scope.showDate = false;
         this.scope.showCategory = false;
       }
     }
+    return this.scope.sections;
+  }
+
+  protected async beforeBind() {
+    await super.beforeBind();
+    await this.setSections();
   }
 
   protected connectedCallback() {

@@ -1,6 +1,10 @@
 import { PageComponent } from "@ribajs/ssr";
 import pugTemplate from "./teacher.component.pug";
-import { TeacherService, SectionsService } from "../../services";
+import {
+  TeacherService,
+  SectionsService,
+  OpenGraphService,
+} from "../../services";
 import {
   Section,
   PageHeader,
@@ -16,7 +20,6 @@ export interface Scope {
   header: PageHeader | Record<string, never>;
   teacher?: Teacher;
   title: string;
-  description: string;
 }
 
 export class TeacherPageComponent extends PageComponent {
@@ -26,6 +29,7 @@ export class TeacherPageComponent extends PageComponent {
 
   protected teacher = TeacherService.getInstance();
   protected sections = SectionsService.getInstance();
+  protected openGraph = OpenGraphService.getInstance();
 
   scope: Scope = {
     sections: [],
@@ -34,7 +38,6 @@ export class TeacherPageComponent extends PageComponent {
     header: {},
     teacher: undefined,
     title: "Lehrer",
-    description: "",
   };
 
   static get observedAttributes(): string[] {
@@ -85,21 +88,22 @@ export class TeacherPageComponent extends PageComponent {
     return teacher;
   }
 
-  protected async setInfo() {
-    const info = await this.teacher.info();
-    if (info) {
-      this.scope.title = info.title || this.scope.title;
-      this.scope.description = info.description || this.scope.description;
-    }
-  }
-
   protected async setAssets(teacher: Teacher) {
     this.scope.assets = this.getAssets(teacher, this.scope.sections);
   }
 
   protected async setHeader(teacher: Teacher) {
-    this.scope.header = this.teacher.getHeader([teacher], this.scope.title);
+    this.scope.header = this.teacher.getHeader([teacher]);
     this.head.title = this.scope.header.title || this.scope.title;
+  }
+
+  protected async setOpenGraph(teacher: Teacher) {
+    return await this.openGraph.setTeacher(
+      {
+        title: this.scope.header.title,
+      },
+      teacher
+    );
   }
 
   protected async beforeBind() {
@@ -110,9 +114,9 @@ export class TeacherPageComponent extends PageComponent {
     }
 
     const teacher = await this.setTeacher(slug);
-    await this.setInfo();
     await this.setAssets(teacher);
     await this.setHeader(teacher);
+    await this.setOpenGraph(teacher);
   }
 
   protected async afterBind() {

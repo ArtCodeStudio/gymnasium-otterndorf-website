@@ -96,17 +96,17 @@ export class PageService {
   public async getSections(page: Page) {
     if (page?.content) {
       const DynamicZoneSections = (page?.content || []) as DynamicZoneSection[];
-      return PageService.sections.toArray(DynamicZoneSections);
+      return await PageService.sections.toArray(DynamicZoneSections);
     }
     return [];
   }
 
   public async getSectionsObject(page: Page): Promise<SectionObject> {
     if (!page.content) {
-      return {};
+      return SectionsService.getEmptySectionsObject();
     }
     const sectionsArr = await this.getSections(page);
-    const sectionsObj = PageService.sections.toObject(sectionsArr);
+    const sectionsObj = await PageService.sections.toObject(sectionsArr);
     return sectionsObj;
   }
 
@@ -115,7 +115,7 @@ export class PageService {
     info?: StrapiGqlPageInfoQuery["pageInfo"]
   ): PageHeader {
     const header: PageHeader = {
-      title: page?.title || info?.title || "Seiten",
+      title: page?.title || info?.title || "Infoseiten",
       breadcrumbs: [
         {
           type: ENTRY_TYPE.Home,
@@ -123,7 +123,7 @@ export class PageService {
           active: false,
         },
         {
-          label: "Unterseiten",
+          label: "Infoseiten",
           type: ENTRY_TYPE.Page,
           active: page ? false : true,
           url: pageFormatter.read(),

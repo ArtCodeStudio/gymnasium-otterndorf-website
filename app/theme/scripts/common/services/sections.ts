@@ -11,6 +11,7 @@ import {
   StrapiGqlComponentSlideshowEntryBlogFragmentFragment,
   StrapiGqlComponentAttachmentAssetsFragmentFragment,
   HomeNews,
+  StrapiGqlImageFragmentFragment,
 } from "../types";
 import sectionSlideshowById from "../../../graphql/queries/section-slideshow-by-id.gql";
 import { postFormatter, pageFormatter } from "../formatters";
@@ -32,61 +33,115 @@ export class SectionsService {
     return this.instance;
   }
 
-  toObject(sectionsArr: Section[]) {
-    const sectionsObj: SectionObject = {};
+  public static getEmptySectionsObject() {
+    const sectionsObj: SectionObject = {
+      previewImage: undefined,
+      previewText: "",
+      images: [],
+      texts: [],
+      buttons: [],
+      facts: [],
+      news: [],
+      calendars: [],
+      slideshows: [],
+      gallerySlideshows: [],
+      blackboardSlideshows: [],
+      blogSlideshows: [],
+      studentQuotes: [],
+      iframes: [],
+      mensamaxs: [],
+      podcastEpisodes: [],
+      latestPodcastEpisodes: [],
+      formerStudents: [],
+    };
+    return sectionsObj;
+  }
+
+  public async getPreviewImage(
+    sectionsObj: SectionObject
+  ): Promise<StrapiGqlImageFragmentFragment | undefined> {
+    const image =
+      sectionsObj.images[0]?.image ||
+      sectionsObj.podcastEpisodes[0]?.image ||
+      sectionsObj.slideshows[0]?.entries[0]?.image ||
+      sectionsObj.gallerySlideshows[0]?.gallery?.images?.[0]?.image ||
+      undefined;
+
+    // if (
+    //   !image &&
+    //   sectionsObj.blogSlideshows[0]?.blog?.blog_entries?.[0]?.content
+    // ) {
+    //   const blogSections = await this.toArray(
+    //     sectionsObj.blogSlideshows[0].blog.blog_entries[0]
+    //       .content as DynamicZoneSection[]
+    //   );
+    //   image = await this.getPreviewImage(await this.toObject(blogSections));
+    // }
+
+    return image;
+  }
+
+  public getPreviewText(sectionsObj: SectionObject) {
+    return (
+      sectionsObj.texts[0]?.text ||
+      sectionsObj.podcastEpisodes[0]?.description ||
+      ""
+    );
+  }
+
+  public async toObject(sectionsArr: Section[]) {
+    const sectionsObj = SectionsService.getEmptySectionsObject();
     for (const section of sectionsArr) {
       switch (section.__typename) {
         case "ComponentContentImage":
           // TODO array?
-          sectionsObj.image = section;
+          sectionsObj.images.push(section);
           break;
         case "ComponentContentText":
-          sectionsObj.text = section;
+          sectionsObj.texts.push(section);
           break;
         case "ComponentContentButton":
-          sectionsObj.button = section;
-          break;
         case "ComponentContentDownloadButton":
-          sectionsObj.button = section;
+          sectionsObj.buttons.push(section);
           break;
         case "ComponentHomeCalendar":
-          sectionsObj.calendar = section;
+          sectionsObj.calendars.push(section);
           break;
         case "ComponentHomeNews":
-          sectionsObj.news = section;
+          sectionsObj.news.push(section);
           break;
         case "ComponentSectionBlackboardSlideshow":
-          sectionsObj.blackboardSlideshow = section;
+          sectionsObj.blackboardSlideshows.push(section);
           break;
         case "ComponentSectionBlogSlideshow":
-          sectionsObj.blogSlideshow = section;
+          sectionsObj.blogSlideshows.push(section);
           break;
         case "ComponentSectionFacts":
-          sectionsObj.facts = section;
+          sectionsObj.facts.push(section);
           break;
         case "ComponentSectionGallerySlideshow":
-          sectionsObj.gallerySlideshow = section;
+          sectionsObj.gallerySlideshows.push(section);
           break;
         case "ComponentSectionSlideshow":
-          sectionsObj.slideshow = section;
+          sectionsObj.slideshows.push(section);
           break;
         case "ComponentStudentSectionStudentQuote":
-          sectionsObj.studentQuote = section;
+          sectionsObj.studentQuotes.push(section);
           break;
         case "ComponentSectionIFrame":
-          sectionsObj.iframe = section;
+          sectionsObj.iframes.push(section);
           break;
         case "ComponentSectionMensaMax":
-          sectionsObj.mensamax = section;
+          sectionsObj.mensamaxs.push(section);
           break;
         case "PodcastEpisode":
-          sectionsObj.podcastEpisode = section;
+          sectionsObj.podcastEpisodes.push(section);
           break;
         case "ComponentSectionLatestPodcastEpisode":
-          sectionsObj.latestPodcastEpisode = section;
+          sectionsObj.latestPodcastEpisodes.push(section);
           break;
         case "ComponentSectionFormerStudents":
-          sectionsObj.formerStudents = section;
+          sectionsObj.formerStudents.push(section);
           break;
         default:
           console.warn(
@@ -97,10 +152,14 @@ export class SectionsService {
           break;
       }
     }
+
+    sectionsObj.previewImage = await this.getPreviewImage(sectionsObj);
+    sectionsObj.previewText = this.getPreviewText(sectionsObj);
+
     return sectionsObj;
   }
 
-  async toArray(dynamicZoneSections: DynamicZoneSection[]) {
+  public async toArray(dynamicZoneSections: DynamicZoneSection[]) {
     const sections: Section[] = [];
     for (let i = 0; i < dynamicZoneSections.length; i++) {
       if (dynamicZoneSections[i]) {
@@ -127,6 +186,7 @@ export class SectionsService {
             break;
           case "ComponentSectionSlideshow":
             if (dynamicZoneSection.slideshow?.id) {
+              // TODO add to graphql
               const slideshow = await this.getSlideshow(
                 dynamicZoneSection["slideshow"].id
               );

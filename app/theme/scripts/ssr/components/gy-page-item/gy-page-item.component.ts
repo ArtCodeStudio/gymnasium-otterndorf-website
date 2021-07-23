@@ -1,11 +1,18 @@
 import { Component } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
-import { PageService, SectionObject, Page } from "../../../common";
+import {
+  PageService,
+  SectionObject,
+  Page,
+  SectionsService,
+} from "../../../common";
 import pugTemplate from "./gy-page-item.component.pug";
 
 export interface Scope {
   page?: Page;
   showDate: boolean;
+  showTitle: boolean;
+  showType: boolean;
   catTextAt: number;
   sections: SectionObject;
 }
@@ -19,8 +26,10 @@ export class GyPageItemComponent extends Component {
   scope: Scope = {
     page: undefined,
     showDate: false,
+    showTitle: true,
+    showType: false,
     catTextAt: 300,
-    sections: {},
+    sections: SectionsService.getEmptySectionsObject(),
   };
 
   static get observedAttributes(): string[] {
@@ -31,11 +40,16 @@ export class GyPageItemComponent extends Component {
     return ["page"];
   }
 
-  protected async beforeBind() {
-    await super.beforeBind();
+  protected async setSections() {
     if (this.scope.page) {
       this.scope.sections = await this.page.getSectionsObject(this.scope.page);
     }
+    return this.scope.sections;
+  }
+
+  protected async beforeBind() {
+    await super.beforeBind();
+    await this.setSections();
   }
 
   protected connectedCallback() {

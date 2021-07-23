@@ -97,7 +97,7 @@ export class SchoolSubjectService {
     if (schoolSubject?.content) {
       const dynamicZoneSections = (schoolSubject?.content ||
         []) as DynamicZoneSection[];
-      return SchoolSubjectService.sections.toArray(dynamicZoneSections);
+      return await SchoolSubjectService.sections.toArray(dynamicZoneSections);
     }
     return [];
   }
@@ -106,10 +106,12 @@ export class SchoolSubjectService {
     schoolSubject: SchoolSubject
   ): Promise<SectionObject> {
     if (!schoolSubject.content) {
-      return {};
+      return SectionsService.getEmptySectionsObject();
     }
     const sectionsArr = await this.getSections(schoolSubject);
-    const sectionsObj = SchoolSubjectService.sections.toObject(sectionsArr);
+    const sectionsObj = await SchoolSubjectService.sections.toObject(
+      sectionsArr
+    );
     return sectionsObj;
   }
 

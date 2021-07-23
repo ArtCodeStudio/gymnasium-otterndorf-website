@@ -26,7 +26,7 @@ export class PagesPageComponent extends PageComponent {
   scope: Scope = {
     pages: [],
     header: {},
-    title: "Unterseiten",
+    title: "Infoseiten",
     description: "",
   };
 

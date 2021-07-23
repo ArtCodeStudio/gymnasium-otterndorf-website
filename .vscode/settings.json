@@ -10,6 +10,7 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
     "AGPL",
+    "Angepinnt",
     "Componenttypescolor",
     "Garber",
     "Lexend",
@@ -52,6 +53,7 @@
     "ical",
     "iconset",
     "iframe",
+    "iframes",
     "imagesloaded",
     "itunes",
     "keshi",
@@ -66,6 +68,7 @@
     "mediacenter",
     "mediathek",
     "mensamax",
+    "mensamaxs",
     "mixins",
     "msapplication",
     "msrc",
