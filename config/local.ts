@@ -4,24 +4,25 @@ import type { RedbirdOptions } from "@artcodestudio/node-app-manager/src/redbird
 
 export const manager: ManagerOptions = {
   pkgName: "@artcodestudio/node-app-manager",
-  domain: "localhost",
+  domain: "manager.localhost",
   target: {
-    port: 4000,
+    port: 4001,
   },
   pm2: {},
 };
 
 export const redbird: RedbirdOptions = {
   ssl: false,
+  port: 4000,
 };
 
 export const apps: ManagerApp[] = [
   {
     pkgName: "@gymott/nest",
-    domain: "localhost",
+    domain: "gym.localhost",
     target: {
       // This port will also be the set as env.PORT in pm2
-      port: 4001,
+      port: 4002,
     },
     pm2: {
       script: "yarn workspace @gymott/nest watch",
@@ -32,8 +33,8 @@ export const apps: ManagerApp[] = [
         STRAPI_EXTERN_URL: "https://gym-strapi.artandcode.de",
         STRAPI_STUDENT_INTERN_URL: "https://gym-strapi-student.artandcode.de",
         STRAPI_STUDENT_EXTERN_URL: "https://gym-strapi-student.artandcode.de",
-        NEST_INTERN_URL: "http://127.0.0.1:4001",
-        NEST_EXTERN_URL: "http://127.0.0.1:4001",
+        NEST_INTERN_URL: "http://gym.localhost:4000",
+        NEST_EXTERN_URL: "http://gym.localhost:4000",
       },
     },
   },

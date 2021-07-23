@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { Module, DynamicModule } from '@nestjs/common';
+import { ExpressAdapter } from '@nestjs/platform-express';
 import { ConfigService, ConfigModule } from '@nestjs/config';
 
 import { appConfig, theme } from './config/config';
@@ -29,42 +30,45 @@ import { PodloveService } from './api/podlove/podlove.service';
 import { PodcastService } from './api/podcast/podcast.service';
 import { GeneralService } from './api/general/general.service';
 
-@Module({
-  imports: [
-    ConfigModule.forRoot({
-      load: [appConfig],
-    }),
-    LunrModule,
-    ThemeModule.forRoot(theme),
-  ],
-  controllers: [
-    CalendarController,
-    SearchController,
-    SuggestController,
-    WebhookController,
-    MensaMaxController,
-    FeedController,
-    PodloveController,
-  ],
-  providers: [
-    ConfigService,
-    StrapiService,
-    SearchService,
-    CalendarService,
-    NavService,
-    PageService,
-    PostService,
-    SchoolSubjectService,
-    TeacherService,
-    MarkdownService,
-    WebhookService,
-    MensaMaxService,
-    FeedService,
-    PodloveService,
-    PodcastService,
-    GeneralService,
-  ],
-})
+@Module({})
 export class AppModule {
-  /**/
+  static register(expressAdapter: ExpressAdapter): DynamicModule {
+    return {
+      module: AppModule,
+      imports: [
+        ConfigModule.forRoot({
+          load: [appConfig],
+        }),
+        LunrModule,
+        ThemeModule.register(theme, expressAdapter),
+      ],
+      controllers: [
+        CalendarController,
+        SearchController,
+        SuggestController,
+        WebhookController,
+        MensaMaxController,
+        FeedController,
+        PodloveController,
+      ],
+      providers: [
+        ConfigService,
+        StrapiService,
+        SearchService,
+        CalendarService,
+        NavService,
+        PageService,
+        PostService,
+        SchoolSubjectService,
+        TeacherService,
+        MarkdownService,
+        WebhookService,
+        MensaMaxService,
+        FeedService,
+        PodloveService,
+        PodcastService,
+        GeneralService,
+      ],
+    };
+  }
 }
