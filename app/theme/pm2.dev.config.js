@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "dev:@gymott/theme",
-      script: "yarn run watch",
+      script: "yarn workspace @gymott/theme run watch",
       watch: ["package.json", "../../../.pnp.js"],
       instances: 1,
       env: {
