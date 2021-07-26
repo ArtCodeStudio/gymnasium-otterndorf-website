@@ -13,7 +13,8 @@ export interface Scope {
   showDate: boolean;
   showTitle: boolean;
   showType: boolean;
-  catTextAt: number;
+  pinned: boolean;
+  cutTextAt: number;
   sections: SectionObject;
 }
 
@@ -28,12 +29,13 @@ export class GyPageItemComponent extends Component {
     showDate: false,
     showTitle: true,
     showType: false,
-    catTextAt: 300,
+    pinned: false,
+    cutTextAt: 300,
     sections: SectionsService.getEmptySectionsObject(),
   };
 
   static get observedAttributes(): string[] {
-    return ["page", "cat-text-at", "show-date"];
+    return ["page", "cut-text-at", "show-date", "pinned"];
   }
 
   protected requiredAttributes() {
