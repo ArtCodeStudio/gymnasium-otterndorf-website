@@ -10,12 +10,12 @@
         p.card-text(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
     span.card-text.text-muted(rv-if="showDate")
       | [ teacher.updated_at | or teacher.published_at | or teacher.created_at | lx-from-iso | lx-set-locale 'de' | lx-to-moment-calendar | capitalize ]
-  .card-header
+  .card-body.px-0
     span(rv-if="teacher.subjects | size | gt 0")
-      strong Fächer
       span.list-group.list-group-flush
+        strong.list-group-item Fächer
         a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
     span(rv-if="teacher.working_groups | size | gt 0")
-      strong AGs
       span.list-group.list-group-flush
+        strong.list-group-item AGs
         a.list-group-item.list-group-item-action(rv-each-working-group="teacher.working_groups" rv-href="workingGroup.slug | working-group" rv-text="workingGroup.title") 

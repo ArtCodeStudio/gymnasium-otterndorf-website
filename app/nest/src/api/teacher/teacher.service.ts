@@ -60,7 +60,7 @@ export class TeacherService {
       );
       return result.filter((teacher) => !!teacher.href);
     }
-    return null;
+    return [];
   }
 
   protected async get(slug: string) {
