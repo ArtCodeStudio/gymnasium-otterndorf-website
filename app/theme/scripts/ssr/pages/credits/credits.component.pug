@@ -28,15 +28,15 @@
             strong: a(href="http://www.gnu.org/licenses/agpl-3.0.de.html") GNU Affero General Public License (AGPL)
             |.
           p
-            | Das bedeutet, dass jeder den Quellcode dieser Webpräsenz unter Berückrücksichtigung dieser Lizenz Nutzen, Kopieren, Ändern, Zusammenführen, Veröffentlichen und Verteilen darf. 
-            | Davon ausgenommen sind die Bilder, das Logo und die Texte dieser Webpräsenz, zu diesen Inhalten hat das Gymnasium Otterndorf das Copyright.
+            | Das bedeutet, dass jeder den Quellcode dieser Webpräsenz unter Berückrücksichtigung dieser Lizenz nutzen, kopieren, ändern, zusammenführen, veröffentlichen und verteilen darf. 
+            | Davon ausgenommen sind die Bilder, das Logo und die Texte dieser Webpräsenz, deren Copyright beim Gymnasium Otterndorf liegt.
           p
-            | Dadurch ermöglichen wir es beispielsweise anderen Schulen oder Organisationen auf Basis dieses Quellcodes eigene Webpräsenzenzen zu entwickeln.
-            | Vielleicht bist du auch selbst Programmiererin oder möchtest es lernen, dann kannst du von dem Quellcode möglicherweise etwas lernen.
+            | Dadurch ermöglichen wir es beispielsweise anderen Schulen oder Organisationen, auf Basis dieses Quellcodes eigene Webpräsenzenzen zu entwickeln.
+            | Vielleicht bist du auch selbst Programmierer:in oder möchtest es werden, dann kannst du von dem Quellcode möglicherweise etwas lernen.
             | Auch Schüler:innen am Gymnasium Otterndorf könnten auf diese Weise die Schule unterstützen und die Seite verbessern.
-            | So oder so, neue Features die dabei entstehen können bei Bedarf in dieses Projekt zurückfließen, womit dieses Projekt davon profitieren kann, so wie du ebenfalls von diesem Projekt profitierst.
+            | So oder so: Neue Features, die dabei entstehen, können bei Bedarf in dieses Projekt zurückfließen, wovon sowohl du als auch dieses Projekt profitieren können.
           p
-            | Falls du etwas davon vor hast oder noch weitere Fragen hast, dann 
+            | Falls du etwas Entsprechendes vor- oder auch nur weitere Fragen hast, dann 
             strong: a(href="https://artandcode.studio/") nimm gerne Kontakt mit uns auf 
             | oder  
             strong: a(href="https://github.com/ArtCodeStudio/gymnasium-otterndorf-website") erstelle direkt ein Pull Request auf Github
@@ -48,13 +48,13 @@
             a(href="https://de.wikipedia.org/wiki/Programmierschnittstelle" target="_blank") API
             |  steht wörtlich für <strong>A</strong>nwendungs­<strong>p</strong>rogrammier­<strong>i</strong>nterface und ist ein Programmteil, der von einem Softwaresystem anderen Softwaresystemen zur Anbindung zur Verfügung gestellt wird.
             | Mit der öffentlichen API vom Gynmasium Otterndorf hast du also die Möglichkeit die Inhalte der Seite in einer anderen oder selbstentwickelten Software einzubinden.
-            | Denkbar wäre z.B. eine News-Reader-App welche die Blog-Artikel oder den Kalender abfragt.
-            | Ein anderes Beispiel wäre eine Schüler-Webseite, in der die Inhalte der Schüler:innen-Strapi-Instanz eingebunden werden soll, da die Schüler:innen hier auch eigene Inhalte anlegen dürfen.
+            | Denkbar wäre z. B. eine News-Reader-App, welche die Blog-Artikel oder den Kalender abfragt.
+            | Ein anderes Beispiel wäre eine Schüler:innen-Webseite, in der die Inhalte der Schüler:innen-Strapi-Instanz eingebunden werden soll, da die Schüler:innen hier auch eigene Inhalte anlegen dürfen.
           h2 Wie kann ich die API nutzen?
           p 
-            | Für die API's steht ein Playground zur Verfügung in dem die API ausprobiert werden kann.  
-            | Wenn du einfach nur Inhalte abfragen möchtest sind dafür keine Zugangsdaten notwendig, du kannst also einfach direkt loslegen.
-            | Es ist auch möglich Daten anzulegen, zu ändern und zu löschen, falls du auch hierfür Zugriff benötigst, dann nimm gerne 
+            | Für die APIs steht ein Playground zur Verfügung, in dem die API ausprobiert werden kann.  
+            | Wenn du einfach nur Inhalte abfragen möchtest, sind dafür keine Zugangsdaten notwendig – du kannst also direkt loslegen.
+            | Es ist auch möglich, Daten anzulegen, zu ändern und zu löschen. Falls du auch diese Funktionen nutzen möchtest, dann nimm gerne 
             a(href="https://artandcode.studio/" target="_blank") Kontakt mit uns 
             |  auf.
           p.text-red
@@ -62,20 +62,20 @@
           dl.row
             dt.col-12 Strapi API für die Inhalte
             dd.col-12   
-              a(rv-href="'/documentation' | strapi" target="_blank") REST-API Playground.
+              a(rv-href="'/documentation' | strapi" target="_blank") REST-API Playground
             dd.col-12   
-              a(rv-href="'/graphql' | strapi" target="_blank") GraphQL-API Playground.
+              a(rv-href="'/graphql' | strapi" target="_blank") GraphQL-API Playground
             dt.col-12 Strapi API für Schüler:innen-Inhalte
             dd.col-12   
-              a(rv-href="'/documentation' | strapi-student" target="_blank") REST-API Playground.
+              a(rv-href="'/documentation' | strapi-student" target="_blank") REST-API Playground
             dd.col-12   
-              a(rv-href="'/graphql' | strapi-student" target="_blank") GraphQL-API Playground.
-            dt.col-12 API für die Suche, den Suchvorschlägen und den Kalender
+              a(rv-href="'/graphql' | strapi-student" target="_blank") GraphQL-API Playground
+            dt.col-12 API für die Suche, Suchvorschläge und den Kalender
             dd.col-12   
-              a(href="/api" target="_blank") REST-API Playground.
-          p Solltest du die GraphQL-API verwenden wollen kannst du dir 
+              a(href="/api" target="_blank") REST-API Playground
+          p Solltest du die GraphQL-API verwenden wollen, kannst du dir 
             a(href="https://github.com/ArtCodeStudio/gymnasium-otterndorf-website/tree/main/app/theme" target="_blank") unsere GraphQL-Dateien im Quellcode
-            |  anschauen und als inspiration verwenden. 
+            |  anschauen und diese als Inspiration verwenden. 
       section.row.my-5
         .col-12
           h1 Technologien 
@@ -84,9 +84,9 @@
             dt.col-12 Node.js
             dd.col-12
               a(href="https://nodejs.org/de/" target="_blank") Node.js
-              |  ermöglichst es JavaScript auf dem Server zu verwenden. Auch hierzu gibt es 
+              |  ermöglichst es, JavaScript auf dem Server zu verwenden. Hierzu gibt es 
               a(href="https://cre.fm/cre167-nodejs" target="_blank") eine schöne Podcast-Folge
-              |, die zwar noch aus den Anfangszeiten von Node.js stammt aber trotzdem einen guten Überblick über das potential von Node.js verschafft. Node.js führt in diesem Projekt die Serveranwendungen (Nest und Strapi) aus.
+              | , die zwar noch aus den Anfangszeiten von Node.js stammt, aber trotzdem einen guten Überblick über das Potential von Node.js verschafft. Node.js führt in diesem Projekt die Serveranwendungen (Nest und Strapi) aus.
             dt.col-12 TypeScript
             dd.col-12
               a(href="https://www.typescriptlang.org/" target="_blank") TypeScript
@@ -96,40 +96,46 @@
             dt.col-12 Nest
             dd.col-12
               a(href="https://nestjs.com/" target="_blank") Nest
-              |  ist ein progressives Node.js-Framework zur Erstellung effizienter, zuverlässiger und skalierbarer serverseitiger Anwendungen. Nest kommt bei diesem Projekt für eigene API's (zum Beispiel für die Kalenderabfrage oder die Suche) zum Einsatz und kümmert sich um das Rendern sowie ausliefern der Webdaten. 
+              |  ist ein progressives Node.js-Framework zur Erstellung effizienter, zuverlässiger und skalierbarer serverseitiger Anwendungen. Nest kommt bei diesem Projekt für eigene APIs (zum Beispiel für die Kalenderabfrage oder die Suche) zum Einsatz und kümmert sich um das Rendern sowie Ausliefern der Webdaten. 
               a(href="https://www.programmier.bar/podcast-episodes/folge-71-nestjs-mit-gerd-jungbluth" target="_blank") Hier gibt es eine interessante Podcast-Folge zu dem Framework
               | .
             dt.col-12 Lunr.js
             dd.col-12
               a(href="https://lunrjs.com/" target="_blank") Lunr.js
-              |  ist eine leichtgewichtige Such-Engine für Node.js ohne dafür eine zusätzliche Serveranwendung zu benötigen. Lunr.js kommt bei diesem Projekt für die Volltext-Suche im Header zum Einsatz und ist in die Nest-Anwendung integriert.
+              |  ist eine leichtgewichtige Such-Engine für Node.js, die keine zusätzliche Serveranwendung benötigt. Lunr.js kommt bei diesem Projekt für die Volltext-Suche im Header zum Einsatz und ist in die Nest-Anwendung integriert.
             dt.col-12 Strapi
             dd.col-12
               a(href="https://strapi.io/" target="_blank") Strapi
-              |  ist ein Headless CMS für das Backend und der Inhaltspflege. Diese Seite betreibt zwei Instanzen von Strapi. Eine für den Hauptinhalt der Seite auf die nur die Betreiber dieser Seite Zugriff haben.
-              | Die zweite Instanz ist für Schüler:innen gedacht auf der sie selbst Zugriff haben und bei Bedarf in eine selbst entwickelte Webseite oder Software integrieren können. Die Sprüche des Tages auf der Startseite werden ebenfalls in der Schüler:innen-Instanz gepflegt.
+              |  ist ein Headless CMS für das Backend und die Inhaltspflege. Diese Seite betreibt zwei Instanzen von Strapi. Die erste verwaltet den Hauptinhalt der Seite. Nur die Betreiber dieser Seite haben Zugriff auf diese Instanz.
+              | Die zweite Instanz ist für Schüler:innen gedacht. Auf diese haben sie selbst Zugriff und können sie bei Bedarf in eine selbst entwickelte Webseite oder Software integrieren. Die Sprüche des Tages auf der Startseite werden ebenfalls in der Schüler:innen-Instanz gepflegt.
             dt.col-12 Riba
             dd.col-12
               a(href="https://ribajs.com/" target="_blank") Riba
-              |  ist ein leichtgewichtiges aber mächtiges Frontend-Framework, vergleichbar zu anderen Frameworks zum Erstellen von Single-Page-Webanwendungen aber mit dem Fokus auf native Browser Features wie beispielsweise 
+              |  ist ein leichtgewichtiges, aber mächtiges Frontend-Framework. Es ust vergleichbar mit anderen Frameworks zum Erstellen von Single-Page-Webanwendungen, hat aber einen Fokus auf native Browserfeatures wie beispielsweise 
               a(href="https://developer.mozilla.org/de/docs/Web/Web_Components/Using_custom_elements" target="_blank") Custom Elements
-              | . Riba kümmert sich um alles was im Webbrowser irgendwie interaktiv ist, beispielsweise die Sidebar.
+              | . Riba kümmert sich um alles, was im Webbrowser irgendwie interaktiv ist – beispielsweise die Sidebar.
             dt.col-12 Bootstrap 5
             dd.col-12
               a(href="https://getbootstrap.com/" target="_blank") Bootstrap 5
               |  ist ein CSS-Framework für  
               a(href="https://de.wikipedia.org/wiki/Responsive_Webdesign" target="_blank") Responsive- und Mobile-First-
-              | Webanwendungen. Das Layout dieser Webpräsenz basiert zu großen Teilen auf Bootstrap 5, wurde aber an vielen Stellen z.B. durch SCSS-Variablen angepasst. 
+              | Webanwendungen. Das Layout dieser Webpräsenz basiert zu großen Teilen auf Bootstrap 5, wurde aber an vielen Stellen z. B. durch SCSS-Variablen angepasst. 
             dt.col-12 Git
             dd.col-12
               a(href="https://de.wikipedia.org/wiki/Git" target="_blank") Git
               |  ist eine Software zur verteilten Versionsverwaltung von Quellcodes. Portale wie Github nutzen diese Software zur Verwaltung von Software-Projekten. Auch 
               a(href="https://github.com/ArtCodeStudio/gymnasium-otterndorf-website" target="_blank") dieses Projekt wird auf Github verwaltet
-              | . Dadurch kann jede Änderung die wir von Anfang an an diesem Projekt gemacht haben zurückverfolgt und angeschaut werden.
+              | . Dadurch kann jede Änderung, die wir von Anfang an an diesem Projekt gemacht haben, zurückverfolgt und angeschaut werden.
             dt.col-12 OpenStreetMap
             dd.col-12
               a(href="https://www.openstreetmap.de/" target="_blank") OpenStreetMap
-              |  ist ein internationales Projekt mit dem Ziel, eine freie Weltkarte zu erschaffen. Dafür sammeln alle beteiligten Helfer weltweit Daten über Straßen, Eisenbahnen, Flüsse, Wälder, Häuser und vieles mehr. Die OpenStreetMap wird in diesem Projekt für die Karte im Footer und dem Routenplaner genutzt.
+              |  ist ein internationales Projekt mit dem Ziel, eine freie Weltkarte zu erschaffen. Dafür sammeln alle beteiligten Helfer weltweit Daten über Straßen, Eisenbahnen, Flüsse, Wälder, Häuser und vieles mehr. Die OpenStreetMap wird in diesem Projekt für die Karte im Footer und den Routenplaner genutzt.
+            dt.col-12 Podlove Web Player
+            dd.col-12
+              a(href="https://podlove.org/" target="_blank") Podlove Web Player
+              |  ist ein Open-Source-Webplayer, der unter anderem Kapitelunterstützung, das Einbinden von Transkripten, Funktionen zum Teilen und Downloaden von Episoden sowie Unterstützung für verschiedene Audioformate und Livestreams bietet. Die Entwickler betreiben auch selbst einen 
+              a(href="https://podlovers.org/" target="_blank") Podcast
+              | , in dem sie mit verschiedenen Gästen über Features und Standardisierung diskutieren.
             dt.col-12 Und noch vieles mehr
             dd.col-12 Es kommen weitere Technologien wie beispielsweise 
               a(href="https://graphql.org/" target="_blank") GraphQL
@@ -141,20 +147,20 @@
               a(href="https://webpack.js.org/" target="_blank") Webpack 
               | und 
               a(href="https://babeljs.io/" target="_blank") Babel 
-              | zum Einsatz. Doch alle Technologien hier aufzulisten würde den Rahmen sprengen. Wenn du dich dafür interessierst, dann durchstöbere einfach den  
+              | zum Einsatz. Doch es würde den Rahmen sprengen, alle Technologien hier aufzulisten. Wenn du dich dafür interessierst, dann durchstöbere einfach den  
               a(href="https://github.com/ArtCodeStudio/gymnasium-otterndorf-website" target="_blank") Quellcode dieses Projekts
               | .
       section.row.my-5
         .col-12
           h1 Assets
-          p Die meisten Grafiken sind selbst erstellt, aber nicht alle.
-            | . Diese haben wir hier aufgelistet: 
+          p Die meisten Grafiken sind selbst erstellt.
+            | . Die wenigen, die es nicht sind, haben wir hier aufgelistet: 
           ul.list-unstyled
             li: a(href="https://www.freepik.com/free-photo/concrete-wall_928906.htm" target="_blank") Das Hintergrundbild der Art-Gallery ist von kues
             li: a(href="https://fedoraproject.org/wiki/Wallpapers" target="_blank") Das Hintergrundbild der Dreamy-Gallery ist von Fedora
             li: a(href="https://www.freepik.com/free-vector/group-business-people-characters_5825518.htm" target="_blank") Lehrer-Profilbilder von studiogstock
             li: a(href="https://www.freepik.com/free-vector/happy-people-avatars_7085154.htm" target="blank") Profilbilder für ehemalige Schüler von pikisuperstar
-            li: a(href="https://www.svgbackgrounds.com/" target="_blank") SVG Backgrounds
+            li: a(href="https://www.svgbackgrounds.com/" target="_blank") Weiterhin kommen SVG Backgrounds zum Einsatz
           P Als Schriftart verwenden wir: 
           ul.list-unstyled
             li: a(href="https://github.com/thomasjockin/lexend" target="_blank") Lexend
