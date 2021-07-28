@@ -101,7 +101,7 @@ export class GyNavSlideComponent extends Component {
       throw new Error("entry not set!");
     }
     const slidesSize = NavigationService.getMaxDepth(this.scope.entry);
-    this.scope.slides = new Array(slidesSize - 1);
+    this.scope.slides = new Array(slidesSize);
     for (let i = 0; i < this.scope.slides.length; i++) {
       this.scope.slides[i] = this.newSlide(i);
       if (i === 0) {

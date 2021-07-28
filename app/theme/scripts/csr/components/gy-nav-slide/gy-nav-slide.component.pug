@@ -1,5 +1,5 @@
 bs5-slideshow(rv-parent rv-co-items="slides" xs-controls="false" xs-indicators="false" xs-drag="false" xs-sticky="true" xs-autoplay="false")
-  .row.slideshow-row.m-0
+  .row.slideshow-row.m-0(rv-touch-events rv-on-swiperight="prev")
     .slide.col-12.p-0(rv-each-slide="items" rv-index="%slide%")
       //- E.g. Back
       .slide-caption.py-0(rv-show="slide.caption")

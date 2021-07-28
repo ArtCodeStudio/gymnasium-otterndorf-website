@@ -330,13 +330,15 @@ export class NavigationService {
   }
 
   public static getMaxDepth(tree: NavigationLink, depth = 0) {
-    if (tree.children.length) {
-      depth++;
+    if (!Array.isArray(tree.children) || tree.children.length <= 0) {
+      return depth;
     }
+    depth++;
+    let maxDepth = 0;
     for (const children of tree.children) {
-      depth = Math.max(depth, this.getMaxDepth(children, depth));
+      maxDepth = Math.max(maxDepth, this.getMaxDepth(children, depth));
     }
-    return depth;
+    return maxDepth;
   }
 
   public async getMenu() {
