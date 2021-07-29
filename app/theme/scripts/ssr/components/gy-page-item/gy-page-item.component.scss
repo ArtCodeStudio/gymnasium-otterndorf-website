@@ -1,6 +1,10 @@
 gy-page-item {
   display: block;
   
+  .pinned {
+    margin-right: 25px;
+  }
+
   .icon-pin {
     right: 12px;
   }
