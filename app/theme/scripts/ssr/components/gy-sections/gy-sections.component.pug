@@ -6,7 +6,7 @@
         //- Content Sections
         .row.my-3(ssr-rv-if="section.__typename | eq 'ComponentContentText'")
             gy-section-text.col-12(ssr-rv-co-section="section")
-        .row.mt-3.mb-5(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
+        .row.my3(ssr-rv-if="section.__typename | eq 'ComponentContentImage'") 
             gy-section-image.col-12(ssr-rv-co-section="section")
         .row.mt-3.mb-5(ssr-rv-if="section.__typename | eq 'ComponentContentButton'") 
             gy-section-button.col-12(ssr-rv-co-section="section")
