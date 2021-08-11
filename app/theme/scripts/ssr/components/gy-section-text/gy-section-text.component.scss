@@ -3,7 +3,7 @@ gy-section-text {
     blockquote {
         @extend .blockquote;
         @extend .p-3;
-        color: white;
+        color: $white;
         font-style: normal;
         background-color: $gray-600;
     }
