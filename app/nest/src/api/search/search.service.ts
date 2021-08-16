@@ -4,9 +4,11 @@ import { LunrService, SuggestService } from '@ribajs/nest-lunr';
 import { StrapiService } from '../strapi/strapi.service';
 import { NavService } from '../nav';
 import { PageService } from '../page';
+import { PodcastService } from '../podcast';
 import { PostService } from '../post';
 import { SchoolSubjectService } from '../school-subject';
 import { TeacherService } from '../teacher';
+import { WorkingGroupService } from '../workinggroup';
 import type { LunrExt, Namespace } from './types';
 import { REF_KEYS } from './constants';
 
@@ -24,17 +26,21 @@ export class SearchService implements OnModuleInit {
     readonly strapi: StrapiService,
     protected readonly nav: NavService,
     protected readonly page: PageService,
+    protected readonly podcast: PodcastService,
     protected readonly post: PostService,
     protected readonly subject: SchoolSubjectService,
     protected readonly teacher: TeacherService,
+    protected readonly workingGroup: WorkingGroupService,
   ) {
     this.initLunrPlugins();
     this.initPage();
     this.initNav();
+    this.initPodcast();
     this.initPost();
     this.initBlog();
     this.initSchoolSubject();
     this.initTeacher();
+    this.initWorkingGroup();
   }
 
   protected initLunrPlugins() {
@@ -67,6 +73,23 @@ export class SearchService implements OnModuleInit {
 
     this.lunr.create(ns, {
       fields: { title: { boost: 4 } },
+      ref: REF_KEYS[ns],
+      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      data: {
+        include: true,
+        highlight: true,
+      },
+    });
+  }
+
+  protected initPodcast() {
+    const ns: Namespace = 'podcast';
+
+    this.suggest.create(ns);
+    this.suggest.ignore(ns, IGNORE_SUGGESTION_WORDS);
+
+    this.lunr.create(ns, {
+      fields: { title: { boost: 2 }, description: {} },
       ref: REF_KEYS[ns],
       plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
       data: {
@@ -145,6 +168,23 @@ export class SearchService implements OnModuleInit {
     });
   }
 
+  protected initWorkingGroup() {
+    const ns: Namespace = 'workinggroup';
+
+    this.suggest.create(ns);
+    this.suggest.ignore(ns, IGNORE_SUGGESTION_WORDS);
+
+    this.lunr.create(ns, {
+      fields: { title: { boost: 2 }, text: {} },
+      ref: REF_KEYS[ns],
+      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      data: {
+        include: true,
+        highlight: true,
+      },
+    });
+  }
+
   public async refreshPage() {
     const ns: Namespace = 'page';
     const pages = await this.page.list();
@@ -164,6 +204,18 @@ export class SearchService implements OnModuleInit {
     for (const nav of navs) {
       this.lunr.add(ns, nav);
       this.suggest.load(ns, nav.title, { reset: false });
+    }
+    this.lunr.buildIndex(ns);
+  }
+
+  public async refreshPodcast() {
+    const ns: Namespace = 'podcast';
+    const podcasts = await this.podcast.list();
+    this.lunr.reset(ns);
+    for (const podcast of podcasts) {
+      this.lunr.add(ns, podcast);
+      this.suggest.load(ns, podcast.title, { reset: false });
+      this.suggest.load(ns, podcast.description, { reset: false });
     }
     this.lunr.buildIndex(ns);
   }
@@ -208,13 +260,27 @@ export class SearchService implements OnModuleInit {
     this.lunr.buildIndex(ns);
   }
 
+  public async refreshWorkingGroup() {
+    const ns: Namespace = 'workinggroup';
+    const workinggroups = await this.workingGroup.list();
+    this.lunr.reset(ns);
+    for (const workinggroup of workinggroups) {
+      this.lunr.add(ns, workinggroup);
+      this.suggest.load(ns, workinggroup.title, { reset: false });
+      this.suggest.load(ns, workinggroup.text, { reset: false });
+    }
+    this.lunr.buildIndex(ns);
+  }
+
   public async refresh() {
     this.refreshPage();
     this.refreshNav();
+    this.refreshPodcast();
     this.refreshPost();
     this.refreshBlog();
     this.refreshSchoolSubject();
     this.refreshTeacher();
+    this.refreshWorkingGroup();
   }
 
   onModuleInit() {
