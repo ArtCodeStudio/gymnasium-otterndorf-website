@@ -99,10 +99,14 @@ export class NavService {
         url = '/podcast';
         break;
       case 'WorkingGroup':
+      case 'workinggroup':
         url = '/working-group';
         break;
+      case 'ComponentLinkTypeStrapi':
+        url = this.buildStrapiSrc(slug);
+        break;
       default:
-        throw new Error('Unknown link type!');
+        throw new Error(`Unknown link type "${type}"!`);
     }
 
     if (slug) {

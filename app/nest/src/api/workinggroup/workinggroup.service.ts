@@ -82,7 +82,7 @@ export class WorkingGroupService {
       /** Markdown (no HTML) */
       md: markdowns.join('\n\n'),
       images,
-      href: NavService.buildHref('workinggroup', workinggroup.slug),
+      href: NavService.buildHref('WorkingGroup', workinggroup.slug),
     };
   }
 
@@ -97,7 +97,7 @@ export class WorkingGroupService {
     try {
       const result =
         await this.strapi.graphql.execute<StrapiGqlWorkingGroupBasicBySlugsQuery>(
-          'graphql/queries/working-groups-basic-by-slugs',
+          'graphql/queries/working-group-basic-by-slugs',
           vars,
         );
       workinggroups = result.workingGroups;

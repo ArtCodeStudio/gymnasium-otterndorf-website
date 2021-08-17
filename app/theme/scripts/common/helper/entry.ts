@@ -29,6 +29,7 @@ export const getEntryType = (typename?: EntryType | ENTRY_TYPE) => {
     case "Subject":
       return ENTRY_TYPE.SchoolSubject;
     case "WorkingGroup":
+    case "workinggroup":
       return ENTRY_TYPE.WorkingGroup;
     case "blog":
       return ENTRY_TYPE.Blog;
@@ -42,6 +43,7 @@ export const getEntryType = (typename?: EntryType | ENTRY_TYPE) => {
     case "PodcastFeed":
       return ENTRY_TYPE.Podcast;
     case "PodcastEpisode":
+    case "podcast":
       return ENTRY_TYPE.PodcastEpisode;
     default:
       console.error(new Error("Unknown type: " + typename));
