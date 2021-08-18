@@ -86,7 +86,7 @@ export class WorkingGroupService {
     };
   }
 
-  public async listRaw(slugs: string[] | null = [], limit = 500, start = 0) {
+  public async list(slugs: string[] = [], limit = 500, start = 0) {
     const vars: StrapiGqlWorkingGroupBasicBySlugsQueryVariables = {
       slugs,
       limit,
@@ -101,35 +101,15 @@ export class WorkingGroupService {
           vars,
         );
       workinggroups = result.workingGroups;
-      if (workinggroups) {
-        return workinggroups;
-      }
     } catch (error) {
       console.error(error);
     }
-    return [];
-  }
-
-  public async getRaw(
-    slug: string,
-  ): Promise<StrapiGqlWorkingGroupBasicFragmentFragment> {
-    return (await this.listRaw([slug], 1))[0] || null;
-  }
-
-  public async list(slugs: string[] | null = [], limit = 50, start = 0) {
-    const workinggroups = await this.listRaw(slugs, limit, start);
-    if (Array.isArray(workinggroups) && workinggroups.length > 0) {
+    if (Array.isArray(workinggroups)) {
       const result = await Promise.all(
         workinggroups.map((workinggroup) => this.flatten(workinggroup)),
       );
       return result.filter((workinggroup) => !!workinggroup.href);
-    } else {
-      console.warn('No working groups found!', workinggroups);
     }
-    return [];
-  }
-
-  public async get(slug: string): Promise<SearchWorkingGroup | null> {
-    return (await this.list([slug], 1))[0] || null;
+    return null;
   }
 }
