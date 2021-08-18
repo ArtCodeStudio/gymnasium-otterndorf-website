@@ -17,13 +17,6 @@ export class PageService {
     //
   }
 
-  public async flattens(
-    pages: StrapiGqlPageBasicBySlugsQuery['pages'],
-  ): Promise<SearchPage[]> {
-    const pPages = pages.map((page) => this.flatten(page));
-    return await Promise.all(pPages);
-  }
-
   public async flatten(
     page: StrapiGqlPageBasicBySlugsQuery['pages'][0],
   ): Promise<SearchPage> {

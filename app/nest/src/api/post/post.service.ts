@@ -20,16 +20,6 @@ export class PostService {
     //
   }
 
-  /**
-   * Flatten blog posts for the search
-   * @param posts
-   */
-  public async flattens(
-    posts: StrapiGqlBlogEntriesBasicBySlugsQuery['blogEntries'],
-  ): Promise<SearchPost[]> {
-    return Promise.all(posts.map((post) => this.flatten(post)));
-  }
-
   protected async getContentObject(
     post: StrapiGqlBlogEntryBasicFragmentFragment,
   ) {

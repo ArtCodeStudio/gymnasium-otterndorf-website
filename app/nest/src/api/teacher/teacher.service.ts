@@ -18,13 +18,6 @@ export class TeacherService {
     /**/
   }
 
-  public async flattens(
-    teachers: StrapiGqlTeacherDetailBySlugsQuery['teachers'],
-  ): Promise<SearchTeacher[]> {
-    const pTeachers = teachers.map((teacher) => this.flatten(teacher));
-    return await Promise.all(pTeachers);
-  }
-
   public async flatten(
     teacher: StrapiGqlTeacherDetailFragmentFragment,
   ): Promise<SearchTeacher> {

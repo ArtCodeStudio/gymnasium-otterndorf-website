@@ -19,18 +19,6 @@ export class WorkingGroupService {
     //
   }
 
-  /**
-   * Flatten blog posts for the search
-   * @param posts
-   */
-  public async flattens(
-    workinggroups: StrapiGqlWorkingGroupBasicBySlugsQuery['workingGroups'],
-  ): Promise<SearchWorkingGroup[]> {
-    return Promise.all(
-      workinggroups.map((workinggroup) => this.flatten(workinggroup)),
-    );
-  }
-
   protected async getContentObject(
     workinggroup: StrapiGqlWorkingGroupBasicFragmentFragment,
   ) {

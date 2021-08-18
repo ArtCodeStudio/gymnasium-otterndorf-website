@@ -17,13 +17,6 @@ export class SchoolSubjectService {
     /**/
   }
 
-  public async flattens(
-    subjects: StrapiGqlSchoolSubjectDetailBySlugsQuery['subjects'],
-  ): Promise<SearchSchoolSubject[]> {
-    const pSchoolSubjects = subjects.map((subject) => this.flatten(subject));
-    return await Promise.all(pSchoolSubjects);
-  }
-
   public async flatten(
     subject: StrapiGqlSchoolSubjectDetailBySlugsQuery['subjects'][0],
   ): Promise<SearchSchoolSubject> {

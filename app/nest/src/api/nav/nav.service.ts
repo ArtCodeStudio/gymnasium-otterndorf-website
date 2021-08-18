@@ -157,12 +157,6 @@ export class NavService {
     };
   }
 
-  public flattens(
-    navs: StrapiGqlNavigationLinksByIdsQuery['navigationLinks'],
-  ): SearchNav[] {
-    return navs.map((nav) => this.flatten(nav));
-  }
-
   public async getMenuEntries() {
     const vars: StrapiGqlMenuQueryVariables = {};
     let menuEntries: StrapiGqlMenuQuery['menu']['entries'] = [];
