@@ -27,7 +27,9 @@ export class PodloveService {
     protected readonly podcast: PodcastService,
     protected readonly strapi: StrapiService,
     protected readonly markdown: MarkdownService,
-  ) {}
+  ) {
+    /**/
+  }
 
   public getConfigUrl() {
     return NavService.buildNestSrc('api/podlove/config');
@@ -42,7 +44,7 @@ export class PodloveService {
   }
 
   public async getPlaylist(activeEpisodeSlug?: string) {
-    const episodes = await this.podcast.list();
+    const episodes = await this.podcast.listRaw();
     const playlist: PodloveWebPlayerPlaylistItem[] = [];
 
     for (const episode of episodes) {

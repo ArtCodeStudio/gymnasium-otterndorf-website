@@ -21,7 +21,7 @@ export class FeedService {
     protected readonly podcast: PodcastService,
     protected readonly markdown: MarkdownService,
     protected readonly general: GeneralService,
-  ) {}
+  ) { }
 
   public getSiteUrl() {
     return NavService.buildNestSrc('');
@@ -129,7 +129,7 @@ export class FeedService {
   // TODO properties, see https://github.com/maxnowack/node-podcast
   public async getPodcast() {
     const feedConfig = await this.podcast.getConfig();
-    const episodes = await this.podcast.list();
+    const episodes = await this.podcast.listRaw();
 
     // TODO
     if (!feedConfig) {

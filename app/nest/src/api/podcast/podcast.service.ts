@@ -3,6 +3,8 @@ import {
   StrapiGqlPodcastConfigQuery,
   StrapiGqlPodcastConfigQueryVariables,
   StrapiGqlComponentPodcastCategoryFragmentFragment,
+  StrapiGqlPodcastEpisodesBasicBySlugsQuery,
+  StrapiGqlPodcastEpisodesBasicBySlugsQueryVariables,
   StrapiGqlPodcastEpisodesDetailBySlugsQuery,
   StrapiGqlPodcastEpisodesDetailBySlugsQueryVariables,
   StrapiGqlPodcastEpisodeDetailFragmentFragment,
@@ -10,15 +12,17 @@ import {
 } from '../strapi/types';
 import type { PodloveWebPlayerChapter } from '@ribajs/podcast';
 import { PodcastCategory } from './types/podcast-category';
-
 import { StrapiService } from '../strapi/strapi.service';
 import { NavService } from '../nav';
 import { basename } from 'path';
 import { FeedItunesCategory } from 'podcast';
+import { SearchPodcast } from './types';
 
 @Injectable()
 export class PodcastService {
-  constructor(protected readonly strapi: StrapiService) {}
+  constructor(protected readonly strapi: StrapiService) {
+    /** */
+  }
 
   public getEpisodeUrl(slug: string) {
     return NavService.buildNestSrc(`podcast/${slug}`);
@@ -170,10 +174,50 @@ export class PodcastService {
     return podcastConfig;
   }
 
+  public async flatten(
+    podcastEpisode: StrapiGqlPodcastEpisodesBasicBySlugsQuery['podcastEpisodes'][0],
+  ): Promise<SearchPodcast> {
+    return {
+      id: podcastEpisode.id,
+      title: podcastEpisode.title,
+      subtitle: podcastEpisode.subtitle,
+      slug: podcastEpisode.slug,
+      description: podcastEpisode.description,
+      href: NavService.buildHref('podcast', podcastEpisode.slug),
+    };
+  }
+
+  public async list(slugs: string[] = [], limit = 500, start = 0) {
+    const vars: StrapiGqlPodcastEpisodesBasicBySlugsQueryVariables = {
+      slugs,
+      limit,
+      start,
+    };
+    let podcastEpisodes: StrapiGqlPodcastEpisodesBasicBySlugsQuery['podcastEpisodes'] =
+      null;
+    try {
+      const result =
+        await this.strapi.graphql.execute<StrapiGqlPodcastEpisodesBasicBySlugsQuery>(
+          'graphql/queries/podcast-episodes-basic-by-slugs',
+          vars,
+        );
+      podcastEpisodes = result.podcastEpisodes;
+    } catch (error) {
+      console.error(error);
+    }
+    if (Array.isArray(podcastEpisodes)) {
+      const result = await Promise.all(
+        podcastEpisodes.map((podcastEpisode) => this.flatten(podcastEpisode)),
+      );
+      return result.filter((podcastEpisode) => !!podcastEpisode.href);
+    }
+    return null;
+  }
+
   /**
-   * List episodes
+   * List episodes in raw format (for podlove)
    */
-  public async list(slugs: string[] | null = [], limit = 50, start = 0) {
+  public async listRaw(slugs: string[] | null = [], limit = 50, start = 0) {
     const vars: StrapiGqlPodcastEpisodesDetailBySlugsQueryVariables = {
       slugs,
       limit,
@@ -201,13 +245,13 @@ export class PodcastService {
   public async get(
     slug: string,
   ): Promise<StrapiGqlPodcastEpisodeDetailFragmentFragment> {
-    return (await this.list([slug], 1))[0] || null;
+    return (await this.listRaw([slug], 1))[0] || null;
   }
 
   /**
    * Get the episode object for the latest episode
    */
   public async latest(): Promise<StrapiGqlPodcastEpisodeDetailFragmentFragment> {
-    return (await this.list([], 1))[0] || null;
+    return (await this.listRaw([], 1))[0] || null;
   }
 }

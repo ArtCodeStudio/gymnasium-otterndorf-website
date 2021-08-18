@@ -210,7 +210,7 @@ export class SearchService implements OnModuleInit {
 
   public async refreshPodcast() {
     const ns: Namespace = 'podcast';
-    const podcasts = await this.podcast.list();
+    const podcasts = await this.podcast.listRaw();
     this.lunr.reset(ns);
     for (const podcast of podcasts) {
       this.lunr.add(ns, podcast);
