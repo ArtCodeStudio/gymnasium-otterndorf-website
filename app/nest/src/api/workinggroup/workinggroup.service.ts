@@ -20,13 +20,13 @@ export class WorkingGroupService {
   }
 
   protected async getContentObject(
-    workinggroup: StrapiGqlWorkingGroupBasicFragmentFragment,
+    workingGroup: StrapiGqlWorkingGroupBasicFragmentFragment,
   ) {
     const images: StrapiGqlImageFragmentFragment[] = [];
     const texts: string[] = [];
     const markdowns: string[] = [];
 
-    for (const section of workinggroup.content) {
+    for (const section of workingGroup.content) {
       switch (section.__typename) {
         case 'ComponentContentText':
           markdowns.push(section.text);
@@ -52,25 +52,25 @@ export class WorkingGroupService {
 
   /**
    * Flatten entry for the search
-   * @param workinggroup
+   * @param workingGroup
    */
   public async flatten(
-    workinggroup: StrapiGqlWorkingGroupBasicFragmentFragment,
+    workingGroup: StrapiGqlWorkingGroupBasicFragmentFragment,
   ): Promise<SearchWorkingGroup> {
     const { texts, markdowns, images } = await this.getContentObject(
-      workinggroup,
+      workingGroup,
     );
 
     return {
-      id: workinggroup.id,
-      title: workinggroup.title,
-      slug: workinggroup.slug,
+      id: workingGroup.id,
+      title: workingGroup.title,
+      slug: workingGroup.slug,
       /** Plain text without markdown */
       text: texts.join('\n'),
       /** Markdown (no HTML) */
       md: markdowns.join('\n\n'),
       images,
-      href: NavService.buildHref('WorkingGroup', workinggroup.slug),
+      href: NavService.buildHref('WorkingGroup', workingGroup.slug),
     };
   }
 
@@ -80,7 +80,7 @@ export class WorkingGroupService {
       limit,
       start,
     };
-    let workinggroups: StrapiGqlWorkingGroupBasicBySlugsQuery['workingGroups'] =
+    let workingGroups: StrapiGqlWorkingGroupBasicBySlugsQuery['workingGroups'] =
       null;
     try {
       const result =
@@ -88,15 +88,15 @@ export class WorkingGroupService {
           'graphql/queries/working-group-basic-by-slugs',
           vars,
         );
-      workinggroups = result.workingGroups;
+      workingGroups = result.workingGroups;
     } catch (error) {
       console.error(error);
     }
-    if (Array.isArray(workinggroups)) {
+    if (Array.isArray(workingGroups)) {
       const result = await Promise.all(
-        workinggroups.map((workinggroup) => this.flatten(workinggroup)),
+        workingGroups.map((workingGroup) => this.flatten(workingGroup)),
       );
-      return result.filter((workinggroup) => !!workinggroup.href);
+      return result.filter((workingGroup) => !!workingGroup.href);
     }
     return null;
   }
