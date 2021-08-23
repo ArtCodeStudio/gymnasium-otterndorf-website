@@ -18,7 +18,12 @@ export class CalendarController {
   @Get()
   @ApiOperation({ summary: 'Get the next calendar entries' })
   async get(@Res() res: Response, @Query('key') key?: string) {
-    const events = await this.calendar.get(key);
-    res.json(events);
+    try {
+      const events = await this.calendar.get(key);
+      res.json(events);
+    } catch (error) {
+      console.error(error);
+      res.json([]);
+    }
   }
 }
