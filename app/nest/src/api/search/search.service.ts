@@ -89,7 +89,7 @@ export class SearchService implements OnModuleInit {
     this.suggest.ignore(ns, IGNORE_SUGGESTION_WORDS);
 
     this.lunr.create(ns, {
-      fields: { title: { boost: 2 }, description: {} },
+      fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
       plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
       data: {
@@ -210,12 +210,12 @@ export class SearchService implements OnModuleInit {
 
   public async refreshPodcast() {
     const ns: Namespace = 'podcast';
-    const podcasts = await this.podcast.listRaw();
+    const podcasts = await this.podcast.list();
     this.lunr.reset(ns);
     for (const podcast of podcasts) {
       this.lunr.add(ns, podcast);
       this.suggest.load(ns, podcast.title, { reset: false });
-      this.suggest.load(ns, podcast.description, { reset: false });
+      this.suggest.load(ns, podcast.text, { reset: false });
     }
     this.lunr.buildIndex(ns);
   }

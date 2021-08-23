@@ -1,8 +1,7 @@
 export interface SearchPodcast {
   id: string;
   title: string;
-  description: string;
-  subtitle: string;
+  text: string;
   slug: string;
   href: string;
 }

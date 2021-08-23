@@ -180,9 +180,8 @@ export class PodcastService {
     return {
       id: podcastEpisode.id,
       title: podcastEpisode.title,
-      subtitle: podcastEpisode.subtitle,
       slug: podcastEpisode.slug,
-      description: podcastEpisode.description,
+      text: podcastEpisode.description,
       href: NavService.buildHref('podcast', podcastEpisode.slug),
     };
   }

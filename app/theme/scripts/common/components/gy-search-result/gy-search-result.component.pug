@@ -12,7 +12,6 @@
           h5.card-title(csr-rv-html="item.data.title" csr-rv-class-cursor-pointer="item.data.href" csr-rv-on-click="onOpen | args item")
           p.card-text 
             span(csr-rv-if="item.data.text" csr-rv-html="item.data.text | cut item.opts.cutAt ' ...'")
-            span(csr-rv-if="item.data.description" csr-rv-html="item.data.description | cut item.opts.cutAt ' ...'")
           .card-toolbar
           .d-flex.justify-content-between.flex-row-reverse
             a(csr-rv-href="item.data.href" csr-rv-on-click="onOpen | args item") Öffnen
