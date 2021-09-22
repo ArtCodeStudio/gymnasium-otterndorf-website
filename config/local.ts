@@ -27,7 +27,7 @@ export const apps: ManagerApp[] = [
     pm2: {
       script: "yarn workspace @gymott/nest watch",
       // The app restarts by itself on changes but this is not working fpr new packages, so we also watch the package.json with pm2
-      watch: ["package.json", "./.pnp.js"],
+      watch: ["package.json", "./.pnp.cjs"],
       env: {
         STRAPI_INTERN_URL: "https://gym-strapi.artandcode.de",
         STRAPI_EXTERN_URL: "https://gym-strapi.artandcode.de",

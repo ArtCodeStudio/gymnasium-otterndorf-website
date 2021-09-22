@@ -1,17 +1,17 @@
-import './@types';
+import type {} from './@types';
 import { NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
-import * as Express from 'express';
+import Express from 'express';
 import {
   NestExpressApplication,
   ExpressAdapter,
 } from '@nestjs/platform-express';
-import * as cookieParser from 'cookie-parser';
-import * as expressSession from 'express-session';
+import cookieParser from 'cookie-parser';
+import expressSession from 'express-session';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
-import * as config from './config/config';
+import { session as configSession, app as configApp } from './config/config';
 
 async function bootstrap() {
   const console = new Logger('bootstrap');
@@ -40,7 +40,7 @@ async function bootstrap() {
   /**
    * Init express session
    */
-  const session = expressSession(config.session);
+  const session = expressSession(configSession);
 
   /**
    * Set express session
@@ -64,8 +64,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(config.app.port);
+  await app.listen(configApp.port);
 
-  console.log(`Start app on localhost:${config.app.port}`);
+  console.log(`Start app on localhost:${configApp.port}`);
 }
 bootstrap();

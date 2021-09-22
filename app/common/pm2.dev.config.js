@@ -5,7 +5,7 @@ module.exports = {
       script: "yarn run watch",
       watch: [
         "package.json",
-        "../../../.pnp.js",
+        "../../../.pnp.cjs",
         "../strapi/exports/graphql/*",
         "../theme/graphql/**/*",
       ],

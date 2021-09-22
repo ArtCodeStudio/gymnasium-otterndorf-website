@@ -130,3 +130,11 @@ Error: Module not found: Error: Can\'t resolve './components/Fonts' in '/home/no
 ```
 
 This can happen when you update Strapi, to solve this remove `package-lock.json`, `node_modules` and `.cache` in the root of the Strapi project and run `npm run build` twice, the first time the error might appear again, the second time the problem should be solved.
+
+--------
+
+```sh
+Could not load '.yarn/cache/greenlock-store-fs-npm-3.2.2-b7037376cd-7949fbf967.zip/node_modules/greenlock-store-fs/index.js'
+```
+
+Go to `packages/node-app-manager/backend/greenlock.d/config.json` and update the `greenlock-store-fs-npm-3.2.2-b7037376cd-7949fbf967.zip` to a existing name like `.yarn/cache/greenlock-store-fs-npm-3.2.2-xxx-xxx`

@@ -81,22 +81,21 @@
     "@ribajs/iconset": "workspace:*",
     "@ribajs/tsconfig": "workspace:*",
     "@types/source-map-support": "^0.5.4",
-    "@typescript-eslint/eslint-plugin": "^4.28.4",
-    "@typescript-eslint/experimental-utils": "^4.28.4",
-    "@typescript-eslint/parser": "^4.28.4",
-    "@yarnpkg/pnpify": "^3.0.0-rc.13",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/experimental-utils": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "@yarnpkg/pnpify": "^3.0.1",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.31.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "node-gyp": "^8.1.0",
-    "prettier": "^2.3.2",
+    "eslint-plugin-prettier": "^3.4.1",
+    "node-gyp": "^8.2.0",
+    "prettier": "^2.4.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
     "@root/encoding": "^1.0.1",
-    "@root/keypairs": "^0.10.1",
-    "greenlock-store-fs": "^3.2.2",
+    "@root/keypairs": "^0.10.3",
     "pug": "^3.0.2"
   }
 }

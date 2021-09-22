@@ -57,7 +57,9 @@ export class SearchService implements OnModuleInit {
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      plugins: [
+        { plugin: (LunrService.lunr as unknown as LunrExt).de, args: [] },
+      ],
       data: {
         include: true,
         highlight: true,
@@ -74,7 +76,9 @@ export class SearchService implements OnModuleInit {
     this.lunr.create(ns, {
       fields: { title: { boost: 4 } },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      plugins: [
+        { plugin: (LunrService.lunr as unknown as LunrExt).de, args: [] },
+      ],
       data: {
         include: true,
         highlight: true,
@@ -91,7 +95,9 @@ export class SearchService implements OnModuleInit {
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      plugins: [
+        { plugin: (LunrService.lunr as unknown as LunrExt).de, args: [] },
+      ],
       data: {
         include: true,
         highlight: true,
@@ -108,7 +114,9 @@ export class SearchService implements OnModuleInit {
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      plugins: [
+        { plugin: (LunrService.lunr as unknown as LunrExt).de, args: [] },
+      ],
       data: {
         include: true,
         highlight: true,
@@ -126,7 +134,9 @@ export class SearchService implements OnModuleInit {
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      plugins: [
+        { plugin: (LunrService.lunr as unknown as LunrExt).de, args: [] },
+      ],
       data: {
         include: true,
         highlight: true,
@@ -143,7 +153,9 @@ export class SearchService implements OnModuleInit {
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      plugins: [
+        { plugin: (LunrService.lunr as unknown as LunrExt).de, args: [] },
+      ],
       data: {
         include: true,
         highlight: true,
@@ -160,7 +172,9 @@ export class SearchService implements OnModuleInit {
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      plugins: [
+        { plugin: (LunrService.lunr as unknown as LunrExt).de, args: [] },
+      ],
       data: {
         include: true,
         highlight: true,
@@ -177,7 +191,9 @@ export class SearchService implements OnModuleInit {
     this.lunr.create(ns, {
       fields: { title: { boost: 2 }, text: {} },
       ref: REF_KEYS[ns],
-      plugins: [{ plugin: (LunrService.lunr as LunrExt).de, args: [] }],
+      plugins: [
+        { plugin: (LunrService.lunr as unknown as LunrExt).de, args: [] },
+      ],
       data: {
         include: true,
         highlight: true,
