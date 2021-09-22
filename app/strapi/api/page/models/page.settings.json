@@ -40,7 +40,8 @@
         "section.podcast-episode",
         "content.download-button",
         "section.latest-podcast-episode",
-        "section.former-students"
+        "section.former-students",
+        "section.subject-selection"
       ]
     },
     "calendar_key": {

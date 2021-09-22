@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_section_subject_selections",
+  "info": {
+    "name": "Subject Selection",
+    "icon": "align-right"
+  },
+  "options": {},
+  "attributes": {
+    "p1": {
+      "collection": "subject"
+    },
+    "p2": {
+      "collection": "subject"
+    },
+    "p3": {
+      "collection": "subject"
+    },
+    "p4": {
+      "collection": "subject"
+    },
+    "p5": {
+      "collection": "subject"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

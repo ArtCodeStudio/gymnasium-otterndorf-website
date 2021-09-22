@@ -76,16 +76,12 @@ In short:
 npm install -g npm-check
 cd apps/gymott/strapi # or strapi-student
 pm2 list
-# see which id the strapi process has here
+# see which id the strapi process has
 pm2 stop <id>
 npm-check -u # Can be installed with `npm install -g npm-check`
 # Select latest strapi versions here
 # Please note: Maybe there are new plugins for the new strapi version, check the source for new plugins and install theme
-rm -rf package-lock.json node_modules .cache
-npm install
-# Maybe you need to run `npm run build` several times if an error occurs.
-# You can also try running `npm run build -- --clean`
-npm run build
+npm run build -- --clean
 pm2 start <id>
 pm2 logs <id>
 # Check here if Strapi starts properly

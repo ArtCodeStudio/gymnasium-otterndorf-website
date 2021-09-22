@@ -555,7 +555,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -657,7 +658,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -692,7 +694,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -748,7 +751,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -822,7 +826,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -893,7 +898,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -998,7 +1004,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1101,7 +1108,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1178,7 +1186,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1213,7 +1222,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1295,7 +1305,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1363,7 +1374,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1409,7 +1421,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1451,7 +1464,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1565,7 +1579,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1716,7 +1731,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1765,7 +1781,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -1786,6 +1803,240 @@
                     "id",
                     "title",
                     "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode",
+                        "content.download-button",
+                        "section.latest-podcast-episode",
+                        "section.former-students",
+                        "section.subject-selection"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "p1": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "p2": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "p3": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "p4": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "p5": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
                   ]
                 }
               ]
@@ -1960,7 +2211,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2062,7 +2314,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2097,7 +2350,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2153,7 +2407,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2227,7 +2482,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2298,7 +2554,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2403,7 +2660,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2506,7 +2764,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2583,7 +2842,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2618,7 +2878,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2700,7 +2961,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2768,7 +3030,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2814,7 +3077,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2856,7 +3120,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -2970,7 +3235,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -3121,7 +3387,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -3170,7 +3437,8 @@
                         "section.podcast-episode",
                         "content.download-button",
                         "section.latest-podcast-episode",
-                        "section.former-students"
+                        "section.former-students",
+                        "section.subject-selection"
                       ]
                     },
                     "id": {
@@ -3191,6 +3459,240 @@
                     "id",
                     "title",
                     "limit"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "content.image",
+                        "content.text",
+                        "section.slideshow",
+                        "section.gallery-slideshow",
+                        "section.blackboard-slideshow",
+                        "content.button",
+                        "section.blog-slideshow",
+                        "home.news",
+                        "home.calendar",
+                        "section.facts",
+                        "student-section.student-quote",
+                        "section.i-frame",
+                        "section.mensa-max",
+                        "section.podcast-episode",
+                        "content.download-button",
+                        "section.latest-podcast-episode",
+                        "section.former-students",
+                        "section.subject-selection"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "p1": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "p2": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "p3": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "p4": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "p5": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "title",
+                          "slug"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "teachers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "content": {
+                            "type": "dynamiczone"
+                          },
+                          "slug": {
+                            "type": "uid"
+                          },
+                          "blackboard_image": {
+                            "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
                   ]
                 }
               ]

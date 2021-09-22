@@ -262,7 +262,7 @@
     "/former-students/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of former-students documents",
+        "description": "Retrieve the number of former-students documents",
         "responses": {
           "200": {
             "description": "Retrieve former-students document(s)",
