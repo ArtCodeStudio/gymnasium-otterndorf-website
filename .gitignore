@@ -110,3 +110,8 @@ dist
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+# Redbird / Greenlock / Let's Encrypt
+certs/
+greenlock.d/
+.greenlockrc

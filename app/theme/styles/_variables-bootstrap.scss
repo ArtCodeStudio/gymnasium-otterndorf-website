@@ -54,6 +54,8 @@ $theme-colors: (
   "white":        $white,
 );
 
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+
 // FONTS
 $font-family-sans-serif: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-weight-bold: 600;
@@ -82,3 +84,41 @@ $card-cap-bg: transparent;
 // COMPONENTS
 $component-active-color: $green;
 $component-active-bg: $white;
+
+// TEXT COLORS
+$utilities-text: map-merge(
+  $utilities-colors,
+  (
+    "black": to-rgb($black),
+    "white": to-rgb($white),
+    "body": to-rgb($body-color),
+    "blue":         to-rgb($blue),
+    "green":        to-rgb($green),
+    "cyan":         to-rgb($cyan),
+    "greenlight":   to-rgb($greenlight),
+    "yellow":       to-rgb($yellow),
+    "red":          to-rgb($red),
+    "light":        to-rgb($light),
+    "dark":         to-rgb($dark)
+  )
+);
+$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text");
+
+// BACKGROUND COLORS
+$utilities-bg: map-merge(
+  $utilities-colors,
+  (
+    "black":        to-rgb($black),
+    "white":        to-rgb($white),
+    "body":         to-rgb($body-bg),
+    "blue":         to-rgb($blue),
+    "green":        to-rgb($green),
+    "cyan":         to-rgb($cyan),
+    "greenlight":   to-rgb($greenlight),
+    "yellow":       to-rgb($yellow),
+    "red":          to-rgb($red),
+    "light":        to-rgb($light),
+    "dark":         to-rgb($dark)
+  )
+);
+$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
