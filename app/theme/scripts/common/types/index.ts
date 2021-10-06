@@ -8,6 +8,7 @@ export * from "./mensa-max-data";
 export * from "./dynamic-zone-section";
 export * from "./entry-type";
 export * from "./navigation-link";
+export * from "./navigation-link-dropdown";
 export * from "./nest-service";
 export * from "./open-graph-data";
 export * from "./page-header";

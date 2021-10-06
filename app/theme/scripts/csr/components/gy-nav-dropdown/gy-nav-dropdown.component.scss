@@ -1,0 +1,19 @@
+gy-nav-dropdown {
+  display: inline-block;
+  .dropdown-toggle {
+    &.show {
+      color: $greenlight !important;
+    }
+  }
+  a.dropdown-toggle {
+    text-decoration: none;
+  }
+  .dropdown-menu {
+    border-left: 2px solid $greenlight;
+  }
+  .dropdown-item {
+    &:empty {
+      display: none !important;
+    }
+  }
+}

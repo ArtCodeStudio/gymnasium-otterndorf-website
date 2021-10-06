@@ -153,11 +153,25 @@ export class GySearchResultComponent extends Component {
       if (results?.length === 0) {
         results = await this.search.get(`*${this.scope.term.trim()}*`);
       }
-      this.scope.items = results.map(this.transformResult);
+      this.setItems(results);
     } else {
-      this.scope.items = [];
+      this.clearItems();
     }
     this.prefetchItems(this.scope.items);
+  }
+
+  protected setItems(results: SearchResult[]) {
+    this.classList.add("has-result");
+    if (results.length) {
+      this.scope.items = results.map(this.transformResult);
+    } else {
+      this.clearItems();
+    }
+  }
+
+  protected clearItems() {
+    this.classList.remove("has-result");
+    this.scope.items = [];
   }
 
   protected async calibrateAlert() {

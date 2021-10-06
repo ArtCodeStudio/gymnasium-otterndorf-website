@@ -5,7 +5,9 @@ gy-search-result {
   transition: $bs5-sidebar-transition;
   z-index: $zindex-search-result !important;
   margin-right: -2px;
-  border-bottom: $navbar-border-width $navbar-border-style $navbar-border-color;
+  &.has-result {
+    border-bottom: $navbar-border-width $navbar-border-style $navbar-border-color;
+  }
   .search-highlight {
     background-color: $yellow;
   }

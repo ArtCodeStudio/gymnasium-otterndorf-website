@@ -56,6 +56,9 @@ $theme-colors: (
 
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
 
+// OPTIONS
+$enable-caret: false;
+
 // FONTS
 $font-family-sans-serif: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-weight-bold: 600;
@@ -122,3 +125,13 @@ $utilities-bg: map-merge(
   )
 );
 $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg");
+
+// NAVS
+$nav-link-color: $dark;
+$nav-link-hover-color: $greenlight;
+$navbar-light-color: $nav-link-color;
+$navbar-light-hover-color: $nav-link-hover-color;
+$navbar-light-active-color: $nav-link-hover-color;
+
+// DROPDOWNS
+$dropdown-bg: $light;

@@ -12,12 +12,14 @@
             //-   .text-green Offene
             //-   .text-cyan Ganztagsschule
       //- Middle on desktop / full on smartphone
-      .col-search.col-12.col-md-6.order-3.order-md-2.d-flex.align-items-center.justify-content-center
-        .row.mt-3.mx-2.my-md-3
-          .col-auto.mx-auto
+      .col-search.col-12.col-md-9.order-3.order-md-2.d-flex.align-items-start.justify-content-center.justify-content-md-end
+        .row.mt-3.mx-2.my-md-0.d-flex.justify-content-center.justify-content-md-end
+          .col-auto
             gy-search-input
+          .col-12.d-none.d-md-flex.justify-content-end
+            gy-nav-dropdown
       //- Right
-      .col-6.col-md-3.order-2.order-md-3.d-flex.align-items-center
+      .col-6.col-md-3.order-2.order-md-3.d-flex.d-md-none.align-items-center
         .row.d-flex.align-items-center.ms-auto
           bs5-toggle-button.col-auto.text-dark.mx-2.d-xl-none(target-id="right-sidebar")
             ul.nav.nav-icon
