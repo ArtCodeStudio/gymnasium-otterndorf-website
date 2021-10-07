@@ -35,18 +35,6 @@ gy-right-sidebar {
       }
     }
   }
-  .hide-navbar-shadow { 
-    position: fixed;
-    top: -1px;
-    right: $bs5-sidebar-width - 1;
-    background-color: $light;
-    width: $hide-navbar-shadow-width;
-    height: 86px;
-    z-index: $zindex-hide-navbar-shadow;
-    @include media-breakpoint-down(xl) {
-      display: none;
-    }
-  }
   bs5-share {
     .dropdown-toggle::after {
       content: none;

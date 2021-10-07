@@ -1,5 +1,6 @@
 gy-nav-dropdown {
   display: inline-block;
+  max-width: 100%;
   .dropdown-toggle {
     &.show {
       color: $greenlight !important;

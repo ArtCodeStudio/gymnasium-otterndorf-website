@@ -7,9 +7,6 @@ $navbar-transition: top .2s cubic-bezier(.7,0,.3,1), left .2s cubic-bezier(.7,0,
 $right-sidebar-bg-color: $blue;
 $right-sidebar-border-color: shade-color($right-sidebar-bg-color, 10%);
 
-$hide-navbar-shadow-width: 30px;
-
-$zindex-hide-navbar-shadow: $zindex-fixed + 1;
 $zindex-search-result: $zindex-fixed + 1;
 
 $section-heading-margin-bottom: $spacer * 2;

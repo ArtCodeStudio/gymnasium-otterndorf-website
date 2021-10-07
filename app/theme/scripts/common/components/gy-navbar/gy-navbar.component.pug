@@ -1,8 +1,8 @@
-.navbar.navbar-main(csr-rv-touch-events csr-rv-on-swipeleft="showSidebar" csr-rv-on-swiperight="hideSidebar")
-  .container-fluid.d-block
-    .row.d-flex.justify-content-md-between
+.navbar.navbar-main
+  .container-fluid.container-xxl.d-block
+    .row.flex-xl-nowrap
       //- Left
-      .col-6.col-md-3.order-1.d-flex.align-items-center
+      .col-6.col-xl-auto.order-1.d-flex.align-items-center
         .row.d-flex.align-items-center.me-auto
           a.col-auto.navbar-brand.d-flex.align-items-center.p-0.mx-2(href="/")
             bs5-icon(src="/images/logo.svg" height="64" rv-hide="isActive" rv-on-click="toggle")
@@ -12,14 +12,14 @@
             //-   .text-green Offene
             //-   .text-cyan Ganztagsschule
       //- Middle on desktop / full on smartphone
-      .col-search.col-12.col-md-9.order-3.order-md-2.d-flex.align-items-start.justify-content-center.justify-content-md-end
-        .row.mt-3.mx-2.my-md-0.d-flex.justify-content-center.justify-content-md-end
+      .col-search.col-12.col-xl-9.order-3.order-xl-2.d-flex.flex-fill.align-items-start.justify-content-center.justify-content-xl-end
+        .row.w-100.mt-3.my-xl-0.d-flex.justify-content-center.justify-content-xl-end
           .col-auto
             gy-search-input
-          .col-12.d-none.d-md-flex.justify-content-end
+          .col-12.d-none.d-xl-flex.justify-content-end
             gy-nav-dropdown
       //- Right
-      .col-6.col-md-3.order-2.order-md-3.d-flex.d-md-none.align-items-center
+      .col-6.col-xl-3.order-2.order-xl-3.d-flex.d-xl-none.align-items-center
         .row.d-flex.align-items-center.ms-auto
           bs5-toggle-button.col-auto.text-dark.mx-2.d-xl-none(target-id="right-sidebar")
             ul.nav.nav-icon

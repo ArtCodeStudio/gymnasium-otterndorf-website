@@ -1,4 +1,4 @@
-bs5-sidebar#right-sidebar.pb-5.shadow(csr-rv-parent container-selector="#main-container, gy-navbar, gy-search-result, media-center-page rv-video, .content-slider-wrapper" position="right" mode="move" close-on-swipe="false")
+bs5-sidebar#right-sidebar.pb-5.shadow(csr-rv-parent container-selector="#main-container, gy-navbar, gy-search-result, media-center-page rv-video, .content-slider-wrapper", position="right", mode="move", close-on-swipe="false", auto-show-on-wider-than="-1", auto-hide-on-slimmer-than="1399")
   .row.toolbar-row
     .col-12.h-100.d-flex.align-items-center.justify-content-end
       bs5-share(text="Schau' dir das vom Gymnasium Otterndorf mal an 🙂" label-clipboard="In die Zwischenablage" label-email="E-Mail" label-download="Herunterladen")
@@ -10,5 +10,3 @@ bs5-sidebar#right-sidebar.pb-5.shadow(csr-rv-parent container-selector="#main-co
     .list-group-item.list-group-item-parent.d-flex.d-xl-none.align-items-center.justify-content-center.cursor-pointer(rv-on-click="hide")
         bs5-icon(size="24" src="/iconset/svg/icon_close.svg")
         span.text-truncate Schließen
-//- Hide shadow for navbar
-.hide-navbar-shadow
