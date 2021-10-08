@@ -102,7 +102,7 @@ export class MediaCenterPageComponent extends Component {
 
     this.video = this.querySelector<VideoComponent>(VideoComponent.tagName);
 
-    await super.afterBind();
+    await super.afterAllBind();
   }
 
   protected template() {
