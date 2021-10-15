@@ -1838,8 +1838,7 @@
             "type": "uid"
           },
           "author": {
-            "type": "string",
-            "default": "Admin"
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -3127,8 +3126,7 @@
             "type": "uid"
           },
           "author": {
-            "type": "string",
-            "default": "Admin"
+            "type": "string"
           },
           "published_at": {
             "type": "string",

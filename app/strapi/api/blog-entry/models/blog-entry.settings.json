@@ -52,8 +52,7 @@
     },
     "author": {
       "type": "string",
-      "required": true,
-      "default": "Admin"
+      "required": true
     }
   }
 }
