@@ -27,7 +27,7 @@ export class GySectionCalendarComponent extends Component {
   }
 
   protected requiredAttributes() {
-    return ["section"];F
+    return ["section"];
   }
 
   constructor() {

@@ -8,7 +8,7 @@ We are using yarn 2 because we make use of the workspace feature of yarn 2 for t
 
 ### Outsides of the workspace
 
-We ignore Strapi in the workspace because it is currently not compatible with Yarn 2 PnP, so we use `npm` for this and excluded it from yarn's workspace (there is no other nvway to use npm instead of yarn 2 for this package).
+We ignore Strapi in the workspace because it is currently not compatible with Yarn 2 PnP, so we use `npm` for this and excluded it from yarn's workspace (there is no other way to use npm instead of yarn 2 for this package).
 
 ### Clone
 
@@ -55,9 +55,41 @@ git clone https://github.com/ArtCodeStudio/riba-nest-projects.git
 cd riba-nest-projects
 git submodule update --init --recursive
 yarn install
-# Build the apps, e.g.
-cd apps/gymott/theme
+```
+
+### Theme
+
+```sh
+cd app/theme
 yarn run build
+```
+
+### Nest (backend)
+
+```sh
+cd app/nest
+yarn run build
+```
+
+### GraphQl Typescript types
+
+```sh
+cd app/common
+yarn run build
+```
+
+### Strapi (main)
+
+```sh
+cd app/strapi
+npm run build
+```
+
+### Strapi (for students)
+
+```sh
+cd app/strapi-student
+npm run build
 ```
 
 ## Strapi
