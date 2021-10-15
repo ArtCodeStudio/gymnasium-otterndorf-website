@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import fetch from 'node-fetch';
 import * as ical from 'ical';
-import type { CalendarComponent } from 'ical';
 import type { CalendarEvent } from './types/calendar-event';
 
 @Injectable()
@@ -17,11 +16,6 @@ export class CalendarService {
           if (component.start) {
             // Only get dates in the future
             if (component.start.getTime() > now.getTime()) {
-              console.debug(
-                'date component',
-                component,
-                (component.start as any).dateOnly,
-              );
               if (
                 !calKey ||
                 calKey.trim() === '' ||

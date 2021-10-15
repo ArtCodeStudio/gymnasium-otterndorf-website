@@ -27,7 +27,7 @@ export class GySectionCalendarComponent extends Component {
   }
 
   protected requiredAttributes() {
-    return ["section"];
+    return ["section"];F
   }
 
   constructor() {
@@ -37,13 +37,6 @@ export class GySectionCalendarComponent extends Component {
   protected transformCalendarEntries() {
     for (const entry of this.scope.calendarEntries) {
       if (!entry.end || !entry.start) continue;
-
-      if (
-        entry.summary === "Girls' und Boys' Day - Zukunftstag 2022" ||
-        entry.summary === "Zeugnisferien"
-      )
-        console.debug("calendar entry\n", JSON.stringify(entry, null, 2));
-
       const start = new Date(entry.start);
       const end = new Date(entry.end);
       entry.sameDay =

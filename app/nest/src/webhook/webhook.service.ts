@@ -22,8 +22,8 @@ export class WebhookService {
   }
   protected log = new Logger(this.constructor.name);
   public async onWebhook(data: StrapiWebhookData) {
-    this.log.debug(`onWebhook ${JSON.stringify(data)}`);
-    this.log.debug(`Reset cache..`);
+    // this.log.debug(`onWebhook ${JSON.stringify(data)}`);
+    // this.log.debug(`Reset cache..`);
     await this.cacheManager.reset();
     await this.search.refresh();
     await this.suggest.resetAll();

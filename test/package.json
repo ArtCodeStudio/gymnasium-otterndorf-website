@@ -5,12 +5,12 @@
     "start": "ts-node request-memory.ts"
   },
   "dependencies": {
-    "node-fetch": "^2.6.4"
+    "node-fetch": "^2.6.5"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
-    "@types/node": "^16.10.2",
+    "@types/node": "^16.11.0",
     "@types/node-fetch": "^2.5.12",
-    "ts-node": "^10.2.1"
+    "ts-node": "^10.3.0"
   }
 }
