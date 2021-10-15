@@ -56,6 +56,24 @@ $theme-colors: (
 
 $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
 
+// BREAKPOINTS
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1100px,
+  xxl: 1400px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
 // OPTIONS
 $enable-caret: false;
 

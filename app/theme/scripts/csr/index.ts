@@ -76,7 +76,35 @@ export class CSRApp {
     this.riba.module.regist(
       i18nModule.init({ localesService: this.localesService })
     );
-    this.riba.module.regist(bs5Module.init());
+    this.riba.module.regist(bs5Module.init({
+      breakpoints: [
+        {
+          dimension: 0,
+          name: "xs",
+        },
+        {
+          dimension: 576,
+          name: "sm",
+        },
+        {
+          dimension: 768,
+          name: "md",
+        },
+        {
+          dimension: 992,
+          name: "lg",
+        },
+        {
+          dimension: 1100,
+          name: "xl",
+        },
+        {
+          dimension: 1400,
+          name: "xxl",
+        },
+
+      ]
+    }));
     this.riba.module.regist(bs5PhotoswipeModule);
     this.riba.module.regist(leafletModule);
     this.riba.module.regist(masonryModule);
