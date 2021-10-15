@@ -1,5 +1,4 @@
-import type { CalendarComponent } from "ical";
-import { NestService } from "../types";
+import { NestService, CalendarEvent } from "../types";
 
 export class CalendarService extends NestService {
   protected static instance: CalendarService;
@@ -27,11 +26,7 @@ export class CalendarService extends NestService {
     if (calendarKey) {
       options = { calendarKey };
     }
-    const res = await this._getCached<CalendarComponent[]>(
-      url,
-      options,
-      expiresIn
-    );
+    const res = await this._getCached<CalendarEvent[]>(url, options, expiresIn);
     let events = res.body || [];
 
     if (events.length >= limit) {

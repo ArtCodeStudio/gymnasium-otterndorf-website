@@ -2,31 +2,41 @@ import { Injectable } from '@nestjs/common';
 import fetch from 'node-fetch';
 import * as ical from 'ical';
 import type { CalendarComponent } from 'ical';
+import type { CalendarEvent } from './types/calendar-event';
 
 @Injectable()
 export class CalendarService {
   protected parseEvents(data: string, calKey?: string) {
     const parsedData = ical.parseICS(data);
     const now = new Date();
-    const events: CalendarComponent[] = [];
+    const events: CalendarEvent[] = [];
     for (const key in parsedData) {
       const component = parsedData[key];
       switch (component.type) {
         case 'VEVENT':
           if (component.start) {
-            const date = new Date(component.start);
-            // console.debug(component.categories);
-            if (date.getTime() > now.getTime()) {
-              // console.debug(component);
+            // Only get dates in the future
+            if (component.start.getTime() > now.getTime()) {
+              console.debug(
+                'date component',
+                component,
+                (component.start as any).dateOnly,
+              );
               if (
-                calKey &&
-                calKey.trim() !== '' &&
-                component.categories &&
-                component.categories?.indexOf(calKey) !== -1
+                !calKey ||
+                calKey.trim() === '' ||
+                (calKey &&
+                  calKey.trim() !== '' &&
+                  component.categories &&
+                  component.categories?.indexOf(calKey) !== -1)
               ) {
-                events.push(component);
-              } else if (!calKey || calKey.trim() === '') {
-                events.push(component);
+                const startDateOnly = !!(component.start as any).dateOnly;
+                const endDateOnly = !!(component.end as any).dateOnly;
+                events.push({
+                  ...component,
+                  startDateOnly,
+                  endDateOnly,
+                });
               }
             }
           }

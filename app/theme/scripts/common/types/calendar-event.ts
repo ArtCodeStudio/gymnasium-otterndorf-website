@@ -5,7 +5,7 @@ import type {
   FreeBusy,
 } from "ical";
 
-export type CalendarEntry = {
+export type CalendarEvent = {
   type: CalendarComponentType;
   summary?: string | undefined;
   description?: string | undefined;
@@ -14,7 +14,7 @@ export type CalendarEntry = {
   location?: string | undefined;
   start?: Date | undefined;
   end?: Date | undefined;
-  // rrule?: RRule | undefined;
+  rrule?: any;
   exdate?: { [datestr: string]: Date } | undefined;
   recurrences?: CalendarComponent[] | undefined;
   class?: string | undefined;
@@ -29,4 +29,6 @@ export type CalendarEntry = {
   lastmodified?: Date | undefined;
   recurrenceid?: Date | undefined;
   sameDay?: boolean | undefined;
+  startDateOnly: boolean;
+  endDateOnly: boolean;
 };

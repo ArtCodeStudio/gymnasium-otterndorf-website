@@ -7,6 +7,6 @@ export const removeEmptyClockFormatter = {
     if (!time) {
       return "";
     }
-    return time.replace(" um 00:00 Uhr", "");
+    return time.replace(" um 00:00 Uhr", "").replace(", 00:00", "");
   },
 };
