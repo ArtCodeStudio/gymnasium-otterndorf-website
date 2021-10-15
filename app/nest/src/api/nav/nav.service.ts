@@ -52,7 +52,7 @@ export class NavService {
 
     let strapiUrl =
       backend === 'strapi'
-        ? process.env.STRAPI_EXTERN_URL
+        ? process.env.STRAPI_REMOTE_URL
         : process.env.STRAPI_STUDENT_EXTERN_URL;
 
     if (strapiUrl.endsWith('/')) {

@@ -24,7 +24,7 @@ export class StrapiService {
       '..',
       'strapi/public',
     );
-    const url = process.env.STRAPI_INTERN_URL + '/graphql';
+    const url = process.env.STRAPI_LOCAL_URL + '/graphql';
     this._graphql = new GraphQLClient(url, {}, theme.themeDir);
   }
 

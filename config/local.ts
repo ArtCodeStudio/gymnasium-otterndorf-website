@@ -29,8 +29,8 @@ export const apps: ManagerApp[] = [
       // The app restarts by itself on changes but this is not working fpr new packages, so we also watch the package.json with pm2
       watch: ["package.json", "./.pnp.cjs"],
       env: {
-        STRAPI_INTERN_URL: "https://gym-strapi.artandcode.de",
-        STRAPI_EXTERN_URL: "https://gym-strapi.artandcode.de",
+        STRAPI_LOCAL_URL: "https://gym-strapi.artandcode.de",
+        STRAPI_REMOTE_URL: "https://gym-strapi.artandcode.de",
         STRAPI_STUDENT_INTERN_URL: "https://gym-strapi-student.artandcode.de",
         STRAPI_STUDENT_EXTERN_URL: "https://gym-strapi-student.artandcode.de",
         NEST_INTERN_URL: "http://gym.localhost:4000",

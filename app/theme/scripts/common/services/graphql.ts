@@ -34,12 +34,12 @@ export class GraphQLClient extends _GraphQLClient {
       }
     } else {
       // SSR
-      if (window.ssr?.env?.STRAPI_INTERN_URL) {
-        url = window.ssr.env.STRAPI_INTERN_URL;
+      if (window.ssr?.env?.STRAPI_LOCAL_URL) {
+        url = window.ssr.env.STRAPI_LOCAL_URL;
       }
       // CSR
-      if (window.env?.STRAPI_EXTERN_URL) {
-        url = window.env.STRAPI_EXTERN_URL;
+      if (window.env?.STRAPI_REMOTE_URL) {
+        url = window.env.STRAPI_REMOTE_URL;
       }
     }
     if (!url) {

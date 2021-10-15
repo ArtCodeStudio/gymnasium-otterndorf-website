@@ -28,7 +28,7 @@ import locales from "../common/locales";
 declare global {
   interface Window {
     env: {
-      STRAPI_EXTERN_URL: string;
+      STRAPI_REMOTE_URL: string;
       STRAPI_STUDENT_EXTERN_URL: string;
       NEST_EXTERN_URL: string;
     };

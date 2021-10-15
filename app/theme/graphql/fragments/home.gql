@@ -7,6 +7,7 @@
 #import "./component-section-gallery-slideshow.gql"
 #import "./component-section-blackboard-slideshow.gql"
 #import "./component-home-news.gql"
+#import "./component-home-calendar.gql"
 #import "./component-student-section-student-quote.gql"
 #import "./component-section-blog-slideshow.gql"
 #import "./component-section-iframe.gql"
@@ -40,6 +41,9 @@ fragment HomeFragment on Home {
     }
     ... on ComponentHomeNews {
       ...ComponentHomeNewsFragment
+    }
+    ... on ComponentHomeCalendar {
+      ...ComponentHomeCalendarFragment
     }
     ... on ComponentSectionGallerySlideshow {
       ...ComponentSectionGallerySlideshowFragment

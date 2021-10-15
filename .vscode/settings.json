@@ -94,6 +94,8 @@
     "scrolldown",
     "scrollend",
     "scrollended",
+    "scrollleft",
+    "scrollright",
     "scrollstart",
     "scrollup",
     "seite",

@@ -19,7 +19,6 @@ export class GyNavbarComponent extends Component {
   public static tagName = "gy-navbar";
   public _debug = false;
   protected autobind = true;
-  protected contentScroll = new ScrollEventsService(window);
   protected sidebar: Bs5SidebarComponent | null = null;
   protected bs5: Bs5Service;
 
@@ -38,6 +37,8 @@ export class GyNavbarComponent extends Component {
   constructor() {
     super();
     this.bs5 = Bs5Service.getSingleton();
+    /** Regists additional scroll events to window */
+    new ScrollEventsService(window);
   }
 
   /**

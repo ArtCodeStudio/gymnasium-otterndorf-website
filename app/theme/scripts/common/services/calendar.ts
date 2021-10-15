@@ -17,7 +17,11 @@ export class CalendarService extends NestService {
     return CalendarService.instance;
   }
 
-  async get(calendarKey?: string, expiresIn: number | string = "5 mins") {
+  async get(
+    calendarKey?: string,
+    limit = 10,
+    expiresIn: number | string = "5 mins"
+  ) {
     const url = this.host + this.url;
     let options = {};
     if (calendarKey) {
@@ -28,7 +32,12 @@ export class CalendarService extends NestService {
       options,
       expiresIn
     );
-    const events = res.body || [];
+    let events = res.body || [];
+
+    if (events.length >= limit) {
+      events = events.slice(0, limit);
+    }
+
     return events;
   }
 }
