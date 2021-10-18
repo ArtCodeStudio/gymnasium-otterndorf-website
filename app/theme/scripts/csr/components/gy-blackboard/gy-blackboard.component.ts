@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Component } from "@ribajs/core";
+import { getOS } from "@ribajs/utils";
 import { Vector2d } from "../../../common";
 import pugTemplate from "./gy-blackboard.component.pug";
 
@@ -15,6 +16,7 @@ export interface GyBlackboardComponentScope {
   restore: GyBlackboardComponent["restore"];
   isDirty: boolean;
   isDrawing: boolean;
+  editable: boolean;
 }
 
 type GyBlackboardDrawingTool =
@@ -438,10 +440,11 @@ export class GyBlackboardComponent extends Component {
     restore: this.restore.bind(this),
     isDirty: false,
     isDrawing: false,
+    editable: true,
   };
 
   static get observedAttributes(): string[] {
-    return ["background-image", "link"];
+    return ["background-image", "link", "editable"];
   }
 
   protected requiredAttributes() {
@@ -546,8 +549,15 @@ export class GyBlackboardComponent extends Component {
   protected async connectedCallback() {
     super.connectedCallback();
     await this.init(GyBlackboardComponent.observedAttributes);
-    this.initCanvas();
-    this.addEventListeners();
+    const os = getOS();
+    // Canvas backgrounbd images not working on safari ios, see https://github.com/cburgmer/rasterizeHTML.js/wiki/Limitations#safari 
+    if (os === 'ios') {
+      this.scope.editable = false;
+    }
+    if (this.scope.editable) {
+      this.initCanvas();
+      this.addEventListeners();
+    }
   }
 
   protected disconnectedCallback() {
