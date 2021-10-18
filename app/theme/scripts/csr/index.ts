@@ -5,7 +5,7 @@ import { extrasModule } from "@ribajs/extras";
 import { EventDispatcher } from "@ribajs/events";
 import { contentSliderModule } from "@ribajs/content-slider";
 import { routerModule, FadeTransition } from "@ribajs/router";
-import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
+// import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
 import { bs5Module } from "@ribajs/bs5";
 import { bs5PhotoswipeModule } from "@ribajs/bs5-photoswipe";
 import { leafletModule } from "@ribajs/leaflet-map";
@@ -23,7 +23,7 @@ import * as components from "./components";
 import * as pages from "./pages";
 import * as binders from "./binders";
 import * as formatters from "./formatters";
-import locales from "../common/locales";
+// import locales from "../common/locales";
 
 declare global {
   interface Window {
@@ -41,11 +41,11 @@ export class CSRApp {
   protected model: any = {};
   protected routerEvents = EventDispatcher.getInstance("main");
 
-  protected localesService = new LocalesStaticService(
-    locales,
-    undefined,
-    false
-  );
+  // protected localesService = new LocalesStaticService(
+  //   locales,
+  //   undefined,
+  //   false
+  // );
 
   protected onPageChanges() {
     replaceBodyPageClass();
@@ -73,9 +73,9 @@ export class CSRApp {
         defaultTransition: new FadeTransition(),
       })
     );
-    this.riba.module.regist(
-      i18nModule.init({ localesService: this.localesService })
-    );
+    // this.riba.module.regist(
+    //   i18nModule.init({ localesService: this.localesService })
+    // );
     this.riba.module.regist(bs5Module.init({
       breakpoints: [
         {

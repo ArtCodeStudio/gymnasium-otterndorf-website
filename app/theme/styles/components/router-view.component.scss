@@ -1,0 +1,9 @@
+router-view {
+  &.transition-init {
+    min-height: 100vh;
+    background-image: url(/images/loading-blue.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100px;
+  }
+}

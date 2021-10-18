@@ -8,12 +8,13 @@
 @import 'variables-bootstrap';
 
 // Riba
-@import '~@ribajs/core/src/index';
-@import '~@ribajs/bs5/src/index';
-@import '~@ribajs/bs5-photoswipe/src/index';
-@import "~@ribajs/content-slider/src/index";
-@import "~@ribajs/artcodestudio/src/index";
-@import "~@ribajs/podcast/src/index";
+@import '~@ribajs/core/index';
+@import '~@ribajs/router/index';
+@import '~@ribajs/bs5/index';
+@import '~@ribajs/bs5-photoswipe/index';
+@import "~@ribajs/content-slider/index";
+@import "~@ribajs/artcodestudio/index";
+@import "~@ribajs/podcast/index";
 
 // External Components
 @import 'components';
