@@ -2,12 +2,17 @@
   "collectionName": "components_home_calendars",
   "info": {
     "name": "Calendar",
-    "icon": "window-maximize"
+    "icon": "window-maximize",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "dates": {
       "type": "integer"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

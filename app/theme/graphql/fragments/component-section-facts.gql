@@ -9,4 +9,5 @@ fragment ComponentSectionFactsFragment on ComponentSectionFacts {
   color {
     ...ColorFragment
   }
+  disabled
 }

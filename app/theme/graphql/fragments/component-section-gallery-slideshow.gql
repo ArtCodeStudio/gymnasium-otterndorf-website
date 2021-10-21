@@ -8,4 +8,5 @@ fragment ComponentSectionGallerySlideshowFragment on ComponentSectionGallerySlid
       ...GalleryFragment
     }
   }
+  disabled
 }

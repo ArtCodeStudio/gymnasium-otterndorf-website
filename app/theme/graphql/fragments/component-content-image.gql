@@ -6,4 +6,5 @@ fragment ComponentContentImageFragment on ComponentContentImage {
     ...ImageFragment
   }
   caption
+  disabled
 }

@@ -6,4 +6,5 @@ export interface SectionSlideshow {
   id: string;
   /** Slideshow entries */
   entries: SectionSlideshowEntry[];
+  disabled?: boolean;
 }

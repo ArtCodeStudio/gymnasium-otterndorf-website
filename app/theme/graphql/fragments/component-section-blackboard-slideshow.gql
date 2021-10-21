@@ -9,4 +9,5 @@ fragment ComponentSectionBlackboardSlideshowFragment on ComponentSectionBlackboa
       }
     }
   }
+  disabled
 }

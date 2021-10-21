@@ -211,6 +211,7 @@ export class GyNavbarComponent extends Component {
   }
 
   protected addEventListeners() {
+    this.removeEventListeners();
     window.addEventListener("resize", this.onResize, { passive: true });
     window.addEventListener("scrolling", this.onScroll, { passive: true });
     window.addEventListener("scrollup", this.onScrollUp, { passive: true });

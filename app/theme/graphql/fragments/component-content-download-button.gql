@@ -14,4 +14,5 @@ fragment ComponentContentDownloadButtonFragment on ComponentContentDownloadButto
   file {
     url
   }
+  disabled
 }

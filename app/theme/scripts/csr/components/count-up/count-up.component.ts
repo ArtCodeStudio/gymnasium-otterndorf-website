@@ -1,7 +1,7 @@
 import { Component } from "@ribajs/core";
 import { CountUp } from "countup.js";
 import { isInViewport } from "@ribajs/utils/src/dom";
-import { debounce } from "@ribajs/utils/src/control";
+import { debounce, throttle } from "@ribajs/utils/src/control";
 
 export interface Scope {
   target: number;
@@ -32,21 +32,23 @@ export class CountUpComponent extends Component {
   protected checkViewport() {
     if (isInViewport(this)) {
       this.countUp?.start();
+      this.removeEventListeners();
     }
   }
 
   protected addEventListeners() {
-    window.addEventListener("scroll", this.onScroll.bind(this), {
+    this.removeEventListeners();
+    window.addEventListener("scroll", this.onScroll, {
       passive: true,
     });
-    window.addEventListener("resize", this.onResize.bind(this), {
+    window.addEventListener("resize", this.onResize, {
       passive: true,
     });
   }
 
   protected removeEventListeners() {
-    window.removeEventListener("scroll", this.onScroll.bind(this));
-    window.removeEventListener("resize", this.onResize.bind(this));
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onResize);
   }
 
   /**
@@ -56,7 +58,7 @@ export class CountUpComponent extends Component {
     this.checkViewport();
   }
 
-  protected onResize = debounce(this._onResize.bind(this));
+  protected onResize = throttle(this._onResize.bind(this));
 
   /**
    * Internal "undebounced" version of `onScroll`.

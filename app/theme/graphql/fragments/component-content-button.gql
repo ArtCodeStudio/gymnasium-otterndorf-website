@@ -14,4 +14,5 @@ fragment ComponentContentButtonFragment on ComponentContentButton {
   link {
     ...NavigationLinkFragment
   }
+  disabled
 }

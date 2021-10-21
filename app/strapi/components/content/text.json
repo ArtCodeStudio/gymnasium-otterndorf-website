@@ -9,6 +9,10 @@
   "attributes": {
     "text": {
       "type": "richtext"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

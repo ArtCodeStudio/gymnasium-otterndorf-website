@@ -166,25 +166,30 @@ export class SectionsService {
         const dynamicZoneSection = dynamicZoneSections[i];
         switch (dynamicZoneSection?.__typename) {
           case "ComponentContentImage":
-            sections.push({
-              __typename: dynamicZoneSection.__typename,
-              caption: dynamicZoneSection.caption || "",
-              id: dynamicZoneSection.id || "",
-              image: dynamicZoneSection.image || null,
-            });
+            sections.push(dynamicZoneSection);
+            // sections.push({
+            //   __typename: dynamicZoneSection.__typename,
+            //   caption: dynamicZoneSection.caption || "",
+            //   id: dynamicZoneSection.id || "",
+            //   image: dynamicZoneSection.image || null,
+            //   disable: dynamicZoneSection.disable,
+            // });
             break;
           case "ComponentContentText":
-            sections.push({
-              __typename: dynamicZoneSection.__typename,
-              id: dynamicZoneSection.id,
-              text: dynamicZoneSection.text || "",
-            });
+            sections.push({ ...dynamicZoneSection, text: dynamicZoneSection.text || "" });
+            // sections.push({
+            //   __typename: dynamicZoneSection.__typename,
+            //   id: dynamicZoneSection.id,
+            //   text: dynamicZoneSection.text || "",
+            //   disable: dynamicZoneSection.disable,
+            // });
             break;
           case "ComponentContentDownloadButton":
           case "ComponentContentButton":
             sections.push(dynamicZoneSection);
             break;
           case "ComponentSectionSlideshow":
+            // sections.push(dynamicZoneSection);
             if (dynamicZoneSection.slideshow?.id) {
               // TODO add to graphql
               const slideshow = await this.getSlideshow(
@@ -198,6 +203,7 @@ export class SectionsService {
                   ),
                   id: slideshow.id,
                   title: slideshow.title,
+                  disabled: dynamicZoneSection.disabled || false,
                 });
               }
             }

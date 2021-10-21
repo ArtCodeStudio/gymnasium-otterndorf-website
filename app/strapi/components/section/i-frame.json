@@ -2,7 +2,8 @@
   "collectionName": "components_section_i_frames",
   "info": {
     "name": "iFrame",
-    "icon": "window-restore"
+    "icon": "window-restore",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -19,6 +20,10 @@
       "type": "string",
       "default": "100vh",
       "required": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -1,3 +1,4 @@
 fragment ComponentHomeCalendarFragment on ComponentHomeCalendar {
   dates
+  disabled
 }

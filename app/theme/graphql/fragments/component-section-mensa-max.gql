@@ -2,4 +2,5 @@ fragment ComponentSectionMensaMaxFragment on ComponentSectionMensaMax {
   id
   p
   e
+  disabled
 }

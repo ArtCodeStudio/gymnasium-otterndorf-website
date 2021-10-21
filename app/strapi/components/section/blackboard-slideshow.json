@@ -9,6 +9,10 @@
   "attributes": {
     "subjects": {
       "collection": "subject"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

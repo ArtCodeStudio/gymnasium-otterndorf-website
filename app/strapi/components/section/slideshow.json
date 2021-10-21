@@ -9,6 +9,10 @@
   "attributes": {
     "slideshow": {
       "model": "section-slideshow"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

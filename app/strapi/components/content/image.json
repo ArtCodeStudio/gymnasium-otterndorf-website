@@ -14,10 +14,15 @@
         "images"
       ],
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "caption": {
       "type": "string"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

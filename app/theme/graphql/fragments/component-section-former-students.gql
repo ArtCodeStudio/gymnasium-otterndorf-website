@@ -2,4 +2,5 @@ fragment ComponentSectionFormerStudentsFragment on ComponentSectionFormerStudent
   title
   description
   limit
+  disabled
 }

@@ -23,6 +23,10 @@
       "repeatable": false,
       "component": "types.color",
       "required": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

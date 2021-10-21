@@ -31,6 +31,10 @@
       "type": "component",
       "repeatable": false,
       "component": "types.color"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

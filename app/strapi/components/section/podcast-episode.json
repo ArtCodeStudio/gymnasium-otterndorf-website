@@ -9,6 +9,10 @@
   "attributes": {
     "podcast_episode": {
       "model": "podcast-episode"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

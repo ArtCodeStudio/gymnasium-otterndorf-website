@@ -22,6 +22,7 @@ export class GyNavDropdownComponent extends Component {
   public static tagName = "gy-nav-dropdown";
   public _debug = false;
   protected autobind = true;
+  public dropdownElementsReady = false;
 
   scope: Scope = {
     entry: undefined,
@@ -115,8 +116,9 @@ export class GyNavDropdownComponent extends Component {
 
   protected async afterAllBind() {
     await super.afterAllBind();
-    if (this.scope.entry) {
+    if (this.scope.entry && !this.dropdownElementsReady) {
       this.initDropdownElements(this.scope.entry);
+      this.dropdownElementsReady = true;
     }
   }
 
@@ -149,7 +151,9 @@ export class GyNavDropdownComponent extends Component {
         throw new Error("Dropdown menu element not found!\n" + menuSelector);
       }
       child.options = this.setPopperConfig(child);
-      child.popper = this.createPopper(child);
+      if (!child.popper) {
+        child.popper = this.createPopper(child);
+      }
       child.isDropdown = true;
       this.initDropdownElements(child, level + 1);
     }

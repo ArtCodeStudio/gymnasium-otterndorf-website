@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "10/15/2021 1:13:29 PM"
+    "x-generation-date": "10/21/2021 11:36:57 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -12566,6 +12566,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -12668,6 +12672,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -12741,6 +12749,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -12798,6 +12810,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -12900,6 +12916,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13004,6 +13024,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13077,6 +13101,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13112,6 +13140,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13189,6 +13221,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13270,6 +13306,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13336,6 +13376,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13382,6 +13426,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13425,6 +13473,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13541,6 +13593,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13688,6 +13744,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13739,6 +13799,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13783,6 +13847,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13881,6 +13949,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -13983,6 +14055,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14056,6 +14132,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14113,6 +14193,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14215,6 +14299,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14319,6 +14407,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14392,6 +14484,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14427,6 +14523,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14504,6 +14604,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14585,6 +14689,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14651,6 +14759,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14697,6 +14809,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14740,6 +14856,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -14856,6 +14976,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -15003,6 +15127,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -15054,6 +15182,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -15098,6 +15230,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -15952,6 +16088,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16033,6 +16173,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16069,6 +16213,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16171,6 +16319,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16248,6 +16400,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16321,6 +16477,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16357,6 +16517,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16428,6 +16592,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16493,6 +16661,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16598,6 +16770,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16702,6 +16878,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16747,6 +16927,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16790,6 +16974,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -16906,6 +17094,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17053,6 +17245,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17104,6 +17300,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17148,6 +17348,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17217,6 +17421,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17298,6 +17506,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17334,6 +17546,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17436,6 +17652,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17513,6 +17733,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17586,6 +17810,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17622,6 +17850,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17693,6 +17925,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17758,6 +17994,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17863,6 +18103,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -17967,6 +18211,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -18012,6 +18260,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -18055,6 +18307,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -18171,6 +18427,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -18318,6 +18578,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -18369,6 +18633,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -18413,6 +18681,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -20513,6 +20785,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -20549,6 +20825,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -20606,6 +20886,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -20680,6 +20964,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -20753,6 +21041,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -20856,6 +21148,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -20961,6 +21257,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21041,6 +21341,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21077,6 +21381,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21159,6 +21467,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21226,6 +21538,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21273,6 +21589,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21317,6 +21637,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21434,6 +21758,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21582,6 +21910,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21634,6 +21966,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -21679,6 +22015,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22169,6 +22509,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22205,6 +22549,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22262,6 +22610,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22336,6 +22688,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22409,6 +22765,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22512,6 +22872,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22617,6 +22981,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22697,6 +23065,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22733,6 +23105,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22815,6 +23191,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22882,6 +23262,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22929,6 +23313,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -22973,6 +23361,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -23090,6 +23482,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -23238,6 +23634,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -23290,6 +23690,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -23335,6 +23739,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26062,6 +26470,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26097,6 +26509,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26170,6 +26586,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26227,6 +26647,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26298,6 +26722,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26400,6 +26828,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26504,6 +26936,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26583,6 +27019,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26618,6 +27058,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26699,6 +27143,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26765,6 +27213,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26811,6 +27263,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26854,6 +27310,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -26970,6 +27430,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27117,6 +27581,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27168,6 +27636,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27212,6 +27684,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27410,6 +27886,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27445,6 +27925,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27518,6 +28002,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27575,6 +28063,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27646,6 +28138,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27748,6 +28244,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27852,6 +28352,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27931,6 +28435,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -27966,6 +28474,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -28047,6 +28559,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -28113,6 +28629,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -28159,6 +28679,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -28202,6 +28726,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -28318,6 +28846,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -28465,6 +28997,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -28516,6 +29052,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -28560,6 +29100,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29231,6 +29775,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29291,6 +29839,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29406,6 +29958,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29480,6 +30036,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29524,6 +30084,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29628,6 +30192,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29702,6 +30270,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29743,6 +30315,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29793,6 +30369,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -29877,6 +30457,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30026,6 +30610,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30066,6 +30654,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30169,6 +30761,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30272,6 +30868,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30353,6 +30953,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30389,6 +30993,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30497,6 +31105,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30571,6 +31183,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30631,6 +31247,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30746,6 +31366,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30820,6 +31444,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30864,6 +31492,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -30968,6 +31600,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31042,6 +31678,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31083,6 +31723,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31133,6 +31777,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31217,6 +31865,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31366,6 +32018,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31406,6 +32062,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31509,6 +32169,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31612,6 +32276,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31693,6 +32361,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31729,6 +32401,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -31837,6 +32513,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [

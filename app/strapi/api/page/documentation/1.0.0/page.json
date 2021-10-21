@@ -631,6 +631,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -667,6 +671,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -724,6 +732,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -798,6 +810,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -871,6 +887,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -974,6 +994,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1079,6 +1103,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1159,6 +1187,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1195,6 +1227,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1277,6 +1313,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1344,6 +1384,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1391,6 +1435,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1435,6 +1483,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1552,6 +1604,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1700,6 +1756,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1752,6 +1812,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -1797,6 +1861,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2287,6 +2355,10 @@
                     },
                     "caption": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2323,6 +2395,10 @@
                     },
                     "text": {
                       "type": "string"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2380,6 +2456,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2454,6 +2534,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 3
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2527,6 +2611,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2630,6 +2718,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2735,6 +2827,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2815,6 +2911,10 @@
                           }
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2851,6 +2951,10 @@
                     },
                     "dates": {
                       "type": "integer"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -2933,6 +3037,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -3000,6 +3108,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -3047,6 +3159,10 @@
                     "height": {
                       "type": "string",
                       "default": "100vh"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -3091,6 +3207,10 @@
                     "e": {
                       "type": "string",
                       "default": "SZO"
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -3208,6 +3328,10 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -3356,6 +3480,10 @@
                           ]
                         }
                       }
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -3408,6 +3536,10 @@
                         "share",
                         "playlist"
                       ]
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [
@@ -3453,6 +3585,10 @@
                     "limit": {
                       "type": "integer",
                       "default": 15
+                    },
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false
                     }
                   },
                   "required": [

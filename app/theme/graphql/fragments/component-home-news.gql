@@ -8,4 +8,5 @@ fragment ComponentHomeNewsFragment on ComponentHomeNews {
     }
    
   }
+  disabled
 }

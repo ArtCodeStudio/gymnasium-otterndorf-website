@@ -34,6 +34,10 @@
       "repeatable": false,
       "component": "types.alignment",
       "required": true
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

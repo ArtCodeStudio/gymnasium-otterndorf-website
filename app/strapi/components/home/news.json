@@ -12,6 +12,10 @@
     },
     "pages": {
       "collection": "page"
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

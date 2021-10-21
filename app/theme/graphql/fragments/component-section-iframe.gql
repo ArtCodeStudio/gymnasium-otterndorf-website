@@ -3,4 +3,5 @@ fragment ComponentSectionIFrameFragment on ComponentSectionIFrame {
   URL
   width
   height
+  disabled
 }

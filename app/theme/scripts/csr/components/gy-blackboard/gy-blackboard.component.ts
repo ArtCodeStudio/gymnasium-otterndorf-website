@@ -525,6 +525,7 @@ export class GyBlackboardComponent extends Component {
   protected onMouseMove = this._onMouseMove.bind(this);
 
   protected addEventListeners() {
+    this.removeEventListeners();
     this.addEventListener("mousedown", this.onMouseDown, { passive: true });
     this.addEventListener("touchstart", this.onMouseDown, { passive: true });
 
