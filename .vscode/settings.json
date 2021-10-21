@@ -119,9 +119,14 @@
     "zindex",
     "Zoomable"
   ],
-  "editor.formatOnSave": true,
   "editor.tabSize": 2,
+  "editor.formatOnSaveMode": "modifications",
+  "typescript.format.enable": false,
+  "eslint.format.enable": true,
+  "eslint.packageManager": "yarn",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true
 }

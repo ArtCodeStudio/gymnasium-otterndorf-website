@@ -1,0 +1,23 @@
+gy-podcast-fixed-web-player {
+  display: block;
+  width: 100%;
+  border-top: 1px solid $black;
+  &.fixed-bottom {
+    bottom: -15px;
+  }
+  podlove-web-player, podlove-web-player > * {
+    width: 100%;
+    // min-height: 250px;
+    &.podlove-web-player-loading {
+      max-width: 950px;
+      width: 100%;
+      background-image: url(/images/loading-blue.svg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100px;
+      * {
+        display: none;
+      }
+    }
+  }
+}

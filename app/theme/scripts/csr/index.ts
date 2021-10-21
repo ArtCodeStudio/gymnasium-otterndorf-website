@@ -102,9 +102,9 @@ export class CSRApp {
           dimension: 1400,
           name: "xxl",
         },
-
       ]
-    }));
+    })
+    );
     this.riba.module.regist(bs5PhotoswipeModule);
     this.riba.module.regist(leafletModule);
     this.riba.module.regist(masonryModule);

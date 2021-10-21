@@ -6,6 +6,7 @@ export { GyPageItemComponent } from "./gy-page-item/gy-page-item.component";
 export { GyPodcastEpisodeItemComponent } from "./gy-podcast-episode-item/gy-podcast-episode-item.component";
 export { GyPodcastEpisodeWebPlayerComponent } from "./gy-podcast-episode-web-player/gy-podcast-episode-web-player.component";
 export { GyPodcastLatestEpisodeWebPlayerComponent } from "./gy-podcast-latest-episode-web-player/gy-podcast-latest-episode-web-player.component";
+export { GyPodcastFixedWebPlayerComponent } from "./gy-podcast-fixed-web-player/gy-podcast-fixed-web-player.component";
 export { GySchoolSubjectItemComponent } from "./gy-school-subject-item/gy-school-subject-item.component";
 export { GySectionBlackboardSlideshowComponent } from "./gy-section-blackboard-slideshow/gy-section-blackboard-slideshow.component";
 export { GySectionBlogSlideshowComponent } from "./gy-section-blog-slideshow/gy-section-blog-slideshow.component";

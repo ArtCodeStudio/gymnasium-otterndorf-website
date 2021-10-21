@@ -550,8 +550,8 @@ export class GyBlackboardComponent extends Component {
     super.connectedCallback();
     await this.init(GyBlackboardComponent.observedAttributes);
     const os = getOS();
-    // Canvas backgrounbd images not working on safari ios, see https://github.com/cburgmer/rasterizeHTML.js/wiki/Limitations#safari 
-    if (os === 'ios') {
+    // Canvas background images not working on safari ios, see https://github.com/cburgmer/rasterizeHTML.js/wiki/Limitations#safari 
+    if (os === "ios") {
       this.scope.editable = false;
     }
     if (this.scope.editable) {

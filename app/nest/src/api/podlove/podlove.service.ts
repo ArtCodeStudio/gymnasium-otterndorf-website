@@ -161,14 +161,14 @@ export class PodloveService {
        * - use this generator to get a direct visual feedback:
        */
       tokens: {
-        brand: '#006825',
-        brandDark: '#0075BD',
-        brandDarkest: '#0075BD',
-        brandLightest: '#5DCED1',
-        shadeDark: '#807E7C',
-        shadeBase: '#807E7C',
-        contrast: '#000',
-        alt: '#fff',
+        brand: '#fff',
+        brandDark: '#fff',
+        brandDarkest: '#72B62F',
+        brandLightest: '#15692F',
+        shadeDark: '#000',
+        shadeBase: '#000',
+        contrast: '#fff',
+        alt: '#000',
       },
 
       /**
