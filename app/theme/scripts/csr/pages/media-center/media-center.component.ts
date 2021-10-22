@@ -90,19 +90,21 @@ export class MediaCenterPageComponent extends Component {
   }
 
   protected async afterAllBind() {
-    this.contentSlider = this.querySelector<ContentSliderComponent>(
-      ContentSliderComponent.tagName
-    );
-    this.contentSlider?.events?.on("goTo", this.onGoTo, this);
-    if (this.contentSlider?.scope.activeItem) {
-      this.scope.currentItem = this.contentSlider?.scope
-        .activeItem as MediaCenterSlideItem;
-      this.scope.currentVideoSrc = this.scope.currentItem.data?.url || "";
-    }
-
-    this.video = this.querySelector<VideoComponent>(VideoComponent.tagName);
-
     await super.afterAllBind();
+    if (!this.contentSlider) {
+      this.contentSlider = this.querySelector<ContentSliderComponent>(
+        ContentSliderComponent.tagName
+      );
+      this.contentSlider?.events?.on("goTo", this.onGoTo, this);
+      if (this.contentSlider?.scope.activeItem) {
+        this.scope.currentItem = this.contentSlider?.scope
+          .activeItem as MediaCenterSlideItem;
+        this.scope.currentVideoSrc = this.scope.currentItem.data?.url || "";
+      }
+    }
+    if (!this.video) {
+      this.video = this.querySelector<VideoComponent>(VideoComponent.tagName);
+    }    
   }
 
   protected template() {

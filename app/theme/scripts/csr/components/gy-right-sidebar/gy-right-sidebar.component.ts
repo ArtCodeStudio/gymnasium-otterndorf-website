@@ -42,20 +42,27 @@ export class GyRightSidebarComponent extends Component {
   protected onSidebarToggle = this._onSidebarToggle.bind(this);
 
   protected async afterAllBind() {
-    this.sidebar = this.querySelector<Bs5SidebarComponent>(
-      Bs5SidebarComponent.tagName
-    );
-    this.navSlide = this.querySelector<GyNavSlideComponent>(
-      GyNavSlideComponent.tagName
-    );
-    this.slideshow =
-      this.navSlide?.querySelector<Bs5SlideshowComponent>(
-        Bs5SlideshowComponent.tagName
-      ) || null;
-    this.sidebar?.events?.on(
-      TOGGLE_BUTTON.eventNames.toggled,
-      this.onSidebarToggle
-    );
+    await super.afterAllBind();
+    if (!this.sidebar) {
+      this.sidebar = this.querySelector<Bs5SidebarComponent>(
+        Bs5SidebarComponent.tagName
+      );
+      this.sidebar?.events?.on(
+        TOGGLE_BUTTON.eventNames.toggled,
+        this.onSidebarToggle
+      );
+    }
+    if (!this.navSlide) {
+      this.navSlide = this.querySelector<GyNavSlideComponent>(
+        GyNavSlideComponent.tagName
+      );
+    }
+    if (!this.slideshow) {
+      this.slideshow =
+        this.navSlide?.querySelector<Bs5SlideshowComponent>(
+          Bs5SlideshowComponent.tagName
+        ) || null;
+    }
   }
 
   protected connectedCallback() {

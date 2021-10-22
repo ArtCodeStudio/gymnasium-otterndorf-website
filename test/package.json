@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
-    "@types/node": "^16.11.1",
+    "@types/node": "^16.11.3",
     "@types/node-fetch": "^2.5.12",
-    "ts-node": "^10.3.0"
+    "ts-node": "^10.3.1"
   }
 }

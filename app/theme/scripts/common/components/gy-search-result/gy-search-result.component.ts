@@ -226,9 +226,12 @@ export class GySearchResultComponent extends Component {
   }
 
   protected async afterAllBind() {
-    this.searchInputs = Array.from(
-      document.querySelectorAll<GySearchInputComponent>("gy-search-input")
-    );
+    await super.afterAllBind();
+    if (!this.searchInputs) {
+      this.searchInputs = Array.from(
+        document.querySelectorAll<GySearchInputComponent>("gy-search-input")
+      );
+    }
   }
 
   protected connectedCallback() {

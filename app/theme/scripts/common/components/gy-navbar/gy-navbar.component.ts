@@ -198,9 +198,12 @@ export class GyNavbarComponent extends Component {
   // On all Components are ready
   protected async afterAllBind() {
     try {
-      this.setDependentStyles();
-      this.sidebar =
-        document?.querySelector(Bs5SidebarComponent.tagName) || null;
+      if (!this.sidebar) {
+        await super.afterAllBind();
+        this.setDependentStyles();
+        this.sidebar =
+          document?.querySelector(Bs5SidebarComponent.tagName) || null;
+      }
     } catch (error) {
       this.throw(error);
     }

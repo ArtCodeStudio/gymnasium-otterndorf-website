@@ -137,10 +137,13 @@ export class GyNavSlideComponent extends Component {
   }
 
   protected async afterAllBind() {
-    this.slideshow = this.querySelector(Bs5SlideshowComponent.tagName);
-
+    await super.afterAllBind();
     if (!this.slideshow) {
-      console.warn("Slideshow not found!");
+      this.slideshow = this.querySelector(Bs5SlideshowComponent.tagName);
+
+      if (!this.slideshow) {
+        console.warn("Slideshow not found!");
+      }
     }
   }
 
