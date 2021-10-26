@@ -63,7 +63,7 @@ export class GraphQLClient extends _GraphQLClient {
     document: RequestDocument,
     variables?: V,
     requestHeaders?: RequestInit["headers"],
-    expiresIn: number | string = "1 mins" // TODO change for production
+    expiresIn: number | string = "5 mins"
   ): Promise<T> {
     let key = JSON.stringify(document);
     if (variables) {

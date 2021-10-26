@@ -1,4 +1,5 @@
 import { GraphQLClient } from "./graphql";
+import { defaultCache } from "./cache";
 import {
   NavigationLink,
   StrapiGqlNavigationLink,
@@ -370,9 +371,9 @@ export class NavigationService {
     return maxDepth;
   }
 
-  public async getMenu() {
+  private async getMenuUncached() {
     const vars: StrapiGqlMenuQueryVariables = {};
-    const navigationRes = await this.graphql.requestCached<StrapiGqlMenuQuery>(
+    const navigationRes = await this.graphql.request<StrapiGqlMenuQuery>(
       menuQuery,
       {},
       vars
@@ -384,6 +385,16 @@ export class NavigationService {
     const baseEntries = navigationRes?.menu.entries;
     const tree = this.buildTree(baseEntries);
     return tree;
+  }
+
+  public async getMenu(expiresIn: number | string = "5 mins") {
+    return defaultCache.resolve<NavigationLink>(
+      "menu",
+      () => {
+        return this.getMenuUncached();
+      },
+      expiresIn
+    );
   }
 
   /**
