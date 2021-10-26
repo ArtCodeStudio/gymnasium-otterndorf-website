@@ -52,16 +52,23 @@ export class NavigationService {
 
   protected findParent(
     link: NavigationLink,
-    id: string
+    id: string,
   ): NavigationLink | undefined {
+    if (!id) {
+      throw new Error("Id must defined!");
+    }
     let parentEntry = link.children.find((child) => {
-      if (child.id === id) {
+      if (child.id && child.id === id) {
         return true;
       }
     });
-    if (!parentEntry) {
-      for (const child of link.children) {
-        parentEntry = this.findParent(child, id);
+    if (parentEntry) {
+      return parentEntry;
+    }
+    for (const child of link.children) {
+      parentEntry = this.findParent(child, id);
+      if (parentEntry) {
+        break;
       }
     }
     return parentEntry;
@@ -279,47 +286,73 @@ export class NavigationService {
     baseEntries: StrapiGqlMenuFragmentFragment["entries"] = []
   ) {
     const result = this.newLink();
+    const limitLoops = 100;
+    const ignored: any[] = [];
     let count = 0;
-    let ignored = 0;
+    let loops = 0;
 
     if (!baseEntries) {
       return result;
     }
-
+    baseEntries = baseEntries.filter((entry) => !!entry);
     const entryLength = baseEntries.length;
     do {
+      loops++;
       for (const entry of baseEntries) {
         if (!entry) {
-          ignored++;
+          ignored.push(entry);
           continue;
         }
-        // Root element
+        // Root elements
         if (!entry.parent) {
-          result.children.push(
-            this.newLink(
-              entry as StrapiGqlComponentNavigationNavigationLevelEntry
-            )
-          );
+          const newLink = this.newLink(
+            entry as StrapiGqlComponentNavigationNavigationLevelEntry
+          )
+          
+          const exists = result.children.find((child) => child.id === newLink.id);
+          if (exists) {
+            continue;
+          }
+          result.children.push(newLink);
           count++;
-        } else if (entry.parent.id) {
-          // Child element
+          continue;
+        }
+        
+        // Child elements
+        if (entry?.parent?.id) {
+
+          const baseExists = baseEntries.find((baseEntry) => baseEntry?.navigation_link?.id === entry.parent?.id);
+          if (!baseExists) {
+            console.debug("Base not found!", entry);
+            ignored.push(entry);
+            continue;
+          }
+
+          const newLink = this.newLink(
+            entry as StrapiGqlComponentNavigationNavigationLevelEntry
+          );
+
           const parentEntry = this.findParent(result, entry.parent.id);
           if (parentEntry) {
-            parentEntry.children?.push(
-              this.newLink(
-                entry as StrapiGqlComponentNavigationNavigationLevelEntry
-              )
-            );
-            count++;
+            const exists = parentEntry.children.find((child) => child.id === newLink.id && child.label === newLink.label);
+            if (!exists) {
+              parentEntry.children?.push(newLink);
+              count++;
+            }
+            continue;
           }
-        } else {
-          ignored++;
         }
-      }
-    } while (count + ignored < entryLength);
 
-    if (ignored > 0) {
-      console.warn(`${ignored} navigation items are ignored!`);
+        ignored.push(entry);
+      }
+    } while (count + ignored.length <= entryLength && loops < limitLoops);
+
+    if (ignored.length > 0) {
+      console.warn(`${ignored.length} navigation items are ignored!\n`, ignored);
+    }
+
+    if (loops < limitLoops) {
+      console.warn("Loop limit reached!")
     }
 
     return result;
@@ -344,8 +377,6 @@ export class NavigationService {
       {},
       vars
     );
-
-    // console.debug("navigationRes", JSON.stringify(navigationRes, null, 2));
 
     if (!navigationRes?.menu?.entries) {
       throw ResponseErrorService.notFound("Navigation");
