@@ -69,7 +69,7 @@ export class GyNavSlideComponent extends Component {
     if (typeof index === "undefined") {
       throw new Error("index not set!");
     }
-    if (child.href) {
+    if (!child.children.length && child.href) {
       this.pjax?.goTo(child.href);
       return;
     }
