@@ -5,6 +5,8 @@ import {
   OpenGraphAudio,
 } from "@ribajs/ssr";
 import { cutFormatter, stripHtmlFormatter } from "@ribajs/core";
+import { strapiImageUrlFormatter } from "@ribajs/strapi";
+
 import {
   GeneralService,
   BlogService,
@@ -18,7 +20,6 @@ import {
 } from ".";
 import {
   nestFormatter,
-  strapiImageUrlFormatter,
   strapiFormatter,
   postFormatter,
   pageFormatter,
@@ -93,8 +94,8 @@ export class OpenGraphService {
       if (typeof image === "string") {
         imageResult = strapiFormatter.read(image);
       } else if (
-        (image as StrapiGqlImageFragmentFragment).url &&
-        (image as StrapiGqlImageFragmentFragment).formats
+        (image as StrapiGqlImageFragmentFragment)?.url &&
+        (image as StrapiGqlImageFragmentFragment)?.formats
       ) {
         imageResult = strapiImageUrlFormatter.read(
           image as StrapiGqlImageFragmentFragment,

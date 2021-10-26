@@ -39,8 +39,6 @@ export * from "./section-type";
 export * from "./section";
 export * as StrapiGqlStudent from "./strapi-gql-student";
 export * from "./strapi-gql";
-export * from "./strapi-image-format";
-export * from "./strapi-image";
 export * from "./student-quote";
 export * from "./suggest-result";
 export * from "./teacher-basic";

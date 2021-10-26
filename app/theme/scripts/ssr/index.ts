@@ -4,12 +4,8 @@ import { SSRModule } from "@ribajs/ssr";
 import { Riba, coreModule } from "@ribajs/core";
 import { Bs5IconComponent, bs5Module } from "@ribajs/bs5";
 import { artAndCodeStudioModule } from "@ribajs/artcodestudio";
-
-// import { EventDispatcher } from "@ribajs/events";
-
+import { strapiModule } from "@ribajs/strapi";
 import { luxonModule } from "@ribajs/luxon";
-// import { i18nModule, LocalesStaticService } from "@ribajs/i18n";
-// import { ready } from "@ribajs/utils/src/dom";
 
 // Common
 import * as commonBinders from "../common/binders";
@@ -21,7 +17,6 @@ import * as pageComponents from "./pages";
 import * as components from "./components";
 import * as binders from "./binders";
 import * as formatters from "./formatters";
-// import locales from "./locales";
 
 declare global {
   interface Window {
@@ -64,24 +59,20 @@ riba.module.component.regists({
 riba.module.binder.regists({ ...commonBinders, ...binders });
 riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 
-// const localesService = new LocalesStaticService(locales, undefined, false);
-// window.riba.module.regist(i18nModule.init({ localesService }));
-
 // Regist modules
 riba.module.regist(coreModule.init({}));
 riba.module.regist(SSRModule.init({}));
 riba.module.regist(artAndCodeStudioModule.init({}));
 riba.module.regist(luxonModule.init({}));
+riba.module.regist(strapiModule.init({}));
 
 // After all components are bound wie trigger the ssr ready event,
 // as soon as this event is triggered the ssr rendering will be done returns the rendered html
 riba.lifecycle.events.on("ComponentLifecycle:allBound", () => {
-  // console.debug("ready!");
   window.ssr.events.trigger("ready");
 });
 
 riba.lifecycle.events.on("ComponentLifecycle:error", (error: Error) => {
-  // console.error(error);
   window.ssr.events.trigger("error", error);
 });
 
@@ -89,13 +80,3 @@ const view = riba.bind(document.body, window.model);
 
 // WORKAROUND / FIXME view.traverse method seems not to be working in jsdom
 view.registComponents();
-
-// window.addEventListener(
-//   "beforeunload",
-//   () => {
-//     console.debug("Window closing, clear Riba");
-//     EventDispatcher.clearAllInstances();
-//     view.unbind();
-//   },
-//   false
-// );

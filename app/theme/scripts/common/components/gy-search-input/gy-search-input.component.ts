@@ -70,7 +70,7 @@ export class GySearchInputComponent extends Component {
    * @memberof GySearchInputComponent
    */
   protected setTermExtern(term: string) {
-    if (this.searchResultContainers) {
+    if (this.searchResultContainers.length) {
       for (const searchResultContainer of this.searchResultContainers) {
         searchResultContainer.setTerm(term);
       }
@@ -83,7 +83,7 @@ export class GySearchInputComponent extends Component {
   }
 
   protected resetTermExtern() {
-    if (this.searchResultContainers) {
+    if (this.searchResultContainers.length) {
       for (const searchResultContainer of this.searchResultContainers) {
         searchResultContainer.setTerm(this.scope.term);
       }
@@ -106,9 +106,9 @@ export class GySearchInputComponent extends Component {
   protected async afterAllBind() {
     await super.afterAllBind();
     try {
-      if (!this.searchResultContainers) {
+      if (!this.searchResultContainers.length) {
         this.searchResultContainers = Array.from(
-          document.querySelectorAll<GySearchResultComponent>("gy-search-result")
+          document?.querySelectorAll<GySearchResultComponent>("gy-search-result") || []
         );
       }
     } catch (error) {

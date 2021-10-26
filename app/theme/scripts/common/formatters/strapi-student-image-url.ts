@@ -1,5 +1,4 @@
-import type { StrapiImage, StrapiImageFormatType } from "../types";
-import { strapiImageFormatter } from "./strapi-image";
+import { strapiImageFormatter, StrapiImage, StrapiImageFormatType } from "@ribajs/strapi";
 import { strapiStudentFormatter } from "./strapi-student";
 
 /**
@@ -13,6 +12,6 @@ export const strapiStudentImageUrlFormatter = {
     format: StrapiImageFormatType | "original" = "thumbnail"
   ) {
     const imageFormat = strapiImageFormatter.read(image, format);
-    return strapiStudentFormatter.read(imageFormat.url);
+    return strapiStudentFormatter.read(imageFormat?.url);
   },
 };

@@ -13,8 +13,6 @@ export * from "./post";
 export * from "./student-quote";
 export * from "./remove-empty-clock";
 export * from "./school-subject";
-export * from "./strapi-image-url";
-export * from "./strapi-image";
 export * from "./strapi-student-image-url";
 export * from "./strapi-student-image";
 export * from "./strapi-student";

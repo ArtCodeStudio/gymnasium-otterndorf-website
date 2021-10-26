@@ -73,7 +73,8 @@
     "@ribajs/postcss-config": "workspace:*",
     "@ribajs/nest-lunr": "workspace:*",
     "@ribajs/babel-config": "workspace:*",
-    "@ribajs/esbuild": "workspace:*"
+    "@ribajs/esbuild": "workspace:*",
+    "@ribajs/strapi": "workspace:*"
   },
   "devDependencies": {
     "@artcodestudio/node-app-manager": "workspace:*",
@@ -81,12 +82,12 @@
     "@ribajs/iconset": "workspace:*",
     "@ribajs/tsconfig": "workspace:*",
     "@types/source-map-support": "^0.5.4",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/experimental-utils": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "@yarnpkg/pnpify": "^3.1.0-rc.2",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/experimental-utils": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "@yarnpkg/pnpify": "^3.1.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^8.0.1",
+    "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "node-gyp": "^8.3.0",

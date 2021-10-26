@@ -1,9 +1,9 @@
 import { PageComponent } from "@ribajs/ssr";
+import { StrapiImageFormatType } from "@ribajs/strapi";
 import pugTemplate from "./gallery.component.pug";
 import { GalleryService, OpenGraphService } from "../../services";
 import {
   StrapiGqlGalleryFragmentFragment,
-  StrapiImageFormatType,
   replaceBodyPageClass,
 } from "../../../common";
 

@@ -12,6 +12,7 @@ import { leafletModule } from "@ribajs/leaflet-map";
 import { masonryModule } from "@ribajs/masonry";
 import { artAndCodeStudioModule } from "@ribajs/artcodestudio";
 import { podcastModule } from "@ribajs/podcast";
+import { strapiModule } from "@ribajs/strapi";
 
 // Common
 import * as commonBinders from "../common/binders";
@@ -23,7 +24,6 @@ import * as components from "./components";
 import * as pages from "./pages";
 import * as binders from "./binders";
 import * as formatters from "./formatters";
-// import locales from "../common/locales";
 
 declare global {
   interface Window {
@@ -40,12 +40,6 @@ export class CSRApp {
   protected riba = new Riba();
   protected model: any = {};
   protected routerEvents = EventDispatcher.getInstance("main");
-
-  // protected localesService = new LocalesStaticService(
-  //   locales,
-  //   undefined,
-  //   false
-  // );
 
   protected onPageChanges() {
     replaceBodyPageClass();
@@ -73,9 +67,6 @@ export class CSRApp {
         defaultTransition: new FadeTransition(),
       })
     );
-    // this.riba.module.regist(
-    //   i18nModule.init({ localesService: this.localesService })
-    // );
     this.riba.module.regist(bs5Module.init({
       breakpoints: [
         {
@@ -111,6 +102,7 @@ export class CSRApp {
     this.riba.module.regist(contentSliderModule.init({}));
     this.riba.module.regist(artAndCodeStudioModule.init({}));
     this.riba.module.regist(podcastModule.init({}));
+    this.riba.module.regist(strapiModule.init({}));
 
     this.view = this.riba.bind(document.body, this.model);
 

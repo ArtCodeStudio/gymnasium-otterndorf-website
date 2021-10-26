@@ -1,9 +1,9 @@
 import { PageComponent } from "@ribajs/ssr";
+import { StrapiImageFormatType } from "@ribajs/strapi";
 import pugTemplate from "./media-center.component.pug";
 import { MediaCenterService, OpenGraphService } from "../../services";
 import {
   StrapiGqlMediaCenterFragmentFragment,
-  StrapiImageFormatType,
   replaceBodyPageClass,
 } from "../../../common";
 
