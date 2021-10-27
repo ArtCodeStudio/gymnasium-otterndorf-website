@@ -85,7 +85,7 @@
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/experimental-utils": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
-    "@yarnpkg/pnpify": "^3.1.0",
+    "@yarnpkg/pnpify": "^3.1.1-rc.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
