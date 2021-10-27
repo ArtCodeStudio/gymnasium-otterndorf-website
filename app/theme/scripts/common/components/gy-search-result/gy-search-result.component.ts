@@ -227,7 +227,7 @@ export class GySearchResultComponent extends Component {
 
   protected async afterAllBind() {
     await super.afterAllBind();
-    if (!this.searchInputs) {
+    if (!this.searchInputs || !this.searchInputs.length) {
       this.searchInputs = Array.from(
         document.querySelectorAll<GySearchInputComponent>("gy-search-input")
       );
