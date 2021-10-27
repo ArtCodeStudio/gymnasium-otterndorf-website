@@ -64,11 +64,12 @@ export class GyNavSlideComponent extends Component {
     this.scope.slides[index + 1].entry = child;
   }
 
-  public onNavTap(child: NavigationLink, currentSlide: Slide) {
+  public onNavTap(child: NavigationLink, currentSlide: Slide, event: Event) {
     const index = currentSlide.index;
     if (typeof index === "undefined") {
       throw new Error("index not set!");
     }
+    event.stopPropagation();
     if (!child.children.length && child.href) {
       this.pjax?.goTo(child.href);
       return;
