@@ -10,6 +10,7 @@ import {
   PageHeader,
   StrapiGqlTeacherDetailFragmentFragment,
   StrapiGqlTeacherBasicFragmentFragment,
+  SchoolSubject,
 } from "../types";
 import { ENTRY_TYPE } from "../constants";
 import { SectionsService } from "./sections";
@@ -116,6 +117,7 @@ export class TeacherService {
             url: teacherFormatter.read(teacher.slug),
           },
         ],
+        schoolSubjects: teacher.subjects as SchoolSubject[]
       };
       return header;
     }

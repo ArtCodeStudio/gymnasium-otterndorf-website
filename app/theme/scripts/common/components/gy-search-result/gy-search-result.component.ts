@@ -226,11 +226,15 @@ export class GySearchResultComponent extends Component {
   }
 
   protected async afterAllBind() {
-    await super.afterAllBind();
-    if (!this.searchInputs || !this.searchInputs.length) {
-      this.searchInputs = Array.from(
-        document.querySelectorAll<GySearchInputComponent>("gy-search-input")
-      );
+    try {
+      await super.afterAllBind();
+      if (!this.searchInputs || !this.searchInputs.length) {
+        this.searchInputs = Array.from(
+          document?.querySelectorAll<GySearchInputComponent>("gy-search-input") || []
+        );
+      }
+    } catch (error) {
+      this.throw(error);
     }
   }
 

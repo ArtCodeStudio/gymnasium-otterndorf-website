@@ -1,8 +1,9 @@
 .container-fluid.container-xxl
-  .row
+  .row.mb-5
     .col-12
       gy-page-header.col-12.my-4(ssr-rv-co-header="header")
     .col-12(ssr-rv-if="description")
       p(ssr-rv-html="description | markdown")
-  section.row.row-cols-1.row-cols-md-2.row-cols-lg-3.g-4.mb-4
-    gy-teacher-item.col.mx-auto(ssr-rv-each-teacher="teachers" ssr-rv-co-teacher="teacher")
+  section.row.mb-5(csr-rv-image-events csr-rv-masonry='{"percentPosition": true }')
+    .col-12.col-md-6.col-lg-4(ssr-rv-each-teacher="teachers")
+      gy-teacher-item(ssr-rv-co-teacher="teacher")

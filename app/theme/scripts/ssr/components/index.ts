@@ -1,3 +1,4 @@
+export { GyAssetListComponent } from "./gy-asset-list/gy-asset-list.component";
 export { GyBlogEntryItemComponent } from "./gy-blog-entry-item/gy-blog-entry-item.component";
 export { GyFooterComponent } from "./gy-footer/gy-footer.component";
 export { GyFormerStudentItemComponent } from "./gy-former-student-item/gy-former-student-item.component";
@@ -27,3 +28,4 @@ export { GySectionTextComponent } from "./gy-section-text/gy-section-text.compon
 export { GySectionsComponent } from "./gy-sections/gy-sections.component";
 export { GyTeacherItemComponent } from "./gy-teacher-item/gy-teacher-item.component";
 export { GyWorkingGroupItemComponent } from "./gy-working-group-item/gy-working-group-item.component";
+export { GyTeacherSchoolSubjectListComponent } from "./gy-teacher-school-subject-list/gy-teacher-school-subject-list.component";

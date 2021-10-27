@@ -1,5 +1,6 @@
 @import '~@ribajs/leaflet-map/src/index';
 
+@import "./gy-asset-list/gy-asset-list.component";
 @import "./gy-blog-entry-item/gy-blog-entry-item.component";
 @import "./gy-footer/gy-footer.component";
 @import "./gy-former-student-item/gy-former-student-item.component";
@@ -29,3 +30,4 @@
 @import "./gy-sections/gy-sections.component";
 @import "./gy-teacher-item/gy-teacher-item.component";
 @import "./gy-working-group-item/gy-working-group-item.component";
+@import "./gy-teacher-school-subject-list/gy-teacher-school-subject-list.component";

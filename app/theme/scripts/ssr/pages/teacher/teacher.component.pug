@@ -1,25 +1,17 @@
-.container-fluid.container-xxl
+.container-fluid.container-xxl.bg-white
   .row
-    .col-12
-      gy-page-header.col-12.my-4(ssr-rv-co-header="header")
-  section.row
-    .col-12.col-md-4
-      img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
-    .col-12.col-md-8
-      p(rv-if="teacher.biography" rv-html="teacher.biography | markdown")
+    .col-12.col-md-8.offset-md-2
       .row
-        .col-12.col-md-4(rv-if="teacher.subjects | size | gt 0")
-          strong
-            | Fächer
-          span.list-group.list-group-flush
-            a.list-group-item.list-group-item-action(rv-each-subject="teacher.subjects" rv-href="subject.slug | school-subject" rv-text="subject.title")
-        .col-12.col-md-4(rv-if="teacher.working_groups | size | gt 0")
-          strong
-            | AGs
-          span.list-group.list-group-flush
-            a.list-group-item.list-group-item-action(rv-each-working-group="teacher.working_groups" rv-href="workingGroup.slug | working-group" rv-text="workingGroup.title")
-        .col-12.col-md-4(rv-if="assets | size | gt 0")
-          strong
-            | Unterrichtsmaterialien
-          span.list-group.list-group-flush
-            a.list-group-item.list-group-item-action(rv-each-asset="assets" rv-href="asset.file.url | strapi" download rv-text="asset.name")
+        gy-page-header.col-12.my-4(ssr-rv-co-header="header")
+      section.row
+        .col-12.col-md-4(ssr-rv-show='teacher.image')
+          img.card-img-top(lazyload="lazy" ssr-rv-src='teacher.image | strapi-image-url "large"' ssr-rv-alt="teacher.image.alternativeText")
+        .col-12.col-md-8(ssr-rv-class-col-md-8='teacher.image')
+          p(ssr-rv-if="teacher.biography" ssr-rv-html="teacher.biography | markdown")
+          .row
+            .col-12.col-md-4(ssr-rv-unless="teacher.working_groups | empty")
+              strong
+                | AGs
+              span.list-group.list-group-flush
+                a.list-group-item.list-group-item-action(ssr-rv-each-working-group="teacher.working_groups" ssr-rv-href="workingGroup.slug | working-group" ssr-rv-text="workingGroup.title")
+      gy-asset-list.row.my-5(title="Informationen", ssr-rv-co-assets="assets")

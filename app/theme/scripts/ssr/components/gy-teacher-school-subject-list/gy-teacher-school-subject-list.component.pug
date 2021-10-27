@@ -1,0 +1,6 @@
+small(rv-if="schoolSubjects | size")
+  span(rv-text="title | append '  '") 
+  span(rv-each-subject="schoolSubjects")
+    a(rv-href="subject.slug | school-subject")
+      span(rv-text="subject.title")
+    span(rv-if="schoolSubjects | size | minus 1 | gt %subject%") , 

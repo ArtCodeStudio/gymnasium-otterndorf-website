@@ -8,6 +8,7 @@ nav.scrollbar-green.scrollbar-x-auto(rv-if="header.breadcrumbs | size" aria-labe
 
 h1(rv-text="header.title")
 
+//- Teacher list
 small(rv-if="header.teachers | size")
   | Unterrichtet von  
   span(rv-each-teacher="header.teachers")
@@ -17,6 +18,8 @@ small(rv-if="header.teachers | size")
         | 
       span(rv-text="teacher.name")
     span(rv-if="header.teachers | size | minus 1 | gt %teacher%") , 
+
+gy-teacher-school-subject-list(rv-co-school-subjects="header.schoolSubjects")
 
 small(rv-if="showDate | and header.updatedAt")
   span(rv-text="header.updatedAt | lx-from-iso | lx-set-locale 'de' | lx-to-moment-calendar | capitalize")

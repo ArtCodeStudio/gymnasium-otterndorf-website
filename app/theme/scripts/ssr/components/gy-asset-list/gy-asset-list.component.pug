@@ -1,0 +1,5 @@
+.col-12(rv-unless="assets | empty")
+  h3(rv-text="title")
+  .row(rv-each-asset="assets")
+    .col-12 
+      a(rv-href="asset.file.url | strapi", download, rv-text="asset.name", target="__blank")
