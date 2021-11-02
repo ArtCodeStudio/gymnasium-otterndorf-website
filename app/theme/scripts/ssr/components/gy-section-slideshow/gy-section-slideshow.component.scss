@@ -21,18 +21,13 @@ gy-section-slideshow {
                 bottom: 0;
             }
 
-            .active {
-                .progress {
-                    .progress-bar {
+            .progress {
+                .progress-bar {
+                    &[aria-valuenow="100"] {
                         width: 100% !important;
                     }
-                }
-            }
-            .inactive {
-                .progress {
-                    .progress-bar {
+                    &[aria-valuenow="0"] {
                         width: 0 !important;
-                        transition: none !important;
                     }
                 }
             }

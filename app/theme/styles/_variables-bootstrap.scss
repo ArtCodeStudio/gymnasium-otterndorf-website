@@ -90,9 +90,9 @@ $btn-link-color:              $link-color;
 $btn-link-hover-color:        $link-hover-color;
 
 // PROGRESS
-$progress-height: 10px;
+$progress-height: 5px;
 $progress-bg: rgba($gray-400, .5);
-$progress-bar-transition: width .1s linear, margin-left .1s linear;
+$progress-bar-transition: width 0.2 linear;
 
 // BREADCRUMBS
 $breadcrumb-active-color: $body-color;
