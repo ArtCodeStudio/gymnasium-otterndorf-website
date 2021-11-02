@@ -16,6 +16,6 @@ bs5-slideshow.row.py-5(xs-controls="false" md-controls="true" xs-indicators="tru
                 .row
                     .col.py-3.indicators.cursor-pointer(csr-rv-each-slide="items" csr-rv-class-active="slide.active" csr-rv-class-next="%slide% | eq nextIndex" csr-rv-class-inactive="%slide% | eq nextIndex | or slide.active | not" csr-rv-on-click="goTo | args slide.index")
                         .progress(csr-rv-if="slide.active")
-                            .progress-bar(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="100" csr-rv-style-margin-left="intervalProgress | append '%'")
+                            .progress-bar(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="100")
                         .progress(csr-rv-unless="slide.active")
                             .progress-bar(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="intervalProgress" csr-rv-style-width="intervalProgress | append '%'")

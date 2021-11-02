@@ -85,7 +85,7 @@ export class GyNavbarComponent extends Component {
   }
 
   public hideIfViewport() {
-    if (this.bs5?.isActiveBreakpointSmallerThan("md")) {
+    if (this.bs5?.isActiveBreakpointSmallerThan("lg")) {
       this.hide();
     }
   }

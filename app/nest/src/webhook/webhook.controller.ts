@@ -9,6 +9,13 @@ export class WebhookController {
     //
   }
 
+  /**
+   * API Endpoint for strapi webhooks.
+   * This must be setup in Strapi: Settings -> Global Settings -> Webhooks.
+   * The Webhook URL must be https://your-domain.org/webhook/strapi
+   * @param res 
+   * @param body 
+   */
   @ApiExcludeEndpoint()
   @Post('strapi')
   async post(@Res() res: Response, @Body() body: StrapiWebhookData) {
