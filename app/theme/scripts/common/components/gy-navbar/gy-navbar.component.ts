@@ -111,7 +111,7 @@ export class GyNavbarComponent extends Component {
       return;
     }
     const searchResults = Array.from(
-      document?.querySelectorAll<GySearchResultComponent>("gy-search-result") || []
+      window?.document?.querySelectorAll<GySearchResultComponent>("gy-search-result") || []
     );
     const body = document.body || null;
     const hideNavbarShadowEl = document.querySelector<HTMLElement>(
@@ -202,7 +202,7 @@ export class GyNavbarComponent extends Component {
         await super.afterAllBind();
         this.setDependentStyles();
         this.sidebar =
-          document?.querySelector(Bs5SidebarComponent.tagName) || null;
+        window?.document?.querySelector(Bs5SidebarComponent.tagName) || null;
       }
     } catch (error) {
       this.throw(error);

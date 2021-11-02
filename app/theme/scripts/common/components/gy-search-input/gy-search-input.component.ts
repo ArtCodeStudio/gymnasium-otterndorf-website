@@ -108,7 +108,7 @@ export class GySearchInputComponent extends Component {
     try {
       if (!this.searchResultContainers.length) {
         this.searchResultContainers = Array.from(
-          document?.querySelectorAll<GySearchResultComponent>("gy-search-result") || []
+          window?.document?.querySelectorAll<GySearchResultComponent>("gy-search-result") || []
         );
       }
     } catch (error) {

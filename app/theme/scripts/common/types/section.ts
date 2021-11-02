@@ -14,6 +14,7 @@ import { SectionMensaMax } from "./section-mensa-max";
 import { SectionPodcastEpisode } from "./section-podcast-episode";
 import { SectionLatestPodcastEpisode } from "./section-latest-podcast-episode";
 import { SectionFormerStudents } from "./section-former-students";
+import { SectionSubjectSelection } from "./section-subject-selection";
 
 /**
  * Type for transformed sections
@@ -34,4 +35,5 @@ export type Section =
   | SectionMensaMax
   | SectionPodcastEpisode
   | SectionLatestPodcastEpisode
-  | SectionFormerStudents;
+  | SectionFormerStudents
+  | SectionSubjectSelection;

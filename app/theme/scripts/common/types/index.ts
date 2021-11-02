@@ -35,6 +35,7 @@ export * from "./section-podcast-episode";
 export * from "./section-slideshow-entry";
 export * from "./section-slideshow";
 export * from "./section-student-quote";
+export * from "./section-subject-selection";
 export * from "./section-type";
 export * from "./section";
 export * as StrapiGqlStudent from "./strapi-gql-student";

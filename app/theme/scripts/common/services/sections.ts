@@ -53,6 +53,7 @@ export class SectionsService {
       podcastEpisodes: [],
       latestPodcastEpisodes: [],
       formerStudents: [],
+      subjectSelections: [],
     };
     return sectionsObj;
   }
@@ -142,6 +143,9 @@ export class SectionsService {
           break;
         case "ComponentSectionFormerStudents":
           sectionsObj.formerStudents.push(section);
+          break;
+        case "ComponentSectionSubjectSelection":
+          sectionsObj.subjectSelections.push(section);
           break;
         default:
           console.warn(
@@ -268,6 +272,9 @@ export class SectionsService {
             sections.push(dynamicZoneSection);
             break;
           case "ComponentSectionFormerStudents":
+            sections.push(dynamicZoneSection);
+            break;
+          case "ComponentSectionSubjectSelection":
             sections.push(dynamicZoneSection);
             break;
           default:
