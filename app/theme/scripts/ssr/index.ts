@@ -60,7 +60,11 @@ riba.module.binder.regists({ ...commonBinders, ...binders });
 riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 
 // Regist modules
-riba.module.regist(coreModule.init({}));
+riba.module.regist(coreModule.init({
+  lifecycle: {
+    timeout: 9000
+  }
+}));
 riba.module.regist(SSRModule.init({}));
 riba.module.regist(artAndCodeStudioModule.init({}));
 riba.module.regist(luxonModule.init({}));
