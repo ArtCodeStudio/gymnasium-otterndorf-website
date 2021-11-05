@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "10/21/2021 11:36:57 AM"
+    "x-generation-date": "11/05/2021 12:15:18 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -12871,7 +12871,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -13020,7 +13021,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -13302,7 +13304,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -13372,7 +13375,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -13654,7 +13658,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -14254,7 +14259,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -14403,7 +14409,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -14685,7 +14692,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -14755,7 +14763,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -15037,7 +15046,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -15739,7 +15749,8 @@
                   "red",
                   "light",
                   "dark",
-                  "white"
+                  "white",
+                  "purple"
                 ]
               }
             }
@@ -15874,7 +15885,8 @@
                   "red",
                   "light",
                   "dark",
-                  "white"
+                  "white",
+                  "purple"
                 ]
               }
             }
@@ -16169,7 +16181,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -16657,7 +16670,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -16725,7 +16739,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -16874,7 +16889,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -17155,7 +17171,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -17502,7 +17519,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -17990,7 +18008,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -18058,7 +18077,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -18207,7 +18227,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -18488,7 +18509,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -19127,35 +19149,6 @@
                 "hideInSidebar": {
                   "type": "boolean",
                   "default": false
-                },
-                "children": {
-                  "type": "array",
-                  "items": {
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "title": {
-                        "type": "string"
-                      },
-                      "type": {
-                        "type": "dynamiczone"
-                      },
-                      "created_by": {
-                        "type": "string"
-                      },
-                      "updated_by": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "isRootElement": {
-                  "type": "boolean",
-                  "default": false
                 }
               }
             }
@@ -19223,35 +19216,6 @@
                   "type": "string"
                 },
                 "hideInSidebar": {
-                  "type": "boolean",
-                  "default": false
-                },
-                "children": {
-                  "type": "array",
-                  "items": {
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "title": {
-                        "type": "string"
-                      },
-                      "type": {
-                        "type": "dynamiczone"
-                      },
-                      "created_by": {
-                        "type": "string"
-                      },
-                      "updated_by": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "isRootElement": {
                   "type": "boolean",
                   "default": false
                 }
@@ -21103,7 +21067,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -21253,7 +21218,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -21463,7 +21429,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -21534,7 +21501,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -21820,7 +21788,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -22827,7 +22796,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -22977,7 +22947,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -23187,7 +23158,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -23258,7 +23230,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -23544,7 +23517,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -25507,7 +25481,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -25665,7 +25640,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -25826,7 +25802,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -25962,7 +25939,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -26120,7 +26098,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -26281,7 +26260,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -26783,7 +26763,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -26932,7 +26913,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -27139,7 +27121,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -27209,7 +27192,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -27491,7 +27475,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -28199,7 +28184,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -28348,7 +28334,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -28555,7 +28542,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -28625,7 +28613,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -28907,7 +28896,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -30188,7 +30178,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -30453,7 +30444,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -30520,7 +30512,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -30823,7 +30816,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -31101,7 +31095,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -31596,7 +31591,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -31861,7 +31857,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -31928,7 +31925,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -32231,7 +32229,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }
@@ -32509,7 +32508,8 @@
                             "red",
                             "light",
                             "dark",
-                            "white"
+                            "white",
+                            "purple"
                           ]
                         }
                       }

@@ -19,13 +19,6 @@
     "hideInSidebar": {
       "type": "boolean",
       "default": false
-    },
-    "children": {
-      "collection": "navigation-link"
-    },
-    "isRootElement": {
-      "type": "boolean",
-      "default": false
     }
   }
 }
