@@ -5,7 +5,7 @@
     "start": "ts-node request-memory.ts"
   },
   "dependencies": {
-    "node-fetch": "^2.6.5"
+    "node-fetch": "^2.6.6"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
