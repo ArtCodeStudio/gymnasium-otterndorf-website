@@ -1,19 +1,19 @@
 .row(ssr-rv-if="section.title")
   h2.col-12.section-heading Schulfächer
-bs5-slideshow(xs-controls="false" md-controls="true" xs-indicators="false" xs-drag="false" xs-control-prev-icon-src="/images/arrow_chalk.svg" xs-control-next-icon-src="/images/arrow_chalk.svg" xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg" xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg" xs-sticky="true" xs-autoplay="false")
+bs5-slideshow(xs-controls="false", md-controls="true", xs-indicators="false", xs-drag="false", xs-control-prev-icon-src="/images/arrow_chalk.svg", xs-control-next-icon-src="/images/arrow_chalk.svg", xs-indicator-inactive-icon-src="/iconset/svg/icon_circle-empty.svg", xs-indicator-active-icon-src="/iconset/svg/icon_circle-selected.svg", xs-sticky="true", xs-autoplay="false")
   .row.slideshow-row.py-3
     .slide.col-12(ssr-rv-each-subject="section.subjects")
       .row
         .col-12.col-md-8.mx-auto
-          gy-blackboard(rv-background-image="subject.blackboard_image | strapi-image-url 'large'" rv-link="'/school-subject/' | append subject.slug")
+          gy-blackboard(rv-background-image="subject.blackboard_image | strapi-image-url 'large'", rv-link="'/school-subject/' | append subject.slug", csr-rv-parent)
   template(type="controls")
-    .slideshow-controls.slideshow-control-prev(rv-show="activeIndex | eq 0 | not"  rv-if='activeBreakpoint.controls' rv-add-class='controlsPositionClass' data-slide='prev')
+    .slideshow-controls.slideshow-control-prev(rv-show="activeIndex | eq 0 | not", rv-if='activeBreakpoint.controls', rv-add-class='controlsPositionClass', data-slide='prev')
       button(role="button").btn.btn-link
-        bs5-icon(rv-on-click="prev" direction="left" rv-src='activeBreakpoint.controlPrevIconSrc' role='button' size='80')
+        bs5-icon(rv-on-click="prev" direction="left", rv-src='activeBreakpoint.controlPrevIconSrc' role='button' size='80')
         span.visually-hidden Previous
-    .slideshow-controls.slideshow-control-next(rv-show="nextIndex | eq 0 | not" rv-if='activeBreakpoint.controls' rv-add-class='controlsPositionClass' data-slide='next')
+    .slideshow-controls.slideshow-control-next(rv-show="nextIndex | eq 0 | not", rv-if='activeBreakpoint.controls', rv-add-class='controlsPositionClass', data-slide='next')
       button(role="button").btn.btn-link
-        bs5-icon(rv-on-click="next" direction="right" rv-src='activeBreakpoint.controlNextIconSrc' role='button' size='80')
+        bs5-icon(rv-on-click="next", direction="right", rv-src='activeBreakpoint.controlNextIconSrc', role='button', size='80')
         span.visually-hidden Next
 .row
   .col-12.mt-3.mb-5.text-center

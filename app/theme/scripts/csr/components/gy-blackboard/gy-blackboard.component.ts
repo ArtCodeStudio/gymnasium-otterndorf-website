@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Component } from "@ribajs/core";
+import { Bs5SlideshowComponentScope } from "@ribajs/bs5";
 import { getOS } from "@ribajs/utils";
 import { Vector2d } from "../../../common";
 import pugTemplate from "./gy-blackboard.component.pug";
@@ -17,6 +18,7 @@ export interface GyBlackboardComponentScope {
   isDirty: boolean;
   isDrawing: boolean;
   editable: boolean;
+  $parent?: Bs5SlideshowComponentScope;
 }
 
 type GyBlackboardDrawingTool =
@@ -378,11 +380,23 @@ export class GyBlackboardComponent extends Component {
     },
   };
 
-  public selectChalk() {
-    this._selectedTool = this._chalk;
+  public enableDrawMode() {
     this.scope.isDrawing = true;
+    this.scope.$parent?.disableTouchScroll();
+    window.document.body.classList.add("blackboard-drawing");
+  }
+
+  public disableDrawMode() {
+    this.scope.isDrawing = false;
+    this.scope.$parent?.enableTouchScroll();
+    window.document.body.classList.remove("blackboard-drawing");
+  }
+
+  public selectChalk() {
+    this._selectedTool = this._chalk;    
     this.classList.add("chalk-selected");
     this.classList.remove("sponge-selected");
+    this.enableDrawMode();
   }
 
   public toggleSelectChalk() {
@@ -394,12 +408,12 @@ export class GyBlackboardComponent extends Component {
   }
 
   public selectSponge() {
-    this.debug("sponge");
+    this.debug("selectSponge");
     // TODO
     this._selectedTool = this._sponge;
-    this.scope.isDrawing = true;
     this.classList.remove("chalk-selected");
     this.classList.add("sponge-selected");
+    this.enableDrawMode();
   }
 
   public toggleSelectSponge() {
@@ -412,9 +426,9 @@ export class GyBlackboardComponent extends Component {
 
   public selectNone() {
     this._selectedTool = null;
-    this.scope.isDrawing = false;
     this.classList.remove("chalk-selected");
     this.classList.remove("sponge-selected");
+    this.disableDrawMode();
   }
 
   public restore() {
@@ -441,6 +455,7 @@ export class GyBlackboardComponent extends Component {
     isDirty: false,
     isDrawing: false,
     editable: true,
+    $parent: undefined,
   };
 
   static get observedAttributes(): string[] {
