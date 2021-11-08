@@ -1,3 +1,11 @@
+body.blackboard-drawing {
+  gy-section-blackboard-slideshow {
+    .slideshow-controls {
+      display: none;
+    }
+  }
+}
+
 gy-section-blackboard-slideshow {
   .slideshow-controls {
     pointer-events: none;
@@ -5,7 +13,6 @@ gy-section-blackboard-slideshow {
       pointer-events: all;
     }
   }
-
 
   gy-blackboard {
     &:empty {
@@ -19,7 +26,11 @@ gy-section-blackboard-slideshow {
 
     .gy-blackboard-icons button {
       color: $white;
-      &:hover, &:active {
+      &.active {
+        opacity: $blackboard-active-button-opacity;
+        color: $red;
+      }
+      &:active, &:hover {
         opacity: $blackboard-active-button-opacity;
         color: $white;
       }
@@ -30,7 +41,11 @@ gy-section-blackboard-slideshow {
       @include media-breakpoint-up(md) {
         color: $dark;
         opacity: 0;
-        &:hover, &:active {
+        .active {
+          opacity: $blackboard-active-button-opacity;
+          color: $red;
+        }
+        &:active, &:hover {
           opacity: $blackboard-active-button-opacity;
           color: $dark;
         }
@@ -60,5 +75,4 @@ gy-section-blackboard-slideshow {
       }
     }
   }
-
 }

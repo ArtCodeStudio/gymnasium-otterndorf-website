@@ -19,7 +19,15 @@ export interface GyBlackboardComponentScope {
   isDrawing: boolean;
   editable: boolean;
   $parent?: Bs5SlideshowComponentScope;
+  activeTools: {
+    chalk: boolean;
+    sponge: boolean;
+  }
 }
+
+const DRAW_MODE_BODY_CLASS = "blackboard-drawing";
+const CHALK_SELECTED_CLASS = "chalk-selected";
+const SPONGE_SELECTED_CLASS = "sponge-selected";
 
 type GyBlackboardDrawingTool =
   | GyBlackboardComponent["_chalk"]
@@ -383,19 +391,21 @@ export class GyBlackboardComponent extends Component {
   public enableDrawMode() {
     this.scope.isDrawing = true;
     this.scope.$parent?.disableTouchScroll();
-    window.document.body.classList.add("blackboard-drawing");
+    window?.document?.body?.classList?.add(DRAW_MODE_BODY_CLASS);
   }
 
   public disableDrawMode() {
     this.scope.isDrawing = false;
     this.scope.$parent?.enableTouchScroll();
-    window.document.body.classList.remove("blackboard-drawing");
+    window?.document?.body?.classList?.remove(DRAW_MODE_BODY_CLASS);
   }
 
   public selectChalk() {
-    this._selectedTool = this._chalk;    
-    this.classList.add("chalk-selected");
-    this.classList.remove("sponge-selected");
+    this._selectedTool = this._chalk;
+    this.scope.activeTools.chalk = true;
+    this.scope.activeTools.sponge = false;
+    this.classList.add(CHALK_SELECTED_CLASS);
+    this.classList.remove(SPONGE_SELECTED_CLASS);
     this.enableDrawMode();
   }
 
@@ -408,11 +418,11 @@ export class GyBlackboardComponent extends Component {
   }
 
   public selectSponge() {
-    this.debug("selectSponge");
-    // TODO
     this._selectedTool = this._sponge;
-    this.classList.remove("chalk-selected");
-    this.classList.add("sponge-selected");
+    this.scope.activeTools.chalk = false;
+    this.scope.activeTools.sponge = true;
+    this.classList.remove(CHALK_SELECTED_CLASS);
+    this.classList.add(SPONGE_SELECTED_CLASS);
     this.enableDrawMode();
   }
 
@@ -426,6 +436,8 @@ export class GyBlackboardComponent extends Component {
 
   public selectNone() {
     this._selectedTool = null;
+    this.scope.activeTools.chalk = false;
+    this.scope.activeTools.sponge = false;
     this.classList.remove("chalk-selected");
     this.classList.remove("sponge-selected");
     this.disableDrawMode();
@@ -456,6 +468,10 @@ export class GyBlackboardComponent extends Component {
     isDrawing: false,
     editable: true,
     $parent: undefined,
+    activeTools: {
+      chalk: false,
+      sponge: false,
+    }
   };
 
   static get observedAttributes(): string[] {

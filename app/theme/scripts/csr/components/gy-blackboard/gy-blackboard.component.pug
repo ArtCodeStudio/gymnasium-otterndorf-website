@@ -1,8 +1,8 @@
 .editable(rv-if="editable")
   .gy-blackboard-icons
-    button.btn.btn-link.button-chalk(rv-on-click="toggleSelectChalk")
+    button.btn.btn-link.button-chalk(rv-on-click="toggleSelectChalk", rv-class-active="activeTools.chalk")
       bs5-icon.iconset.size-36.mb-2(src="/images/chalk.svg" size="36")
-    button.btn.btn-link.button-sponge(rv-on-click="toggleSelectSponge")
+    button.btn.btn-link.button-sponge(rv-on-click="toggleSelectSponge", rv-class-active="activeTools.sponge")
       bs5-icon.iconset.size-36(src="/images/sponge.svg" size="36")
     button.btn.btn-link.button-save(rv-if="isDirty" rv-on-click="save")
       bs5-icon.iconset.size-36(src="/iconset/svg/icon_floppy.svg" size="32")
