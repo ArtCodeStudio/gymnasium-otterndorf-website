@@ -545,27 +545,15 @@ export type StrapiGqlComponentMediaCenterMovieInput = {
 
 export type StrapiGqlComponentNavigationNavigationLevelEntry = {
   __typename?: 'ComponentNavigationNavigationLevelEntry';
-  children?: Maybe<Array<Maybe<StrapiGqlNavigationLink>>>;
   hideInSidebar?: Maybe<Scalars['Boolean']>;
   id: Scalars['ID'];
-  isRootElement?: Maybe<Scalars['Boolean']>;
   navigation_link?: Maybe<StrapiGqlNavigationLink>;
   parent?: Maybe<StrapiGqlNavigationLink>;
   title?: Maybe<Scalars['String']>;
 };
 
-
-export type StrapiGqlComponentNavigationNavigationLevelEntryChildrenArgs = {
-  limit?: Maybe<Scalars['Int']>;
-  sort?: Maybe<Scalars['String']>;
-  start?: Maybe<Scalars['Int']>;
-  where?: Maybe<Scalars['JSON']>;
-};
-
 export type StrapiGqlComponentNavigationNavigationLevelEntryInput = {
-  children?: Maybe<Array<Maybe<Scalars['ID']>>>;
   hideInSidebar?: Maybe<Scalars['Boolean']>;
-  isRootElement?: Maybe<Scalars['Boolean']>;
   navigation_link?: Maybe<Scalars['ID']>;
   parent?: Maybe<Scalars['ID']>;
   title?: Maybe<Scalars['String']>;
@@ -1036,6 +1024,7 @@ export enum StrapiGqlEnum_Componenttypescolor_Color {
   Green = 'green',
   Greenlight = 'greenlight',
   Light = 'light',
+  Purple = 'purple',
   Red = 'red',
   White = 'white',
   Yellow = 'yellow'
@@ -4238,10 +4227,8 @@ export type StrapiGqlEditComponentMediaCenterMovieInput = {
 };
 
 export type StrapiGqlEditComponentNavigationNavigationLevelEntryInput = {
-  children?: Maybe<Array<Maybe<Scalars['ID']>>>;
   hideInSidebar?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['ID']>;
-  isRootElement?: Maybe<Scalars['Boolean']>;
   navigation_link?: Maybe<Scalars['ID']>;
   parent?: Maybe<Scalars['ID']>;
   title?: Maybe<Scalars['String']>;

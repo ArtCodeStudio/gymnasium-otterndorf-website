@@ -2,19 +2,14 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "DOCUMENTATION",
+    "title": "Gymnasium Otterndorf Strapi REST API",
     "description": "",
-    "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
+    "termsOfService": "https://gym.artandcode.de/credits",
     "contact": {
-      "name": "TEAM",
-      "email": "contact-email@something.io",
-      "url": "mywebsite.io"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "x-generation-date": "11/05/2021 12:15:18 PM"
+      "name": "Art+Code Studio Team",
+      "email": "hi@artandcode.studio",
+      "url": "https://artandcode.studio/"
+    }
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -23,16 +18,16 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1337",
+      "url": "https://gym-strapi.artandcode.de",
       "description": "Development server"
     },
     {
-      "url": "YOUR_STAGING_SERVER",
-      "description": "Staging server"
+      "url": "https://strapi.gymnasium-otterndorf.de",
+      "description": "Production server"
     },
     {
-      "url": "YOUR_PRODUCTION_SERVER",
-      "description": "Production server"
+      "url": "http://localhost:1337",
+      "description": "Locale server"
     }
   ],
   "externalDocs": {
