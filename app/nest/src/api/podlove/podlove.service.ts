@@ -74,6 +74,7 @@ export class PodloveService {
        * - list of supported podcast clients on android, iOS, Windows, OSX
        * - only available clients on the used os/platform are shown
        * - order in list determines rendered order
+       * @see https://github.com/podlove/podlovers.org/blob/master/config/default-podlovers.json
        */
       clients: [
         // TODO
@@ -87,19 +88,26 @@ export class PodloveService {
         {
           id: 'beyond-pod',
         },
-        {
-          id: 'castro',
-        },
+        // TODO
+        // {
+        //   "id": "castbox",
+        //   "service": "Podlovers-id3117097"
+        // },
+        // TODO
+        // {
+        //   id: 'castro',
+        //   service: "id1523714548"
+        // },
         {
           id: 'clementine',
         },
         {
           id: 'downcast',
         },
-        // {
-        //   id: 'google-podcasts',
-        //   service: feedUrl,
-        // },
+        {
+          id: 'google-podcasts',
+          service: feedUrl,
+        },
         {
           id: 'gpodder',
         },
@@ -118,13 +126,6 @@ export class PodloveService {
         {
           id: 'player-fm',
         },
-        {
-          id: 'pocket-casts',
-        },
-        // {
-        //   id: 'pocket-casts',
-        //   service: feedUrl,
-        // },
         {
           id: 'pod-grasp',
         },
