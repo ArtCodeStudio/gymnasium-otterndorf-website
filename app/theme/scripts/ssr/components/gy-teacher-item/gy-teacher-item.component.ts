@@ -6,6 +6,7 @@ import pugTemplate from "./gy-teacher-item.component.pug";
 export interface Scope {
   teacher?: Teacher;
   showDate: boolean;
+  showAvatar: boolean;
   showBiography: boolean;
   catTextAt: number;
 }
@@ -19,12 +20,13 @@ export class GyTeacherItemComponent extends Component {
   scope: Scope = {
     teacher: undefined,
     showDate: false,
+    showAvatar: false,
     showBiography: false,
     catTextAt: -1,
   };
 
   static get observedAttributes(): string[] {
-    return ["teacher", "cat-text-at", "show-date"];
+    return ["teacher", "cat-text-at", "show-date", "show-avatar"];
   }
 
   protected requiredAttributes() {
