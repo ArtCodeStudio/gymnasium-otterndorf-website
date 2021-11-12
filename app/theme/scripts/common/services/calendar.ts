@@ -27,7 +27,7 @@ export class CalendarService extends NestService {
       options = { calendarKey };
     }
     const res = await this._getCached<CalendarEvent[]>(url, options, expiresIn);
-    let events = res.body || [];
+    let events = res?.body || [];
 
     if (events.length >= limit) {
       events = events.slice(0, limit);

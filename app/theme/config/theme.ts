@@ -12,7 +12,7 @@ export const config: ThemeConfigFile = (env: string | undefined) => {
       // One year cache on production
       ttl: env === "production" ? 31556952 : 0,
       refresh: {
-        active: env === "production",
+        active: env === "production" || env === "local",
         startPath: "/sitemap",
       },
     },

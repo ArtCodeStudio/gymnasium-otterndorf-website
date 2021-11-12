@@ -2,7 +2,8 @@
   "name": "@gymott/test",
   "private": true,
   "scripts": {
-    "start": "ts-node request-memory.ts"
+    "start:request": "ts-node request-memory.ts",
+    "start:webhook": "ts-node strapi-webhook-memory.ts"
   },
   "dependencies": {
     "node-fetch": "^2.6.6"

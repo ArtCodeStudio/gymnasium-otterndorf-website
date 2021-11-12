@@ -21,11 +21,11 @@ export class SearchService extends NestService {
       term
     )}?limit=${limit}`;
     const res = await this._getCached<SearchResult[]>(url);
-    if (res.status !== 200) {
-      throw new Error(res.body.toString());
+    if (res?.status !== 200) {
+      throw new Error(res?.body?.toString() || "No search result");
     }
 
-    if (res.body.length >= limit) {
+    if (res?.body?.length >= limit) {
       res.body = res.body.slice(0, limit);
     }
     return res.body;

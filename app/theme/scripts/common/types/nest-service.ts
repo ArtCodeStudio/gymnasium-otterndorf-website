@@ -8,7 +8,7 @@ export abstract class NestService {
   protected async _get<T>(url: string, options: HttpServiceOptions = {}) {
     const res = await HttpService.getJSON<T>(url, options);
     return {
-      body: res.body,
+      body: res?.body,
       status: res.status,
     };
   }

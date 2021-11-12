@@ -44,7 +44,7 @@ export class PodloveService extends NestService {
   public async getConfig(activeTab?: PodloveWebPlayerTab) {
     const url = this.host + PodloveService.getConfigPath(activeTab);
     const res = await this._getCached<PodloveWebPlayerConfig>(url);
-    return res.body;
+    return res?.body;
   }
 
   public async getConfigForEpisode(
@@ -55,19 +55,19 @@ export class PodloveService extends NestService {
       this.host +
       PodloveService.getConfigPathForEpisode(episodeSlug, activeTab);
     const res = await this._getCached<PodloveWebPlayerConfig>(url);
-    return res.body;
+    return res?.body;
   }
 
   public async get(slug: string) {
     const url = this.host + PodloveService.getEpisodeConfigPath(slug);
     const res = await this._getCached<PodloveWebPlayerEpisode>(url);
-    return res.body;
+    return res?.body;
   }
 
   public async latest() {
     const url = this.host + PodloveService.getLatestEpisodeConfigPath();
     const res = await this._getCached<PodloveWebPlayerEpisode>(url);
-    return res.body;
+    return res?.body;
   }
 
   public getHeader(

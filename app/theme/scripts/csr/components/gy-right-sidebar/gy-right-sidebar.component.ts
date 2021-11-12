@@ -26,7 +26,7 @@ export class GyRightSidebarComponent extends Component {
   }
 
   protected setSidebarStateClassToBody(state: SlideshowState) {
-    const body = document.body;
+    const body = document?.body;
     body.classList.remove("gy-right-sidebar-hidden");
     body.classList.remove("gy-right-sidebar-overlay-right");
     body.classList.remove("gy-right-sidebar-side-right");

@@ -18,6 +18,6 @@ export class SuggestService extends NestService {
   public async get(word: string) {
     const url = this.host + "/api/suggest/" + encodeURIComponent(word);
     const res = await this._getCached<SuggestResult[]>(url);
-    return res.body;
+    return res?.body;
   }
 }

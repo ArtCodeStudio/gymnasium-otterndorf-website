@@ -19,6 +19,6 @@ export class MensaMaxService extends NestService {
   async get(p: string, e: string, expiresIn: number | string = "60 mins") {
     const url = `${this.host}${this.url}/${p}/${e}`;
     const res = await this._getCached<MensaMaxData>(url, {}, expiresIn);
-    return await res.body;
+    return await res?.body;
   }
 }

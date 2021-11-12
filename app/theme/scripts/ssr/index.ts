@@ -80,7 +80,7 @@ riba.lifecycle.events.on("ComponentLifecycle:error", (error: Error) => {
   window.ssr.events.trigger("error", error);
 });
 
-const view = riba.bind(document.body, window.model);
+const view = riba.bind(document?.body, window.model);
 
 // WORKAROUND / FIXME view.traverse method seems not to be working in jsdom
 view.registComponents();

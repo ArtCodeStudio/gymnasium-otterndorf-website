@@ -113,7 +113,7 @@ export class GyNavbarComponent extends Component {
     const searchResults = Array.from(
       window?.document?.querySelectorAll<GySearchResultComponent>("gy-search-result") || []
     );
-    const body = document.body || null;
+    const body = document?.body || null;
     const hideNavbarShadowEl = document.querySelector<HTMLElement>(
       ".hide-navbar-shadow"
     );

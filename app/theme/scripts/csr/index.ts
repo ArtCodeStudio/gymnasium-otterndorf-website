@@ -104,7 +104,7 @@ export class CSRApp {
     this.riba.module.regist(podcastModule.init({}));
     this.riba.module.regist(strapiModule.init({}));
 
-    this.view = this.riba.bind(document.body, this.model);
+    this.view = this.riba.bind(document?.body, this.model);
 
     this.view.registComponents();
 

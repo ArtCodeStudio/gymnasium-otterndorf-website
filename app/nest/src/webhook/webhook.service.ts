@@ -23,10 +23,13 @@ export class WebhookService {
   protected log = new Logger(this.constructor.name);
   public async onWebhook(data: StrapiWebhookData) {
     // this.log.debug(`onWebhook ${JSON.stringify(data)}`);
-    // this.log.debug(`Reset cache..`);
+    this.log.debug(`Reset cache..`);
     await this.cacheManager.reset();
+    this.log.debug(`Refresh search..`);
     await this.search.refresh();
+    this.log.debug(`Reset suggestions..`);
     await this.suggest.resetAll();
+    this.log.debug(`Update cache..`);
     await this.refresh.refresh(process.env.NEST_EXTERN_URL);
   }
 }
