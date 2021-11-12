@@ -387,7 +387,7 @@ export class NavigationService {
     return tree;
   }
 
-  public async getMenu(expiresIn: number | string = "5 mins") {
+  public async getMenu(expiresIn: number | string = "15m") {
     return defaultCache.resolve<NavigationLink>(
       "menu",
       () => {

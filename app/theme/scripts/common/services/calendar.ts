@@ -19,7 +19,7 @@ export class CalendarService extends NestService {
   async get(
     calendarKey?: string,
     limit = 10,
-    expiresIn: number | string = "5 mins"
+    expiresIn: number | string = "12h"
   ) {
     const url = this.host + this.url;
     let options = {};

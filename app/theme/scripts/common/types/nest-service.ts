@@ -16,7 +16,7 @@ export abstract class NestService {
   protected async _getCached<T>(
     url: string,
     options: HttpServiceOptions = {},
-    expiresIn: number | string = "5 mins"
+    expiresIn: number | string = "15m"
   ) {
     return defaultCache.resolve<{ body: T; status: number }>(
       url + JSON.stringify(options),
