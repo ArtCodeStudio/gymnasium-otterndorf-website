@@ -289,14 +289,14 @@ export class SearchService implements OnModuleInit {
   }
 
   public async refresh() {
-    this.refreshPage();
-    this.refreshNav();
-    this.refreshPodcast();
-    this.refreshPost();
-    this.refreshBlog();
-    this.refreshSchoolSubject();
-    this.refreshTeacher();
-    this.refreshWorkingGroup();
+    await this.refreshPage();
+    await this.refreshNav();
+    await this.refreshPodcast();
+    await this.refreshPost();
+    await this.refreshBlog();
+    await this.refreshSchoolSubject();
+    await this.refreshTeacher();
+    await this.refreshWorkingGroup();
   }
 
   onModuleInit() {
@@ -304,7 +304,7 @@ export class SearchService implements OnModuleInit {
       this.refresh();
     } catch (error) {
       console.error(error);
-      throw error;
+      // throw error; Ignore error
     }
   }
 }

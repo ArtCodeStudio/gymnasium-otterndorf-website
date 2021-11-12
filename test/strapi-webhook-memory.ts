@@ -10,9 +10,10 @@ const start = async () => {
     console.info(url);
     try {
       await fetch(url, { method: 'POST' });
-      await sleep(3000);
     } catch (error) {
       console.error(error);
+    } finally {
+      await sleep(3000);
     }
   }
 };

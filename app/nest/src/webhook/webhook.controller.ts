@@ -19,7 +19,11 @@ export class WebhookController {
   @ApiExcludeEndpoint()
   @Post('strapi')
   async post(@Res() res: Response, @Body() body: StrapiWebhookData) {
-    this.webhook.onWebhook(body);
     res.json();
+    try {
+      this.webhook.onWebhook(body);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
