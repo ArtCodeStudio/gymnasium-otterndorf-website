@@ -12,12 +12,12 @@
   },
   "servers": [
     {
-      "url": "https://gym-strapi-student.artandcode.de",
-      "description": "Development server"
-    },
-    {
       "url": "https://strapi-student.gymnasium-otterndorf.de",
       "description": "Production server"
+    },
+    {
+      "url": "https://gym-strapi-student.artandcode.de",
+      "description": "Development server"
     },
     {
       "url": "http://localhost:1337",
