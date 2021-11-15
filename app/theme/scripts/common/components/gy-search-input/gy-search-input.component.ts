@@ -1,11 +1,11 @@
 import { Component, LifecycleService, EventDispatcher } from "@ribajs/core";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-search-input.component.pug";
-import { throttle } from "@ribajs/utils/src/control";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";
 
 export interface Scope {
   onChange: GySearchInputComponent["onChange"];
+  onInput: GySearchInputComponent["onInput"];
   onAddon: GySearchInputComponent["onAddon"];
   term: string;
 }
@@ -17,10 +17,15 @@ export class GySearchInputComponent extends Component {
   protected searchResultContainers: GySearchResultComponent[] = [];
   protected lifecycle = LifecycleService.getInstance();
   protected route = EventDispatcher.getInstance("main");
+  protected typingTimer: number | null = null;
+  protected doneTypingInterval = 3000;
 
-  public onChange = throttle(this._onChange.bind(this), 500);
+  // public onChange = throttle(this._onChange.bind(this), 2000);
+
+  protected onChange = this._onChange.bind(this);
 
   scope: Scope = {
+    onInput: this.onInput,
     onChange: this.onChange,
     onAddon: this.onAddon,
     term: "",
@@ -53,13 +58,25 @@ export class GySearchInputComponent extends Component {
     }
   }
 
+  protected async onInput(event: KeyboardEvent) {
+    if (this.typingTimer) {
+      window.clearTimeout(this.typingTimer);
+    }
+    // On enter do not wait for timeout
+    if (event.key === 'Enter' || event.keyCode === 13) {
+      console.debug("Enter");
+      return this._onChange();
+    }
+    this.typingTimer = window.setTimeout(this.onChange, this.doneTypingInterval);
+  }
+
   public onAddon() {
     this.resetTerm();
   }
 
   public setSuggest(term: string) {
     this.scope.term = term;
-    this._onChange();
+    this.onChange();
   }
 
   /**
