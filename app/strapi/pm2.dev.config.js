@@ -13,7 +13,7 @@ module.exports = {
         DATABASE_CLIENT: "sqlite",
         DATABASE_NAME: "strapi",
         DATABASE_USERNAME: "strapi",
-        PORT: "3002"
+        PORT: "4002"
       },
     },
   ],
