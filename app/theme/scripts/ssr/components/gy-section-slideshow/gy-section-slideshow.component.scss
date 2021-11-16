@@ -1,4 +1,26 @@
-gy-section-slideshow {
+gy-section-gallery-slideshow, gy-section-slideshow, gy-section-blog-slideshow {
+    display: block;
+
+    &.slideshow-style-art {
+        background: $gallery-art-background-image;
+        background-size: $gallery-art-background-size;
+        bs5-slideshow {
+          background: $gallery-background-gradient;
+        }
+        .card-image {
+          @extend .p-3;
+        }
+    }
+    &.slideshow-style-dreamy {
+        background: $gallery-dreamy-background-image;
+        background-size: $gallery-dreamy-background-size;   
+    }
+    &.slideshow-style-dreamy, &.slideshow-style-color {
+        .card-image {
+          @extend .p-1;
+        }
+    }
+
     bs5-slideshow {
         img {
             user-select: none;
@@ -8,6 +30,9 @@ gy-section-slideshow {
         .slideshow-controls, .slideshow-indicators {
             bs5-icon {
                 color: white;
+            }
+            &:focus {
+                box-shadow: none;
             }
         }
         .slideshow-row {
@@ -23,6 +48,7 @@ gy-section-slideshow {
 
             .progress {
                 .progress-bar {
+                    background-color: $white;
                     &[aria-valuenow="100"] {
                         width: 100% !important;
                     }
@@ -37,6 +63,40 @@ gy-section-slideshow {
                 @extend .h4;
                 @include media-breakpoint-up(xxl) { 
                     @include font-size($h1-font-size);
+                }
+            }
+        }
+    }
+
+    &.text-dark {
+        bs5-slideshow {
+            .slideshow-controls, .slideshow-indicators {
+                bs5-icon {
+                    color: $dark;;
+                }
+            }
+            .slideshow-indicators {
+                .progress {
+                    .progress-bar {
+                        background-color: $dark;
+                    }
+                }
+            }
+        }
+    }
+    
+    &.text-white {
+        bs5-slideshow {
+            .slideshow-controls, .slideshow-indicators {
+                bs5-icon {
+                    color: $white;;
+                }
+            }
+            .slideshow-indicators {
+                .progress {
+                    .progress-bar {
+                        background-color: $white;
+                    }
                 }
             }
         }

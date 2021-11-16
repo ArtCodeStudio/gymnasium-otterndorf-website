@@ -17,10 +17,10 @@ bs5-slideshow.row.py-5(xs-controls="false" md-controls="true" xs-indicators="tru
                     .col.me-1.px-0.py-2.indicators.cursor-pointer(csr-rv-each-slide="items" csr-rv-class-ms-1="%slide% | eq 0" csr-rv-on-click="goTo | args slide.index")
                         //- done and active slides
                         .progress(csr-rv-if="activeIndex | egt %slide%")
-                            .progress-bar.bg-white(role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100")
+                            .progress-bar(role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100")
                         //- next slide with moving progress bar
                         .progress(csr-rv-if="activeIndex | plus 1 | eq %slide%")
-                            .progress-bar.bg-white(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="intervalProgress" csr-rv-style-width="intervalProgress | append '%'")
+                            .progress-bar(role="progressbar" aria-valuemin="0" aria-valuemax="100" csr-rv-aria-valuenow="intervalProgress" csr-rv-style-width="intervalProgress | append '%'")
                         //- next unfinished slides
                         .progress(csr-rv-if="activeIndex | plus 1 | lt %slide%")
-                            .progress-bar.bg-white(role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0")
+                            .progress-bar(role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0")
