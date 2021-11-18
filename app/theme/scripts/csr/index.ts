@@ -65,6 +65,7 @@ export class CSRApp {
     this.riba.module.regist(
       routerModule.init({
         defaultTransition: new FadeTransition(),
+        scrollToAnchorOffset: 100,
       })
     );
     this.riba.module.regist(bs5Module.init({
