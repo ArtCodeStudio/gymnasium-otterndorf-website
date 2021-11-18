@@ -4,6 +4,9 @@ Monorepo of projects build with Nest.js + Riba.js + Strapi
 
 ![Screenshot](https://user-images.githubusercontent.com/1073989/141298525-7e74d0b8-efc4-4cca-adc4-2ace4a1846d6.png)
 
+## API
+
+This project has an open API, for more information [see here](https://gymnasium-otterndorf.de/credits#api).
 
 ## Workspaces
 
