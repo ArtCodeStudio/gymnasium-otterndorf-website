@@ -10,8 +10,8 @@ bs5-slideshow(rv-parent, rv-co-items="slides", xs-controls="false", xs-indicator
       //- Nav children
       .list-group.w-100.h-100.d-flex.justify-content-start(rv-if="slide.entry.type | eq 'list'")
         div(rv-each-child="slide.entry.children")
-          a.list-group-item.list-group-item-link.d-flex.align-items-center(rv-unless="child.children | size", rv-href="child.href", rv-class-disabled="child.href | not", rv-class-hide-in-sidebar="child.hideInSidebar", rv-route-class-active, rv-touch-events, rv-on-tap="$parent.$parent.$parent.onNavTap | args child slide")
+          a.list-group-item.list-group-item-link.d-flex.align-items-center(rv-unless="child.children | size", rv-href="child.href", rv-class-disabled="child.href | not", rv-class-hide-in-sidebar="child.hideInSidebar", rv-route-class-active="child.href", rv-touch-events, rv-on-tap="$parent.$parent.$parent.onNavTap | args child slide")
             span.text-truncate(rv-text="child.label")
-          a.list-group-item.list-group-item-parent.d-flex.align-items-center(rv-if="child.children | size", rv-href="child.href", rv-route-class-active, rv-class-hide-in-sidebar="child.hideInSidebar", rv-touch-events, rv-on-mouseover="$parent.$parent.$parent.onNavTapstart | args child slide", rv-on-tapstart="$parent.$parent.$parent.onNavTapstart | args child slide", rv-on-tap="$parent.$parent.$parent.onNavTap | args child slide")
+          a.list-group-item.list-group-item-parent.d-flex.align-items-center(rv-if="child.children | size", rv-href="child.href", rv-route-class-active="child.href", rv-class-hide-in-sidebar="child.hideInSidebar", rv-touch-events, rv-on-mouseover="$parent.$parent.$parent.onNavTapstart | args child slide", rv-on-tapstart="$parent.$parent.$parent.onNavTapstart | args child slide", rv-on-tap="$parent.$parent.$parent.onNavTap | args child slide")
             span.text-truncate(rv-text="child.label")
             bs5-icon.ms-auto(size="24", src="/iconset/svg/arrow_carrot.svg", direction="right")

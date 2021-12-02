@@ -1,4 +1,5 @@
-import { Component, LifecycleService, EventDispatcher } from "@ribajs/core";
+import { Component, LifecycleService } from "@ribajs/core";
+import { EventDispatcher } from "@ribajs/events";
 import { hasChildNodesTrim } from "@ribajs/utils/src/dom";
 import pugTemplate from "./gy-search-input.component.pug";
 import { GySearchResultComponent } from "../gy-search-result/gy-search-result.component";

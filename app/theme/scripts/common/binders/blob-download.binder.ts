@@ -3,8 +3,8 @@ import { Binder } from "@ribajs/core";
 /**
  * Sets the element's download value.
  */
-export const blobDownloadBinder: Binder<string> = {
-  name: "blob-download",
+ export class BlobDownloadBinder extends Binder<string, HTMLElement> {
+  static key = "blob-download";
   async routine(el: HTMLElement, url: string) {
     console.debug("download", url);
     if (!url) {
@@ -15,5 +15,5 @@ export const blobDownloadBinder: Binder<string> = {
     const blob = await data.blob();
     const objectUrl = URL.createObjectURL(blob);
     el.setAttribute("href", objectUrl);
-  },
+  }
 };
