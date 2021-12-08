@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import fetch from 'node-fetch';
+import fetch from '../../dependencies/fetch';
 import * as ical from 'ical';
 import type { CalendarEvent } from './types/calendar-event';
 
