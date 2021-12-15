@@ -9,10 +9,10 @@ module.exports = {
         STRAPI_REMOTE_URL: 'https://strapi.gymnasium-otterndorf.de',
         STRAPI_STUDENT_INTERN_URL:
           'https://strapi-student.gymnasium-otterndorf.de',
-        STRAPI_STUDENT_EXTERN_URL:
+        STRAPI_STUDENT_REMOTE_URL:
           'https://strapi-student.gymnasium-otterndorf.de',
         NEST_INTERN_URL: 'http://localhost:4001',
-        NEST_EXTERN_URL: 'http://localhost:4001',
+        NEST_REMOTE_URL: 'http://localhost:4001',
         PORT: '4001',
       },
     },

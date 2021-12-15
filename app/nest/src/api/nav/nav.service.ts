@@ -29,7 +29,7 @@ export class NavService {
       return src;
     }
 
-    let nestUrl = process.env.NEST_EXTERN_URL;
+    let nestUrl = process.env.NEST_REMOTE_URL;
 
     if (nestUrl.endsWith('/')) {
       nestUrl = nestUrl.substring(0, nestUrl.length - 1);
@@ -53,7 +53,7 @@ export class NavService {
     let strapiUrl =
       backend === 'strapi'
         ? process.env.STRAPI_REMOTE_URL
-        : process.env.STRAPI_STUDENT_EXTERN_URL;
+        : process.env.STRAPI_STUDENT_REMOTE_URL;
 
     if (strapiUrl.endsWith('/')) {
       strapiUrl = strapiUrl.substring(0, strapiUrl.length - 1);

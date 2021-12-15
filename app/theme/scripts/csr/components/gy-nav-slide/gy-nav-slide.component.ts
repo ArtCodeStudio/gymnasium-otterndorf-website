@@ -133,7 +133,9 @@ export class GyNavSlideComponent extends Component {
   }
 
   protected async afterBind() {
-    this.pjax = Pjax.getInstance();
+    if (!window.ssr) {
+      this.pjax = Pjax.getInstance();
+    }
     await super.afterBind();
   }
 

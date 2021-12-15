@@ -3,7 +3,7 @@ import { defaultCache } from "../services/cache";
 
 export abstract class NestService {
   protected host =
-    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_EXTERN_URL || "";
+    window?.ssr?.env?.NEST_INTERN_URL || window?.env?.NEST_REMOTE_URL || "";
 
   protected async _get<T>(url: string, options: HttpServiceOptions = {}) {
     const res = await HttpService.getJSON<T>(url, options);

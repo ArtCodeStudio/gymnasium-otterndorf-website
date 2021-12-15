@@ -3,7 +3,7 @@ footer.container-fluid.container-xxl
     .col-12.d-block.d-md-none
       gy-nav-slide.my-5
     .footer-map.col-12.col-md-6.px-0(rv-style-background-image="data.mapImageUrl | strapi")
-      leaflet-map(initial-lat="53.81002822661543" initial-lng="8.903347774026562" initial-zoom="20")
+      leaflet-map(initial-lat="53.81002822661543" initial-lng="8.903347774026562" initial-zoom="20" assets-dir="/images/vendors/leaflet/images/")
         marker(lat="53.81002822661543" lng="8.903347774026562" open-by-default="false") Gymnasium Otterndorf
       .footer-map-buttons.text-end
         //- Edit map depending on device

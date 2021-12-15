@@ -29,8 +29,8 @@ declare global {
   interface Window {
     env: {
       STRAPI_REMOTE_URL: string;
-      STRAPI_STUDENT_EXTERN_URL: string;
-      NEST_EXTERN_URL: string;
+      STRAPI_STUDENT_REMOTE_URL: string;
+      NEST_REMOTE_URL: string;
     };
   }
 }
@@ -68,34 +68,35 @@ export class CSRApp {
         scrollToAnchorOffset: 100,
       })
     );
-    this.riba.module.regist(bs5Module.init({
-      breakpoints: [
-        {
-          dimension: 0,
-          name: "xs",
-        },
-        {
-          dimension: 576,
-          name: "sm",
-        },
-        {
-          dimension: 768,
-          name: "md",
-        },
-        {
-          dimension: 992,
-          name: "lg",
-        },
-        {
-          dimension: 1100,
-          name: "xl",
-        },
-        {
-          dimension: 1400,
-          name: "xxl",
-        },
-      ]
-    })
+    this.riba.module.regist(
+      bs5Module.init({
+        breakpoints: [
+          {
+            dimension: 0,
+            name: "xs",
+          },
+          {
+            dimension: 576,
+            name: "sm",
+          },
+          {
+            dimension: 768,
+            name: "md",
+          },
+          {
+            dimension: 992,
+            name: "lg",
+          },
+          {
+            dimension: 1100,
+            name: "xl",
+          },
+          {
+            dimension: 1400,
+            name: "xxl",
+          },
+        ],
+      })
     );
     this.riba.module.regist(bs5PhotoswipeModule);
     this.riba.module.regist(leafletModule);

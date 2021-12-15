@@ -30,6 +30,6 @@ export class WebhookService {
     this.log.debug(`Reset suggestions..`);
     await this.suggest.resetAll();
     this.log.debug(`Update cache..`);
-    await this.refresh.refresh(process.env.NEST_EXTERN_URL);
+    await this.refresh.refresh(process.env.NEST_REMOTE_URL);
   }
 }

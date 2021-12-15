@@ -44,7 +44,7 @@ html(lang='en')
     script.
       window.env = {};
       window.env.STRAPI_REMOTE_URL = "#{env.STRAPI_REMOTE_URL}";
-      window.env.STRAPI_STUDENT_EXTERN_URL = "#{env.STRAPI_STUDENT_EXTERN_URL}";
-      window.env.NEST_EXTERN_URL = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : '');
+      window.env.STRAPI_STUDENT_REMOTE_URL = "#{env.STRAPI_STUDENT_REMOTE_URL}";
+      window.env.NEST_REMOTE_URL = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : '');
     script(src='/csr/vendors.bundle.js')
     script(src='/csr/main.bundle.js')

@@ -15,8 +15,8 @@ export const strapiStudentFormatter = {
     }
     if (!url.startsWith("http")) {
       const strapiStudentUrl =
-        window?.env?.STRAPI_STUDENT_EXTERN_URL ||
-        window?.ssr?.env?.STRAPI_STUDENT_EXTERN_URL ||
+        window?.env?.STRAPI_STUDENT_REMOTE_URL ||
+        window?.ssr?.env?.STRAPI_STUDENT_REMOTE_URL ||
         "";
       url = strapiStudentUrl + url;
     }

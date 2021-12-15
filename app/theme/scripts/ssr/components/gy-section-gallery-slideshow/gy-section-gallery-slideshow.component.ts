@@ -44,7 +44,7 @@ export class GySectionGallerySlideshowComponent extends Component {
 
   protected setStyle() {
     if (!this.scope.section?.gallery) {
-      console.warn("Gallery is required!");
+      this.debug("Gallery is required!", this.scope.section);
       return;
     }
     const { classes, textColor } = SlideshowService.getStyle(

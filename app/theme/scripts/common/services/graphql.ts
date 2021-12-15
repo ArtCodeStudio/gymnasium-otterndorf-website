@@ -29,8 +29,8 @@ export class GraphQLClient extends _GraphQLClient {
         url = window.ssr.env.STRAPI_STUDENT_INTERN_URL;
       }
       // CSR
-      if (window.env?.STRAPI_STUDENT_EXTERN_URL) {
-        url = window.env.STRAPI_STUDENT_EXTERN_URL;
+      if (window.env?.STRAPI_STUDENT_REMOTE_URL) {
+        url = window.env.STRAPI_STUDENT_REMOTE_URL;
       }
     } else {
       // SSR

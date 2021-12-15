@@ -14,7 +14,7 @@ export const nestFormatter = {
       return url;
     }
     let host =
-      window?.ssr?.env?.NEST_EXTERN_URL || window?.env?.NEST_EXTERN_URL || "";
+      window?.ssr?.env?.NEST_REMOTE_URL || window?.env?.NEST_REMOTE_URL || "";
 
     if (host.endsWith("/")) {
       host = host.substring(0, host.length - 1);

@@ -220,7 +220,9 @@ export class GySearchResultComponent extends Component {
   }
 
   protected async afterBind() {
-    this.pjax = Pjax.getInstance();
+    if (!window.ssr) {
+      this.pjax = Pjax.getInstance();
+    }
     this.prefetch = Prefetch.getInstance();
     await super.afterBind();
   }
@@ -230,7 +232,9 @@ export class GySearchResultComponent extends Component {
       await super.afterAllBind();
       if (!this.searchInputs || !this.searchInputs.length) {
         this.searchInputs = Array.from(
-          window?.document?.querySelectorAll<GySearchInputComponent>("gy-search-input") || []
+          window?.document?.querySelectorAll<GySearchInputComponent>(
+            "gy-search-input"
+          ) || []
         );
       }
     } catch (error) {

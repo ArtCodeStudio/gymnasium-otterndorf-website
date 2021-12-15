@@ -53,7 +53,7 @@ export class GySectionBlogSlideshowComponent extends Component {
 
   protected setStyle() {
     if (!this.scope.section) {
-      console.warn("Section is required!");
+      this.debug("Section is required!", this.scope.section);
       return;
     }
     const { classes, preferImage, textColor } = SlideshowService.getStyle(
