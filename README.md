@@ -162,33 +162,8 @@ pm2 logs <id>
 
 ## Style
 
-Bootstrap theme variables:
+Checkout the styles in [app/theme/styles/](app/theme/styles/).
 
-* blue - Used for dates
-* green - Used for news / posts
-* cyan - Used for pages
-* greenLight - ...
-* gray - Used for background: Navbar
-* ... For all theme colors see [_variables-bootstrap.scss](apps/gymott/theme/styles/_variables-bootstrap.scss) and [entry-type-color.ts](apps/gymott/theme/scripts/common/formatters/entry-type-color.ts)
+### Colors
 
-## Environments
-
-### Local
-
-Use the local environment if you want to develop on your locale machine. Start the App Manager with `yarn run start:local` in the root of this monorepo, this will use the config from from `config/local.ts`.
-
-## Known error messages
-
-```sh
-Cannot set property message of [object DOMException] which has only a getter
-```
-
-This means that something is wrong in the DOM, for example if a custom element has a name that is not valid, e.g. `404-page` (custom elements must not start with numbers).
-
---------
-
-```sh
-error: unknown option '--inspect'
-```
-
-You are using an old version of Node.js, please upgrade to >= 14.
+For all used theme colors see [_variables-bootstrap.scss](app/theme/styles/_variables-bootstrap.scss) and [entry-type-color.ts](app/theme/scripts/common/formatters/entry-type-color.ts)
