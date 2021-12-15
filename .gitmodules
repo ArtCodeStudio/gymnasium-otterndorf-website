@@ -1,9 +1,6 @@
 [submodule "packages/riba"]
 	path = packages/riba
 	url = https://github.com/ribajs/riba.git
-[submodule "packages/node-app-manager"]
-	path = packages/node-app-manager
-	url = https://github.com/ArtCodeStudio/node-app-manager.git
 [submodule "packages/node-podcast"]
 	path = packages/node-podcast
 	url = https://github.com/maxnowack/node-podcast.git
