@@ -22,7 +22,7 @@ export interface GyBlackboardComponentScope {
   activeTools: {
     chalk: boolean;
     sponge: boolean;
-  }
+  };
 }
 
 const DRAW_MODE_BODY_CLASS = "blackboard-drawing";
@@ -39,7 +39,7 @@ export class GyBlackboardComponent extends Component {
   protected autobind = true;
 
   private _canvas: HTMLCanvasElement | null = null;
-  private _ctx: CanvasRenderingContext2D | null = null;
+  private _cCtx: CanvasRenderingContext2D | null = null;
 
   private _math = {
     clamp(x: number, max: number, min?: number) {
@@ -144,10 +144,10 @@ export class GyBlackboardComponent extends Component {
         return;
       }
 
-      const ctx = canvas.getContext("2d");
+      const cCtx = canvas.getContext("2d");
 
-      if (!ctx) {
-        console.error(new Error("ctx is falsy!"));
+      if (!cCtx) {
+        console.error(new Error("cCtx is falsy!"));
         return;
       }
 
@@ -169,11 +169,11 @@ export class GyBlackboardComponent extends Component {
 
       const range = this.size / 2;
 
-      ctx.save();
-      ctx.fillStyle = this.fillColor;
-      ctx.globalCompositeOperation = this.globalCompositeOperation;
-      ctx.strokeStyle = this.strokeColor;
-      ctx.beginPath();
+      cCtx.save();
+      cCtx.fillStyle = this.fillColor;
+      cCtx.globalCompositeOperation = this.globalCompositeOperation;
+      cCtx.strokeStyle = this.strokeColor;
+      cCtx.beginPath();
       for (let i = 0; i < dotNum; i++) {
         let r = Math.random() * range;
         let c = Math.random() * Math.PI * 2;
@@ -192,7 +192,7 @@ export class GyBlackboardComponent extends Component {
 
           // draw fizzy stroke
           if (Math.random() < this.weights.fizzle) {
-            ctx!.lineWidth = Math.min(w, h) / 2;
+            cCtx!.lineWidth = Math.min(w, h) / 2;
             const arr = [
               [
                 [
@@ -219,47 +219,47 @@ export class GyBlackboardComponent extends Component {
               ],
             ];
             if (Math.random() > 0.5) {
-              (ctx!.moveTo as any)(...arr[0][0]);
-              (ctx!.lineTo as any)(...arr[0][1]);
+              (cCtx!.moveTo as any)(...arr[0][0]);
+              (cCtx!.lineTo as any)(...arr[0][1]);
             } else {
-              (ctx!.moveTo as any)(...arr[1][1]);
-              (ctx!.lineTo as any)(...arr[1][0]);
+              (cCtx!.moveTo as any)(...arr[1][1]);
+              (cCtx!.lineTo as any)(...arr[1][0]);
             }
           }
 
           // original chalk: draw rectangles
           if (Math.random() < this.weights.square) {
-            ctx.rect(x, y, w, h);
+            cCtx.rect(x, y, w, h);
           }
 
           // draw big surrounding stroke
           if (Math.random() < this.weights.surround) {
-            ctx.lineWidth = Math.min(w, h);
-            ctx.lineCap = ctx.lineJoin = "round";
+            cCtx.lineWidth = Math.min(w, h);
+            cCtx.lineCap = cCtx.lineJoin = "round";
             if (Math.random() > 0.5) {
-              ctx.moveTo(this.prev!.x, this.prev!.y);
-              ctx.lineTo(x + w, y + h);
+              cCtx.moveTo(this.prev!.x, this.prev!.y);
+              cCtx.lineTo(x + w, y + h);
             } else {
-              ctx.moveTo(this.prev!.x + w, this.prev!.y + h);
-              ctx.lineTo(x, y);
+              cCtx.moveTo(this.prev!.x + w, this.prev!.y + h);
+              cCtx.lineTo(x, y);
             }
           }
         }
       }
       if (this.strokeFillOrder === "stroke") {
-        ctx.stroke();
-        ctx.fill();
+        cCtx.stroke();
+        cCtx.fill();
       } else if (this.strokeFillOrder === "fill") {
-        ctx.fill();
-        ctx.stroke();
+        cCtx.fill();
+        cCtx.stroke();
       } else if (Math.random() > 0.5) {
-        ctx.stroke();
-        ctx.fill();
+        cCtx.stroke();
+        cCtx.fill();
       } else {
-        ctx.fill();
-        ctx.stroke();
+        cCtx.fill();
+        cCtx.stroke();
       }
-      ctx.restore();
+      cCtx.restore();
     },
   };
 
@@ -296,10 +296,10 @@ export class GyBlackboardComponent extends Component {
         return;
       }
 
-      const ctx = canvas.getContext("2d");
+      const cCtx = canvas.getContext("2d");
 
-      if (!ctx) {
-        console.error(new Error("ctx is falsy!"));
+      if (!cCtx) {
+        console.error(new Error("cCtx is falsy!"));
         return;
       }
 
@@ -319,11 +319,11 @@ export class GyBlackboardComponent extends Component {
         ) *
         10;
 
-      ctx.save();
-      ctx.fillStyle = this.fillColor;
-      ctx.globalCompositeOperation = this.globalCompositeOperation;
-      ctx.strokeStyle = this.strokeColor;
-      ctx.beginPath();
+      cCtx.save();
+      cCtx.fillStyle = this.fillColor;
+      cCtx.globalCompositeOperation = this.globalCompositeOperation;
+      cCtx.strokeStyle = this.strokeColor;
+      cCtx.beginPath();
       const w = ((Math.random() * dotSize + dotSize) * 3) / 4;
       const h = ((Math.random() * dotSize + dotSize) * 3) / 4;
       for (let j = 1; j <= stepNum; j++) {
@@ -331,10 +331,10 @@ export class GyBlackboardComponent extends Component {
 
         // draw big surrounding stroke
         if (Math.random() < this.weights.surround) {
-          ctx.lineWidth = Math.max(w, h);
-          ctx.lineCap = ctx.lineJoin = "round";
-          ctx.moveTo(this.prev!.x, this.prev!.y);
-          ctx.lineTo(p.x, p.y);
+          cCtx.lineWidth = Math.max(w, h);
+          cCtx.lineCap = cCtx.lineJoin = "round";
+          cCtx.moveTo(this.prev!.x, this.prev!.y);
+          cCtx.lineTo(p.x, p.y);
         }
       }
       if (vlen < 30 && Math.random() > 0.6) {
@@ -351,15 +351,15 @@ export class GyBlackboardComponent extends Component {
             } else if (Math.random() < 0.05) {
               rate *= 0.007;
             }
-            ctx.save();
-            ctx.lineWidth = amount * 0.8 + life * 0.2;
-            ctx.strokeStyle = "#4e4e4e";
-            ctx.lineCap = "round";
-            ctx.beginPath();
-            ctx.moveTo(lastPoint.x, lastPoint.y);
-            ctx.lineTo(point.x, point.y);
-            ctx.stroke();
-            ctx.restore();
+            cCtx.save();
+            cCtx.lineWidth = amount * 0.8 + life * 0.2;
+            cCtx.strokeStyle = "#4e4e4e";
+            cCtx.lineCap = "round";
+            cCtx.beginPath();
+            cCtx.moveTo(lastPoint.x, lastPoint.y);
+            cCtx.lineTo(point.x, point.y);
+            cCtx.stroke();
+            cCtx.restore();
             if (life > 0) {
               setTimeout(drawDrip, deltaT);
             }
@@ -372,19 +372,19 @@ export class GyBlackboardComponent extends Component {
         );
       }
       if (this.strokeFillOrder === "stroke") {
-        ctx.stroke();
-        ctx.fill();
+        cCtx.stroke();
+        cCtx.fill();
       } else if (this.strokeFillOrder === "fill") {
-        ctx.fill();
-        ctx.stroke();
+        cCtx.fill();
+        cCtx.stroke();
       } else if (Math.random() > 0.5) {
-        ctx.stroke();
-        ctx.fill();
+        cCtx.stroke();
+        cCtx.fill();
       } else {
-        ctx.fill();
-        ctx.stroke();
+        cCtx.fill();
+        cCtx.stroke();
       }
-      ctx.restore();
+      cCtx.restore();
     },
   };
 
@@ -471,7 +471,7 @@ export class GyBlackboardComponent extends Component {
     activeTools: {
       chalk: false,
       sponge: false,
-    }
+    },
   };
 
   static get observedAttributes(): string[] {
@@ -502,15 +502,15 @@ export class GyBlackboardComponent extends Component {
       return;
     }
 
-    this._ctx = this._canvas.getContext("2d");
+    this._cCtx = this._canvas.getContext("2d");
 
-    if (!this._ctx) {
-      console.error(new Error("ctx is falsy!"));
+    if (!this._cCtx) {
+      console.error(new Error("cCtx is falsy!"));
       return;
     }
 
-    this._ctx.fillStyle = "#4e4e4e";
-    this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
+    this._cCtx.fillStyle = "#4e4e4e";
+    this._cCtx.fillRect(0, 0, this._canvas.width, this._canvas.height);
     if (this.scope.backgroundImage) {
       const image = new Image();
       image.src = this.scope.backgroundImage;
@@ -526,7 +526,7 @@ export class GyBlackboardComponent extends Component {
       console.error(new Error("canvas is falsy!"));
       return;
     }
-    this._ctx?.drawImage(
+    this._cCtx?.drawImage(
       image,
       (this._canvas.width - image.width) / 2,
       (this._canvas.height - image.height) / 2
@@ -582,7 +582,7 @@ export class GyBlackboardComponent extends Component {
     super.connectedCallback();
     await this.init(GyBlackboardComponent.observedAttributes);
     const os = getOS();
-    // Canvas background images not working on safari ios, see https://github.com/cburgmer/rasterizeHTML.js/wiki/Limitations#safari 
+    // Canvas background images not working on safari ios, see https://github.com/cburgmer/rasterizeHTML.js/wiki/Limitations#safari
     if (os === "ios") {
       this.scope.editable = false;
     }

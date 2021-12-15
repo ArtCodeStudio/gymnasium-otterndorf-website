@@ -29,7 +29,7 @@ export class NotFoundPageComponent extends PageComponent {
     super();
     this.head.title = "404 Not found";
     this.scope.params = this.ctx.params;
-    this.scope.title = this.ctx.status.toString();
+    this.scope.title = this.ctx.status?.toString() || "404";
     this.scope.content = this.ctx.errorObj?.message || "Not found";
     this.scope.error = this.ctx.errorObj;
   }

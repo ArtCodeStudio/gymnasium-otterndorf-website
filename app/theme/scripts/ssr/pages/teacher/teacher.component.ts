@@ -108,6 +108,9 @@ export class TeacherPageComponent extends PageComponent {
 
   protected async beforeBind() {
     await super.beforeBind();
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     const slug = this.ctx.params.slug;
     if (!slug) {
       throw new Error("URL slug is required!");

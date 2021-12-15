@@ -81,6 +81,9 @@ export class WorkingGroupPageComponent extends PageComponent {
 
   protected async beforeBind() {
     await super.beforeBind();
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     const workingGroup = await this.setWorkingGroup(this.ctx.params.slug);
     if (workingGroup) {
       this.setHeader(workingGroup);

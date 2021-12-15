@@ -4475,11 +4475,12 @@ __metadata:
     "@ribajs/postcss-config": "workspace:*"
     "@ribajs/tsconfig": "workspace:*"
     "@tsconfig/node14": ^1.0.1
+    "@types/find-root": ^1.1.2
     "@types/node": ^16.11.13
     "@types/pkg-dir": ^2.0.1
     "@yarnpkg/esbuild-plugin-pnp": ^2.0.0
     "@yarnpkg/pnpify": ^3.1.1-rc.8
-    pkg-dir: ^6.0.1
+    find-root: ^1.1.0
     typescript: 4.5.4
   languageName: unknown
   linkType: soft
@@ -4924,6 +4925,7 @@ __metadata:
     "@nestjs/testing": ^8.2.3
     "@ribajs/core": "workspace:*"
     "@ribajs/events": "workspace:*"
+    "@ribajs/node-ssr": "workspace:^"
     "@ribajs/ssr": "workspace:*"
     "@types/cache-manager": ^3.4.2
     "@types/consolidate": ^0.14.1
@@ -4997,6 +4999,41 @@ __metadata:
     prettier: 2.5.1
     rimraf: ^3.0.2
     typescript: 4.5.4
+  languageName: unknown
+  linkType: soft
+
+"@ribajs/node-ssr@workspace:^, @ribajs/node-ssr@workspace:packages/riba/backend/node-ssr":
+  version: 0.0.0-use.local
+  resolution: "@ribajs/node-ssr@workspace:packages/riba/backend/node-ssr"
+  dependencies:
+    "@ribajs/core": "workspace:*"
+    "@ribajs/events": "workspace:*"
+    "@ribajs/ssr": "workspace:*"
+    "@types/consolidate": ^0.14.1
+    "@types/express": ^4.17.13
+    "@types/jsdom": ^16.2.13
+    "@types/node": ^16.11.13
+    "@types/node-fetch": ^2.5.12
+    "@types/yargs": ^17.0.7
+    "@typescript-eslint/eslint-plugin": ^5.7.0
+    "@typescript-eslint/parser": ^5.7.0
+    consolidate: ^0.16.0
+    eslint: ^8.4.1
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^4.0.0
+    express: ^4.17.1
+    jsdom: ^19.0.0
+    node-fetch: ^2.6.6
+    prettier: 2.5.1
+    rimraf: ^3.0.2
+    typescript: 4.5.4
+    yargs: ^17.3.0
+  peerDependencies:
+    pug: "*"
+    tinyliquid: "*"
+    twig: "*"
+  bin:
+    ssr: ./bin/run
   languageName: unknown
   linkType: soft
 

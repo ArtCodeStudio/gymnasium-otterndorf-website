@@ -53,6 +53,9 @@ export class PodcastEpisodePageComponent extends PageComponent {
   }
 
   protected setHeader(episode: StrapiGqlPodcastEpisodeBasicFragmentFragment) {
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     this.scope.header = this.podcast.getHeader(episode, this.ctx.params.slug);
     this.head.title = this.scope.header.title || episode.title;
   }
@@ -69,7 +72,7 @@ export class PodcastEpisodePageComponent extends PageComponent {
   }
 
   protected async beforeBind() {
-    if (this.ctx.params.slug) {
+    if (this.ctx.params?.slug) {
       const episode = await this.setEpisode(this.ctx.params.slug);
       this.setHeader(episode);
       await this.setOpenGraph(episode);

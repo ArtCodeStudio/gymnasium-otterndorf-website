@@ -116,6 +116,9 @@ export class BlogPageComponent extends PageComponent {
 
   protected async beforeBind() {
     await super.beforeBind();
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     const { category } = await this.setPosts(this.ctx.params.slug);
     const info = await this.setInfo();
     await this.setHeader(info, category);

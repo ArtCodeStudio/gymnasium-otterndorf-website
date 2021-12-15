@@ -47,6 +47,9 @@ export class MediaCenterPageComponent extends PageComponent {
   }
 
   protected async setMediaCenter() {
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     const mediaCenter = await this.mediaCenter.get(this.ctx.params.slug);
     if (mediaCenter) {
       if (mediaCenter.title) {

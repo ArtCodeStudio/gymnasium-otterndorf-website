@@ -48,9 +48,11 @@ export class BlogEntryPageComponent extends PageComponent {
   }
 
   protected async setPost() {
-    const post = await BlogService.getInstance().getPost(
-      this.scope.params.slug
-    );
+    const slug = this.ctx.params?.slug;
+    if (!slug) {
+      throw new Error("Slug is not defined!");
+    }
+    const post = await BlogService.getInstance().getPost(slug);
     if (post) {
       this.scope.sections = await this.blog.getSections(post);
     }
