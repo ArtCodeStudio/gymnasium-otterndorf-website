@@ -108,7 +108,8 @@ coverage
 
 .env
 license.txt
-exports
+exports/*
+!exports/graphql
 *.cache
 build
 .strapi-updater.json

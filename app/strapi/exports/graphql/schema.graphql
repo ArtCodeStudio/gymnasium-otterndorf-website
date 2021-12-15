@@ -1,0 +1,3666 @@
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+type BlogCategory {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  slug: String!
+  blog_entries(sort: String, limit: Int, start: Int, where: JSON): [BlogEntry]
+}
+
+type BlogCategoryConnection {
+  values: [BlogCategory]
+  groupBy: BlogCategoryGroupBy
+  aggregate: BlogCategoryAggregator
+}
+
+type BlogCategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BlogCategoryGroupBy {
+  id: [BlogCategoryConnectionId]
+  created_at: [BlogCategoryConnectionCreated_at]
+  updated_at: [BlogCategoryConnectionUpdated_at]
+  name: [BlogCategoryConnectionName]
+  slug: [BlogCategoryConnectionSlug]
+}
+
+type BlogCategoryConnectionId {
+  key: ID
+  connection: BlogCategoryConnection
+}
+
+type BlogCategoryConnectionCreated_at {
+  key: DateTime
+  connection: BlogCategoryConnection
+}
+
+type BlogCategoryConnectionUpdated_at {
+  key: DateTime
+  connection: BlogCategoryConnection
+}
+
+type BlogCategoryConnectionName {
+  key: String
+  connection: BlogCategoryConnection
+}
+
+type BlogCategoryConnectionSlug {
+  key: String
+  connection: BlogCategoryConnection
+}
+
+input BlogCategoryInput {
+  name: String!
+  blog_entries: [ID]
+  slug: String!
+  created_by: ID
+  updated_by: ID
+}
+
+input editBlogCategoryInput {
+  name: String
+  blog_entries: [ID]
+  slug: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createBlogCategoryInput {
+  data: BlogCategoryInput
+}
+
+type createBlogCategoryPayload {
+  blogCategory: BlogCategory
+}
+
+input updateBlogCategoryInput {
+  where: InputID
+  data: editBlogCategoryInput
+}
+
+type updateBlogCategoryPayload {
+  blogCategory: BlogCategory
+}
+
+input deleteBlogCategoryInput {
+  where: InputID
+}
+
+type deleteBlogCategoryPayload {
+  blogCategory: BlogCategory
+}
+
+union BlogEntryContentDynamicZone = ComponentContentText | ComponentContentImage | ComponentSectionGallerySlideshow | ComponentSectionSlideshow | ComponentContentButton | ComponentSectionBlogSlideshow | ComponentSectionBlackboardSlideshow | ComponentHomeCalendar | ComponentHomeNews | ComponentSectionFacts | ComponentStudentSectionStudentQuote | ComponentSectionIFrame | ComponentSectionMensaMax | ComponentSectionPodcastEpisode | ComponentContentDownloadButton | ComponentSectionLatestPodcastEpisode | ComponentSectionFormerStudents
+
+"""Input type for dynamic zone content of BlogEntry"""
+scalar BlogEntryContentDynamicZoneInput
+
+type BlogEntry {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  content: [BlogEntryContentDynamicZone]
+  blog_category: BlogCategory
+  slug: String!
+  author: String!
+  published_at: DateTime
+}
+
+type BlogEntryConnection {
+  values: [BlogEntry]
+  groupBy: BlogEntryGroupBy
+  aggregate: BlogEntryAggregator
+}
+
+type BlogEntryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BlogEntryGroupBy {
+  id: [BlogEntryConnectionId]
+  created_at: [BlogEntryConnectionCreated_at]
+  updated_at: [BlogEntryConnectionUpdated_at]
+  title: [BlogEntryConnectionTitle]
+  blog_category: [BlogEntryConnectionBlog_category]
+  slug: [BlogEntryConnectionSlug]
+  author: [BlogEntryConnectionAuthor]
+  published_at: [BlogEntryConnectionPublished_at]
+}
+
+type BlogEntryConnectionId {
+  key: ID
+  connection: BlogEntryConnection
+}
+
+type BlogEntryConnectionCreated_at {
+  key: DateTime
+  connection: BlogEntryConnection
+}
+
+type BlogEntryConnectionUpdated_at {
+  key: DateTime
+  connection: BlogEntryConnection
+}
+
+type BlogEntryConnectionTitle {
+  key: String
+  connection: BlogEntryConnection
+}
+
+type BlogEntryConnectionBlog_category {
+  key: ID
+  connection: BlogEntryConnection
+}
+
+type BlogEntryConnectionSlug {
+  key: String
+  connection: BlogEntryConnection
+}
+
+type BlogEntryConnectionAuthor {
+  key: String
+  connection: BlogEntryConnection
+}
+
+type BlogEntryConnectionPublished_at {
+  key: DateTime
+  connection: BlogEntryConnection
+}
+
+input BlogEntryInput {
+  title: String!
+  content: [BlogEntryContentDynamicZoneInput!]
+  blog_category: ID
+  slug: String!
+  author: String!
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editBlogEntryInput {
+  title: String
+  content: [BlogEntryContentDynamicZoneInput!]
+  blog_category: ID
+  slug: String
+  author: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createBlogEntryInput {
+  data: BlogEntryInput
+}
+
+type createBlogEntryPayload {
+  blogEntry: BlogEntry
+}
+
+input updateBlogEntryInput {
+  where: InputID
+  data: editBlogEntryInput
+}
+
+type updateBlogEntryPayload {
+  blogEntry: BlogEntry
+}
+
+input deleteBlogEntryInput {
+  where: InputID
+}
+
+type deleteBlogEntryPayload {
+  blogEntry: BlogEntry
+}
+
+type BlogInfo {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  description: String
+}
+
+input BlogInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editBlogInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input updateBlogInfoInput {
+  data: editBlogInfoInput
+}
+
+type updateBlogInfoPayload {
+  blogInfo: BlogInfo
+}
+
+type deleteBlogInfoPayload {
+  blogInfo: BlogInfo
+}
+
+type Footer {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  map_image: UploadFile
+  map_link: String
+  contact_info: String
+  link: [ComponentLinkItemLink]
+  published_at: DateTime
+}
+
+input FooterInput {
+  map_image: ID
+  map_link: String
+  contact_info: String
+  link: [ComponentLinkItemLinkInput]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editFooterInput {
+  map_image: ID
+  map_link: String
+  contact_info: String
+  link: [editComponentLinkItemLinkInput]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input updateFooterInput {
+  data: editFooterInput
+}
+
+type updateFooterPayload {
+  footer: Footer
+}
+
+type deleteFooterPayload {
+  footer: Footer
+}
+
+type FormerStudents {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  slug: String!
+  biography: String!
+  image: UploadFile
+  published_at: DateTime
+}
+
+type FormerStudentsConnection {
+  values: [FormerStudents]
+  groupBy: FormerStudentsGroupBy
+  aggregate: FormerStudentsAggregator
+}
+
+type FormerStudentsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type FormerStudentsGroupBy {
+  id: [FormerStudentsConnectionId]
+  created_at: [FormerStudentsConnectionCreated_at]
+  updated_at: [FormerStudentsConnectionUpdated_at]
+  name: [FormerStudentsConnectionName]
+  slug: [FormerStudentsConnectionSlug]
+  biography: [FormerStudentsConnectionBiography]
+  image: [FormerStudentsConnectionImage]
+  published_at: [FormerStudentsConnectionPublished_at]
+}
+
+type FormerStudentsConnectionId {
+  key: ID
+  connection: FormerStudentsConnection
+}
+
+type FormerStudentsConnectionCreated_at {
+  key: DateTime
+  connection: FormerStudentsConnection
+}
+
+type FormerStudentsConnectionUpdated_at {
+  key: DateTime
+  connection: FormerStudentsConnection
+}
+
+type FormerStudentsConnectionName {
+  key: String
+  connection: FormerStudentsConnection
+}
+
+type FormerStudentsConnectionSlug {
+  key: String
+  connection: FormerStudentsConnection
+}
+
+type FormerStudentsConnectionBiography {
+  key: String
+  connection: FormerStudentsConnection
+}
+
+type FormerStudentsConnectionImage {
+  key: ID
+  connection: FormerStudentsConnection
+}
+
+type FormerStudentsConnectionPublished_at {
+  key: DateTime
+  connection: FormerStudentsConnection
+}
+
+input FormerStudentInput {
+  name: String!
+  slug: String!
+  biography: String!
+  image: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editFormerStudentInput {
+  name: String
+  slug: String
+  biography: String
+  image: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createFormerStudentInput {
+  data: FormerStudentInput
+}
+
+type createFormerStudentPayload {
+  formerStudent: FormerStudents
+}
+
+input updateFormerStudentInput {
+  where: InputID
+  data: editFormerStudentInput
+}
+
+type updateFormerStudentPayload {
+  formerStudent: FormerStudents
+}
+
+input deleteFormerStudentInput {
+  where: InputID
+}
+
+type deleteFormerStudentPayload {
+  formerStudent: FormerStudents
+}
+
+enum ENUM_GALLERY_STYLE {
+  color
+  art
+  dreamy
+}
+
+type Gallery {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  slug: String
+  images: [ComponentGalleryImage]
+  style: ENUM_GALLERY_STYLE!
+  color: ComponentTypesColor
+}
+
+type GalleryConnection {
+  values: [Gallery]
+  groupBy: GalleryGroupBy
+  aggregate: GalleryAggregator
+}
+
+type GalleryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type GalleryGroupBy {
+  id: [GalleryConnectionId]
+  created_at: [GalleryConnectionCreated_at]
+  updated_at: [GalleryConnectionUpdated_at]
+  title: [GalleryConnectionTitle]
+  slug: [GalleryConnectionSlug]
+  style: [GalleryConnectionStyle]
+  color: [GalleryConnectionColor]
+}
+
+type GalleryConnectionId {
+  key: ID
+  connection: GalleryConnection
+}
+
+type GalleryConnectionCreated_at {
+  key: DateTime
+  connection: GalleryConnection
+}
+
+type GalleryConnectionUpdated_at {
+  key: DateTime
+  connection: GalleryConnection
+}
+
+type GalleryConnectionTitle {
+  key: String
+  connection: GalleryConnection
+}
+
+type GalleryConnectionSlug {
+  key: String
+  connection: GalleryConnection
+}
+
+type GalleryConnectionStyle {
+  key: String
+  connection: GalleryConnection
+}
+
+type GalleryConnectionColor {
+  key: ID
+  connection: GalleryConnection
+}
+
+input GalleryInput {
+  title: String
+  slug: String
+  images: [ComponentGalleryImageInput]
+  style: ENUM_GALLERY_STYLE
+  color: ComponentTypesColorInput
+  created_by: ID
+  updated_by: ID
+}
+
+input editGalleryInput {
+  title: String
+  slug: String
+  images: [editComponentGalleryImageInput]
+  style: ENUM_GALLERY_STYLE
+  color: editComponentTypesColorInput
+  created_by: ID
+  updated_by: ID
+}
+
+input createGalleryInput {
+  data: GalleryInput
+}
+
+type createGalleryPayload {
+  gallery: Gallery
+}
+
+input updateGalleryInput {
+  where: InputID
+  data: editGalleryInput
+}
+
+type updateGalleryPayload {
+  gallery: Gallery
+}
+
+input deleteGalleryInput {
+  where: InputID
+}
+
+type deleteGalleryPayload {
+  gallery: Gallery
+}
+
+type GeneralSettings {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  description: String!
+  language: String
+  image: UploadFile
+  copyright: String!
+  author_name: String
+  author_email: String
+}
+
+input GeneralSettingInput {
+  title: String
+  description: String!
+  language: String
+  image: ID
+  copyright: String!
+  author_name: String
+  author_email: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editGeneralSettingInput {
+  title: String
+  description: String
+  language: String
+  image: ID
+  copyright: String
+  author_name: String
+  author_email: String
+  created_by: ID
+  updated_by: ID
+}
+
+input updateGeneralSettingInput {
+  data: editGeneralSettingInput
+}
+
+type updateGeneralSettingPayload {
+  generalSetting: GeneralSettings
+}
+
+type deleteGeneralSettingPayload {
+  generalSetting: GeneralSettings
+}
+
+union HomeSectionsDynamicZone = ComponentSectionSlideshow | ComponentSectionFacts | ComponentContentText | ComponentContentImage | ComponentHomeNews | ComponentSectionGallerySlideshow | ComponentHomeCalendar | ComponentSectionBlackboardSlideshow | ComponentStudentSectionStudentQuote | ComponentContentButton | ComponentSectionBlogSlideshow | ComponentSectionIFrame | ComponentSectionMensaMax | ComponentSectionPodcastEpisode | ComponentContentDownloadButton | ComponentSectionLatestPodcastEpisode | ComponentSectionFormerStudents
+
+"""Input type for dynamic zone sections of Home"""
+scalar HomeSectionsDynamicZoneInput
+
+type Home {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  sections: [HomeSectionsDynamicZone]
+}
+
+input HomeInput {
+  sections: [HomeSectionsDynamicZoneInput!]
+  created_by: ID
+  updated_by: ID
+}
+
+input editHomeInput {
+  sections: [HomeSectionsDynamicZoneInput!]
+  created_by: ID
+  updated_by: ID
+}
+
+input updateHomeInput {
+  data: editHomeInput
+}
+
+type updateHomePayload {
+  home: Home
+}
+
+type deleteHomePayload {
+  home: Home
+}
+
+type MediaCenter {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  slug: String!
+  movies: [ComponentMediaCenterMovie]
+}
+
+type MediaCenterConnection {
+  values: [MediaCenter]
+  groupBy: MediaCenterGroupBy
+  aggregate: MediaCenterAggregator
+}
+
+type MediaCenterAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type MediaCenterGroupBy {
+  id: [MediaCenterConnectionId]
+  created_at: [MediaCenterConnectionCreated_at]
+  updated_at: [MediaCenterConnectionUpdated_at]
+  title: [MediaCenterConnectionTitle]
+  slug: [MediaCenterConnectionSlug]
+}
+
+type MediaCenterConnectionId {
+  key: ID
+  connection: MediaCenterConnection
+}
+
+type MediaCenterConnectionCreated_at {
+  key: DateTime
+  connection: MediaCenterConnection
+}
+
+type MediaCenterConnectionUpdated_at {
+  key: DateTime
+  connection: MediaCenterConnection
+}
+
+type MediaCenterConnectionTitle {
+  key: String
+  connection: MediaCenterConnection
+}
+
+type MediaCenterConnectionSlug {
+  key: String
+  connection: MediaCenterConnection
+}
+
+input MediaCenterInput {
+  title: String!
+  slug: String!
+  movies: [ComponentMediaCenterMovieInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editMediaCenterInput {
+  title: String
+  slug: String
+  movies: [editComponentMediaCenterMovieInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input createMediaCenterInput {
+  data: MediaCenterInput
+}
+
+type createMediaCenterPayload {
+  mediaCenter: MediaCenter
+}
+
+input updateMediaCenterInput {
+  where: InputID
+  data: editMediaCenterInput
+}
+
+type updateMediaCenterPayload {
+  mediaCenter: MediaCenter
+}
+
+input deleteMediaCenterInput {
+  where: InputID
+}
+
+type deleteMediaCenterPayload {
+  mediaCenter: MediaCenter
+}
+
+type Menu {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  navigation_level_entry: [ComponentNavigationNavigationLevelEntry]
+}
+
+input MenuInput {
+  navigation_level_entry: [ComponentNavigationNavigationLevelEntryInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input editMenuInput {
+  navigation_level_entry: [editComponentNavigationNavigationLevelEntryInput]
+  created_by: ID
+  updated_by: ID
+}
+
+input updateMenuInput {
+  data: editMenuInput
+}
+
+type updateMenuPayload {
+  menu: Menu
+}
+
+type deleteMenuPayload {
+  menu: Menu
+}
+
+union NavigationLinkTypeDynamicZone = ComponentLinkTypeWeb | ComponentLinkTypePage | ComponentLinkTypeStrapi | ComponentLinkTypePost | ComponentLinkTypeBlog | ComponentLinkTypeTeacher | ComponentLinkTypeGallery | ComponentLinkTypeMediaCenter | ComponentLinkTypePodcast | ComponentLinkTypeWorkingGroup | ComponentLinkTypeSchoolSubject
+
+"""Input type for dynamic zone type of NavigationLink"""
+scalar NavigationLinkTypeDynamicZoneInput
+
+type NavigationLink {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String
+  type: [NavigationLinkTypeDynamicZone]
+}
+
+type NavigationLinkConnection {
+  values: [NavigationLink]
+  groupBy: NavigationLinkGroupBy
+  aggregate: NavigationLinkAggregator
+}
+
+type NavigationLinkAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type NavigationLinkGroupBy {
+  id: [NavigationLinkConnectionId]
+  created_at: [NavigationLinkConnectionCreated_at]
+  updated_at: [NavigationLinkConnectionUpdated_at]
+  title: [NavigationLinkConnectionTitle]
+}
+
+type NavigationLinkConnectionId {
+  key: ID
+  connection: NavigationLinkConnection
+}
+
+type NavigationLinkConnectionCreated_at {
+  key: DateTime
+  connection: NavigationLinkConnection
+}
+
+type NavigationLinkConnectionUpdated_at {
+  key: DateTime
+  connection: NavigationLinkConnection
+}
+
+type NavigationLinkConnectionTitle {
+  key: String
+  connection: NavigationLinkConnection
+}
+
+input NavigationLinkInput {
+  title: String
+  type: [NavigationLinkTypeDynamicZoneInput!]
+  created_by: ID
+  updated_by: ID
+}
+
+input editNavigationLinkInput {
+  title: String
+  type: [NavigationLinkTypeDynamicZoneInput!]
+  created_by: ID
+  updated_by: ID
+}
+
+input createNavigationLinkInput {
+  data: NavigationLinkInput
+}
+
+type createNavigationLinkPayload {
+  navigationLink: NavigationLink
+}
+
+input updateNavigationLinkInput {
+  where: InputID
+  data: editNavigationLinkInput
+}
+
+type updateNavigationLinkPayload {
+  navigationLink: NavigationLink
+}
+
+input deleteNavigationLinkInput {
+  where: InputID
+}
+
+type deleteNavigationLinkPayload {
+  navigationLink: NavigationLink
+}
+
+type PageInfo {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  description: String
+}
+
+input PageInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editPageInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input updatePageInfoInput {
+  data: editPageInfoInput
+}
+
+type updatePageInfoPayload {
+  pageInfo: PageInfo
+}
+
+type deletePageInfoPayload {
+  pageInfo: PageInfo
+}
+
+union PageContentDynamicZone = ComponentContentImage | ComponentContentText | ComponentSectionSlideshow | ComponentSectionGallerySlideshow | ComponentSectionBlackboardSlideshow | ComponentContentButton | ComponentSectionBlogSlideshow | ComponentHomeNews | ComponentHomeCalendar | ComponentSectionFacts | ComponentStudentSectionStudentQuote | ComponentSectionIFrame | ComponentSectionMensaMax | ComponentSectionPodcastEpisode | ComponentContentDownloadButton | ComponentSectionLatestPodcastEpisode | ComponentSectionFormerStudents | ComponentSectionSubjectSelection
+
+"""Input type for dynamic zone content of Page"""
+scalar PageContentDynamicZoneInput
+
+union PageAssetsDynamicZone = ComponentAttachmentAssets
+
+"""Input type for dynamic zone assets of Page"""
+scalar PageAssetsDynamicZoneInput
+
+type Page {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  slug: String!
+  content: [PageContentDynamicZone]
+  calendar_key: String
+  assets: [PageAssetsDynamicZone]
+  blog_categories(sort: String, limit: Int, start: Int, where: JSON): [BlogCategory]
+}
+
+type PageConnection {
+  values: [Page]
+  groupBy: PageGroupBy
+  aggregate: PageAggregator
+}
+
+type PageAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PageGroupBy {
+  id: [PageConnectionId]
+  created_at: [PageConnectionCreated_at]
+  updated_at: [PageConnectionUpdated_at]
+  title: [PageConnectionTitle]
+  slug: [PageConnectionSlug]
+  calendar_key: [PageConnectionCalendar_key]
+}
+
+type PageConnectionId {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionCreated_at {
+  key: DateTime
+  connection: PageConnection
+}
+
+type PageConnectionUpdated_at {
+  key: DateTime
+  connection: PageConnection
+}
+
+type PageConnectionTitle {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionSlug {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionCalendar_key {
+  key: String
+  connection: PageConnection
+}
+
+input PageInput {
+  title: String!
+  slug: String!
+  content: [PageContentDynamicZoneInput!]
+  calendar_key: String
+  blog_categories: [ID]
+  assets: [PageAssetsDynamicZoneInput!]
+  created_by: ID
+  updated_by: ID
+}
+
+input editPageInput {
+  title: String
+  slug: String
+  content: [PageContentDynamicZoneInput!]
+  calendar_key: String
+  blog_categories: [ID]
+  assets: [PageAssetsDynamicZoneInput!]
+  created_by: ID
+  updated_by: ID
+}
+
+input createPageInput {
+  data: PageInput
+}
+
+type createPagePayload {
+  page: Page
+}
+
+input updatePageInput {
+  where: InputID
+  data: editPageInput
+}
+
+type updatePagePayload {
+  page: Page
+}
+
+input deletePageInput {
+  where: InputID
+}
+
+type deletePagePayload {
+  page: Page
+}
+
+enum ENUM_PODCASTEPISODE_TYPE {
+  Full
+  Trailer
+  Bonus
+}
+
+type PodcastEpisode {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  pubDate: DateTime
+  description: String!
+  image: UploadFile
+  explicit: Boolean!
+  type: ENUM_PODCASTEPISODE_TYPE!
+  block: Boolean!
+  slug: String!
+  season: Int!
+  episode: Int!
+  subtitle: String!
+  chapters: [ComponentPodcastChapters]
+  published_at: DateTime
+  content(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  contributors(sort: String, limit: Int, start: Int, where: JSON): [Podcaster]
+}
+
+type PodcastEpisodeConnection {
+  values: [PodcastEpisode]
+  groupBy: PodcastEpisodeGroupBy
+  aggregate: PodcastEpisodeAggregator
+}
+
+type PodcastEpisodeAggregator {
+  count: Int
+  totalCount: Int
+  sum: PodcastEpisodeAggregatorSum
+  avg: PodcastEpisodeAggregatorAvg
+  min: PodcastEpisodeAggregatorMin
+  max: PodcastEpisodeAggregatorMax
+}
+
+type PodcastEpisodeAggregatorSum {
+  season: Float
+  episode: Float
+}
+
+type PodcastEpisodeAggregatorAvg {
+  season: Float
+  episode: Float
+}
+
+type PodcastEpisodeAggregatorMin {
+  season: Float
+  episode: Float
+}
+
+type PodcastEpisodeAggregatorMax {
+  season: Float
+  episode: Float
+}
+
+type PodcastEpisodeGroupBy {
+  id: [PodcastEpisodeConnectionId]
+  created_at: [PodcastEpisodeConnectionCreated_at]
+  updated_at: [PodcastEpisodeConnectionUpdated_at]
+  title: [PodcastEpisodeConnectionTitle]
+  pubDate: [PodcastEpisodeConnectionPubDate]
+  description: [PodcastEpisodeConnectionDescription]
+  image: [PodcastEpisodeConnectionImage]
+  explicit: [PodcastEpisodeConnectionExplicit]
+  type: [PodcastEpisodeConnectionType]
+  block: [PodcastEpisodeConnectionBlock]
+  slug: [PodcastEpisodeConnectionSlug]
+  season: [PodcastEpisodeConnectionSeason]
+  episode: [PodcastEpisodeConnectionEpisode]
+  subtitle: [PodcastEpisodeConnectionSubtitle]
+  published_at: [PodcastEpisodeConnectionPublished_at]
+}
+
+type PodcastEpisodeConnectionId {
+  key: ID
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionCreated_at {
+  key: DateTime
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionUpdated_at {
+  key: DateTime
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionTitle {
+  key: String
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionPubDate {
+  key: DateTime
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionDescription {
+  key: String
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionImage {
+  key: ID
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionExplicit {
+  key: Boolean
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionType {
+  key: String
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionBlock {
+  key: Boolean
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionSlug {
+  key: String
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionSeason {
+  key: Int
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionEpisode {
+  key: Int
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionSubtitle {
+  key: String
+  connection: PodcastEpisodeConnection
+}
+
+type PodcastEpisodeConnectionPublished_at {
+  key: DateTime
+  connection: PodcastEpisodeConnection
+}
+
+input PodcastEpisodeInput {
+  title: String!
+  content: [ID]
+  pubDate: DateTime
+  description: String!
+  image: ID
+  explicit: Boolean
+  type: ENUM_PODCASTEPISODE_TYPE
+  block: Boolean
+  slug: String!
+  season: Int
+  episode: Int!
+  subtitle: String!
+  chapters: [ComponentPodcastChapterInput]
+  contributors: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editPodcastEpisodeInput {
+  title: String
+  content: [ID]
+  pubDate: DateTime
+  description: String
+  image: ID
+  explicit: Boolean
+  type: ENUM_PODCASTEPISODE_TYPE
+  block: Boolean
+  slug: String
+  season: Int
+  episode: Int
+  subtitle: String
+  chapters: [editComponentPodcastChapterInput]
+  contributors: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createPodcastEpisodeInput {
+  data: PodcastEpisodeInput
+}
+
+type createPodcastEpisodePayload {
+  podcastEpisode: PodcastEpisode
+}
+
+input updatePodcastEpisodeInput {
+  where: InputID
+  data: editPodcastEpisodeInput
+}
+
+type updatePodcastEpisodePayload {
+  podcastEpisode: PodcastEpisode
+}
+
+input deletePodcastEpisodeInput {
+  where: InputID
+}
+
+type deletePodcastEpisodePayload {
+  podcastEpisode: PodcastEpisode
+}
+
+enum ENUM_PODCASTFEED_TYPE {
+  Episodic
+  Serial
+}
+
+type PodcastFeed {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  description: String!
+  image: UploadFile
+  language: String!
+  category: [ComponentPodcastCategory]
+  explicit: Boolean!
+  author: String!
+  owner_name: String!
+  owner_email: String!
+  type: ENUM_PODCASTFEED_TYPE!
+  copyright: String!
+  block: Boolean!
+  complete: Boolean!
+  subtitle: String!
+  blogs(sort: String, limit: Int, start: Int, where: JSON): [BlogCategory]
+}
+
+input PodcastFeedInput {
+  title: String!
+  description: String!
+  image: ID
+  language: String
+  category: [ComponentPodcastCategoryInput!]
+  explicit: Boolean
+  author: String
+  owner_name: String!
+  owner_email: String
+  type: ENUM_PODCASTFEED_TYPE
+  copyright: String
+  block: Boolean
+  complete: Boolean
+  blogs: [ID]
+  subtitle: String!
+  created_by: ID
+  updated_by: ID
+}
+
+input editPodcastFeedInput {
+  title: String
+  description: String
+  image: ID
+  language: String
+  category: [editComponentPodcastCategoryInput]
+  explicit: Boolean
+  author: String
+  owner_name: String
+  owner_email: String
+  type: ENUM_PODCASTFEED_TYPE
+  copyright: String
+  block: Boolean
+  complete: Boolean
+  blogs: [ID]
+  subtitle: String
+  created_by: ID
+  updated_by: ID
+}
+
+input updatePodcastFeedInput {
+  data: editPodcastFeedInput
+}
+
+type updatePodcastFeedPayload {
+  podcastFeed: PodcastFeed
+}
+
+type deletePodcastFeedPayload {
+  podcastFeed: PodcastFeed
+}
+
+type Podcaster {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  slug: String
+  biography: String
+  image: UploadFile
+  podcast_episodes: PodcastEpisode
+  published_at: DateTime
+}
+
+type PodcasterConnection {
+  values: [Podcaster]
+  groupBy: PodcasterGroupBy
+  aggregate: PodcasterAggregator
+}
+
+type PodcasterAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type PodcasterGroupBy {
+  id: [PodcasterConnectionId]
+  created_at: [PodcasterConnectionCreated_at]
+  updated_at: [PodcasterConnectionUpdated_at]
+  name: [PodcasterConnectionName]
+  slug: [PodcasterConnectionSlug]
+  biography: [PodcasterConnectionBiography]
+  image: [PodcasterConnectionImage]
+  podcast_episodes: [PodcasterConnectionPodcast_episodes]
+  published_at: [PodcasterConnectionPublished_at]
+}
+
+type PodcasterConnectionId {
+  key: ID
+  connection: PodcasterConnection
+}
+
+type PodcasterConnectionCreated_at {
+  key: DateTime
+  connection: PodcasterConnection
+}
+
+type PodcasterConnectionUpdated_at {
+  key: DateTime
+  connection: PodcasterConnection
+}
+
+type PodcasterConnectionName {
+  key: String
+  connection: PodcasterConnection
+}
+
+type PodcasterConnectionSlug {
+  key: String
+  connection: PodcasterConnection
+}
+
+type PodcasterConnectionBiography {
+  key: String
+  connection: PodcasterConnection
+}
+
+type PodcasterConnectionImage {
+  key: ID
+  connection: PodcasterConnection
+}
+
+type PodcasterConnectionPodcast_episodes {
+  key: ID
+  connection: PodcasterConnection
+}
+
+type PodcasterConnectionPublished_at {
+  key: DateTime
+  connection: PodcasterConnection
+}
+
+input PodcasterInput {
+  name: String!
+  slug: String
+  biography: String
+  image: ID
+  podcast_episodes: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editPodcasterInput {
+  name: String
+  slug: String
+  biography: String
+  image: ID
+  podcast_episodes: ID
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createPodcasterInput {
+  data: PodcasterInput
+}
+
+type createPodcasterPayload {
+  podcaster: Podcaster
+}
+
+input updatePodcasterInput {
+  where: InputID
+  data: editPodcasterInput
+}
+
+type updatePodcasterPayload {
+  podcaster: Podcaster
+}
+
+input deletePodcasterInput {
+  where: InputID
+}
+
+type deletePodcasterPayload {
+  podcaster: Podcaster
+}
+
+type SchoolSubjectInfo {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  description: String
+}
+
+input SchoolSubjectInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editSchoolSubjectInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input updateSchoolSubjectInfoInput {
+  data: editSchoolSubjectInfoInput
+}
+
+type updateSchoolSubjectInfoPayload {
+  schoolSubjectInfo: SchoolSubjectInfo
+}
+
+type deleteSchoolSubjectInfoPayload {
+  schoolSubjectInfo: SchoolSubjectInfo
+}
+
+union SectionSlideshowEntriesDynamicZone = ComponentSlideshowSlideshowEntry | ComponentSlideshowSlideshowEntryBlog | ComponentSlideshowSlideshowEntryPage
+
+"""Input type for dynamic zone entries of SectionSlideshow"""
+scalar SectionSlideshowEntriesDynamicZoneInput
+
+type SectionSlideshow {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  entries: [SectionSlideshowEntriesDynamicZone]!
+  title: String!
+}
+
+type SectionSlideshowConnection {
+  values: [SectionSlideshow]
+  groupBy: SectionSlideshowGroupBy
+  aggregate: SectionSlideshowAggregator
+}
+
+type SectionSlideshowAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type SectionSlideshowGroupBy {
+  id: [SectionSlideshowConnectionId]
+  created_at: [SectionSlideshowConnectionCreated_at]
+  updated_at: [SectionSlideshowConnectionUpdated_at]
+  title: [SectionSlideshowConnectionTitle]
+}
+
+type SectionSlideshowConnectionId {
+  key: ID
+  connection: SectionSlideshowConnection
+}
+
+type SectionSlideshowConnectionCreated_at {
+  key: DateTime
+  connection: SectionSlideshowConnection
+}
+
+type SectionSlideshowConnectionUpdated_at {
+  key: DateTime
+  connection: SectionSlideshowConnection
+}
+
+type SectionSlideshowConnectionTitle {
+  key: String
+  connection: SectionSlideshowConnection
+}
+
+input SectionSlideshowInput {
+  entries: [SectionSlideshowEntriesDynamicZoneInput!]!
+  title: String!
+  created_by: ID
+  updated_by: ID
+}
+
+input editSectionSlideshowInput {
+  entries: [SectionSlideshowEntriesDynamicZoneInput!]!
+  title: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createSectionSlideshowInput {
+  data: SectionSlideshowInput
+}
+
+type createSectionSlideshowPayload {
+  sectionSlideshow: SectionSlideshow
+}
+
+input updateSectionSlideshowInput {
+  where: InputID
+  data: editSectionSlideshowInput
+}
+
+type updateSectionSlideshowPayload {
+  sectionSlideshow: SectionSlideshow
+}
+
+input deleteSectionSlideshowInput {
+  where: InputID
+}
+
+type deleteSectionSlideshowPayload {
+  sectionSlideshow: SectionSlideshow
+}
+
+union SubjectContentDynamicZone = ComponentContentImage | ComponentContentText | ComponentSectionGallerySlideshow | ComponentSectionSlideshow | ComponentSectionBlackboardSlideshow | ComponentContentButton | ComponentSectionBlogSlideshow | ComponentHomeNews | ComponentHomeCalendar | ComponentSectionFacts | ComponentStudentSectionStudentQuote | ComponentSectionIFrame | ComponentSectionMensaMax | ComponentSectionPodcastEpisode | ComponentContentDownloadButton | ComponentSectionLatestPodcastEpisode | ComponentSectionFormerStudents
+
+"""Input type for dynamic zone content of Subject"""
+scalar SubjectContentDynamicZoneInput
+
+type Subject {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  content: [SubjectContentDynamicZone]
+  slug: String!
+  blackboard_image: UploadFile
+  teachers(sort: String, limit: Int, start: Int, where: JSON): [Teacher]
+}
+
+type SubjectConnection {
+  values: [Subject]
+  groupBy: SubjectGroupBy
+  aggregate: SubjectAggregator
+}
+
+type SubjectAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type SubjectGroupBy {
+  id: [SubjectConnectionId]
+  created_at: [SubjectConnectionCreated_at]
+  updated_at: [SubjectConnectionUpdated_at]
+  title: [SubjectConnectionTitle]
+  slug: [SubjectConnectionSlug]
+  blackboard_image: [SubjectConnectionBlackboard_image]
+}
+
+type SubjectConnectionId {
+  key: ID
+  connection: SubjectConnection
+}
+
+type SubjectConnectionCreated_at {
+  key: DateTime
+  connection: SubjectConnection
+}
+
+type SubjectConnectionUpdated_at {
+  key: DateTime
+  connection: SubjectConnection
+}
+
+type SubjectConnectionTitle {
+  key: String
+  connection: SubjectConnection
+}
+
+type SubjectConnectionSlug {
+  key: String
+  connection: SubjectConnection
+}
+
+type SubjectConnectionBlackboard_image {
+  key: ID
+  connection: SubjectConnection
+}
+
+input SubjectInput {
+  title: String!
+  teachers: [ID]
+  content: [SubjectContentDynamicZoneInput!]
+  slug: String!
+  blackboard_image: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editSubjectInput {
+  title: String
+  teachers: [ID]
+  content: [SubjectContentDynamicZoneInput!]
+  slug: String
+  blackboard_image: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createSubjectInput {
+  data: SubjectInput
+}
+
+type createSubjectPayload {
+  subject: Subject
+}
+
+input updateSubjectInput {
+  where: InputID
+  data: editSubjectInput
+}
+
+type updateSubjectPayload {
+  subject: Subject
+}
+
+input deleteSubjectInput {
+  where: InputID
+}
+
+type deleteSubjectPayload {
+  subject: Subject
+}
+
+type TeacherInfo {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  description: String
+}
+
+input TeacherInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editTeacherInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input updateTeacherInfoInput {
+  data: editTeacherInfoInput
+}
+
+type updateTeacherInfoPayload {
+  teacherInfo: TeacherInfo
+}
+
+type deleteTeacherInfoPayload {
+  teacherInfo: TeacherInfo
+}
+
+union TeacherAssetsDynamicZone = ComponentAttachmentAssets
+
+"""Input type for dynamic zone assets of Teacher"""
+scalar TeacherAssetsDynamicZoneInput
+
+type Teacher {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  image: UploadFile
+  name: String!
+  slug: String!
+  biography: String
+  assets: [TeacherAssetsDynamicZone]
+  subjects(sort: String, limit: Int, start: Int, where: JSON): [Subject]
+  working_groups(sort: String, limit: Int, start: Int, where: JSON): [WorkingGroup]
+}
+
+type TeacherConnection {
+  values: [Teacher]
+  groupBy: TeacherGroupBy
+  aggregate: TeacherAggregator
+}
+
+type TeacherAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type TeacherGroupBy {
+  id: [TeacherConnectionId]
+  created_at: [TeacherConnectionCreated_at]
+  updated_at: [TeacherConnectionUpdated_at]
+  image: [TeacherConnectionImage]
+  name: [TeacherConnectionName]
+  slug: [TeacherConnectionSlug]
+  biography: [TeacherConnectionBiography]
+}
+
+type TeacherConnectionId {
+  key: ID
+  connection: TeacherConnection
+}
+
+type TeacherConnectionCreated_at {
+  key: DateTime
+  connection: TeacherConnection
+}
+
+type TeacherConnectionUpdated_at {
+  key: DateTime
+  connection: TeacherConnection
+}
+
+type TeacherConnectionImage {
+  key: ID
+  connection: TeacherConnection
+}
+
+type TeacherConnectionName {
+  key: String
+  connection: TeacherConnection
+}
+
+type TeacherConnectionSlug {
+  key: String
+  connection: TeacherConnection
+}
+
+type TeacherConnectionBiography {
+  key: String
+  connection: TeacherConnection
+}
+
+input TeacherInput {
+  image: ID
+  name: String!
+  subjects: [ID]
+  slug: String!
+  biography: String
+  assets: [TeacherAssetsDynamicZoneInput!]
+  working_groups: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editTeacherInput {
+  image: ID
+  name: String
+  subjects: [ID]
+  slug: String
+  biography: String
+  assets: [TeacherAssetsDynamicZoneInput!]
+  working_groups: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createTeacherInput {
+  data: TeacherInput
+}
+
+type createTeacherPayload {
+  teacher: Teacher
+}
+
+input updateTeacherInput {
+  where: InputID
+  data: editTeacherInput
+}
+
+type updateTeacherPayload {
+  teacher: Teacher
+}
+
+input deleteTeacherInput {
+  where: InputID
+}
+
+type deleteTeacherPayload {
+  teacher: Teacher
+}
+
+union ToolbarItemsDynamicZone = ComponentLinkItemText
+
+"""Input type for dynamic zone items of Toolbar"""
+scalar ToolbarItemsDynamicZoneInput
+
+type Toolbar {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  items: [ToolbarItemsDynamicZone]
+}
+
+input ToolbarInput {
+  items: [ToolbarItemsDynamicZoneInput!]
+  created_by: ID
+  updated_by: ID
+}
+
+input editToolbarInput {
+  items: [ToolbarItemsDynamicZoneInput!]
+  created_by: ID
+  updated_by: ID
+}
+
+input updateToolbarInput {
+  data: editToolbarInput
+}
+
+type updateToolbarPayload {
+  toolbar: Toolbar
+}
+
+type deleteToolbarPayload {
+  toolbar: Toolbar
+}
+
+type WorkingGroupInfo {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  description: String
+}
+
+input WorkingGroupInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editWorkingGroupInfoInput {
+  title: String
+  description: String
+  created_by: ID
+  updated_by: ID
+}
+
+input updateWorkingGroupInfoInput {
+  data: editWorkingGroupInfoInput
+}
+
+type updateWorkingGroupInfoPayload {
+  workingGroupInfo: WorkingGroupInfo
+}
+
+type deleteWorkingGroupInfoPayload {
+  workingGroupInfo: WorkingGroupInfo
+}
+
+union WorkingGroupContentDynamicZone = ComponentSectionIFrame | ComponentSectionSlideshow | ComponentSectionPodcastEpisode | ComponentSectionGallerySlideshow | ComponentSectionFormerStudents | ComponentSectionBlogSlideshow | ComponentSectionBlackboardSlideshow | ComponentSectionMensaMax | ComponentSectionLatestPodcastEpisode | ComponentSectionFacts | ComponentContentDownloadButton | ComponentContentText | ComponentContentImage | ComponentContentButton | ComponentHomeNews | ComponentHomeCalendar | ComponentHomeFact | ComponentStudentSectionStudentQuote
+
+"""Input type for dynamic zone content of WorkingGroup"""
+scalar WorkingGroupContentDynamicZoneInput
+
+type WorkingGroup {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title: String!
+  content: [WorkingGroupContentDynamicZone]
+  slug: String!
+  teachers(sort: String, limit: Int, start: Int, where: JSON): [Teacher]
+}
+
+type WorkingGroupConnection {
+  values: [WorkingGroup]
+  groupBy: WorkingGroupGroupBy
+  aggregate: WorkingGroupAggregator
+}
+
+type WorkingGroupAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type WorkingGroupGroupBy {
+  id: [WorkingGroupConnectionId]
+  created_at: [WorkingGroupConnectionCreated_at]
+  updated_at: [WorkingGroupConnectionUpdated_at]
+  title: [WorkingGroupConnectionTitle]
+  slug: [WorkingGroupConnectionSlug]
+}
+
+type WorkingGroupConnectionId {
+  key: ID
+  connection: WorkingGroupConnection
+}
+
+type WorkingGroupConnectionCreated_at {
+  key: DateTime
+  connection: WorkingGroupConnection
+}
+
+type WorkingGroupConnectionUpdated_at {
+  key: DateTime
+  connection: WorkingGroupConnection
+}
+
+type WorkingGroupConnectionTitle {
+  key: String
+  connection: WorkingGroupConnection
+}
+
+type WorkingGroupConnectionSlug {
+  key: String
+  connection: WorkingGroupConnection
+}
+
+input WorkingGroupInput {
+  title: String!
+  teachers: [ID]
+  content: [WorkingGroupContentDynamicZoneInput!]
+  slug: String!
+  created_by: ID
+  updated_by: ID
+}
+
+input editWorkingGroupInput {
+  title: String
+  teachers: [ID]
+  content: [WorkingGroupContentDynamicZoneInput!]
+  slug: String
+  created_by: ID
+  updated_by: ID
+}
+
+input createWorkingGroupInput {
+  data: WorkingGroupInput
+}
+
+type createWorkingGroupPayload {
+  workingGroup: WorkingGroup
+}
+
+input updateWorkingGroupInput {
+  where: InputID
+  data: editWorkingGroupInput
+}
+
+type updateWorkingGroupPayload {
+  workingGroup: WorkingGroup
+}
+
+input deleteWorkingGroupInput {
+  where: InputID
+}
+
+type deleteWorkingGroupPayload {
+  workingGroup: WorkingGroup
+}
+
+type I18NLocale {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+type ComponentAttachmentAssets {
+  id: ID!
+  file: UploadFile
+  name: String!
+}
+
+input ComponentAttachmentAssetInput {
+  file: ID
+  name: String!
+}
+
+input editComponentAttachmentAssetInput {
+  id: ID
+  file: ID
+  name: String
+}
+
+type ComponentBlackboardSlide {
+  id: ID!
+  school_subject: Subject
+  image: UploadFile
+}
+
+input ComponentBlackboardSlideInput {
+  school_subject: ID
+  image: ID
+  name: String
+}
+
+input editComponentBlackboardSlideInput {
+  id: ID
+  school_subject: ID
+  image: ID
+  name: String
+}
+
+type ComponentContentButton {
+  id: ID!
+  label: String!
+  color: ComponentTypesColor
+  link: NavigationLink
+  alignment: ComponentTypesAlignment
+  disabled: Boolean
+}
+
+input ComponentContentButtonInput {
+  label: String!
+  color: ComponentTypesColorInput!
+  link: ID
+  alignment: ComponentTypesAlignmentInput!
+  disabled: Boolean
+}
+
+input editComponentContentButtonInput {
+  id: ID
+  label: String
+  color: editComponentTypesColorInput
+  link: ID
+  alignment: editComponentTypesAlignmentInput
+  disabled: Boolean
+}
+
+type ComponentContentDownloadButton {
+  id: ID!
+  label: String!
+  color: ComponentTypesColor
+  file: UploadFile
+  alignment: ComponentTypesAlignment
+  disabled: Boolean
+}
+
+input ComponentContentDownloadButtonInput {
+  label: String!
+  color: ComponentTypesColorInput!
+  file: ID
+  alignment: ComponentTypesAlignmentInput!
+  disabled: Boolean
+}
+
+input editComponentContentDownloadButtonInput {
+  id: ID
+  label: String
+  color: editComponentTypesColorInput
+  file: ID
+  alignment: editComponentTypesAlignmentInput
+  disabled: Boolean
+}
+
+type ComponentContentImage {
+  id: ID!
+  image: UploadFile
+  caption: String
+  disabled: Boolean
+}
+
+input ComponentContentImageInput {
+  image: ID
+  caption: String
+  disabled: Boolean
+}
+
+input editComponentContentImageInput {
+  id: ID
+  image: ID
+  caption: String
+  disabled: Boolean
+}
+
+type ComponentContentText {
+  id: ID!
+  text: String
+  disabled: Boolean
+}
+
+input ComponentContentTextInput {
+  text: String
+  disabled: Boolean
+}
+
+input editComponentContentTextInput {
+  id: ID
+  text: String
+  disabled: Boolean
+}
+
+type ComponentGalleryImage {
+  id: ID!
+  image: UploadFile
+  caption: String
+  title: String
+}
+
+input ComponentGalleryImageInput {
+  image: ID
+  caption: String
+  title: String
+}
+
+input editComponentGalleryImageInput {
+  id: ID
+  image: ID
+  caption: String
+  title: String
+}
+
+type ComponentHomeCalendar {
+  id: ID!
+  dates: Int
+  disabled: Boolean
+}
+
+input ComponentHomeCalendarInput {
+  dates: Int
+  disabled: Boolean
+}
+
+input editComponentHomeCalendarInput {
+  id: ID
+  dates: Int
+  disabled: Boolean
+}
+
+type ComponentHomeFact {
+  id: ID!
+  number: Float
+  title: String
+  subtitle: String
+}
+
+input ComponentHomeFactInput {
+  number: Float
+  title: String
+  subtitle: String
+}
+
+input editComponentHomeFactInput {
+  id: ID
+  number: Float
+  title: String
+  subtitle: String
+}
+
+type ComponentHomeNews {
+  id: ID!
+  amount: Int
+  disabled: Boolean
+  pages(sort: String, limit: Int, start: Int, where: JSON): [Page]
+}
+
+input ComponentHomeNewInput {
+  amount: Int
+  pages: [ID]
+  disabled: Boolean
+}
+
+input editComponentHomeNewInput {
+  id: ID
+  amount: Int
+  pages: [ID]
+  disabled: Boolean
+}
+
+type ComponentLinkItemLink {
+  id: ID!
+  navigation_link: NavigationLink
+}
+
+input ComponentLinkItemLinkInput {
+  navigation_link: ID
+}
+
+input editComponentLinkItemLinkInput {
+  id: ID
+  navigation_link: ID
+}
+
+type ComponentLinkItemText {
+  id: ID!
+  name: String
+  link: String
+  icon_name: String
+}
+
+input ComponentLinkItemTextInput {
+  name: String
+  link: String
+  icon_name: String
+}
+
+input editComponentLinkItemTextInput {
+  id: ID
+  name: String
+  link: String
+  icon_name: String
+}
+
+type ComponentLinkTypeBlog {
+  id: ID!
+  blog: BlogCategory
+}
+
+input ComponentLinkTypeBlogInput {
+  blog: ID
+}
+
+input editComponentLinkTypeBlogInput {
+  id: ID
+  blog: ID
+}
+
+type ComponentLinkTypeGallery {
+  id: ID!
+  gallery: Gallery
+}
+
+input ComponentLinkTypeGalleryInput {
+  gallery: ID
+}
+
+input editComponentLinkTypeGalleryInput {
+  id: ID
+  gallery: ID
+}
+
+type ComponentLinkTypeMediaCenter {
+  id: ID!
+  mediaCenter: MediaCenter
+}
+
+input ComponentLinkTypeMediaCenterInput {
+  mediaCenter: ID
+}
+
+input editComponentLinkTypeMediaCenterInput {
+  id: ID
+  mediaCenter: ID
+}
+
+type ComponentLinkTypePage {
+  id: ID!
+  page: Page
+}
+
+input ComponentLinkTypePageInput {
+  page: ID
+}
+
+input editComponentLinkTypePageInput {
+  id: ID
+  page: ID
+}
+
+type ComponentLinkTypePodcast {
+  id: ID!
+  podcastEpisode: PodcastEpisode
+}
+
+input ComponentLinkTypePodcastInput {
+  podcastEpisode: ID
+}
+
+input editComponentLinkTypePodcastInput {
+  id: ID
+  podcastEpisode: ID
+}
+
+type ComponentLinkTypePost {
+  id: ID!
+  post: BlogEntry
+}
+
+input ComponentLinkTypePostInput {
+  post: ID
+}
+
+input editComponentLinkTypePostInput {
+  id: ID
+  post: ID
+}
+
+type ComponentLinkTypeSchoolSubject {
+  id: ID!
+  school_subject: Subject
+}
+
+input ComponentLinkTypeSchoolSubjectInput {
+  school_subject: ID
+}
+
+input editComponentLinkTypeSchoolSubjectInput {
+  id: ID
+  school_subject: ID
+}
+
+type ComponentLinkTypeStrapi {
+  id: ID!
+  URL: String!
+}
+
+input ComponentLinkTypeStrapiInput {
+  URL: String!
+}
+
+input editComponentLinkTypeStrapiInput {
+  id: ID
+  URL: String
+}
+
+type ComponentLinkTypeTeacher {
+  id: ID!
+  teacher: Teacher
+}
+
+input ComponentLinkTypeTeacherInput {
+  teacher: ID
+}
+
+input editComponentLinkTypeTeacherInput {
+  id: ID
+  teacher: ID
+}
+
+type ComponentLinkTypeWeb {
+  id: ID!
+  URL: String!
+}
+
+input ComponentLinkTypeWebInput {
+  URL: String
+}
+
+input editComponentLinkTypeWebInput {
+  id: ID
+  URL: String
+}
+
+type ComponentLinkTypeWorkingGroup {
+  id: ID!
+  working_group: WorkingGroup
+}
+
+input ComponentLinkTypeWorkingGroupInput {
+  working_group: ID
+}
+
+input editComponentLinkTypeWorkingGroupInput {
+  id: ID
+  working_group: ID
+}
+
+type ComponentMediaCenterMovie {
+  id: ID!
+  movie: UploadFile
+  caption: String
+  title: String!
+  poster: UploadFile
+}
+
+input ComponentMediaCenterMovieInput {
+  movie: ID
+  caption: String
+  title: String!
+  poster: ID
+}
+
+input editComponentMediaCenterMovieInput {
+  id: ID
+  movie: ID
+  caption: String
+  title: String
+  poster: ID
+}
+
+type ComponentNavigationNavigationLevelEntry {
+  id: ID!
+  parent: NavigationLink
+  navigation_link: NavigationLink
+  title: String
+  hideInSidebar: Boolean
+}
+
+input ComponentNavigationNavigationLevelEntryInput {
+  parent: ID
+  navigation_link: ID
+  title: String
+  hideInSidebar: Boolean
+}
+
+input editComponentNavigationNavigationLevelEntryInput {
+  id: ID
+  parent: ID
+  navigation_link: ID
+  title: String
+  hideInSidebar: Boolean
+}
+
+enum ENUM_COMPONENTPODCASTCATEGORY_NAME {
+  Arts
+  Arts__Books
+  Arts__Design
+  Arts__Fashion_and_Beauty
+  Arts__Food
+  Arts__Performing_Arts
+  Arts__Visual_Arts
+  Business
+  Business__Careers
+  Business__Entrepreneurship
+  Business__Investing
+  Business__Management
+  Business__Marketing
+  Business__NonProfit
+  Comedy
+  Comedy__Comedy_Interviews
+  Comedy__Improv
+  Comedy__StandUp
+  Education
+  Education__Courses
+  Education__How_To
+  Education__Language_Learning
+  Education__SelfImprovement
+  Fiction
+  Fiction__Comedy_Fiction
+  Fiction__Drama
+  Fiction__Science_Fiction
+  Government
+  History
+  Health_and_Fitness
+  Health_and_Fitness__Alternative_Health
+  Health_and_Fitness__Fitness
+  Health_and_Fitness__Medicine
+  Health_and_Fitness__Mental_Health
+  Health_and_Fitness__Nutrition
+  Health_and_Fitness__Sexuality
+  Kids_and_Family
+  Kids_and_Family__Education_for_Kids
+  Kids_and_Family__Parenting
+  Kids_and_Family__Pets_and_Animals
+  Kids_and_Family__Stories_for_Kids
+  Leisure
+  Leisure__Animation_and_Manga
+  Leisure__Automotive
+  Leisure__Aviation
+  Leisure__Crafts
+  Leisure__Games
+  Leisure__Hobbies
+  Leisure__Home_and_Garden
+  Leisure__Video_Games
+  Music
+  Music__Music_Commentary
+  Music__Music_History
+  Music__Music_Interviews
+  News
+  News__Business_News
+  News__Daily_News
+  News__Entertainment_News
+  News__News_Commentary
+  News__Politics
+  News__Sports_News
+  News__Tech_News
+  Religion_and_Spirituality
+  Religion_and_Spirituality__Buddhism
+  Religion_and_Spirituality__Christianity
+  Religion_and_Spirituality__Hinduism
+  Religion_and_Spirituality__Islam
+  Religion_and_Spirituality__Judaism
+  Religion_and_Spirituality__Religion
+  Religion_and_Spirituality__Spirituality
+  Science
+  Science__Astronomy
+  Science__Chemistry
+  Science__Earth_Sciences
+  Science__Life_Sciences
+  Science__Mathematics
+  Science__Natural_Sciences
+  Science__Nature
+  Science__Physics
+  Science__Social_Sciences
+  Society_and_Culture
+  Society_and_Culture__Documentary
+  Society_and_Culture__Personal_Journals
+  Society_and_Culture__Philosophy
+  Society_and_Culture__Places_and_Travel
+  Society_and_Culture__Relationships
+  Sports
+  Sports__Baseball
+  Sports__Basketball
+  Sports__Cricket
+  Sports__Fantasy_Sports
+  Sports__Football
+  Sports__Golf
+  Sports__Hockey
+  Sports__Rugby
+  Sports__Running
+  Sports__Soccer
+  Sports__Swimming
+  Sports__Tennis
+  Sports__Volleyball
+  Sports__Wilderness
+  Sports__Wrestling
+  Technology
+  True_Crime
+  TV_and_Film
+  TV_and_Film__After_Shows
+  TV_and_Film__Film_History
+  TV_and_Film__Film_Interviews
+  TV_and_Film__Film_Reviews
+  TV_and_Film__TV_Reviews
+}
+
+type ComponentPodcastCategory {
+  id: ID!
+  name: ENUM_COMPONENTPODCASTCATEGORY_NAME!
+}
+
+input ComponentPodcastCategoryInput {
+  name: ENUM_COMPONENTPODCASTCATEGORY_NAME!
+}
+
+input editComponentPodcastCategoryInput {
+  id: ID
+  name: ENUM_COMPONENTPODCASTCATEGORY_NAME
+}
+
+type ComponentPodcastChapters {
+  id: ID!
+  title: String!
+  href: NavigationLink
+  image: UploadFile
+  start: String!
+}
+
+input ComponentPodcastChapterInput {
+  title: String!
+  href: ID
+  image: ID
+  start: String
+}
+
+input editComponentPodcastChapterInput {
+  id: ID
+  title: String
+  href: ID
+  image: ID
+  start: String
+}
+
+type ComponentSectionBlackboardSlideshow {
+  id: ID!
+  disabled: Boolean
+  subjects(sort: String, limit: Int, start: Int, where: JSON): [Subject]
+}
+
+input ComponentSectionBlackboardSlideshowInput {
+  subjects: [ID]
+  disabled: Boolean
+}
+
+input editComponentSectionBlackboardSlideshowInput {
+  id: ID
+  subjects: [ID]
+  disabled: Boolean
+}
+
+enum ENUM_COMPONENTSECTIONBLOGSLIDESHOW_STYLE {
+  color
+  art
+  dreamy
+}
+
+type ComponentSectionBlogSlideshow {
+  id: ID!
+  blog: BlogCategory
+  limit: Int!
+  style: ENUM_COMPONENTSECTIONBLOGSLIDESHOW_STYLE!
+  color: ComponentTypesColor
+  disabled: Boolean
+}
+
+input ComponentSectionBlogSlideshowInput {
+  blog: ID
+  limit: Int
+  style: ENUM_COMPONENTSECTIONBLOGSLIDESHOW_STYLE
+  color: ComponentTypesColorInput
+  disabled: Boolean
+}
+
+input editComponentSectionBlogSlideshowInput {
+  id: ID
+  blog: ID
+  limit: Int
+  style: ENUM_COMPONENTSECTIONBLOGSLIDESHOW_STYLE
+  color: editComponentTypesColorInput
+  disabled: Boolean
+}
+
+type ComponentSectionFacts {
+  id: ID!
+  facts: [ComponentHomeFact]
+  color: ComponentTypesColor
+  disabled: Boolean
+}
+
+input ComponentSectionFactInput {
+  facts: [ComponentHomeFactInput]
+  color: ComponentTypesColorInput!
+  disabled: Boolean
+}
+
+input editComponentSectionFactInput {
+  id: ID
+  facts: [editComponentHomeFactInput]
+  color: editComponentTypesColorInput
+  disabled: Boolean
+}
+
+type ComponentSectionFormerStudents {
+  id: ID!
+  title: String!
+  description: String
+  limit: Int!
+  disabled: Boolean
+}
+
+input ComponentSectionFormerStudentInput {
+  title: String!
+  description: String
+  limit: Int
+  disabled: Boolean
+}
+
+input editComponentSectionFormerStudentInput {
+  id: ID
+  title: String
+  description: String
+  limit: Int
+  disabled: Boolean
+}
+
+type ComponentSectionGallerySlideshow {
+  id: ID!
+  gallery: Gallery
+  limit: Int!
+  disabled: Boolean
+}
+
+input ComponentSectionGallerySlideshowInput {
+  gallery: ID
+  limit: Int
+  disabled: Boolean
+}
+
+input editComponentSectionGallerySlideshowInput {
+  id: ID
+  gallery: ID
+  limit: Int
+  disabled: Boolean
+}
+
+type ComponentSectionIFrame {
+  id: ID!
+  URL: String!
+  width: String!
+  height: String!
+  disabled: Boolean
+}
+
+input ComponentSectionIFrameInput {
+  URL: String!
+  width: String
+  height: String
+  disabled: Boolean
+}
+
+input editComponentSectionIFrameInput {
+  id: ID
+  URL: String
+  width: String
+  height: String
+  disabled: Boolean
+}
+
+enum ENUM_COMPONENTSECTIONLATESTPODCASTEPISODE_ACTIVETAB {
+  none
+  shownotes
+  chapters
+  files
+  share
+  playlist
+}
+
+type ComponentSectionLatestPodcastEpisode {
+  id: ID!
+  title: String!
+  activeTab: ENUM_COMPONENTSECTIONLATESTPODCASTEPISODE_ACTIVETAB!
+  disabled: Boolean
+}
+
+input ComponentSectionLatestPodcastEpisodeInput {
+  title: String!
+  activeTab: ENUM_COMPONENTSECTIONLATESTPODCASTEPISODE_ACTIVETAB
+  disabled: Boolean
+}
+
+input editComponentSectionLatestPodcastEpisodeInput {
+  id: ID
+  title: String
+  activeTab: ENUM_COMPONENTSECTIONLATESTPODCASTEPISODE_ACTIVETAB
+  disabled: Boolean
+}
+
+type ComponentSectionMensaMax {
+  id: ID!
+  p: String!
+  e: String!
+  disabled: Boolean
+}
+
+input ComponentSectionMensaMaxInput {
+  p: String
+  e: String
+  disabled: Boolean
+}
+
+input editComponentSectionMensaMaxInput {
+  id: ID
+  p: String
+  e: String
+  disabled: Boolean
+}
+
+type ComponentSectionPodcastEpisode {
+  id: ID!
+  podcast_episode: PodcastEpisode
+  disabled: Boolean
+}
+
+input ComponentSectionPodcastEpisodeInput {
+  podcast_episode: ID
+  disabled: Boolean
+}
+
+input editComponentSectionPodcastEpisodeInput {
+  id: ID
+  podcast_episode: ID
+  disabled: Boolean
+}
+
+type ComponentSectionSlideshow {
+  id: ID!
+  slideshow: SectionSlideshow
+  disabled: Boolean
+}
+
+input ComponentSectionSlideshowInput {
+  slideshow: ID
+  disabled: Boolean
+}
+
+input editComponentSectionSlideshowInput {
+  id: ID
+  slideshow: ID
+  disabled: Boolean
+}
+
+type ComponentSectionSubjectSelection {
+  id: ID!
+  title: String
+  description: String
+  p1(sort: String, limit: Int, start: Int, where: JSON): [Subject]
+  p2(sort: String, limit: Int, start: Int, where: JSON): [Subject]
+  p3(sort: String, limit: Int, start: Int, where: JSON): [Subject]
+  p4(sort: String, limit: Int, start: Int, where: JSON): [Subject]
+  p5(sort: String, limit: Int, start: Int, where: JSON): [Subject]
+}
+
+input ComponentSectionSubjectSelectionInput {
+  p1: [ID]
+  p2: [ID]
+  p3: [ID]
+  p4: [ID]
+  p5: [ID]
+  title: String
+  description: String
+}
+
+input editComponentSectionSubjectSelectionInput {
+  id: ID
+  p1: [ID]
+  p2: [ID]
+  p3: [ID]
+  p4: [ID]
+  p5: [ID]
+  title: String
+  description: String
+}
+
+type ComponentSlideshowSlideshowEntryBlog {
+  id: ID!
+  subtitle: String!
+  image: UploadFile
+  post: BlogEntry
+  label: String!
+  color: ComponentTypesColor
+}
+
+input ComponentSlideshowSlideshowEntryBlogInput {
+  subtitle: String!
+  image: ID
+  post: ID
+  label: String
+  color: ComponentTypesColorInput!
+}
+
+input editComponentSlideshowSlideshowEntryBlogInput {
+  id: ID
+  subtitle: String
+  image: ID
+  post: ID
+  label: String
+  color: editComponentTypesColorInput
+}
+
+type ComponentSlideshowSlideshowEntryPage {
+  id: ID!
+  image: UploadFile
+  subtitle: String!
+  page: Page
+  label: String!
+  color: ComponentTypesColor
+}
+
+input ComponentSlideshowSlideshowEntryPageInput {
+  image: ID
+  subtitle: String!
+  page: ID
+  label: String
+  color: ComponentTypesColorInput!
+}
+
+input editComponentSlideshowSlideshowEntryPageInput {
+  id: ID
+  image: ID
+  subtitle: String
+  page: ID
+  label: String
+  color: editComponentTypesColorInput
+}
+
+type ComponentSlideshowSlideshowEntry {
+  id: ID!
+  image: UploadFile
+  subtitle: String!
+  color: ComponentTypesColor
+}
+
+input ComponentSlideshowSlideshowEntryInput {
+  image: ID
+  subtitle: String!
+  color: ComponentTypesColorInput!
+}
+
+input editComponentSlideshowSlideshowEntryInput {
+  id: ID
+  image: ID
+  subtitle: String
+  color: editComponentTypesColorInput
+}
+
+type ComponentStudentSectionStudentQuote {
+  id: ID!
+  title: String!
+  limit: Int!
+  color: ComponentTypesColor
+  disabled: Boolean
+}
+
+input ComponentStudentSectionStudentQuoteInput {
+  title: String!
+  limit: Int
+  color: ComponentTypesColorInput!
+  disabled: Boolean
+}
+
+input editComponentStudentSectionStudentQuoteInput {
+  id: ID
+  title: String
+  limit: Int
+  color: editComponentTypesColorInput
+  disabled: Boolean
+}
+
+enum ENUM_COMPONENTTYPESALIGNMENT_ALIGNMENT {
+  Left
+  Center
+  Right
+}
+
+type ComponentTypesAlignment {
+  id: ID!
+  alignment: ENUM_COMPONENTTYPESALIGNMENT_ALIGNMENT
+}
+
+input ComponentTypesAlignmentInput {
+  alignment: ENUM_COMPONENTTYPESALIGNMENT_ALIGNMENT
+}
+
+input editComponentTypesAlignmentInput {
+  id: ID
+  alignment: ENUM_COMPONENTTYPESALIGNMENT_ALIGNMENT
+}
+
+enum ENUM_COMPONENTTYPESCOLOR_COLOR {
+  blue
+  green
+  cyan
+  greenlight
+  yellow
+  red
+  light
+  dark
+  white
+  purple
+}
+
+type ComponentTypesColor {
+  id: ID!
+  color: ENUM_COMPONENTTYPESCOLOR_COLOR
+}
+
+input ComponentTypesColorInput {
+  color: ENUM_COMPONENTTYPESCOLOR_COLOR
+}
+
+input editComponentTypesColorInput {
+  id: ID
+  color: ENUM_COMPONENTTYPESCOLOR_COLOR
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | BlogCategory | BlogCategoryConnection | BlogCategoryAggregator | BlogCategoryGroupBy | BlogCategoryConnectionId | BlogCategoryConnectionCreated_at | BlogCategoryConnectionUpdated_at | BlogCategoryConnectionName | BlogCategoryConnectionSlug | createBlogCategoryPayload | updateBlogCategoryPayload | deleteBlogCategoryPayload | BlogEntry | BlogEntryConnection | BlogEntryAggregator | BlogEntryGroupBy | BlogEntryConnectionId | BlogEntryConnectionCreated_at | BlogEntryConnectionUpdated_at | BlogEntryConnectionTitle | BlogEntryConnectionBlog_category | BlogEntryConnectionSlug | BlogEntryConnectionAuthor | BlogEntryConnectionPublished_at | createBlogEntryPayload | updateBlogEntryPayload | deleteBlogEntryPayload | BlogInfo | updateBlogInfoPayload | deleteBlogInfoPayload | Footer | updateFooterPayload | deleteFooterPayload | FormerStudents | FormerStudentsConnection | FormerStudentsAggregator | FormerStudentsGroupBy | FormerStudentsConnectionId | FormerStudentsConnectionCreated_at | FormerStudentsConnectionUpdated_at | FormerStudentsConnectionName | FormerStudentsConnectionSlug | FormerStudentsConnectionBiography | FormerStudentsConnectionImage | FormerStudentsConnectionPublished_at | createFormerStudentPayload | updateFormerStudentPayload | deleteFormerStudentPayload | Gallery | GalleryConnection | GalleryAggregator | GalleryGroupBy | GalleryConnectionId | GalleryConnectionCreated_at | GalleryConnectionUpdated_at | GalleryConnectionTitle | GalleryConnectionSlug | GalleryConnectionStyle | GalleryConnectionColor | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | GeneralSettings | updateGeneralSettingPayload | deleteGeneralSettingPayload | Home | updateHomePayload | deleteHomePayload | MediaCenter | MediaCenterConnection | MediaCenterAggregator | MediaCenterGroupBy | MediaCenterConnectionId | MediaCenterConnectionCreated_at | MediaCenterConnectionUpdated_at | MediaCenterConnectionTitle | MediaCenterConnectionSlug | createMediaCenterPayload | updateMediaCenterPayload | deleteMediaCenterPayload | Menu | updateMenuPayload | deleteMenuPayload | NavigationLink | NavigationLinkConnection | NavigationLinkAggregator | NavigationLinkGroupBy | NavigationLinkConnectionId | NavigationLinkConnectionCreated_at | NavigationLinkConnectionUpdated_at | NavigationLinkConnectionTitle | createNavigationLinkPayload | updateNavigationLinkPayload | deleteNavigationLinkPayload | PageInfo | updatePageInfoPayload | deletePageInfoPayload | Page | PageConnection | PageAggregator | PageGroupBy | PageConnectionId | PageConnectionCreated_at | PageConnectionUpdated_at | PageConnectionTitle | PageConnectionSlug | PageConnectionCalendar_key | createPagePayload | updatePagePayload | deletePagePayload | PodcastEpisode | PodcastEpisodeConnection | PodcastEpisodeAggregator | PodcastEpisodeAggregatorSum | PodcastEpisodeAggregatorAvg | PodcastEpisodeAggregatorMin | PodcastEpisodeAggregatorMax | PodcastEpisodeGroupBy | PodcastEpisodeConnectionId | PodcastEpisodeConnectionCreated_at | PodcastEpisodeConnectionUpdated_at | PodcastEpisodeConnectionTitle | PodcastEpisodeConnectionPubDate | PodcastEpisodeConnectionDescription | PodcastEpisodeConnectionImage | PodcastEpisodeConnectionExplicit | PodcastEpisodeConnectionType | PodcastEpisodeConnectionBlock | PodcastEpisodeConnectionSlug | PodcastEpisodeConnectionSeason | PodcastEpisodeConnectionEpisode | PodcastEpisodeConnectionSubtitle | PodcastEpisodeConnectionPublished_at | createPodcastEpisodePayload | updatePodcastEpisodePayload | deletePodcastEpisodePayload | PodcastFeed | updatePodcastFeedPayload | deletePodcastFeedPayload | Podcaster | PodcasterConnection | PodcasterAggregator | PodcasterGroupBy | PodcasterConnectionId | PodcasterConnectionCreated_at | PodcasterConnectionUpdated_at | PodcasterConnectionName | PodcasterConnectionSlug | PodcasterConnectionBiography | PodcasterConnectionImage | PodcasterConnectionPodcast_episodes | PodcasterConnectionPublished_at | createPodcasterPayload | updatePodcasterPayload | deletePodcasterPayload | SchoolSubjectInfo | updateSchoolSubjectInfoPayload | deleteSchoolSubjectInfoPayload | SectionSlideshow | SectionSlideshowConnection | SectionSlideshowAggregator | SectionSlideshowGroupBy | SectionSlideshowConnectionId | SectionSlideshowConnectionCreated_at | SectionSlideshowConnectionUpdated_at | SectionSlideshowConnectionTitle | createSectionSlideshowPayload | updateSectionSlideshowPayload | deleteSectionSlideshowPayload | Subject | SubjectConnection | SubjectAggregator | SubjectGroupBy | SubjectConnectionId | SubjectConnectionCreated_at | SubjectConnectionUpdated_at | SubjectConnectionTitle | SubjectConnectionSlug | SubjectConnectionBlackboard_image | createSubjectPayload | updateSubjectPayload | deleteSubjectPayload | TeacherInfo | updateTeacherInfoPayload | deleteTeacherInfoPayload | Teacher | TeacherConnection | TeacherAggregator | TeacherGroupBy | TeacherConnectionId | TeacherConnectionCreated_at | TeacherConnectionUpdated_at | TeacherConnectionImage | TeacherConnectionName | TeacherConnectionSlug | TeacherConnectionBiography | createTeacherPayload | updateTeacherPayload | deleteTeacherPayload | Toolbar | updateToolbarPayload | deleteToolbarPayload | WorkingGroupInfo | updateWorkingGroupInfoPayload | deleteWorkingGroupInfoPayload | WorkingGroup | WorkingGroupConnection | WorkingGroupAggregator | WorkingGroupGroupBy | WorkingGroupConnectionId | WorkingGroupConnectionCreated_at | WorkingGroupConnectionUpdated_at | WorkingGroupConnectionTitle | WorkingGroupConnectionSlug | createWorkingGroupPayload | updateWorkingGroupPayload | deleteWorkingGroupPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentAttachmentAssets | ComponentBlackboardSlide | ComponentContentButton | ComponentContentDownloadButton | ComponentContentImage | ComponentContentText | ComponentGalleryImage | ComponentHomeCalendar | ComponentHomeFact | ComponentHomeNews | ComponentLinkItemLink | ComponentLinkItemText | ComponentLinkTypeBlog | ComponentLinkTypeGallery | ComponentLinkTypeMediaCenter | ComponentLinkTypePage | ComponentLinkTypePodcast | ComponentLinkTypePost | ComponentLinkTypeSchoolSubject | ComponentLinkTypeStrapi | ComponentLinkTypeTeacher | ComponentLinkTypeWeb | ComponentLinkTypeWorkingGroup | ComponentMediaCenterMovie | ComponentNavigationNavigationLevelEntry | ComponentPodcastCategory | ComponentPodcastChapters | ComponentSectionBlackboardSlideshow | ComponentSectionBlogSlideshow | ComponentSectionFacts | ComponentSectionFormerStudents | ComponentSectionGallerySlideshow | ComponentSectionIFrame | ComponentSectionLatestPodcastEpisode | ComponentSectionMensaMax | ComponentSectionPodcastEpisode | ComponentSectionSlideshow | ComponentSectionSubjectSelection | ComponentSlideshowSlideshowEntryBlog | ComponentSlideshowSlideshowEntryPage | ComponentSlideshowSlideshowEntry | ComponentStudentSectionStudentQuote | ComponentTypesAlignment | ComponentTypesColor
+
+input InputID {
+  id: ID!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  blogCategory(id: ID!, publicationState: PublicationState): BlogCategory
+  blogCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [BlogCategory]
+  blogCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): BlogCategoryConnection
+  blogEntry(id: ID!, publicationState: PublicationState): BlogEntry
+  blogEntries(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [BlogEntry]
+  blogEntriesConnection(sort: String, limit: Int, start: Int, where: JSON): BlogEntryConnection
+  blogInfo(publicationState: PublicationState): BlogInfo
+  footer(publicationState: PublicationState): Footer
+  formerStudent(id: ID!, publicationState: PublicationState): FormerStudents
+  formerStudents(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [FormerStudents]
+  formerStudentsConnection(sort: String, limit: Int, start: Int, where: JSON): FormerStudentsConnection
+  gallery(id: ID!, publicationState: PublicationState): Gallery
+  galleries(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Gallery]
+  galleriesConnection(sort: String, limit: Int, start: Int, where: JSON): GalleryConnection
+  generalSetting(publicationState: PublicationState): GeneralSettings
+  home(publicationState: PublicationState): Home
+  mediaCenter(id: ID!, publicationState: PublicationState): MediaCenter
+  mediaCenters(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MediaCenter]
+  mediaCentersConnection(sort: String, limit: Int, start: Int, where: JSON): MediaCenterConnection
+  menu(publicationState: PublicationState): Menu
+  navigationLink(id: ID!, publicationState: PublicationState): NavigationLink
+  navigationLinks(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [NavigationLink]
+  navigationLinksConnection(sort: String, limit: Int, start: Int, where: JSON): NavigationLinkConnection
+  pageInfo(publicationState: PublicationState): PageInfo
+  page(id: ID!, publicationState: PublicationState): Page
+  pages(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Page]
+  pagesConnection(sort: String, limit: Int, start: Int, where: JSON): PageConnection
+  podcastEpisode(id: ID!, publicationState: PublicationState): PodcastEpisode
+  podcastEpisodes(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [PodcastEpisode]
+  podcastEpisodesConnection(sort: String, limit: Int, start: Int, where: JSON): PodcastEpisodeConnection
+  podcastFeed(publicationState: PublicationState): PodcastFeed
+  podcaster(id: ID!, publicationState: PublicationState): Podcaster
+  podcasters(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Podcaster]
+  podcastersConnection(sort: String, limit: Int, start: Int, where: JSON): PodcasterConnection
+  schoolSubjectInfo(publicationState: PublicationState): SchoolSubjectInfo
+  sectionSlideshow(id: ID!, publicationState: PublicationState): SectionSlideshow
+  sectionSlideshows(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [SectionSlideshow]
+  sectionSlideshowsConnection(sort: String, limit: Int, start: Int, where: JSON): SectionSlideshowConnection
+  subject(id: ID!, publicationState: PublicationState): Subject
+  subjects(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Subject]
+  subjectsConnection(sort: String, limit: Int, start: Int, where: JSON): SubjectConnection
+  teacherInfo(publicationState: PublicationState): TeacherInfo
+  teacher(id: ID!, publicationState: PublicationState): Teacher
+  teachers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Teacher]
+  teachersConnection(sort: String, limit: Int, start: Int, where: JSON): TeacherConnection
+  toolbar(publicationState: PublicationState): Toolbar
+  workingGroupInfo(publicationState: PublicationState): WorkingGroupInfo
+  workingGroup(id: ID!, publicationState: PublicationState): WorkingGroup
+  workingGroups(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [WorkingGroup]
+  workingGroupsConnection(sort: String, limit: Int, start: Int, where: JSON): WorkingGroupConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  createBlogCategory(input: createBlogCategoryInput): createBlogCategoryPayload
+  updateBlogCategory(input: updateBlogCategoryInput): updateBlogCategoryPayload
+  deleteBlogCategory(input: deleteBlogCategoryInput): deleteBlogCategoryPayload
+  createBlogEntry(input: createBlogEntryInput): createBlogEntryPayload
+  updateBlogEntry(input: updateBlogEntryInput): updateBlogEntryPayload
+  deleteBlogEntry(input: deleteBlogEntryInput): deleteBlogEntryPayload
+  updateBlogInfo(input: updateBlogInfoInput): updateBlogInfoPayload
+  deleteBlogInfo: deleteBlogInfoPayload
+  updateFooter(input: updateFooterInput): updateFooterPayload
+  deleteFooter: deleteFooterPayload
+  createFormerStudent(input: createFormerStudentInput): createFormerStudentPayload
+  updateFormerStudent(input: updateFormerStudentInput): updateFormerStudentPayload
+  deleteFormerStudent(input: deleteFormerStudentInput): deleteFormerStudentPayload
+  createGallery(input: createGalleryInput): createGalleryPayload
+  updateGallery(input: updateGalleryInput): updateGalleryPayload
+  deleteGallery(input: deleteGalleryInput): deleteGalleryPayload
+  updateGeneralSetting(input: updateGeneralSettingInput): updateGeneralSettingPayload
+  deleteGeneralSetting: deleteGeneralSettingPayload
+  updateHome(input: updateHomeInput): updateHomePayload
+  deleteHome: deleteHomePayload
+  createMediaCenter(input: createMediaCenterInput): createMediaCenterPayload
+  updateMediaCenter(input: updateMediaCenterInput): updateMediaCenterPayload
+  deleteMediaCenter(input: deleteMediaCenterInput): deleteMediaCenterPayload
+  updateMenu(input: updateMenuInput): updateMenuPayload
+  deleteMenu: deleteMenuPayload
+  createNavigationLink(input: createNavigationLinkInput): createNavigationLinkPayload
+  updateNavigationLink(input: updateNavigationLinkInput): updateNavigationLinkPayload
+  deleteNavigationLink(input: deleteNavigationLinkInput): deleteNavigationLinkPayload
+  updatePageInfo(input: updatePageInfoInput): updatePageInfoPayload
+  deletePageInfo: deletePageInfoPayload
+  createPage(input: createPageInput): createPagePayload
+  updatePage(input: updatePageInput): updatePagePayload
+  deletePage(input: deletePageInput): deletePagePayload
+  createPodcastEpisode(input: createPodcastEpisodeInput): createPodcastEpisodePayload
+  updatePodcastEpisode(input: updatePodcastEpisodeInput): updatePodcastEpisodePayload
+  deletePodcastEpisode(input: deletePodcastEpisodeInput): deletePodcastEpisodePayload
+  updatePodcastFeed(input: updatePodcastFeedInput): updatePodcastFeedPayload
+  deletePodcastFeed: deletePodcastFeedPayload
+  createPodcaster(input: createPodcasterInput): createPodcasterPayload
+  updatePodcaster(input: updatePodcasterInput): updatePodcasterPayload
+  deletePodcaster(input: deletePodcasterInput): deletePodcasterPayload
+  updateSchoolSubjectInfo(input: updateSchoolSubjectInfoInput): updateSchoolSubjectInfoPayload
+  deleteSchoolSubjectInfo: deleteSchoolSubjectInfoPayload
+  createSectionSlideshow(input: createSectionSlideshowInput): createSectionSlideshowPayload
+  updateSectionSlideshow(input: updateSectionSlideshowInput): updateSectionSlideshowPayload
+  deleteSectionSlideshow(input: deleteSectionSlideshowInput): deleteSectionSlideshowPayload
+  createSubject(input: createSubjectInput): createSubjectPayload
+  updateSubject(input: updateSubjectInput): updateSubjectPayload
+  deleteSubject(input: deleteSubjectInput): deleteSubjectPayload
+  updateTeacherInfo(input: updateTeacherInfoInput): updateTeacherInfoPayload
+  deleteTeacherInfo: deleteTeacherInfoPayload
+  createTeacher(input: createTeacherInput): createTeacherPayload
+  updateTeacher(input: updateTeacherInput): updateTeacherPayload
+  deleteTeacher(input: deleteTeacherInput): deleteTeacherPayload
+  updateToolbar(input: updateToolbarInput): updateToolbarPayload
+  deleteToolbar: deleteToolbarPayload
+  updateWorkingGroupInfo(input: updateWorkingGroupInfoInput): updateWorkingGroupInfoPayload
+  deleteWorkingGroupInfo: deleteWorkingGroupInfoPayload
+  createWorkingGroup(input: createWorkingGroupInput): createWorkingGroupPayload
+  updateWorkingGroup(input: updateWorkingGroupInput): updateWorkingGroupPayload
+  deleteWorkingGroup(input: deleteWorkingGroupInput): deleteWorkingGroupPayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
