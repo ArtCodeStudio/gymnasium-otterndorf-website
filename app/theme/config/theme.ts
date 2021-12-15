@@ -2,7 +2,7 @@ import type { ThemeConfigFile, ThemeConfig } from "@ribajs/ssr";
 
 export const config: ThemeConfigFile = (env: string | undefined) => {
   const config: ThemeConfig = {
-    name: "Demo Theme",
+    name: "Gymnasium Otterndorf Theme",
     viewEngine: "pug",
     assetsDir: "assets",
     viewsDir: "templates",

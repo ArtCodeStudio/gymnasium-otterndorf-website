@@ -74,14 +74,16 @@ const waitForStrapi = async () => {
   return new Promise<void>((resolve) => {
     const url = process.env.STRAPI_REMOTE_URL + '/_health';
     const interval = setInterval(async () => {
+      console.log(`Wait for ${url} to be ready..`);
       try {
         const res = await fetch(url);
         if (res.ok) {
           clearInterval(interval);
           return resolve();
         }
-        console.debug(`Wait for ${url} to be ready..`);
-      } catch (_) {}
+      } catch (error) {
+        console.warn(error);
+      }
     }, 3000);
   });
 };
