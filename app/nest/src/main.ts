@@ -1,6 +1,7 @@
 import type {} from './@types';
 import { NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
+import { fetch } from './dependencies/fetch';
 import Express from 'express';
 import {
   NestExpressApplication,
@@ -68,4 +69,26 @@ async function bootstrap() {
 
   console.log(`Start app on localhost:${configApp.port}`);
 }
-bootstrap();
+
+const waitForStrapi = async () => {
+  return new Promise<void>((resolve) => {
+    const url = process.env.STRAPI_REMOTE_URL + '/_health';
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(url);
+        if (res.ok) {
+          clearInterval(interval);
+          return resolve();
+        }
+        console.debug(`Wait for ${url} to be ready..`);
+      } catch (_) {}
+    }, 3000);
+  });
+};
+
+const start = async () => {
+  await waitForStrapi();
+  await bootstrap();
+};
+
+start();

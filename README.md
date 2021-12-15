@@ -98,6 +98,41 @@ cd app/strapi-student
 npm run build
 ```
 
+## Start
+
+We are using [pm2](https://pm2.io/) to manage the running app instances. For this we have defined some pm2 config files for different environment, e.g. `pm2.dev.config` in the root of this repository.
+
+You can start pm2 for this environments with:
+
+### Development
+
+This environment is intended for development, the apps are started in watch mode and automatically restarted or rebuilt when changes are made. 
+
+```bash
+yarn run start:dev
+# or
+pm2 start ./pm2.dev.config.js
+```
+
+### Local
+
+This environment is intended for local development, where the apps are also started in watch mode, but the Strapi instances will not be started. So the Strapi instances must therefore run on the server.
+
+```bash
+yarn run start:local
+# or
+pm2 start ./pm2.local.config.js
+```
+### Production
+
+This sets the app instances in production mode. This means that the apps do not start in watch mode.
+
+```bash
+yarn run start:prod
+# or
+pm2 start ./pm2.prod.config.js
+```
+
 ## Strapi
 
 We have two strapi instances for this project. One for teachers and school administration and one fpr students.
@@ -157,22 +192,3 @@ error: unknown option '--inspect'
 ```
 
 You are using an old version of Node.js, please upgrade to >= 14.
-
---------
-
-```sh
-Error: Module not found: Error: Can\'t resolve '../../plugins/strapi-plugin-content-type-builder/admin/src' in '/home/node/riba-nest-projects/apps/gymott/strapi/.cache/admin/src'
-# or
-Error: Module not found: Error: Can\'t resolve './components/Fonts' in '/home/node/riba-nest-projects/apps/gymott/strapi/.cache/admin/src'
-# or similar..
-```
-
-This can happen when you update Strapi, to solve this remove `package-lock.json`, `node_modules` and `.cache` in the root of the Strapi project and run `npm run build` twice, the first time the error might appear again, the second time the problem should be solved.
-
---------
-
-```sh
-Could not load '.yarn/cache/greenlock-store-fs-npm-3.2.2-b7037376cd-7949fbf967.zip/node_modules/greenlock-store-fs/index.js'
-```
-
-Go to `packages/node-app-manager/backend/greenlock.d/config.json` and update the `greenlock-store-fs-npm-3.2.2-b7037376cd-7949fbf967.zip` to a existing name like `.yarn/cache/greenlock-store-fs-npm-3.2.2-xxx-xxx`

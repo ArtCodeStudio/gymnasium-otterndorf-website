@@ -11,14 +11,12 @@
     "build:strapi": "cd app/strapi NODE_OPTIONS='' npm run build",
     "build:strapi-student": "cd app/strapi-student NODE_OPTIONS='' npm run build",
     "build:strapi-configs": "yarn workspace @gymott/strapi-plugin-documentation-config run start",
-    "start:local": "node-app-manager --env local",
-    "start:prod": "node-app-manager --env production",
-    "start:dev": "node-app-manager --env development"
+    "start:prod": "pm2 start ./pm2.prod.config.js",
+    "start:dev": "pm2 start ./pm2.dev.config.js",
+    "start:local": "pm2 start ./pm2.local.config.js"
   },
   "workspaces": [
     "packages/node-podcast",
-    "packages/node-app-manager/backend",
-    "packages/node-app-manager/packages/redbird",
     "packages/riba/packages/*",
     "packages/riba/backend/*",
     "packages/riba/infra/*",
@@ -77,7 +75,6 @@
     "@ribajs/strapi": "workspace:*"
   },
   "devDependencies": {
-    "@artcodestudio/node-app-manager": "workspace:*",
     "@ribajs/eslint-config": "workspace:*",
     "@ribajs/iconset": "workspace:*",
     "@ribajs/tsconfig": "workspace:*",
@@ -91,6 +88,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "node-gyp": "^8.4.1",
+    "pm2": "^5.1.2",
     "prettier": "^2.5.1",
     "typescript": "^4.5.2"
   },
