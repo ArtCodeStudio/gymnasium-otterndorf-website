@@ -29,13 +29,6 @@ declare global {
   }
 }
 
-window.onerror = (msg, url, line, col, error) => {
-  console.error(msg, url, line, col, error);
-};
-window.addEventListener("error", (event: Event) => {
-  console.error(event);
-});
-
 window.model = window.model || window.ssr.templateVars || {};
 
 const riba = new Riba();
@@ -72,17 +65,4 @@ riba.module.regist(artAndCodeStudioModule.init({}));
 riba.module.regist(luxonModule.init({}));
 riba.module.regist(strapiModule.init({}));
 
-// After all components are bound wie trigger the ssr ready event,
-// as soon as this event is triggered the ssr rendering will be done returns the rendered html
-riba.lifecycle.events.on("ComponentLifecycle:allBound", () => {
-  window.ssr.events.trigger("ready");
-});
-
-riba.lifecycle.events.on("ComponentLifecycle:error", (error: Error) => {
-  window.ssr.events.trigger("error", error);
-});
-
-const view = riba.bind(document?.body, window.model);
-
-// WORKAROUND / FIXME view.traverse method seems not to be working in jsdom
-view.registComponents();
+riba.bind(document?.body, window.model);

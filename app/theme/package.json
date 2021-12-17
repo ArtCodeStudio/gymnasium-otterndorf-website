@@ -38,6 +38,7 @@
     "@graphql-tools/webpack-loader": "^6.6.1",
     "@ribajs/babel-config": "workspace:*",
     "@ribajs/eslint-config": "workspace:*",
+    "@ribajs/nest-theme": "workspace:^",
     "@ribajs/tsconfig": "workspace:*",
     "@ribajs/webpack-config": "workspace:*",
     "@types/bootstrap": "^5.1.6",

@@ -1,4 +1,4 @@
-import type { ThemeConfigFile, ThemeConfig } from "@ribajs/ssr";
+import type { ThemeConfigFile, ThemeConfig } from "@ribajs/nest-theme";
 
 export const config: ThemeConfigFile = (env: string | undefined) => {
   const config: ThemeConfig = {

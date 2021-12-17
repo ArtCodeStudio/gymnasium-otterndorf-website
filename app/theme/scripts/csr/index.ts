@@ -1,6 +1,6 @@
 import { ready } from "@ribajs/utils/src/dom";
 import { replaceBodyPageClass } from "../common";
-import { Riba, View, coreModule } from "@ribajs/core";
+import { Riba, coreModule } from "@ribajs/core";
 import { extrasModule } from "@ribajs/extras";
 import { EventDispatcher } from "@ribajs/events";
 import { contentSliderModule } from "@ribajs/content-slider";
@@ -35,92 +35,82 @@ declare global {
   }
 }
 
-export class CSRApp {
-  protected view?: View;
-  protected riba = new Riba();
-  protected model: any = {};
-  protected routerEvents = EventDispatcher.getInstance("main");
+const bootstrap = () => {
+  const riba = new Riba();
+  const model: any = {};
+  const routerEvents = EventDispatcher.getInstance("main");
 
-  protected onPageChanges() {
+  const onPageChanges = () => {
     replaceBodyPageClass();
-  }
+  };
 
-  constructor() {
-    this.riba.configure({
-      prefix: ["rv", "csr-rv"],
-    });
+  riba.configure({
+    prefix: ["rv", "csr-rv"],
+  });
 
-    // Regist custom components
-    this.riba.module.component.regists({
-      ...commonComponents,
-      ...components,
-      ...pages,
-    });
-    this.riba.module.binder.regists({ ...commonBinders, ...binders });
-    this.riba.module.formatter.regists({ ...commonFormatters, ...formatters });
+  // Regist custom components
+  riba.module.component.regists({
+    ...commonComponents,
+    ...components,
+    ...pages,
+  });
+  riba.module.binder.regists({ ...commonBinders, ...binders });
+  riba.module.formatter.regists({ ...commonFormatters, ...formatters });
 
-    // Regist modules
-    this.riba.module.regist(coreModule.init());
-    this.riba.module.regist(extrasModule.init());
-    this.riba.module.regist(
-      routerModule.init({
-        defaultTransition: new FadeTransition(),
-        scrollToAnchorOffset: 100,
-      })
-    );
-    this.riba.module.regist(
-      bs5Module.init({
-        breakpoints: [
-          {
-            dimension: 0,
-            name: "xs",
-          },
-          {
-            dimension: 576,
-            name: "sm",
-          },
-          {
-            dimension: 768,
-            name: "md",
-          },
-          {
-            dimension: 992,
-            name: "lg",
-          },
-          {
-            dimension: 1100,
-            name: "xl",
-          },
-          {
-            dimension: 1400,
-            name: "xxl",
-          },
-        ],
-      })
-    );
-    this.riba.module.regist(bs5PhotoswipeModule);
-    this.riba.module.regist(leafletModule);
-    this.riba.module.regist(masonryModule);
-    this.riba.module.regist(contentSliderModule.init({}));
-    this.riba.module.regist(artAndCodeStudioModule.init({}));
-    this.riba.module.regist(podcastModule.init({}));
-    this.riba.module.regist(strapiModule.init({}));
+  // Regist modules
+  riba.module.regist(coreModule.init());
+  riba.module.regist(extrasModule.init());
+  riba.module.regist(
+    routerModule.init({
+      defaultTransition: new FadeTransition(),
+      scrollToAnchorOffset: 100,
+    })
+  );
+  riba.module.regist(
+    bs5Module.init({
+      breakpoints: [
+        {
+          dimension: 0,
+          name: "xs",
+        },
+        {
+          dimension: 576,
+          name: "sm",
+        },
+        {
+          dimension: 768,
+          name: "md",
+        },
+        {
+          dimension: 992,
+          name: "lg",
+        },
+        {
+          dimension: 1100,
+          name: "xl",
+        },
+        {
+          dimension: 1400,
+          name: "xxl",
+        },
+      ],
+    })
+  );
+  riba.module.regist(bs5PhotoswipeModule);
+  riba.module.regist(leafletModule);
+  riba.module.regist(masonryModule);
+  riba.module.regist(contentSliderModule.init({}));
+  riba.module.regist(artAndCodeStudioModule.init({}));
+  riba.module.regist(podcastModule.init({}));
+  riba.module.regist(strapiModule.init({}));
 
-    this.view = this.riba.bind(document?.body, this.model);
+  riba.bind(document?.body, model);
 
-    this.view.registComponents();
+  riba.lifecycle.events.on("ComponentLifecycle:error", (error: Error) => {
+    console.error(error);
+  });
 
-    this.riba.lifecycle.events.on(
-      "ComponentLifecycle:error",
-      (error: Error) => {
-        console.error(error);
-      }
-    );
+  routerEvents.on("transitionCompleted", onPageChanges, this);
+};
 
-    this.routerEvents.on("transitionCompleted", this.onPageChanges, this);
-  }
-}
-
-ready(() => {
-  new CSRApp();
-});
+ready(bootstrap);
