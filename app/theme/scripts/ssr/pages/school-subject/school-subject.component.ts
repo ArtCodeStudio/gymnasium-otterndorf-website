@@ -42,6 +42,9 @@ export class SchoolSubjectPageComponent extends PageComponent {
   }
 
   protected async setSchoolSubject() {
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     const schoolSubject = await this.schoolSubject.getDetail(
       this.ctx.params.slug
     );

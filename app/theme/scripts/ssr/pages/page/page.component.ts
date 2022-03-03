@@ -71,6 +71,9 @@ export class PagePageComponent extends PageComponent {
   }
 
   protected async setPage() {
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     const page = await this.page.getDetail(this.ctx.params.slug);
     if (page) {
       this.scope.page = page;

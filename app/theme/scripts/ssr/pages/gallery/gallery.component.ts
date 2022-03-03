@@ -64,6 +64,9 @@ export class GalleryPageComponent extends PageComponent {
   }
 
   protected async setGallery() {
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     const gallery = await this.gallery.get(this.ctx.params.slug);
     if (gallery) {
       if (gallery.title) {
@@ -97,6 +100,9 @@ export class GalleryPageComponent extends PageComponent {
 
   protected async beforeBind() {
     await super.beforeBind();
+    if (!this.ctx.params?.slug) {
+      throw new Error("Slug is not defined!");
+    }
     this.head.title = this.ctx.params.slug + " Gallery";
     const gallery = await this.setGallery();
     if (gallery) {
