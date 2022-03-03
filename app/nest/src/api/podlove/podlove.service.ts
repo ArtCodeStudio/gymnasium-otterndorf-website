@@ -75,11 +75,11 @@ export class PodloveService {
        * - only available clients on the used os/platform are shown
        * - order in list determines rendered order
        * @see https://github.com/podlove/podlovers.org/blob/master/config/default-podlovers.json
-       * 
+       *
        * @see
        *  - https://podcastindex.org/podcast/4484455
        *  - https://pca.st/bphdn6kv
-       *  - https://fyyd.de/podcast/schuelerradio-otterndorf/0 
+       *  - https://fyyd.de/podcast/schuelerradio-otterndorf/0
        */
       clients: [
         // TODO
@@ -132,8 +132,8 @@ export class PodloveService {
           id: 'player-fm',
         },
         {
-          id: "pocket-casts",
-          service: "bphdn6kv" // https://pca.st/bphdn6kv
+          id: 'pocket-casts',
+          service: 'bphdn6kv', // https://pca.st/bphdn6kv
         },
         {
           id: 'pod-grasp',

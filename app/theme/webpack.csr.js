@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const ribaWebpackConfig = require("@ribajs/webpack-config");
 const { resolve } = require("path");
 
@@ -10,6 +11,7 @@ const tsIndexPath = resolve(tsSourceDir, "index.ts");
 const scssIndexPath = resolve(scssSourceDir, "main.scss");
 
 const config = {
+  publicPath: assets,
   template: "local",
   copyAssets: {
     enable: true,

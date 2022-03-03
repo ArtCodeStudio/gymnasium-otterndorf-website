@@ -6,12 +6,12 @@
     "start:webhook": "ts-node strapi-webhook-memory.ts"
   },
   "dependencies": {
-    "node-fetch": "^2.6.6"
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
-    "@types/node": "^16.11.13",
-    "@types/node-fetch": "^2.5.12",
-    "ts-node": "^10.4.0"
+    "@types/node": "^16.11.26",
+    "@types/node-fetch": "^2.6.1",
+    "ts-node": "^10.6.0"
   }
 }

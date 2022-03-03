@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const ribaWebpackConfig = require("@ribajs/webpack-config");
 const { resolve } = require("path");
 
@@ -8,6 +9,7 @@ const outputPath = resolve(assets, "ssr");
 const tsIndexPath = resolve(tsSourceDir, "index.ts");
 
 const config = {
+  publicPath: assets,
   template: "ssr",
   tsSourceDir,
   tsIndexPath,

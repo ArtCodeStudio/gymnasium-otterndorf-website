@@ -4,7 +4,7 @@ import {
   Bs5SidebarComponent,
   Bs5SlideshowComponent,
   TOGGLE_BUTTON,
-  SlideshowState,
+  SidebarState,
 } from "@ribajs/bs5";
 import { GyNavSlideComponent } from "../gy-nav-slide/gy-nav-slide.component";
 import pugTemplate from "./gy-right-sidebar.component.pug";
@@ -25,7 +25,7 @@ export class GyRightSidebarComponent extends Component {
     return [];
   }
 
-  protected setSidebarStateClassToBody(state: SlideshowState) {
+  protected setSidebarStateClassToBody(state: SidebarState) {
     const body = document?.body;
     body.classList.remove("gy-right-sidebar-hidden");
     body.classList.remove("gy-right-sidebar-overlay-right");
@@ -34,7 +34,7 @@ export class GyRightSidebarComponent extends Component {
     body.classList.add("gy-right-sidebar-" + state);
   }
 
-  protected _onSidebarToggle(state: SlideshowState) {
+  protected _onSidebarToggle(state: SidebarState) {
     this.slideshow?.scrollToNearestSlide();
     this.setSidebarStateClassToBody(state);
   }

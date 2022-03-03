@@ -4,7 +4,7 @@
     .col-12(ssr-rv-show="section.description")
         .text-center(ssr-rv-html="section.description | markdown")
     .col-12
-        bs5-slideshow(xs-controls="false" xs-indicators="false" xs-drag="true" xs-sticky="false" xs-autoplay="true" xs-autoplay-velocity="0.05") 
+        bs5-slideshow(csr-rv-bs5-co-xs-controls="false", csr-rv-bs5-co-md-controls="true", drag="true", sticky="false", autoplay="true", autoplay-velocity="0.05") 
             .row.slideshow-row.py-3.d-flex.align-items-center
                 .slide.col-12.col-md-8.col-xl-6(ssr-rv-each-former-student="formerStudents")
                     gy-former-student-item(ssr-rv-co-former-student="formerStudent")

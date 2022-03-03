@@ -171,7 +171,7 @@ export class GyBlackboardComponent extends Component {
 
       cCtx.save();
       cCtx.fillStyle = this.fillColor;
-      cCtx.globalCompositeOperation = this.globalCompositeOperation;
+      cCtx.globalCompositeOperation = this.globalCompositeOperation as any;
       cCtx.strokeStyle = this.strokeColor;
       cCtx.beginPath();
       for (let i = 0; i < dotNum; i++) {
@@ -321,7 +321,7 @@ export class GyBlackboardComponent extends Component {
 
       cCtx.save();
       cCtx.fillStyle = this.fillColor;
-      cCtx.globalCompositeOperation = this.globalCompositeOperation;
+      cCtx.globalCompositeOperation = this.globalCompositeOperation as any;
       cCtx.strokeStyle = this.strokeColor;
       cCtx.beginPath();
       const w = ((Math.random() * dotSize + dotSize) * 3) / 4;
