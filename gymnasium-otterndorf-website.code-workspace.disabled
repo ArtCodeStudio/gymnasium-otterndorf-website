@@ -1,0 +1,55 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "root",
+			"typescript.tsdk": ".yarn/sdks/typescript/lib",
+			"typescript.enablePromptUseWorkspaceTsdk": true,
+		},
+		{
+			"path": "app/common",
+			"name": "common (yarn)",
+			"deno.enable": false,
+			"typescript.tsdk": ".yarn/sdks/typescript/lib",
+			"typescript.enablePromptUseWorkspaceTsdk": true,
+		},
+		{
+			"path": "app/nest",
+			"name": "nest (yarn)",
+			"deno.enable": false,
+			"typescript.tsdk": ".yarn/sdks/typescript/lib",
+			"typescript.enablePromptUseWorkspaceTsdk": true,
+		},
+		{
+			"path": "app/strapi",
+			"name": "strapi (npm)",
+			"deno.enable": false,
+		},
+		{
+			"path": "app/strapi-student",
+			"name": "strapi-student (npm)",
+			"deno.enable": false
+		},
+		{
+			"path": "app/theme",
+			"name": "theme (yarn)",
+			"deno.enable": false,
+			"typescript.tsdk": ".yarn/sdks/typescript/lib",
+			"typescript.enablePromptUseWorkspaceTsdk": true,
+		},
+		{
+			"path": "packages/riba",
+			"name": "riba (yarn)",
+			"deno.enable": false,
+			"typescript.tsdk": ".yarn/sdks/typescript/lib",
+			"typescript.enablePromptUseWorkspaceTsdk": true,
+		},
+		{
+			"path": "packages/node-podcast",
+			"name": "node-podcast (yarn)",
+			"deno.enable": false,
+			"typescript.tsdk": ".yarn/sdks/typescript/lib",
+			"typescript.enablePromptUseWorkspaceTsdk": true,
+		}
+	]
+}
