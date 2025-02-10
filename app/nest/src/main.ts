@@ -1,4 +1,3 @@
-import type {} from './@types';
 import { NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
 import { fetch } from './dependencies/fetch';
@@ -72,7 +71,7 @@ async function bootstrap() {
 
 const waitForStrapi = async () => {
   return new Promise<void>((resolve) => {
-    const url = process.env.STRAPI_REMOTE_URL + '/_health';
+    const url = process.env.STRAPI_LOCAL_URL + '/_health';
     const interval = setInterval(async () => {
       console.log(`Wait for ${url} to be ready..`);
       try {

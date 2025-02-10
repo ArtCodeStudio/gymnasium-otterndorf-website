@@ -6,7 +6,7 @@ module.exports = {
       env: {
         // Yarn 2 automatically injects the .pnp file over NODE_OPTIONS, this causes problems with packages that do not belong to the workspace
         NODE_OPTIONS: "",
-        HOST: "127.0.0.1",
+        HOST: "0.0.0.0",
         ADMIN_URL: "/admin",
         DATABASE_CONNECTOR: "bookshelf",
         DATABASE_CLIENT: "sqlite",

@@ -1,0 +1,14 @@
+gym.artandcode.de, gymnasium-otterndorf.de, www.gymnasium-otterndorf.de {
+        reverse_proxy * 10.10.11.204:3001
+        tls alerts@artandcode.studio
+}
+
+gym-strapi.artandcode.de, strapi.gymnasium-otterndorf.de {
+        reverse_proxy * 10.10.11.204:3002
+        tls alerts@artandcode.studio
+}
+
+gym-strapi-student.artandcode.de, strapi-student.gymnasium-otterndorf.de {
+        reverse_proxy 10.10.11.204:3003
+        tls alerts@artandcode.studio
+}
